@@ -6,5 +6,5 @@ import App from './app.js';
 render(
   <BrowserRouter>
     <Route path="/" component={App} />
-  </BrowserRouter>, document.getElementById('platypus')
+  </BrowserRouter>, document.getElementById('porcupine')
 );

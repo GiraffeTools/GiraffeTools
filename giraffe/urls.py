@@ -17,6 +17,6 @@ from django.urls import include, path
 from django.contrib import admin
 
 urlpatterns = [
-    path('platypus/',   include('platypus.urls')),
+    path('porcupine/',   include('porcupine.urls')),
     path('admin/',      admin.site.urls),
 ]

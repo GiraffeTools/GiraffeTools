@@ -6,7 +6,7 @@
    context: __dirname,
 
         entry: {
-          platypus: path.resolve(__dirname, './platypus/static/js/index.js')
+          porcupine: path.resolve(__dirname, './porcupine/static/js/index.js')
         },
         output: {
             path: path.resolve(__dirname),
