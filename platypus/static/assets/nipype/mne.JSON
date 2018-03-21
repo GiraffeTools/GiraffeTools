@@ -1,0 +1,273 @@
+{
+  "nodes": [
+    {
+      "category": [
+        "Nipype",
+        "mne",
+        "base"
+      ],
+      "title": {
+        "name": "mne.WatershedBEM",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.mne/base.html#watershedbem",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Wraps command **mne_watershed_bem**",
+            "argument": {
+              "name": "mne.WatershedBEM()",
+              "import": "import nipype.interfaces.mne as mne"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, mne"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "subject_id",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "subject_id"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "subjects_dir",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "subjects_dir"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "volume",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "volume"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "overwrite",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "overwrite"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "atlas_mode",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "atlas_mode"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "args",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "args"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "environ",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "environ"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "terminal_output",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "terminal_output"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "mesh_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mesh_files"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "brain_surface",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "brain_surface"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "inner_skull_surface",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "inner_skull_surface"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "outer_skull_surface",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "outer_skull_surface"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "outer_skin_surface",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "outer_skin_surface"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "fif_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "fif_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "cor_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "cor_files"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

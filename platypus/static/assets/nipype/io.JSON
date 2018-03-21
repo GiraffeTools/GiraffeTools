@@ -1,0 +1,2378 @@
+{
+  "nodes": [
+    {
+      "category": [
+        "Nipype",
+        "io"
+      ],
+      "title": {
+        "name": "io.DataFinder",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#datafinder",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Search for paths that match a given regular expression. Allows a less",
+            "argument": {
+              "name": "io.DataFinder()",
+              "import": "import nipype.interfaces.io as io"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, io"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "root_paths",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "root_paths"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "match_regex",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "match_regex"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_regexes",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_regexes"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "max_depth",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "max_depth"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "min_depth",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "min_depth"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "unpack_single",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "unpack_single"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "io"
+      ],
+      "title": {
+        "name": "io.DataGrabber",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#datagrabber",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Generic datagrabber module that wraps around glob in an",
+            "argument": {
+              "name": "io.DataGrabber()",
+              "import": "import nipype.interfaces.io as io"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, io"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "sort_filelist",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "sort_filelist"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "template",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "template"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "base_directory",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "base_directory"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "raise_on_empty",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "raise_on_empty"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "template_args",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "template_args"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "io"
+      ],
+      "title": {
+        "name": "io.DataSink",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#datasink",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Generic datasink module to store structured outputs",
+            "argument": {
+              "name": "io.DataSink()",
+              "import": "import nipype.interfaces.io as io"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, io"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "base_directory",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "base_directory"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "container",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "container"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "parameterization",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "parameterization"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "strip_dir",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "strip_dir"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "substitutions",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "substitutions"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "regexp_substitutions",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "regexp_substitutions"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "_outputs",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "_outputs"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "remove_dest_dir",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "remove_dest_dir"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "creds_path",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "creds_path"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "encrypt_bucket_keys",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "encrypt_bucket_keys"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "bucket",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bucket"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "local_copy",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "local_copy"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "out_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_file"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "io"
+      ],
+      "title": {
+        "name": "io.FreeSurferSource",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#freesurfersource",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Generates freesurfer subject info from their directories",
+            "argument": {
+              "name": "io.FreeSurferSource()",
+              "import": "import nipype.interfaces.io as io"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, io"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "subjects_dir",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "subjects_dir"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "subject_id",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "subject_id"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "hemi",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "hemi"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "T1",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "T1"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "aseg",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "aseg"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "brain",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "brain"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "brainmask",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "brainmask"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "filled",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "filled"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "norm",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "norm"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "nu",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "nu"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "orig",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "orig"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "rawavg",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "rawavg"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "ribbon",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ribbon"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "wm",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "wm"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "wmparc",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "wmparc"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "curv",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "curv"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "avg_curv",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "avg_curv"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "inflated",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "inflated"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "pial",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "pial"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "area_pial",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "area_pial"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "curv_pial",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "curv_pial"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "smoothwm",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "smoothwm"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "sphere",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "sphere"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "sulc",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "sulc"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "thickness",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "thickness"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "volume",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "volume"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "white",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "white"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "jacobian_white",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "jacobian_white"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "graymid",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "graymid"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "label",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "label"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "annot",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "annot"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "aparc_aseg",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "aparc_aseg"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "sphere_reg",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "sphere_reg"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "aseg_stats",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "aseg_stats"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "wmparc_stats",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "wmparc_stats"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "aparc_stats",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "aparc_stats"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "BA_stats",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "BA_stats"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "aparc_a2009s_stats",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "aparc_a2009s_stats"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "curv_stats",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "curv_stats"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "entorhinal_exvivo_stats",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "entorhinal_exvivo_stats"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "io"
+      ],
+      "title": {
+        "name": "io.JSONFileGrabber",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#jsonfilegrabber",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Datagrabber interface that loads a json file and generates an output for",
+            "argument": {
+              "name": "io.JSONFileGrabber()",
+              "import": "import nipype.interfaces.io as io"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, io"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "in_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "in_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "defaults",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "defaults"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "io"
+      ],
+      "title": {
+        "name": "io.JSONFileSink",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#jsonfilesink",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Very simple frontend for storing values into a JSON file.",
+            "argument": {
+              "name": "io.JSONFileSink()",
+              "import": "import nipype.interfaces.io as io"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, io"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "out_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "in_dict",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "in_dict"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "_outputs",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "_outputs"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "out_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_file"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "io"
+      ],
+      "title": {
+        "name": "io.MySQLSink",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#mysqlsink",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Very simple frontend for storing values into MySQL database.",
+            "argument": {
+              "name": "io.MySQLSink()",
+              "import": "import nipype.interfaces.io as io"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, io"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "host",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "host"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "config",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "config"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "database_name",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "database_name"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "table_name",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "table_name"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "username",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "username"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "password",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "password"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "io"
+      ],
+      "title": {
+        "name": "io.S3DataGrabber",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#s3datagrabber",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Generic datagrabber module that wraps around glob in an",
+            "argument": {
+              "name": "io.S3DataGrabber()",
+              "import": "import nipype.interfaces.io as io"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, io"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "bucket",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bucket"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "sort_filelist",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "sort_filelist"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "template",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "template"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "anon",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "anon"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "region",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "region"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "bucket_path",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bucket_path"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "local_directory",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "local_directory"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "raise_on_empty",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "raise_on_empty"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "template_args",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "template_args"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "io"
+      ],
+      "title": {
+        "name": "io.SQLiteSink",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#sqlitesink",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Very simple frontend for storing values into SQLite database.",
+            "argument": {
+              "name": "io.SQLiteSink()",
+              "import": "import nipype.interfaces.io as io"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, io"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "database_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "database_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "table_name",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "table_name"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "io"
+      ],
+      "title": {
+        "name": "io.SSHDataGrabber",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#sshdatagrabber",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Extension of DataGrabber module that downloads the file list and",
+            "argument": {
+              "name": "io.SSHDataGrabber()",
+              "import": "import nipype.interfaces.io as io"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, io"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "hostname",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "hostname"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "base_directory",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "base_directory"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "sort_filelist",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "sort_filelist"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "template",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "template"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "username",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "username"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "password",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "password"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "download_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "download_files"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "template_expression",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "template_expression"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ssh_log_to_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ssh_log_to_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "raise_on_empty",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "raise_on_empty"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "template_args",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "template_args"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "io"
+      ],
+      "title": {
+        "name": "io.SelectFiles",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#selectfiles",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Flexibly collect data from disk to feed into workflows.",
+            "argument": {
+              "name": "io.SelectFiles()",
+              "import": "import nipype.interfaces.io as io"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, io"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "base_directory",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "base_directory"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "sort_filelist",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "sort_filelist"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "raise_on_empty",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "raise_on_empty"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "force_lists",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "force_lists"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "io"
+      ],
+      "title": {
+        "name": "io.XNATSink",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#xnatsink",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Generic datasink module that takes a directory containing a",
+            "argument": {
+              "name": "io.XNATSink()",
+              "import": "import nipype.interfaces.io as io"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, io"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "server",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "server"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "config",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "config"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "project_id",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "project_id"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "subject_id",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "subject_id"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "experiment_id",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "experiment_id"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "_outputs",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "_outputs"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "user",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "user"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "pwd",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "pwd"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "cache_dir",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "cache_dir"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "assessor_id",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "assessor_id"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "reconstruction_id",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "reconstruction_id"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "share",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "share"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "io"
+      ],
+      "title": {
+        "name": "io.XNATSource",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#xnatsource",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Generic XNATSource module that wraps around the pyxnat module in",
+            "argument": {
+              "name": "io.XNATSource()",
+              "import": "import nipype.interfaces.io as io"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, io"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "query_template",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "query_template"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "server",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "server"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "config",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "config"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "query_template_args",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "query_template_args"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "user",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "user"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "pwd",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "pwd"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "cache_dir",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "cache_dir"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

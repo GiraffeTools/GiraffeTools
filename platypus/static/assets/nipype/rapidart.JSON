@@ -1,0 +1,527 @@
+{
+  "nodes": [
+    {
+      "category": [
+        "Nipype",
+        "algorithms",
+        "rapidart"
+      ],
+      "title": {
+        "name": "rapidart.ArtifactDetect",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.algorithms.rapidart.html#artifactdetect",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Detects outliers in a functional imaging series",
+            "argument": {
+              "name": "rapidart.ArtifactDetect()",
+              "import": "import nipype.algorithms.rapidart as rapidart"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, algorithms, rapidart"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "realigned_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "realigned_files"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "realignment_parameters",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "realignment_parameters"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "parameter_source",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "parameter_source"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "norm_threshold",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "norm_threshold"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "rotation_threshold",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "rotation_threshold"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "translation_threshold",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "translation_threshold"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "zintensity_threshold",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "zintensity_threshold"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "mask_type",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mask_type"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "use_differences",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "use_differences"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "use_norm",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "use_norm"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "mask_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mask_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "mask_threshold",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mask_threshold"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "intersect_mask",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "intersect_mask"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "save_plot",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "save_plot"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "plot_type",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "plot_type"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "bound_by_brainmask",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bound_by_brainmask"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "global_threshold",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "global_threshold"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "outlier_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "outlier_files"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "intensity_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "intensity_files"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "norm_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "norm_files"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "statistic_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "statistic_files"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "plot_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "plot_files"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "mask_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mask_files"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "displacement_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "displacement_files"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "algorithms",
+        "rapidart"
+      ],
+      "title": {
+        "name": "rapidart.StimulusCorrelation",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.algorithms.rapidart.html#stimuluscorrelation",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Determines if stimuli are correlated with motion or intensity",
+            "argument": {
+              "name": "rapidart.StimulusCorrelation()",
+              "import": "import nipype.algorithms.rapidart as rapidart"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, algorithms, rapidart"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "realignment_parameters",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "realignment_parameters"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "intensity_values",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "intensity_values"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "spm_mat_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "spm_mat_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "concatenated_design",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "concatenated_design"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ignore_exception",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ignore_exception"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "stimcorr_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "stimcorr_files"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
