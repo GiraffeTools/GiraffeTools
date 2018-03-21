@@ -5,6 +5,3 @@ DEBUG = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '*!7)yynn+lf!!n#0b&%+%ggzb0z4blt0=le0v_y2w9*ybm_l72'
-
-TEMPLATE_DEBUG = DEBUG
-INSTALLED_APPS += ("debug_toolbar", "django_extensions", "south",)
