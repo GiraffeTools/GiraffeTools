@@ -122,7 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 # to be copied to:
-STATIC_ROOT = os.path.join(BASE_DIR, './staticfiles/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # to refer to:
 STATIC_URL = '/static/'
 # files to include:
