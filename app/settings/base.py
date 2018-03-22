@@ -54,7 +54,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'porcupine.urls'
+ROOT_URLCONF = 'app.urls'
 
 TEMPLATES = [
     {
