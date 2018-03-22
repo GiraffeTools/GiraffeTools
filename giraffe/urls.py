@@ -17,7 +17,7 @@ from django.urls import include, path
 from django.contrib import admin
 
 urlpatterns = [
-    path(r'^$',           giraffe.views.index, name='index'),
+    path(r'^$',           views.index, name='index'),
     path(r'^porcupine/?', include('porcupine.urls')),
     path(r'^admin/?',     admin.site.urls),
 ]
