@@ -21,5 +21,7 @@ from . import views
 app_name = 'giraffe'
 
 urlpatterns = [
-    path('',           views.index, name='index')
+    path('',           include('giraffe.urls', name='index'),
+    path('porcupine/', include('porcupine.urls')),
+    path('admin/',     admin.site.urls),
 ]

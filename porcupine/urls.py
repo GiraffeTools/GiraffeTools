@@ -1,4 +1,4 @@
-"""giraffe URL Configuration
+"""porcupine URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -20,5 +20,5 @@ from . import views
 app_name = 'porcupine'
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.index, name='index')
 ]

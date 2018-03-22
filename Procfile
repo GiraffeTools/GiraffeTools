@@ -1,1 +1,1 @@
-web: gunicorn giraffe.wsgi
+web: gunicorn app.wsgi
