@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +14,8 @@
   <div id="porcupine"></div>
 </body>
 <script>var instance;</script>
-<script src="/static/jquery.min.js"></script>
-<script src="/static/js/bootstrap.min.js"></script>
-<script src="/static/js/jsplumb.min.js"></script>
-<script src="/static/bundle/porcupine.js"></script>
+<script src="{% static "jquery.min.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/jsplumb.min.js" %}"></script>
+<script src="{% static "bundle/porcupine.js" %}"></script>
 </html>
