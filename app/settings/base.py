@@ -72,7 +72,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'porcupine.wsgi.application'
+WSGI_APPLICATION = 'app.wsgi.application'
 
 SITE_ID = 1
 
@@ -80,16 +80,16 @@ SITE_ID = 1
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'porcupine',
-        'USER': 'admin',
-        'PASSWORD': 'porcupine',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'porcupine',
+#         'USER': 'admin',
+#         'PASSWORD': 'porcupine',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 
 # Password validation
@@ -128,7 +128,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_URL = '/static/lib'
+STATIC_URL = '/static/lib/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'porcupine/static/lib')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '../node_modules/bootstrap/dist'),

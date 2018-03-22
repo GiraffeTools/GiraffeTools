@@ -20,5 +20,5 @@ from . import views
 app_name = 'giraffe'
 
 urlpatterns = [
-    path('',           views.index, name='index')
+    path('', views.index, name='index')
 ]
