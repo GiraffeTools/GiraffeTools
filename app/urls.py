@@ -19,7 +19,7 @@ from django.contrib import admin
 app_name = 'app'
 
 urlpatterns = [
-    path('',          include('giraffe.urls'), name='index'),
-    path('porcupine/', include('porcupine.urls')),
+    path('',           include('giraffe.urls'), name='index'),
+    path('porcupine/', include('porcupine.urls'), name='porcupine'),
     path('admin/',     admin.site.urls)
 ]
