@@ -18,10 +18,8 @@ from django.contrib import admin
 
 from . import views
 
-app_name = 'giraffe'
-
 urlpatterns = [
-    path('',           include('giraffe.urls', name='index'),
+    path('',           include('giraffe.urls'), name='index'),
     path('porcupine/', include('porcupine.urls')),
-    path('admin/',     admin.site.urls),
+    path('admin/',     admin.site.urls)
 ]
