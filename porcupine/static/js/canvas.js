@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Node from './node'
-import jsPlumbReady from './jsplumb';
+import jsPlumbReady from './jsPlumbReady';
 import zoomFunctions from './zoomFunctions';
 import nodes from '../assets/nipype.JSON';
 // import { getNodesByCategory } from './utilityFunctions'

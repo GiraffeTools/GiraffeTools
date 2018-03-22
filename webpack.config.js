@@ -10,7 +10,7 @@
         },
         output: {
             path: path.resolve(__dirname),
-            filename: '[name]/static/bundle/[name].js'
+            filename: '/static/bundle/[name].js'
         },
 
    plugins: [
