@@ -32,6 +32,9 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     # 'django.contrib.admin',
+    'app',
+    'giraffe',
+    'porcupine',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -128,10 +131,10 @@ USE_TZ = True
 STATIC_URL = '/static/lib'
 STATIC_ROOT = os.path.join(BASE_DIR, 'porcupine/static/lib')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, './node_modules/bootstrap/dist'),
-    os.path.join(BASE_DIR, './node_modules/jquery/dist'),
-    os.path.join(BASE_DIR, './node_modules/jsplumb/dist'),
-    os.path.join(BASE_DIR, './node_modules/font-proxima-nova')
+    os.path.join(BASE_DIR, '../node_modules/bootstrap/dist'),
+    os.path.join(BASE_DIR, '../node_modules/jquery/dist'),
+    os.path.join(BASE_DIR, '../node_modules/jsplumb/dist'),
+    os.path.join(BASE_DIR, '../node_modules/font-proxima-nova')
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
