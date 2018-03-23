@@ -25,9 +25,8 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     # 'django.contrib.admin',
-    'app',
-    'giraffe',
-    'porcupine',
+    'giraffe.apps.GiraffeConfig',
+    'porcupine.apps.PorcupineConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
