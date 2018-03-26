@@ -23,7 +23,7 @@ import porcupine.views
 app_name = 'app'
 
 urlpatterns = [
-    url(r'^$',           giraffe.views.index, name='index'),
-    url(r'^porcupine/?', porcupine.views.index, name='porcupine'),
+    url(r'^$',           giraffe.views.index,       name='index'),
+    url(r'^porcupine/?', porcupine.views.porcupine, name='porcupine'),
     url(r'^admin/?',     admin.site.urls)
 ]
