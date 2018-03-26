@@ -6,8 +6,43 @@
 </head>
 <body class=index>
   <div class="container-fluid header">
+    {% include 'shared/nav.html' %}
   </div>
-  <h1>Giraffe Tools!</h1>
-  <div id="giraffe"></div>
+  <!-- What is Giraffe -->
+  <div class="container-fluid mt-3 ">
+    <div class="col text-center">
+      <h1>Giraffe<h1/>
+      <h4 class="">Graphical Interface for Reproducible Analysis For workFlow Experiments</h4>
+      Giraffe tools are applications that make it easier to analyse all kinds of data!
+    </div>
+  </div>
+  <!-- Porcupine -->
+  <div class="container-fluid mt-3 ">
+    <div class="col text-center">
+      <h1>Porcupine<h1/>
+      <h4 class="">PORcupine Creates Ur PipelINE</h4>
+      With Porcupine, you can visually build your pipeline!
+    </div>
+    <div class="col text-center">
+      <a class="btn btn-lg btn-warning" role="button" href="{% url "porcupine" %}">Get started!</a>
+    </div>
+  </div>
+  <!-- Road map -->
+  <div class="container-fluid mt-3 ">
+  </div>
+  <!-- Donate -->
+  <div class="container-fluid mt-3 ">
+  </div>
+  <!-- Creator -->
+  <div class="container-fluid mt-3 ">
+  </div>
+  <!-- ? -->
+  <div class="container-fluid mt-3 ">
+  </div>
+
+  {% include 'shared/footer.html' %}
 </body>
+
+{% include 'shared/analytics.html' %}
+
 </html>
