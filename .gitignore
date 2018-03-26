@@ -101,4 +101,4 @@ node_modules/
 db.sqlite3
 staticfiles/
 porcupine/static/assets/nipype.JSON
-porcupine/static/bundle/porcupine.js
+porcupine/static/js/bundle.js

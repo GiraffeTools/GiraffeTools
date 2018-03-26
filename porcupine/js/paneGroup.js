@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import PaneHeader from './paneHeader';
 import PaneElement from './paneElement';
-import nodes from '../assets/nipype.JSON';
+import nodes from '../static/assets/nipype.JSON';
 import $ from 'jquery';
 
 class PaneGroup extends React.Component {
