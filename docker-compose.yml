@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+
+  web:
+    build: .
+    volumes:
+      - .:/code
+    command: bash bin/docker-command.bash
+    ports:
+      - "8000:8000"
