@@ -3,10 +3,10 @@ https://giraffe-tools.herokuapp.com soon to be moved to www.giraffe.tools
 
 _This web application is in the early stages of construction_
 
-### Giraffe: 
-A  **G**raphical **I**nterface for **R**eproducible **A**nalysis o**F** work**F**low **E**xperiments
+#### Giraffe
+a **G**raphical **I**nterface for **R**eproducible **A**nalysis o**F** work**F**low **E**xperiments
 
-A web application with a set of tools to improve your analysis!
+This is a web application with a set of tools to build and improve your analysis!
 
 ## Tools
 * Porcupine (pipeline creator)
