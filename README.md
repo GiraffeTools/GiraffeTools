@@ -3,7 +3,7 @@ https://giraffe-tools.herokuapp.com soon to be moved to www.giraffe.tools
 
 _This web application is in the early stages of construction_
 
-#### Giraffe
+### Giraffe
 a **G**raphical **I**nterface for **R**eproducible **A**nalysis o**F** work**F**low **E**xperiments
 
 This is a web application with a set of tools to build and improve your analysis!
@@ -11,9 +11,10 @@ This is a web application with a set of tools to build and improve your analysis
 ## Tools
 * Porcupine (pipeline creator)
 * [data visualisation of data through pipeline]
+  * Somewith with Augmented Reality, like in [this project](https://github.com/TimVanMourik/ChristmasAR). This should defenitely be called ARmadillo
 * [OAuth Github link to easily interface with projects]
-* [preregistrartion]
-* [DOI for analysis?]
+* [preregistration]
+* [DOI for analysis]
 * [your input?]
 
 ### Interesting links:
