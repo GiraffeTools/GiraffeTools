@@ -1,4 +1,4 @@
-www.giraffe.tools
+Website: www.giraffe.tools
 # Giraffe Tools
 _This web application is in the early stages of construction_
 
@@ -12,8 +12,8 @@ This is a web application with a set of tools to build and improve your data ana
 * OAuth Github link to easily interface with projects
 * Analysis preregistration
 * Data visualisation of data through pipeline
-  * Something with with Augmented Reality, like in [this project](https://github.com/TimVanMourik/ChristmasAR). This should defenitely be called ARmadillo
-* DOI (static link) for analysis
+  * Something with with Augmented Reality, like in [this project](https://github.com/TimVanMourik/ChristmasAR). This should definitely be called ARmadillo
+* [DOI](https://www.doi.org) (static link) for analysis
 * [Your input!]
 
 ### Interesting links:
@@ -24,4 +24,5 @@ This is a web application with a set of tools to build and improve your data ana
 * https://github.com/FNNDSC/ami
 
 ## General
-* This website is currently deployed on Heroku with a Django + Node.js build. The [Docker](https://www.docker.com) image has a (near) identical setup. You can run this web application locally by installing and running Docker, and simply typing `docker-compose up` in the terminal/command propmt.
+* This website is currently deployed on Heroku with a Django + Node.js build. The [Docker](https://www.docker.com) image has a (near) identical setup. You can run this web application locally by installing and running Docker, and simply typing `docker-compose up` in the terminal/command prompt.
+* Join us on [Slack](https://join.slack.com/t/giraffetools/signup)!
