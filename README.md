@@ -1,24 +1,27 @@
+www.giraffe.tools
 # Giraffe Tools
-https://giraffe-tools.herokuapp.com soon to be moved to www.giraffe.tools
-
 _This web application is in the early stages of construction_
 
 ### Giraffe
 a **G**raphical **I**nterface for **R**eproducible **A**nalysis o**F** work**F**low **E**xperiments
 
-This is a web application with a set of tools to build and improve your analysis!
+This is a web application with a set of tools to build and improve your data analysis! Initially, this will focus on neuroscientific applications. The first goal is to make a web application from my earlier project [Porcupine](https://timvanmourik.github.io/Porcupine), a visual workflow editor. This can further be developped to support version control of a workflow by means of Github integration, connect to visualisation or execution platforms, and much more.
 
-## Tools
+## Potential Tools
 * Porcupine (pipeline creator)
-* [data visualisation of data through pipeline]
-  * Somewith with Augmented Reality, like in [this project](https://github.com/TimVanMourik/ChristmasAR). This should defenitely be called ARmadillo
-* [OAuth Github link to easily interface with projects]
-* [preregistration]
-* [DOI for analysis]
-* [your input?]
+* OAuth Github link to easily interface with projects
+* Analysis preregistration
+* Data visualisation of data through pipeline
+  * Something with with Augmented Reality, like in [this project](https://github.com/TimVanMourik/ChristmasAR). This should defenitely be called ARmadillo
+* DOI (static link) for analysis
+* [Your input!]
 
 ### Interesting links:
-* https://github.com/slicedrop
-* https://github.com/NicolasRannou
-* https://github.com/FNNDSC/ami
+* https://gitcoin.co
 * https://github.com/Cloud-CV/Fabrik
+* https://github.com/slicedrop
+* https://github.com/rii-mango
+* https://github.com/FNNDSC/ami
+
+## General
+* This website is currently set up for a Heroku Django + Node.js application 
