@@ -24,4 +24,4 @@ This is a web application with a set of tools to build and improve your data ana
 * https://github.com/FNNDSC/ami
 
 ## General
-* This website is currently set up for a Heroku Django + Node.js application 
+* This website is currently deployed on Heroku with a Django + Node.js build. The [Docker](https://www.docker.com) image has a (near) identical setup. You can run this web application locally by installing and running Docker, and simply typing `docker-compose up` in the terminal/command propmt.
