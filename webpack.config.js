@@ -6,11 +6,11 @@
    context: __dirname,
 
         entry: {
-          porcupine: path.resolve(__dirname, './porcupine/js/index.js')
+          porcupine: path.resolve(__dirname, './app/porcupine/js/index.js')
         },
         output: {
             path: path.resolve(__dirname),
-            filename: '[name]/static/js/bundle.js'
+            filename: 'app/[name]/static/js/bundle.js'
         },
 
    plugins: [
