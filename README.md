@@ -8,13 +8,16 @@ a **G**raphical **I**nterface for **R**eproducible **A**nalysis o**F** work**F**
 This is a web application with a set of tools to build and improve your data analysis! Initially, this will focus on neuroscientific applications. The first goal is to make a web application from my earlier project [Porcupine](https://timvanmourik.github.io/Porcupine), a visual workflow editor. This can further be developped to support version control of a workflow by means of Github integration, connect to visualisation or execution platforms, and much more.
 
 ## Potential Tools
-* Porcupine (pipeline creator)
+* Porcupine (pipeline creator), largely based on a [similar implementation](https://github.com/Cloud-CV/Fabrik) for deep learning
+  * Must have: Create analysis code from workflow
+  * Stretch goal: Create paper snippets from workflow
 * OAuth Github link to easily interface with projects
 * Analysis preregistration
-* Data visualisation of data through pipeline
-  * Something with with Augmented Reality, like in [this project](https://github.com/TimVanMourik/ChristmasAR). This should definitely be called ARmadillo
+* Visualisation of the data that flows through pipeline
+  * Stretch goal: Augmented Reality visualisation (like [this project](https://github.com/TimVanMourik/ChristmasAR)). This should definitely be called ARmadillo
 * [DOI](https://www.doi.org) (static link) for analysis
-* [Your input!]
+* Code execution integration, via, e.g., Amazon 
+* [Your input here!]
 
 ### Interesting links:
 * https://gitcoin.co
