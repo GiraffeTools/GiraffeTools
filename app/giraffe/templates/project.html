@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include 'shared/head.html' %}
+</head>
+
+<body class=index>
+  <div class="container-fluid header">
+    {% include 'shared/nav.html' %}
+  </div>
+
+  <div class="container-fluid mt-3 ">
+    <div class="col text-center">
+      <h1>Project Info</h1>
+      <p>username: {{ghuser}}</p>
+      <p>repository: {{ghrepo}}</p>
+      <p>branch: {{ghbranch}}</p>
+      <p>This GitHub project {% if contain %}contains{%else%}does not contain{%endif%} a GIRAFFE.yml file</p>
+    </div>
+  </div>
+
+  {% include 'shared/footer.html' %}
+</body>
+
+{% include 'shared/analytics.html' %}
+
+</html>
