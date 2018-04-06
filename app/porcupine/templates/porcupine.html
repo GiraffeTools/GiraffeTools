@@ -2,20 +2,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Porcupine</title>
-  <link rel="shortcut icon" href="{% static "img/favicon.ico" %}" type="image/x-icon">
-  <link rel="icon" href="{% static "img/favicon.ico" %}" type="image/x-icon">
-  <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
+  {% include 'shared/head.html' %}
   <link rel="stylesheet" type="text/css" href="{% static "css/font.css" %}"/>
-  <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static "css/porcupine.css" %}"/>
 </head>
+
 <body>
+
   <div id="porcupine"></div>
+
+  {% include 'shared/footer.html' %}
 </body>
+
 <script>var instance;</script>
 <script src="{% static "jquery.min.js" %}"></script>
 <script src="{% static "js/bootstrap.min.js" %}"></script>
 <script src="{% static "js/jsplumb.min.js" %}"></script>
-<script src="{% static "js/bundle.js" %}"></script>
+<script src="{% static "js/porcupine.js" %}"></script>
+{% include 'shared/analytics.html' %}
+
 </html>
