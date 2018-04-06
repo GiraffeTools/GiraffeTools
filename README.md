@@ -7,19 +7,31 @@ a **G**raphical **I**nterface for **R**eproducible **A**nalysis o**F** work**F**
 
 This is a web application with a set of tools to build and improve your data analysis! Initially, this will focus on neuroscientific applications. The first goal is to make a web application from my earlier project [Porcupine](https://timvanmourik.github.io/Porcupine), a visual workflow editor. This can further be developped to support version control of a workflow by means of Github integration, connect to visualisation or execution platforms, and much more.
 
+## Intended usage
+The plan is to have a user go to:
+https://www.giraffe.tools/$username/$repository/$branch
+and there find a dashboard of the project. A project is a GitHub repository that is characterised by a GIRAFFE.yml configuration file in its root and links to configuration files of specific tools. The rest of the repository doesn't matter.
+
+**This doesn't work yet**
+Example: https://www.giraffe.tools/TimVanMourik/SomeGiraffeExample/master
+
+This is similar in usage to for example [GitPitch](https://gitpitch.com), which is how the exaplantory presentation about this repository was made: https://gitpitch.com/TimVanMourik/SomeGiraffeExample/master.
+
+
 ## Potential Tools
 * Porcupine (pipeline creator), largely based on a [similar implementation](https://github.com/Cloud-CV/Fabrik) for deep learning
   * Must have: Create analysis code from workflow
   * Stretch goal: Create paper snippets from workflow
 * OAuth Github link to easily interface with projects
 * Analysis preregistration
+* [DOI](https://www.doi.org) (static link) for analysis
 * Visualisation of the data that flows through pipeline
   * Stretch goal: Augmented Reality visualisation (like [this project](https://github.com/TimVanMourik/ChristmasAR)). This should definitely be called ARmadillo
-* [DOI](https://www.doi.org) (static link) for analysis
-* Code execution integration, via, e.g., Amazon 
+* Code execution integration, via, e.g., Amazon
 * [Your input here!]
 
 ### Interesting links:
+* https://gitpitch.com
 * https://gitcoin.co
 * https://github.com/Cloud-CV/Fabrik
 * https://github.com/slicedrop
