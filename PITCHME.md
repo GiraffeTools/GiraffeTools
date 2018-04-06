@@ -1,9 +1,15 @@
 # Giraffe Tools
-## a **G**raphical **I**nterface for **R**eproducible **A**nalysis o**F** work**F**low **E**xperiments, April 6, 2018
-
+#### April 6, 2018
 ---
 
-# Empty presentation
+# Giraffe is a:
+
+* **G**raphical 
+* **I**nterface for 
+* **R**eproducible 
+* **A**nalysis o**F** 
+* work**F**low 
+* **E**xperiments
 
 +++
 
@@ -16,4 +22,4 @@
 
 ---
 
-# [Empty last page]
+# Thank you!
