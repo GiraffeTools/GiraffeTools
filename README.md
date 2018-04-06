@@ -12,11 +12,10 @@ The plan is to have a user go to:
 https://www.giraffe.tools/$username/$repository/$branch
 and there find a dashboard of the project. A project is a GitHub repository that is characterised by a GIRAFFE.yml configuration file in its root and links to configuration files of specific tools. The rest of the repository doesn't matter.
 
-**This doesn't work yet**
+*This doesn't work yet:*
 Example: https://www.giraffe.tools/TimVanMourik/SomeGiraffeExample/master
 
-This is similar in usage to for example [GitPitch](https://gitpitch.com), which is how the exaplantory presentation about this repository was made: https://gitpitch.com/TimVanMourik/SomeGiraffeExample/master.
-
+This is similar in usage to for example [GitPitch](https://gitpitch.com), which is how the exaplantory presentation about this repository was made: https://gitpitch.com/TimVanMourik/GiraffeTools/master.
 
 ## Potential Tools
 * Porcupine (pipeline creator), largely based on a [similar implementation](https://github.com/Cloud-CV/Fabrik) for deep learning
