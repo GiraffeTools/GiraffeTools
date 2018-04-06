@@ -7,7 +7,8 @@
 * **G**raphical 
 * **I**nterface for 
 * **R**eproducible 
-* **A**nalysis o**F** 
+* **A**nalysis 
+* o**F** 
 * work**F**low 
 * **E**xperiments
 
