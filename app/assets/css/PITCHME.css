@@ -9,18 +9,18 @@
 
 
 .reveal .backgrounds > .slide-background{
-    background: url('https://raw.githubusercontent.com/TimVanMourik/GiraffeTools/master/app/assets/images/Background.png') no-repeat;
+    background: url('https://raw.githubusercontent.com/TimVanMourik/GiraffeTools/master/app/assets/img/Background.png') no-repeat;
     background-size: cover;
 }
 
 .reveal .backgrounds > .slide-background:first-child{
-    background: url('https://raw.githubusercontent.com/TimVanMourik/GiraffeTools/master/app/assets/images/FirstSlide.png') no-repeat;
+    background: url('https://raw.githubusercontent.com/TimVanMourik/GiraffeTools/master/app/assets/img/FirstSlide.png') no-repeat;
     background-size: cover;
 }
 
 .reveal .backgrounds > .slide-background:last-child{
-    background: url('https://raw.githubusercontent.com/TimVanMourik/GiraffeTools/master/app/assets/images/LastSlide.png') no-repeat,
-                url('https://raw.githubusercontent.com/TimVanMourik/GiraffeTools/master/app/assets/images/Brainzzz.png') no-repeat;
+    background: url('https://raw.githubusercontent.com/TimVanMourik/GiraffeTools/master/app/assets/img/LastSlide.png') no-repeat,
+                url('https://raw.githubusercontent.com/TimVanMourik/GiraffeTools/master/app/assets/img/Brainzzz.png') no-repeat;
     background-size: contain, cover;
 }
 
