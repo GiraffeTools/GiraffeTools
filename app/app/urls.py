@@ -15,6 +15,7 @@ Including another URLconf
 """
 
 from django.conf.urls import include, url
+from django.urls import path
 from django.contrib import admin
 
 import giraffe.views
@@ -26,5 +27,6 @@ urlpatterns = [
     url(r'^$',           giraffe.views.index,       name='index'),
     url(r'^porcupine/?', porcupine.views.porcupine, name='porcupine'),
     url(r'^admin/?',     admin.site.urls),
-    url(r'^(?P<ghuser>.*)/(?P<ghrepo>.*)/(?P<ghbranch>.*)', giraffe.views.project, name='project'),
+    path('<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/', giraffe.views.project, name='project'),
+    path('<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/<slug:toolName>', giraffe.views.projectTool, name='projectTool'),
 ]
