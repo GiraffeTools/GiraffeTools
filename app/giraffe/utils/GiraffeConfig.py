@@ -6,28 +6,27 @@ class GiraffeConfig:
         self.ghuser = ghuser
         self.ghrepo = ghrepo
         self.ghbranch = ghbranch
-        self.giturl = f"https://raw.githubusercontent.com/{ghuser}/{ghrepo}/{ghbranch}/GIRAFFE.yml"
-        with urllib.request.urlopen(self.giturl) as url:
-            self.data = yaml.load(url.read().decode())
+        self.giturl = f"https://raw.githubusercontent.com/{ghuser}/{ghrepo}/{ghbranch}/"
+        with urllib.request.urlopen(self.giturl + "GIRAFFE.yml") as url:
+            self.config = yaml.load(url.read().decode())
 
     @property
     def tools(self):
-        definedTools = self.data.get('tools', {})
+        definedTools = self.config.get('tools', {})
         return functools.reduce(
             lambda toolsList, toolName:
                 toolsList + [[toolName, self.getToolPath(toolName)]],
-            definedTools,
-            []
-        )
+                definedTools,
+                [])
 
     def getToolPath(self, toolName):
         return f"/{self.ghuser}/{self.ghrepo}/{self.ghbranch}/{toolName}"
 
-    def getToolFile(self, toolName):
-        return pydash.get(self.data, f"tools.{toolName}.file[0]")
+    def getToolAttribute(self, toolName, attribute):
+        return pydash.get(self.config, f"tools.{toolName}.{attribute}")
 
     def getToolFileData(self, toolName):
-        filePath = self.getToolFile(toolName)
+        filePath = self.getToolAttribute(toolName, 'file')[0]
         fileUrl = f"https://raw.githubusercontent.com/{self.ghuser}/{self.ghrepo}/{self.ghbranch}/{filePath}"
         try:
             with urllib.request.urlopen(fileUrl) as url:
@@ -35,4 +34,3 @@ class GiraffeConfig:
         except (urllib.error.HTTPError, ValueError):
             fileData = None
         return fileData
-
