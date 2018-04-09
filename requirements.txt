@@ -3,3 +3,5 @@ django-webpack-loader
 django-heroku
 gunicorn
 psycopg2-binary
+pydash
+PyYAML
