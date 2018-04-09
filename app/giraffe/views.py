@@ -14,7 +14,7 @@ def project(request, ghuser='', ghrepo='', ghbranch='master'):
     try:
         giraffeConfig = GiraffeConfig(ghuser, ghrepo, ghbranch)
     except urllib.error.HTTPError:
-        # @TODO for issue #3, Make distinction between 'this is no giraffe repo' and 'this isn't a repo at all'
+        # @TODO for issue #3/#4, Make distinction between 'this is no giraffe repo' and 'this isn't a repo at all'
         giraffeConfig = None
 
     params = {
@@ -43,4 +43,4 @@ def projectTool(request, ghuser='', ghrepo='', ghbranch='master', toolName=''):
     #     'ghbranch': ghbranch,
     #     'giraffeConfig': giraffeConfig
     # }
-    # return TemplateResponse(request, toolName + '.html', params)
+    # return TemplateResponse(request, f"{toolName}.html", params)
