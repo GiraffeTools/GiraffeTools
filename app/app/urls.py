@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^$',           giraffe.views.index,       name='index'),
     url(r'^porcupine/?', porcupine.views.porcupine, name='porcupine'),
     url(r'^admin/?',     admin.site.urls),
+    path('<slug:ghuser>/<slug:ghrepo>/', giraffe.views.project, name='project'),
     path('<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/', giraffe.views.project, name='project'),
     path('<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/<slug:toolName>', giraffe.views.projectTool, name='projectTool'),
 ]
