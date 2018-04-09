@@ -1,7 +1,1 @@
-Django==2.0
-django-webpack-loader
-django-heroku
-gunicorn
-psycopg2-binary
-pydash
-PyYAML
+-r requirements/base.txt
