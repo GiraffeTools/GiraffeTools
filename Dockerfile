@@ -11,6 +11,7 @@ RUN curl -sSLO https://deb.nodesource.com/setup_8.x && \
 
 # Install Python dependencies
 ADD requirements.txt /code/
+ADD requirements/base.txt /code/requirements/
 RUN pip install -r requirements.txt
 
 # Run server in docker
