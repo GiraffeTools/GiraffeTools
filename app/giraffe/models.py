@@ -1,6 +1,6 @@
 import functools, json, pydash, urllib.error, urllib.request, yaml
 
-class GiraffeConfig:
+class GiraffeProject:
 
     def __init__(self, ghuser='', ghrepo='', ghbranch='master'):
         self.ghuser = ghuser

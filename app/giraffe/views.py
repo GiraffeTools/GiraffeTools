@@ -1,7 +1,7 @@
 from django.template.response import TemplateResponse
 from django.http import HttpResponse, Http404
-from .utils.GiraffeConfig import GiraffeConfig
-from .utils.GithubValidation import isValidSetOfGithubDetails
+from giraffe.models import GiraffeProject
+from giraffe.utils import isValidSetOfGithubDetails
 
 import pydash, urllib.error, urllib.request, yaml
 
@@ -16,7 +16,7 @@ def project(request, ghuser='', ghrepo='', ghbranch='master'):
         raise Http404;
 
     try:
-        giraffeConfig = GiraffeConfig(ghuser, ghrepo, ghbranch)
+        giraffeConfig = GiraffeProject(ghuser, ghrepo, ghbranch)
     except urllib.error.HTTPError:
         giraffeConfig = None
 
@@ -35,7 +35,7 @@ def projectTool(request, ghuser='', ghrepo='', ghbranch='master', toolName=''):
     if not isValidSetOfGithubDetails(ghuser, ghrepo, ghbranch):
         raise Http404;
 
-    giraffeConfig = GiraffeConfig(ghuser, ghrepo, ghbranch)
+    giraffeConfig = GiraffeProject(ghuser, ghrepo, ghbranch)
     filename = giraffeConfig.getToolAttribute(toolName, 'file')[0]
     fileData = giraffeConfig.getToolFileData(toolName)
     totalNodes = len(pydash.get(fileData, 'nodes', []))
