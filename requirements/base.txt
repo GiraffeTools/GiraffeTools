@@ -1,7 +1,12 @@
 Django==2.0
-django-webpack-loader
 django-heroku
+django-webpack-loader
+djangorestframework==3.7.3
 gunicorn
 psycopg2-binary
 pydash
 PyYAML
+python-dateutil
+requests
+requests_oauthlib
+rollbar==0.13.17

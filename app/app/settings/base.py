@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     # 'django.contrib.admin',
     'giraffe.apps.GiraffeConfig',
     'porcupine.apps.PorcupineConfig',
+    'github.apps.GithubConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -136,6 +137,13 @@ STATICFILES_DIRS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# Github
+GITHUB_API_BASE_URL = 'https://api.github.com'
+GITHUB_AUTH_BASE_URL = 'https://github.com/login/oauth/authorize'
+GITHUB_TOKEN_URL = 'https://github.com/login/oauth/access_token'
+GITHUB_SCOPE = 'read:user,user:email,read:org'
+
 
 # Configure Django App for Heroku.
 import django_heroku
