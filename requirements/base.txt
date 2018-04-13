@@ -5,3 +5,8 @@ gunicorn
 psycopg2-binary
 pydash
 PyYAML
+python-dateutil
+requests
+requests_oauthlib
+rollbar==0.13.17
+djangorestframework==3.7.3
