@@ -27,7 +27,7 @@ from django.utils import timezone
 
 import dateutil.parser
 import requests
-# from app.rollbar import rollbar
+
 from rest_framework.reverse import reverse
 
 logger = logging.getLogger(__name__)
@@ -43,6 +43,8 @@ JSON_HEADER = {
 }
 TOKEN_URL = '{api_url}/applications/{client_id}/tokens/{oauth_token}'
 
+def get_time():
+    return localtime(timezone.now())
 
 def build_auth_dict(oauth_token):
     """Collect authentication details.
@@ -55,10 +57,10 @@ def build_auth_dict(oauth_token):
 
     """
     return {
-        'api_url': settings.GITHUB_API_BASE_URL,
-        'client_id': settings.GITHUB_CLIENT_ID,
+        'api_url':       settings.GITHUB_API_BASE_URL,
+        'client_id':     settings.GITHUB_CLIENT_ID,
         'client_secret': settings.GITHUB_CLIENT_SECRET,
-        'oauth_token': oauth_token
+        'oauth_token':   oauth_token
     }
 
 
@@ -150,8 +152,8 @@ def get_auth_url(redirect_uri='/'):
     redirect_uri = urlencode(redirect_params, quote_via=quote_plus)
 
     params = {
-        'client_id': settings.GITHUB_CLIENT_ID,
-        'scope': settings.GITHUB_SCOPE,
+        'client_id':    settings.GITHUB_CLIENT_ID,
+        'scope':        settings.GITHUB_SCOPE,
         'redirect_uri': f'{BASE_URI}{github_callback}?{redirect_uri}'
     }
     auth_url = urlencode(params, quote_via=quote_plus)
@@ -162,16 +164,15 @@ def get_auth_url(redirect_uri='/'):
 def get_github_user_token(code, **kwargs):
     """Get the Github authorization token."""
     _params = {
-        'code': code,
-        'client_id': settings.GITHUB_CLIENT_ID,
+        'code':          code,
+        'client_id':     settings.GITHUB_CLIENT_ID,
         'client_secret': settings.GITHUB_CLIENT_SECRET
     }
     # Add additional parameters to the request paramaters.
     _params.update(kwargs)
-    response = requests.get(
-        settings.GITHUB_TOKEN_URL, headers=JSON_HEADER, params=_params)
+    response = requests.get(settings.GITHUB_TOKEN_URL, headers=JSON_HEADER, params=_params)
     response = response.json()
-    scope = response.get('scope', None)
+    scope    = response.get('scope', None)
     if scope:
         access_token = response.get('access_token', None)
         return access_token
@@ -216,31 +217,6 @@ def get_github_primary_email(oauth_token):
 
     return ''
 
-
-def get_github_emails(oauth_token):
-    """Get all email addresses associated with the github profile.
-
-    Args:
-        oauth_token (str): The Github OAuth2 token to use for authentication.
-
-    Returns:
-        list of str: All of the user's associated email from github.
-
-    """
-    emails = []
-    headers = dict({'Authorization': f'token {oauth_token}'}, **JSON_HEADER)
-    response = requests.get('https://api.github.com/user/emails', headers=headers)
-
-    if response.status_code == 200:
-        email_data = response.json()
-        for email in email_data:
-            email_address = email.get('email')
-            if email_address and 'noreply.github.com' not in email_address:
-                emails.append(email_address)
-
-    return emails
-
-
 def search(query):
     """Search for a user on github.
 
@@ -260,22 +236,6 @@ def search(query):
                             auth=_AUTH, headers=V3HEADERS, params=params)
     return response.json()
 
-
-def get_issue_comments(owner, repo, issue=None):
-    """Get the comments from issues on a respository."""
-    params = {
-        'sort': 'created',
-        'direction': 'desc',
-    }
-    if issue:
-        url = f'https://api.github.com/repos/{owner}/{repo}/issues/{issue}/comments'
-    else:
-        url = f'https://api.github.com/repos/{owner}/{repo}/issues/comments'
-    response = requests.get(url, auth=_AUTH, headers=HEADERS, params=params)
-
-    return response.json()
-
-
 def get_user(user, sub_path=''):
     """Get the github user details."""
     user = user.replace('@', '')
@@ -283,47 +243,6 @@ def get_user(user, sub_path=''):
     response = requests.get(url, auth=_AUTH, headers=HEADERS)
 
     return response.json()
-
-
-def post_issue_comment(owner, repo, issue_num, comment):
-    """Post a comment on an issue."""
-    url = f'https://api.github.com/repos/{owner}/{repo}/issues/{issue_num}/comments'
-    response = requests.post(url, data=json.dumps({'body': comment}), auth=_AUTH)
-    return response.json()
-
-
-def patch_issue_comment(comment_id, owner, repo, comment):
-    """Update a comment on an issue via patch."""
-    url = f'https://api.github.com/repos/{owner}/{repo}/issues/comments/{comment_id}'
-    response = requests.patch(url, data=json.dumps({'body': comment}), auth=_AUTH)
-    if response.status_code == 200:
-        return response.json()
-    # rollbar.report_message(
-    #     'Github issue comment patch returned non-200 status code', 'warning',
-    #     request=response.request,
-    #     extra_data={'status_code': response.status_code, 'reason': response.reason})
-    return {}
-
-
-def delete_issue_comment(comment_id, owner, repo):
-    """Remove a comment on an issue via delete."""
-    url = f'https://api.github.com/repos/{owner}/{repo}/issues/comments/{comment_id}'
-    try:
-        response = requests.delete(url, auth=_AUTH)
-        return response.json()
-    except ValueError:
-        logger.error(f"could not delete issue comment because JSON response could not be decoded: {comment_id}, {owner}, {repo}.  {response.status_code}, {response.text} ")
-    except Exception:
-        return {}
-
-
-def post_issue_comment_reaction(owner, repo, comment_id, content):
-    """React to an issue comment."""
-    url = f'https://api.github.com/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions'
-    response = requests.post(
-        url, data=json.dumps({'content': content}), auth=_AUTH, headers=HEADERS)
-    return response.json()
-
 
 def repo_url(issue_url):
     """Build the repository URL.

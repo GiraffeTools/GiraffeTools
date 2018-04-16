@@ -29,9 +29,13 @@ from django.shortcuts import redirect
 from django.utils import timezone
 from django.views.decorators.http import require_GET
 
-from giraffe.models import Profile, UserAction
+from giraffe.models import Profile
 from github.utils import (
-    get_auth_url, get_github_primary_email, get_github_user_data, get_github_user_token, revoke_token,
+    get_auth_url,
+    get_github_primary_email,
+    get_github_user_data,
+    get_github_user_token,
+    revoke_token,
 )
 
 
@@ -39,45 +43,47 @@ from github.utils import (
 def github_callback(request):
     """Handle the Github authentication callback."""
     # Get request parameters to handle authentication and the redirect.
-    code = request.GET.get('code', None)
+    session_code = request.GET.get('code', None)
     redirect_uri = request.GET.get('redirect_uri')
 
-    if not code or not redirect_uri:
+    if not session_code or not redirect_uri:
         raise Http404
 
     # Get OAuth token and github user data.
-    access_token = get_github_user_token(code)
-    github_user_data = get_github_user_data(access_token)
-    handle = github_user_data.get('login')
-
-    if handle:
-        # Create or update the Profile with the github user data.
-        user_profile, _ = Profile.objects.update_or_create(
-            handle=handle,
-            defaults={
-                'data': github_user_data or {},
-                'email': get_github_primary_email(access_token),
-                'github_access_token': access_token
-            })
-
-        # Update the user's session with handle and email info.
-        session_data = {
-            'handle': user_profile.handle,
-            'email': user_profile.email,
-            'access_token': user_profile.github_access_token,
-            'profile_id': user_profile.pk,
-            'name': user_profile.data.get('name', None),
-            'access_token_last_validated': timezone.now().isoformat(),
-        }
-        for k, v in session_data.items():
-            request.session[k] = v
-
-        # record a useraction for this
-        UserAction.objects.create(
-            profile=user_profile,
-            action='Login',
-            metadata={},
-            )
+    access_token     = get_github_user_token(session_code)
+    # github_user_data = get_github_user_data(access_token)
+    # logging.info(github_user_data)
+    # handle           = github_user_data.get('login')
+    #
+    # if handle:
+    #     # Create or update the Profile with the github user data.
+    #     user_profile, _ = Profile.objects.update_or_create(
+    #         handle   = handle,
+    #         defaults = {
+    #             'data':  github_user_data or {},
+    #             'email': get_github_primary_email(access_token),
+    #             'github_access_token': access_token
+    #         })
+    #
+    #     # Update the user's session with handle and email info.
+    #     session_data = {
+    #         'handle':                      user_profile.handle,
+    #         'email':                       user_profile.email,
+    #         'access_token':                user_profile.github_access_token,
+    #         'profile_id':                  user_profile.pk,
+    #         'name':                        user_profile.data.get('name', None),
+    #         'access_token_last_validated': timezone.now().isoformat(),
+    #     }
+    #
+    #     for k, v in session_data.items():
+    #         request.session[k] = v
+    #
+    #     # record a useraction for this
+    #     UserAction.objects.create(
+    #         profile  = user_profile,
+    #         action   = 'Login',
+    #         metadata = {},
+    #         )
 
     response = redirect(redirect_uri)
     response.set_cookie('last_github_auth_mutation', int(time.time()))
@@ -92,9 +98,9 @@ def github_authentication(request):
     if not request.session.get('access_token'):
         return redirect(get_auth_url(redirect_uri))
 
-    # Alert local developer that Github integration needs configured.
+    # Alert local developer that Github integration is not configured.
     if settings.DEBUG and (not settings.GITHUB_CLIENT_ID or
-                           settings.GITHUB_CLIENT_ID == 'TODO'):
+                               settings.GITHUB_CLIENT_ID == 'TODO'):
         logging.info('GITHUB_CLIENT_ID is not set. Github integration is disabled!')
 
     response = redirect(redirect_uri)
@@ -105,7 +111,7 @@ def github_authentication(request):
 def github_logout(request):
     """Handle Github logout."""
     access_token = request.session.pop('access_token', '')
-    handle = request.session.pop('handle', '')
+    handle       = request.session.pop('handle', '')
     redirect_uri = request.GET.get('redirect_uri', '/')
 
     if access_token:
@@ -114,12 +120,12 @@ def github_logout(request):
         Profile.objects.filter(handle=handle).update(github_access_token='')
 
         # record a useraction for this
-        if Profile.objects.filter(handle=handle).count():
-            UserAction.objects.create(
-                profile=Profile.objects.get(handle=handle),
-                action='Logout',
-                metadata={},
-                )
+        # if Profile.objects.filter(handle=handle).count():
+        #     UserAction.objects.create(
+        #         profile=Profile.objects.get(handle=handle),
+        #         action='Logout',
+        #         metadata={},
+        #         )
 
     request.session.modified = True
     response = redirect(redirect_uri)

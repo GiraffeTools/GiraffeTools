@@ -28,10 +28,9 @@ from django.utils import timezone
 
 import responses
 from github.utils import (
-    BASE_URI, HEADERS, JSON_HEADER, TOKEN_URL, build_auth_dict, delete_issue_comment, get_auth_url, get_github_emails,
-    get_github_primary_email, get_github_user_data, get_github_user_token, get_issue_comments, get_user,
-    is_github_token_valid, org_name, patch_issue_comment, post_issue_comment, post_issue_comment_reaction, repo_url,
-    reset_token, revoke_token, search,
+    BASE_URI, HEADERS, JSON_HEADER, TOKEN_URL, build_auth_dict, get_auth_url,
+    get_github_primary_email, get_github_user_data, get_github_user_token, get_user,
+    is_github_token_valid, org_name, repo_url, reset_token, revoke_token, search,
 )
 
 
@@ -203,59 +202,6 @@ class GithubUtilitiesTest(TestCase):
         assert no_email == ''
 
     @responses.activate
-    def test_get_github_emails(self):
-        """Test the github utility get_github_emails method."""
-        headers = dict({'Authorization': f'token {self.user_oauth_token}'}, **JSON_HEADER)
-        data = [
-            {'email': 'test@gitcoin.co'},
-            {'email': 'test2@gitcoin.co'},
-            {'email': 'testing@noreply.github.com'}
-        ]
-        url = 'https://api.github.com/user/emails'
-        responses.add(responses.GET, url, json=data, headers=headers, status=200)
-        responses.add(responses.GET, url, json=data, headers=headers, status=404)
-        emails = get_github_emails(self.user_oauth_token)
-        no_emails = get_github_emails(self.user_oauth_token)
-
-        assert responses.calls[0].request.url == url
-        assert emails == ['test@gitcoin.co', 'test2@gitcoin.co']
-        assert no_emails == []
-
-    @responses.activate
-    def test_get_issue_comments(self):
-        """Test the github utility get_issue_comments method."""
-        params = {
-            'sort': 'created',
-            'direction': 'desc',
-        }
-        params = urlencode(params, quote_via=quote_plus)
-        owner = 'gitcoinco'
-        repo = 'web'
-        url = f'https://api.github.com/repos/{owner}/{repo}/issues/comments?' + params
-        responses.add(responses.GET, url, headers=HEADERS, json={}, status=200)
-        get_issue_comments(owner, repo)
-
-        assert responses.calls[0].request.url == url
-
-    @responses.activate
-    def test_get_issue_comments_issue(self):
-        """Test the github utility get_issue_comments_issue method."""
-        params = {
-            'sort': 'created',
-            'direction': 'desc',
-        }
-        params = urlencode(params, quote_via=quote_plus)
-        owner = 'gitcoinco'
-        repo = 'web'
-        issue = 1
-        url = f'https://api.github.com/repos/{owner}/{repo}/issues/{issue}/comments'
-        url = url + '?' + params
-        responses.add(responses.GET, url, headers=HEADERS, json={}, status=200)
-        get_issue_comments(owner, repo, issue)
-
-        assert responses.calls[0].request.url == url
-
-    @responses.activate
     def test_get_user(self):
         """Test the github utility get_user method."""
         url = 'https://api.github.com/users/gitcoin'
@@ -270,55 +216,5 @@ class GithubUtilitiesTest(TestCase):
         url = 'https://api.github.com/users/gitcoin/test'
         responses.add(responses.GET, url, headers=HEADERS, json={}, status=200)
         get_user('@gitcoin', '/test')
-
-        assert responses.calls[0].request.url == url
-
-    @responses.activate
-    def test_post_issue_comment(self):
-        """Test the github utility post_issue_comment method."""
-        owner = 'gitcoinco'
-        repo = 'web'
-        issue_num = 1
-        url = f'https://api.github.com/repos/{owner}/{repo}/issues/{issue_num}/comments'
-        responses.add(responses.POST, url, headers=HEADERS, json={}, status=200)
-        post_issue_comment(owner, repo, issue_num, 'A comment.')
-
-        assert responses.calls[0].request.url == url
-
-    @responses.activate
-    def test_patch_issue_comment(self):
-        """Test the github utility patch_issue_comment method."""
-        comment_id = 1
-        owner = 'gitcoinco'
-        repo = 'web'
-        url = f'https://api.github.com/repos/{owner}/{repo}/issues/comments/{comment_id}'
-        responses.add(responses.PATCH, url, headers=HEADERS, json={}, status=200)
-        result = patch_issue_comment(comment_id, owner, repo, 'A comment.')
-
-        assert responses.calls[0].request.url == url
-        assert result == {}
-
-    @responses.activate
-    def test_delete_issue_comment(self):
-        """Test the github utility delete_issue_comment method."""
-        comment_id = 1
-        owner = 'gitcoinco'
-        repo = 'web'
-        url = f'https://api.github.com/repos/{owner}/{repo}/issues/comments/{comment_id}'
-        responses.add(responses.DELETE, url, headers=HEADERS, json={}, status=200)
-        result = delete_issue_comment(comment_id, owner, repo)
-
-        assert responses.calls[0].request.url == url
-        assert result == {}
-
-    @responses.activate
-    def test_post_issue_comment_reaction(self):
-        """Test the github utility post_issue_comment_reaction method."""
-        comment_id = 1
-        owner = 'gitcoinco'
-        repo = 'web'
-        url = f'https://api.github.com/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions'
-        responses.add(responses.POST, url, headers=HEADERS, json={}, status=200)
-        post_issue_comment_reaction(owner, repo, comment_id, 'A comment.')
 
         assert responses.calls[0].request.url == url

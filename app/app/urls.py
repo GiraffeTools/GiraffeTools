@@ -28,9 +28,9 @@ urlpatterns = [
     url(r'^porcupine/?', porcupine.views.porcupine, name='porcupine'),
     url(r'^admin/?',     admin.site.urls),
     # Github Integration
-    path('_github/',     include('github.urls',     namespace='github')),
+    path('_github/',     include('github.urls', namespace='github')),
     # Project
-    path('<slug:ghuser>/<slug:ghrepo>/', giraffe.views.project, name='project'),
-    path('<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/', giraffe.views.project, name='project'),
+    path('<slug:ghuser>/<slug:ghrepo>/',                                giraffe.views.project, name='project'),
+    path('<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/',                giraffe.views.project, name='project'),
     path('<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/<slug:toolName>', giraffe.views.projectTool, name='projectTool'),
 ]

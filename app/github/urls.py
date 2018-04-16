@@ -24,7 +24,7 @@ from .views import github_authentication, github_callback, github_logout
 
 app_name = 'github'
 urlpatterns = [
-    path('callback/', github_callback, name='github_callback'),
+    path('callback/', github_callback,       name='github_callback'),
     path('auth/',     github_authentication, name='github_auth'),
-    path('logout/',   github_logout, name='github_logout'),
+    path('logout/',   github_logout,         name='github_logout'),
 ]
