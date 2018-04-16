@@ -52,31 +52,30 @@ def github_callback(request):
     # Get OAuth token and github user data.
     access_token     = get_github_user_token(session_code)
     github_user_data = get_github_user_data(access_token)
-    logging.info(github_user_data)
-    # handle           = github_user_data.get('login')
-    #
-    # if handle:
+    handle           = github_user_data.get('login')
+
+    if handle:
     #     # Create or update the Profile with the github user data.
-    #     user_profile, _ = Profile.objects.update_or_create(
-    #         handle   = handle,
-    #         defaults = {
-    #             'data':  github_user_data or {},
-    #             'email': get_github_primary_email(access_token),
-    #             'github_access_token': access_token
-    #         })
-    #
-    #     # Update the user's session with handle and email info.
-    #     session_data = {
-    #         'handle':                      user_profile.handle,
-    #         'email':                       user_profile.email,
-    #         'access_token':                user_profile.github_access_token,
-    #         'profile_id':                  user_profile.pk,
-    #         'name':                        user_profile.data.get('name', None),
-    #         'access_token_last_validated': timezone.now().isoformat(),
-    #     }
-    #
-    #     for k, v in session_data.items():
-    #         request.session[k] = v
+        user_profile, _ = Profile.objects.update_or_create(
+            handle   = handle,
+            defaults = {
+                'data':  github_user_data or {},
+                'email': get_github_primary_email(access_token),
+                'github_access_token': access_token
+            })
+
+        # Update the user's session with handle and email info.
+        session_data = {
+            'handle':                      user_profile.handle,
+            'email':                       user_profile.email,
+            'access_token':                user_profile.github_access_token,
+            'profile_id':                  user_profile.pk,
+            'name':                        user_profile.data.get('name', None),
+            'access_token_last_validated': timezone.now().isoformat(),
+        }
+
+        for k, v in session_data.items():
+            request.session[k] = v
     #
     #     # record a useraction for this
     #     UserAction.objects.create(
