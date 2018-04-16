@@ -51,8 +51,8 @@ def github_callback(request):
 
     # Get OAuth token and github user data.
     access_token     = get_github_user_token(session_code)
-    # github_user_data = get_github_user_data(access_token)
-    # logging.info(github_user_data)
+    github_user_data = get_github_user_data(access_token)
+    logging.info(github_user_data)
     # handle           = github_user_data.get('login')
     #
     # if handle:
