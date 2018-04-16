@@ -202,59 +202,6 @@ class GithubUtilitiesTest(TestCase):
         assert no_email == ''
 
     @responses.activate
-    def test_get_github_emails(self):
-        """Test the github utility get_github_emails method."""
-        headers = dict({'Authorization': f'token {self.user_oauth_token}'}, **JSON_HEADER)
-        data = [
-            {'email': 'test@gitcoin.co'},
-            {'email': 'test2@gitcoin.co'},
-            {'email': 'testing@noreply.github.com'}
-        ]
-        url = 'https://api.github.com/user/emails'
-        responses.add(responses.GET, url, json=data, headers=headers, status=200)
-        responses.add(responses.GET, url, json=data, headers=headers, status=404)
-        emails = get_github_emails(self.user_oauth_token)
-        no_emails = get_github_emails(self.user_oauth_token)
-
-        assert responses.calls[0].request.url == url
-        assert emails == ['test@gitcoin.co', 'test2@gitcoin.co']
-        assert no_emails == []
-
-    @responses.activate
-    def test_get_issue_comments(self):
-        """Test the github utility get_issue_comments method."""
-        params = {
-            'sort': 'created',
-            'direction': 'desc',
-        }
-        params = urlencode(params, quote_via=quote_plus)
-        owner = 'gitcoinco'
-        repo = 'web'
-        url = f'https://api.github.com/repos/{owner}/{repo}/issues/comments?' + params
-        responses.add(responses.GET, url, headers=HEADERS, json={}, status=200)
-        get_issue_comments(owner, repo)
-
-        assert responses.calls[0].request.url == url
-
-    @responses.activate
-    def test_get_issue_comments_issue(self):
-        """Test the github utility get_issue_comments_issue method."""
-        params = {
-            'sort': 'created',
-            'direction': 'desc',
-        }
-        params = urlencode(params, quote_via=quote_plus)
-        owner = 'gitcoinco'
-        repo = 'web'
-        issue = 1
-        url = f'https://api.github.com/repos/{owner}/{repo}/issues/{issue}/comments'
-        url = url + '?' + params
-        responses.add(responses.GET, url, headers=HEADERS, json={}, status=200)
-        get_issue_comments(owner, repo, issue)
-
-        assert responses.calls[0].request.url == url
-
-    @responses.activate
     def test_get_user(self):
         """Test the github utility get_user method."""
         url = 'https://api.github.com/users/gitcoin'
