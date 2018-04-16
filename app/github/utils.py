@@ -152,8 +152,8 @@ def get_auth_url(redirect_uri='/'):
     redirect_uri = urlencode(redirect_params, quote_via=quote_plus)
 
     params = {
-        'client_id': settings.GITHUB_CLIENT_ID,
-        'scope': settings.GITHUB_SCOPE,
+        'client_id':    settings.GITHUB_CLIENT_ID,
+        'scope':        settings.GITHUB_SCOPE,
         'redirect_uri': f'{BASE_URI}{github_callback}?{redirect_uri}'
     }
     auth_url = urlencode(params, quote_via=quote_plus)
