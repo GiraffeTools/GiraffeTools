@@ -29,20 +29,23 @@ from django.shortcuts import redirect
 from django.utils import timezone
 from django.views.decorators.http import require_GET
 
-from giraffe.models import Profile, UserAction
+from giraffe.models import Profile
 from github.utils import (
-    get_auth_url, get_github_primary_email, get_github_user_data, get_github_user_token, revoke_token,
+    get_auth_url,
+    get_github_primary_email,
+    get_github_user_data,
+    get_github_user_token,
+    revoke_token,
 )
-
 
 @require_GET
 def github_callback(request):
     """Handle the Github authentication callback."""
     # Get request parameters to handle authentication and the redirect.
-    code = request.GET.get('code', None)
+    session_code = request.GET.get('code', None)
     redirect_uri = request.GET.get('redirect_uri')
 
-    if not code or not redirect_uri:
+    if not session_code or not redirect_uri:
         raise Http404
 
     # Get OAuth token and github user data.
@@ -91,9 +94,9 @@ def github_authentication(request):
     if not request.session.get('access_token'):
         return redirect(get_auth_url(redirect_uri))
 
-    # Alert local developer that Github integration needs configured.
+    # Alert local developer that Github integration is not configured.
     if settings.DEBUG and (not settings.GITHUB_CLIENT_ID or
-                           settings.GITHUB_CLIENT_ID == 'TODO'):
+                               settings.GITHUB_CLIENT_ID == 'TODO'):
         logging.info('GITHUB_CLIENT_ID is not set. Github integration is disabled!')
 
     response = redirect(redirect_uri)
@@ -104,7 +107,7 @@ def github_authentication(request):
 def github_logout(request):
     """Handle Github logout."""
     access_token = request.session.pop('access_token', '')
-    handle = request.session.pop('handle', '')
+    handle       = request.session.pop('handle', '')
     redirect_uri = request.GET.get('redirect_uri', '/')
 
     if access_token:
