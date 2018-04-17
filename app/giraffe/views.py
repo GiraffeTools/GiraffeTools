@@ -2,11 +2,16 @@ from django.template.response import TemplateResponse
 from django.http import HttpResponse, Http404
 from giraffe.models import GiraffeProject
 from giraffe.utils import isValidSetOfGithubDetails
+from github.utils import (
+    get_auth_url, get_github_primary_email, get_github_user_data, get_github_user_token, revoke_token,
+)
 
 import pydash, urllib.error, urllib.request, yaml
 
 def index(request):
-    context = {}
+    context = {
+    'github_handle': request.session.get('handle')
+    }
     return TemplateResponse(request, 'index.html', context)
 
 def project(request, ghuser='', ghrepo='', ghbranch='master'):

@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.postgres.fields import JSONField
+from django.utils import timezone
+
 
 import functools, json, pydash, urllib.error, urllib.request, yaml
 
@@ -40,7 +42,7 @@ class GiraffeProject:
 
 
 def get_time():
-    return localtime(timezone.now())
+    return timezone.localtime(timezone.now())
 
 class SuperModel(models.Model):
     """Define the base abstract model."""
