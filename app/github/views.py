@@ -38,7 +38,6 @@ from github.utils import (
     revoke_token,
 )
 
-
 @require_GET
 def github_callback(request):
     """Handle the Github authentication callback."""
@@ -50,32 +49,39 @@ def github_callback(request):
         raise Http404
 
     # Get OAuth token and github user data.
-    access_token     = get_github_user_token(session_code)
-    github_user_data = get_github_user_data(access_token)
-    handle           = github_user_data.get('login')
 
-    # if handle:
-    # #     # Create or update the Profile with the github user data.
-    #     user_profile, _ = Profile.objects.update_or_create(
-    #         handle   = handle,
-    #         defaults = {
-    #             'data':  github_user_data or {},
-    #             'email': get_github_primary_email(access_token),
-    #             'github_access_token': access_token
-    #         })
-    #
-    #     # Update the user's session with handle and email info.
-    #     session_data = {
-    #         'handle':                      user_profile.handle,
-    #         'email':                       user_profile.email,
-    #         'access_token':                user_profile.github_access_token,
-    #         'profile_id':                  user_profile.pk,
-    #         'name':                        user_profile.data.get('name', None),
-    #         'access_token_last_validated': timezone.now().isoformat(),
-    #     }
-    #
-    #     for k, v in session_data.items():
-    #         request.session[k] = v
+    access_token = get_github_user_token(code)
+    github_user_data = get_github_user_data(access_token)
+    handle = github_user_data.get('login')
+
+    if handle:
+        # Create or update the Profile with the github user data.
+        # user_profile, _ = Profile.objects.update_or_create(
+        #     handle=handle,
+        #     defaults={
+        #         'data': github_user_data or {},
+        #         'email': get_github_primary_email(access_token),
+        #         'github_access_token': access_token
+        #     })
+
+        # Update the user's session with handle and email info.
+        session_data = {
+            'handle': handle,
+            'email': get_github_primary_email(access_token),
+            'access_token': access_token,
+            'name': github_user_data.get('name', None),
+            'access_token_last_validated': timezone.now().isoformat(),
+        }
+        for k, v in session_data.items():
+            request.session[k] = v
+
+        # # record a useraction for this
+        # UserAction.objects.create(
+        #     profile=user_profile,
+        #     action='Login',
+        #     metadata={},
+        #     )
+
 
     response = redirect(redirect_uri)
     response.set_cookie('last_github_auth_mutation', int(time.time()))
@@ -109,9 +115,9 @@ def github_logout(request):
     if access_token:
         revoke_token(access_token)
         request.session.pop('access_token_last_validated')
-        Profile.objects.filter(handle=handle).update(github_access_token='')
+        # Profile.objects.filter(handle=handle).update(github_access_token='')
 
-        # record a useraction for this
+        # # record a useraction for this
         # if Profile.objects.filter(handle=handle).count():
         #     UserAction.objects.create(
         #         profile=Profile.objects.get(handle=handle),
