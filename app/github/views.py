@@ -49,8 +49,7 @@ def github_callback(request):
         raise Http404
 
     # Get OAuth token and github user data.
-
-    access_token = get_github_user_token(code)
+    access_token = get_github_user_token(session_code)
     github_user_data = get_github_user_data(access_token)
     handle = github_user_data.get('login')
 
