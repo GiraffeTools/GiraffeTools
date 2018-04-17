@@ -42,14 +42,14 @@ from github.utils import (
 def github_callback(request):
     """Handle the Github authentication callback."""
     # Get request parameters to handle authentication and the redirect.
-    session_code = request.GET.get('code', None)
+    code = request.GET.get('code', None)
     redirect_uri = request.GET.get('redirect_uri')
 
-    if not session_code or not redirect_uri:
+    if not code or not redirect_uri:
         raise Http404
 
     # Get OAuth token and github user data.
-    access_token = get_github_user_token(session_code)
+    access_token = get_github_user_token(code)
     github_user_data = get_github_user_data(access_token)
     handle = github_user_data.get('login')
 
