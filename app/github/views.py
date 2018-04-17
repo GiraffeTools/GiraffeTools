@@ -49,6 +49,7 @@ def github_callback(request):
         raise Http404
 
     # Get OAuth token and github user data.
+
     access_token = get_github_user_token(code)
     github_user_data = get_github_user_data(access_token)
     handle = github_user_data.get('login')
@@ -80,6 +81,7 @@ def github_callback(request):
         #     action='Login',
         #     metadata={},
         #     )
+
 
     response = redirect(redirect_uri)
     response.set_cookie('last_github_auth_mutation', int(time.time()))

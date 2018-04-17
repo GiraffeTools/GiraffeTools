@@ -40,5 +40,5 @@ This is similar in usage to for example [GitPitch](https://gitpitch.com), which 
 * https://github.com/FNNDSC/ami
 
 ## General
-* This website is currently deployed on Heroku with a Django + Node.js build. The [Docker](https://www.docker.com) image has a (near) identical setup. You can run this web application locally by installing and running Docker, and simply typing `docker-compose up` in the terminal/command prompt.
+* This website can locally be deployed with [Docker](https://www.docker.com). You can run this web application locally by installing and running Docker and docker-compose, and simply typing `docker-compose up` in the terminal/command prompt.
 * Join us on [Slack](https://join.slack.com/t/giraffetools/signup)!
