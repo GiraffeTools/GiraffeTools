@@ -4,6 +4,7 @@ services:
 
   web:
     build: .
+    image: timvanmourik/giraffe-tools
     volumes:
       - .:/code
     command: bash bin/docker-command.bash
