@@ -1,5 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+.mypy_cache/
+.pytest_cache/
 *.py[cod]
 *$py.class
 
@@ -95,11 +97,11 @@ ENV/
 # mkdocs documentation
 /site
 
-# mypy
-.mypy_cache/
+
 node_modules/
 db.sqlite3
 staticfiles/
 app/porcupine/static/assets/nipype.JSON
 app/porcupine/static/js/porcupine.js
 webpack-stats.json
+
