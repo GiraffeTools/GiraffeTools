@@ -10,7 +10,7 @@ install:
 before_script:
   - cd app; python manage.py collectstatic --noinput -i other &
 script:
-  - cd app; pytest
+  - pytest
 after_success:
   - pip install codecov
   - codecov
