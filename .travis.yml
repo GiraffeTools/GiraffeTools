@@ -6,6 +6,11 @@ env:
   - PYTHONPATH="$TRAVIS_BUILD_DIR/app/"
 install:
   - pip install -r requirements/test.txt
+  - npm install
+before_script:
+  - python manage.py collectstatic --noinput -i other &
+#   - node ./bin/pivotNodesByCategory.js
+#   - webpack --config ./webpack.config.js
 script:
   - pytest
 after_success:
