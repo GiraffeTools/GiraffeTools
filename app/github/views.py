@@ -95,11 +95,6 @@ def github_authentication(request):
     if not request.session.get('access_token'):
         return redirect(get_auth_url(redirect_uri))
 
-    # Alert local developer that Github integration is not configured.
-    if settings.DEBUG and (not settings.GITHUB_CLIENT_ID or
-                               settings.GITHUB_CLIENT_ID == 'TODO'):
-        logging.info('GITHUB_CLIENT_ID is not set. Github integration is disabled!')
-
     response = redirect(redirect_uri)
     response.set_cookie('last_github_auth_mutation', int(time.time()))
     return response
