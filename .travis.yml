@@ -5,14 +5,12 @@ python:
 env:
   - PYTHONPATH="$TRAVIS_BUILD_DIR/app/"
 install:
-  - pip install -r requirements/test.txt
   - npm install
+  - pip install -r requirements/test.txt
 before_script:
-  - python manage.py collectstatic --noinput -i other &
-#   - node ./bin/pivotNodesByCategory.js
-#   - webpack --config ./webpack.config.js
+  - cd app; python manage.py collectstatic --noinput -i other &
 script:
-  - pytest
+  - cd app; pytest
 after_success:
   - pip install codecov
   - codecov
