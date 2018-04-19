@@ -61,6 +61,7 @@ class SuperModel(models.Model):
         return super(SuperModel, self).save(*args, **kwargs)
 
 class Profile(SuperModel):
+    managed = False
     """Define the structure of the user profile."""
 
     data                = JSONField()

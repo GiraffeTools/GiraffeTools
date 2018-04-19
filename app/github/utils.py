@@ -216,6 +216,25 @@ def get_github_primary_email(oauth_token):
                 return email.get('email', '')
 
     return ''
+def get_github_repos(oauth_token):
+    """Get the primary email address associated with the github profile.
+
+    Args:
+        oauth_token (str): The Github OAuth2 token to use for authentication.
+
+    Returns:
+        str: The user's primary github email address.
+
+    """
+    headers = dict({'Authorization': f'token {oauth_token}'}, **JSON_HEADER)
+    response = requests.get('https://api.github.com/user/repos', headers=headers)
+
+    if response.status_code == 200:
+        repos = response.json()
+        names = [r['full_name'] for r in repos]
+        return names
+
+    return ''
 
 def search(query):
     """Search for a user on github.
