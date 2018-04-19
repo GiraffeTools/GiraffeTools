@@ -42,14 +42,13 @@ from github.utils import (
 def github_callback(request):
     """Handle the Github authentication callback."""
     # Get request parameters to handle authentication and the redirect.
-    session_code = request.GET.get('code', None)
+    code = request.GET.get('code', None)
     redirect_uri = request.GET.get('redirect_uri')
 
-    if not session_code or not redirect_uri:
+    if not code or not redirect_uri:
         raise Http404
 
     # Get OAuth token and github user data.
-
     access_token = get_github_user_token(code)
     github_user_data = get_github_user_data(access_token)
     handle = github_user_data.get('login')
@@ -95,11 +94,6 @@ def github_authentication(request):
 
     if not request.session.get('access_token'):
         return redirect(get_auth_url(redirect_uri))
-
-    # Alert local developer that Github integration is not configured.
-    if settings.DEBUG and (not settings.GITHUB_CLIENT_ID or
-                               settings.GITHUB_CLIENT_ID == 'TODO'):
-        logging.info('GITHUB_CLIENT_ID is not set. Github integration is disabled!')
 
     response = redirect(redirect_uri)
     response.set_cookie('last_github_auth_mutation', int(time.time()))

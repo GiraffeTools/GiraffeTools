@@ -2,10 +2,19 @@ sudo: false
 language: python
 python:
   - "3.6"
+services:
+  - docker
 env:
   - PYTHONPATH="$TRAVIS_BUILD_DIR/app/"
+before_install:
+  - docker pull timvanmourik/giraffe-tools
 install:
+  - npm install
   - pip install -r requirements/test.txt
+before_script:
+  - cd app;
+  - python manage.py collectstatic --noinput -i other
+  - python manage.py migrate
 script:
   - pytest
 after_success:
