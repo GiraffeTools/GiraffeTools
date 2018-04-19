@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#load environment variables
+if [ -f .env ]; then
+    export $(cat .env | grep -v ^# | xargs)
+fi
+
 #node commands
 npm install
 node ./bin/pivotNodesByCategory.js;
@@ -7,6 +12,6 @@ node ./bin/pivotNodesByCategory.js;
 
 #django commands
 cd app
-python manage.py collectstatic --noinput -i other &
+python manage.py collectstatic --noinput -i other
 python manage.py migrate
 python manage.py runserver 0.0.0.0:8000

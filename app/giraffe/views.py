@@ -10,7 +10,8 @@ import pydash, urllib.error, urllib.request, yaml
 
 def index(request):
     context = {
-    'github_handle': request.session.get('handle')
+    'github_handle': request.session.get('handle'),
+    'user_repos': request.session.get('user_repos'),
     }
     return TemplateResponse(request, 'index.html', context)
 
