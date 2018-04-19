@@ -10,17 +10,18 @@ import pydash, urllib.error, urllib.request, yaml
 
 def index(request):
     context = {
-    'github_handle': request.session.get('handle'),
-    'user_repos': request.session.get('user_repos'),
+        'github_handle': request.session.get('handle'),
     }
     return TemplateResponse(request, 'index.html', context)
 
 def user(request, ghuser=''):
-    params = {
-        'ghuser':   ghuser
+    context = {
+        'ghuser':   ghuser,
+        'github_handle': request.session.get('handle'),
+        'user_repos': request.session.get('user_repos'),
     }
 
-    return TemplateResponse(request, 'user.html', params)
+    return TemplateResponse(request, 'user.html', context)
 
 
 def project(request, ghuser='', ghrepo='', ghbranch='master'):
@@ -34,14 +35,14 @@ def project(request, ghuser='', ghrepo='', ghbranch='master'):
     except urllib.error.HTTPError:
         giraffeConfig = None
 
-    params = {
+    context = {
         'ghuser':   ghuser,
         'ghrepo':   ghrepo,
         'ghbranch': ghbranch,
         'giraffeConfig': giraffeConfig
     }
 
-    return TemplateResponse(request, 'project.html', params)
+    return TemplateResponse(request, 'project.html', context)
 
 def projectTool(request, ghuser='', ghrepo='', ghbranch='master', toolName=''):
     """Recognise that this is a github repository with GIRAFFE.yml defining this tool"""
