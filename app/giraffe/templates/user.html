@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include 'shared/head.html' %}
+</head>
+
+<body class=index>
+  <div class="container-fluid header">
+    {% include 'shared/nav.html' %}
+  </div>
+
+  {% if user_repos %}
+  <!-- user repos -->
+  <div class="container-fluid mt-3 ">
+    <div class="col text-center">
+      <ul class="list-group">
+        <li class="list-group-item disabled">
+          <h1>Your repositories<h1/>
+        </li>
+        {% for repo in user_repos %}
+        <li class="list-group-item">
+          <a href="{{ repo }}">{{ repo }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col text-center">
+      <a class="btn btn-lg btn-warning" role="button" href="{% url "porcupine" %}">Get started!</a>
+    </div>
+  </div>
+  {% endif %}
+
+  {% include 'shared/footer.html' %}
+</body>
+
+{% include 'shared/analytics.html' %}
+
+</html>

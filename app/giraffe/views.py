@@ -15,6 +15,14 @@ def index(request):
     }
     return TemplateResponse(request, 'index.html', context)
 
+def user(request, ghuser=''):
+    params = {
+        'ghuser':   ghuser
+    }
+
+    return TemplateResponse(request, 'user.html', params)
+
+
 def project(request, ghuser='', ghrepo='', ghbranch='master'):
     """Recognise that this is a github repository that contains a GIRAFFE.yml file"""
 
