@@ -10,9 +10,18 @@ import pydash, urllib.error, urllib.request, yaml
 
 def index(request):
     context = {
-    'github_handle': request.session.get('handle')
+    'github_handle': request.session.get('handle'),
+    'user_repos': request.session.get('user_repos'),
     }
     return TemplateResponse(request, 'index.html', context)
+
+def user(request, ghuser=''):
+    params = {
+        'ghuser':   ghuser
+    }
+
+    return TemplateResponse(request, 'user.html', params)
+
 
 def project(request, ghuser='', ghrepo='', ghbranch='master'):
     """Recognise that this is a github repository that contains a GIRAFFE.yml file"""
