@@ -2,7 +2,10 @@
   "name": "giraffe",
   "version": "1.0.0",
   "description": "Graphical Interface for Reproducible Analysis For workFlow Experiments",
-  "dependencies": {},
+  "dependencies": {
+    "react-dnd": "^2.6.0",
+    "react-dnd-touch-backend": "^0.3.21"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
