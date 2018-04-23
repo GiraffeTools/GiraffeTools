@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from './sidebar';
 import Canvas from './canvas'
-import nodes from '../static/assets/nipype.JSON';
+import nodes from '../static/assets/nipype.json';
 // import zoomFunctions from './zoomFunctions';
 import $ from 'jquery';
 

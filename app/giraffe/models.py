@@ -1,10 +1,17 @@
-from django.db import models
+import functools
+import json
+import urllib.error
+from urllib.request import urlopen
+
+import pydash
+import yaml
+from django.conf import settings
 from django.contrib.postgres.fields import JSONField
+from django.db import models
 from django.utils import timezone
 
-
-import functools, json, pydash, urllib.error, urllib.request, yaml
 from github.utils import get_time
+
 
 class GiraffeProject:
 
@@ -13,37 +20,38 @@ class GiraffeProject:
         self.ghrepo = ghrepo
         self.ghbranch = ghbranch
         self.giturl = f"https://raw.githubusercontent.com/{ghuser}/{ghrepo}/{ghbranch}/"
-        with urllib.request.urlopen(self.giturl + "GIRAFFE.yml") as url:
+        with urlopen(self.giturl + "GIRAFFE.yml") as url:
             self.config = yaml.load(url.read().decode())
 
     @property
     def tools(self):
         definedTools = self.config.get('tools', {})
         return functools.reduce(
-            lambda toolsList, toolName:
-                toolsList + [[toolName, self.getToolPath(toolName)]],
-                definedTools,
-                [])
+            lambda toolsList, toolName: toolsList + [[toolName, self.get_tool_path(toolName)]],
+            definedTools,
+            []
+        )
 
-    def getToolPath(self, toolName):
+    def get_tool_path(self, toolName):
         return f"/{self.ghuser}/{self.ghrepo}/{self.ghbranch}/{toolName}"
 
-    def getToolAttribute(self, toolName, attribute):
+    def get_tool_attribute(self, toolName, attribute):
         return pydash.get(self.config, f"tools.{toolName}.{attribute}")
 
-    def getToolFileData(self, toolName):
-        filePath = self.getToolAttribute(toolName, 'file')[0]
+    def get_tool_file_data(self, toolName):
+        filePath = self.get_tool_attribute(toolName, 'file')[0]
         fileUrl = f"https://raw.githubusercontent.com/{self.ghuser}/{self.ghrepo}/{self.ghbranch}/{filePath}"
         try:
-            with urllib.request.urlopen(fileUrl) as url:
+            with urlopen(fileUrl) as url:
                 fileData = json.loads(url.read().decode())
-        except (urllib.error.HTTPError, ValueError):
+        except (urllib.error.HTTPError, ValueError) as e:
             fileData = None
         return fileData
 
 
 def get_time():
     return timezone.localtime(timezone.now())
+
 
 class SuperModel(models.Model):
     """Define the base abstract model."""
@@ -53,27 +61,31 @@ class SuperModel(models.Model):
 
         abstract = True
 
-    created_on =  models.DateTimeField(null=False, default=get_time, db_index=True)
+    created_on = models.DateTimeField(null=False, default=get_time, db_index=True)
     modified_on = models.DateTimeField(null=False, default=get_time)
 
     def save(self, *args, **kwargs):
         self.modified_on = get_time()
         return super(SuperModel, self).save(*args, **kwargs)
 
+
 class Profile(SuperModel):
     managed = False
     """Define the structure of the user profile."""
 
-    data                = JSONField()
-    handle              = models.CharField(max_length=255, db_index=True)
-    last_sync_date      = models.DateTimeField(null=True)
-    email               = models.CharField(max_length=255, blank=True, db_index=True)
+    data = JSONField()
+    handle = models.CharField(max_length=255, db_index=True)
+    last_sync_date = models.DateTimeField(null=True)
+    email = models.CharField(max_length=255, blank=True, db_index=True)
     github_access_token = models.CharField(max_length=255, blank=True, db_index=True)
-    repos_data          = JSONField(default={})
+    repos_data = JSONField(default={})
 
     @property
     def is_org(self):
-        return self.data['type'] == 'Organization'
+        try:
+            return self.data['type'] == 'Organization'
+        except KeyError:
+            return False
 
     @property
     def github_url(self):
@@ -95,7 +107,6 @@ class Profile(SuperModel):
 
     def get_absolute_url(self):
         return settings.BASE_URL + self.get_relative_url(preceding_slash=False)
-
 
 # class UserAction(SuperModel):
 #     """Records Actions that a user has taken ."""
