@@ -59,10 +59,16 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django_settings_export.settings_export',
                 'app.context.insert_settings',
             ],
         },
     },
+]
+
+SETTINGS_EXPORT = [
+    'GA_ID',
+    'DEBUG',
 ]
 
 WSGI_APPLICATION = 'app.wsgi.application'

@@ -2,6 +2,7 @@ Django==2.0
 django-heroku
 django-webpack-loader
 djangorestframework==3.7.3
+django-settings-export
 gunicorn
 psycopg2-binary
 pydash
