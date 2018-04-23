@@ -9,6 +9,8 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # optional: only needed if you run the github management commands
 # Login/logout functionality will not work without defining these fields.
 # Setup instructions: https://github.com/gitcoinco/web#setup-github-oauth2-app-integration
+
+GA_ID                = os.environ['GA_ID']
 GITHUB_CLIENT_ID     = os.environ['GITHUB_CLIENT_ID']
 GITHUB_CLIENT_SECRET = os.environ['GITHUB_CLIENT_SECRET']
 GITHUB_API_USER      = os.environ['GITHUB_API_USER']
