@@ -56,13 +56,15 @@ def projectTool(request, ghuser='', ghrepo='', ghbranch='master', toolName=''):
     totalNodes = len(pydash.get(fileData, 'nodes', []))
     infoString = f"file {filename} in repository {ghrepo} contains {totalNodes} nodes"
 
-    return HttpResponse(infoString)
+    # return HttpResponse(infoString)
 
     # @TODO create a template response from the tools and pass on the fileData
-    # params = {
-    #     'ghuser':   ghuser,
-    #     'ghrepo':   ghrepo,
-    #     'ghbranch': ghbranch,
-    #     'giraffeConfig': giraffeConfig
-    # }
-    # return TemplateResponse(request, f"{toolName}.html", params)
+    filePath = giraffeConfig.getToolAttribute(toolName, 'file')[0]
+    params = {
+        'ghuser':   ghuser,
+        'ghrepo':   ghrepo,
+        'ghbranch': ghbranch,
+        'giraffeConfig': giraffeConfig,
+        'filename': f"https://raw.githubusercontent.com/{ghuser}/{ghrepo}/{ghbranch}/{filePath}"
+    }
+    return TemplateResponse(request, f"{toolName}.html", params)

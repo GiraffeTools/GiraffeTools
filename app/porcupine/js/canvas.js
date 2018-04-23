@@ -26,10 +26,7 @@ class Canvas extends React.Component {
 
   componentDidUpdate() {
     this.placeholder = false;
-    console.log('A');
     let a = jsPlumb.getSelector('.node');
-    console.log(a);
-    console.log('B');
     instance.draggable(a,
       {
         drag: this.updateNodePosition.bind(this),
