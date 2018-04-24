@@ -54,15 +54,7 @@ def projectTool(request, ghuser='', ghrepo='', ghbranch='master', toolName=''):
         raise Http404;
 
     giraffeConfig = GiraffeProject(ghuser, ghrepo, ghbranch)
-    filename = giraffeConfig.get_tool_attribute(toolName, 'file')[0]
-    fileData = giraffeConfig.get_tool_file_data(toolName)
-    totalNodes = len(pydash.get(fileData, 'nodes', []))
-    infoString = f"file {filename} in repository {ghrepo} contains {totalNodes} nodes"
 
-    # return HttpResponse(infoString)
-
-    # @TODO create a template response from the tools and pass on the fileData
-    filePath = giraffeConfig.getToolAttribute(toolName, 'file')[0]
     params = {
         'ghuser':   ghuser,
         'ghrepo':   ghrepo,
