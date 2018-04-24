@@ -31,6 +31,17 @@ This is similar in usage to for example [GitPitch](https://gitpitch.com), which 
 * Code execution integration, via, e.g., Amazon
 * [Your input here!]
 
+## Tests
+To run the Python test suite:
+```
+cd app
+python manage.py test
+```
+To run the React test suite:
+```
+npm test
+```
+
 ### Interesting links:
 * https://gitpitch.com
 * https://gitcoin.co
