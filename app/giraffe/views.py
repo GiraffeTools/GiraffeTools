@@ -54,7 +54,7 @@ def projectTool(request, ghuser='', ghrepo='', ghbranch='master', toolName=''):
         raise Http404;
 
     giraffeConfig = GiraffeProject(ghuser, ghrepo, ghbranch)
-
+    filePath = giraffeConfig.get_tool_attribute(toolName, 'file')[0]
     params = {
         'ghuser':   ghuser,
         'ghrepo':   ghrepo,
