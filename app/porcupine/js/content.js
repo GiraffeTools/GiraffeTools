@@ -1,4 +1,8 @@
 import React from 'react';
+import Modernizr from 'browsernizr';
+import { DragDropContextProvider } from 'react-dnd'
+import TouchBackend from 'react-dnd-touch-backend'
+import HTML5Backend from 'react-dnd-html5-backend'
 import Sidebar from './sidebar';
 import Canvas from './canvas'
 import nodes from '../static/assets/nipype.json';
@@ -98,6 +102,8 @@ class Content extends React.Component {
 
   render() {
     return (
+    // <DragDropContextProvider backend={Modernizr.touchevents || true ? TouchBackend : HTML5Backend}>
+    <DragDropContextProvider backend={TouchBackend}>
       <div id="parent">
         <a className="sidebar-button" onClick={this.toggleSidebar}></a>
         <Sidebar/>
@@ -113,6 +119,7 @@ class Content extends React.Component {
           {/* Modal */}
         </div>
       </div>
+    </DragDropContextProvider>
     );
   }
 }
