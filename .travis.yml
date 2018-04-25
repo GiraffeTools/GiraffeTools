@@ -16,8 +16,7 @@ before_script:
   - python manage.py collectstatic --noinput -i other
   - python manage.py migrate
 script:
-  # - python manage.py test
-  - pytest
+  - python manage.py test
   - cd ..; npm test
 after_success:
   - pip install codecov

@@ -148,4 +148,4 @@ GITHUB_SCOPE = 'read:user,user:email,read:org'
 
 # Configure Django App for Heroku.
 import django_heroku
-django_heroku.settings(locals())
+django_heroku.settings(locals(), test_runner=False)
