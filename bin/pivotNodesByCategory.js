@@ -1,6 +1,6 @@
 var fs = require('fs');
 var nipypePath = './app/porcupine/static/assets/nipype/';
-var porcupinePath = './app/porcupine/static/assets/nipype.JSON';
+var porcupinePath = './app/porcupine/static/assets/nipype.json';
 var modulesToParse = fs.readdirSync(nipypePath);
 // modulesToParse = ['fsl.JSON', 'io.JSON'];
 

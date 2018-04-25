@@ -1,6 +1,6 @@
 import React from 'react';
 import PaneGroup from './paneGroup';
-import nodes from '../static/assets/nipype.JSON';
+import nodes from '../static/assets/nipype.json';
 
 class Sidebar extends React.Component {
   constructor(props) {

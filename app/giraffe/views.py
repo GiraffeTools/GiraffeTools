@@ -1,12 +1,13 @@
-from django.template.response import TemplateResponse
-from django.http import HttpResponse, Http404
-from giraffe.models import GiraffeProject
-from giraffe.utils import isValidSetOfGithubDetails
-from github.utils import (
-    get_auth_url, get_github_primary_email, get_github_user_data, get_github_user_token, revoke_token,
-)
+import urllib.error
+import urllib.request
 
-import pydash, urllib.error, urllib.request, yaml
+import pydash
+from django.http import HttpResponse, Http404
+from django.template.response import TemplateResponse
+
+from giraffe.models import GiraffeProject
+from giraffe.utils import are_valid_github_details
+
 
 def index(request):
     context = {
@@ -14,9 +15,10 @@ def index(request):
     }
     return TemplateResponse(request, 'index.html', context)
 
+
 def user(request, ghuser=''):
     context = {
-        'ghuser':   ghuser,
+        'ghuser': ghuser,
         'github_handle': request.session.get('handle'),
         'user_repos': request.session.get('user_repos'),
     }
@@ -27,8 +29,8 @@ def user(request, ghuser=''):
 def project(request, ghuser='', ghrepo='', ghbranch='master'):
     """Recognise that this is a github repository that contains a GIRAFFE.yml file"""
 
-    if not isValidSetOfGithubDetails(ghuser, ghrepo, ghbranch):
-        raise Http404;
+    if not are_valid_github_details(ghuser, ghrepo, ghbranch):
+        raise Http404
 
     try:
         giraffeConfig = GiraffeProject(ghuser, ghrepo, ghbranch)
@@ -36,30 +38,23 @@ def project(request, ghuser='', ghrepo='', ghbranch='master'):
         giraffeConfig = None
 
     context = {
-        'ghuser':   ghuser,
-        'ghrepo':   ghrepo,
+        'ghuser': ghuser,
+        'ghrepo': ghrepo,
         'ghbranch': ghbranch,
         'giraffeConfig': giraffeConfig
     }
 
     return TemplateResponse(request, 'project.html', context)
 
+
 def projectTool(request, ghuser='', ghrepo='', ghbranch='master', toolName=''):
     """Recognise that this is a github repository with GIRAFFE.yml defining this tool"""
 
-    if not isValidSetOfGithubDetails(ghuser, ghrepo, ghbranch):
+    if not are_valid_github_details(ghuser, ghrepo, ghbranch):
         raise Http404;
 
     giraffeConfig = GiraffeProject(ghuser, ghrepo, ghbranch)
-    filename = giraffeConfig.getToolAttribute(toolName, 'file')[0]
-    fileData = giraffeConfig.getToolFileData(toolName)
-    totalNodes = len(pydash.get(fileData, 'nodes', []))
-    infoString = f"file {filename} in repository {ghrepo} contains {totalNodes} nodes"
-
-    # return HttpResponse(infoString)
-
-    # @TODO create a template response from the tools and pass on the fileData
-    filePath = giraffeConfig.getToolAttribute(toolName, 'file')[0]
+    filePath = giraffeConfig.get_tool_attribute(toolName, 'file')[0]
     params = {
         'ghuser':   ghuser,
         'ghrepo':   ghrepo,

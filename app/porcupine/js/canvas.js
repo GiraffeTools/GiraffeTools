@@ -5,7 +5,7 @@ import ItemTypes from './itemTypes'
 import Node from './node'
 import jsPlumbReady from './jsPlumbReady';
 import zoomFunctions from './zoomFunctions';
-import nodes from '../static/assets/nipype.JSON';
+import nodes from '../static/assets/nipype.json';
 // import { getNodesByCategory } from './utilityFunctions'
 const boxTarget = {
 	drop(props, monitor, component) {
