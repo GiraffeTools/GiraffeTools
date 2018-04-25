@@ -104,4 +104,5 @@ staticfiles/
 app/porcupine/static/assets/nipype.JSON
 app/porcupine/static/js/porcupine.js
 webpack-stats.json
+.idea
 

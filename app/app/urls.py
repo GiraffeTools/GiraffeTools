@@ -31,7 +31,7 @@ urlpatterns = [
     path('_github/',     include('github.urls', namespace='github')),
     # Project
     path('<slug:ghuser>/',                                              giraffe.views.user,        name='user'),
-    path('<slug:ghuser>/<slug:ghrepo>/',                                giraffe.views.project,     name='project'),
-    path('<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/',                giraffe.views.project,     name='project'),
+    path('<slug:ghuser>/<slug:ghrepo>/',                                giraffe.views.project,     name='repo'),
+    path('<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/',                giraffe.views.project,     name='branch'),
     path('<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/<slug:toolName>', giraffe.views.projectTool, name='projectTool'),
 ]

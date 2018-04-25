@@ -5,7 +5,7 @@ import TouchBackend from 'react-dnd-touch-backend'
 import HTML5Backend from 'react-dnd-html5-backend'
 import Sidebar from './sidebar';
 import Canvas from './canvas'
-import nodes from '../static/assets/nipype.JSON';
+import nodes from '../static/assets/nipype.json';
 // import zoomFunctions from './zoomFunctions';
 import $ from 'jquery';
 
