@@ -10,7 +10,10 @@ describe('<PaneElement>', () => {
         //     </PaneElement>
         // )
 
-    //     expect(comp).toMatchSnapshot()
+        // @TODO to make this work, please bring in the snapshot that was removed in commit #152
+        // The reason it was deleted instead of commented out is that `npm test` complains about unused snapshots
+
+        // expect(comp).toMatchSnapshot()
       expect("").toMatch("") // mock line to make the test pass
     })
 })
