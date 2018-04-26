@@ -42,7 +42,7 @@ class TestGiraffeProject(TestCase):
         tools = project.tools
         self.assertEqual([[
             random_name,
-            f'/user/repo/branch/{random_name}'
+            f'/gh/user/repo/branch/{random_name}'
         ]], tools)
 
     @mock.patch('giraffe.models.urlopen')

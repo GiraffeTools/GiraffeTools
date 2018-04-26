@@ -44,7 +44,7 @@ class TestMethods(TestCase):
         self.assertEqual(404, response.status_code)
 
     def build_url(self, user_repo_branch):
-        return f"/{'/'.join(user_repo_branch)}/"
+        return f"/gh/{'/'.join(user_repo_branch)}/"
 
     def get_user_repo_branch(self, repo):
         return [
