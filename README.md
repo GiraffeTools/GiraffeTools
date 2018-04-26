@@ -12,10 +12,10 @@ This is a web application with a set of tools to build and improve your data ana
 
 ## Intended usage
 The plan is to have a user go to:
-https://www.giraffe.tools/$username/$repository/$branch
+https://www.giraffe.tools/gh/$username/$repository/$branch
 and there find a dashboard of the project. A project is a GitHub repository that is characterised by a GIRAFFE.yml configuration file in its root and links to configuration files of specific tools. The rest of the repository doesn't matter.
 
-Example (work in progress): https://www.giraffe.tools/TimVanMourik/SomeGiraffeExample/master
+Example (work in progress): https://www.giraffe.tools/gh/TimVanMourik/SomeGiraffeExample/master
 
 This is similar in usage to for example [GitPitch](https://gitpitch.com), which is how the exaplantory presentation about this repository was made: https://gitpitch.com/TimVanMourik/GiraffeTools/master.
 
@@ -30,6 +30,10 @@ This is similar in usage to for example [GitPitch](https://gitpitch.com), which 
   * Stretch goal: Augmented Reality visualisation (like [this project](https://github.com/TimVanMourik/ChristmasAR)). This should definitely be called ARmadillo
 * Code execution integration, via, e.g., Amazon
 * [Your input here!]
+
+## General
+* This website can locally be deployed with [Docker](https://www.docker.com). You can run this web application locally by installing and running Docker and docker-compose, and simply typing `docker-compose up` in the terminal/command prompt.
+* Join us on [Slack](https://join.slack.com/t/giraffetools/signup)!
 
 ## Tests
 To run the Python test suite:
@@ -49,7 +53,3 @@ npm test
 * https://github.com/slicedrop
 * https://github.com/rii-mango
 * https://github.com/FNNDSC/ami
-
-## General
-* This website can locally be deployed with [Docker](https://www.docker.com). You can run this web application locally by installing and running Docker and docker-compose, and simply typing `docker-compose up` in the terminal/command prompt.
-* Join us on [Slack](https://join.slack.com/t/giraffetools/signup)!

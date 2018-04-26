@@ -33,7 +33,7 @@ class GiraffeProject:
         )
 
     def get_tool_path(self, toolName):
-        return f"/{self.ghuser}/{self.ghrepo}/{self.ghbranch}/{toolName}"
+        return f"/gh/{self.ghuser}/{self.ghrepo}/{self.ghbranch}/{toolName}"
 
     def get_tool_attribute(self, toolName, attribute):
         return pydash.get(self.config, f"tools.{toolName}.{attribute}")

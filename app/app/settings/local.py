@@ -17,4 +17,8 @@ GITHUB_API_USER      = 'TODO'
 GITHUB_API_TOKEN     = 'TODO'
 GITHUB_APP_NAME      = 'TODO'
 
+# CodeFund
+CODEFUND             = False
+CODEFUND_ID          = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
+
 BASE_URL = 'http://localhost:8000/'

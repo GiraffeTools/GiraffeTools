@@ -17,4 +17,8 @@ GITHUB_API_USER      = os.environ['GITHUB_API_USER']
 GITHUB_API_TOKEN     = os.environ['GITHUB_API_TOKEN']
 GITHUB_APP_NAME      = os.environ['GITHUB_APP_NAME']
 
+# CodeFund
+CODEFUND             = False
+CODEFUND_ID          = os.environ['CODEFUND_ID']
+
 BASE_URL = 'https://www.giraffe.tools/'
