@@ -7,6 +7,7 @@ import jsPlumbReady from './jsPlumbReady';
 import zoomFunctions from './zoomFunctions';
 import nodes from '../static/assets/nipype.json';
 // import { getNodesByCategory } from './utilityFunctions'
+
 const boxTarget = {
 	drop(props, monitor, component) {
 		component.drop(monitor.getItem(), monitor.getClientOffset())
@@ -68,9 +69,11 @@ class Canvas extends React.Component {
     node.state.top = `${event.pos['1']}px`;
     this.props.modifyNode(node, nodeId);
   }
+
 	onDrop(event) {
 		this.drop({element_type: event.dataTransfer.getData('element_type').split(',')}, {x: event.clientX, y: event.clientY})
 	}
+
   drop(item, offset) {
     this.placeholder = false;
 		const rec = document.getElementById('zoomContainer').getBoundingClientRect();
@@ -190,9 +193,9 @@ Canvas.propTypes = {
   net:                  PropTypes.object.isRequired,
   addNewNode:           PropTypes.func.isRequired,
   changeSelectedNode:   PropTypes.func.isRequired,
-	connectDropTarget: PropTypes.func.isRequired,
-	isOver: PropTypes.bool.isRequired,
-	canDrop: PropTypes.bool.isRequired,
+	connectDropTarget: 		PropTypes.func.isRequired,
+	isOver: 							PropTypes.bool.isRequired,
+	canDrop: 							PropTypes.bool.isRequired,
 };
 
 export default DropTarget(ItemTypes.BOX, boxTarget, (connect, monitor) => ({
