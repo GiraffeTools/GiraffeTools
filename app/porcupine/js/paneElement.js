@@ -12,14 +12,14 @@ const boxSource = {
 		}
 	},
 
-	endDrag(props, monitor) {
-		const item = monitor.getItem()
-		const dropResult = monitor.getDropResult()
+	// endDrag(props, monitor) {
+	// 	const item = monitor.getItem()
+	// 	const dropResult = monitor.getDropResult()
 
-		if (dropResult) {
-			// console.log(`You dropped ${item.name} into ${dropResult.name}!`)
-		}
-	},
+	// 	if (dropResult) {
+	// 		console.log(`You dropped ${item.name} into ${dropResult.name}!`)
+	// 	}
+	// },
 }
 
 class PaneElement extends React.Component {

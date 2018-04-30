@@ -29,28 +29,25 @@ function getItemStyles (currentOffset) {
     };
 }
 
-function ItemPreview ({
-    name,
-    isDragging,
-    currentOffset
-}) {
-    if (!isDragging) {
+class ItemPreview extends React.Component {
+    render() {
+        if (!this.props.isDragging) {
+            return (
+                <div className="node preview" style={{display: 'none'}} > </div>
+            );
+        }
         return (
-            <div className="node preview" style={{display: 'none'}} > </div>
+            <div
+                className="node preview"
+                style={getItemStyles(this.props.currentOffset)}
+            >
+                {this.props.name}
+            </div>
         );
     }
-    return (
-        <div
-            className="node preview"
-            style={getItemStyles(currentOffset)}
-        >
-            {name}
-        </div>
-    );
 }
 
 ItemPreview.propTypes = {
-    id: PropTypes.string,
     name: PropTypes.string,
     currentOffset: PropTypes.shape({
         x: PropTypes.number,
