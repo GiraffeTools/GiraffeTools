@@ -1,13 +1,18 @@
 import React from 'react';
-import Modernizr from 'browsernizr';
 import { DragDropContextProvider } from 'react-dnd'
 import TouchBackend from 'react-dnd-touch-backend'
 import HTML5Backend from 'react-dnd-html5-backend'
+import { default as ItemPreview } from './itemPreview';
 import Sidebar from './sidebar';
 import Canvas from './canvas'
 import nodes from '../static/assets/nipype.json';
 // import zoomFunctions from './zoomFunctions';
 import $ from 'jquery';
+
+require('browsernizr/test/touchevents');
+var Modernizr = require('browsernizr');
+
+
 
 class Content extends React.Component {
   constructor(props) {
@@ -59,6 +64,7 @@ class Content extends React.Component {
   toggleSidebar() {
     $('#sidebar').toggleClass('visible');
     $('.sidebar-button').toggleClass('close');
+    $('#main').toggleClass('withSidebar');
   }
 
   loadFromJson(json) {
@@ -102,8 +108,7 @@ class Content extends React.Component {
 
   render() {
     return (
-    // <DragDropContextProvider backend={Modernizr.touchevents || true ? TouchBackend : HTML5Backend}>
-    <DragDropContextProvider backend={TouchBackend}>
+    <DragDropContextProvider backend={ Modernizr.touchevents ? TouchBackend : HTML5Backend }>
       <div id="parent">
         <a className="sidebar-button" onClick={this.toggleSidebar}></a>
         <Sidebar/>
@@ -118,6 +123,7 @@ class Content extends React.Component {
           {/* Tooltip */}
           {/* Modal */}
         </div>
+        { Modernizr.touchevents && <ItemPreview key="__preview" name="Item" /> }
       </div>
     </DragDropContextProvider>
     );

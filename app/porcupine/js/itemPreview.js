@@ -1,0 +1,62 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import DragLayer from 'react-dnd/lib/DragLayer';
+
+function collect (monitor) {
+    var item = monitor.getItem();
+    return {
+        name: item && item.name,
+        currentOffset: monitor.getSourceClientOffset(),
+        isDragging: monitor.isDragging()
+    };
+}
+
+function getItemStyles (currentOffset) {
+    if (!currentOffset) {
+        return {
+            display: 'none'
+        };
+    }
+
+    var x = currentOffset.x;
+    var y = currentOffset.y;
+    var transform = `translate(${x}px, ${y}px)`;
+
+    return {
+        pointerEvents: 'none',
+        transform: transform,
+        WebkitTransform: transform
+    };
+}
+
+function ItemPreview ({
+    name,
+    isDragging,
+    currentOffset
+}) {
+    if (!isDragging) {
+        return (
+            <div className="node preview" style={{display: 'none'}} > </div>
+        );
+    }
+    return (
+        <div
+            className="node preview"
+            style={getItemStyles(currentOffset)}
+        >
+            {name}
+        </div>
+    );
+}
+
+ItemPreview.propTypes = {
+    id: PropTypes.string,
+    name: PropTypes.string,
+    currentOffset: PropTypes.shape({
+        x: PropTypes.number,
+        y: PropTypes.number
+    }),
+    isDragging: PropTypes.bool
+};
+
+export default DragLayer(collect)(ItemPreview);

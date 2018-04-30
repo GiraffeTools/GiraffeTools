@@ -17,36 +17,35 @@ const boxSource = {
 		const dropResult = monitor.getDropResult()
 
 		if (dropResult) {
-			console.log(`You dropped ${item.name} into ${dropResult.name}!`)
+			// console.log(`You dropped ${item.name} into ${dropResult.name}!`)
 		}
 	},
 }
 
 class PaneElement extends React.Component {
-  constructor(props) {
-    super(props);
-    this.drag = this.drag.bind(this);
-  }
-
-  drag(e) {
-    e.dataTransfer.setData('element_type', this.props.category.concat(e.target.id).join(','));
-  }
 
   render() {
-		const { isDragging, connectDragSource } = this.props
+		const { isDragging, connectDragSource, connectDragPreview } = this.props
 		const name = this.props.id
-		const opacity = isDragging ? 0.4 : 1
+    const offset = {x: 0, y: 0}
 
-    return connectDragSource (
+    let content = (
       <div
         className="btn btn-block drowpdown-button"
         draggable="true"
-        onDragStart={this.drag}
+        style={{ opacity: isDragging ? 0.5 : 1 }}
         id={this.props.id}
       >
         {this.props.children}
       </div>
-    );
+    )
+
+    content = connectDragSource(content)
+
+    content = connectDragPreview(content)
+
+    return content;
+      
   }
 }
 
@@ -55,10 +54,12 @@ PaneElement.propTypes = {
   id: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
 	connectDragSource: PropTypes.func.isRequired,
-	isDragging: PropTypes.bool.isRequired,
+  connectDragPreview: PropTypes.func.isRequired,
+  isDragging: PropTypes.bool.isRequired,
 }
 
 export default DragSource(ItemTypes.BOX, boxSource, (connect, monitor) => ({
 	connectDragSource: connect.dragSource(),
+  connectDragPreview: connect.dragPreview(),
 	isDragging: monitor.isDragging(),
 }))(PaneElement)
