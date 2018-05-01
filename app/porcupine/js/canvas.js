@@ -21,7 +21,6 @@ class Canvas extends React.Component {
     super(props);
     this.placeholder          = true;
     this.allowDrop            = this.allowDrop.bind(this);
-    this.onDrop               = this.onDrop.bind(this);
     this.drop                 = this.drop.bind(this);
     this.clickCanvas          = this.clickCanvas.bind(this);
     this.clickOrDraggedNode   = false;
@@ -69,10 +68,6 @@ class Canvas extends React.Component {
     node.state.top = `${event.pos['1']}px`;
     this.props.modifyNode(node, nodeId);
   }
-
-	onDrop(event) {
-		this.drop({element_type: event.dataTransfer.getData('element_type').split(',')}, {x: event.clientX, y: event.clientY})
-	}
 
   drop(item, offset) {
     this.placeholder = false;
@@ -153,7 +148,6 @@ class Canvas extends React.Component {
         className="canvas"
         id="zoomContainer"
         onDragOver={this.allowDrop}
-        onDrop={this.onDrop}
         onClick={this.clickCanvas}
       >
         {/* {errors} */}

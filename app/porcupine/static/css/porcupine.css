@@ -52,8 +52,8 @@ body {
 }
 
 #parent {
-    margin-left: 20%;
     background-color: blue;
+    height: 0;
 }
 
 #main {
@@ -395,15 +395,20 @@ body {
 
 .node{
   font-size: 22px;
-  width: 130px;
-  padding: 5px 0px 5px 0px;
+  min-width: 130px;
+  padding: 5px 8px;
   text-align: center;
   position: absolute;
   z-index: 20;
-  border-radius: 10px;
+  border-radius: 6px;
   background: #e15e4f;
   color: white;
   cursor: pointer;
+}
+
+.node.preview{
+  background: #eee;
+  color: #222;
 }
 
 .selected{
@@ -742,6 +747,9 @@ input[type="file"] {
     left: 0;
     width: 100%;
     z-index: 10;
+  }
+  #main.withSidebar {
+    margin-left: 20%;
   }
 
   #sidebar {
