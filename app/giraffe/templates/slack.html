@@ -7,12 +7,17 @@
 </head>
 
 <body class=index>
-  <form action="/slack/" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Send">
-  </form>
+  <div class="container-fluid mt-3 ">
+    <div class="col text-center">
+      <h1>Join us on the Giraffe Tools Slack!</h1>
 
+      <form action="/slack/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Send">
+      </form>
+    </div>
+  </div>
   {% include 'shared/footer.html' %}
 </body>
 
