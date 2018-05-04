@@ -27,6 +27,9 @@ urlpatterns = [
     url(r'^$',           giraffe.views.index,       name='index'),
     url(r'^porcupine/?', porcupine.views.porcupine, name='porcupine'),
     url(r'^admin/?',     admin.site.urls),
+    # Slack
+    url(r'^slack/$',           giraffe.views.slack,            name='slack'),
+    url(r'^slack/thanks$',     giraffe.views.slack_thanks,     name='slack_thanks'),
     # Github Integration
     path('_github/',     include('github.urls', namespace='github')),
     # Project

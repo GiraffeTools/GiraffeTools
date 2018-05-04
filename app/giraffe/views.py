@@ -2,11 +2,13 @@ import urllib.error
 import urllib.request
 
 import pydash
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template.response import TemplateResponse
 
 from giraffe.models import GiraffeProject
 from giraffe.utils import are_valid_github_details
+from giraffe.forms import SlackForm
+from giraffe.utils import send_slack_invitation_to_email
 
 
 def index(request):
@@ -63,3 +65,20 @@ def projectTool(request, ghuser='', ghrepo='', ghbranch='master', toolName=''):
         'filename': f"https://raw.githubusercontent.com/{ghuser}/{ghrepo}/{ghbranch}/{filePath}"
     }
     return TemplateResponse(request, f"{toolName}.html", params)
+
+
+def slack(request):
+    if request.method == 'POST':
+        form = SlackForm(request.POST)
+        if form.is_valid():
+            send_slack_invitation_to_email(form.cleaned_data['email'])
+            return HttpResponseRedirect('/slack/thanks')
+
+    else:
+        form = SlackForm()
+
+    return TemplateResponse(request, 'slack.html', {'form': form})
+
+
+def slack_thanks(request):
+    return TemplateResponse(request, 'slack_thanks.html')
