@@ -142,11 +142,6 @@ GITHUB_AUTH_BASE_URL = 'https://github.com/login/oauth/authorize'
 GITHUB_TOKEN_URL = 'https://github.com/login/oauth/access_token'
 GITHUB_SCOPE = 'read:user,user:email,read:org'
 
-# Slack
-# generate legacy token here
-# https://api.slack.com/custom-integrations/legacy-tokens
-SLACK_API_TOKEN = ''
-
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals(), test_runner=False)

@@ -6,9 +6,8 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.template.response import TemplateResponse
 
 from giraffe.models import GiraffeProject
-from giraffe.utils import are_valid_github_details
+from giraffe.utils import are_valid_github_details, send_slack_invitation_to_email
 from giraffe.forms import SlackForm
-from giraffe.utils import send_slack_invitation_to_email
 
 
 def index(request):

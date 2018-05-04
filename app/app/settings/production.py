@@ -22,3 +22,5 @@ CODEFUND             = False
 CODEFUND_ID          = os.environ['CODEFUND_ID']
 
 BASE_URL = 'https://www.giraffe.tools/'
+
+SLACK_API_TOKEN = os.environ['SLACK_API_TOKEN']
