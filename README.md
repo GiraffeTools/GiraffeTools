@@ -33,7 +33,7 @@ This is similar in usage to for example [GitPitch](https://gitpitch.com), which 
 
 ## General
 * This website can locally be deployed with [Docker](https://www.docker.com). You can run this web application locally by installing and running Docker and docker-compose, and simply typing `docker-compose up` in the terminal/command prompt.
-* Join us on [Slack](https://join.slack.com/t/giraffetools/signup)!
+* Join us on [Slack](https://github.com/TimVanMourik/GiraffeTools/issues/28)!
 
 ## Tests
 To run the Python test suite:
