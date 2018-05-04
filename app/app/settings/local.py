@@ -22,3 +22,8 @@ CODEFUND             = False
 CODEFUND_ID          = 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
 
 BASE_URL = 'http://localhost:8000/'
+
+# Slack
+# generate legacy token here
+# https://api.slack.com/custom-integrations/legacy-tokens
+SLACK_API_TOKEN = ''
