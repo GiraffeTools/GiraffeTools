@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include 'shared/head.html' %}
+</head>
+
+<body class=index>
+  <div class="container-fluid mt-3 ">
+    <div class="col text-center">
+      <h1>Join us on the Giraffe Tools Slack!</h1>
+
+      <form action="/slack/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Send">
+      </form>
+    </div>
+  </div>
+  {% include 'shared/footer.html' %}
+</body>
+
+{% include 'shared/analytics.html' %}
+
+</html>
