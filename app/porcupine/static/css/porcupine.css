@@ -34,14 +34,25 @@ body {
   padding: 10px 0px 10px 0px;
 }
 
+.panel-heading{
+  padding: 8px 0;
+}
+
+.panel-heading > a{
+  display: flex;
+  color: #212529;
+  text-decoration: none;
+}
+
 .sidebar-badge{
   padding: 10px;
   border-radius: 3px;
-  margin-right: 10px;
+  margin: 2px 10px 2px 0px;
 }
 
+
 .sidebar-dropdown{
-  float: right;
+  margin-left: auto;
   color: #9ea2a9;
 }
 

@@ -10,10 +10,10 @@ class PaneHeader extends React.Component {
     const divRef = "#" + this.props.name;
     return (
       <div className="panel-heading" role="tab">
+        <a data-toggle="collapse" href={divRef} aria-expanded="false" aria-controls={this.props.name}>
         <span className="badge sidebar-badge" style={{backgroundColor : this.props.color}}> </span>
           {this.props.name}
-        <a data-toggle="collapse" href={divRef} aria-expanded="false" aria-controls={this.props.name}>
-          <span className='glyphicon sidebar-dropdown glyphicon-menu-right'></span>
+          <span className='sidebar-dropdown'>></span>
         </a>
       </div>
     );
