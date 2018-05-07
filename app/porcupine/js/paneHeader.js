@@ -13,7 +13,7 @@ class PaneHeader extends React.Component {
         <a data-toggle="collapse" href={divRef} aria-expanded="false" aria-controls={this.props.name}>
         <span className="badge sidebar-badge" style={{backgroundColor : this.props.color}}> </span>
           {this.props.name}
-          <span className='glyphicon sidebar-dropdown glyphicon-menu-right'></span>
+          <span className='sidebar-dropdown'>></span>
         </a>
       </div>
     );

@@ -41,6 +41,7 @@ body {
 .panel-heading > a{
   display: flex;
   color: #212529;
+  text-decoration: none;
 }
 
 .sidebar-badge{
@@ -51,7 +52,7 @@ body {
 
 
 .sidebar-dropdown{
-  float: right;
+  margin-left: auto;
   color: #9ea2a9;
 }
 
