@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'shared/head.html' %}
+  <link rel="stylesheet" type="text/css" href="{% static "css/font.css" %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static "css/porcupine.css" %}"/>
+</head>
+<body class=index>
+  <div class="container-fluid header">
+    {% include 'shared/nav.html' %}
+  </div>
+  {% block body %}{% endblock %}
+  <!-- Road map -->
+  <div class="container-fluid mt-3 ">
+  </div>
+  <!-- Powered by [Gitcoin?] [CodeSponsor?] -->
+  <div class="container-fluid mt-3 ">
+  </div>
+  <!-- Donate in ETH: all donations will be spent on bounties! -->
+  <div class="container-fluid mt-3 ">
+  </div>
+  <!-- Join us on Slack (https://join.slack.com/t/giraffetools/signup) / receive newsletter / contact -->
+  <div class="container-fluid mt-3 ">
+  </div>
+
+  {% include 'shared/footer.html' %}
+</body>
+{% include 'shared/analytics.html' %}
+{% block scripts %}{% endblock %}
+</html>
