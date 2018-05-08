@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Graphical Interface for Reproducible Analysis For workFlow Experiments",
   "dependencies": {
-    "webpack": "^4.8.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -35,6 +34,7 @@
     "react-router-dom": "^4.2.2",
     "react-tooltip": "^3.5.1",
     "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.8.0",
     "webpack-bundle-tracker": "^0.2.1",
     "webpack-cli": "^2.1.3"
   },

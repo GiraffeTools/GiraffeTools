@@ -12,25 +12,15 @@ module.exports = env => {
       porcupine: path.resolve(__dirname, './app/porcupine/js/index.js'),
       fabrik: path.resolve(__dirname, './app/fabrik/js/index.js')
     },
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          vendors: {
-            name: 'vendors',
-            chunks: 'all',
-            enforce: true,
-            priority: 1,
-            test(module, chunks) {
-              const name = module.nameForCondition();
-              return chunks.some(chunk => chunk.name === 'main' && /node_modules/.test(name));
-            }
-          }
-        }
-      }
-    },
     output: {
       path: path.resolve(__dirname),
       filename: 'app/[name]/static/js/[name].js'
+    },
+    performance: {
+      hints: process.env.NODE_ENV === 'production' ? 'warning': false
+    },
+    stats: {
+      children: false,
     },
     plugins: [
       //  Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
@@ -47,7 +37,10 @@ module.exports = env => {
           'window.jQuery': 'jquery',
           Popper: ['popper.js', 'default'],
         }),
-      new HtmlWebpackPlugin(),
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, 'index.html'),
+        filename: 'index.html'
+      }),
     ],
       module: {
         rules: [

@@ -8,8 +8,7 @@ fi
 #node commands
 npm install
 node ./bin/pivotNodesByCategory.js;
-./node_modules/.bin/webpack --config webpack.config.js
-
+npm run build
 #django commands
 cd app
 python manage.py collectstatic --noinput -i other
