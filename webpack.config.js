@@ -37,6 +37,7 @@ module.exports = env => {
           'window.jQuery': 'jquery',
           Popper: ['popper.js', 'default'],
         }),
+        // To simplify creation of HTML files
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'index.html'),
         filename: 'index.html'
