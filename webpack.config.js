@@ -3,7 +3,6 @@ const path = require('path');
 const BundleTracker = require('webpack-bundle-tracker');
 const fs = require('fs');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = env => {
   return {
@@ -37,11 +36,6 @@ module.exports = env => {
           'window.jQuery': 'jquery',
           Popper: ['popper.js', 'default'],
         }),
-        // To simplify creation of HTML files
-      new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'index.html'),
-        filename: 'index.html'
-      }),
     ],
       module: {
         rules: [
