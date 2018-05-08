@@ -8,7 +8,7 @@ fi
 # node commands
 npm install
 node ./bin/pivotNodesByCategory.js;
-npm run dev
+npm run build
 # django commands
 cd app
 python manage.py collectstatic --noinput -i other
