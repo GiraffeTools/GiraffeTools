@@ -40,8 +40,8 @@
     "preinstall": "node ./bin/pivotNodesByCategory.js",
     "postinstall": "webpack --config ./webpack.config.js",
     "test": "jest",
-    "dev": "SET NODE_ENV=development & webpack --mode development",
-    "build": "SET NODE_ENV=production & webpack -p"
+    "dev": "webpack",
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",

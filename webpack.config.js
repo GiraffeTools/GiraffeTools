@@ -4,7 +4,19 @@ const BundleTracker = require('webpack-bundle-tracker');
 const fs = require('fs');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = env => {
+const config = env => {
+  function uglify(env) {
+    if (env === 'production') {
+      return new UglifyJsPlugin({
+          sourceMap: true,
+          uglifyOptions: {
+            ecma: 8,
+            warnings: false,
+            ie8: false,
+          }
+        })
+    }
+  }
   return {
     context: __dirname,
     entry: {
@@ -25,7 +37,7 @@ module.exports = env => {
       //  Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
       new webpack.DefinePlugin({
         'process.env': {
-          'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+          'NODE_ENV': uglify(process.env.NODE_ENV)
         }
       }),
       //  To spit out stats about webpack compilation process to a file. https://github.com/owais/webpack-bundle-tracker
@@ -56,15 +68,5 @@ module.exports = env => {
     };
   }
 
-  if (process.env.NODE_ENV === 'production') {
-    module.exports.plugins.push(
-      new UglifyJsPlugin({
-        sourceMap: true,
-        uglifyOptions: {
-          ecma: 8,
-          warnings: false,
-          ie8: false,
-        }
-      }),
-    )
-  }
+  
+  module.exports = config;
