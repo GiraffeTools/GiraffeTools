@@ -89,7 +89,17 @@ class Canvas extends React.Component {
       y: (offset.y - rec.top -  canvas.y)/zoom - 25,
       class: ''
     };
+		// #TODO issue #37
+		console.log(node);
+		// This node contains the list of 'ports', all parameters
+		// The node needs to know about all of them, but only display the ones with
+		// visible==true
+		// for each port, show a port on the left  if input  == true
+		// for each port, show a port on the right if output == true
 
+		// #TODO issue #36
+		// This is how fabrik stores inputs and outputs. However, we will need to
+		// be port specific instead of node specific
     node.links = { input: [], output: [] };
     // node.ports = {};
     // Object.keys(data[type].params).forEach(j => {
