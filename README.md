@@ -20,15 +20,16 @@ Example (work in progress): https://www.giraffe.tools/gh/TimVanMourik/SomeGiraff
 This is similar in usage to for example [GitPitch](https://gitpitch.com), which is how the exaplantory presentation about this repository was made: https://gitpitch.com/TimVanMourik/GiraffeTools/master.
 
 ## Potential Tools
-* Porcupine (pipeline creator), largely based on a [similar implementation](https://github.com/Cloud-CV/Fabrik) for deep learning
-  * Must have: Create analysis code from workflow
-  * Stretch goal: Create paper snippets from workflow
-* OAuth Github link to easily interface with projects
+* Porcupine [Visual workflow editor](https://www.biorxiv.org/content/early/2017/10/11/187344)
+  * Visual representation of data flow
+  * Connect input/output ports on functions/nodes
+  * From this workflow representation, make code for execution this workflow
+* OAuth Github link to easily save (commit) workflows to GitHub
+* Code execution integration, via, e.g., Amazon
 * Analysis preregistration
-* [DOI](https://www.doi.org) (static link) for analysis
+* [DOI](https://www.doi.org) (persistent identifiers) for analysis workflow
 * Visualisation of the data that flows through pipeline
   * Stretch goal: Augmented Reality visualisation (like [this project](https://github.com/TimVanMourik/ChristmasAR)). This should definitely be called ARmadillo
-* Code execution integration, via, e.g., Amazon
 * [Your input here!]
 
 ## General
