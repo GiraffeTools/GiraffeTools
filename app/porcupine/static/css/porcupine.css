@@ -839,7 +839,16 @@ input[type="file"] {
   position: absolute;
 }
 
+.base {
+  margin-top: 5rem;
+}
 .canvas {
   margin-top: 5rem;
   border-radius: 0;
+}
+
+@media(max-width: 1200px) {
+  .header {
+    left: 4%;
+  }
 }
