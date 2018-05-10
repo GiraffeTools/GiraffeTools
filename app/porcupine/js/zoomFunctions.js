@@ -73,11 +73,6 @@ export default function () {
     }
   };
 
-  zoomFunctions.ondblclick = function (e) {
-    e.preventDefault();
-    onZoom((e.ctrlKey) ? current.zoom * 1.2 : current.zoom / 1.2);
-  };
-
   window.onkeypress = function (e) {
     if (e.key == '-') {
       onZoom(current.zoom * 1.2);
