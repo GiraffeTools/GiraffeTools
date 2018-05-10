@@ -831,7 +831,7 @@ input[type="file"] {
 
 /* Custom styles */
 .header {
-  width: 80%;
+  width: auto;
   display: flex;
   flex-flow: column;
   top: 0;
