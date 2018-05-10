@@ -828,3 +828,18 @@ input[type="file"] {
     transform: rotate(-45deg)
   }
 }
+
+/* Custom styles */
+.header {
+  width: 80%;
+  display: flex;
+  flex-flow: column;
+  top: 0;
+  left: 18%;
+  position: absolute;
+}
+
+.canvas {
+  margin-top: 5rem;
+  border-radius: 0;
+}
