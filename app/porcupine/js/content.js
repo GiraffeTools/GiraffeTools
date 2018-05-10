@@ -6,7 +6,7 @@ import { default as ItemPreview } from './itemPreview';
 import Sidebar from './sidebar';
 import Canvas from './canvas'
 import nodes from '../static/assets/nipype.json';
-// import zoomFunctions from './zoomFunctions';
+import zoomFunctions from './zoomFunctions';
 import $ from 'jquery';
 
 require('browsernizr/test/touchevents');
@@ -90,15 +90,15 @@ class Content extends React.Component {
       newNode.colour = currentNodes.colour;
       newNode.info = { category, name };
       newNode.state = {
-        //This translation definitely needs to be fixed
-        x: (node['position'][0] - canvas.x)/zoom - 45 + 1000,
-        y: (node['position'][1] - canvas.y)/zoom - 25 + 400,
+        x: node['position'][0],
+        y: node['position'][1],
         class: ''
       };
       newNode.links = { input: [], output: [] };
 
       this.addNewNode(newNode);
     });
+    zoomFunctions().onLoaded();
 
     // load links
     json['links'].forEach(link => {

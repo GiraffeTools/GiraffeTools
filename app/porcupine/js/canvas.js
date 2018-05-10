@@ -170,20 +170,20 @@ class Canvas extends React.Component {
         >
           {nodes}
         </div>
-        {/*
+        
         <div id='icon-plus' className="canvas-icon">
-          <p>Press ]</p>
+          <p>Press</p>
           <button className="btn btn-default text-center">
-              <span className="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span>
+              <span aria-hidden="true">+</span>
           </button>
         </div>
         <div id='icon-minus' className="canvas-icon">
-          <p>Press [</p>
+          <p>Press</p>
           <button className="btn btn-default text-center">
-              <span className="glyphicon glyphicon glyphicon-minus" aria-hidden="true"></span>
+              <span aria-hidden="true">-</span>
           </button>
         </div>
-        <div style={{ ...style, backgroundColor }}>
+        {/* <div style={{ ...style, backgroundColor }}>
           {isActive ? 'Release to drop' : 'Drag a box here'}
         </div>
          */}
