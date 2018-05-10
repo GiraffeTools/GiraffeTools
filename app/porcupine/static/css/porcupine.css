@@ -415,6 +415,7 @@ body {
   background: #e15e4f;
   color: white;
   cursor: pointer;
+  user-select: none;
 }
 
 .node.preview{
