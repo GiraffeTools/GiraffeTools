@@ -4,8 +4,9 @@ import TouchBackend from 'react-dnd-touch-backend'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { default as ItemPreview } from './itemPreview';
 import Sidebar from './sidebar';
-import Canvas from './canvas'
+import Canvas from './canvas';
 import nodes from '../static/assets/nipype.json';
+import ParameterPane from './parameterPane';
 import zoomFunctions from './zoomFunctions';
 import $ from 'jquery';
 
@@ -28,6 +29,9 @@ class Content extends React.Component {
     this.changeSelectedNode = this.changeSelectedNode.bind(this);
     this.toggleSidebar      = this.toggleSidebar.bind(this);
     this.loadFromJson       = this.loadFromJson.bind(this);
+    this.modifyNodeParams   = this.modifyNodeParams.bind(this);
+    this.deleteNode         = this.deleteNode.bind(this);
+
   }; //end constructor
 
   componentWillMount() {
@@ -106,6 +110,21 @@ class Content extends React.Component {
     });
   }
 
+  modifyNodeParams(node, nodeId = this.state.selectedNode) {
+    const net = this.state.net;
+    net[nodeId] = node;
+    this.setState({ net });
+  }
+
+  deleteNode(nodeId) {
+    const net = this.state.net;
+    delete net[nodeId];
+    this.setState({
+      net: net,
+      selectedNode: null
+    });
+  }
+
   render() {
     return (
     <DragDropContextProvider backend={ Modernizr.touchevents ? TouchBackend : HTML5Backend }>
@@ -119,7 +138,13 @@ class Content extends React.Component {
             addNewNode          = {this.addNewNode}
             changeSelectedNode  = {this.changeSelectedNode}
           />
-          {/* SetParams */}
+          <ParameterPane
+            net                 = {this.state.net}
+            selectedNode        = {this.state.selectedNode}
+            deleteNode          = {this.deleteNode}
+            modifyNode          = {this.modifyNodeParams}
+            changeSelectedNode  = {this.changeSelectedNode}
+          />
           {/* Tooltip */}
           {/* Modal */}
         </div>
