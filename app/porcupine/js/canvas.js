@@ -80,7 +80,8 @@ class Canvas extends React.Component {
     category.forEach(function (c) {
       currentNodes = currentNodes['categories'][c];
     })
-    const node = currentNodes.nodes[name];
+    const node = {};
+    Object.assign(node, currentNodes.nodes[name]);
 
     node.colour = currentNodes.colour;
     node.info = { category, name };
