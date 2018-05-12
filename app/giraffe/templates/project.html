@@ -1,42 +1,30 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  {% include 'shared/head.html' %}
-</head>
-
-<body class=index>
-  <div class="container-fluid header">
-    {% include 'shared/nav.html' %}
+{% block body %}
+<div class="container-fluid mt-3 ">
+  <div class="col text-center">
+    <h1>Project Info</h1>
+    <p>username: {{ghuser}}</p>
+    <p>repository: {{ghrepo}}</p>
+    <p>branch: {{ghbranch}}</p>
+    <p>This GitHub project {% if giraffeConfig %}contains{%else%}does not contain{%endif%} a GIRAFFE.yml file</p>
   </div>
+</div>
 
-  <div class="container-fluid mt-3 ">
-    <div class="col text-center">
-      <h1>Project Info</h1>
-      <p>username: {{ghuser}}</p>
-      <p>repository: {{ghrepo}}</p>
-      <p>branch: {{ghbranch}}</p>
-      <p>This GitHub project {% if giraffeConfig %}contains{%else%}does not contain{%endif%} a GIRAFFE.yml file</p>
-    </div>
+{% if giraffeConfig %}
+<!--Issue #4 Link to the tools in the project -->
+<div class="container-fluid mt-3 ">
+  {% for toolName, toolPath in giraffeConfig.tools %}
+  <div class="col text-center">
+    <a class="btn btn-lg btn-warning" role="button" href={{toolPath}}>
+      {{toolName}}
+    </a>
   </div>
+  {% endfor %}
+</div>
+{% endif %}
 
-  {% if giraffeConfig %}
-  <!--Issue #4 Link to the tools in the project -->
-  <div class="container-fluid mt-3 ">
-    {% for toolName, toolPath in giraffeConfig.tools %}
-    <div class="col text-center">
-      <a class="btn btn-lg btn-warning" role="button" href={{toolPath}}>
-        {{toolName}}
-      </a>
-    </div>
-    {% endfor %}
-  </div>
-  {% endif %}
-
-  {% include 'shared/footer.html' %}
-</body>
-
-{% include 'shared/analytics.html' %}
-
-</html>
+{% endblock %}
+{% block scripts %}
+{% endblock %}
