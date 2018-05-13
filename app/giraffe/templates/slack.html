@@ -1,26 +1,19 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  {% include 'shared/head.html' %}
-</head>
+{% block body %}
+<div class="container-fluid mt-3 ">
+  <div class="col text-center">
+    <h1>Join us on the Giraffe Tools Slack!</h1>
 
-<body class=index>
-  <div class="container-fluid mt-3 ">
-    <div class="col text-center">
-      <h1>Join us on the Giraffe Tools Slack!</h1>
-
-      <form action="/slack/" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Send">
-      </form>
-    </div>
+    <form action="/slack/" method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="Send">
+    </form>
   </div>
-  {% include 'shared/footer.html' %}
-</body>
+</div>
 
-{% include 'shared/analytics.html' %}
-
-</html>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

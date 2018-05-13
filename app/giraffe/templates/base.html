@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'shared/head.html' %}
+  <link rel="stylesheet" type="text/css" href="{% static "css/font.css" %}"/>
+  <link rel="stylesheet" type="text/css" href="{% static "css/porcupine.css" %}"/>
+</head>
+<body class=index>
+  <div class="container-fluid header">
+    {% include 'shared/nav.html' %}
+  </div>
+  {% block body %}{% endblock %}
+
+  {% include 'shared/footer.html' %}
+</body>
+
+<script>
+  var app = document.querySelector('#porcupine');
+  var header = document.querySelector('.header');
+  if (!app) {
+    header.style.left = "0px";
+  }
+</script>
+{% include 'shared/analytics.html' %}
+{% block scripts %}{% endblock %}
+</html>

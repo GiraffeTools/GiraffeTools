@@ -1,26 +1,14 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  {% include 'shared/head.html' %}
-  <link rel="stylesheet" type="text/css" href="{% static "css/font.css" %}"/>
-  <link rel="stylesheet" type="text/css" href="{% static "css/porcupine.css" %}"/>
-</head>
 
-<body>
-
-  <!-- this id is replaced by ../js/index.js  -->
+{% block body %}
   <div id="porcupine"></div>
-
-  {% include 'shared/footer.html' %}
-</body>
-
+{% endblock %}
+{% block scripts %}
 <script>var instance;</script>
 <script>var jsonFile = "{{filename}}";</script>
 <script src="{% static "jquery.min.js" %}"></script>
 <script src="{% static "js/bootstrap.min.js" %}"></script>
 <script src="{% static "js/jsplumb.min.js" %}"></script>
 <script src="{% static "js/porcupine.js" %}"></script>
-{% include 'shared/analytics.html' %}
-
-</html>
+{% endblock %}
