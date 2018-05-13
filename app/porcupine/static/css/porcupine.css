@@ -835,7 +835,7 @@ input[type="file"] {
   display: flex;
   flex-flow: column;
   top: 0;
-  left: 4rem;
+  left: 15rem;
   position: absolute;
 }
 
@@ -848,15 +848,15 @@ input[type="file"] {
 }
 
 .navbar-open {
-  left: 13.2rem;
+  left: 15rem;
   transition: transform 0.1s ease-in-out;
 }
 
-@media(min-width: 1200px) {
+@media(max-width: 1200px) {
   .navbar-open {
-    left: 15rem;
+        left: 13.4rem !important;
+      }
+  .header {
+    left: 4rem;
   }
-  /* .header {
-    left: 13.2rem;
-  } */
 }
