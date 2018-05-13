@@ -64,6 +64,7 @@ class Content extends React.Component {
   toggleSidebar() {
     $('#sidebar').toggleClass('visible');
     $('.sidebar-button').toggleClass('close');
+    $('.header').toggleClass('navbar-open');
     $('#main').toggleClass('withSidebar');
   }
 
