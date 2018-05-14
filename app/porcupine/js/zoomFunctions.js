@@ -4,6 +4,7 @@ export default function () {
   let zoomFunctions = document.getElementById('zoomContainer');
   let canvas = document.getElementById('jsplumbContainer');
   let zoomIn = document.getElementById('icon-plus');
+  let zoomRe = document.getElementById('icon-reset');
   let zoomOut = document.getElementById('icon-minus');
 
   if (!canvas) { return; }
@@ -84,6 +85,15 @@ export default function () {
 
   zoomOut.onclick = function () {
     onZoom(current.zoom * 1.2);
+  };
+
+  zoomRe.onclick = function () {
+    const scaleX = zoomContainer.offsetWidth / (parseInt(canvas.dataset.sizex)+200);
+    const scaleY = zoomContainer.offsetHeight / (parseInt(canvas.dataset.sizey)+60);
+    const scale = Math.min(scaleX, scaleY);
+    canvas.style.transform='scale('+scale+')'
+    canvas.style.left=0;
+    canvas.style.top=0;
   };
 
   zoomIn.onclick = function () {
