@@ -78,8 +78,11 @@ export default function () {
     if (e.key == '-') {
       onZoom(current.zoom * 1.2);
     }
-    else if (e.key == '=') {
+    else if (e.key == '+' || e.key == '=') {
       onZoom(current.zoom / 1.2);
+    }
+    else if (e.key == '0') {
+      zoomRe.click();
     }
   }
 
