@@ -17,7 +17,7 @@ else
 fi
 
 if [ UPDATE_REACT ]; then
-  ./node_modules/.bin/webpack --config webpack.config.js --watch &
+  node server.js
 fi
 
 # django commands

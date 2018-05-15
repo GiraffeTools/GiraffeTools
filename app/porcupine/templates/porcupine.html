@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block body %}
-  <div id="porcupine"></div>
+  <!-- <div id="porcupine"></div> -->
+  {% render_bundle 'main' 'js' 'PORCUPINE' %}
 {% endblock %}
 {% block scripts %}
 <script>var instance;</script>
@@ -10,5 +11,5 @@
 <script src="{% static "jquery.min.js" %}"></script>
 <script src="{% static "js/bootstrap.min.js" %}"></script>
 <script src="{% static "js/jsplumb.min.js" %}"></script>
-<script src="{% static "js/porcupine.js" %}"></script>
+<!-- <script src="{% static "js/porcupine.js" %}"></script> -->
 {% endblock %}
