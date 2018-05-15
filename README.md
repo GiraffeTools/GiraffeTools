@@ -36,6 +36,12 @@ This is similar in usage to for example [GitPitch](https://gitpitch.com), which 
 * This website can locally be deployed with [Docker](https://www.docker.com). You can run this web application locally by installing and running Docker and docker-compose, and simply typing `docker-compose up` in the terminal/command prompt.
 * Join us on [Slack](https://www.giraffe.tools/slack)!
 
+## Development
+Do you want to work on the Porcupine app? Then it's really useful if you can just change a file, such that the React bundle (porcupine.js) is automatically updated. You can do this two different ways. Either, set `UPDATE_REACT=TRUE` in a `.env` file in the root of the project (rename `env.sample`), or run the `bin/watch-react.bash` script.
+Note: on Windows, this doesn't seem to be very reliable yet. You may want to run webpack in --watch mode from the cmd instead.
+
+
+
 ## Tests
 To run the Python test suite:
 ```
