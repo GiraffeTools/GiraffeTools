@@ -15,6 +15,11 @@ elif [ NODE_ENV == production  ]; then
 else
   npm run dev
 fi
+
+if [ UPDATE_REACT ]; then
+  ./node_modules/.bin/webpack --config webpack.config.js --watch &
+fi
+
 # django commands
 cd app
 python manage.py collectstatic --noinput -i other

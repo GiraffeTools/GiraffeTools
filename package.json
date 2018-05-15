@@ -40,7 +40,7 @@
     "preinstall": "node ./bin/pivotNodesByCategory.js",
     "postinstall": "webpack --config ./webpack.config.js",
     "test": "jest",
-    "dev": "webpack",
+    "dev": "webpack -d",
     "build": "webpack -p"
   },
   "repository": {
