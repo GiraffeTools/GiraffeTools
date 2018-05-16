@@ -15,6 +15,8 @@ elif [ NODE_ENV == development ]; then
   npm run dev
 elif [ NODE_ENV == production ]; then
   npm run prod
+else
+  npm run dev
 fi
 
 # django commands
