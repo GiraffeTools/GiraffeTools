@@ -8,16 +8,13 @@ fi
 # node commands
 npm install
 node ./bin/pivotNodesByCategory.js;
-if   [ NODE_ENV == development ]; then
+if [ NODE_ENV == watch ]; then
+  node server.js &
+  npm run watch
+elif [ NODE_ENV == development ]; then
   npm run dev
-elif [ NODE_ENV == production  ]; then
-  npm run build
-else
-  npm run dev
-fi
-
-if [ UPDATE_REACT ]; then
-  node server.js
+elif [ NODE_ENV == production ]; then
+  npm run prod
 fi
 
 # django commands

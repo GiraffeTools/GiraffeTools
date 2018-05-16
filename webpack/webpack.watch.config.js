@@ -9,12 +9,12 @@ config.entry = {
   porcupine: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    path.resolve(__dirname, './app/porcupine/js/index.js')
+    path.resolve(__dirname, '../app/porcupine/js/index.js')
   ],
   fabrik: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    path.resolve(__dirname, './app/fabrik/js/index.js')
+    path.resolve(__dirname, '../app/fabrik/js/index.js')
   ]
 }
 
@@ -25,7 +25,7 @@ config.output.publicPath = 'http://localhost:3000/assets/bundles/'
 config.plugins = config.plugins.concat([
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
-  new BundleTracker({filename: './webpack-stats.json'}),
+  new BundleTracker({filename: './webpack/webpack-stats.json'}),
 ])
 
 // Add a loader for JSX files with react-hot enabled

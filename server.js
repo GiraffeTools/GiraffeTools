@@ -1,6 +1,6 @@
 var webpack = require('webpack')
 var WebpackDevServer = require('webpack-dev-server')
-var config = require('./webpack.local.config.js')
+var config = require('./webpack/webpack.watch.config.js')
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,

@@ -6,13 +6,13 @@ const fs = require('fs');
 module.exports = {
   context: __dirname,
   entry: {
-    porcupine: path.resolve(__dirname, './app/porcupine/js/index.js'),
-    fabrik: path.resolve(__dirname, './app/fabrik/js/index.js')
+    porcupine: path.resolve(__dirname, '../app/porcupine/js/index.js'),
+    fabrik: path.resolve(__dirname, '../app/fabrik/js/index.js')
   },
 
   output: {
-    path: path.resolve('./app/'),
-    filename: '[name]/static/webpack_bundles/[name].js',
+    path: path.resolve(__dirname, '../app/assets/webpack_bundles'),
+    filename: '[name]-[hash].js'
   },
 
   performance: {
