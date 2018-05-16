@@ -19,7 +19,7 @@ config.entry = {
 }
 
 // override django's STATIC_URL for webpack bundles
-config.output.publicPath = 'http://localhost:3000/assets/bundles/'
+config.output.publicPath = 'http://localhost:3000/app/assets/webpack_bundles/'
 
 // Add HotModuleReplacementPlugin and BundleTracker plugins
 config.plugins = config.plugins.concat([

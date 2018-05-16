@@ -2,18 +2,19 @@
 
 #load environment variables
 if [ -f .env ]; then
+    echo 'Reading environment variables from .env'
     export $(cat .env | grep -v ^# | xargs)
 fi
 
 # node commands
 npm install
 node ./bin/pivotNodesByCategory.js;
-if [ NODE_ENV == watch ]; then
+if [ "$NODE_ENV" = "watch" ]; then
   node server.js &
   npm run watch
-elif [ NODE_ENV == development ]; then
+elif [ "$NODE_ENV" == "development" ]; then
   npm run dev
-elif [ NODE_ENV == production ]; then
+elif [ "$NODE_ENV" == "production" ]; then
   npm run prod
 else
   npm run dev
