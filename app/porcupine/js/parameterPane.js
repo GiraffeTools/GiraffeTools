@@ -12,8 +12,12 @@ class ParameterPane extends React.Component {
   changeParams(portName, key, value) {
     const net = this.props.net;
     let node = { ...net[this.props.selectedNode] };
-    const ports = node.ports.filter(port => port.name === portName);
-    ports[0][key] = value;
+    const port = node.ports.filter(port => port.name === portName)[0];
+    if (key === 'value' && !port.editable) {
+      return;
+    }
+
+    port[key] = value;
     this.props.modifyNode(node);
   }
   close() {
@@ -45,7 +49,7 @@ class ParameterPane extends React.Component {
             key={`${port.name}_text`}
             value={port.value || ''}
             data={{ name: port.name, type: 'text', label: port.name.toUpperCase() }}
-            disabled={false}
+            disabled={!port.editable}
             changeField={(value) => this.changeParams(port.name, 'value', value)}
           />,
           <Field
