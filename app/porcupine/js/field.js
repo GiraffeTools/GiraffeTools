@@ -8,11 +8,11 @@ class Field extends React.Component {
   }
   change(e) {
     if (this.props.data.type === 'checkbox') {
-      this.props.changeField(this.props.id, e.target.checked);
+      this.props.changeField(e.target.checked);
     } else if(this.props.data.type === 'number') {
-      this.props.changeField(this.props.id, Number(e.target.value));
+      this.props.changeField(Number(e.target.value));
     } else {
-      this.props.changeField(this.props.id, e.target.value);
+      this.props.changeField(e.target.value);
     }
   }
   render() {
@@ -90,10 +90,9 @@ class Field extends React.Component {
     return (
       <div style={{display: displayStyle}}>
         <label htmlFor={this.props.id} className="sidebar-heading" style={{fontSize:"0.85em"}}>
-          {this.props.data.name.toUpperCase()}
+          {this.props.data.label}
         </label>
            {inputElement}
-      <br/>
       </div>
     );
   }

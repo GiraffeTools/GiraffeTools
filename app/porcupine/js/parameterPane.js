@@ -9,11 +9,11 @@ class ParameterPane extends React.Component {
     this.close = this.close.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
-  changeParams(prop, value) {
+  changeParams(portName, key, value) {
     const net = this.props.net;
-    let node = net[this.props.selectedNode];
-    node = JSON.parse(JSON.stringify(node));
-    node.props[prop] = value;
+    let node = { ...net[this.props.selectedNode] };
+    const ports = node.ports.filter(port => port.name === portName);
+    ports[0][key] = value;
     this.props.modifyNode(node);
   }
   close() {
@@ -38,15 +38,25 @@ class ParameterPane extends React.Component {
 
       Object.keys(node.ports).forEach(i => {
         const port = node.ports[i];
-        const data = { name: port.name, type: 'text' };
         params.push(
+          [
           <Field
-            id={port.name}
-            key={i}
-            data={data}
+            id={`${port.name}_text`}
+            key={`${port.name}_text`}
+            value={port.value || ''}
+            data={{ name: port.name, type: 'text', label: port.name.toUpperCase() }}
             disabled={false}
-            changeField={this.changeParams}
-          />
+            changeField={(value) => this.changeParams(port.name, 'value', value)}
+          />,
+          <Field
+            id={`${port.name}_checkbox`}
+            key={`${i.name}_checkbox`}
+            data={{ type: 'checkbox', label: 'Visible' }}
+            value={port.visible}
+            disabled={false}
+            changeField={(value) => this.changeParams(port.name, 'visible', value)}
+            />
+          ]
         );
       });
 

@@ -9,7 +9,6 @@ class Node extends React.Component {
   render() {
     const { x, y, colour, class: classname, id, type, click, ports } = this.props;
     const visiblePorts = ports.filter(port => port.visible);
-    console.log('visiblePorts', visiblePorts);
     return (
       <div
         className={`node ${classname}`}
