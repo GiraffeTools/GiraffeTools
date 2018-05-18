@@ -149,6 +149,7 @@ class Canvas extends React.Component {
           x      = {node.state.x}
           type   = {node.info.name}
           colour = {node.colour}
+          ports  = {node.ports}
           click  = {this.clickNodeEvent}
         />
       );

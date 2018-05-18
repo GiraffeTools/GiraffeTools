@@ -423,6 +423,44 @@ body {
   color: #222;
 }
 
+.node__ports {
+  font-size: 16px;
+}
+
+.node__ports ul {
+  padding: 0;
+}
+
+.node__ports li {
+  list-style: none;
+}
+
+.node__port {
+  position: relative;
+}
+
+.node__port--input:before {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: calc(50% - 4px);
+  left: -15px;
+  background: #3498db;
+  border-radius: 50%;
+}
+
+.node__port--output:after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: calc(50% - 4px);
+  right: -15px;
+  background: #e74c3c;
+  border-radius: 50%;
+}
+
 .selected{
   box-shadow: 0px 0px 30px #aaa;
   -o-box-shadow: 0px 0px 30px #aaa;
