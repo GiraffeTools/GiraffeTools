@@ -20,6 +20,8 @@ if [ UPDATE_REACT ]; then
   ./node_modules/.bin/webpack --config webpack.config.js --watch &
 fi
 
+# python manage.py livereload &
+
 # django commands
 cd app
 python manage.py collectstatic --noinput -i other

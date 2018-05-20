@@ -1,5 +1,6 @@
 Django==2.0
 django-heroku
+django-livereload-server
 django-webpack-loader
 djangorestframework==3.7.3
 django-settings-export
