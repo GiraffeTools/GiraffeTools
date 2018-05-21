@@ -18,6 +18,7 @@ class Node extends React.Component {
           background: colour
         }}
         onClick={(event) => click(event, id)}
+        onTouchEnd={(event) => click(event, id)}
       >
         <div className="node__type">
           {type}
