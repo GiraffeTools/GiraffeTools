@@ -49,7 +49,6 @@ TEMPLATES = [
                 'app.context.insert_settings',
             ],
         },
-        'DIRS': '',
     },
 ]
 
