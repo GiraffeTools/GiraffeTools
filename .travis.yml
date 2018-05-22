@@ -19,5 +19,6 @@ script:
   - coverage run ./manage.py test --noinput --settings=app.settings.local
   - cd ..; npm test
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -cF python
+  - pip install codecov
+  - codecov
   - bash <(curl -s https://codecov.io/bash) -cF javascript
