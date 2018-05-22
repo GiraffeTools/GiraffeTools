@@ -16,7 +16,7 @@ before_script:
   - python manage.py collectstatic --noinput -i other
   - python manage.py migrate
 script:
-  - python manage.py test
+  - coverage run ./manage.py test --noinput --settings=app.settings.local
   - cd ..; npm test
 after_success:
   - pip install codecov

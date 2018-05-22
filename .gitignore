@@ -107,3 +107,5 @@ webpack-stats.json
 .idea
 
 app/fabrik/static/js/fabrik.js
+
+code-coverage/
