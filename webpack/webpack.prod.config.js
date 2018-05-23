@@ -4,11 +4,6 @@ var BundleTracker = require('webpack-bundle-tracker')
 
 var config = require('./webpack.base.config.js')
 
-config.output =  {
-  path: path.resolve(__dirname),
-  filename: '../app/[name]/static/webpack_bundles/[name]-[hash].js'
-},
-
 config.plugins = config.plugins.concat([
   new BundleTracker({filename: './webpack/webpack-stats-prod.json'}),
 
