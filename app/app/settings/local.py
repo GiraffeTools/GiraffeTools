@@ -27,3 +27,23 @@ BASE_URL = 'http://localhost:8000/'
 # generate legacy token here
 # https://api.slack.com/custom-integrations/legacy-tokens
 SLACK_API_TOKEN = ''
+
+#
+WEBPACK_LOADER = {
+    'PORCUPINE': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': 'webpack_bundles/', # must end with slash
+        'STATS_FILE': os.path.join(BASE_DIR, '../webpack/webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'TIMEOUT': None,
+        'IGNORE': ['.+\.hot-update.js', '.+\.map']
+    },
+    'FABRIK': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': './', # must end with slash
+        'STATS_FILE': os.path.join(BASE_DIR, '../webpack/webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'TIMEOUT': None,
+        'IGNORE': ['.+\.hot-update.js', '.+\.map']
+    }
+}

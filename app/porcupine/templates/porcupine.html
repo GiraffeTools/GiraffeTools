@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load render_bundle from webpack_loader %}
+
 {% block body %}
   <div id="porcupine"></div>
 {% endblock %}
@@ -9,5 +11,6 @@
 <script src="{% static "jquery.min.js" %}"></script>
 <script src="{% static "js/bootstrap.min.js" %}"></script>
 <script src="{% static "js/jsplumb.min.js" %}"></script>
-<script src="{% static "js/porcupine.js" %}"></script>
+
+{% render_bundle 'porcupine' 'js' 'PORCUPINE' %}
 {% endblock %}

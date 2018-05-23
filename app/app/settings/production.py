@@ -1,7 +1,7 @@
-from .base import *
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+
+from .base import *
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['SECRET_KEY']
@@ -24,3 +24,17 @@ CODEFUND_ID          = os.environ['CODEFUND_ID']
 BASE_URL = 'https://www.giraffe.tools/'
 
 SLACK_API_TOKEN = os.environ['SLACK_API_TOKEN']
+
+
+WEBPACK_LOADER = {
+    'PORCUPINE': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': 'app/porcupine/static/webpack_bundles/', # must end with slash
+        'STATS_FILE': os.path.join(BASE_DIR, '../webpack/webpack-stats-prod.json'),
+    },
+    'FABRIK': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': 'app/fabrik/static/webpack_bundles/', # must end with slash
+        'STATS_FILE': os.path.join(BASE_DIR, '../webpack/webpack-stats-prod.json'),
+    }
+}

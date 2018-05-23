@@ -8,4 +8,6 @@ services:
       - .:/code
     command: bash bin/docker-command.bash
     ports:
-      - "8000:8000"
+      - "8000:8000"   # application server
+      - "3000:3000"   # webpack hot reload server
+      - "35729:35729" # django live reload server
