@@ -6,12 +6,12 @@
 source ./bin/init-environment.bash
 
 # initialise node and django
-./bin/init-node.bash
-./bin/init-django.bash
+bash ./bin/init-node.bash
+bash ./bin/init-django.bash
 
 # watch changes and live reload them on changes:
 if [ "$MODE" = "watch" ]; then
-  ./bin/init-watch.bash
+  bash ./bin/init-watch.bash
 fi
 
 # run server
