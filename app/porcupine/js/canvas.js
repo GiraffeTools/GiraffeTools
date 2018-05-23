@@ -60,7 +60,7 @@ class Canvas extends React.Component {
 
   updateNodePosition(event) {
     if (!this.clickOrDraggedNode) {
-      this.clickOrDraggedNode = 1;
+      this.clickOrDraggedNode = true;
     }
     const nodeId = event.el.id;
     const node = this.props.net[node];
@@ -149,6 +149,7 @@ class Canvas extends React.Component {
           x      = {node.state.x}
           type   = {node.info.name}
           colour = {node.colour}
+          ports  = {node.ports}
           click  = {this.clickNodeEvent}
         />
       );

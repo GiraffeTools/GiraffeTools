@@ -6,6 +6,12 @@ if [ -f .env ]; then
     export $(cat .env | grep -v ^# | xargs)
 fi
 
+if [ -z "$MODE" ]; then
+  export MODE=watch
+fi
+
+export NODE_ENV=$MODE
+
 # node commands
 npm install
 node ./bin/pivotNodesByCategory.js;

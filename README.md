@@ -8,7 +8,7 @@ _This web application is in the early stages of construction_
 ### Giraffe
 a **G**raphical **I**nterface for **R**eproducible **A**nalysis o**F** work**F**low **E**xperiments
 
-This is a web application with a set of tools to build and improve your data analysis! Initially, this will focus on neuroscientific applications. The first goal is to make a web application from my earlier project [Porcupine](https://timvanmourik.github.io/Porcupine), a visual workflow editor. This can further be developped to support version control of a workflow by means of Github integration, connect to visualisation or execution platforms, and much more.
+This is a web application with a set of tools to build and improve your data analysis! Initially, this will focus on neuroscientific applications. The first goal is to make a web application from my earlier project [Porcupine](https://timvanmourik.github.io/Porcupine), a visual workflow editor. This can further be developped to support version control of a workflow by means of Github integration, connect to visualisation or execution platforms, and much more. If you want to know more about Porcupine, please read it in the [paper here](https://doi.org/10.1371/journal.pcbi.1006064)!
 
 ## Intended usage
 The plan is to have a user go to:
