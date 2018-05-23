@@ -14,8 +14,8 @@ before_install:
 install:
   - pip install -r requirements/test.txt
   - npm install
- before_script:
-  - bash ./bin/init-node.bash;
+before_script:
+  - bash ./bin/init-node.bash
   - bash ./bin/init-django.bash
 script:
-  - bash ./bin/run-codecov.sh
+  - bash ./bin/run-tests.bash
