@@ -41,11 +41,11 @@
   "scripts": {
     "ci": "webpack",
     "preinstall": "node ./bin/pivotNodesByCategory.js",
-    "postinstall": "webpack -p --config ./webpack/webpack.prod.config.js",
+    "postinstall": "webpack --mode=production --config ./webpack/webpack.prod.config.js",
     "test": "jest",
-    "dev": "webpack -d --config ./webpack/webpack.dev.config.js  --progress --colors",
-    "watch": "webpack -d --config ./webpack/webpack.watch.config.js  --progress --colors",
-    "prod": "webpack -p --config ./webpack/webpack.prod.config.js --progress --colors"
+    "dev": "webpack --mode=development --config ./webpack/webpack.dev.config.js --progress --colors",
+    "watch": "webpack --mode=development --config ./webpack/webpack.watch.config.js --progress --colors",
+    "prod": "webpack --mode=production --config ./webpack/webpack.prod.config.js --progress --colors"
   },
   "repository": {
     "type": "git",

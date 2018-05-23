@@ -4,6 +4,7 @@ var BundleTracker = require('webpack-bundle-tracker')
 
 var config = require('./webpack.base.config.js')
 
+config.mode = 'development';
 // Use webpack dev server
 config.entry = {
   porcupine: [
