@@ -138,6 +138,7 @@ class Content extends React.Component {
             nextNodeId          = {this.state.nextNodeId}
             addNewNode          = {this.addNewNode}
             changeSelectedNode  = {this.changeSelectedNode}
+            changeHoveredNode   = {this.changeHoveredNode}
           />
           <ParameterPane
             net                 = {this.state.net}

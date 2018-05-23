@@ -25,7 +25,9 @@ class Canvas extends React.Component {
     this.clickCanvas          = this.clickCanvas.bind(this);
     this.clickOrDraggedNode   = false;
     this.clickNodeEvent       = this.clickNodeEvent.bind(this);
+    this.hoverNodeEvent       = this.hoverNodeEvent.bind(this);
     this.clickOrDraggedNode   = false;
+    this.hover = 0;
   }
 
   componentDidMount() {
@@ -54,6 +56,15 @@ class Canvas extends React.Component {
       this.props.changeSelectedNode(nodeId);
     } else if (this.clickOrDraggedNode === true) {
       this.clickOrDraggedNode = false;
+    }
+    event.stopPropagation();
+  }
+
+  hoverNodeEvent(event, nodeId) {
+    if (this.hover === 0) {
+      this.props.changeHoveredNode(nodeId);
+    } else if (this.hover === 1) {
+      this.hover = 0;
     }
     event.stopPropagation();
   }
@@ -151,6 +162,7 @@ class Canvas extends React.Component {
           colour = {node.colour}
           ports  = {node.ports}
           click  = {this.clickNodeEvent}
+          hover  = {this.hoverNodeEvent}
         />
       );
     })
@@ -199,6 +211,7 @@ Canvas.propTypes = {
   net:                  PropTypes.object.isRequired,
   addNewNode:           PropTypes.func.isRequired,
   changeSelectedNode:   PropTypes.func.isRequired,
+  changeHoveredNode:    PropTypes.func.isRequired,
 	connectDropTarget: 		PropTypes.func.isRequired,
 	isOver: 							PropTypes.bool.isRequired,
 	canDrop: 							PropTypes.bool.isRequired,
