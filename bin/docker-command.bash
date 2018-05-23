@@ -5,6 +5,12 @@ if [ -f .env ]; then
     export $(cat .env | grep -v ^# | xargs)
 fi
 
+if [ -z "$MODE" ]; then
+  export MODE=watch
+fi
+
+export NODE_ENV=$MODE
+
 # node commands
 npm install
 node ./bin/pivotNodesByCategory.js;
@@ -19,6 +25,8 @@ fi
 if [ UPDATE_REACT ]; then
   ./node_modules/.bin/webpack --config webpack.config.js --watch &
 fi
+
+python manage.py livereload &
 
 # django commands
 cd app
