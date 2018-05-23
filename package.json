@@ -11,6 +11,7 @@
     "babel-preset-react": "^6.5.0",
     "bootstrap": "^4.1.1",
     "browsernizr": "^2.2.0",
+    "codecov": "^3.0.2",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.3",
@@ -58,6 +59,8 @@
     ],
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
-    ]
+    ],
+    "coverageDirectory": "./code-coverage/",
+    "collectCoverage": true
   }
 }

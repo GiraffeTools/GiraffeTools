@@ -101,10 +101,9 @@ ENV/
 node_modules/
 db.sqlite3
 staticfiles/
-app/porcupine/static/assets/nipype.JSON
 webpack-stats.json
+webpack-stats-prod.json
 webpack_bundles/
 .idea
 
-
-webpack-stats-prod.json
+code-coverage/
