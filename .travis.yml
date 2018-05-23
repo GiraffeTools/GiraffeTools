@@ -6,9 +6,12 @@ services:
   - docker
 env:
   - PYTHONPATH="$TRAVIS_BUILD_DIR/app/"
+  - MODE='production'
 before_install:
   - docker pull timvanmourik/giraffe-tools
 install:
+  - export $(cat .env.sample | grep -v ^# | xargs)
+  - export MODE=production
   - npm install
   - pip install -r requirements/test.txt
 before_script:
@@ -17,7 +20,8 @@ before_script:
   - python manage.py migrate
 script:
   - python manage.py test
-  - cd ..; npm test
+  - cd ..;
+  - npm test
 after_success:
   - pip install codecov
   - codecov
