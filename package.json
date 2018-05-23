@@ -39,13 +39,12 @@
     "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
-    "ci": "webpack",
     "preinstall": "node ./bin/pivotNodesByCategory.js",
     "postinstall": "webpack --mode=production --config ./webpack/webpack.prod.config.js",
     "test": "jest",
-    "dev": "webpack --mode=development --config ./webpack/webpack.dev.config.js --progress --colors",
+    "development": "webpack --mode=development --config ./webpack/webpack.dev.config.js --progress --colors",
     "watch": "webpack --mode=development --config ./webpack/webpack.watch.config.js --progress --colors",
-    "prod": "webpack --mode=production --config ./webpack/webpack.prod.config.js --progress --colors"
+    "production": "webpack --mode=production --config ./webpack/webpack.prod.config.js --progress --colors"
   },
   "repository": {
     "type": "git",

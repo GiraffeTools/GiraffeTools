@@ -3,14 +3,7 @@
 # Hello there!
 # If you want to use your own environment settings, please copy:
 #   .env.sample --> .env
-# The next block will read your .env
-if [ -f .env ]; then
-    export $(cat .env | grep -v ^# | xargs)
-fi
-if [ -z "$MODE" ]; then
-  export MODE=watch
-fi
-export NODE_ENV=$MODE
+source ./bin/init-environment.bash
 
 # initialise node and django
 ./bin/init-node.bash
