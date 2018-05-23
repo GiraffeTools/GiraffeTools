@@ -18,4 +18,4 @@ install:
   - bash ./bin/init-node.bash;
   - bash ./bin/init-django.bash
 script:
-  - bash ./bin/run-codecov.sh
+  - bash ./bin/run-tests.bash
