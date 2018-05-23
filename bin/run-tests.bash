@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # javascript tests
-cd ..
 npm test
 bash <(curl -s https://codecov.io/bash) -cF javascript
 
