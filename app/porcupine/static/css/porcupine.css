@@ -233,16 +233,45 @@ body {
 .setHead{
   color: black;
   background-color: #F3F3F3;
-  padding: 6%;
+  padding: 1.1em;
+  position: relative;
 }
 
-.setHead > span{
-  padding: 10%;
-  font-size: 22px;
-  color: #455062;
-  position: fixed;
-  top: 1%;
-  right: 1%;
+.sidebar__globe-icon {
+  margin-right: 10px;
+}
+
+.sidebar__node-name {
+  font-size: 1.2em;
+  word-wrap: break-word;
+  padding-top: 20px;
+}
+
+.sidebar__close-icon {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #999;
+}
+
+.sidebar__node-documentation {
+  font-size: 14px;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 10px;
+}
+
+.sidebar__node-visibility {
+  cursor: pointer;
+}
+
+.sidebar__node-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-items: center;
 }
 
 .setHead > h4{
