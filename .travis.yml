@@ -15,8 +15,7 @@ install:
   - pip install -r requirements/test.txt
   - npm install
  before_script:
-  - node ./bin/pivotNodesByCategory.js;
-  - ./bin/init-django.bash
+  - bash ./bin/init-node.bash;
+  - bash ./bin/init-django.bash
 script:
-  - ./bin/run-tests.bash
-  - bash ./../bin/run-codecov.sh
+  - bash ./bin/run-codecov.sh
