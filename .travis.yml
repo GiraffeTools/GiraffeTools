@@ -13,8 +13,9 @@ before_install:
   - source ./bin/init-environment.bash
 install:
   - pip install -r requirements/test.txt
-# before_script:
-  - ./bin/init-node.bash
+  - npm install
+ before_script:
+  - node ./bin/pivotNodesByCategory.js;
   - ./bin/init-django.bash
 script:
   - ./bin/run-tests.bash
