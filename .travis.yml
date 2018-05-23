@@ -19,6 +19,4 @@ install:
   - ./bin/init-django.bash
 script:
   - ./bin/run-tests.bash
-after_success:
-  - pip install codecov
-  - codecov
+  - bash ./../bin/run-codecov.sh
