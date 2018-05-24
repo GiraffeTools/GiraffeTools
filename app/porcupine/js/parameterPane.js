@@ -55,8 +55,10 @@ class ParameterPane extends React.Component {
 
       Object.keys(node.ports).forEach(i => {
         const port = node.ports[i];
-        const visibleIconClassName = port.visible ? 'fa-eye-slash' : 'fa-eye';
+        const visibleIconClassName = port.visible ? 'fa-eye' : 'fa-eye-slash';
         const visibilityText = port.visible ? 'Invisible' : 'Visible';
+        {/*const iteratorClassName = port.iterator ? 'retweet' : 'retweet';*/}
+        {/*const iteratorText = port.iterator ? 'Iterate over this variable' : 'Do not iterate over the variable';*/}
         params.push(
           [
           <Field
@@ -71,8 +73,7 @@ class ParameterPane extends React.Component {
             key={`${port.name}_actions`}
             className="sidebar__node-actions">
             <div className="sidebar__node-visibility" onClick={() => this.changeParams(port.name, 'visible', !port.visible)} >
-              <i className={`fas ${visibleIconClassName}`} />{' '}
-              <span>Make {visibilityText}</span>
+              <i className={`fas ${visibleIconClassName}`} title={`Make ${visibilityText}`} />{' '}
             </div>
             <button
               type="button"
@@ -93,8 +94,8 @@ class ParameterPane extends React.Component {
             </h4>
             <div className="sidebar__node-documentation">
               <a href={node.title.web_url} target="_blank">
-                <span>View documentation</span>{' '}
                 <i className="fas fa-globe sidebar__globe-icon"></i>
+                  <span>View documentation</span>{' '}
               </a>
             </div>
             <i className="fas fa-times sidebar__close-icon"
