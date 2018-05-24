@@ -1,6 +1,9 @@
 {
   "name": "giraffe",
   "version": "1.0.0",
+  "engines": {
+    "npm": "6.1.0"
+  },
   "description": "Graphical Interface for Reproducible Analysis For workFlow Experiments",
   "devDependencies": {
     "babel-core": "^6.26.3",
