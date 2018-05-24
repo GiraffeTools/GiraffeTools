@@ -3,9 +3,7 @@
 <html lang="en">
 <head>
   {% include 'shared/head.html' %}
-  <link rel="stylesheet" type="text/css" href="{% static "css/font.css" %}"/>
-  <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.min.css" %}"/>
-  <link rel="stylesheet" type="text/css" href="{% static "css/porcupine.css" %}"/>
+  {% block head %}{% endblock %}
 </head>
 <body class=index>
   <div class="container-fluid header">

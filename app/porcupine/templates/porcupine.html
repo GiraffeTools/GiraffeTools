@@ -2,6 +2,10 @@
 {% load static %}
 {% load render_bundle from webpack_loader %}
 
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static "css/porcupine.css" %}"/>
+{% endblock %}
+
 {% block body %}
   <div id="porcupine"></div>
 {% endblock %}
