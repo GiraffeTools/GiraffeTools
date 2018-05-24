@@ -7,7 +7,6 @@
   "description": "Graphical Interface for Reproducible Analysis For workFlow Experiments",
   "dependencies": {
     "bootstrap": "^4.1.1",
-    "font-awesome": "^5.0.13",
     "font-proxima-nova": "^1.0.1",
     "jquery": "^3.3.1",
     "jsplumb": "~2.5",
