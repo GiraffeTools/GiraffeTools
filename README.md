@@ -32,17 +32,13 @@ This is similar in usage to for example [GitPitch](https://gitpitch.com), which 
   * Stretch goal: Augmented Reality visualisation (like [this project](https://github.com/TimVanMourik/ChristmasAR)). This should definitely be called ARmadillo
 * [Your input here!]
 
-## General
+## Development
 * This website can locally be deployed with [Docker](https://www.docker.com). You can run this web application locally by installing and running Docker and docker-compose, and simply typing `docker-compose up` in the terminal/command prompt.
+* If you want to customise your settings, specify this in a `.env` file in the root of the project. You can start by renaming the `env.sample`.
+* You can run the site in three different modes, MODE=watch|development|production. Default is `watch`. This automatically updates your browser pages upon saving a file, no refresh needed! In development mode, you can still use debug statement, but there is no 'hot reloading'. The production mode is the way it's gonna be like online. 
 * Join us on [Slack](https://www.giraffe.tools/slack)!
 
-## Development
-Do you want to work on the Porcupine app? Then it's really useful if you can just change a file, such that the React bundle (porcupine.js) is automatically updated. You can do this two different ways. Either, set `UPDATE_REACT=TRUE` in a `.env` file in the root of the project (rename `env.sample`), or run the `bin/watch-react.bash` script.
-Note: on Windows, this doesn't seem to be very reliable yet. You may want to run webpack in --watch mode from the cmd instead.
-
-
-
-## Tests
+## Integration Testing
 To run the Python test suite:
 ```
 cd app
