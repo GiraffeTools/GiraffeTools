@@ -19,6 +19,8 @@ class Node extends React.Component {
         }}
         onClick={(event) => click(event, id)}
         onMouseEnter={(event) => hover(event, id)}
+        data-tip='tooltip'
+        data-for='getContent'
       >
         <div className="node__type">
           {type}
