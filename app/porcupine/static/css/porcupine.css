@@ -488,8 +488,9 @@ body {
   border-radius: 50%;
 }
 
-svg:not(:root) {
+svg, svg:not(:root) {
     overflow: visible;
+    pointer-events: none;
 }
 
 .selected{
