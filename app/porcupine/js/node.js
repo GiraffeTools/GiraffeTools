@@ -39,8 +39,8 @@ class Node extends React.Component {
 
                     return (
                       <li key={index}>
-                        <div className={`node__port ${portClassName}`}>
-                          {port.name}
+                        <div className='node__port'>
+                          {port.name}<span className={portClassName}/>
                         </div>
                       </li>
                     )
