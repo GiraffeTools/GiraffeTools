@@ -26,6 +26,7 @@ class Canvas extends React.Component {
     this.clickOrDraggedNode   = false;
     this.clickNodeEvent       = this.clickNodeEvent.bind(this);
     this.hoverNodeEvent       = this.hoverNodeEvent.bind(this);
+    this.leaveNodeEvent       = this.leaveNodeEvent.bind(this);
     this.clickOrDraggedNode   = false;
     this.hover = 0;
   }
@@ -66,6 +67,11 @@ class Canvas extends React.Component {
     } else if (this.hover === 1) {
       this.hover = 0;
     }
+    event.stopPropagation();
+  }
+
+  leaveNodeEvent(event){
+    this.props.changeHoveredNode(null);
     event.stopPropagation();
   }
 
@@ -163,6 +169,7 @@ class Canvas extends React.Component {
           ports  = {node.ports}
           click  = {this.clickNodeEvent}
           hover  = {this.hoverNodeEvent}
+          leave  = {this.leaveNodeEvent}
         />
       );
     })
