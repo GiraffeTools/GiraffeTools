@@ -66,9 +66,9 @@ Node.propTypes = {
   y:      PropTypes.number.isRequired,
   click:  PropTypes.func.isRequired,
   hover:  PropTypes.func.isRequired,
-  leave:    PropTypes.func.isRequired,
+  leave:  PropTypes.func.isRequired,
   class:  PropTypes.string,
-  ports: PropTypes.array.isRequired
+  ports:  PropTypes.array.isRequired
 }
 
 export default Node;
