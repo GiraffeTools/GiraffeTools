@@ -20,7 +20,7 @@ class Tooltip extends React.Component {
             <TooltipData
               id={port.name}
               key={port.name}
-              data={{ name: port.name, type: 'text', label: port.name }}
+              data={{ name: port.name, type: port.type }}
               value={port.value}
               disabled={false}
               changeField={this.changeParams}
