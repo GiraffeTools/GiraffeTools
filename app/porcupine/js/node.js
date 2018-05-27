@@ -18,6 +18,7 @@ class Node extends React.Component {
           background: colour
         }}
         onClick={(event) => click(event, id)}
+        onTouchEnd={(event) => click(event, id)}
         onMouseEnter={(event) => hover(event, id)}
         onMouseLeave={(event) => leave(event)}
         data-tip='tooltip'
