@@ -214,9 +214,9 @@ Canvas.propTypes = {
   addNewNode:           PropTypes.func.isRequired,
   changeSelectedNode:   PropTypes.func.isRequired,
   changeHoveredNode:    PropTypes.func.isRequired,
-	connectDropTarget: 		PropTypes.func.isRequired,
-	isOver: 							PropTypes.bool.isRequired,
-	canDrop: 							PropTypes.bool.isRequired,
+  connectDropTarget:    PropTypes.func.isRequired,
+  isOver: 		PropTypes.bool.isRequired,
+  canDrop: 		PropTypes.bool.isRequired,
 };
 
 export default DropTarget(ItemTypes.BOX, boxTarget, (connect, monitor) => ({
