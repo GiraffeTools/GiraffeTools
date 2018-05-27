@@ -491,6 +491,9 @@ body {
 svg, svg:not(:root) {
     overflow: visible;
     pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .selected{

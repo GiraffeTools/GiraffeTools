@@ -50,7 +50,7 @@ class Canvas extends React.Component {
   }
 
   clickNodeEvent(event, nodeId) {
-    if (this.clickOrDraggedNode === false) {
+    if (this.clickOrDraggedNode === false && event.target.classList[0]!=="node__port--input") {
       this.props.changeSelectedNode(nodeId);
     } else if (this.clickOrDraggedNode === true) {
       this.clickOrDraggedNode = false;
