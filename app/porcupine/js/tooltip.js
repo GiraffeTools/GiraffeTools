@@ -11,10 +11,11 @@ class Tooltip extends React.Component {
     render() {
         if (this.props.hoveredNode && this.props.hoveredNode in this.props.net) {
           const params = [];
-          const node = this.props.net[this.props.hoveredNode];
+          let nodePorts = this.props.net[this.props.hoveredNode].ports;
+          if (nodePorts.length > 10){ nodePorts = nodePorts.filter(port => port.value)}
 
-          Object.keys(node.ports).forEach(i => {
-            const port = node.ports[i];
+          Object.keys(nodePorts).forEach(i => {
+            const port = nodePorts[i];
             params.push(
             <TooltipData
               id={port.name}
