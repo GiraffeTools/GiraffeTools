@@ -8,6 +8,7 @@ import Canvas from './canvas';
 import nodes from '../static/assets/nipype.json';
 import ParameterPane from './parameterPane';
 import zoomFunctions from './zoomFunctions';
+import Tooltip from './tooltip';
 import $ from 'jquery';
 
 require('browsernizr/test/touchevents');
@@ -31,6 +32,7 @@ class Content extends React.Component {
     this.loadFromJson       = this.loadFromJson.bind(this);
     this.modifyNodeParams   = this.modifyNodeParams.bind(this);
     this.deleteNode         = this.deleteNode.bind(this);
+    this.changeHoveredNode = this.changeHoveredNode.bind(this);
 
   }; //end constructor
 
@@ -62,6 +64,20 @@ class Content extends React.Component {
     this.setState({
       net,
       selectedNode: nodeId
+    });
+  }
+
+  changeHoveredNode(nodeId) {
+    const net = this.state.net;
+    if (this.state.hoveredNode && this.state.hoveredNode in net) {
+      net[this.state.hoveredNode].info.class = '';
+    }
+    if (nodeId) {
+      net[nodeId].info.class = 'hover';
+    }
+    this.setState({ 
+      net,
+      hoveredNode: nodeId
     });
   }
 
@@ -138,6 +154,7 @@ class Content extends React.Component {
             nextNodeId          = {this.state.nextNodeId}
             addNewNode          = {this.addNewNode}
             changeSelectedNode  = {this.changeSelectedNode}
+            changeHoveredNode   = {this.changeHoveredNode}
           />
           <ParameterPane
             net                 = {this.state.net}
@@ -146,7 +163,11 @@ class Content extends React.Component {
             modifyNode          = {this.modifyNodeParams}
             changeSelectedNode  = {this.changeSelectedNode}
           />
-          {/* Tooltip */}
+          <Tooltip
+            id={'tooltip_text'}
+            net={this.state.net}
+            hoveredNode={this.state.hoveredNode}
+          />
           {/* Modal */}
         </div>
         { Modernizr.touchevents && <ItemPreview key="__preview" name="Item" /> }

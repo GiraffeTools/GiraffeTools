@@ -7,7 +7,7 @@ class Node extends React.Component {
   }
 
   render() {
-    const { x, y, colour, class: classname, id, type, click, ports } = this.props;
+    const { x, y, colour, class: classname, id, type, click, ports, hover, leave } = this.props;
     const visiblePorts = ports.filter(port => port.visible);
     return (
       <div
@@ -19,6 +19,10 @@ class Node extends React.Component {
         }}
         onClick={(event) => click(event, id)}
         onTouchEnd={(event) => click(event, id)}
+        onMouseEnter={(event) => hover(event, id)}
+        onMouseLeave={(event) => leave(event)}
+        data-tip='tooltip'
+        data-for='getContent'
       >
         <div className="node__type">
           {type}
@@ -61,8 +65,10 @@ Node.propTypes = {
   x:      PropTypes.number.isRequired,
   y:      PropTypes.number.isRequired,
   click:  PropTypes.func.isRequired,
+  hover:  PropTypes.func.isRequired,
+  leave:  PropTypes.func.isRequired,
   class:  PropTypes.string,
-  ports: PropTypes.array.isRequired
+  ports:  PropTypes.array.isRequired
 }
 
 export default Node;
