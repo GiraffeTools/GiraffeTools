@@ -1,3 +1,4 @@
+{% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +11,13 @@
   <link rel="stylesheet" type="text/css" href="/static/css/styleCCVF.css"/>
 </head>
 <body>
-  <div id="porcupine"></div>
+  <div id="fabrik"></div>
   <a href="#" id="download" style="display:none;"> Download </a>
 </body>
 <script>var instance;</script>
+<script>var jsonFile = "";</script>
 <script src="/static/lib/jquery-2.2.4.min.js"></script>
 <script src="/static/lib/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
 <script src="/static/lib/jsPlumb-2.1.2.min.js"></script>
-<script src="/static/js/fabrik.js"></script>
+{% render_bundle 'fabrik' 'js' 'FABRIK' %}
 </html>
