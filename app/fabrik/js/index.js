@@ -8,5 +8,5 @@ import App from './app.js';
 render(
   <BrowserRouter>
     <Route path="/" component={App} />
-  </BrowserRouter>, document.getElementById('porcupine')
+  </BrowserRouter>, document.getElementById('fabrik')
 );
