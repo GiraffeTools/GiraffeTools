@@ -2,6 +2,7 @@
   "name": "giraffe",
   "version": "1.0.0",
   "engines": {
+    "node": "9.8.0",
     "npm": "6.1.0"
   },
   "description": "Graphical Interface for Reproducible Analysis For workFlow Experiments",
@@ -9,7 +10,7 @@
     "bootstrap": "^4.1.1",
     "font-proxima-nova": "^1.0.1",
     "jquery": "^3.3.1",
-    "jsplumb": "~2.5",
+    "jsplumb": "^2.7.3",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.3"
   },

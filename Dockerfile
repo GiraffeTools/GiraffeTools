@@ -4,10 +4,11 @@ RUN mkdir /code /code/requirements
 WORKDIR /code
 
 #Install Node.js
-RUN curl -sSLO https://deb.nodesource.com/setup_8.x && \
-    bash setup_8.x && \
+RUN curl -sSLO https://deb.nodesource.com/setup_9.x && \
+    bash setup_9.x && \
     apt-get install nodejs && \
-    rm setup_8.x
+    rm setup_9.x && \
+    npm -g install npm@6.1.0
 
 # Install Python dependencies
 ADD requirements.txt /code/
