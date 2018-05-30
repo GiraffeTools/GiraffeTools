@@ -28,8 +28,13 @@ module.exports = {
       Popper: ["popper.js", "default"]
     })
   ],
+
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      },
       {
         test: /\.(js|jsx)$/, // Transforms JSX and JS
         exclude: /node_modules/,
