@@ -3,7 +3,7 @@ import React from 'react';
 import { DropTarget } from 'react-dnd'
 import ItemTypes from './itemTypes'
 import Node from './node'
-import jsPlumbReady from './jsPlumbReady';
+// import jsPlumbReady from './jsPlumbReady';
 import zoomFunctions from './zoomFunctions';
 import nodes from '../static/assets/nipype.json';
 // import { getNodesByCategory } from './utilityFunctions'
@@ -32,19 +32,19 @@ class Canvas extends React.Component {
 
   componentDidMount() {
     this.placeholder = false;
-    instance = jsPlumbReady();
+    // instance = jsPlumbReady();
     this.mouseState = zoomFunctions();
   }
 
   componentDidUpdate() {
     this.placeholder = false;
-    let a = jsPlumb.getSelector('.node');
-    instance.draggable(a,
-      {
-        drag: this.updateNodePosition.bind(this),
-        grid: [8, 8]
-      }
-    );
+    // let a = jsPlumb.getSelector('.node');
+    // instance.draggable(a,
+    //   {
+    //     drag: this.updateNodePosition.bind(this),
+    //     grid: [8, 8]
+    //   }
+    // );
   }
 
   allowDrop(event) {
@@ -85,15 +85,15 @@ class Canvas extends React.Component {
     this.placeholder = false;
 		const rec = document.getElementById('zoomContainer').getBoundingClientRect();
     const canvas = document.getElementById('jsplumbContainer');
-    const zoom = instance.getZoom();
+    // const zoom = instance.getZoom();
+    const zoom = 1;
     let category = item.element_type;
     let name = category.splice(-1)[0];
     let currentNodes = nodes;
     category.forEach(function (c) {
       currentNodes = currentNodes['categories'][c];
     })
-    const node = {};
-    Object.assign(node, currentNodes.nodes[name]);
+    const node = $.extend(true, {}, currentNodes.nodes[name]);
 
     node.colour = currentNodes.colour;
     node.info = { category, name };
