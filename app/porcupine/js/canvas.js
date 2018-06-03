@@ -28,6 +28,7 @@ class Canvas extends React.Component {
     this.hoverNodeEvent       = this.hoverNodeEvent.bind(this);
     this.leaveNodeEvent       = this.leaveNodeEvent.bind(this);
     this.clickOrDraggedNode   = false;
+    this.updateNodePosition   = this.updateNodePosition.bind(this);
   }
 
   componentDidMount() {
@@ -70,14 +71,13 @@ class Canvas extends React.Component {
     event.stopPropagation();
   }
 
-  updateNodePosition(event) {
+  updateNodePosition(nodeId, offset) {
     if (!this.clickOrDraggedNode) {
       this.clickOrDraggedNode = true;
     }
-    const nodeId = event.el.id;
-    const node = this.props.net[node];
-    node.state.left = `${event.pos['0']}px`;
-    node.state.top = `${event.pos['1']}px`;
+    const node = this.props.net[nodeId];
+    node.state.x += offset.x;
+    node.state.y += offset.y;
     this.props.modifyNode(node, nodeId);
   }
 
@@ -165,6 +165,7 @@ class Canvas extends React.Component {
           click  = {this.clickNodeEvent}
           hover  = {this.hoverNodeEvent}
           leave  = {this.leaveNodeEvent}
+          draged = {this.updateNodePosition}
         />
       );
     })
@@ -219,7 +220,7 @@ Canvas.propTypes = {
   canDrop: 		PropTypes.bool.isRequired,
 };
 
-export default DropTarget(ItemTypes.BOX, boxTarget, (connect, monitor) => ({
+export default DropTarget(ItemTypes.PaneElement, boxTarget, (connect, monitor) => ({
 	connectDropTarget: connect.dropTarget(),
 	isOver: monitor.isOver(),
 	canDrop: monitor.canDrop(),

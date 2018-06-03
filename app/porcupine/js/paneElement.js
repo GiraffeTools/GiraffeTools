@@ -58,7 +58,7 @@ PaneElement.propTypes = {
   isDragging: PropTypes.bool.isRequired,
 }
 
-export default DragSource(ItemTypes.BOX, boxSource, (connect, monitor) => ({
+export default DragSource(ItemTypes.PaneElement, boxSource, (connect, monitor) => ({
 	connectDragSource: connect.dragSource(),
   connectDragPreview: connect.dragPreview(),
 	isDragging: monitor.isDragging(),

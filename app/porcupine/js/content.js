@@ -31,6 +31,7 @@ class Content extends React.Component {
     this.toggleSidebar      = this.toggleSidebar.bind(this);
     this.loadFromJson       = this.loadFromJson.bind(this);
     this.modifyNodeParams   = this.modifyNodeParams.bind(this);
+    this.modifyNodePos   = this.modifyNodePos.bind(this);
     this.deleteNode         = this.deleteNode.bind(this);
     this.changeHoveredNode = this.changeHoveredNode.bind(this);
 
@@ -132,6 +133,11 @@ class Content extends React.Component {
     net[nodeId] = node;
     this.setState({ net });
   }
+  modifyNodePos(node, nodeId = this.state.selectedNode) {
+    const net = this.state.net;
+    net[nodeId] = node;
+    this.setState({ net });
+  }
 
   deleteNode(nodeId) {
     const net = this.state.net;
@@ -155,6 +161,7 @@ class Content extends React.Component {
             addNewNode          = {this.addNewNode}
             changeSelectedNode  = {this.changeSelectedNode}
             changeHoveredNode   = {this.changeHoveredNode}
+            modifyNode          = {this.modifyNodePos}
           />
           <ParameterPane
             net                 = {this.state.net}

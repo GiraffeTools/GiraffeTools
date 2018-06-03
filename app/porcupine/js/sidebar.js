@@ -16,7 +16,6 @@ class Sidebar extends React.Component {
         />
       )
     })
-
     return (
       <div id="sidebar">
         <div id="logo_sidebar">

@@ -1,3 +1,4 @@
 export default {
-	BOX: 'box',
+	PaneElement: 'paneElement',
+	Node: 'node'
 }

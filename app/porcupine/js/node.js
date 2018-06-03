@@ -1,5 +1,24 @@
 import PropTypes from 'prop-types';
 import React from 'react'
+import { DragSource } from 'react-dnd'
+import ItemTypes from './itemTypes'
+
+const boxSource = {
+  beginDrag(props) {
+    return {
+      key: props.id,
+      type: props.type
+    }
+  },
+  endDrag(props, monitor) {
+   const item = monitor.getItem()
+   // const dropResult = monitor.getDropResult()
+   const offset = monitor.getDifferenceFromInitialOffset()
+   if (item) {
+    props.draged(item.key, offset)
+   }
+  },
+}
 
 class Node extends React.Component {
   constructor(props) {
@@ -56,9 +75,9 @@ class Node extends React.Component {
     })
   }
   render() {
-    const { x, y, colour, class: classname, id, type, click, ports, hover, leave } = this.props;
+    const { x, y, colour, classname, id, type, click, ports, hover, leave, isDragging, connectDragSource, connectDragPreview } = this.props;
     const visiblePorts = ports.filter(port => port.visible);
-    return (
+    let content = (
       <div
         className={`node ${classname}`}
         style={{
@@ -106,6 +125,12 @@ class Node extends React.Component {
         </div>
       </div>
     )
+
+    content = connectDragSource(content)
+
+    content = connectDragPreview(content)
+
+    return content;
   }
 }
 
@@ -118,7 +143,15 @@ Node.propTypes = {
   hover:  PropTypes.func.isRequired,
   leave:  PropTypes.func.isRequired,
   class:  PropTypes.string,
-  ports:  PropTypes.array.isRequired
+  ports:  PropTypes.array.isRequired,
+  connectDragSource: PropTypes.func.isRequired,
+  connectDragPreview: PropTypes.func.isRequired,
+  isDragging: PropTypes.bool.isRequired,
 }
 
-export default Node;
+export default DragSource(ItemTypes.Node, boxSource, (connect, monitor) => ({
+  connectDragSource: connect.dragSource(),
+  connectDragPreview: connect.dragPreview(),
+  isDragging: monitor.isDragging(),
+}))(Node)
+
