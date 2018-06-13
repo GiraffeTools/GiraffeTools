@@ -34,10 +34,8 @@ class Node extends React.Component {
   connect(el) {
     $(el).off('click')
     const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    const l = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    l.setAttribute("x1", "4");
-    l.setAttribute("y1", "4");
-    l.setAttribute("stroke", "black");
+    const l = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    // l.setAttribute('d', 'M4 4 C ')
     el.appendChild(s);
     s.appendChild(l);
     const xi=s.getClientRects()[0].x
@@ -51,8 +49,11 @@ class Node extends React.Component {
         ({x,y}=e.target.getClientRects()[0])
         x=x-xi+4
         y=y-yi+4
-        l.setAttribute("x2", x);
-        l.setAttribute("y2", y);
+        if (x>0) {
+          l.setAttribute("d", 'M4 4 C '+x/2+' 4, '+x/2+' '+y+', '+x+' '+y);  
+        } else {
+          l.setAttribute("d", 'M4 4 C '+(-x/2)+' '+y/2+', '+(3*x/2)+' '+y/2+', '+x+' '+y);
+        }
         $(el).on('click', (e)=>{
           e.stopPropagation()
           that.connect(el)
@@ -70,8 +71,11 @@ class Node extends React.Component {
     $('#zoomContainer').on('mousemove', function(e) {
       const x=e.pageX-xi
       const y=e.pageY-yi
-      l.setAttribute("x2", x);
-      l.setAttribute("y2", y);
+      if (x>0) {
+        l.setAttribute("d", 'M4 4 C '+x/2+' 4, '+x/2+' '+y+', '+x+' '+y);  
+      } else {
+        l.setAttribute("d", 'M4 4 C '+(-x/2)+' '+y/2+', '+(3*x/2)+' '+y/2+', '+x+' '+y);
+      }
     })
   }
   render() {
@@ -104,9 +108,9 @@ class Node extends React.Component {
                   visiblePorts.map((port, index) => {
                     let portElement = '';
                     if (port.input) {
-                      portElement = <span  className='node__port--input'/>
+                      portElement = <span  className='node__port--input' id={port.inputPort}/>
                     } else if (port.output) {
-                      portElement = <span onClick={(event) => this.connectPort(event)} className='node__port--output'/>
+                      portElement = <span onClick={(event) => this.connectPort(event)} className='node__port--output' id={port.outputPort}/>
                     }
 
                     return (

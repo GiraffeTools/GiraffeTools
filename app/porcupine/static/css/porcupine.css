@@ -495,6 +495,10 @@ svg, svg:not(:root) {
     top: 0;
     left: 0;
 }
+path {
+    stroke: black;
+    fill: transparent;
+}
 
 .selected{
   box-shadow: 0px 0px 30px #aaa;
