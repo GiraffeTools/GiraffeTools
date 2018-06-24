@@ -6,6 +6,7 @@ services:
     image: timvanmourik/giraffe-tools
     volumes:
       - .:/code
+      - /tmp/.X11-unix:/tmp/.X11-unix # for GUI application
     command: bash bin/docker-command.bash
     ports:
       - "8000:8000"   # application server
