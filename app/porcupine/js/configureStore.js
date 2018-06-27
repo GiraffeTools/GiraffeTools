@@ -9,11 +9,16 @@ const configureStore = () => {
     porcupineApp,
     persistedState
   );
-  store.subscribe(throttle(() => {
+  store.subscribe(() => {
     saveState(
       store.getState()
     );
-  }, 1000));
+  });
+  // store.subscribe(throttle(() => {
+  //   saveState(
+  //     store.getState()
+  //   );
+  // }, 1000));
 
   return store;
 };
