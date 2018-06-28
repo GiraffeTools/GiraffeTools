@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { DragDropContextProvider } from 'react-dnd'
 import TouchBackend from 'react-dnd-touch-backend'
 import HTML5Backend from 'react-dnd-html5-backend'
+import { connect } from 'react-redux';
 import { default as ItemPreview } from './itemPreview';
 import Sidebar from './sidebar';
 import Canvas from './canvas';
@@ -28,7 +30,7 @@ class Content extends React.Component {
 
     this.addNewNode         = this.addNewNode.bind(this);
     this.changeSelectedNode = this.changeSelectedNode.bind(this);
-    this.toggleSidebar      = this.toggleSidebar.bind(this);
+    // this.toggleSidebar      = this.toggleSidebar.bind(this);
     this.loadFromJson       = this.loadFromJson.bind(this);
     this.modifyNodeParams   = this.modifyNodeParams.bind(this);
     this.deleteNode         = this.deleteNode.bind(this);
@@ -40,6 +42,17 @@ class Content extends React.Component {
     $.getJSON(jsonFile, function(result) {
       this.loadFromJson(result);
     }.bind(this));
+  }
+
+  componentDidMount() {
+    const { store } = this.context;
+    this.unsubscribe = store.subscribe(() =>
+      this.forceUpdate()
+    );
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
   }
 
   addNewNode(node) {
@@ -75,17 +88,10 @@ class Content extends React.Component {
     if (nodeId) {
       net[nodeId].info.class = 'hover';
     }
-    this.setState({ 
+    this.setState({
       net,
       hoveredNode: nodeId
     });
-  }
-
-  toggleSidebar() {
-    $('#sidebar').toggleClass('visible');
-    $('.sidebar-button').toggleClass('close');
-    $('.header').toggleClass('navbar-open');
-    $('#main').toggleClass('withSidebar');
   }
 
   loadFromJson(json) {
@@ -142,11 +148,40 @@ class Content extends React.Component {
     });
   }
 
+  // const mapStateToProps = (state) => {
+  //   return {
+  //
+  //   };
+  // };
+  // const mapDispatchToProps = (dispatch) => {
+  //   return {
+  //     onClick: () => {
+  //       dispatch({
+  //         type: 'TOGGLE_SIDEBAR'
+  //       })
+  //     }
+  //   };
+  // };
+  // const Content = connect(
+  //   mapStateToProps,
+  //   mapDispatchToProps
+  // ) (Sidebar)
+  //
+
+
   render() {
+    const { store } = this.context;
+    const toggleSidebar = () => {
+      $('#sidebar').toggleClass('visible');
+      $('.sidebar-button').toggleClass('close');
+      $('.header').toggleClass('navbar-open');
+      $('#main').toggleClass('withSidebar');
+    };
+
     return (
     <DragDropContextProvider backend={ Modernizr.touchevents ? TouchBackend : HTML5Backend }>
       <div id="parent">
-        <a className="sidebar-button" onClick={this.toggleSidebar}></a>
+        <a className="sidebar-button" onClick={() => dispatch(toggleSidebar())}></a>
         <Sidebar/>
         <div id="main">
           <Canvas
@@ -176,5 +211,8 @@ class Content extends React.Component {
     );
   }
 }
+Content.contextTypes = {
+  store: PropTypes.object
+};
 
 export default Content;

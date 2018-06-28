@@ -1,8 +1,8 @@
-export default function nodes(state = [], action) {
+export default function scene(state = [], action) {
   switch (action.type) {
-    case 'ADD_NODE':
+    case 'ZOOM_IN':
       return state;
-    case 'REMOVE_NODE':
+    case 'ZOOM_OUT':
       return state;
     default:
       return state;
