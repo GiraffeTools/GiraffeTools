@@ -4,8 +4,10 @@ import { DragDropContextProvider } from 'react-dnd'
 import TouchBackend from 'react-dnd-touch-backend'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { connect } from 'react-redux';
+
 import { default as ItemPreview } from './itemPreview';
-import Sidebar from './sidebar';
+import SidebarContainer from './sidebar';
+import SidebarButton from './sidebarButton';
 import Canvas from './canvas';
 import nodes from '../static/assets/nipype.json';
 import ParameterPane from './parameterPane';
@@ -17,6 +19,19 @@ require('browsernizr/test/touchevents');
 var Modernizr = require('browsernizr');
 
 
+function reducer (state = {}, action) {
+  switch (action.type) {
+    case 'TOGGLE_SIDEBAR':
+      return toggleMenu(state);
+  }
+  return state;
+}
+
+const onToggleSidebar = () => {
+  store.dispatch({
+    type: 'TOGGLE_SIDEBAR'
+  })
+}
 
 class Content extends React.Component {
   constructor(props) {
@@ -148,66 +163,45 @@ class Content extends React.Component {
     });
   }
 
-  // const mapStateToProps = (state) => {
-  //   return {
-  //
-  //   };
-  // };
-  // const mapDispatchToProps = (dispatch) => {
-  //   return {
-  //     onClick: () => {
-  //       dispatch({
-  //         type: 'TOGGLE_SIDEBAR'
-  //       })
-  //     }
-  //   };
-  // };
-  // const Content = connect(
-  //   mapStateToProps,
-  //   mapDispatchToProps
-  // ) (Sidebar)
-  //
-
-
   render() {
     const { store } = this.context;
     const toggleSidebar = () => {
-      $('#sidebar').toggleClass('visible');
-      $('.sidebar-button').toggleClass('close');
+      // $('#sidebar').toggleClass('visible');
+      // $('.sidebar-button').toggleClass('close');
       $('.header').toggleClass('navbar-open');
       $('#main').toggleClass('withSidebar');
     };
 
     return (
-    <DragDropContextProvider backend={ Modernizr.touchevents ? TouchBackend : HTML5Backend }>
-      <div id="parent">
-        <a className="sidebar-button" onClick={() => dispatch(toggleSidebar())}></a>
-        <Sidebar/>
-        <div id="main">
-          <Canvas
-            net                 = {this.state.net}
-            nextNodeId          = {this.state.nextNodeId}
-            addNewNode          = {this.addNewNode}
-            changeSelectedNode  = {this.changeSelectedNode}
-            changeHoveredNode   = {this.changeHoveredNode}
-          />
-          <ParameterPane
-            net                 = {this.state.net}
-            selectedNode        = {this.state.selectedNode}
-            deleteNode          = {this.deleteNode}
-            modifyNode          = {this.modifyNodeParams}
-            changeSelectedNode  = {this.changeSelectedNode}
-          />
-          <Tooltip
-            id={'tooltip_text'}
-            net={this.state.net}
-            hoveredNode={this.state.hoveredNode}
-          />
-          {/* Modal */}
+      <DragDropContextProvider backend={ Modernizr.touchevents ? TouchBackend : HTML5Backend }>
+        <div id="parent">
+          <SidebarButton onClick={onToggleSidebar} />
+          <SidebarContainer />
+          <div id="main">
+            <Canvas
+              net                 = {this.state.net}
+              nextNodeId          = {this.state.nextNodeId}
+              addNewNode          = {this.addNewNode}
+              changeSelectedNode  = {this.changeSelectedNode}
+              changeHoveredNode   = {this.changeHoveredNode}
+            />
+            <ParameterPane
+              net                 = {this.state.net}
+              selectedNode        = {this.state.selectedNode}
+              deleteNode          = {this.deleteNode}
+              modifyNode          = {this.modifyNodeParams}
+              changeSelectedNode  = {this.changeSelectedNode}
+            />
+            <Tooltip
+              id={'tooltip_text'}
+              net={this.state.net}
+              hoveredNode={this.state.hoveredNode}
+            />
+            {/* Modal */}
+          </div>
+          { Modernizr.touchevents && <ItemPreview key="__preview" name="Item" /> }
         </div>
-        { Modernizr.touchevents && <ItemPreview key="__preview" name="Item" /> }
-      </div>
-    </DragDropContextProvider>
+      </DragDropContextProvider>
     );
   }
 }
