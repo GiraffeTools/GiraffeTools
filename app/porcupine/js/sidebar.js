@@ -25,11 +25,6 @@ const mapStateToProps = (state) => {
 
   };
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    showSidebar: state.showSidebar
-  };
-};
 
 const Sidebar = ({showSidebar}) => {
   return (

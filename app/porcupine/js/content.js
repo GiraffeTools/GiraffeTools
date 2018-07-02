@@ -27,11 +27,6 @@ function reducer (state = {}, action) {
   return state;
 }
 
-const onToggleSidebar = () => {
-  store.dispatch({
-    type: 'TOGGLE_SIDEBAR'
-  })
-}
 
 class Content extends React.Component {
   constructor(props) {
@@ -163,8 +158,16 @@ class Content extends React.Component {
     });
   }
 
+
   render() {
     const { store } = this.context;
+
+    const onToggleSidebar = () => {
+      store.dispatch({
+        type: 'TOGGLE_SIDEBAR'
+      })
+    };
+
     const toggleSidebar = () => {
       // $('#sidebar').toggleClass('visible');
       // $('.sidebar-button').toggleClass('close');

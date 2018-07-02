@@ -1,13 +1,17 @@
 import React from 'react';
 
 
-
+const mapStateToProps = (state) => {
+  return {
+    showSidebar: state.showSidebar
+  };
+};
 
 const SidebarButton = ({
-  active,
+  showSidebar,
   onClick
 }) => {
-  if (active) {
+  if (showSidebar) {
     return (
       <a className="sidebar-button" onClick={e => {
         e.preventDefault();
@@ -18,7 +22,7 @@ const SidebarButton = ({
   }
   else {
     return (
-      <a className="sidebar-button close" onClick={e => {
+      <a className="sidebar-button" onClick={e => {
         e.preventDefault();
         onClick();
       }}>
