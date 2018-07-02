@@ -1,13 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { DragDropContextProvider } from 'react-dnd'
 import TouchBackend from 'react-dnd-touch-backend'
 import HTML5Backend from 'react-dnd-html5-backend'
-import { connect } from 'react-redux';
-
 import { default as ItemPreview } from './itemPreview';
-import SidebarContainer from './sidebar';
-import SidebarButton from './sidebarButton';
+import Sidebar from './sidebar';
 import Canvas from './canvas';
 import nodes from '../static/assets/nipype.json';
 import ParameterPane from './parameterPane';
@@ -18,14 +14,6 @@ import $ from 'jquery';
 require('browsernizr/test/touchevents');
 var Modernizr = require('browsernizr');
 
-
-function reducer (state = {}, action) {
-  switch (action.type) {
-    case 'TOGGLE_SIDEBAR':
-      return toggleMenu(state);
-  }
-  return state;
-}
 
 
 class Content extends React.Component {
@@ -40,7 +28,7 @@ class Content extends React.Component {
 
     this.addNewNode         = this.addNewNode.bind(this);
     this.changeSelectedNode = this.changeSelectedNode.bind(this);
-    // this.toggleSidebar      = this.toggleSidebar.bind(this);
+    this.toggleSidebar      = this.toggleSidebar.bind(this);
     this.loadFromJson       = this.loadFromJson.bind(this);
     this.modifyNodeParams   = this.modifyNodeParams.bind(this);
     this.deleteNode         = this.deleteNode.bind(this);
@@ -52,17 +40,6 @@ class Content extends React.Component {
     $.getJSON(jsonFile, function(result) {
       this.loadFromJson(result);
     }.bind(this));
-  }
-
-  componentDidMount() {
-    const { store } = this.context;
-    this.unsubscribe = store.subscribe(() =>
-      this.forceUpdate()
-    );
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
   }
 
   addNewNode(node) {
@@ -102,6 +79,13 @@ class Content extends React.Component {
       net,
       hoveredNode: nodeId
     });
+  }
+
+  toggleSidebar() {
+    $('#sidebar').toggleClass('visible');
+    $('.sidebar-button').toggleClass('close');
+    $('.header').toggleClass('navbar-open');
+    $('#main').toggleClass('withSidebar');
   }
 
   loadFromJson(json) {
@@ -158,58 +142,39 @@ class Content extends React.Component {
     });
   }
 
-
   render() {
-    const { store } = this.context;
-
-    const onToggleSidebar = () => {
-      store.dispatch({
-        type: 'TOGGLE_SIDEBAR'
-      })
-    };
-
-    const toggleSidebar = () => {
-      // $('#sidebar').toggleClass('visible');
-      // $('.sidebar-button').toggleClass('close');
-      $('.header').toggleClass('navbar-open');
-      $('#main').toggleClass('withSidebar');
-    };
-
     return (
-      <DragDropContextProvider backend={ Modernizr.touchevents ? TouchBackend : HTML5Backend }>
-        <div id="parent">
-          <SidebarButton onClick={onToggleSidebar} />
-          <SidebarContainer />
-          <div id="main">
-            <Canvas
-              net                 = {this.state.net}
-              nextNodeId          = {this.state.nextNodeId}
-              addNewNode          = {this.addNewNode}
-              changeSelectedNode  = {this.changeSelectedNode}
-              changeHoveredNode   = {this.changeHoveredNode}
-            />
-            <ParameterPane
-              net                 = {this.state.net}
-              selectedNode        = {this.state.selectedNode}
-              deleteNode          = {this.deleteNode}
-              modifyNode          = {this.modifyNodeParams}
-              changeSelectedNode  = {this.changeSelectedNode}
-            />
-            <Tooltip
-              id={'tooltip_text'}
-              net={this.state.net}
-              hoveredNode={this.state.hoveredNode}
-            />
-            {/* Modal */}
-          </div>
-          { Modernizr.touchevents && <ItemPreview key="__preview" name="Item" /> }
+    <DragDropContextProvider backend={ Modernizr.touchevents ? TouchBackend : HTML5Backend }>
+      <div id="parent">
+        <a className="sidebar-button" onClick={this.toggleSidebar}></a>
+        <Sidebar/>
+        <div id="main">
+          <Canvas
+            net                 = {this.state.net}
+            nextNodeId          = {this.state.nextNodeId}
+            addNewNode          = {this.addNewNode}
+            changeSelectedNode  = {this.changeSelectedNode}
+            changeHoveredNode   = {this.changeHoveredNode}
+          />
+          <ParameterPane
+            net                 = {this.state.net}
+            selectedNode        = {this.state.selectedNode}
+            deleteNode          = {this.deleteNode}
+            modifyNode          = {this.modifyNodeParams}
+            changeSelectedNode  = {this.changeSelectedNode}
+          />
+          <Tooltip
+            id={'tooltip_text'}
+            net={this.state.net}
+            hoveredNode={this.state.hoveredNode}
+          />
+          {/* Modal */}
         </div>
-      </DragDropContextProvider>
+        { Modernizr.touchevents && <ItemPreview key="__preview" name="Item" /> }
+      </div>
+    </DragDropContextProvider>
     );
   }
 }
-Content.contextTypes = {
-  store: PropTypes.object
-};
 
 export default Content;
