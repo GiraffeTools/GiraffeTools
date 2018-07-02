@@ -1,10 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom'
-import App from './app.js';
+import configureStore from './configureStore';
+import Root from './root.js';
+
+const store = configureStore();
 
 render(
-  <BrowserRouter>
-    <Route path="/" component={App} />
-  </BrowserRouter>, document.getElementById('porcupine')
+  <Root store={store} />,
+  document.getElementById('porcupine')
 );

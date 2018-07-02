@@ -75,7 +75,7 @@ class Content extends React.Component {
     if (nodeId) {
       net[nodeId].info.class = 'hover';
     }
-    this.setState({ 
+    this.setState({
       net,
       hoveredNode: nodeId
     });

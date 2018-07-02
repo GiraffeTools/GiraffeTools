@@ -30,6 +30,16 @@ module.exports = {
       }),
   ],
   module: {
-    rules: []
+  rules: [
+    {
+      test: /\.(js|jsx)$/, // Transforms JSX and JS
+      exclude: /node_modules/,
+      use: {
+        loader: "babel-loader",
+        query: {
+          "presets": [ 'es2015', 'react', 'stage-2' ]
+        }
+      }
+    }]
   }
 };
