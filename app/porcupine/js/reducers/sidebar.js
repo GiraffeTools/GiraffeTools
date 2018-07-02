@@ -1,4 +1,4 @@
-export default function sidebar(state = [], action) {
+export default function sidebar(state = 'TOGGLE_SIDEBAR', action) {
   switch (action.type) {
     case 'TOGGLE_SIDEBAR':
       return toggleSidebar(state);

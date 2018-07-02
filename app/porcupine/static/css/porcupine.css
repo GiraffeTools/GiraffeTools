@@ -164,6 +164,7 @@ body {
 }
 
 #logo_sidebar{
+  text-align: center;
   width: 100%;
   margin: 0px;
   background-color: #e8d210;
