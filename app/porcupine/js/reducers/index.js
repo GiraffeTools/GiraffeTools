@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
-import nodes from './reducers/nodes.js';
-import sidebar from './reducers/sidebar.js';
-import parameters from './reducers/parameters.js';
+import nodes from './nodes.js';
+import sidebar from './sidebar.js';
+import parameters from './parameters.js';
 
 const porcupineApp = combineReducers({
   nodes,

@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 import { throttle } from 'lodash/throttle';
 import { loadState, saveState } from './localStorage';
-import porcupineApp from './reducers.js';
+import porcupineApp from './reducers/index.js';
 
 const configureStore = () => {
   const persistedState = loadState();

@@ -1,15 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import PaneGroup from './paneGroup';
-import nodes from '../static/assets/nipype.json';
+import { toggleSidebar } from '../actions';
+import PaneGroup from '../paneGroup';
+import nodes from '../../static/assets/nipype.json';
 
 
-function mapStateToProps(state) {
-  return {
-    showSidebar: state.showSidebar
-  };
-}
+const mapStateToProps = state => ({
+  showSidebar: state.sidebar.showSidebar
+})
+
+const mapDispatchToProps = dispatch => ({
+  toggleSidebar: () => dispatch(toggleSidebar())
+})
 
 const nodeList = Object.keys(nodes.categories).map(function(category) {
   return (
@@ -20,16 +23,11 @@ const nodeList = Object.keys(nodes.categories).map(function(category) {
   )
 })
 
-const onToggleSidebar = () => {
-  store.dispatch({
-    type: 'TOGGLE_SIDEBAR'
-  })
-}
-
-const Sidebar = ({showSidebar}) => {
+const Sidebar = ({showSidebar, toggleSidebar}) => {
+  console.log(showSidebar);
   return (
     <div>
-      <a className={"sidebar-button " + (showSidebar ? "" : "close")} onClick={onToggleSidebar}></a>
+      <a className={"sidebar-button" + (showSidebar ? "" : " close")} onClick={() => toggleSidebar()}></a>
       <div id="sidebar" className={(showSidebar ? "active" : "")}>
         <div id="logo_sidebar">
           <a href="https://github.com/TimVanMourik"><img src={'/static/img/giraffe.png'} className="img-responsive" alt="logo" id="logo"/></a>
@@ -47,5 +45,7 @@ const Sidebar = ({showSidebar}) => {
   );
 };
 
-const SidebarContainer = connect(mapStateToProps)(Sidebar);
-export default SidebarContainer;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Sidebar)

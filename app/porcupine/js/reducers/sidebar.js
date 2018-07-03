@@ -1,17 +1,14 @@
-export default function sidebar(state = 'TOGGLE_SIDEBAR', action) {
+import { sidebarFilter } from '../actions';
+
+
+const sidebar = (state = {showSidebar: true}, action) => {
   switch (action.type) {
     case 'TOGGLE_SIDEBAR':
-      return toggleSidebar(state);
+      return {...state, showSidebar: !state.showSidebar}
     default:
       return state;
   }
   return state;
 }
 
-
-function toggleSidebar (state) {
-  console.log("A");
-  var newState = Object.assign({}, state)
-  newState.showSidebar = !newState.showSidebar
-  return newState;
-}
+export default sidebar
