@@ -24,12 +24,12 @@ This is similar in usage to for example [GitPitch](https://gitpitch.com), which 
   * Visual representation of data flow
   * Connect input/output ports on functions/nodes
   * From this workflow representation, make code for execution this workflow
+* Visualisation of the data that flows through pipeline
+  * We have a working prototype of Augmented Reality brain visualisation [here](http://armadillo-brain.herokuapp.com), ARmadillo!
 * OAuth Github link to easily save (commit) workflows to GitHub
 * Code execution integration, via, e.g., Amazon
 * Analysis preregistration
 * [DOI](https://www.doi.org) (persistent identifiers) for analysis workflow
-* Visualisation of the data that flows through pipeline
-  * Stretch goal: Augmented Reality visualisation (like [this project](https://github.com/TimVanMourik/ChristmasAR)). This should definitely be called ARmadillo
 * [Your input here!]
 
 ## Development
