@@ -107,3 +107,5 @@ webpack_bundles/
 .idea
 
 code-coverage/
+# coala orig files
+*.orig
