@@ -7,7 +7,8 @@ function collect (monitor) {
     return {
         name: item && item.name,
         currentOffset: monitor.getSourceClientOffset(),
-        isDragging: monitor.isDragging()
+        isDragging: monitor.isDragging(),
+        itemType: monitor.getItemType()
     };
 }
 
@@ -35,15 +36,21 @@ class ItemPreview extends React.Component {
             return (
                 <div className="node preview" style={{display: 'none'}} > </div>
             );
+        } else if (this.props.itemType==='paneElement') {
+            return (
+                <div
+                    className="node preview"
+                    style={getItemStyles(this.props.currentOffset)}
+                >
+                    {this.props.name}
+                </div>
+            );
+        } else if (this.props.itemType==='node') {
+            return (
+                <div className="node preview" style={{display: 'none'}} > </div>
+            );
         }
-        return (
-            <div
-                className="node preview"
-                style={getItemStyles(this.props.currentOffset)}
-            >
-                {this.props.name}
-            </div>
-        );
+        
     }
 }
 

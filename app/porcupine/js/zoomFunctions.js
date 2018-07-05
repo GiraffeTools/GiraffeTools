@@ -46,10 +46,12 @@ export default function () {
   let previousMousePosition;
 
   zoomFunctions.onmousedown = function (e) {
-    e.preventDefault();
-    dragging = true;
-    state.click = true;
-    previousMousePosition = { x: e.pageX, y: e.pageY };
+    if (e.target.id === 'zoomContainer') {
+      e.preventDefault();
+      dragging = true;
+      state.click = true;
+      previousMousePosition = { x: e.pageX, y: e.pageY };
+    }
   };
 
   window.onmouseup = function () {
@@ -57,7 +59,7 @@ export default function () {
   };
 
   zoomFunctions.ondragstart = function (e) {
-    e.preventDefault();
+    if (e.target.id === 'zoomContainer') {e.preventDefault();}
   };
 
   zoomFunctions.onmousemove = function (e) {
@@ -122,7 +124,7 @@ export default function () {
     canvas.updateContainerPosition();
     canvas.updateContainerScale();
     current.zoom = zoom;
-    instance.setZoom(canvas.scale);
+    // instance.setZoom(canvas.scale);
   }
 
   function getQueryVariable(id) {

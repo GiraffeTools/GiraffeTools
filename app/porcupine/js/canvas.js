@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { DropTarget } from 'react-dnd'
-import ItemTypes from './itemTypes'
-import Node from './node'
-import jsPlumbReady from './jsPlumbReady';
+import { DropTarget } from 'react-dnd';
+import ItemTypes from './itemTypes';
+import Node from './node';
+import Link from './link';
+// import jsPlumbReady from './jsPlumbReady';
 import zoomFunctions from './zoomFunctions';
 import nodes from '../static/assets/nipype.json';
 // import { getNodesByCategory } from './utilityFunctions'
@@ -28,23 +29,24 @@ class Canvas extends React.Component {
     this.hoverNodeEvent       = this.hoverNodeEvent.bind(this);
     this.leaveNodeEvent       = this.leaveNodeEvent.bind(this);
     this.clickOrDraggedNode   = false;
+    this.updateNodePosition   = this.updateNodePosition.bind(this);
   }
 
   componentDidMount() {
     this.placeholder = false;
-    instance = jsPlumbReady();
+    // instance = jsPlumbReady();
     this.mouseState = zoomFunctions();
   }
 
   componentDidUpdate() {
     this.placeholder = false;
-    let a = jsPlumb.getSelector('.node');
-    instance.draggable(a,
-      {
-        drag: this.updateNodePosition.bind(this),
-        grid: [8, 8]
-      }
-    );
+    // let a = jsPlumb.getSelector('.node');
+    // instance.draggable(a,
+    //   {
+    //     drag: this.updateNodePosition.bind(this),
+    //     grid: [8, 8]
+    //   }
+    // );
   }
 
   allowDrop(event) {
@@ -52,7 +54,7 @@ class Canvas extends React.Component {
   }
 
   clickNodeEvent(event, nodeId) {
-    if (this.clickOrDraggedNode === false) {
+    if (this.clickOrDraggedNode === false && event.target.classList[0]!=="node__port--input") {
       this.props.changeSelectedNode(nodeId);
     } else if (this.clickOrDraggedNode === true) {
       this.clickOrDraggedNode = false;
@@ -70,14 +72,13 @@ class Canvas extends React.Component {
     event.stopPropagation();
   }
 
-  updateNodePosition(event) {
+  updateNodePosition(nodeId, offset) {
     if (!this.clickOrDraggedNode) {
       this.clickOrDraggedNode = true;
     }
-    const nodeId = event.el.id;
-    const node = this.props.net[node];
-    node.state.left = `${event.pos['0']}px`;
-    node.state.top = `${event.pos['1']}px`;
+    const node = this.props.net[nodeId];
+    node.state.x += offset.x;
+    node.state.y += offset.y;
     this.props.modifyNode(node, nodeId);
   }
 
@@ -85,7 +86,8 @@ class Canvas extends React.Component {
     this.placeholder = false;
 		const rec = document.getElementById('zoomContainer').getBoundingClientRect();
     const canvas = document.getElementById('jsplumbContainer');
-    const zoom = instance.getZoom();
+    // const zoom = instance.getZoom();
+    const zoom = 1;
     let category = item.element_type;
     let name = category.splice(-1)[0];
     let currentNodes = nodes;
@@ -145,6 +147,7 @@ class Canvas extends React.Component {
 		}
 
     const nodes = [];
+		const ports = this.props.ports;
     const net = this.props.net;
     let placeholder = null;
     if (this.placeholder){
@@ -152,6 +155,7 @@ class Canvas extends React.Component {
     }
     Object.keys(net).forEach(nodeId => {
       const node = net[nodeId];
+
       nodes.push(
         <Node
           key    = {nodeId}
@@ -164,6 +168,16 @@ class Canvas extends React.Component {
           click  = {this.clickNodeEvent}
           hover  = {this.hoverNodeEvent}
           leave  = {this.leaveNodeEvent}
+          dragged = {this.updateNodePosition}
+        />
+      );
+    })
+    Object.keys(ports).forEach(linkId => {
+      const node = net[linkId];
+      nodes.push(
+        <Link
+          key    = {linkId}
+          id     = {linkId}
         />
       );
     })
@@ -185,7 +199,7 @@ class Canvas extends React.Component {
         >
           {nodes}
         </div>
-        
+
         <div id='icon-plus' className="canvas-icon">
           <p>Press</p>
           <button className="btn btn-default text-center">
@@ -210,6 +224,7 @@ class Canvas extends React.Component {
 Canvas.propTypes = {
   placeholder:          PropTypes.bool,
   net:                  PropTypes.object.isRequired,
+  ports:                PropTypes.object.isRequired,
   addNewNode:           PropTypes.func.isRequired,
   changeSelectedNode:   PropTypes.func.isRequired,
   changeHoveredNode:    PropTypes.func.isRequired,
@@ -218,7 +233,7 @@ Canvas.propTypes = {
   canDrop: 		PropTypes.bool.isRequired,
 };
 
-export default DropTarget(ItemTypes.BOX, boxTarget, (connect, monitor) => ({
+export default DropTarget(ItemTypes.PaneElement, boxTarget, (connect, monitor) => ({
 	connectDropTarget: connect.dropTarget(),
 	isOver: monitor.isOver(),
 	canDrop: monitor.canDrop(),

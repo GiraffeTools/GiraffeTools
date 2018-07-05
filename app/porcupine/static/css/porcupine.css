@@ -468,8 +468,7 @@ body {
   position: relative;
 }
 
-.node__port--input:before {
-  content: "";
+.node__port--input {
   position: absolute;
   width: 8px;
   height: 8px;
@@ -479,8 +478,7 @@ body {
   border-radius: 50%;
 }
 
-.node__port--output:after {
-  content: "";
+.node__port--output {
   position: absolute;
   width: 8px;
   height: 8px;
@@ -488,6 +486,18 @@ body {
   right: -15px;
   background: #e74c3c;
   border-radius: 50%;
+}
+
+svg, svg:not(:root) {
+    overflow: visible;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+path {
+    stroke: black;
+    fill: transparent;
 }
 
 .selected{
@@ -903,7 +913,7 @@ input[type="file"] {
   display: flex;
   flex-flow: column;
   top: 0;
-  left: 15rem;
+  left: 20%;
   position: absolute;
 }
 

@@ -36,7 +36,7 @@ describe('<PaneElement>', () => {
       expect(div.props.style.opacity).toEqual(1)
 
     });
-    // it('can be draged', () => {
+    // it('can be dragged', () => {
 
     //   // Obtain a reference to the backend
     //   const backend = root.instance().getManager().getBackend();
@@ -50,4 +50,3 @@ describe('<PaneElement>', () => {
 
     // });
 })
-
