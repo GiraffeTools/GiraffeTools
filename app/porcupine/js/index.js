@@ -1,10 +1,19 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom'
-import App from './app.js';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
+
+import configureStore from './configureStore';
+import App from './components/app.js';
+
+const store = configureStore();
 
 render(
-  <BrowserRouter>
-    <Route path="/" component={App} />
-  </BrowserRouter>, document.getElementById('porcupine')
+  <Provider className="app" store={store}>
+    <BrowserRouter>
+      <Route path="/" component={App} />
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById('porcupine')
 );

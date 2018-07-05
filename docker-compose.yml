@@ -2,6 +2,8 @@ version: '3'
 
 services:
   web:
+    environment:
+      - CHOKIDAR_USEPOLLING=true # for hot reloading on Windows
     build: .
     image: timvanmourik/giraffe-tools
     volumes:

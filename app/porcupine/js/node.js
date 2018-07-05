@@ -22,6 +22,36 @@ const boxSource = {
   },
 }
 
+const Ports = (ports) => (
+  <div className="node__ports">
+    {
+      ports.length > 0 && (
+        <ul>
+          {
+            visiblePorts.map((port, index) => {
+              let portElement = '';
+              if (port.input) {
+                portElement = <span  className='node__port--input' id={port.inputPort}/>
+              } else if (port.output) {
+                portElement = <span onClick={(event) => this.connectPort(event, index)} className='node__port--output' id={port.outputPort}/>
+              }
+
+              return (
+                <li key={index}>
+                  <div className='node__port'>
+                    {port.name}
+                    {portElement}
+                  </div>
+                </li>
+              )
+            })
+          }
+        </ul>
+      )
+    }
+  </div>
+)
+
 class Node extends React.Component {
   constructor(props) {
     super(props);
@@ -85,7 +115,6 @@ class Node extends React.Component {
   }
 
   render() {
-
     const { x, y, colour, classname, id, type, click, ports, hover, leave, isDragging, connectDragSource, connectDragPreview } = this.props;
     const visiblePorts = ports.filter(port => port.visible);
     let content = (
@@ -107,40 +136,14 @@ class Node extends React.Component {
           {type}
         </div>
 
-        <div className="node__ports">
-          {
-            visiblePorts.length > 0 && (
-              <ul>
-                {
-                  visiblePorts.map((port, index) => {
-                    let portElement = '';
-                    if (port.input) {
-                      portElement = <span  className='node__port--input' id={port.inputPort}/>
-                    } else if (port.output) {
-                      portElement = <span onClick={(event) => this.connectPort(event, index)} className='node__port--output' id={port.outputPort}/>
-                    }
-
-                    return (
-                      <li key={index}>
-                        <div className='node__port'>
-                          {port.name}
-                          {portElement}
-                        </div>
-                      </li>
-                    )
-                  })
-                }
-              </ul>
-            )
-          }
-        </div>
+        <Ports
+          ports = {visiblePorts}
+        />
       </div>
     )
 
-    content = connectDragSource(content)
-
-    content = connectDragPreview(content)
-
+    content = connectDragSource(content);
+    content = connectDragPreview(content);
     return content;
   }
 }
