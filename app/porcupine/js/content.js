@@ -21,12 +21,14 @@ class Content extends React.Component {
     super(props);
     this.state = {
       net: {},
+      ports: {},
       selectedNode: null,
       hoveredNode: null,
       nextNodeId: 0
     };
 
     this.addNewNode         = this.addNewNode.bind(this);
+    this.addNewLink         = this.addNewLink.bind(this);
     this.changeSelectedNode = this.changeSelectedNode.bind(this);
     this.toggleSidebar      = this.toggleSidebar.bind(this);
     this.loadFromJson       = this.loadFromJson.bind(this);
@@ -50,8 +52,15 @@ class Content extends React.Component {
       net: net,
       nextNodeId: this.state.nextNodeId + 1
     });
-    // console.log("Node: " + node);
-    // console.log("Net: " + net);
+  }
+
+  addNewLink(link) {
+    const ports = this.state.ports;
+    net[`L${this.state.nextLinkId}`] = link;
+    this.setState({
+      net: net,
+      nextLinkId: this.state.nextLinkId + 1
+    });
   }
 
   changeSelectedNode(nodeId) {
@@ -76,7 +85,7 @@ class Content extends React.Component {
     if (nodeId) {
       net[nodeId].info.class = 'hover';
     }
-    this.setState({ 
+    this.setState({
       net,
       hoveredNode: nodeId
     });
@@ -157,8 +166,10 @@ class Content extends React.Component {
         <div id="main">
           <Canvas
             net                 = {this.state.net}
+            ports               = {this.state.ports}
             nextNodeId          = {this.state.nextNodeId}
             addNewNode          = {this.addNewNode}
+            addNewLink          = {this.addNewLink}
             changeSelectedNode  = {this.changeSelectedNode}
             changeHoveredNode   = {this.changeHoveredNode}
             modifyNode          = {this.modifyNodePos}

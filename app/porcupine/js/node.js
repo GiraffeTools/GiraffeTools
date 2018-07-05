@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
-import React from 'react'
-import { DragSource } from 'react-dnd'
-import ItemTypes from './itemTypes'
+import React from 'react';
+import { DragSource } from 'react-dnd';
+import ItemTypes from './itemTypes';
+import Port from './port';
+
 
 const boxSource = {
   beginDrag(props) {
@@ -15,7 +17,7 @@ const boxSource = {
    // const dropResult = monitor.getDropResult()
    const offset = monitor.getDifferenceFromInitialOffset()
    if (item) {
-    props.draged(item.key, offset)
+    props.dragged(item.key, offset)
    }
   },
 }
@@ -27,22 +29,24 @@ class Node extends React.Component {
     this.connect       = this.connect.bind(this);
   }
 
-  connectPort(e) {
+  connectPort(e, portKey) {
     e.stopPropagation()
     this.connect(e.target)
   }
+
   connect(el) {
     $(el).off('click')
+    // TODO: make the following grab from https instead of http
     const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     const l = document.createElementNS("http://www.w3.org/2000/svg", "path");
     // l.setAttribute('d', 'M4 4 C ')
     el.appendChild(s);
     s.appendChild(l);
-    const xi=s.getClientRects()[0].x
-    const yi=s.getClientRects()[0].y
+    const xi=s.getClientRects()[0].x;
+    const yi=s.getClientRects()[0].y;
     l.setAttribute("x2", 4);
     l.setAttribute("y2", 4);
-        const that=this
+    const that=this;
     $('#zoomContainer').on('click', function(e) {
       if (e.target.classList[0]==="node__port--input") {
         let x, y
@@ -50,7 +54,7 @@ class Node extends React.Component {
         x=x-xi+4
         y=y-yi+4
         if (x>0) {
-          l.setAttribute("d", 'M4 4 C '+x/2+' 4, '+x/2+' '+y+', '+x+' '+y);  
+          l.setAttribute("d", 'M4 4 C '+x/2+' 4, '+x/2+' '+y+', '+x+' '+y);
         } else {
           l.setAttribute("d", 'M4 4 C '+(-x/2)+' '+y/2+', '+(3*x/2)+' '+y/2+', '+x+' '+y);
         }
@@ -72,13 +76,16 @@ class Node extends React.Component {
       const x=e.pageX-xi
       const y=e.pageY-yi
       if (x>0) {
-        l.setAttribute("d", 'M4 4 C '+x/2+' 4, '+x/2+' '+y+', '+x+' '+y);  
+        l.setAttribute("d", 'M4 4 C '+x/2+' 4, '+x/2+' '+y+', '+x+' '+y);
       } else {
         l.setAttribute("d", 'M4 4 C '+(-x/2)+' '+y/2+', '+(3*x/2)+' '+y/2+', '+x+' '+y);
       }
     })
+    // this.props.addNewLink();
   }
+
   render() {
+
     const { x, y, colour, classname, id, type, click, ports, hover, leave, isDragging, connectDragSource, connectDragPreview } = this.props;
     const visiblePorts = ports.filter(port => port.visible);
     let content = (
@@ -110,7 +117,7 @@ class Node extends React.Component {
                     if (port.input) {
                       portElement = <span  className='node__port--input' id={port.inputPort}/>
                     } else if (port.output) {
-                      portElement = <span onClick={(event) => this.connectPort(event)} className='node__port--output' id={port.outputPort}/>
+                      portElement = <span onClick={(event) => this.connectPort(event, index)} className='node__port--output' id={port.outputPort}/>
                     }
 
                     return (
@@ -158,4 +165,3 @@ export default DragSource(ItemTypes.Node, boxSource, (connect, monitor) => ({
   connectDragPreview: connect.dragPreview(),
   isDragging: monitor.isDragging(),
 }))(Node)
-

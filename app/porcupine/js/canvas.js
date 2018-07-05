@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { DropTarget } from 'react-dnd'
-import ItemTypes from './itemTypes'
-import Node from './node'
+import { DropTarget } from 'react-dnd';
+import ItemTypes from './itemTypes';
+import Node from './node';
+import Link from './link';
 // import jsPlumbReady from './jsPlumbReady';
 import zoomFunctions from './zoomFunctions';
 import nodes from '../static/assets/nipype.json';
@@ -146,6 +147,7 @@ class Canvas extends React.Component {
 		}
 
     const nodes = [];
+		const ports = this.props.ports;
     const net = this.props.net;
     let placeholder = null;
     if (this.placeholder){
@@ -153,6 +155,7 @@ class Canvas extends React.Component {
     }
     Object.keys(net).forEach(nodeId => {
       const node = net[nodeId];
+
       nodes.push(
         <Node
           key    = {nodeId}
@@ -165,7 +168,16 @@ class Canvas extends React.Component {
           click  = {this.clickNodeEvent}
           hover  = {this.hoverNodeEvent}
           leave  = {this.leaveNodeEvent}
-          draged = {this.updateNodePosition}
+          dragged = {this.updateNodePosition}
+        />
+      );
+    })
+    Object.keys(ports).forEach(linkId => {
+      const node = net[linkId];
+      nodes.push(
+        <Link
+          key    = {linkId}
+          id     = {linkId}
         />
       );
     })
@@ -187,7 +199,7 @@ class Canvas extends React.Component {
         >
           {nodes}
         </div>
-        
+
         <div id='icon-plus' className="canvas-icon">
           <p>Press</p>
           <button className="btn btn-default text-center">
@@ -212,6 +224,7 @@ class Canvas extends React.Component {
 Canvas.propTypes = {
   placeholder:          PropTypes.bool,
   net:                  PropTypes.object.isRequired,
+  ports:                PropTypes.object.isRequired,
   addNewNode:           PropTypes.func.isRequired,
   changeSelectedNode:   PropTypes.func.isRequired,
   changeHoveredNode:    PropTypes.func.isRequired,
