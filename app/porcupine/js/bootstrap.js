@@ -1,6 +1,6 @@
-export default function bootstrap(schema) {
+export default function bootstrap(orm) {
     // Get the empty state according to our schema.
-    const state = schema.getDefaultState();
+    const state = orm.getEmptyState();
 
     // Return the whole Redux initial state.
     return {

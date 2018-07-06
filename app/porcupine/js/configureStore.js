@@ -1,22 +1,23 @@
-import { createStore } from 'redux';
-import createLogger from 'redux-logger';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createReducer } from 'redux-orm';
+import { createLogger } from 'redux-logger';
 // import { throttle } from 'lodash/throttle';
 
 // import { loadState, saveState } from './localStorage';
 import bootstrap from './bootstrap';
-import { orm } from './orm';
+import orm from './orm';
 import porcupineApp from './reducers/index';
 
-
+console.log(orm);
 const rootReducer = combineReducers({
-    orm: orm.reducer(), // database components
+    orm: createReducer(orm), // database components
     porcupineApp,  // non-database components
 });
 
 const configureStore = () => {
 
   const createStoreWithMiddleware = applyMiddleware(createLogger())(createStore);
-  const store = createStoreWithMiddleware(rootReducer, bootstrap(schema));
+  const store = createStoreWithMiddleware(rootReducer, bootstrap(orm));
 
   return store;
 }
