@@ -15,3 +15,7 @@ export const REMOVE_LINK = 'REMOVE_LINK';
 
 ///// SIDEBAR /////
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
+
+///// SCENE /////
+export const ZOOM_IN = 'ZOOM_IN';
+export const ZOOM_OUT = 'ZOOM_OUT';
