@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { DropTarget } from 'react-dnd';
+import { v4 } from 'node-uuid';
+
 import ItemTypes from './itemTypes';
 import Node from './node';
 import Link from './link';
-// import jsPlumbReady from './jsPlumbReady';
 import zoomFunctions from './zoomFunctions';
 import nodes from '../static/assets/nipype.json';
-// import { getNodesByCategory } from './utilityFunctions'
 
 const boxTarget = {
 	drop(props, monitor, component) {
@@ -98,29 +98,32 @@ class Canvas extends React.Component {
 
     node.colour = currentNodes.colour;
     node.info = { category, name };
+		node.id = v4();
     node.state = {
-      x: (offset.x - rec.left - canvas.x)/zoom - 45,
-      y: (offset.y - rec.top -  canvas.y)/zoom - 25,
+      x: (offset.x - rec.left - canvas.x) / zoom - 45,
+      y: (offset.y - rec.top -  canvas.y) / zoom - 25,
       class: ''
     };
-		// #TODO issue #37
-		console.log(node);
-		// This node contains the list of 'ports', all parameters
-		// The node needs to know about all of them, but only display the ones with
-		// visible==true
-		// for each port, show a port on the left  if input  == true
-		// for each port, show a port on the right if output == true
 
-		// #TODO issue #36
-		// This is how fabrik stores inputs and outputs. However, we will need to
-		// be port specific instead of node specific
-    node.links = { input: [], output: [] };
-    // node.ports = {};
-    // Object.keys(data[type].params).forEach(j => {
-    //   node.params[j] = [data[type].params[j].value, false];
-    // });
-    // node.params['endPoint'] = [data[type]['endpoint'], false];
+		// #TODO to be extracted as action #72
+		const { store } = this.context;
+		store.dispatch({
+			type: 'ADD_NODE',
+			id: node.id
+		});
 
+		// #TODO to be extracted as action #72
+		node.ports.map((port) => {
+			//#TODO Should the following line be an '=', deep-copy, or Object.assign?
+			port.id = v4();
+			store.dispatch({
+				type: 'ADD_PORT',
+				nodeId: node.id,
+				id: port.id
+			});
+		});
+
+		// #TODO to be removed and read from 'state' in #72:
     this.props.addNewNode(node);
   }
 
@@ -147,12 +150,13 @@ class Canvas extends React.Component {
 		}
 
     const nodes = [];
-		const ports = this.props.ports;
     const net = this.props.net;
     let placeholder = null;
     if (this.placeholder){
       placeholder = (<h4 className="text-center" id="placeholder">Drag your nodes here!</h4>);
     }
+
+
     Object.keys(net).forEach(nodeId => {
       const node = net[nodeId];
 
@@ -172,7 +176,7 @@ class Canvas extends React.Component {
         />
       );
     })
-    Object.keys(ports).forEach(linkId => {
+    {/*Object.keys(ports).forEach(linkId => {
       const node = net[linkId];
       nodes.push(
         <Link
@@ -180,7 +184,7 @@ class Canvas extends React.Component {
           id     = {linkId}
         />
       );
-    })
+    })*/}
 
     return connectDropTarget(
       <div
@@ -220,6 +224,9 @@ class Canvas extends React.Component {
     );
   }
 }
+Canvas.contextTypes = {
+	store: PropTypes.object
+};
 
 Canvas.propTypes = {
   placeholder:          PropTypes.bool,

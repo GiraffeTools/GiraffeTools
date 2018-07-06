@@ -1,38 +1,39 @@
 import { combineReducers } from 'redux';
 
-import node from './node';
+import port from './port';
 
 
 const byId = (state = {}, action) => {
   switch (action.type) {
-    case 'ADD_NODE':
+    case 'ADD_PORT':
+    case 'TOGGLE_VISIBILTY':
       return {
         ...state,
-        [action.id]: node(state[action.id], action),
+        [action.id]: port(state[action.id], action),
       };
-    case 'REMOVE_NODE':
+    case 'REMOVE_PORT':
       // #TODO to be implemented in #72
       return state;
     default:
       return state;
   }
-};
+}
 
 const allIds = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_NODE':
+    case 'ADD_PORT':
       return [...state, action.id];
     default:
       return state;
   }
 };
 
-const nodes = combineReducers({
+const ports = combineReducers({
   byId,
   allIds,
 });
 
-export default nodes;
+const getPortsNode = (state) =>
+  state.allIds.map(nodeId => state.byId[nodeId]);
 
-// const getAllNodes = (state) =>
-//   state.allIds.map(id => state.byId[id]);
+export default ports;

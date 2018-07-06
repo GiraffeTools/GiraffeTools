@@ -24,7 +24,6 @@ const nodeList = Object.keys(nodes.categories).map(function(category) {
 })
 
 const Sidebar = ({showSidebar, toggleSidebar}) => {
-  console.log(showSidebar);
   return (
     <div>
       <a className={"sidebar-button" + (showSidebar ? "" : " close")} onClick={() => toggleSidebar()}></a>

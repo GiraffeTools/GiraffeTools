@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { DragSource } from 'react-dnd';
 import ItemTypes from './itemTypes';
-import Port from './port';
+import PortBlock from './containers/ports';
 
 
 const boxSource = {
@@ -21,36 +21,6 @@ const boxSource = {
    }
   },
 }
-
-const Ports = (ports) => (
-  <div className="node__ports">
-    {
-      ports.length > 0 && (
-        <ul>
-          {
-            visiblePorts.map((port, index) => {
-              let portElement = '';
-              if (port.input) {
-                portElement = <span  className='node__port--input' id={port.inputPort}/>
-              } else if (port.output) {
-                portElement = <span onClick={(event) => this.connectPort(event, index)} className='node__port--output' id={port.outputPort}/>
-              }
-
-              return (
-                <li key={index}>
-                  <div className='node__port'>
-                    {port.name}
-                    {portElement}
-                  </div>
-                </li>
-              )
-            })
-          }
-        </ul>
-      )
-    }
-  </div>
-)
 
 class Node extends React.Component {
   constructor(props) {
@@ -136,9 +106,7 @@ class Node extends React.Component {
           {type}
         </div>
 
-        <Ports
-          ports = {visiblePorts}
-        />
+        <PortBlock />
       </div>
     )
 

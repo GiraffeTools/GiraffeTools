@@ -125,7 +125,7 @@ class Content extends React.Component {
         y: node['position'][1],
         class: ''
       };
-      newNode.links = { input: [], output: [] };
+      // newNode.links = { input: [], output: [] };
 
       this.addNewNode(newNode);
     });
