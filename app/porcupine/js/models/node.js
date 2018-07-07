@@ -15,11 +15,11 @@ class Node extends Model {
         Node.create(action.payload);
         break;
       case REMOVE_NODE:
-        const node = Book.withId(action.payload);
+        const node = Node.withId(action.payload);
         node.delete();
         break;
       case ADD_PORT_TO_NODE:
-        Noe.withId(action.payload.nodeId).ports.add(action.payload.ports);
+        Node.withId(action.payload.nodeId).ports.add(action.payload.id);
         break;
     }
     return undefined;
@@ -31,7 +31,6 @@ Node.fields = {
   x: attr(),
   y: attr(),
   colour: attr(),
-  type: attr(),
   ports: many('Port'),
 }
 

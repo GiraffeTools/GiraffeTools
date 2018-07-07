@@ -8,6 +8,10 @@ import Node from './node';
 import Link from './link';
 import zoomFunctions from './zoomFunctions';
 import nodes from '../static/assets/nipype.json';
+import {
+	addNode,
+	addPortToNode,
+} from './actions/index';
 
 const boxTarget = {
 	drop(props, monitor, component) {
@@ -107,9 +111,22 @@ class Canvas extends React.Component {
 
 		// #TODO to be extracted as action #72
 		const { store } = this.context;
+
+		// addNode({
+		//   id: node.id,
+		//   x: node.state.x,
+		//   y: node.state.y,
+		//   colour: node.colour,
+		// });
+
 		store.dispatch({
 			type: 'ADD_NODE',
-			id: node.id
+			payload: {
+				id: node.id,
+			  x: node.state.x,
+			  y: node.state.y,
+			  colour: node.colour,
+			},
 		});
 
 		// #TODO to be extracted as action #72
@@ -118,8 +135,22 @@ class Canvas extends React.Component {
 			port.id = v4();
 			store.dispatch({
 				type: 'ADD_PORT',
-				nodeId: node.id,
-				id: port.id
+				payload: {
+					nodeId: node.id,
+					id: port.id,
+					name: port.name,
+				  isInput: port.input,
+				  isOutput: port.output,
+				  isVisible: port.visible,
+				  isEditable: port.editable,
+				},
+			});
+			store.dispatch({
+				type: 'ADD_PORT_TO_NODE',
+				payload: {
+					nodeId: node.id,
+					id: port.id,
+				},
 			});
 		});
 

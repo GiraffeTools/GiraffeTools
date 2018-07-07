@@ -3,6 +3,7 @@ import { Model, many, attr } from 'redux-orm';
 import Link from './link'
 import {
   ADD_PORT,
+  ADD_PORT_TO_NODE,
   REMOVE_PORT,
 } from '../actions/actionTypes';
 
@@ -12,6 +13,12 @@ class Port extends Model {
     switch (action.type) {
       case ADD_PORT:
         Port.create(action.payload);
+        break;
+      case ADD_PORT_TO_NODE:
+        console.log('add port to node');
+        if (!Port.filter({ id: action.payload.id }).exists()) {
+            Port.create(action.payload);
+        }
         break;
       case REMOVE_PORT:
         const port = Port.withId(action.payload);
@@ -27,7 +34,7 @@ Port.fields = {
   isInput: attr(),
   isOutput: attr(),
   isVisible: attr(),
-  iseditable: attr(),
+  isEditable: attr(),
   inputLinks: many("Link", "inputLinks"),
   outputLinks: many("Link", "outputLinks"),
 }

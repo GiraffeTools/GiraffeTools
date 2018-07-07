@@ -13,7 +13,7 @@ class Link extends Model {
         Link.create(action.payload);
         break;
       case REMOVE_LINK:
-        const port = Port.withId(action.payload);
+        const link = Link.withId(action.payload);
         Link.delete();
         break;
     }

@@ -5,14 +5,13 @@ import { toggleSidebar } from '../actions';
 import Port from '../components/port';
 
 const mapStateToProps = state => ({
-  ports: state.ports.byId,
 })
 
 const mapDispatchToProps = dispatch => ({
 })
 
 const PortBlock = ({ports}) => {
-  console.log(ports);
+  // console.log(ports);
   return (
     <div className="node__ports">
       {/*}{
