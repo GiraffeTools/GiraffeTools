@@ -21,14 +21,15 @@ class Port extends Model {
     return undefined;
   }
 }
+Port.modelName = "Port";
 Port.fields = {
   name: attr(),
   isInput: attr(),
   isOutput: attr(),
   isVisible: attr(),
   iseditable: attr(),
-  inputlinks: many("Link"),
-  outputlinks: many("Link"),
+  inputLinks: many("Link", "inputLinks"),
+  outputLinks: many("Link", "outputLinks"),
 }
 
 export default Port;

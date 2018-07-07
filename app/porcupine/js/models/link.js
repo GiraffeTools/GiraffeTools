@@ -21,6 +21,7 @@ class Link extends Model {
   }
 
 }
+Link.modelName = "Link";
 Link.fields = {
 }
 

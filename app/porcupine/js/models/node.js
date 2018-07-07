@@ -7,6 +7,7 @@ import {
   ADD_PORT_TO_NODE,
 } from '../actions/actionTypes';
 
+
 class Node extends Model {
   static reducer(action, Node, session) {
     switch (action.type) {
@@ -24,7 +25,7 @@ class Node extends Model {
     return undefined;
   }
 }
-
+Node.modelName = "Node";
 Node.fields = {
   id: attr(),
   x: attr(),
