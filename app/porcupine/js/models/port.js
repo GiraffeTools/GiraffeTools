@@ -15,7 +15,6 @@ class Port extends Model {
         Port.create(action.payload);
         break;
       case ADD_PORT_TO_NODE:
-        console.log('add port to node');
         if (!Port.filter({ id: action.payload.id }).exists()) {
             Port.create(action.payload);
         }

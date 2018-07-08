@@ -7,11 +7,13 @@ import ItemTypes from './itemTypes';
 import Node from './node';
 import Link from './link';
 import zoomFunctions from './zoomFunctions';
-import nodes from '../static/assets/nipype.json';
+import nodeData from '../static/assets/nipype.json';
 import {
 	addNode,
 	addPortToNode,
 } from './actions/index';
+import {nodesSelector} from './selectors/selectors';
+
 
 const boxTarget = {
 	drop(props, monitor, component) {
@@ -38,9 +40,17 @@ class Canvas extends React.Component {
 
   componentDidMount() {
     this.placeholder = false;
-    // instance = jsPlumbReady();
+		const { store } = this.context;
+		this.unsubscribe = store.subscribe(() =>
+			this.forceUpdate()
+		);
+		// instance = jsPlumbReady();
     this.mouseState = zoomFunctions();
   }
+
+	componentWillUnmount() {
+		this.unsubscribe();
+	}
 
   componentDidUpdate() {
     this.placeholder = false;
@@ -94,7 +104,7 @@ class Canvas extends React.Component {
     const zoom = 1;
     let category = item.element_type;
     let name = category.splice(-1)[0];
-    let currentNodes = nodes;
+    let currentNodes = nodeData;
     category.forEach(function (c) {
       currentNodes = currentNodes['categories'][c];
     })
@@ -170,6 +180,13 @@ class Canvas extends React.Component {
   }
 
   render() {
+    const props = this.props;
+		const { store } = this.context;
+
+		// const { propsNodes } = props;
+		// console.log(nodesSelector(store.getState()));
+
+
     const { canDrop, isOver, connectDropTarget } = this.props
 		const isActive = canDrop && isOver
 
@@ -198,7 +215,7 @@ class Canvas extends React.Component {
           y      = {node.state.y}
           x      = {node.state.x}
           type   = {node.info.name}
-          colour = {node.colour}
+          // colour = {node.colour}
           ports  = {node.ports}
           click  = {this.clickNodeEvent}
           hover  = {this.hoverNodeEvent}
@@ -270,6 +287,13 @@ Canvas.propTypes = {
   isOver: 		PropTypes.bool.isRequired,
   canDrop: 		PropTypes.bool.isRequired,
 };
+
+function mapStateToProps(state) {
+	return {
+		propsNodes: nodes(nodes),
+	}
+}
+
 
 export default DropTarget(ItemTypes.PaneElement, boxTarget, (connect, monitor) => ({
 	connectDropTarget: connect.dropTarget(),
