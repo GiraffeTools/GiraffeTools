@@ -8,7 +8,8 @@ import {
     REMOVE_LINK,
     TOGGLE_SIDEBAR,
     HOVER_NODE,
-    CLICK_NODE
+    CLICK_NODE,
+    CLICK_SCENE,
 } from './actionTypes';
 
 ///// SIDEBAR /////
@@ -58,4 +59,8 @@ export const clickNode = (nodeId) => ({
     payload: {
       nodeId
     },
+})
+
+export const clickScene = () => ({
+    type: CLICK_SCENE,
 })

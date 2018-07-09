@@ -30,7 +30,7 @@ class ParameterPane extends React.Component {
   }
 
   close() {
-    this.props.changeSelectedNode(null);
+    // this.props.changeSelectedNode(null);
   }
 
   handleKeyPress(event) {

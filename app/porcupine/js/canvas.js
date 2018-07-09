@@ -12,6 +12,7 @@ import nodeData from '../static/assets/nipype.json';
 import {
 	addNode,
 	addPortToNode,
+	clickScene,
 } from './actions/index';
 import {
 	nodeSelector,
@@ -107,15 +108,12 @@ class Canvas extends React.Component {
 		});
   }
 
-	// #TODO updated in jsPlumb overhaul, issue #73
   clickCanvas(event) {
+		const { clickScene } = this.props;
+		clickScene();
+		// #TODO: read placeholder state from state, issue #72
     this.placeholder = false;
     event.preventDefault();
-    if (event.target.id === 'zoomContainer' && !this.mouseState.pan) {
-      this.props.changeSelectedNode(null);
-    }
-    this.mouseState.pan = false;
-    this.mouseState.click = false;
     event.stopPropagation();
   }
 
@@ -196,8 +194,6 @@ Canvas.propTypes = {
   placeholder:          PropTypes.bool,
   // ports:                PropTypes.object.isRequired,
   // addNewNode:           PropTypes.func.isRequired,
-  // changeSelectedNode:   PropTypes.func.isRequired,
-  // changeHoveredNode:    PropTypes.func.isRequired,
   // connectDropTarget:    PropTypes.func.isRequired,
   isOver: 		PropTypes.bool.isRequired,
   canDrop: 		PropTypes.bool.isRequired,
@@ -209,6 +205,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 	addNode: (node) => dispatch(addNode(node)),
 	addPortToNode: (port, nodeId) => dispatch(addPortToNode(port, nodeId)),
+	clickScene: () => dispatch(clickScene()),
 });
 
 Canvas = DropTarget(ItemTypes.PaneElement, boxTarget, (connection, monitor) => ({

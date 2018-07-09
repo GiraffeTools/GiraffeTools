@@ -36,20 +36,12 @@ class Node extends React.Component {
 
 
   click(event, nodeId) {
-    console.log("click: " + nodeId);
     const { clickNode } = this.props;
     clickNode(nodeId);
     event.stopPropagation();
-
-    // if (this.clickOrDraggedNode === false && event.target.classList[0]!=="node__port--input") {
-    //   this.props.changeSelectedNode(nodeId);
-    // } else if (this.clickOrDraggedNode === true) {
-    //   this.clickOrDraggedNode = false;
-    // }
   }
 
   hover(event, nodeId) {
-    console.log("hover: " + nodeId);
     const { hoverNode } = this.props;
     hoverNode(nodeId);
     event.stopPropagation();
@@ -127,6 +119,8 @@ class Node extends React.Component {
       x,
       y,
       colour,
+			hoveredNode,
+			clickedNode,
       // #TODO insert ports here, issue #72
       // ports,
       isDragging, connectDragSource, connectDragPreview } = this.props;
@@ -134,7 +128,7 @@ class Node extends React.Component {
     // console.log(this.props);
     let content = (
       <div
-        className='node'
+        className={'node' + (id === clickedNode ? ' selected' : '') + (id === hoveredNode ? ' hover' : '')}
         style={{
           left:`${x}px`,
           top: `${y}px`,
@@ -177,6 +171,8 @@ Node.propTypes = {
 }
 
 const mapStateToProps = state => ({
+	hoveredNode: state.scene.hoveredNode,
+	clickedNode: state.scene.clickedNode,
 })
 
 const mapDispatchToProps = dispatch => ({
