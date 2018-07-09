@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { DragSource } from 'react-dnd';
-import ItemTypes from './itemTypes';
-import PortBlock from './containers/ports';
+import { connect } from 'react-redux';
 
+import ItemTypes from '../itemTypes';
+import PortBlock from '../containers/ports';
+import {
+	hoverNode,
+	clickNode,
+} from '../actions/index';
 
 const boxSource = {
   beginDrag(props) {
@@ -27,6 +32,37 @@ class Node extends React.Component {
     super(props);
     this.connectPort   = this.connectPort.bind(this);
     this.connect       = this.connect.bind(this);
+  }
+
+
+  click(event, nodeId) {
+    console.log("click: " + nodeId);
+    const { clickNode } = this.props;
+    clickNode(nodeId);
+    event.stopPropagation();
+
+    // if (this.clickOrDraggedNode === false && event.target.classList[0]!=="node__port--input") {
+    //   this.props.changeSelectedNode(nodeId);
+    // } else if (this.clickOrDraggedNode === true) {
+    //   this.clickOrDraggedNode = false;
+    // }
+  }
+
+  hover(event, nodeId) {
+    console.log("hover: " + nodeId);
+    const { hoverNode } = this.props;
+    hoverNode(nodeId);
+    event.stopPropagation();
+  }
+
+  updateNodePosition(nodeId, offset) {
+    if (!this.clickOrDraggedNode) {
+      this.clickOrDraggedNode = true;
+    }
+    const node = this.props.net[nodeId];
+    node.state.x += offset.x;
+    node.state.y += offset.y;
+    this.props.modifyNode(node, nodeId);
   }
 
   connectPort(e, portKey) {
@@ -93,7 +129,7 @@ class Node extends React.Component {
       colour,
       // #TODO insert ports here, issue #72
       // ports,
-      click, hover, leave, isDragging, connectDragSource, connectDragPreview } = this.props;
+      isDragging, connectDragSource, connectDragPreview } = this.props;
     // const visiblePorts = ports.filter(port => port.visible);
     // console.log(this.props);
     let content = (
@@ -104,10 +140,10 @@ class Node extends React.Component {
           top: `${y}px`,
           background: colour
         }}
-        onClick={(event) => click(event, id)}
-        onTouchEnd={(event) => click(event, id)}
-        onMouseEnter={(event) => hover(event, id)}
-        onMouseLeave={(event) => leave(event)}
+        onClick     ={(event) => this.click(event, id)}
+        onTouchEnd  ={(event) => this.click(event, id)}
+        onMouseEnter={(event) => this.hover(event, id)}
+        onMouseLeave={(event) => this.hover(event, null)}
         data-tip='tooltip'
         data-for='getContent'
       >
@@ -134,17 +170,28 @@ Node.propTypes = {
   colour: PropTypes.string.isRequired,
   x:      PropTypes.number.isRequired,
   y:      PropTypes.number.isRequired,
-  click:  PropTypes.func.isRequired,
-  hover:  PropTypes.func.isRequired,
-  leave:  PropTypes.func.isRequired,
   class:  PropTypes.string,
   connectDragSource: PropTypes.func.isRequired,
   connectDragPreview: PropTypes.func.isRequired,
   isDragging: PropTypes.bool.isRequired,
 }
 
-export default DragSource(ItemTypes.Node, boxSource, (connect, monitor) => ({
+const mapStateToProps = state => ({
+})
+
+const mapDispatchToProps = dispatch => ({
+	hoverNode: (nodeId) => dispatch(hoverNode(nodeId)),
+  clickNode: (nodeId) => dispatch(clickNode(nodeId)),
+});
+
+
+Node = DragSource(ItemTypes.Node, boxSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   connectDragPreview: connect.dragPreview(),
   isDragging: monitor.isDragging(),
 }))(Node)
+
+export default Node = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Node);

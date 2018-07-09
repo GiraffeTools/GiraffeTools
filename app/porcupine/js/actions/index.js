@@ -7,6 +7,8 @@ import {
     ADD_LINK,
     REMOVE_LINK,
     TOGGLE_SIDEBAR,
+    HOVER_NODE,
+    CLICK_NODE
 } from './actionTypes';
 
 ///// SIDEBAR /////
@@ -40,4 +42,20 @@ export const addLink = (props) => ({
 export const addPort = (props) => ({
     type: ADD_PORT,
     payload: props,
+})
+
+
+///// SCENE /////
+export const hoverNode = (nodeId) => ({
+    type: HOVER_NODE,
+    payload: {
+      nodeId
+    },
+})
+
+export const clickNode = (nodeId) => ({
+    type: CLICK_NODE,
+    payload: {
+      nodeId
+    },
 })

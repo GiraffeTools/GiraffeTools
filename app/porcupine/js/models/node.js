@@ -4,6 +4,7 @@ import Port from './port'
 import {
   ADD_NODE,
   REMOVE_NODE,
+  UPDATE_NODE,
   ADD_PORT_TO_NODE,
 } from '../actions/actionTypes';
 
@@ -20,6 +21,8 @@ class Node extends Model {
         break;
       case ADD_PORT_TO_NODE:
         Node.withId(action.payload.nodeId).ports.add(action.payload.port);
+        break;
+      case UPDATE_NODE:
         break;
     }
     return undefined;

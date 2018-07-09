@@ -196,9 +196,9 @@ Canvas.propTypes = {
   placeholder:          PropTypes.bool,
   // ports:                PropTypes.object.isRequired,
   // addNewNode:           PropTypes.func.isRequired,
-  changeSelectedNode:   PropTypes.func.isRequired,
-  changeHoveredNode:    PropTypes.func.isRequired,
-  connectDropTarget:    PropTypes.func.isRequired,
+  // changeSelectedNode:   PropTypes.func.isRequired,
+  // changeHoveredNode:    PropTypes.func.isRequired,
+  // connectDropTarget:    PropTypes.func.isRequired,
   isOver: 		PropTypes.bool.isRequired,
   canDrop: 		PropTypes.bool.isRequired,
 };

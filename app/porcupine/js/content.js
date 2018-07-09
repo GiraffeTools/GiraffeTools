@@ -27,13 +27,13 @@ class Content extends React.Component {
       nextNodeId: 0
     };
     this.addNewLink         = this.addNewLink.bind(this);
-    this.changeSelectedNode = this.changeSelectedNode.bind(this);
+    // this.changeSelectedNode = this.changeSelectedNode.bind(this);
     this.toggleSidebar      = this.toggleSidebar.bind(this);
     this.loadFromJson       = this.loadFromJson.bind(this);
     this.modifyNodeParams   = this.modifyNodeParams.bind(this);
     this.modifyNodePos      = this.modifyNodePos.bind(this);
     this.deleteNode         = this.deleteNode.bind(this);
-    this.changeHoveredNode  = this.changeHoveredNode.bind(this);
+    // this.changeHoveredNode  = this.changeHoveredNode.bind(this);
   }; //end constructor
 
   componentWillMount() {
@@ -51,33 +51,33 @@ class Content extends React.Component {
     });
   }
 
-  changeSelectedNode(nodeId) {
-    const net = this.state.net;
-    if (this.state.selectedNode) {
-      net[this.state.selectedNode].info.class = '';
-    }
-    if (nodeId) {
-      net[nodeId].info.class = 'selected';
-    }
-    this.setState({
-      net,
-      selectedNode: nodeId
-    });
-  }
-
-  changeHoveredNode(nodeId) {
-    const net = this.state.net;
-    if (this.state.hoveredNode && this.state.hoveredNode in net) {
-      net[this.state.hoveredNode].info.class = '';
-    }
-    if (nodeId) {
-      net[nodeId].info.class = 'hover';
-    }
-    this.setState({
-      net,
-      hoveredNode: nodeId
-    });
-  }
+  // changeSelectedNode(nodeId) {
+  //   const net = this.state.net;
+  //   if (this.state.selectedNode) {
+  //     net[this.state.selectedNode].info.class = '';
+  //   }
+  //   if (nodeId) {
+  //     net[nodeId].info.class = 'selected';
+  //   }
+  //   this.setState({
+  //     net,
+  //     selectedNode: nodeId
+  //   });
+  // }
+  //
+  // changeHoveredNode(nodeId) {
+  //   const net = this.state.net;
+  //   if (this.state.hoveredNode && this.state.hoveredNode in net) {
+  //     net[this.state.hoveredNode].info.class = '';
+  //   }
+  //   if (nodeId) {
+  //     net[nodeId].info.class = 'hover';
+  //   }
+  //   this.setState({
+  //     net,
+  //     hoveredNode: nodeId
+  //   });
+  // }
 
   toggleSidebar() {
     $('#sidebar').toggleClass('visible');
@@ -156,8 +156,8 @@ class Content extends React.Component {
             ports               = {this.state.ports}
             nextNodeId          = {this.state.nextNodeId}
             addNewLink          = {this.addNewLink}
-            changeSelectedNode  = {this.changeSelectedNode}
-            changeHoveredNode   = {this.changeHoveredNode}
+            // changeSelectedNode  = {this.changeSelectedNode}
+            // changeHoveredNode   = {this.changeHoveredNode}
             modifyNode          = {this.modifyNodePos}
           />
           <ParameterPane
@@ -165,12 +165,12 @@ class Content extends React.Component {
             selectedNode        = {this.state.selectedNode}
             deleteNode          = {this.deleteNode}
             modifyNode          = {this.modifyNodeParams}
-            changeSelectedNode  = {this.changeSelectedNode}
+            // changeSelectedNode  = {this.changeSelectedNode}
           />
           <Tooltip
             id={'tooltip_text'}
-            net={this.state.net}
-            hoveredNode={this.state.hoveredNode}
+            // net={this.state.net}
+            // hoveredNode={this.state.hoveredNode}
           />
           {/* Modal */}
         </div>
