@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-class tooltipData extends React.Component {
+class TooltipData extends React.Component {
     constructor(props) {
         super(props);
         this.change = this.change.bind(this);
@@ -34,7 +34,7 @@ class tooltipData extends React.Component {
     }
 }
 
-tooltipData.propTypes = {
+TooltipData.propTypes = {
     id: PropTypes.string.isRequired,
     data: PropTypes.object,
     changeField: PropTypes.func,
@@ -45,6 +45,5 @@ tooltipData.propTypes = {
     ]),
     disabled: PropTypes.bool
   };
-  
-export default tooltipData;
-  
+
+export default TooltipData;

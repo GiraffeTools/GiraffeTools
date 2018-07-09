@@ -21,11 +21,11 @@ export const addNode = (props) => ({
     payload: props,
 })
 
-export const addPortToNode = (node, port) => ({
+export const addPortToNode = (port, nodeId) => ({
     type: ADD_PORT_TO_NODE,
     payload: {
-      node,
       port,
+      nodeId,
     },
 })
 

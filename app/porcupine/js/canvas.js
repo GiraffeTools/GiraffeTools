@@ -1,11 +1,12 @@
+import { v4 } from 'node-uuid';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { DropTarget } from 'react-dnd';
-import { v4 } from 'node-uuid';
+import { connect } from 'react-redux';
 
 import ItemTypes from './itemTypes';
-import Node from './node';
 import Link from './link';
+import Nodes from './containers/nodes';
 import zoomFunctions from './zoomFunctions';
 import nodeData from '../static/assets/nipype.json';
 import {
@@ -33,11 +34,7 @@ class Canvas extends React.Component {
     this.drop                 = this.drop.bind(this);
     this.clickCanvas          = this.clickCanvas.bind(this);
     this.clickOrDraggedNode   = false;
-    this.clickNodeEvent       = this.clickNodeEvent.bind(this);
-    this.hoverNodeEvent       = this.hoverNodeEvent.bind(this);
-    this.leaveNodeEvent       = this.leaveNodeEvent.bind(this);
-    this.clickOrDraggedNode   = false;
-    this.updateNodePosition   = this.updateNodePosition.bind(this);
+		this.clickOrDraggedNode   = false;
   }
 
   componentDidMount() {
@@ -69,42 +66,16 @@ class Canvas extends React.Component {
     event.preventDefault();
   }
 
-  clickNodeEvent(event, nodeId) {
-    if (this.clickOrDraggedNode === false && event.target.classList[0]!=="node__port--input") {
-      this.props.changeSelectedNode(nodeId);
-    } else if (this.clickOrDraggedNode === true) {
-      this.clickOrDraggedNode = false;
-    }
-    event.stopPropagation();
-  }
-
-  hoverNodeEvent(event, nodeId) {
-    this.props.changeHoveredNode(nodeId);
-    event.stopPropagation();
-  }
-
-  leaveNodeEvent(event){
-    this.props.changeHoveredNode(null);
-    event.stopPropagation();
-  }
-
-  updateNodePosition(nodeId, offset) {
-    if (!this.clickOrDraggedNode) {
-      this.clickOrDraggedNode = true;
-    }
-    const node = this.props.net[nodeId];
-    node.state.x += offset.x;
-    node.state.y += offset.y;
-    this.props.modifyNode(node, nodeId);
-  }
-
   drop(item, offset) {
+		const { addNode, addPortToNode } = this.props;
+
     this.placeholder = false;
 		const rec = document.getElementById('zoomContainer').getBoundingClientRect();
 		// #TODO to be removed as part of #73:
 		const canvas = document.getElementById('jsplumbContainer');
     // const zoom = instance.getZoom();
     const zoom = 1;
+
     let category = item.element_type;
     let name = category.splice(-1)[0];
     let currentNodes = nodeData;
@@ -112,50 +83,28 @@ class Canvas extends React.Component {
       currentNodes = currentNodes['categories'][c];
     })
     const node = $.extend(true, {}, currentNodes.nodes[name]);
-    node.colour = currentNodes.colour;
-		node.id = v4();
 
-		// #TODO to be extracted as action #72
-		// addNode({
-		// });
-		const { store } = this.context;
-		store.dispatch({
-			type: 'ADD_NODE',
-			payload: {
-				id: node.id,
-				name: name,
-			  x: (offset.x - rec.left - canvas.x) / zoom - 45,
-			  y: (offset.y - rec.top -  canvas.y) / zoom - 25,
-			  colour: node.colour,
-			},
-		});
+		const newNode = {
+			id: v4(),
+			name: name,
+			x: (offset.x - rec.left - canvas.x) / zoom - 45,
+			y: (offset.y - rec.top -  canvas.y) / zoom - 25,
+			colour: currentNodes.colour,
+		};
+		addNode(newNode);
 
-		// #TODO to be extracted as action #72
 		node.ports.map((port) => {
 			port.id = v4();
-			store.dispatch({
-				type: 'ADD_PORT',
-				payload: {
-					nodeId: node.id,
-					id: port.id,
-					name: port.name,
-				  isInput: port.input,
-				  isOutput: port.output,
-				  isVisible: port.visible,
-				  isEditable: port.editable,
-				},
-			});
-			store.dispatch({
-				type: 'ADD_PORT_TO_NODE',
-				payload: {
-					nodeId: node.id,
-					port: port,
-				},
-			});
+			const newPort = {
+				id: port.id,
+				name: port.name,
+				isInput: port.input,
+				isOutput: port.output,
+				isVisible: port.visible,
+				isEditable: port.editable,
+			};
+			addPortToNode(newPort, newNode.id);
 		});
-
-		// #TODO to be removed and read from 'state' in #72:
-    // this.props.addNewNode(node);
   }
 
 	// #TODO updated in jsPlumb overhaul, issue #73
@@ -173,8 +122,7 @@ class Canvas extends React.Component {
   render() {
     const props = this.props;
 
-
-    const { canDrop, isOver, connectDropTarget } = this.props
+    const { canDrop, isOver, connectDropTarget, nodes } = this.props;
 		const isActive = canDrop && isOver
 
 		let backgroundColor = '#222'
@@ -184,34 +132,12 @@ class Canvas extends React.Component {
 			backgroundColor = 'darkkhaki'
 		}
 
-    // const nodes = [];
-    const net = this.props.net;
     let placeholder = null;
     if (this.placeholder){
       placeholder = (<h4 className="text-center" id="placeholder">Drag your nodes here!</h4>);
     }
 
-		{/* #TODO extract store with mapStateToProps, issue #72 */}
-		const { store } = this.context;
-		const nodes = nodeSelector(store.getState());
 
-		const allnodes = nodes.map(node => {
-			return (
-				<Node
-					key 		= {node.id}
-          y       = {node.y}
-          x       = {node.x}
-          name    = {node.name}
-          colour  = {node.colour}
-					// #TODO insert the right ports here, issue #72
-					// ports		= {ports}
-          click   = {this.clickNodeEvent}
-          hover   = {this.hoverNodeEvent}
-          leave   = {this.leaveNodeEvent}
-          dragged = {this.updateNodePosition}
-        />
-			);
-		});
 
 		{/*
 		const links = linkSelector(store.getState());
@@ -239,7 +165,7 @@ class Canvas extends React.Component {
           data-x="0"
           data-y="0"
         >
-          { allnodes }
+          <Nodes />
         </div>
 
         <div id='icon-plus' className="canvas-icon">
@@ -268,7 +194,6 @@ Canvas.contextTypes = {
 
 Canvas.propTypes = {
   placeholder:          PropTypes.bool,
-  // net:                  PropTypes.object.isRequired,
   // ports:                PropTypes.object.isRequired,
   // addNewNode:           PropTypes.func.isRequired,
   changeSelectedNode:   PropTypes.func.isRequired,
@@ -278,15 +203,21 @@ Canvas.propTypes = {
   canDrop: 		PropTypes.bool.isRequired,
 };
 
-function mapStateToProps(state) {
-	return {
-		propsNodes: nodes(nodes),
-	}
-}
+const mapStateToProps = state => ({
+})
 
+const mapDispatchToProps = dispatch => ({
+	addNode: (node) => dispatch(addNode(node)),
+	addPortToNode: (port, nodeId) => dispatch(addPortToNode(port, nodeId)),
+});
 
-export default DropTarget(ItemTypes.PaneElement, boxTarget, (connect, monitor) => ({
-	connectDropTarget: connect.dropTarget(),
+Canvas = DropTarget(ItemTypes.PaneElement, boxTarget, (connection, monitor) => ({
+	connectDropTarget: connection.dropTarget(),
 	isOver: monitor.isOver(),
 	canDrop: monitor.canDrop(),
 }))(Canvas)
+
+export default Canvas = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Canvas);

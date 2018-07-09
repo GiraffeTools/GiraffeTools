@@ -3,6 +3,7 @@
 ///// NODES /////
 export const ADD_NODE = 'ADD_NODE';
 export const REMOVE_NODE = 'REMOVE_NODE';
+export const UPDATE_NODE = 'UPDATE_NODE';
 export const ADD_PORT_TO_NODE = 'ADD_PORT_TO_NODE';
 export const CLICK_NODE = 'CLICK_NODE';
 export const HOVER_NODE = 'HOVER_NODE';
