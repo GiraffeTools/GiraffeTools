@@ -10,3 +10,11 @@ export const nodeSelector = createSelector(
     return session.Node.all().toRefArray();
   }
 );
+
+export const linkSelector = createSelector(
+  orm,
+  state => state.orm,
+  session => {
+    return session.Link.all().toRefArray();
+  }
+);

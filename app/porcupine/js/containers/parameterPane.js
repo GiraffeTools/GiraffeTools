@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Field from './field';
+import Field from '../components/field';
 
 class ParameterPane extends React.Component {
   constructor(props) {
@@ -134,7 +134,6 @@ class ParameterPane extends React.Component {
 
 ParameterPane.propTypes = {
   selectedNode: PropTypes.string,
-  net: PropTypes.object,
   deleteNode: PropTypes.func,
   modifyNode: PropTypes.func,
   changeSelectedNode: PropTypes.func

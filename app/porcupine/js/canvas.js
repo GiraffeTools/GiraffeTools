@@ -5,7 +5,7 @@ import { DropTarget } from 'react-dnd';
 import { connect } from 'react-redux';
 
 import ItemTypes from './itemTypes';
-import Link from './link';
+import Links from './containers/links';
 import Nodes from './containers/nodes';
 import zoomFunctions from './zoomFunctions';
 import nodeData from '../static/assets/nipype.json';
@@ -16,7 +16,7 @@ import {
 } from './actions/index';
 import {
 	nodeSelector,
-	nodePortSelector,
+	linkSelector,
 } from './selectors/selectors';
 
 
@@ -40,17 +40,9 @@ class Canvas extends React.Component {
 
   componentDidMount() {
     this.placeholder = false;
-		const { store } = this.context;
-		this.unsubscribe = store.subscribe(() =>
-			this.forceUpdate()
-		);
-		// instance = jsPlumbReady();
     this.mouseState = zoomFunctions();
   }
 
-	componentWillUnmount() {
-		this.unsubscribe();
-	}
 
   componentDidUpdate() {
     this.placeholder = false;
@@ -72,7 +64,7 @@ class Canvas extends React.Component {
 
     this.placeholder = false;
 		const rec = document.getElementById('zoomContainer').getBoundingClientRect();
-		// #TODO to be removed as part of #73:
+		// #TODO to be updated as part of #73:
 		const canvas = document.getElementById('jsplumbContainer');
     // const zoom = instance.getZoom();
     const zoom = 1;
@@ -135,18 +127,6 @@ class Canvas extends React.Component {
       placeholder = (<h4 className="text-center" id="placeholder">Drag your nodes here!</h4>);
     }
 
-
-
-		{/*
-		const links = linkSelector(store.getState());
-		links.map(link => {
-			return (
-				<Link
-        />
-			);
-		});
-		*/}
-
     return connectDropTarget(
       <div
         className="canvas"
@@ -156,7 +136,7 @@ class Canvas extends React.Component {
       >
         {/* {errors} */}
         {placeholder}
-				{/* #TODO extract store with mapStateToProps, issue #72 */}
+				{/* #TODO replace this container, issue #73 */}
         <div
           id="jsplumbContainer"
           data-zoom="1"
@@ -164,6 +144,7 @@ class Canvas extends React.Component {
           data-y="0"
         >
           <Nodes />
+					<Links />
         </div>
 
         <div id='icon-plus' className="canvas-icon">
@@ -186,10 +167,6 @@ class Canvas extends React.Component {
     );
   }
 }
-Canvas.contextTypes = {
-	store: PropTypes.object
-};
-
 Canvas.propTypes = {
   placeholder:          PropTypes.bool,
   // ports:                PropTypes.object.isRequired,

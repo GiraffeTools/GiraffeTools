@@ -2,15 +2,15 @@ import React from 'react';
 import { DragDropContextProvider } from 'react-dnd'
 import TouchBackend from 'react-dnd-touch-backend'
 import HTML5Backend from 'react-dnd-html5-backend'
+import { connect } from 'react-redux';
 import $ from 'jquery';
 
 import { default as ItemPreview } from './itemPreview';
-import Sidebar from './containers/sidebar';
 import Canvas from './canvas';
-import nodes from '../static/assets/nipype.json';
-import ParameterPane from './parameterPane';
+import ParameterPane from './containers/parameterPane';
+import Sidebar from './containers/sidebar';
+import Tooltip from './containers/tooltip';
 import zoomFunctions from './zoomFunctions';
-import Tooltip from './tooltip';
 
 
 require('browsernizr/test/touchevents');
@@ -19,17 +19,11 @@ var Modernizr = require('browsernizr');
 class Content extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      net: {},
-      nextNodeId: 0
-    };
-    this.addNewLink         = this.addNewLink.bind(this);
-    this.toggleSidebar      = this.toggleSidebar.bind(this);
     this.loadFromJson       = this.loadFromJson.bind(this);
     this.modifyNodeParams   = this.modifyNodeParams.bind(this);
     this.modifyNodePos      = this.modifyNodePos.bind(this);
     this.deleteNode         = this.deleteNode.bind(this);
-  }; //end constructor
+  };
 
   componentWillMount() {
     $.getJSON(jsonFile, function(result) {
@@ -37,28 +31,7 @@ class Content extends React.Component {
     }.bind(this));
   }
 
-  addNewLink(link) {
-    const ports = this.state.ports;
-    net[`L${this.state.nextLinkId}`] = link;
-    this.setState({
-      net: net,
-      nextLinkId: this.state.nextLinkId + 1
-    });
-  }
-
-  toggleSidebar() {
-    $('#sidebar').toggleClass('visible');
-    $('.sidebar-button').toggleClass('close');
-    $('.header').toggleClass('navbar-open');
-    $('#main').toggleClass('withSidebar');
-  }
-
   loadFromJson(json) {
-    this.setState({
-      net: {},
-      nextNodeId: 0,
-      error: []
-    });
     const canvas = document.getElementById('jsplumbContainer');
     const zoom = instance.getZoom();
 
@@ -110,36 +83,31 @@ class Content extends React.Component {
   }
 
   render() {
-    let showSidebar = true;
     return (
-    <DragDropContextProvider backend={ Modernizr.touchevents ? TouchBackend : HTML5Backend }>
-      <div id="parent">
-        <Sidebar />
-        <div id="main">
-          <Canvas
-            net                 = {this.state.net}
-            ports               = {this.state.ports}
-            nextNodeId          = {this.state.nextNodeId}
-            addNewLink          = {this.addNewLink}
-            modifyNode          = {this.modifyNodePos}
-          />
-          <ParameterPane
-            net                 = {this.state.net}
-            selectedNode        = {this.state.selectedNode}
-            deleteNode          = {this.deleteNode}
-            modifyNode          = {this.modifyNodeParams}
-          />
-          <Tooltip
-            id={'tooltip_text'}
-            // net={this.state.net}
-          />
-          {/* Modal */}
+      <DragDropContextProvider backend={ Modernizr.touchevents ? TouchBackend : HTML5Backend }>
+        <div id="parent">
+          <Sidebar />
+          <div id="main" className={(this.props.showSidebar ? "withSidebar" : "")}>
+            <Canvas />
+            <ParameterPane />
+            <Tooltip />
+          </div>
+          { Modernizr.touchevents && <ItemPreview key="__preview" name="Item" /> }
         </div>
-        { Modernizr.touchevents && <ItemPreview key="__preview" name="Item" /> }
-      </div>
-    </DragDropContextProvider>
+      </DragDropContextProvider>
     );
   }
 }
 
-export default Content;
+
+const mapStateToProps = state => ({
+  showSidebar: state.sidebar.showSidebar
+})
+
+const mapDispatchToProps = dispatch => ({
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Content)
