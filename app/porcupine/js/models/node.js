@@ -1,4 +1,4 @@
-import { Model, many, attr } from 'redux-orm';
+import { Model, many, fk, attr } from 'redux-orm';
 
 import Port from './port'
 import {
@@ -19,7 +19,7 @@ class Node extends Model {
         node.delete();
         break;
       case ADD_PORT_TO_NODE:
-        Node.withId(action.payload.nodeId).ports.add(action.payload.id);
+        Node.withId(action.payload.nodeId).ports.add(action.payload.port);
         break;
     }
     return undefined;

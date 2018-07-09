@@ -2,6 +2,8 @@ import React from 'react';
 import { DragDropContextProvider } from 'react-dnd'
 import TouchBackend from 'react-dnd-touch-backend'
 import HTML5Backend from 'react-dnd-html5-backend'
+import $ from 'jquery';
+
 import { default as ItemPreview } from './itemPreview';
 import Sidebar from './containers/sidebar';
 import Canvas from './canvas';
@@ -9,12 +11,10 @@ import nodes from '../static/assets/nipype.json';
 import ParameterPane from './parameterPane';
 import zoomFunctions from './zoomFunctions';
 import Tooltip from './tooltip';
-import $ from 'jquery';
+
 
 require('browsernizr/test/touchevents');
 var Modernizr = require('browsernizr');
-
-
 
 class Content extends React.Component {
   constructor(props) {
@@ -26,32 +26,20 @@ class Content extends React.Component {
       hoveredNode: null,
       nextNodeId: 0
     };
-
-    this.addNewNode         = this.addNewNode.bind(this);
     this.addNewLink         = this.addNewLink.bind(this);
     this.changeSelectedNode = this.changeSelectedNode.bind(this);
     this.toggleSidebar      = this.toggleSidebar.bind(this);
     this.loadFromJson       = this.loadFromJson.bind(this);
     this.modifyNodeParams   = this.modifyNodeParams.bind(this);
-    this.modifyNodePos   = this.modifyNodePos.bind(this);
+    this.modifyNodePos      = this.modifyNodePos.bind(this);
     this.deleteNode         = this.deleteNode.bind(this);
-    this.changeHoveredNode = this.changeHoveredNode.bind(this);
-
+    this.changeHoveredNode  = this.changeHoveredNode.bind(this);
   }; //end constructor
 
   componentWillMount() {
     $.getJSON(jsonFile, function(result) {
       this.loadFromJson(result);
     }.bind(this));
-  }
-
-  addNewNode(node) {
-    const net = this.state.net;
-    net[`N${this.state.nextNodeId}`] = node;
-    this.setState({
-      net: net,
-      nextNodeId: this.state.nextNodeId + 1
-    });
   }
 
   addNewLink(link) {
@@ -127,7 +115,6 @@ class Content extends React.Component {
       };
       // newNode.links = { input: [], output: [] };
 
-      this.addNewNode(newNode);
     });
     zoomFunctions().onLoaded();
 
@@ -168,7 +155,6 @@ class Content extends React.Component {
             net                 = {this.state.net}
             ports               = {this.state.ports}
             nextNodeId          = {this.state.nextNodeId}
-            addNewNode          = {this.addNewNode}
             addNewLink          = {this.addNewLink}
             changeSelectedNode  = {this.changeSelectedNode}
             changeHoveredNode   = {this.changeHoveredNode}

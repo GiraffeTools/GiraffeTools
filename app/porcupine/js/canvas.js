@@ -12,7 +12,10 @@ import {
 	addNode,
 	addPortToNode,
 } from './actions/index';
-import {nodesSelector} from './selectors/selectors';
+import {
+	nodeSelector,
+	nodePortSelector,
+} from './selectors/selectors';
 
 
 const boxTarget = {
@@ -21,7 +24,6 @@ const boxTarget = {
 		return { name: 'Canvas' }
 	},
 }
-
 
 class Canvas extends React.Component {
   constructor(props) {
@@ -99,7 +101,8 @@ class Canvas extends React.Component {
   drop(item, offset) {
     this.placeholder = false;
 		const rec = document.getElementById('zoomContainer').getBoundingClientRect();
-    const canvas = document.getElementById('jsplumbContainer');
+		// #TODO to be removed as part of #73:
+		const canvas = document.getElementById('jsplumbContainer');
     // const zoom = instance.getZoom();
     const zoom = 1;
     let category = item.element_type;
@@ -109,39 +112,26 @@ class Canvas extends React.Component {
       currentNodes = currentNodes['categories'][c];
     })
     const node = $.extend(true, {}, currentNodes.nodes[name]);
-
     node.colour = currentNodes.colour;
-    node.info = { category, name };
 		node.id = v4();
-    node.state = {
-      x: (offset.x - rec.left - canvas.x) / zoom - 45,
-      y: (offset.y - rec.top -  canvas.y) / zoom - 25,
-      class: ''
-    };
 
 		// #TODO to be extracted as action #72
-		const { store } = this.context;
-
 		// addNode({
-		//   id: node.id,
-		//   x: node.state.x,
-		//   y: node.state.y,
-		//   colour: node.colour,
 		// });
-
+		const { store } = this.context;
 		store.dispatch({
 			type: 'ADD_NODE',
 			payload: {
 				id: node.id,
-			  x: node.state.x,
-			  y: node.state.y,
+				name: name,
+			  x: (offset.x - rec.left - canvas.x) / zoom - 45,
+			  y: (offset.y - rec.top -  canvas.y) / zoom - 25,
 			  colour: node.colour,
 			},
 		});
 
 		// #TODO to be extracted as action #72
 		node.ports.map((port) => {
-			//#TODO Should the following line be an '=', deep-copy, or Object.assign?
 			port.id = v4();
 			store.dispatch({
 				type: 'ADD_PORT',
@@ -159,15 +149,16 @@ class Canvas extends React.Component {
 				type: 'ADD_PORT_TO_NODE',
 				payload: {
 					nodeId: node.id,
-					id: port.id,
+					port: port,
 				},
 			});
 		});
 
 		// #TODO to be removed and read from 'state' in #72:
-    this.props.addNewNode(node);
+    // this.props.addNewNode(node);
   }
 
+	// #TODO updated in jsPlumb overhaul, issue #73
   clickCanvas(event) {
     this.placeholder = false;
     event.preventDefault();
@@ -181,10 +172,6 @@ class Canvas extends React.Component {
 
   render() {
     const props = this.props;
-		const { store } = this.context;
-
-		// const { propsNodes } = props;
-		// console.log(nodesSelector(store.getState()));
 
 
     const { canDrop, isOver, connectDropTarget } = this.props
@@ -197,42 +184,44 @@ class Canvas extends React.Component {
 			backgroundColor = 'darkkhaki'
 		}
 
-    const nodes = [];
+    // const nodes = [];
     const net = this.props.net;
     let placeholder = null;
     if (this.placeholder){
       placeholder = (<h4 className="text-center" id="placeholder">Drag your nodes here!</h4>);
     }
 
+		{/* #TODO extract store with mapStateToProps, issue #72 */}
+		const { store } = this.context;
+		const nodes = nodeSelector(store.getState());
 
-    Object.keys(net).forEach(nodeId => {
-      const node = net[nodeId];
-
-      nodes.push(
-        <Node
-          key    = {nodeId}
-          id     = {nodeId}
-          y      = {node.state.y}
-          x      = {node.state.x}
-          type   = {node.info.name}
-          // colour = {node.colour}
-          ports  = {node.ports}
-          click  = {this.clickNodeEvent}
-          hover  = {this.hoverNodeEvent}
-          leave  = {this.leaveNodeEvent}
+		const allnodes = nodes.map(node => {
+			return (
+				<Node
+					key 		= {node.id}
+          y       = {node.y}
+          x       = {node.x}
+          name    = {node.name}
+          colour  = {node.colour}
+					// #TODO insert the right ports here, issue #72
+					// ports		= {ports}
+          click   = {this.clickNodeEvent}
+          hover   = {this.hoverNodeEvent}
+          leave   = {this.leaveNodeEvent}
           dragged = {this.updateNodePosition}
         />
-      );
-    })
-    {/*Object.keys(ports).forEach(linkId => {
-      const node = net[linkId];
-      nodes.push(
-        <Link
-          key    = {linkId}
-          id     = {linkId}
+			);
+		});
+
+		{/*
+		const links = linkSelector(store.getState());
+		links.map(link => {
+			return (
+				<Link
         />
-      );
-    })*/}
+			);
+		});
+		*/}
 
     return connectDropTarget(
       <div
@@ -243,13 +232,14 @@ class Canvas extends React.Component {
       >
         {/* {errors} */}
         {placeholder}
+				{/* #TODO extract store with mapStateToProps, issue #72 */}
         <div
           id="jsplumbContainer"
           data-zoom="1"
           data-x="0"
           data-y="0"
         >
-          {nodes}
+          { allnodes }
         </div>
 
         <div id='icon-plus' className="canvas-icon">
@@ -278,9 +268,9 @@ Canvas.contextTypes = {
 
 Canvas.propTypes = {
   placeholder:          PropTypes.bool,
-  net:                  PropTypes.object.isRequired,
-  ports:                PropTypes.object.isRequired,
-  addNewNode:           PropTypes.func.isRequired,
+  // net:                  PropTypes.object.isRequired,
+  // ports:                PropTypes.object.isRequired,
+  // addNewNode:           PropTypes.func.isRequired,
   changeSelectedNode:   PropTypes.func.isRequired,
   changeHoveredNode:    PropTypes.func.isRequired,
   connectDropTarget:    PropTypes.func.isRequired,

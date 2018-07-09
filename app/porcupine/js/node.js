@@ -85,11 +85,20 @@ class Node extends React.Component {
   }
 
   render() {
-    const { x, y, colour, classname, id, type, click, ports, hover, leave, isDragging, connectDragSource, connectDragPreview } = this.props;
-    const visiblePorts = ports.filter(port => port.visible);
+    const {
+      id,
+      name,
+      x,
+      y,
+      colour,
+      // #TODO insert ports here, issue #72
+      // ports,
+      click, hover, leave, isDragging, connectDragSource, connectDragPreview } = this.props;
+    // const visiblePorts = ports.filter(port => port.visible);
+    // console.log(this.props);
     let content = (
       <div
-        className={`node ${classname}`}
+        className='node'
         style={{
           left:`${x}px`,
           top: `${y}px`,
@@ -103,10 +112,14 @@ class Node extends React.Component {
         data-for='getContent'
       >
         <div className="node__type">
-          {type}
+          { name }
         </div>
 
-        <PortBlock />
+        {/*}
+        <PortBlock
+          ports={ports}
+        />
+        */}
       </div>
     )
 
@@ -117,7 +130,7 @@ class Node extends React.Component {
 }
 
 Node.propTypes = {
-  type:   PropTypes.string.isRequired,
+  name:   PropTypes.string.isRequired,
   colour: PropTypes.string.isRequired,
   x:      PropTypes.number.isRequired,
   y:      PropTypes.number.isRequired,
@@ -125,7 +138,6 @@ Node.propTypes = {
   hover:  PropTypes.func.isRequired,
   leave:  PropTypes.func.isRequired,
   class:  PropTypes.string,
-  ports:  PropTypes.array.isRequired,
   connectDragSource: PropTypes.func.isRequired,
   connectDragPreview: PropTypes.func.isRequired,
   isDragging: PropTypes.bool.isRequired,
