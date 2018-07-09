@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import PaneHeader from './paneHeader';
 import PaneElement from './paneElement';
-import nodes from '../static/assets/nipype.json';
+import nodes from '../../static/assets/nipype.json';
 
 class PaneGroup extends React.Component {
   constructor(props) {

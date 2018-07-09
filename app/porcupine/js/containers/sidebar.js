@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { toggleSidebar } from '../actions';
-import PaneGroup from '../paneGroup';
+import PaneGroup from '../components/paneGroup';
 import nodes from '../../static/assets/nipype.json';
 
 
