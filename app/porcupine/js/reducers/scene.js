@@ -12,9 +12,11 @@ export default function scene(state = [], action) {
     case ZOOM_OUT:
       return state;
     case HOVER_NODE:
-      return {...state, hoveredNode: action.hoveredNode};
+      console.log('hover');
+      return {...state, hoveredNode: action.nodeId};
     case CLICK_NODE:
-      return {...state, hoveredNode: action.clickedNode};
+      console.log('click');
+      return {...state, clickedNode: action.nodeId};
     default:
       return state;
   }
