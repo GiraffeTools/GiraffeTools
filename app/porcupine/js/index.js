@@ -5,7 +5,7 @@ import { hot } from 'react-hot-loader'
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import configureStore from './configureStore';
+import configureStore from './store/configureStore';
 import Content from './containers/content';
 
 const App = hot(module)( () =>

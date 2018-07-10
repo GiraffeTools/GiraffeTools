@@ -3,8 +3,9 @@ import React from 'react';
 import { DragSource } from 'react-dnd';
 import { connect } from 'react-redux';
 
-import ItemTypes from '../itemTypes';
+import ItemTypes from './itemTypes';
 import PortBlock from '../containers/ports';
+import jsPlumbReady from '../jsPlumbReady';
 import {
 	hoverNode,
 	clickNode,
@@ -34,6 +35,21 @@ class Node extends React.Component {
     this.connect       = this.connect.bind(this);
   }
 
+	// #TODO to be removed in #73
+	componentDidMount() {
+    instance = jsPlumbReady();
+  }
+
+
+  componentDidUpdate() {
+    let a = jsPlumb.getSelector('.node');
+    instance.draggable(a,
+      {
+        drag: this.updateNodePosition.bind(this),
+        grid: [8, 8]
+      }
+    );
+  }
 
   click(event, nodeId) {
     const { clickNode } = this.props;

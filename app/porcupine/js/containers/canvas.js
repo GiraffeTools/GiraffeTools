@@ -4,7 +4,7 @@ import React from 'react';
 import { DropTarget } from 'react-dnd';
 import { connect } from 'react-redux';
 
-import ItemTypes from '../itemTypes';
+import ItemTypes from './itemTypes';
 import Links from './links';
 import Nodes from './nodes';
 import zoomFunctions from '../zoomFunctions';
@@ -40,19 +40,12 @@ class Canvas extends React.Component {
 
   componentDidMount() {
     this.placeholder = false;
+		// #TODO remove/replace zoomFunctions in issue #73
     this.mouseState = zoomFunctions();
   }
 
-
   componentDidUpdate() {
     this.placeholder = false;
-    // let a = jsPlumb.getSelector('.node');
-    // instance.draggable(a,
-    //   {
-    //     drag: this.updateNodePosition.bind(this),
-    //     grid: [8, 8]
-    //   }
-    // );
   }
 
   allowDrop(event) {

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react'
 import { DragSource } from 'react-dnd'
-import ItemTypes from '../itemTypes'
+import ItemTypes from './itemTypes'
 
 
 const boxSource = {

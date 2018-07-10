@@ -3,7 +3,7 @@ import { createLogger } from 'redux-logger';
 // import { throttle } from 'lodash/throttle';
 
 import { loadState, saveState } from './localStorage';
-import porcupineApp from './reducers/index';
+import porcupineApp from '../reducers/index';
 
 
 const configureStore = () => {
@@ -12,6 +12,16 @@ const configureStore = () => {
     porcupineApp,
     persistedState
   );
+
+  if (module.hot) {
+    // Enable Webpack hot module replacement for reducers
+    module.hot.accept('../reducers', () => {
+      const nextRootReducer = require('../reducers/index');
+      store.replaceReducer(nextRootReducer);
+    });
+  }
+
+
   store.subscribe(() => {
     saveState(
       store.getState()
