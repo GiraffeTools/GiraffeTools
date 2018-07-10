@@ -24,6 +24,14 @@ export const addNode = (props) => ({
     payload: props,
 })
 
+export const deleteNode = (nodeId) => ({
+    type: REMOVE_NODE,
+    payload: {
+      nodeId,
+    },
+});
+
+
 export const addPortToNode = (port, nodeId) => ({
     type: ADD_PORT_TO_NODE,
     payload: {

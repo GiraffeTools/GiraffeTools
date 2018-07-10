@@ -7,12 +7,12 @@ import nodes from '../../static/assets/nipype.json';
 
 
 const mapStateToProps = state => ({
-  showSidebar: state.sidebar.showSidebar
-})
+  showSidebar: state.sidebar.showSidebar,
+});
 
 const mapDispatchToProps = dispatch => ({
-  toggleSidebar: () => dispatch(toggleSidebar())
-})
+  toggleSidebar: () => dispatch(toggleSidebar()),
+});
 
 const nodeList = Object.keys(nodes.categories).map(function(category) {
   return (
@@ -20,8 +20,8 @@ const nodeList = Object.keys(nodes.categories).map(function(category) {
       key = {category}
       category = {[category]}
     />
-  )
-})
+  );
+});
 
 const Sidebar = ({showSidebar, toggleSidebar}) => {
   return (
@@ -47,4 +47,4 @@ const Sidebar = ({showSidebar, toggleSidebar}) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Sidebar)
+)(Sidebar);

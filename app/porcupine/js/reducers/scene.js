@@ -15,9 +15,9 @@ export default function scene(state = [], action) {
     case HOVER_NODE:
       return {...state, hoveredNode: action.payload.nodeId};
     case CLICK_NODE:
-      return {...state, clickedNode: action.payload.nodeId === state.clickedNode ? null : action.payload.nodeId};
+      return {...state, selectedNode: action.payload.nodeId === state.selectedNode ? null : action.payload.nodeId};
     case CLICK_SCENE:
-      return {...state, clickedNode: null};
+      return {...state, selectedNode: null};
     default:
       return state;
   }

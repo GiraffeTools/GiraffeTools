@@ -1,6 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
+
 import Field from '../components/field';
+import {
+  clickNode,
+  deleteNode,
+} from '../actions/index';
+import {
+	selectedNodeSelector,
+} from '../selectors/selectors';
+
+
 
 class ParameterPane extends React.Component {
   constructor(props) {
@@ -11,31 +22,32 @@ class ParameterPane extends React.Component {
   }
 
   changeParams(portName, key, value) {
-    const net = this.props.net;
-    let node = { ...net[this.props.selectedNode] };
-    const port = node.ports.filter(port => port.name === portName)[0];
-    if (key === 'value' && !port.editable) {
-      return;
-    }
-
-    port[key] = value;
-    this.props.modifyNode(node);
+    // const net = this.props.net;
+    // let node = { ...net[this.props.selectedNode] };
+    // const port = node.ports.filter(port => port.name === portName)[0];
+    // if (key === 'value' && !port.editable) {
+    //   return;
+    // }
+    //
+    // port[key] = value;
+    // this.props.modifyNode(node);
   }
 
   removePort(portName) {
-    const { net, modifyNode } = this.props;
-    let node = { ...net[this.props.selectedNode] };
-    node.ports = node.ports.filter(port => port.name !== portName);
-    modifyNode(node);
+    // const { net, modifyNode } = this.props;
+    // let node = { ...net[this.props.selectedNode] };
+    // node.ports = node.ports.filter(port => port.name !== portName);
+    // modifyNode(node);
   }
 
   close() {
+    clickNode(null);
     // this.props.changeSelectedNode(null);
   }
 
   handleKeyPress(event) {
     if (event.key == 'Delete') {
-      this.props.deleteNode(this.props.selectedNode);
+      deleteNode(this.props.selectedNode);
     }
   }
 
@@ -48,95 +60,66 @@ class ParameterPane extends React.Component {
   }
 
   render() {
-    if (this.props.selectedNode) {
-      const params = [];
-      const props = [];
-      const node = this.props.net[this.props.selectedNode];
-
-      Object.keys(node.ports).forEach(i => {
-        const port = node.ports[i];
-        const visibleIconClassName = port.visible ? 'fa-eye' : 'fa-eye-slash';
-        const visibilityText = port.visible ? 'Invisible' : 'Visible';
-        {/*const iteratorClassName = port.iterator ? 'retweet' : 'retweet';*/}
-        {/*const iteratorText = port.iterator ? 'Iterate over this variable' : 'Do not iterate over the variable';*/}
-        params.push(
-          [
-          <Field
-            id={`${port.name}_text`}
-            key={`${port.name}_text`}
-            value={port.value || ''}
-            data={{ name: port.name, type: 'text', label: port.name.toUpperCase() }}
-            disabled={!port.editable}
-            changeField={(value) => this.changeParams(port.name, 'value', value)}
-          />,
-          <div
-            key={`${port.name}_actions`}
-            className="sidebar__node-actions">
-            <div className="sidebar__node-visibility" onClick={() => this.changeParams(port.name, 'visible', !port.visible)} >
-              <i className={`fas ${visibleIconClassName}`} title={`Make ${visibilityText}`} />{' '}
-            </div>
-            <button
-              type="button"
-              className="btn btn-outline-danger btn-sm"
-              onClick={() => this.removePort(port.name)}>
-              <i className="fas fa-trash-alt" />
-            </button>
+    const node = this.props.selectedNode;
+    return (
+      <div className={"setparams" + (node ? " setparamsActive" : "")} >
+        <div className="setHead">
+          <h4 className="sidebar__node-name">
+            {/*
+            {(node ? node.name : "Settings")}
+            */}
+          </h4>
+          <div className="sidebar__node-documentation">
+            {/*
+            // <a href={node.title.web_url} target="_blank">
+            //   <i className="fas fa-globe sidebar__globe-icon"></i>
+            //     <span>View documentation</span>{' '}
+            // </a>
+            */}
           </div>
-          ]
-        );
-      });
-
-      return (
-        <div className="setparams setparamsActive" >
-          <div className="setHead">
-            <h4 className="sidebar__node-name">
-              {node.title.name}
-            </h4>
-            <div className="sidebar__node-documentation">
-              <a href={node.title.web_url} target="_blank">
-                <i className="fas fa-globe sidebar__globe-icon"></i>
-                  <span>View documentation</span>{' '}
-              </a>
-            </div>
-            <i className="fas fa-times sidebar__close-icon"
-              onClick={() => this.close()}
-              aria-hidden="true"/>
-          </div>
-          <div className="setContain">
-            <form className="form-horizontal">
-              {params}
-            </form>
-            <br />
-            <button
-              type="button"
-              className="btn btn-block deleteLayerButton sidebar-heading"
-              onClick={() => this.props.deleteNode(this.props.selectedNode)}
-            >
-              DELETE NODE
-            </button>
-          </div>
+          <i className="fas fa-times sidebar__close-icon"
+            onClick={() => this.props.clickNode(null)}
+            aria-hidden="true"/>
         </div>
-      );
-    } else {
-      return (
-        <div className="col-md-3 setparams" >
-          <div className="setHead" style={{ color: 'white' }}>
-            Settings
-          </div>
-          <div style={{ padding: '30px' }}>
-            select a node to set its parameters
-          </div>
+        <div className="setContain">
+          {/*
+          <Fields
+            ports = {node.ports}
+          />
+          */}
+          <br />
+          <button
+            type="button"
+            className="btn btn-block deleteLayerButton sidebar-heading"
+            onClick={() => {
+              this.props.deleteNode(node);
+              this.props.clickNode(null);}
+            }
+          >
+            DELETE NODE
+          </button>
         </div>
-      );
-    }
+      </div>
+    );
   }
 }
 
 ParameterPane.propTypes = {
-  selectedNode: PropTypes.string,
-  deleteNode: PropTypes.func,
+  // selectedNode: PropTypes.string,
   modifyNode: PropTypes.func,
   changeSelectedNode: PropTypes.func
 };
 
-export default ParameterPane;
+const mapStateToProps = state => ({
+  selectedNode: state.scene.selectedNode,
+})
+
+const mapDispatchToProps = dispatch => ({
+  deleteNode: (nodeId) => dispatch(deleteNode(nodeId)),
+  clickNode: (nodeId) => dispatch(clickNode(nodeId)),
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ParameterPane)

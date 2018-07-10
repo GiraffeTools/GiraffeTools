@@ -64,6 +64,7 @@ class Node extends React.Component {
   }
 
   updateNodePosition(nodeId, offset) {
+		// #TODO relay this to the store, issue #73
     if (!this.clickOrDraggedNode) {
       this.clickOrDraggedNode = true;
     }
@@ -136,7 +137,7 @@ class Node extends React.Component {
       y,
       colour,
 			hoveredNode,
-			clickedNode,
+			selectedNode,
       // #TODO insert ports here, issue #72
       // ports,
       isDragging, connectDragSource, connectDragPreview } = this.props;
@@ -144,7 +145,7 @@ class Node extends React.Component {
     // console.log(this.props);
     let content = (
       <div
-        className={'node' + (id === clickedNode ? ' selected' : '') + (id === hoveredNode ? ' hover' : '')}
+        className={'node' + (id === selectedNode ? ' selected' : '') + (id === hoveredNode ? ' hover' : '')}
         style={{
           left:`${x}px`,
           top: `${y}px`,
@@ -188,7 +189,7 @@ Node.propTypes = {
 
 const mapStateToProps = state => ({
 	hoveredNode: state.scene.hoveredNode,
-	clickedNode: state.scene.clickedNode,
+	selectedNode: state.scene.selectedNode,
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -16,7 +16,7 @@ class Node extends Model {
         Node.create(action.payload);
         break;
       case REMOVE_NODE:
-        const node = Node.withId(action.payload);
+        const node = Node.withId(action.payload.nodeId);
         node.delete();
         break;
       case ADD_PORT_TO_NODE:

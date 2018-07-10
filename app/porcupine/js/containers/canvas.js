@@ -163,7 +163,8 @@ class Canvas extends React.Component {
 				<ZoomIn />
 				<ZoomOut />
 
-        {/* <div style={{ ...style, backgroundColor }}>
+        {/*
+				<div >
           {isActive ? 'Release to drop' : 'Drag a box here'}
         </div>
          */}
@@ -174,8 +175,6 @@ class Canvas extends React.Component {
 }
 Canvas.propTypes = {
   placeholder:          PropTypes.bool,
-  // ports:                PropTypes.object.isRequired,
-  // addNewNode:           PropTypes.func.isRequired,
   // connectDropTarget:    PropTypes.func.isRequired,
   isOver: 		PropTypes.bool.isRequired,
   canDrop: 		PropTypes.bool.isRequired,

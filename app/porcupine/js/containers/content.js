@@ -22,7 +22,6 @@ class Content extends React.Component {
     this.loadFromJson       = this.loadFromJson.bind(this);
     this.modifyNodeParams   = this.modifyNodeParams.bind(this);
     this.modifyNodePos      = this.modifyNodePos.bind(this);
-    this.deleteNode         = this.deleteNode.bind(this);
   };
 
   componentWillMount() {
@@ -71,15 +70,6 @@ class Content extends React.Component {
     const net = this.state.net;
     net[nodeId] = node;
     this.setState({ net });
-  }
-
-  deleteNode(nodeId) {
-    const net = this.state.net;
-    delete net[nodeId];
-    this.setState({
-      net: net,
-      selectedNode: null
-    });
   }
 
   render() {
