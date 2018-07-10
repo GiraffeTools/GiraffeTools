@@ -20,6 +20,29 @@ import {
 } from '../selectors/selectors';
 
 
+const ZoomIn = () => {
+	return (
+		<div id='icon-plus' className="canvas-icon">
+			<p>Press</p>
+			<button className="btn btn-default text-center">
+					<span aria-hidden="true">+</span>
+			</button>
+		</div>
+	);
+}
+
+const ZoomOut = () => {
+	return(
+		<div id='icon-minus' className="canvas-icon">
+			<p>Press</p>
+			<button className="btn btn-default text-center">
+					<span aria-hidden="true">-</span>
+			</button>
+		</div>
+	);
+}
+
+
 const boxTarget = {
 	drop(props, monitor, component) {
 		component.drop(monitor.getItem(), monitor.getClientOffset())
@@ -34,8 +57,6 @@ class Canvas extends React.Component {
     this.allowDrop            = this.allowDrop.bind(this);
     this.drop                 = this.drop.bind(this);
     this.clickCanvas          = this.clickCanvas.bind(this);
-    this.clickOrDraggedNode   = false;
-		this.clickOrDraggedNode   = false;
   }
 
   componentDidMount() {
@@ -139,23 +160,14 @@ class Canvas extends React.Component {
           <Nodes />
 					<Links />
         </div>
+				<ZoomIn />
+				<ZoomOut />
 
-        <div id='icon-plus' className="canvas-icon">
-          <p>Press</p>
-          <button className="btn btn-default text-center">
-              <span aria-hidden="true">+</span>
-          </button>
-        </div>
-        <div id='icon-minus' className="canvas-icon">
-          <p>Press</p>
-          <button className="btn btn-default text-center">
-              <span aria-hidden="true">-</span>
-          </button>
-        </div>
         {/* <div style={{ ...style, backgroundColor }}>
           {isActive ? 'Release to drop' : 'Drag a box here'}
         </div>
          */}
+
       </div>,
     );
   }
