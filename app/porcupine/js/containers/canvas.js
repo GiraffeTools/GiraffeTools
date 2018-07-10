@@ -4,7 +4,7 @@ import React from 'react';
 import { DropTarget } from 'react-dnd';
 import { connect } from 'react-redux';
 
-import ItemTypes from './itemTypes';
+import ItemTypes from '../components/itemTypes';
 import Links from './links';
 import Nodes from './nodes';
 import zoomFunctions from '../zoomFunctions';
