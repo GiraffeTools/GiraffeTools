@@ -4,20 +4,20 @@ import React from 'react';
 import { DropTarget } from 'react-dnd';
 import { connect } from 'react-redux';
 
-import ItemTypes from './itemTypes';
-import Links from './containers/links';
-import Nodes from './containers/nodes';
-import zoomFunctions from './zoomFunctions';
-import nodeData from '../static/assets/nipype.json';
+import ItemTypes from '../itemTypes';
+import Links from './links';
+import Nodes from './nodes';
+import zoomFunctions from '../zoomFunctions';
+import nodeData from '../../static/assets/nipype.json';
 import {
 	addNode,
 	addPortToNode,
 	clickScene,
-} from './actions/index';
+} from '../actions/index';
 import {
 	nodeSelector,
 	linkSelector,
-} from './selectors/selectors';
+} from '../selectors/selectors';
 
 
 const boxTarget = {

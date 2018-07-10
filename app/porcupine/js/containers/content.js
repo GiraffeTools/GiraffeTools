@@ -5,12 +5,12 @@ import HTML5Backend from 'react-dnd-html5-backend'
 import { connect } from 'react-redux';
 import $ from 'jquery';
 
-import { default as ItemPreview } from './itemPreview';
+import { default as ItemPreview } from '../components/itemPreview';
 import Canvas from './canvas';
-import ParameterPane from './containers/parameterPane';
-import Sidebar from './containers/sidebar';
-import Tooltip from './containers/tooltip';
-import zoomFunctions from './zoomFunctions';
+import ParameterPane from './parameterPane';
+import Sidebar from './sidebar';
+import Tooltip from './tooltip';
+import zoomFunctions from '../zoomFunctions';
 
 
 require('browsernizr/test/touchevents');
