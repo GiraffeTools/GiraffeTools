@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import Node from '../components/node';
 import {
-	nodeSelector,
+	nodes,
 } from '../selectors/selectors';
 
 
 const mapStateToProps = state => ({
-		nodes: nodeSelector(state),
+		nodes: nodes(state),
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -17,7 +17,6 @@ const mapDispatchToProps = dispatch => ({
 class Nodes extends React.Component {
   constructor(props) {
     super(props);
-    // this.updateNodePosition   = this.updateNodePosition.bind(this);
   }
 
   render() {
@@ -32,7 +31,6 @@ class Nodes extends React.Component {
           colour  = {node.colour}
           // #TODO insert the right ports here, issue #72
           // ports		= {ports}
-          // dragged = {this.updateNodePosition}
         />
       );
     });

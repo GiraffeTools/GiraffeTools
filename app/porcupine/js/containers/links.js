@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import Link from '../components/link';
 import {
-	linkSelector,
+	links,
 } from '../selectors/selectors';
 
 
 const mapStateToProps = state => ({
-		links: linkSelector(state),
+		links: links(state),
 })
 
 const mapDispatchToProps = dispatch => ({

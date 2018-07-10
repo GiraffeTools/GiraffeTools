@@ -3,7 +3,7 @@ import { createSelector } from "redux-orm";
 import orm from "../models/index";
 
 
-export const nodeSelector = createSelector(
+export const nodes = createSelector(
   orm,
   state => state.orm,
   session => {
@@ -11,7 +11,11 @@ export const nodeSelector = createSelector(
   }
 );
 
-export const linkSelector = createSelector(
+export const portNodes = createSelector(
+  // #TODO no idea what to insert here... issue #73
+);
+
+export const links = createSelector(
   orm,
   state => state.orm,
   session => {

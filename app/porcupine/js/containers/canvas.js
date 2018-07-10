@@ -14,10 +14,6 @@ import {
 	addPortToNode,
 	clickScene,
 } from '../actions/index';
-import {
-	nodeSelector,
-	linkSelector,
-} from '../selectors/selectors';
 
 
 const ZoomIn = () => {

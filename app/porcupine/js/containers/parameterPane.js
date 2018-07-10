@@ -12,12 +12,10 @@ import {
 } from '../selectors/selectors';
 
 
-
 class ParameterPane extends React.Component {
   constructor(props) {
     super(props);
     this.changeParams = this.changeParams.bind(this);
-    this.close = this.close.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
@@ -40,11 +38,6 @@ class ParameterPane extends React.Component {
     // modifyNode(node);
   }
 
-  close() {
-    clickNode(null);
-    // this.props.changeSelectedNode(null);
-  }
-
   handleKeyPress(event) {
     if (event.key == 'Delete') {
       deleteNode(this.props.selectedNode);
@@ -60,6 +53,7 @@ class ParameterPane extends React.Component {
   }
 
   render() {
+    // #TODO issue 73: ATM this is a reference, not the object yet.
     const node = this.props.selectedNode;
     return (
       <div className={"setparams" + (node ? " setparamsActive" : "")} >
@@ -105,7 +99,6 @@ class ParameterPane extends React.Component {
 }
 
 ParameterPane.propTypes = {
-  // selectedNode: PropTypes.string,
   modifyNode: PropTypes.func,
   changeSelectedNode: PropTypes.func
 };
