@@ -5,14 +5,16 @@ import { connect } from 'react-redux';
 
 import ItemTypes from './itemTypes';
 import PortBlock from '../containers/ports';
-import jsPlumbReady from '../jsPlumbReady';
+// import jsPlumbReady from '../jsPlumbReady';
 import {
 	hoverNode,
 	clickNode,
+	updateNodePosition,
 } from '../actions/index';
 
 const boxSource = {
   beginDrag(props) {
+		event.stopPropagation();
     return {
       key: props.id,
       type: props.type
@@ -23,7 +25,7 @@ const boxSource = {
    // const dropResult = monitor.getDropResult()
    const offset = monitor.getDifferenceFromInitialOffset()
    if (item) {
-    props.dragged(item.key, offset)
+		 props.updateNodePosition(item.key, {x: props.x + offset.x, y: props.y + offset.y} );
    }
   },
 }
@@ -33,22 +35,6 @@ class Node extends React.Component {
     super(props);
     this.connectPort   = this.connectPort.bind(this);
     this.connect       = this.connect.bind(this);
-  }
-
-	// #TODO to be removed in #73
-	componentDidMount() {
-    instance = jsPlumbReady();
-  }
-
-
-  componentDidUpdate() {
-    let a = jsPlumb.getSelector('.node');
-    instance.draggable(a,
-      {
-        drag: this.updateNodePosition.bind(this),
-        grid: [8, 8]
-      }
-    );
   }
 
   click(event, nodeId) {
@@ -63,15 +49,9 @@ class Node extends React.Component {
     event.stopPropagation();
   }
 
-  updateNodePosition(nodeId, offset) {
-		// #TODO relay this to the store, issue #73
-    if (!this.clickOrDraggedNode) {
-      this.clickOrDraggedNode = true;
-    }
-    const node = this.props.net[nodeId];
-    node.state.x += offset.x;
-    node.state.y += offset.y;
-    this.props.modifyNode(node, nodeId);
+  drag(event, nodeId) {
+		console.log('drag function');
+    event.stopPropagation();
   }
 
   connectPort(e, portKey) {
@@ -138,13 +118,16 @@ class Node extends React.Component {
       colour,
 			hoveredNode,
 			selectedNode,
+			connectDragSource,
       // #TODO insert ports here, issue #72
       // ports,
-      isDragging, connectDragSource, connectDragPreview } = this.props;
+      // isDragging, connectDragSource, connectDragPreview
+		} = this.props;
     // const visiblePorts = ports.filter(port => port.visible);
     // console.log(this.props);
     let content = (
       <div
+				draggable="true"
         className={'node' + (id === selectedNode ? ' selected' : '') + (id === hoveredNode ? ' hover' : '')}
         style={{
           left:`${x}px`,
@@ -155,6 +138,7 @@ class Node extends React.Component {
         onTouchEnd  ={(event) => this.click(event, id)}
         onMouseEnter={(event) => this.hover(event, id)}
         onMouseLeave={(event) => this.hover(event, null)}
+				onDrag 			={(event) => this.drag (event, id)}
         data-tip='tooltip'
         data-for='getContent'
       >
@@ -171,7 +155,7 @@ class Node extends React.Component {
     )
 
     content = connectDragSource(content);
-    content = connectDragPreview(content);
+    // content = connectDragPreview(content);
     return content;
   }
 }
@@ -182,9 +166,9 @@ Node.propTypes = {
   x:      PropTypes.number.isRequired,
   y:      PropTypes.number.isRequired,
   class:  PropTypes.string,
-  connectDragSource: PropTypes.func.isRequired,
-  connectDragPreview: PropTypes.func.isRequired,
-  isDragging: PropTypes.bool.isRequired,
+  // connectDragSource: PropTypes.func.isRequired,
+  // connectDragPreview: PropTypes.func.isRequired,
+  // isDragging: PropTypes.bool.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -195,12 +179,13 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 	hoverNode: (nodeId) => dispatch(hoverNode(nodeId)),
   clickNode: (nodeId) => dispatch(clickNode(nodeId)),
+	updateNodePosition: (nodeId, offset) => dispatch(updateNodePosition(nodeId, offset)),
 });
 
 
 Node = DragSource(ItemTypes.Node, boxSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
-  connectDragPreview: connect.dragPreview(),
+//   connectDragPreview: connect.dragPreview(),
   isDragging: monitor.isDragging(),
 }))(Node)
 

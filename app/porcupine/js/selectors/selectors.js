@@ -12,7 +12,7 @@ export const nodes = createSelector(
 );
 
 export const portNodes = createSelector(
-  // #TODO no idea what to insert here... issue #73
+  // #TODO no idea what to insert here... issue #72
 );
 
 export const links = createSelector(

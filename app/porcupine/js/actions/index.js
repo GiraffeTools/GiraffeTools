@@ -1,6 +1,7 @@
 import {
     ADD_NODE,
     REMOVE_NODE,
+    UPDATE_NODE,
     ADD_PORT,
     ADD_PORT_TO_NODE,
     REMOVE_PORT,
@@ -14,61 +15,71 @@ import {
 
 ///// SIDEBAR /////
 export const toggleSidebar = () => ({
-    type: TOGGLE_SIDEBAR
+  type: TOGGLE_SIDEBAR
 })
 
 
 ///// NODES /////
 export const addNode = (props) => ({
-    type: ADD_NODE,
-    payload: props,
+  type: ADD_NODE,
+  payload: props,
 })
 
 export const deleteNode = (nodeId) => ({
-    type: REMOVE_NODE,
-    payload: {
-      nodeId,
-    },
+  type: REMOVE_NODE,
+  payload: {
+    nodeId,
+  },
 });
 
+export const updateNodePosition = (nodeId, offset) => ({
+  type: UPDATE_NODE,
+  payload: {
+    nodeId,
+    newValues: {
+      x: offset.x,
+      y: offset.y,
+    },
+  }
+});
 
 export const addPortToNode = (port, nodeId) => ({
-    type: ADD_PORT_TO_NODE,
-    payload: {
-      port,
-      nodeId,
-    },
+  type: ADD_PORT_TO_NODE,
+  payload: {
+    port,
+    nodeId,
+  },
 })
 
 ///// LINKS /////
 export const addLink = (props) => ({
-    type: ADD_LINK,
-    payload: props,
+  type: ADD_LINK,
+  payload: props,
 })
 
 
 ///// PORTS /////
 export const addPort = (props) => ({
-    type: ADD_PORT,
-    payload: props,
+  type: ADD_PORT,
+  payload: props,
 })
 
 
 ///// SCENE /////
 export const hoverNode = (nodeId) => ({
-    type: HOVER_NODE,
-    payload: {
-      nodeId
-    },
+  type: HOVER_NODE,
+  payload: {
+    nodeId
+  },
 })
 
 export const clickNode = (nodeId) => ({
-    type: CLICK_NODE,
-    payload: {
-      nodeId
-    },
+  type: CLICK_NODE,
+  payload: {
+    nodeId
+  },
 })
 
 export const clickScene = () => ({
-    type: CLICK_SCENE,
+  type: CLICK_SCENE,
 })

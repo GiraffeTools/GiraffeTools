@@ -34,7 +34,7 @@ class ItemPreview extends React.Component {
   render() {
     if (!this.props.isDragging) {
       return (
-        <div className="node preview" style={{display: 'none'}} > </div>
+        <div className="node preview" style={{display: 'none'}} />
       );
     } else if (this.props.itemType==='paneElement') {
       return (
@@ -47,7 +47,7 @@ class ItemPreview extends React.Component {
       );
     } else if (this.props.itemType==='node') {
       return (
-        <div className="node preview" style={{display: 'none'}} > </div>
+        <div className="node preview" style={{display: 'none'}} />
       );
     }
 

@@ -15,6 +15,7 @@
     "jsplumb": "^2.7.3",
     "lodash": "^4.17.10",
     "node-uuid": "^1.4.8",
+    "react-pinch-zoom-pan": "^1.4.5",
     "react-pure-render": "^1.0.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",

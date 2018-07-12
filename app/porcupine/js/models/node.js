@@ -23,6 +23,7 @@ class Node extends Model {
         Node.withId(action.payload.nodeId).ports.add(action.payload.port);
         break;
       case UPDATE_NODE:
+        Node.withId(action.payload.nodeId).update(action.payload.newValues);
         break;
     }
     return undefined;

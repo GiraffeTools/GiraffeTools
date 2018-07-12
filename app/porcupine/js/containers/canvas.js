@@ -1,13 +1,15 @@
 import { v4 } from 'node-uuid';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { PinchView } from 'react-pinch-zoom-pan';
+
 import { DropTarget } from 'react-dnd';
 import { connect } from 'react-redux';
 
 import ItemTypes from '../components/itemTypes';
 import Links from './links';
 import Nodes from './nodes';
-import zoomFunctions from '../zoomFunctions';
+// import zoomFunctions from '../zoomFunctions';
 import nodeData from '../../static/assets/nipype.json';
 import {
 	addNode,
@@ -58,7 +60,8 @@ class Canvas extends React.Component {
   componentDidMount() {
     this.placeholder = false;
 		// #TODO remove/replace zoomFunctions in issue #73
-    this.mouseState = zoomFunctions();
+		// setBoundingBox();
+    // this.mouseState = zoomFunctions();
   }
 
   componentDidUpdate() {
@@ -73,11 +76,12 @@ class Canvas extends React.Component {
 		const { addNode, addPortToNode } = this.props;
 
     this.placeholder = false;
-		const rec = document.getElementById('zoomContainer').getBoundingClientRect();
+		const rec = document.getElementById('main').getBoundingClientRect();
 		// #TODO to be updated as part of #73:
-		const canvas = document.getElementById('jsplumbContainer');
+		// const canvas = document.getElementById('jsplumbContainer');
     // const zoom = instance.getZoom();
     const zoom = 1;
+		console.log(rec);
 
     let category = item.element_type;
     let name = category.splice(-1)[0];
@@ -90,10 +94,14 @@ class Canvas extends React.Component {
 		const newNode = {
 			id: v4(),
 			name: name,
-			x: (offset.x - rec.left - canvas.x) / zoom - 45,
-			y: (offset.y - rec.top -  canvas.y) / zoom - 25,
+			// #TODO fix positioning of dropped node, issue #73
+			// x: (offset.x - rec.left - canvas.x) / zoom - 45,
+			// y: (offset.y - rec.top -  canvas.y) / zoom - 25,
+			x: (offset.x - rec.left) / zoom - 45,
+			y: (offset.y - rec.top) / zoom - 25,
 			colour: currentNodes.colour,
 		};
+
 		addNode(newNode);
 
 		node.ports.map((port) => {
@@ -136,26 +144,28 @@ class Canvas extends React.Component {
     if (this.placeholder){
       placeholder = (<h4 className="text-center" id="placeholder">Drag your nodes here!</h4>);
     }
+    var surfaceWidth = window.innerWidth;
+    var surfaceHeight = window.innerHeight;
 
     return connectDropTarget(
       <div
         className="canvas"
-        id="zoomContainer"
         onDragOver={this.allowDrop}
         onClick={this.clickCanvas}
       >
         {/* {errors} */}
-        {placeholder}
+        {/* {placeholder} */}
 				{/* #TODO replace this container, issue #73 */}
-        <div
-          id="jsplumbContainer"
-          data-zoom="1"
-          data-x="0"
-          data-y="0"
-        >
-          <Nodes />
-					<Links />
-        </div>
+
+				<PinchView>
+					<div
+						id="mainSurface"
+					>
+	          <Nodes />
+						<Links />
+					</div>
+				</PinchView>
+
 				<ZoomIn />
 				<ZoomOut />
 

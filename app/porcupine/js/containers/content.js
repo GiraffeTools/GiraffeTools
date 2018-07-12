@@ -10,7 +10,8 @@ import Canvas from './canvas';
 import ParameterPane from './parameterPane';
 import Sidebar from './sidebar';
 import Tooltip from './tooltip';
-import zoomFunctions from '../zoomFunctions';
+ // #TODO to be removed in #73
+// import zoomFunctions from '../zoomFunctions';
 
 
 require('browsernizr/test/touchevents');
@@ -31,7 +32,9 @@ class Content extends React.Component {
   }
 
   loadFromJson(json) {
-    const canvas = document.getElementById('jsplumbContainer');
+    // #TODO to be updated in #73
+    // const canvas = document.getElementById('jsplumbContainer');
+    const canvas = document.getElementById('mainSurface');
     const zoom = instance.getZoom();
 
     // load nodes
@@ -51,7 +54,8 @@ class Content extends React.Component {
         class: ''
       };
     });
-    zoomFunctions().onLoaded();
+    // #TODO to be removed in #73
+    // zoomFunctions().onLoaded();
 
     // load links
     json['links'].forEach(link => {
