@@ -16,7 +16,7 @@ class Ports extends React.Component {
   }
 
   render() {
-    const ports = this.props.ports;
+    const ports = this.props.ports.filter(port => port.isVisible == true);;
     if (!ports || ports.length == 0) {
       return (<div/>)
     }
@@ -29,8 +29,8 @@ class Ports extends React.Component {
                 <Port
                   key = {port.id}
                   name= {port.name}
-                  input= {port.input}
-                  output= {port.output}
+                  isInput= {port.isInput}
+                  isOutput= {port.isOutput}
                 />
               )
             })

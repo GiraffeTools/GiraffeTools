@@ -11,14 +11,14 @@ class Port extends React.Component {
   render() {
     const {
       name,
-      input,
-      output,
+      isInput,
+      isOutput,
     } = this.props;
 
     let portElement = '';
-    if (input) {
+    if (isInput) {
       portElement = <span  className='node__port--input'/>
-    } else if (output) {
+    } else if (isOutput) {
       portElement = <span onClick={(event) => this.connectPort(event)} className='node__port--output'/>
     }
 
