@@ -86,6 +86,10 @@ class Canvas extends React.Component {
       currentNodes = currentNodes['categories'][c];
     })
     const node = $.extend(true, {}, currentNodes.nodes[name]);
+		node.ports ? node.ports : {};
+		node.ports = node.ports.map(port => {
+			return {...port, id: v4()}
+		});
 
 		const newNode = {
 			id: v4(),
@@ -93,21 +97,9 @@ class Canvas extends React.Component {
 			x: (offset.x - rec.left - canvas.x) / zoom - 45,
 			y: (offset.y - rec.top -  canvas.y) / zoom - 25,
 			colour: currentNodes.colour,
+			ports: node.ports,
 		};
 		addNode(newNode);
-
-		node.ports.map((port) => {
-			port.id = v4();
-			const newPort = {
-				id: port.id,
-				name: port.name,
-				isInput: port.input,
-				isOutput: port.output,
-				isVisible: port.visible,
-				isEditable: port.editable,
-			};
-			addPortToNode(newPort, newNode.id);
-		});
   }
 
   clickCanvas(event) {

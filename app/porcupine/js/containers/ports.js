@@ -10,30 +10,32 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 })
 
-// const PortBlock = ({ports}) => {
-class PortBlock extends React.Component {
+class Ports extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    // const ports = this.props.ports;
-    const ports = [];
+    const ports = this.props.ports;
+    if (!ports || ports.length == 0) {
+      return (<div/>)
+    }
     return (
       <div className="node__ports">
-      {
-        ports.length > 0 && (
-          <ul>
-            {
-              ports.map((port, index) => {
+        <ul>
+          {
+            ports.map(port => {
+              return (
                 <Port
-                  port = {port}
+                  key = {port.id}
+                  name= {port.name}
+                  input= {port.input}
+                  output= {port.output}
                 />
-              })
-            }
-          </ul>
-        )
-      }
+              )
+            })
+          }
+        </ul>
       </div>
     );
   }
@@ -42,4 +44,4 @@ class PortBlock extends React.Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PortBlock)
+)(Ports)

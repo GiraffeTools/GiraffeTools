@@ -11,8 +11,16 @@ export const nodes = createSelector(
   }
 );
 
-export const portNodes = createSelector(
-  // #TODO no idea what to insert here... issue #73
+export const nodesWithPorts = createSelector(
+  orm,
+  state => state.orm,
+  session => {
+    return session.Node.all().toRefArray().map(node => {
+      const obj = Object.assign({}, node);
+      obj.ports = node.ports.map(portId => session.Port.withId(portId).ref);
+      return obj;
+    });
+  }
 );
 
 export const links = createSelector(

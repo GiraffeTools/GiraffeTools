@@ -2,6 +2,7 @@ import { Model, many, attr } from 'redux-orm';
 
 import Link from './link'
 import {
+  ADD_NODE,
   ADD_PORT,
   ADD_PORT_TO_NODE,
   REMOVE_PORT,
@@ -10,17 +11,31 @@ import {
 
 class Port extends Model {
   static reducer(action, Port, session) {
-    switch (action.type) {
+    const { type, payload } = action;
+    switch (type) {
+      case ADD_NODE:
+        const ports = payload.ports;
+        ports.forEach(port => {
+          Port.create({
+    				id: port.id,
+    				name: port.name,
+    				isInput: port.input,
+    				isOutput: port.output,
+    				isVisible: port.visible,
+    				isEditable: port.editable,
+      		});
+        });
+        break;
       case ADD_PORT:
-        Port.create(action.payload);
+        Port.create(payload);
         break;
       case ADD_PORT_TO_NODE:
-        if (!Port.filter({ id: action.payload.id }).exists()) {
-            Port.create(action.payload);
+        if (!Port.filter({ id: payload.id }).exists()) {
+            Port.create(payload);
         }
         break;
       case REMOVE_PORT:
-        const port = Port.withId(action.payload);
+        const port = Port.withId(payload);
         port.delete();
         break;
     }
