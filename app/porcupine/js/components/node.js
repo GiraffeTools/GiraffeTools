@@ -50,7 +50,9 @@ class Node extends React.Component {
   }
 
   drag(event, nodeId) {
-		console.log('drag function');
+		// When zoomed in, dragging nodes is impossible, as it drags the view instead.
+		// #TODO issue #73, figure this out.
+		// console.log('drag function');
     event.stopPropagation();
   }
 
