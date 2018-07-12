@@ -23,6 +23,13 @@ export const nodesWithPorts = createSelector(
   }
 );
 
+export const selectedNode = createSelector(
+  orm,
+  state => state.orm,
+  state => state.scene.selectedNode,
+  (orm, selectedNode) => ( orm.Node.withId(selectedNode) ? orm.Node.withId(selectedNode).ref : null )
+);
+
 export const links = createSelector(
   orm,
   state => state.orm,

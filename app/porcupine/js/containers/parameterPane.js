@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Field from '../components/field';
+import Fields from '../containers/fields';
 import {
   clickNode,
   deleteNode,
 } from '../actions/index';
 import {
-	selectedNodeSelector,
+	selectedNode,
 } from '../selectors/selectors';
 
 
@@ -40,7 +40,7 @@ class ParameterPane extends React.Component {
 
   handleKeyPress(event) {
     if (event.key == 'Delete') {
-      deleteNode(this.props.selectedNode);
+      deleteNode(this.props.selectedNode.id);
     }
   }
 
@@ -53,22 +53,19 @@ class ParameterPane extends React.Component {
   }
 
   render() {
-    // #TODO issue 73: ATM this is a reference, not the object yet.
     const node = this.props.selectedNode;
     return (
       <div className={"setparams" + (node ? " setparamsActive" : "")} >
         <div className="setHead">
           <h4 className="sidebar__node-name">
-            {/*
             {(node ? node.name : "Settings")}
-            */}
           </h4>
           <div className="sidebar__node-documentation">
             {/*
-            // <a href={node.title.web_url} target="_blank">
-            //   <i className="fas fa-globe sidebar__globe-icon"></i>
-            //     <span>View documentation</span>{' '}
-            // </a>
+            <a href={node.title.web_url} target="_blank">
+              <i className="fas fa-globe sidebar__globe-icon"></i>
+                <span>View documentation</span>{' '}
+            </a>
             */}
           </div>
           <i className="fas fa-times sidebar__close-icon"
@@ -104,7 +101,7 @@ ParameterPane.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  selectedNode: state.scene.selectedNode,
+  selectedNode: selectedNode(state),
 })
 
 const mapDispatchToProps = dispatch => ({

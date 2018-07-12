@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { toggleSidebar } from '../actions';
 import Port from '../components/port';
 
 const mapStateToProps = state => ({
