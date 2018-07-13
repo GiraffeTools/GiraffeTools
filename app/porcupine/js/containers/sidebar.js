@@ -6,14 +6,6 @@ import PaneGroup from '../components/paneGroup';
 import nodes from '../../static/assets/nipype.json';
 
 
-const mapStateToProps = state => ({
-  showSidebar: state.sidebar.showSidebar,
-});
-
-const mapDispatchToProps = dispatch => ({
-  toggleSidebar: () => dispatch(toggleSidebar()),
-});
-
 const nodeList = Object.keys(nodes.categories).map(function(category) {
   return (
     <PaneGroup
@@ -43,6 +35,14 @@ const Sidebar = ({showSidebar, toggleSidebar}) => {
     </div>
   );
 };
+
+const mapStateToProps = state => ({
+  showSidebar: state.sidebar.showSidebar,
+});
+
+const mapDispatchToProps = dispatch => ({
+  toggleSidebar: () => dispatch(toggleSidebar()),
+});
 
 export default connect(
   mapStateToProps,

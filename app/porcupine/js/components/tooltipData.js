@@ -4,18 +4,8 @@ import React from 'react';
 class TooltipData extends React.Component {
     constructor(props) {
         super(props);
-        this.change = this.change.bind(this);
       }
-    change(e) {
-        const type = this.props.data.type
-        if (type === 'checkbox') {
-          this.props.changeField(e.target.checked);
-        } else if (type === 'number') {
-          this.props.changeField(Number(e.target.value));
-        } else {
-          this.props.changeField(e.target.value);
-        }
-    }
+
     render() {
         const type = this.props.data.type;
         let inputElement;
@@ -37,7 +27,6 @@ class TooltipData extends React.Component {
 TooltipData.propTypes = {
     id: PropTypes.string.isRequired,
     data: PropTypes.object,
-    changeField: PropTypes.func,
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,

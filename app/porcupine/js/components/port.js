@@ -1,32 +1,35 @@
 import PropTypes from 'prop-types';
-// import React from 'react';
-import PureComponent from 'react-pure-render/component';
+import React from 'react';
+// import PureComponent from 'react-pure-render/component';
 
 
-class Port extends PureComponent {
+class Port extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   render() {
-      const props = this.props;
-      const {
-        input,
-        output
-      } = this.props;
+    const {
+      name,
+      isInput,
+      isOutput,
+    } = this.props;
 
-      let portElement = '';
-      if (input) {
-        portElement = <span  className='node__port--input' id={port.inputPort}/>
-      } else if (output) {
-        portElement = <span onClick={(event) => this.connectPort(event, index)} className='node__port--output' id={port.outputPort}/>
-      }
+    let portElement = '';
+    if (isInput) {
+      portElement = <span  className='node__port--input'/>
+    } else if (isOutput) {
+      portElement = <span onClick={(event) => this.connectPort(event)} className='node__port--output'/>
+    }
 
-      return (
-        <li key={index}>
-          <div className='node__port'>
-            {port.name}
-            {portElement}
-          </div>
-        </li>
-      )
+    return (
+      <li>
+        <div className='node__port'>
+          {name}
+          {portElement}
+        </div>
+      </li>
+    )
   }
 }
 

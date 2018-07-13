@@ -3,16 +3,9 @@ import { connect } from 'react-redux';
 
 import Node from '../components/node';
 import {
-	nodes,
+	nodesWithPorts,
 } from '../selectors/selectors';
 
-
-const mapStateToProps = state => ({
-		nodes: nodes(state),
-})
-
-const mapDispatchToProps = dispatch => ({
-});
 
 class Nodes extends React.Component {
   constructor(props) {
@@ -20,7 +13,7 @@ class Nodes extends React.Component {
   }
 
   render() {
-    return this.props.nodes.map(node => {
+    return this.props.nodesWithPorts.map(node => {
       return (
         <Node
           key 		= {node.id}
@@ -29,13 +22,19 @@ class Nodes extends React.Component {
           x       = {node.x}
           name    = {node.name}
           colour  = {node.colour}
-          // #TODO insert the right ports here, issue #72
-          // ports		= {ports}
+          ports		= {node.ports}
         />
       );
     });
   }
 }
+
+const mapStateToProps = state => ({
+		nodesWithPorts: nodesWithPorts(state),
+})
+
+const mapDispatchToProps = dispatch => ({
+});
 
 export default connect(
   mapStateToProps,

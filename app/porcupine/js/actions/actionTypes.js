@@ -5,6 +5,7 @@ export const ADD_NODE = 'ADD_NODE';
 export const REMOVE_NODE = 'REMOVE_NODE';
 export const UPDATE_NODE = 'UPDATE_NODE';
 export const ADD_PORT_TO_NODE = 'ADD_PORT_TO_NODE';
+export const REMOVE_PORT_FROM_NODE = 'REMOVE_PORT_FROM_NODE';
 
 ///// PORTS /////
 export const ADD_PORT = 'ADD_PORT';

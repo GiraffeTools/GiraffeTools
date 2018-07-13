@@ -4,6 +4,7 @@ import PaneHeader from './paneHeader';
 import PaneElement from './paneElement';
 import nodes from '../../static/assets/nipype.json';
 
+
 class PaneGroup extends React.Component {
   constructor(props) {
     super(props);
@@ -59,14 +60,8 @@ class PaneGroup extends React.Component {
   }
 }
 
-
 PaneGroup.propTypes = {
-  // id: PropTypes.string.isRequired,
-  // children: PropTypes.string.isRequired,
   category: PropTypes.array.isRequired,
-  // nodes: PropTypes.array.isRequired,
-  // colourSpacing: PropTypes.number,
-  // colourIndex: PropTypes.number
 }
 
 export default PaneGroup;

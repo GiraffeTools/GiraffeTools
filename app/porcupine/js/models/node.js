@@ -6,24 +6,33 @@ import {
   REMOVE_NODE,
   UPDATE_NODE,
   ADD_PORT_TO_NODE,
+  REMOVE_PORT_FROM_NODE,
 } from '../actions/actionTypes';
 
 
 class Node extends Model {
   static reducer(action, Node, session) {
-    switch (action.type) {
+    const { type, payload } = action;
+    switch (type) {
       case ADD_NODE:
-        Node.create(action.payload);
+        // The following replaces the ports with just the id
+        // Ports are save separately
+        const portIds = payload.ports.map(port => port.id);
+        const props = Object.assign({}, payload, { ports: portIds });
+        Node.create(props);
         break;
       case REMOVE_NODE:
-        const node = Node.withId(action.payload.nodeId);
-        node.delete();
+        Node.withId(payload.node.id).delete();
         break;
       case ADD_PORT_TO_NODE:
-        Node.withId(action.payload.nodeId).ports.add(action.payload.port);
+        Node.withId(payload.nodeId).ports.add(payload.port);
+        break;
+      case REMOVE_PORT_FROM_NODE:
+        const ports = Node.withId(payload.nodeId).ports;
+        Node.withId(payload.nodeId).ports = ports.filter(p => p !== payload.portId);
         break;
       case UPDATE_NODE:
-        Node.withId(action.payload.nodeId).update(action.payload.newValues);
+        Node.withId(payload.nodeId).update(payload.newValues);
         break;
     }
     return undefined;
@@ -35,7 +44,7 @@ Node.fields = {
   x: attr(),
   y: attr(),
   colour: attr(),
-  ports: many('Port'),
+  web_url: attr(),
 }
 
 export default Node;

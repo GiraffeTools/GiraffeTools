@@ -4,13 +4,13 @@ import { DragSource } from 'react-dnd';
 import { connect } from 'react-redux';
 
 import ItemTypes from './itemTypes';
-import PortBlock from '../containers/ports';
-// import jsPlumbReady from '../jsPlumbReady';
+import Ports from '../containers/ports';
 import {
 	hoverNode,
 	clickNode,
 	updateNodePosition,
 } from '../actions/index';
+
 
 const boxSource = {
   beginDrag(props) {
@@ -120,11 +120,8 @@ class Node extends React.Component {
       colour,
 			hoveredNode,
 			selectedNode,
-			connectDragSource,
-      // #TODO insert ports here, issue #72
-      // ports,
-      // isDragging, connectDragSource, connectDragPreview
-		} = this.props;
+      ports,
+      isDragging, connectDragSource, connectDragPreview } = this.props;
     // const visiblePorts = ports.filter(port => port.visible);
     // console.log(this.props);
     let content = (
@@ -148,11 +145,9 @@ class Node extends React.Component {
           { name }
         </div>
 
-        {/*}
-        <PortBlock
+        <Ports
           ports={ports}
         />
-        */}
       </div>
     )
 
