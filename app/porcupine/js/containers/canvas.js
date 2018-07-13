@@ -41,7 +41,6 @@ const ZoomOut = () => {
 	);
 }
 
-
 const boxTarget = {
 	drop(props, monitor, component) {
 		component.drop(monitor.getItem(), monitor.getClientOffset())
@@ -156,6 +155,7 @@ class Canvas extends React.Component {
     );
   }
 }
+
 Canvas.propTypes = {
   // connectDropTarget:    PropTypes.func.isRequired,
   isOver: 		PropTypes.bool.isRequired,

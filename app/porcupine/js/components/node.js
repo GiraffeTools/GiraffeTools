@@ -11,6 +11,7 @@ import {
 	clickNode,
 } from '../actions/index';
 
+
 const boxSource = {
   beginDrag(props) {
     return {

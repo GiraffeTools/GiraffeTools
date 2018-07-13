@@ -7,13 +7,6 @@ import {
 } from '../selectors/selectors';
 
 
-const mapStateToProps = state => ({
-		nodesWithPorts: nodesWithPorts(state),
-})
-
-const mapDispatchToProps = dispatch => ({
-});
-
 class Nodes extends React.Component {
   constructor(props) {
     super(props);
@@ -35,6 +28,13 @@ class Nodes extends React.Component {
     });
   }
 }
+
+const mapStateToProps = state => ({
+		nodesWithPorts: nodesWithPorts(state),
+})
+
+const mapDispatchToProps = dispatch => ({
+});
 
 export default connect(
   mapStateToProps,

@@ -7,13 +7,6 @@ import {
 } from '../selectors/selectors';
 
 
-const mapStateToProps = state => ({
-		links: links(state),
-})
-
-const mapDispatchToProps = dispatch => ({
-});
-
 class Links extends React.Component {
   constructor(props) {
     super(props);
@@ -28,6 +21,13 @@ class Links extends React.Component {
     });
   }
 }
+
+const mapStateToProps = state => ({
+		links: links(state),
+})
+
+const mapDispatchToProps = dispatch => ({
+});
 
 export default connect(
   mapStateToProps,

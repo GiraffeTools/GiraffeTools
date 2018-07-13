@@ -9,13 +9,6 @@ import {
 } from '../selectors/selectors';
 
 
-const mapStateToProps = state => ({
-		hoveredNode: hoveredNode(state),
-});
-
-const mapDispatchToProps = dispatch => ({
-});
-
 class Tooltip extends React.Component {
   constructor(props) {
     super(props);
@@ -54,6 +47,13 @@ class Tooltip extends React.Component {
 
   }
 }
+
+const mapStateToProps = state => ({
+		hoveredNode: hoveredNode(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+});
 
 export default connect(
   mapStateToProps,

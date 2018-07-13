@@ -20,7 +20,6 @@ class Content extends React.Component {
   constructor(props) {
     super(props);
     this.loadFromJson       = this.loadFromJson.bind(this);
-    this.modifyNodeParams   = this.modifyNodeParams.bind(this);
     this.modifyNodePos      = this.modifyNodePos.bind(this);
   };
 
@@ -59,11 +58,6 @@ class Content extends React.Component {
     });
   }
 
-  modifyNodeParams(node, nodeId = this.state.selectedNode) {
-    const net = this.state.net;
-    net[nodeId] = node;
-    this.setState({ net });
-  }
   modifyNodePos(node, nodeId = this.state.selectedNode) {
     const net = this.state.net;
     net[nodeId] = node;
@@ -86,7 +80,6 @@ class Content extends React.Component {
     );
   }
 }
-
 
 const mapStateToProps = state => ({
   showSidebar: state.sidebar.showSidebar

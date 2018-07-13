@@ -3,11 +3,6 @@ import { connect } from 'react-redux';
 
 import Port from '../components/port';
 
-const mapStateToProps = state => ({
-})
-
-const mapDispatchToProps = dispatch => ({
-})
 
 class Ports extends React.Component {
   constructor(props) {
@@ -39,6 +34,12 @@ class Ports extends React.Component {
     );
   }
 };
+
+const mapStateToProps = state => ({
+})
+
+const mapDispatchToProps = dispatch => ({
+})
 
 export default connect(
   mapStateToProps,
