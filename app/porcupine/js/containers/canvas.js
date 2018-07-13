@@ -88,6 +88,7 @@ class Canvas extends React.Component {
     const node = $.extend(true, {}, currentNodes.nodes[name]);
 		node.ports ? node.ports : {};
 		node.ports = node.ports.map(port => {
+			// #TODO link to a proper default value
 			return {...port, id: v4()}
 		});
 

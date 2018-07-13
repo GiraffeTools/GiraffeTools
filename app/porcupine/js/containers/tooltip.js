@@ -40,7 +40,6 @@ class Tooltip extends React.Component {
         data={{ name: port.name, type: port.type }}
         value={port.value}
         disabled={false}
-        changeField={this.changeParams}
       />
      );
     });

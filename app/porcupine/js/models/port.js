@@ -1,4 +1,4 @@
-import { Model, many, attr } from 'redux-orm';
+import { Model, many, fk, attr } from 'redux-orm';
 
 import Link from './link'
 import {
@@ -7,6 +7,7 @@ import {
   ADD_PORT,
   ADD_PORT_TO_NODE,
   REMOVE_PORT,
+  UPDATE_PORT,
 } from '../actions/actionTypes';
 
 
@@ -24,6 +25,7 @@ class Port extends Model {
     				isOutput: port.output,
     				isVisible: port.visible,
     				isEnabled: port.editable,
+            value: port.value || '',  // #TODO insert proper default value
       		});
         });
         break;
@@ -34,7 +36,6 @@ class Port extends Model {
         });
         break;
       case ADD_PORT:
-        console.log(payload);
         Port.create(payload);
         break;
       case ADD_PORT_TO_NODE:
@@ -43,8 +44,11 @@ class Port extends Model {
         }
         break;
       case REMOVE_PORT:
-        const port = Port.withId(payload);
+        const port = Port.withId(payload.portId);
         port.delete();
+        break;
+      case UPDATE_PORT:
+        Port.withId(payload.portId).update(payload.newValues);
         break;
     }
     return undefined;
@@ -53,14 +57,14 @@ class Port extends Model {
 Port.modelName = "Port";
 Port.fields = {
   name: attr(),
-  data: attr(),
+  value: attr(),
+  data: attr(), //leaving room for data types here
   isInput: attr(),
   isOutput: attr(),
   isVisible: attr(),
   isEnabled: attr(),
-  value: attr(),
-  // inputLinks: many("Link", "inputLinks"),
-  // outputLinks: many("Link", "outputLinks"),
+  inputLinks: many("Link", "inputLinks"),
+  outputLinks: many("Link", "outputLinks"),
 }
 
 export default Port;

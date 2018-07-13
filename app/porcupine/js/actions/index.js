@@ -3,7 +3,9 @@ import {
     REMOVE_NODE,
     ADD_PORT,
     ADD_PORT_TO_NODE,
+    REMOVE_PORT_FROM_NODE,
     REMOVE_PORT,
+    UPDATE_PORT,
     ADD_LINK,
     REMOVE_LINK,
     TOGGLE_SIDEBAR,
@@ -31,6 +33,15 @@ export const deleteNode = (node) => ({
     },
 });
 
+export const removePortFromNode = (portId, nodeId) => {
+  return ({
+    type: REMOVE_PORT_FROM_NODE,
+    payload: {
+      portId,
+      nodeId,
+    },
+  });
+}
 
 export const addPortToNode = (port, nodeId) => ({
     type: ADD_PORT_TO_NODE,
@@ -52,6 +63,21 @@ export const addPort = (props) => ({
     type: ADD_PORT,
     payload: props,
 })
+
+export const updatePort = (portId, newValues) => ({
+    type: UPDATE_PORT,
+    payload: {
+      portId,
+      newValues,
+    },
+})
+
+export const deletePort = (portId) => ({
+    type: REMOVE_PORT,
+    payload: {
+      portId,
+    },
+});
 
 
 ///// SCENE /////

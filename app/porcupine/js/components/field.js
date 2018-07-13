@@ -1,21 +1,39 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
 import { connect } from 'react-redux';
+
+import {
+	removePort,
+  removePortFromNode,
+  deletePort,
+  updatePort,
+} from '../actions/index';
+import {
+	selectedNode,
+} from '../selectors/selectors';
+
 
 class Field extends React.Component {
   constructor(props) {
     super(props);
     this.change = this.change.bind(this);
   }
+
+  changeParams(portId, key, value) {
+    const newValues = {...this.props.port, [key]: value};
+		console.log(newValues);
+    this.props.updatePort(portId, newValues);
+  }
+
   change(e) {
     const dataType = this.props.data && this.props.data.type ? this.props.data.type : 'text';
+		const portId = this.props.port.id;
     if (dataType === 'boolean') {
-      this.props.changeField(e.target.checked);
+      this.changeParams(portId, 'value', e.target.checked);
     } else if(dataType === 'number') {
-      this.props.changeField(Number(e.target.value));
+      this.changeParams(portId, 'value', Number(e.target.value));
     } else {
-      this.props.changeField(e.target.value);
+      this.changeParams(portId, 'value', e.target.value);
     }
   }
 
@@ -94,6 +112,7 @@ class Field extends React.Component {
       displayStyle = "flex";
     }
 
+    const { removePort, removePortFromNode, selectedNode } = this.props;
     return (
       <div>
         <div style={{display: displayStyle}}>
@@ -105,7 +124,7 @@ class Field extends React.Component {
         <div
           key={port.id}
           className="sidebar__node-actions">
-          <div className="sidebar__node-visibility" onClick={() => this.changeParams(port.name, 'visible', !port.isVisible)} >
+          <div className="sidebar__node-visibility" onClick={() => this.changeParams(port.id, 'isVisible', !port.isVisible)} >
             <i
               className={'fas ' + (port.isVisible ? 'fa-eye' : 'fa-eye-slash')}
               title={'Make ' + (port.isVisible ? 'Invisible' : 'Visible')}
@@ -114,7 +133,11 @@ class Field extends React.Component {
           <button
             type="button"
             className="btn btn-outline-danger btn-sm"
-            onClick={() => this.removePort(port.name)}>
+            onClick={() => {
+              // #TODO do this cleaner, and in a single command
+              removePortFromNode(port.id, selectedNode.id);
+              removePort(port.id);
+            }}>
             <i className="fas fa-trash-alt" />
           </button>
         </div>
@@ -125,7 +148,6 @@ class Field extends React.Component {
 
 Field.propTypes = {
   data: PropTypes.object,
-  changeField: PropTypes.func,
   value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
@@ -135,9 +157,13 @@ Field.propTypes = {
 };
 
 const mapStateToProps = state => ({
+  selectedNode: selectedNode(state),
 })
 
 const mapDispatchToProps = dispatch => ({
+  removePort: (id) => dispatch(deletePort(id)),
+  removePortFromNode: (portId, nodeId) => dispatch(removePortFromNode(portId, nodeId)),
+  updatePort: (portId, newValues) => dispatch(updatePort(portId, newValues)),
 });
 
 export default connect(
