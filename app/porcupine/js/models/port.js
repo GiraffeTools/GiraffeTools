@@ -3,6 +3,7 @@ import { Model, many, attr } from 'redux-orm';
 import Link from './link'
 import {
   ADD_NODE,
+  REMOVE_NODE,
   ADD_PORT,
   ADD_PORT_TO_NODE,
   REMOVE_PORT,
@@ -22,11 +23,18 @@ class Port extends Model {
     				isInput: port.input,
     				isOutput: port.output,
     				isVisible: port.visible,
-    				isEditable: port.editable,
+    				isEnabled: port.editable,
       		});
         });
         break;
+      case REMOVE_NODE:
+        payload.node.ports.forEach(portId => {
+          const port = Port.withId(portId);
+          port.delete();
+        });
+        break;
       case ADD_PORT:
+        console.log(payload);
         Port.create(payload);
         break;
       case ADD_PORT_TO_NODE:
@@ -45,12 +53,14 @@ class Port extends Model {
 Port.modelName = "Port";
 Port.fields = {
   name: attr(),
+  data: attr(),
   isInput: attr(),
   isOutput: attr(),
   isVisible: attr(),
-  isEditable: attr(),
-  inputLinks: many("Link", "inputLinks"),
-  outputLinks: many("Link", "outputLinks"),
+  isEnabled: attr(),
+  value: attr(),
+  // inputLinks: many("Link", "inputLinks"),
+  // outputLinks: many("Link", "outputLinks"),
 }
 
 export default Port;

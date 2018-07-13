@@ -22,8 +22,7 @@ class Node extends Model {
         Node.create(props);
         break;
       case REMOVE_NODE:
-        const node = Node.withId(payload.nodeId);
-        node.delete();
+        Node.withId(payload.node.id).delete();
         break;
       case ADD_PORT_TO_NODE:
         Node.withId(payload.nodeId).ports.add(payload.port);
@@ -44,7 +43,6 @@ Node.fields = {
   x: attr(),
   y: attr(),
   colour: attr(),
-  // ports: many('Port'),
 }
 
 export default Node;

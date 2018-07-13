@@ -15,27 +15,7 @@ import {
 class ParameterPane extends React.Component {
   constructor(props) {
     super(props);
-    this.changeParams = this.changeParams.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-  }
-
-  changeParams(portName, key, value) {
-    // const net = this.props.net;
-    // let node = { ...net[this.props.selectedNode] };
-    // const port = node.ports.filter(port => port.name === portName)[0];
-    // if (key === 'value' && !port.editable) {
-    //   return;
-    // }
-    //
-    // port[key] = value;
-    // this.props.modifyNode(node);
-  }
-
-  removePort(portName) {
-    // const { net, modifyNode } = this.props;
-    // let node = { ...net[this.props.selectedNode] };
-    // node.ports = node.ports.filter(port => port.name !== portName);
-    // modifyNode(node);
   }
 
   handleKeyPress(event) {
@@ -79,7 +59,7 @@ class ParameterPane extends React.Component {
             type="button"
             className="btn btn-block deleteLayerButton sidebar-heading"
             onClick={() => {
-              this.props.deleteNode(node.id);
+              this.props.deleteNode(node);
               this.props.clickNode(null);}
             }
           >
@@ -101,7 +81,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  deleteNode: (nodeId) => dispatch(deleteNode(nodeId)),
+  deleteNode: (node) => dispatch(deleteNode(node)),
   clickNode: (nodeId) => dispatch(clickNode(nodeId)),
 })
 

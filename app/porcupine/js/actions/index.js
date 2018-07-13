@@ -24,10 +24,10 @@ export const addNode = (props) => ({
     payload: props,
 })
 
-export const deleteNode = (nodeId) => ({
+export const deleteNode = (node) => ({
     type: REMOVE_NODE,
     payload: {
-      nodeId,
+      node,
     },
 });
 
