@@ -21,7 +21,6 @@ class Field extends React.Component {
 
   changeParams(portId, key, value) {
     const newValues = {...this.props.port, [key]: value};
-		console.log(newValues);
     this.props.updatePort(portId, newValues);
   }
 

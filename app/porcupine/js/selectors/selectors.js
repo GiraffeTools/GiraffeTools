@@ -29,7 +29,6 @@ export const selectedNode = createSelector(
   state => state.scene.selectedNode,
   (orm, selectedNode) => ( orm.Node.withId(selectedNode) ? orm.Node.withId(selectedNode).ref : null )
 );
-
 export const selectedPorts = createSelector(
   orm,
   state => state.orm,
@@ -37,10 +36,25 @@ export const selectedPorts = createSelector(
   (orm, selectedNode) => {
     return (
       orm.Node.withId(selectedNode) ?
-      orm.Node.withId(selectedNode).ports.map(portId => orm.Port.withId(portId).ref) : 
+      orm.Node.withId(selectedNode).ports.map(portId => orm.Port.withId(portId).ref) :
       null
     )}
 );
+
+export const hoveredNode = createSelector(
+  orm,
+  state => state.orm,
+  state => state.scene.hoveredNode,
+  (orm, hoveredNode) => {
+    if (!hoveredNode) {
+      return null;
+    }
+    const obj = Object.assign({}, orm.Node.withId(hoveredNode).ref);
+    obj.ports = obj.ports.map(portId => orm.Port.withId(portId).ref);
+    return obj;
+  }
+);
+
 
 export const links = createSelector(
   orm,
