@@ -38,15 +38,13 @@ class ParameterPane extends React.Component {
       <div className={"setparams" + (node ? " setparamsActive" : "")} >
         <div className="setHead">
           <h4 className="sidebar__node-name">
-            {(node ? node.name : "Settings")}
+            {(node ? node.name : "")}
           </h4>
           <div className="sidebar__node-documentation">
-            {/*
-            <a href={node.title.web_url} target="_blank">
+            {( node ? <a href={node.web_url} target="_blank">
               <i className="fas fa-globe sidebar__globe-icon"></i>
                 <span>View documentation</span>{' '}
-            </a>
-            */}
+            </a> : "")}
           </div>
           <i className="fas fa-times sidebar__close-icon"
             onClick={() => this.props.clickNode(null)}

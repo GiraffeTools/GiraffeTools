@@ -44,6 +44,7 @@ Node.fields = {
   x: attr(),
   y: attr(),
   colour: attr(),
+  web_url: attr(),
 }
 
 export default Node;

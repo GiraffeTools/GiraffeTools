@@ -14,6 +14,9 @@ import {
 	addPortToNode,
 	clickScene,
 } from '../actions/index';
+import {
+	nodes,
+} from '../selectors/selectors';
 
 
 const ZoomIn = () => {
@@ -49,14 +52,12 @@ const boxTarget = {
 class Canvas extends React.Component {
   constructor(props) {
     super(props);
-    this.placeholder          = true;
     this.allowDrop            = this.allowDrop.bind(this);
     this.drop                 = this.drop.bind(this);
     this.clickCanvas          = this.clickCanvas.bind(this);
   }
 
   componentDidMount() {
-    this.placeholder = false;
 		// #TODO remove/replace zoomFunctions in issue #73
     this.mouseState = zoomFunctions();
   }
@@ -72,7 +73,6 @@ class Canvas extends React.Component {
   drop(item, offset) {
 		const { addNode, addPortToNode } = this.props;
 
-    this.placeholder = false;
 		const rec = document.getElementById('zoomContainer').getBoundingClientRect();
 		// #TODO to be updated as part of #73:
 		const canvas = document.getElementById('jsplumbContainer');
@@ -99,6 +99,7 @@ class Canvas extends React.Component {
 			y: (offset.y - rec.top -  canvas.y) / zoom - 25,
 			colour: currentNodes.colour,
 			ports: node.ports,
+			web_url: node.title.web_url || '',
 		};
 		addNode(newNode);
   }
@@ -106,8 +107,6 @@ class Canvas extends React.Component {
   clickCanvas(event) {
 		const { clickScene } = this.props;
 		clickScene();
-		// #TODO: read placeholder state from state, issue #72
-    this.placeholder = false;
     event.preventDefault();
     event.stopPropagation();
   }
@@ -125,11 +124,6 @@ class Canvas extends React.Component {
 			backgroundColor = 'darkkhaki'
 		}
 
-    let placeholder = null;
-    if (this.placeholder){
-      placeholder = (<h4 className="text-center" id="placeholder">Drag your nodes here!</h4>);
-    }
-
     return connectDropTarget(
       <div
         className="canvas"
@@ -138,7 +132,7 @@ class Canvas extends React.Component {
         onClick={this.clickCanvas}
       >
         {/* {errors} */}
-        {placeholder}
+        {this.props.nodes.length == 0 ? (<h4 className="text-center" id="placeholder">Drag your nodes here!</h4>) : ''}
 				{/* #TODO replace this container, issue #73 */}
         <div
           id="jsplumbContainer"
@@ -163,13 +157,13 @@ class Canvas extends React.Component {
   }
 }
 Canvas.propTypes = {
-  placeholder:          PropTypes.bool,
   // connectDropTarget:    PropTypes.func.isRequired,
   isOver: 		PropTypes.bool.isRequired,
   canDrop: 		PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
+	nodes: nodes(state),
 })
 
 const mapDispatchToProps = dispatch => ({
