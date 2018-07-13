@@ -73,17 +73,13 @@ class ParameterPane extends React.Component {
             aria-hidden="true"/>
         </div>
         <div className="setContain">
-          {/*
-          <Fields
-            ports = {node.ports}
-          />
-          */}
+          {node && node.ports ? <Fields /> : ''}
           <br />
           <button
             type="button"
             className="btn btn-block deleteLayerButton sidebar-heading"
             onClick={() => {
-              this.props.deleteNode(node);
+              this.props.deleteNode(node.id);
               this.props.clickNode(null);}
             }
           >
