@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-// import PureComponent from 'react-pure-render/component';
+import { connect } from 'react-redux';
+
+import {
+  createLink,
+} from '../actions/index';
 
 
 class Port extends React.Component {
@@ -15,23 +19,36 @@ class Port extends React.Component {
       isOutput,
     } = this.props;
 
-    let portElement = '';
+    let inputPort = '';
+    let outputPort = '';
     if (isInput) {
-      portElement = <span  className='node__port--input'/>
-    } else if (isOutput) {
-      portElement = <span onClick={(event) => this.connectPort(event)} className='node__port--output'/>
+      inputPort = <span className='node__port--input' onClick={(event) => this.props.createLink(event)}/>
     }
+    if (isOutput) {
+      outputPort = <span className='node__port--output' onClick={(event) => this.props.createLink(event)}/>
+    }
+
 
     return (
       <li>
         <div className='node__port'>
           {name}
-          {portElement}
+          {inputPort}
+          {outputPort}
         </div>
       </li>
     )
   }
 }
 
+const mapStateToProps = state => ({
+})
 
-export default Port;
+const mapDispatchToProps = dispatch => ({
+	createLink: () => dispatch(createLink()),
+});
+
+export default Port = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Port);

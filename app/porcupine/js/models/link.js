@@ -1,4 +1,4 @@
-import { Model } from 'redux-orm';
+import { Model, many } from 'redux-orm';
 
 import {
   ADD_LINK,
@@ -23,6 +23,8 @@ class Link extends Model {
 }
 Link.modelName = "Link";
 Link.fields = {
+  // portFrom: many("Port"),
+  // portTo: many("Port"),
 }
 
 export default Link;

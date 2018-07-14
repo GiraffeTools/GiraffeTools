@@ -13,9 +13,10 @@ class Links extends React.Component {
   }
 
   render() {
-    return this.props.links.map(node => {
+    return this.props.links.map(link => {
       return (
         <Link
+					link={link}
         />
       );
     });
