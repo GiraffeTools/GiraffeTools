@@ -29,6 +29,7 @@ export const selectedNode = createSelector(
   state => state.scene.selectedNode,
   (orm, selectedNode) => ( orm.Node.withId(selectedNode) ? orm.Node.withId(selectedNode).ref : null )
 );
+
 export const selectedPorts = createSelector(
   orm,
   state => state.orm,
@@ -55,11 +56,23 @@ export const hoveredNode = createSelector(
   }
 );
 
-
 export const links = createSelector(
   orm,
   state => state.orm,
   session => {
     return session.Link.all().toRefArray();
+  }
+);
+
+export const linksWithPorts = createSelector(
+  orm,
+  state => state.orm,
+  session => {
+    return session.Link.all().toRefArray().map(link => {
+      const obj = Object.assign({}, link);
+      obj.portFrom = obj.portFrom ? session.Port.withId(obj.portFrom).ref : null;
+      obj.portTo   = obj.portTo   ? session.Port.withId(obj.portTo  ).ref : null;
+      return obj;
+    });
   }
 );

@@ -1,5 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { PathLine } from 'react-svg-pathline';
+import { connect } from 'react-redux';
+
+import {
+  deleteLink,
+} from '../actions/index';
+import {
+  portById,
+} from '../selectors/selectors';
 
 
 class Link extends React.Component {
@@ -9,66 +18,90 @@ class Link extends React.Component {
     this.connect       = this.connect.bind(this);
   }
 
-
   connectPort(e, portKey) {
     e.stopPropagation()
     this.connect(e.target)
   }
 
   connect(el) {
-    $(el).off('click')
-    // TODO: make the following grab from https instead of http
-    const s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    const l = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    // l.setAttribute('d', 'M4 4 C ')
-    el.appendChild(s);
-    s.appendChild(l);
-    const xi=s.getClientRects()[0].x;
-    const yi=s.getClientRects()[0].y;
-    l.setAttribute("x2", 4);
-    l.setAttribute("y2", 4);
-    const that=this;
-    $('#zoomContainer').on('click', function(e) {
-      if (e.target.classList[0]==="node__port--input") {
-        let x, y
-        ({x,y}=e.target.getClientRects()[0])
-        x=x-xi+4
-        y=y-yi+4
-        if (x>0) {
-          l.setAttribute("d", 'M4 4 C '+x/2+' 4, '+x/2+' '+y+', '+x+' '+y);
-        } else {
-          l.setAttribute("d", 'M4 4 C '+(-x/2)+' '+y/2+', '+(3*x/2)+' '+y/2+', '+x+' '+y);
-        }
-        $(el).on('click', (e)=>{
-          e.stopPropagation()
-          that.connect(el)
-        })
-      } else{
-        el.removeChild(s)
-        $(el).on('click', (e)=>{
-          e.stopPropagation()
-          that.connect(el)
-        })
-      }
-      $('#zoomContainer').off('mousemove')
-      $('#zoomContainer').off('click')
-    })
-    $('#zoomContainer').on('mousemove', function(e) {
-      const x=e.pageX-xi
-      const y=e.pageY-yi
-      if (x>0) {
-        l.setAttribute("d", 'M4 4 C '+x/2+' 4, '+x/2+' '+y+', '+x+' '+y);
-      } else {
-        l.setAttribute("d", 'M4 4 C '+(-x/2)+' '+y/2+', '+(3*x/2)+' '+y/2+', '+x+' '+y);
-      }
-    })
-    // this.props.addNewLink();
+
   }
 
   render() {
+    const  { id, portFrom, portTo } = this.props;
+    if (id === this.props.constructedLink) {
+      let startingPort = portFrom || portTo;
+      // currently dragging a link
 
+      $(el).off('click');
+      el.appendChild(s);
+
+      const that=this;
+      $('#zoomContainer').on('click', function(e) {
+        if (e.target.classList[0]==="node__port--input") {
+          let x, y
+          ({x,y}=e.target.getClientRects()[0])
+          $(el).on('click', (e)=>{
+            e.stopPropagation()
+            that.connect(el)
+          })
+        } else{
+          el.removeChild(s)
+          $(el).on('click', (e)=>{
+            e.stopPropagation()
+            that.connect(el)
+          })
+        }
+        $('#zoomContainer').off('mousemove')
+        $('#zoomContainer').off('click')
+      })
+      $('#zoomContainer').on('mousemove', function(e) {
+        const x=e.pageX-xi
+        const y=e.pageY-yi
+      })
+
+
+      // if click on valid port
+      connecLink(id, portFrom, portTo);
+
+      // else
+      deleteLink(id);
+    }
+    console.log(portFrom);
+    console.log(portTo);
+
+    const startingPoint = {x: 4, y: 4};
+    const endPoint = {x: 250, y: 125};
+
+    return (
+      <svg>
+        <PathLine
+          points={[startingPoint,
+                  // #TODO Add intermediate points to make the connection smoother
+                  // {x:..., y: ...},
+                  // {x:..., y: ...},
+                  endPoint]}
+          stroke="red"
+          strokeWidth="2"
+          fill="none"
+          r={10}
+        />
+      </svg>
+    )
   }
 }
 
+const mapStateToProps = state => ({
+	constructedLink: state.scene.constructedLink,
+  portById: (id) => portById(state, id),
+})
 
-export default Link;
+const mapDispatchToProps = dispatch => ({
+  connectLink: (linkId, portFrom, portTo) => dispatch(connecLink(linkId, portFrom, portTo)),
+  deleteLink: (linkId) => dispatch(deleteLink(linkId)),
+});
+
+export default Node = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Link);

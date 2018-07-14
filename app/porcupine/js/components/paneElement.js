@@ -25,9 +25,14 @@ const boxSource = {
 class PaneElement extends React.Component {
 
   render() {
-		const { isDragging, connectDragSource, connectDragPreview } = this.props
-		const name = this.props.id
-    const offset = {x: 0, y: 0}
+		const {
+			isDragging,
+			connectDragSource,
+			connectDragPreview
+		} = this.props;
+
+		const name = this.props.id;
+    const offset = {x: 0, y: 0};
 
     let content = (
       <div

@@ -81,7 +81,6 @@ class Canvas extends React.Component {
 		// const canvas = document.getElementById('jsplumbContainer');
     // const zoom = instance.getZoom();
     const zoom = 1;
-		console.log(rec);
 
     let category = item.element_type;
     let name = category.splice(-1)[0];

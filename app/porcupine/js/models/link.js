@@ -1,8 +1,8 @@
-import { Model, many } from 'redux-orm';
+import { Model, attr } from 'redux-orm';
 
 import {
   ADD_LINK,
-  REMOVE_LINK
+  REMOVE_LINK,
 } from '../actions/actionTypes';
 
 
@@ -23,8 +23,9 @@ class Link extends Model {
 }
 Link.modelName = "Link";
 Link.fields = {
-  // portFrom: many("Port"),
-  // portTo: many("Port"),
+  id: attr(),
+  portFrom: attr(),
+  portTo: attr(),
 }
 
 export default Link;

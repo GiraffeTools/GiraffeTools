@@ -1,15 +1,24 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import { v4 } from 'node-uuid';
 
 import {
-  createLink,
+  addLink,
 } from '../actions/index';
 
 
 class Port extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  createLink(e, type) {
+    this.props.addLink({
+      linkId: v4(),
+      portFrom: (type === 'input'  ? this.props.id : null),
+      portTo:   (type === 'output' ? this.props.id : null),
+    })
   }
 
   render() {
@@ -19,15 +28,8 @@ class Port extends React.Component {
       isOutput,
     } = this.props;
 
-    let inputPort = '';
-    let outputPort = '';
-    if (isInput) {
-      inputPort = <span className='node__port--input' onClick={(event) => this.props.createLink(event)}/>
-    }
-    if (isOutput) {
-      outputPort = <span className='node__port--output' onClick={(event) => this.props.createLink(event)}/>
-    }
-
+    const inputPort  = isInput  ? <span className='node__port--input'  onClick={(event) => this.createLink(event, 'input' )}/> : '';
+    const outputPort = isOutput ? <span className='node__port--output' onClick={(event) => this.createLink(event, 'output')}/> : '';
 
     return (
       <li>
@@ -45,7 +47,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	createLink: () => dispatch(createLink()),
+	addLink: (props) => dispatch(addLink(props)),
 });
 
 export default Port = connect(

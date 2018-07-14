@@ -18,6 +18,7 @@
     "react-pinch-zoom-pan": "^1.4.5",
     "react-pure-render": "^1.0.2",
     "react-redux": "^5.0.7",
+    "react-svg-pathline": "^0.5.0",
     "redux": "^4.0.0",
     "redux-orm": "^0.12.1",
     "webpack": "^4.10.0",

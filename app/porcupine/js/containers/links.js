@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Link from '../components/link';
 import {
-	links,
+	linksWithPorts,
 } from '../selectors/selectors';
 
 
@@ -16,7 +16,10 @@ class Links extends React.Component {
     return this.props.links.map(link => {
       return (
         <Link
-					link={link}
+					id			 = {link.id}
+					key			 = {link.id}
+					portFrom = {link.portFrom}
+					portTo	 = {link.portTo}
         />
       );
     });
@@ -24,7 +27,7 @@ class Links extends React.Component {
 }
 
 const mapStateToProps = state => ({
-		links: links(state),
+		links: linksWithPorts(state),
 })
 
 const mapDispatchToProps = dispatch => ({

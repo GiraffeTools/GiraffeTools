@@ -21,10 +21,11 @@ class Ports extends React.Component {
             ports.map(port => {
               return (
                 <Port
-                  key = {port.id}
-                  name= {port.name}
-                  isInput= {port.isInput}
-                  isOutput= {port.isOutput}
+                  id       = {port.id}
+                  key      = {port.id}
+                  name     = {port.name}
+                  isInput  = {port.isInput}
+                  isOutput = {port.isOutput}
                 />
               )
             })
