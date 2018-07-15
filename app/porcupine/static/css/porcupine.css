@@ -489,6 +489,12 @@ body {
   border-radius: 50%;
 }
 
+.port-clicked {
+  width: 12px;
+  height: 12px;
+}
+
+
 svg, svg:not(:root) {
     overflow: visible;
     pointer-events: none;

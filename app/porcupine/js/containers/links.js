@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ReactCursorPosition from 'react-cursor-position';
 
 import Link from '../components/link';
 import {
@@ -13,7 +14,7 @@ class Links extends React.Component {
   }
 
   render() {
-    return this.props.links.map(link => {
+    return	this.props.links.map(link => {
       return (
         <Link
 					id			 = {link.id}
@@ -22,7 +23,7 @@ class Links extends React.Component {
 					portTo	 = {link.portTo}
         />
       );
-    });
+  	})
   }
 }
 

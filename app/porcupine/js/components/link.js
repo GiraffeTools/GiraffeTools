@@ -31,56 +31,18 @@ class Link extends React.Component {
     const  { id, portFrom, portTo } = this.props;
 
     let startingPoint = {x: 0, y: 0};
+    let endPoint      = {x: 0, y: 0};
 
-    if (id === this.props.constructedLink) {
-      // #TODO Ouch, using jquery here. Let's fix this to the React way
-      let startingPort = '';
-      if (portFrom) {
-        startingPort = $(`#output-${portFrom.id}`);
-      } else if (portTo) {
-        startingPort = $(`#input-${portTo.id}`);
-      }
 
-      // #TODO fix position, relative to what?
-      startingPoint.x = startingPort.position().left + startingPort.offset().left;
-      startingPoint.y = startingPort.position().top  + startingPort.offset().top;
+    // #TODO Ouch, using jquery here. Let's fix this to the React way
+    let startingPort = $(`#output-${portFrom.id}`);
+    let endPort      = $(`#input-${portTo.id}`);
 
-      // currently dragging a link
-      // $(el).off('click');
-      // el.appendChild(s);
-      //
-      // const that=this;
-      $('#mainSurface').on('click', function(e) {
-        console.log('test');
-        if (e.target.classList[0]==="node__port--input") {
-          let x, y
-          ({x,y}=e.target.getClientRects()[0])
-          $(el).on('click', (e)=>{
-            e.stopPropagation()
-            that.connect(el)
-          })
-        } else{
-          el.removeChild(s)
-          $(el).on('click', (e)=>{
-            e.stopPropagation()
-            that.connect(el)
-          })
-        }
-        $('#mainSurface').off('mousemove')
-        $('#mainSurface').off('click')
-      })
-      $('#mainSurface').on('mousemove', function(e) {
-        console.log('test');
-        const x=e.pageX-xi
-        const y=e.pageY-yi
-      })
-      // // if click on valid port
-      // connecLink(id, portFrom, portTo);
-      // // else
-      // deleteLink(id);
-    }
-    const mousePosition = this.props.mouseState.position;
-    const endPoint = mousePosition;
+    // #TODO fix position, relative to what?
+    startingPoint.x = startingPort.position().left;
+    startingPoint.y = startingPort.position().top;
+    endPoint.x = endPort.position().left;
+    endPoint.y = endPort.position().top;
 
     return (
       <svg>
@@ -101,7 +63,7 @@ class Link extends React.Component {
 }
 
 const mapStateToProps = state => ({
-	constructedLink: state.scene.constructedLink,
+	linkInConstruction: state.scene.linkInConstruction,
   mouseState: state.scene.mouseState,
 })
 

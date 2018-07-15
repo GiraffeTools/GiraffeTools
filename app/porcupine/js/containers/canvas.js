@@ -2,7 +2,6 @@ import { v4 } from 'node-uuid';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { PinchView } from 'react-pinch-zoom-pan';
-import ReactCursorPosition from 'react-cursor-position';
 import { DropTarget } from 'react-dnd';
 import { connect } from 'react-redux';
 
@@ -142,17 +141,14 @@ class Canvas extends React.Component {
         {this.props.nodes.length == 0 ? (<h4 className="text-center" id="placeholder">Drag your nodes here!</h4>) : ''}
 				{/* #TODO replace this container, issue #73 */}
 
-				<ReactCursorPosition>
-					<MouseTracker />
-					<PinchView>
-						<div
-							id="mainSurface"
-						>
-		          <Nodes />
-							<Links />
-						</div>
-					</PinchView>
-				</ReactCursorPosition>
+				<PinchView>
+					<div
+						id="mainSurface"
+					>
+	          <Nodes />
+						<Links />
+					</div>
+				</PinchView>
 
 				<ZoomIn />
 				<ZoomOut />

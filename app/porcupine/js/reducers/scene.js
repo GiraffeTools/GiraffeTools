@@ -7,6 +7,7 @@ import {
   ADD_LINK,
   CONNECT_LINK,
   REMOVE_LINK,
+  START_LINK ,
   SET_MOUSE_STATE,
 } from '../actions/actionTypes';
 
@@ -23,14 +24,14 @@ export default function scene(state = [], action) {
       return {...state, selectedNode: payload.nodeId === state.selectedNode ? null : payload.nodeId};
     case CLICK_SCENE:
       return {...state, selectedNode: null};
+    case START_LINK:
+      return {...state, linkInConstruction: {port: payload.port, startingAt: payload.startingAt} };
     case ADD_LINK:
-      return {...state, constructedLink: payload.linkId};
-    case CONNECT_LINK:
-      return {...state, constructedLink: null};
+      return {...state, linkInConstruction: null};
     case REMOVE_LINK:
-      return {...state, constructedLink: null};
-    case SET_MOUSE_STATE:
-    return {...state, mouseState: payload};
+      return {...state, linkInConstruction: null};
+    // case SET_MOUSE_STATE:
+      // return {...state, mouseState: payload};
     default:
       return state;
   }

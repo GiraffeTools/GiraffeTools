@@ -14,8 +14,8 @@ export const UPDATE_PORT = 'UPDATE_PORT';
 
 ///// LINKS /////
 export const ADD_LINK = 'ADD_LINK';
+export const START_LINK = 'START_LINK';
 export const REMOVE_LINK = 'REMOVE_LINK';
-export const CONNECT_LINK = 'CONNECT_LINK';
 
 ///// SIDEBAR /////
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
@@ -26,4 +26,4 @@ export const ZOOM_OUT = 'ZOOM_OUT';
 export const HOVER_NODE = 'HOVER_NODE';
 export const CLICK_NODE = 'CLICK_NODE';
 export const CLICK_SCENE = 'CLICK_SCENE';
-export const SET_MOUSE_STATE = 'SET_MOUSE_STATE';
+// export const SET_MOUSE_STATE = 'SET_MOUSE_STATE';

@@ -9,6 +9,7 @@ import {
     UPDATE_PORT,
     ADD_LINK,
     REMOVE_LINK,
+    START_LINK ,
     TOGGLE_SIDEBAR,
     HOVER_NODE,
     CLICK_NODE,
@@ -27,14 +28,12 @@ export const addNode = (props) => ({
   type: ADD_NODE,
   payload: props,
 });
-
 export const deleteNode = (node) => ({
     type: REMOVE_NODE,
     payload: {
       node,
     },
 });
-
 export const updateNodePosition = (nodeId, offset) => ({
   type: UPDATE_NODE,
   payload: {
@@ -45,7 +44,6 @@ export const updateNodePosition = (nodeId, offset) => ({
     },
   }
 });
-
 export const removePortFromNode = (portId, nodeId) => {
   return ({
     type: REMOVE_PORT_FROM_NODE,
@@ -55,7 +53,6 @@ export const removePortFromNode = (portId, nodeId) => {
     },
   });
 };
-
 export const addPortToNode = (port, nodeId) => ({
   type: ADD_PORT_TO_NODE,
   payload: {
@@ -69,16 +66,10 @@ export const addLink = (props) => ({
   type: ADD_LINK,
   payload: props,
 });
-
-export const connectLink = (linkId, portFrom, portTo) => ({
-  type: CONNECT_LINK,
-  payload: {
-    linkId,
-    portFrom,
-    portTo,
-  },
-});
-
+export const startLink = (props) => ({
+  type: START_LINK,
+  payload: props,
+})
 export const deleteLink = (linkId) => ({
     type: REMOVE_LINK,
     payload: {
@@ -92,7 +83,6 @@ export const addPort = (props) => ({
   type: ADD_PORT,
   payload: props,
 });
-
 export const updatePort = (portId, newValues) => ({
     type: UPDATE_PORT,
     payload: {
@@ -100,7 +90,6 @@ export const updatePort = (portId, newValues) => ({
       newValues,
     },
 });
-
 export const deletePort = (portId) => ({
     type: REMOVE_PORT,
     payload: {
@@ -116,19 +105,16 @@ export const hoverNode = (nodeId) => ({
     nodeId
   },
 });
-
 export const clickNode = (nodeId) => ({
   type: CLICK_NODE,
   payload: {
     nodeId
   },
 });
-
 export const clickScene = () => ({
   type: CLICK_SCENE,
 });
-
-export const setMouseState = (props) => ({
-  type: SET_MOUSE_STATE,
-  payload: props,
-});
+// export const setMouseState = (props) => ({
+//   type: SET_MOUSE_STATE,
+//   payload: props,
+// });

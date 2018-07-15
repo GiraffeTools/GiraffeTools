@@ -24,7 +24,7 @@ const MouseTracker = (props) => {
   //   } = {}
   // } = props;
   //
-  props.setMouseState({position: props.position});
+  // props.setMouseState({position: props.position});
   return '';
 };
 
@@ -33,7 +33,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	setMouseState: (state) => dispatch(setMouseState(state)),
+	// setMouseState: (state) => dispatch(setMouseState(state)),
 });
 
 export default connect(
