@@ -7,6 +7,7 @@ import {
   ADD_LINK,
   CONNECT_LINK,
   REMOVE_LINK,
+  SET_MOUSE_STATE,
 } from '../actions/actionTypes';
 
 export default function scene(state = [], action) {
@@ -23,11 +24,13 @@ export default function scene(state = [], action) {
     case CLICK_SCENE:
       return {...state, selectedNode: null};
     case ADD_LINK:
-      return {...state, constructedLink: payload.id};
+      return {...state, constructedLink: payload.linkId};
     case CONNECT_LINK:
       return {...state, constructedLink: null};
     case REMOVE_LINK:
       return {...state, constructedLink: null};
+    case SET_MOUSE_STATE:
+    return {...state, mouseState: payload};
     default:
       return state;
   }

@@ -13,6 +13,7 @@ import {
     HOVER_NODE,
     CLICK_NODE,
     CLICK_SCENE,
+    SET_MOUSE_STATE,
 } from './actionTypes';
 
 ///// SIDEBAR /////
@@ -73,7 +74,7 @@ export const connectLink = (linkId, portFrom, portTo) => ({
   type: CONNECT_LINK,
   payload: {
     linkId,
-    portFrom, 
+    portFrom,
     portTo,
   },
 });
@@ -125,4 +126,9 @@ export const clickNode = (nodeId) => ({
 
 export const clickScene = () => ({
   type: CLICK_SCENE,
+});
+
+export const setMouseState = (props) => ({
+  type: SET_MOUSE_STATE,
+  payload: props,
 });

@@ -29,15 +29,29 @@ class Link extends React.Component {
 
   render() {
     const  { id, portFrom, portTo } = this.props;
+
+    let startingPoint = {x: 0, y: 0};
+
     if (id === this.props.constructedLink) {
-      let startingPort = portFrom || portTo;
+      // #TODO Ouch, using jquery here. Let's fix this to the React way
+      let startingPort = '';
+      if (portFrom) {
+        startingPort = $(`#output-${portFrom.id}`);
+      } else if (portTo) {
+        startingPort = $(`#input-${portTo.id}`);
+      }
+
+      // #TODO fix position, relative to what?
+      startingPoint.x = startingPort.position().left + startingPort.offset().left;
+      startingPoint.y = startingPort.position().top  + startingPort.offset().top;
+
       // currently dragging a link
-
-      $(el).off('click');
-      el.appendChild(s);
-
-      const that=this;
-      $('#zoomContainer').on('click', function(e) {
+      // $(el).off('click');
+      // el.appendChild(s);
+      //
+      // const that=this;
+      $('#mainSurface').on('click', function(e) {
+        console.log('test');
         if (e.target.classList[0]==="node__port--input") {
           let x, y
           ({x,y}=e.target.getClientRects()[0])
@@ -52,26 +66,21 @@ class Link extends React.Component {
             that.connect(el)
           })
         }
-        $('#zoomContainer').off('mousemove')
-        $('#zoomContainer').off('click')
+        $('#mainSurface').off('mousemove')
+        $('#mainSurface').off('click')
       })
-      $('#zoomContainer').on('mousemove', function(e) {
+      $('#mainSurface').on('mousemove', function(e) {
+        console.log('test');
         const x=e.pageX-xi
         const y=e.pageY-yi
       })
-
-
-      // if click on valid port
-      connecLink(id, portFrom, portTo);
-
-      // else
-      deleteLink(id);
+      // // if click on valid port
+      // connecLink(id, portFrom, portTo);
+      // // else
+      // deleteLink(id);
     }
-    console.log(portFrom);
-    console.log(portTo);
-
-    const startingPoint = {x: 4, y: 4};
-    const endPoint = {x: 250, y: 125};
+    const mousePosition = this.props.mouseState.position;
+    const endPoint = mousePosition;
 
     return (
       <svg>
@@ -93,7 +102,7 @@ class Link extends React.Component {
 
 const mapStateToProps = state => ({
 	constructedLink: state.scene.constructedLink,
-  portById: (id) => portById(state, id),
+  mouseState: state.scene.mouseState,
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -16,8 +16,8 @@ class Port extends React.Component {
   createLink(e, type) {
     this.props.addLink({
       linkId: v4(),
-      portFrom: (type === 'input'  ? this.props.id : null),
-      portTo:   (type === 'output' ? this.props.id : null),
+      portFrom: (type === 'output' ? this.props.id : null),
+      portTo:   (type === 'input'  ? this.props.id : null),
     })
   }
 
@@ -26,10 +26,11 @@ class Port extends React.Component {
       name,
       isInput,
       isOutput,
+      id,
     } = this.props;
 
-    const inputPort  = isInput  ? <span className='node__port--input'  onClick={(event) => this.createLink(event, 'input' )}/> : '';
-    const outputPort = isOutput ? <span className='node__port--output' onClick={(event) => this.createLink(event, 'output')}/> : '';
+    const inputPort  = isInput  ? <span id={"input-"  + id} className='node__port--input'  onClick={(event) => this.createLink(event, 'input' )}/> : '';
+    const outputPort = isOutput ? <span id={"output-" + id} className='node__port--output' onClick={(event) => this.createLink(event, 'output')}/> : '';
 
     return (
       <li>

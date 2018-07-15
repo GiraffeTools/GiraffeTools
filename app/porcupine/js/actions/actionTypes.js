@@ -26,3 +26,4 @@ export const ZOOM_OUT = 'ZOOM_OUT';
 export const HOVER_NODE = 'HOVER_NODE';
 export const CLICK_NODE = 'CLICK_NODE';
 export const CLICK_SCENE = 'CLICK_SCENE';
+export const SET_MOUSE_STATE = 'SET_MOUSE_STATE';
