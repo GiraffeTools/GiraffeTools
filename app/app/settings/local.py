@@ -38,12 +38,4 @@ WEBPACK_LOADER = {
         'TIMEOUT': None,
         'IGNORE': ['.+\.hot-update.js', '.+\.map']
     },
-    'FABRIK': {
-        'CACHE': not DEBUG,
-        'BUNDLE_DIR_NAME': './', # must end with slash
-        'STATS_FILE': os.path.join(BASE_DIR, '../webpack/webpack-stats.json'),
-        'POLL_INTERVAL': 0.1,
-        'TIMEOUT': None,
-        'IGNORE': ['.+\.hot-update.js', '.+\.map']
-    }
 }

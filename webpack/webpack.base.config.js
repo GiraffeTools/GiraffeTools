@@ -7,7 +7,6 @@ module.exports = {
   context: __dirname,
   entry: {
     porcupine: path.resolve(__dirname, '../app/porcupine/js/index.js'),
-    fabrik: path.resolve(__dirname, '../app/fabrik/js/index.js')
   },
 
   output: {

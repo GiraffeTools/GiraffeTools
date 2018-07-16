@@ -32,9 +32,4 @@ WEBPACK_LOADER = {
         'BUNDLE_DIR_NAME': 'webpack_bundles/', # must end with slash
         'STATS_FILE': os.path.join(BASE_DIR, '../webpack/webpack-stats-prod.json'),
     },
-    'FABRIK': {
-        'CACHE': not DEBUG,
-        'BUNDLE_DIR_NAME': 'webpack_bundles/', # must end with slash
-        'STATS_FILE': os.path.join(BASE_DIR, '../webpack/webpack-stats-prod.json'),
-    }
 }

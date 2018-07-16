@@ -11,11 +11,6 @@ config.entry = {
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
     path.resolve(__dirname, '../app/porcupine/js/index.js')
-  ],
-  fabrik: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    path.resolve(__dirname, '../app/fabrik/js/index.js')
   ]
 }
 

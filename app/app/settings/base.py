@@ -11,7 +11,6 @@ INSTALLED_APPS = [
     # 'django.contrib.admin',
     'giraffe.apps.GiraffeConfig',
     'porcupine.apps.PorcupineConfig',
-    'fabrik.apps.FabrikConfig',
     'github.apps.GithubConfig',
     'livereload',
     'django.contrib.auth',
