@@ -2,14 +2,14 @@ import { combineReducers } from 'redux';
 import { createReducer } from 'redux-orm';
 
 import orm from '../models/index';
-import sidebar from './sidebar';
+import ui from './ui';
 import scene from './scene';
 
 
 const porcupineApp = combineReducers({
   orm: createReducer(orm), // database components
   scene,
-  sidebar,
+  ui,
 });
 
 export default porcupineApp;

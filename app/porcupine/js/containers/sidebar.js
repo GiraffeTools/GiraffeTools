@@ -37,7 +37,7 @@ const Sidebar = ({showSidebar, toggleSidebar}) => {
 };
 
 const mapStateToProps = state => ({
-  showSidebar: state.sidebar.showSidebar,
+  showSidebar: state.ui.showSidebar,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -11,17 +11,20 @@ import {
     REMOVE_LINK,
     START_LINK ,
     TOGGLE_SIDEBAR,
+    TOGGLE_CODEEDITOR,
     HOVER_NODE,
     CLICK_NODE,
     CLICK_SCENE,
     SET_MOUSE_STATE,
 } from './actionTypes';
 
-///// SIDEBAR /////
+///// UI /////
 export const toggleSidebar = () => ({
   type: TOGGLE_SIDEBAR
 });
-
+export const toggleCodeEditor = () => ({
+  type: TOGGLE_CODEEDITOR
+});
 
 ///// NODES /////
 export const addNode = (props) => ({
