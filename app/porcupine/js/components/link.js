@@ -39,18 +39,18 @@ class Link extends React.Component {
     let endPort      = $(`#input-${portTo.id}`);
 
     // #TODO fix position, relative to what?
-    startingPoint.x = startingPort.position().left;
-    startingPoint.y = startingPort.position().top;
-    endPoint.x = endPort.position().left;
-    endPoint.y = endPort.position().top;
+    startingPoint.x = startingPort.offset().left - 250;
+    startingPoint.y = startingPort.offset().top - 55;
+    endPoint.x = endPort.offset().left - 250;
+    endPoint.y = endPort.offset().top - 55;
 
     return (
       <svg>
         <PathLine
           points={[startingPoint,
                   // #TODO Add intermediate points to make the connection smoother
-                  // {x:..., y: ...},
-                  // {x:..., y: ...},
+                  {x: (startingPoint.x + endPoint.x) / 2, y: startingPoint.y},
+                  {x: (startingPoint.x + endPoint.x) / 2, y: endPoint.y},
                   endPoint]}
           stroke="red"
           strokeWidth="2"

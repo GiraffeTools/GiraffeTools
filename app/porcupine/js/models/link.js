@@ -10,7 +10,6 @@ class Link extends Model {
   static reducer(action, Link, session) {
     switch (action.type) {
       case ADD_LINK:
-        console.log(action.payload);
         Link.create(action.payload);
         break;
       case REMOVE_LINK:
