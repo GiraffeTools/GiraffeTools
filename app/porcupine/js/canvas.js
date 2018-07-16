@@ -19,6 +19,11 @@ const boxTarget = {
 class Canvas extends React.Component {
   constructor(props) {
     super(props);
+    debugger
+    this.state = {
+      sizeX: 0,
+      sizeY: 0
+    };
     this.placeholder          = true;
     this.allowDrop            = this.allowDrop.bind(this);
     this.drop                 = this.drop.bind(this);
@@ -52,10 +57,23 @@ class Canvas extends React.Component {
   }
 
   clickNodeEvent(event, nodeId) {
+
     if (this.clickOrDraggedNode === false) {
       this.props.changeSelectedNode(nodeId);
     } else if (this.clickOrDraggedNode === true) {
       this.clickOrDraggedNode = false;
+    }
+    debugger
+    console.log('la')
+    if (this.state.sizeX < event.clientX) {
+      this.setState({
+        sizeX: event.clientX
+      });
+    }
+    if (this.state.sizeY < event.clientY) {
+      this.setState({
+        sizeY: event.clientY
+      });
     }
     event.stopPropagation();
   }
@@ -74,6 +92,7 @@ class Canvas extends React.Component {
     if (!this.clickOrDraggedNode) {
       this.clickOrDraggedNode = true;
     }
+
     const nodeId = event.el.id;
     const node = this.props.net[node];
     node.state.left = `${event.pos['0']}px`;
@@ -101,8 +120,18 @@ class Canvas extends React.Component {
       y: (offset.y - rec.top -  canvas.y)/zoom - 25,
       class: ''
     };
+    if (this.state.sizeX < node.state.x) {
+      this.setState({
+        sizeX: node.state.x
+      });
+    }
+    if (this.state.sizeY < node.state.y) {
+      this.setState({
+        sizeY: node.state.y
+      });
+    }
 		// #TODO issue #37
-		console.log(node);
+		console.log(node, 'fhgh');
 		// This node contains the list of 'ports', all parameters
 		// The node needs to know about all of them, but only display the ones with
 		// visible==true
@@ -182,18 +211,23 @@ class Canvas extends React.Component {
           data-zoom="1"
           data-x="0"
           data-y="0"
+          data-sizex={this.state.sizeX}
+          data-sizey={this.state.sizeY}
         >
           {nodes}
         </div>
         
         <div id='icon-plus' className="canvas-icon">
-          <p>Press</p>
           <button className="btn btn-default text-center">
               <span aria-hidden="true">+</span>
           </button>
         </div>
+        <div id='icon-reset' className="canvas-icon">
+          <button className="btn btn-default text-center">
+              <span aria-hidden="true">[0]</span>
+          </button>
+        </div>
         <div id='icon-minus' className="canvas-icon">
-          <p>Press</p>
           <button className="btn btn-default text-center">
               <span aria-hidden="true">-</span>
           </button>

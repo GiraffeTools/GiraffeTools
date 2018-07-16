@@ -118,6 +118,9 @@ body {
 }
 
 #icon-plus{
+  right: 12%;
+}
+#icon-reset{
   right: 8%;
 }
 
@@ -903,7 +906,7 @@ input[type="file"] {
   display: flex;
   flex-flow: column;
   top: 0;
-  left: 15rem;
+  left: 20%;
   position: absolute;
 }
 
