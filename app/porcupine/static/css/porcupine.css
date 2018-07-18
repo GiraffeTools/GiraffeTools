@@ -34,8 +34,8 @@ body {
   height: 60%;
 }
 
-.codeButton{
-  background: #4286f4;
+.codeButton, .codeButton-closed{
+  background: #ffffff;
   display: inline-block;
   text-align: center;
   height: 30px;
@@ -46,6 +46,12 @@ body {
   font-size: 2rem;
   color: black;
 }
+
+.codeButton-closed{
+  position: absolute;
+  bottom: 0;
+}
+
 
 .codeEditor-closed{
   display: none;
