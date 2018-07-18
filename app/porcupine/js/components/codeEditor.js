@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 
+import Code from './code';
 import {
   toggleCodeEditor,
 } from '../actions/index';
@@ -14,11 +15,14 @@ class CodeEditor extends React.Component {
   render() {
 
     return (
-      <div className='codeWindow'>
+      <div className={'codeWindow' + (this.props.showCodeEditor ? '-closed' : '')}>
         <div className={'codeButton fas ' + (this.props.showCodeEditor ? 'fa-angle-down' : 'fa-angle-up')} onClick={() => this.props.toggleCodeEditor()}>
         </div>
-        <div className='codeEditor'>
-          Test
+        {/* #TODO Make this a tab editor */}
+        <div className="codeEditor">
+          <Code
+            language='Nipype'
+          />
         </div>
       </div>
     );

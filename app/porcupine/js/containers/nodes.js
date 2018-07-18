@@ -30,7 +30,7 @@ class Nodes extends React.Component {
 }
 
 const mapStateToProps = state => ({
-		nodesWithPorts: nodesWithPorts(state),
+	nodesWithPorts: nodesWithPorts(state),
 })
 
 const mapDispatchToProps = dispatch => ({
