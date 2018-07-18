@@ -2,9 +2,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import SyntaxHighlighter from 'react-syntax-highlighter/prism';
-import { dark } from 'react-syntax-highlighter/styles/prism';
-
 import NipypeCode from './codeGenerators/nipype';
 import {
 	nodesWithPorts,
@@ -17,7 +14,6 @@ class Code extends React.Component {
     const initialCodeString = '';
 
     this.state = {
-      style: dark,
       code: initialCodeString,
       showLineNumbers: false,
       width:  window.innerWidth,
