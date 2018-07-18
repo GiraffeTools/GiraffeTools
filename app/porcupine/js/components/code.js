@@ -17,7 +17,7 @@ class Code extends React.Component {
     const initialCodeString = '';
 
     this.state = {
-      style: {dark},
+      style: dark,
       code: initialCodeString,
       showLineNumbers: false,
       width:  window.innerWidth,
@@ -43,14 +43,9 @@ class Code extends React.Component {
     }
 
     return (
-      <SyntaxHighlighter
-        customStyle={{ height: "100vh" }}
-        style={this.state.style}
-        showLineNumbers={this.state.showLineNumbers}
-        codeTagProps={{ style: { height: "100vh" }}}
-      >
+      <pre className="prettyprint">
         {code}
-      </SyntaxHighlighter>
+      </pre>
     );
   }
 }
