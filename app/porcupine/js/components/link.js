@@ -30,23 +30,16 @@ class Link extends React.Component {
   render() {
     const  { id, portFrom, portTo } = this.props;
 
-    let startingPoint = {x: 0, y: 0};
-    let endPoint      = {x: 0, y: 0};
+    let startingPoint = portFrom && portFrom.outputPortRef ? portFrom.outputPortRef : null;
+    let endPoint      = portTo   && portTo.inputPortRef    ? portTo.inputPortRef    : null;
+    startingPoint = startingPoint.current ? startingPoint.current.getBoundingClientRect() : {x: 0, y: 0};
+    endPoint      = endPoint.current      ? endPoint.current.getBoundingClientRect()      : {x: 0, y: 0};
 
-
-    // #TODO Ouch, using jquery here. Let's fix this to the React way
-    let startingPort = $(`#output-${portFrom.id}`);
-    let endPort      = $(`#input-${portTo.id}`);
-
-    // #TODO fix position, relative to what?
-    // startingPoint.x = startingPort.offset().left - 250;
-    // startingPoint.y = startingPort.offset().top - 55;
-    // endPoint.x = endPort.offset().left - 250;
-    // endPoint.y = endPort.offset().top - 55;
+    let viewport = {x: 0, y: 0}; // probably subtract the borders of the canvas
+    startingPoint = {x: startingPoint.x - viewport.x, y: startingPoint.y - viewport.y};
 
     return (
       <svg>
-        {/*
         <PathLine
           points={[startingPoint,
                   // #TODO Add intermediate points to make the connection smoother
@@ -58,7 +51,6 @@ class Link extends React.Component {
           fill="none"
           r={10}
         />
-        */}
       </svg>
     )
   }

@@ -25,6 +25,8 @@ class Port extends Model {
     				isOutput: port.output,
     				isVisible: port.visible,
     				isEnabled: port.editable,
+            inputPortRef: port.inputPortRef,
+            outputPortRef: port.outputPortRef,
             value: port.value || '',  // #TODO insert proper default value
       		});
         });
@@ -63,6 +65,8 @@ Port.fields = {
   isOutput: attr(),
   isVisible: attr(),
   isEnabled: attr(),
+  inputPortRef: attr(),
+  outputPortRef: attr(),
   inputLinks: many("Link", "inputLinks"),
   outputLinks: many("Link", "outputLinks"),
 }
