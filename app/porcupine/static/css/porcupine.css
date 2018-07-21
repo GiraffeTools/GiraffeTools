@@ -34,7 +34,19 @@ body {
   height: 60%;
 }
 
-.codeButton, .codeButton-closed{
+.codeWindow{
+  position: fixed;
+  bottom: 0;
+  width: 70%;
+  height: 60%;
+}
+
+.codeWindowClosed{
+  transform: translateY(90%);
+  transition: transform 0.1s;
+}
+
+.codeButton {
   background: #ffffff;
   display: inline-block;
   text-align: center;
@@ -47,15 +59,6 @@ body {
   color: black;
 }
 
-.codeButton-closed{
-  position: absolute;
-  bottom: 0;
-}
-
-
-.codeEditor-closed{
-  display: none;
-}
 
 .sidebar-heading{
   font-family: 'ProximaNova-Bold', sans-serif;

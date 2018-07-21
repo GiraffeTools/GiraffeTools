@@ -15,11 +15,11 @@ class CodeEditor extends React.Component {
   render() {
 
     return (
-      <div className="codeWindow">
-        <div className={'codeButton' + (this.props.showCodeEditor ? '-closed' : '') + ' fas ' + (this.props.showCodeEditor ? 'fa-angle-up' : 'fa-angle-down')} onClick={() => this.props.toggleCodeEditor()}>
+      <div className={"codeWindow " + (this.props.showCodeEditor ? 'codeWindowClosed' : '')}>
+        <div className={'codeButton fas ' + (this.props.showCodeEditor ? 'fa-angle-up' : 'fa-angle-down')} onClick={() => this.props.toggleCodeEditor()}>
         </div>
         {/* #TODO Make this a tab editor */}
-        <div className={'codeEditor' + (this.props.showCodeEditor ? '-closed' : '')}>
+        <div className='codeEditor'>
           <Code
             language='Nipype'
           />
