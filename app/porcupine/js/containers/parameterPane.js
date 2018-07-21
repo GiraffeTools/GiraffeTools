@@ -51,7 +51,7 @@ class ParameterPane extends React.Component {
             aria-hidden="true"/>
         </div>
         <div className="setContain">
-          {node && node.ports ? <Fields /> : ''}
+          {node && node.ports ? <Fields ports={node.ports} /> : ''}
           <br />
           <button
             type="button"

@@ -15,14 +15,13 @@ class Node extends Model {
     const { type, payload } = action;
     switch (type) {
       case ADD_NODE:
-        // The following replaces the ports with just the id
-        // Ports are save separately
-        const portIds = payload.ports.map(port => port.id);
-        const props = Object.assign({}, payload, { ports: portIds });
-        Node.create(props);
+        // ports are automatically saved in the Port reducer
+        const props = Object.assign({}, payload, { ports: undefined });
+        Node.create(payload);
         break;
       case REMOVE_NODE:
-        Node.withId(payload.node.id).delete();
+        const node = Node.withId(payload.node.id);
+        node.delete();
         break;
       case ADD_PORT_TO_NODE:
         Node.withId(payload.nodeId).ports.add(payload.port);

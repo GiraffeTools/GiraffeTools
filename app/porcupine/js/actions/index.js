@@ -1,20 +1,20 @@
 import {
-    ADD_NODE,
-    REMOVE_NODE,
-    UPDATE_NODE,
-    ADD_PORT,
-    ADD_PORT_TO_NODE,
-    REMOVE_PORT_FROM_NODE,
-    REMOVE_PORT,
-    UPDATE_PORT,
-    ADD_LINK,
-    REMOVE_LINK,
-    START_LINK ,
-    TOGGLE_SIDEBAR,
-    HOVER_NODE,
-    CLICK_NODE,
-    CLICK_SCENE,
-    SET_MOUSE_STATE,
+  ADD_NODE,
+  REMOVE_NODE,
+  UPDATE_NODE,
+  ADD_PORT,
+  ADD_PORT_TO_NODE,
+  REMOVE_PORT_FROM_NODE,
+  REMOVE_PORT,
+  UPDATE_PORT,
+  ADD_LINK,
+  REMOVE_LINK,
+  START_LINK ,
+  TOGGLE_SIDEBAR,
+  HOVER_NODE,
+  CLICK_NODE,
+  CLICK_SCENE,
+  SET_MOUSE_STATE,
 } from './actionTypes';
 
 ///// SIDEBAR /////
@@ -29,10 +29,10 @@ export const addNode = (props) => ({
   payload: props,
 });
 export const deleteNode = (node) => ({
-    type: REMOVE_NODE,
-    payload: {
-      node,
-    },
+  type: REMOVE_NODE,
+  payload: {
+    node,
+  },
 });
 export const updateNodePosition = (nodeId, offset) => ({
   type: UPDATE_NODE,
@@ -71,10 +71,10 @@ export const startLink = (props) => ({
   payload: props,
 })
 export const deleteLink = (linkId) => ({
-    type: REMOVE_LINK,
-    payload: {
-      linkId,
-    },
+  type: REMOVE_LINK,
+  payload: {
+    linkId,
+  },
 });
 
 
@@ -84,17 +84,17 @@ export const addPort = (props) => ({
   payload: props,
 });
 export const updatePort = (portId, newValues) => ({
-    type: UPDATE_PORT,
-    payload: {
-      portId,
-      newValues,
-    },
+  type: UPDATE_PORT,
+  payload: {
+    portId,
+    newValues,
+  },
 });
 export const deletePort = (portId) => ({
-    type: REMOVE_PORT,
-    payload: {
-      portId,
-    },
+  type: REMOVE_PORT,
+  payload: {
+    portId,
+  },
 });
 
 

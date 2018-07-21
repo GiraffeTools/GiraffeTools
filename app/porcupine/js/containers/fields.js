@@ -1,10 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import Field from '../components/field'
-import {
-  selectedPorts,
-} from '../selectors/selectors'
 
 
 class Fields extends React.Component {
@@ -16,7 +12,7 @@ class Fields extends React.Component {
     return (
       <form className="form-horizontal">
         {
-          this.props.selectedPorts.map(port => (
+          this.props.ports.map(port => (
             <Field
               key={port.id}
               port={port}
@@ -28,14 +24,4 @@ class Fields extends React.Component {
   }
 };
 
-const mapStateToProps = state => ({
-		selectedPorts: selectedPorts(state),
-})
-
-const mapDispatchToProps = dispatch => ({
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Fields);
+export default Fields;

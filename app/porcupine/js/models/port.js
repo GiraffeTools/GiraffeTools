@@ -8,6 +8,7 @@ import {
   ADD_PORT_TO_NODE,
   REMOVE_PORT,
   UPDATE_PORT,
+  ADD_LINK
 } from '../actions/actionTypes';
 
 
@@ -19,6 +20,7 @@ class Port extends Model {
         const ports = payload.ports;
         ports.forEach(port => {
           Port.create({
+            node: payload.id,
     				id: port.id,
     				name: port.name,
     				isInput: port.input,
@@ -32,9 +34,8 @@ class Port extends Model {
         });
         break;
       case REMOVE_NODE:
-        payload.node.ports.forEach(portId => {
-          const port = Port.withId(portId);
-          port.delete();
+        payload.node.ports.forEach(portRef => {
+          Port.withId(portRef.id).delete();
         });
         break;
       case ADD_PORT:
@@ -67,8 +68,11 @@ Port.fields = {
   isEnabled: attr(),
   inputPortRef: attr(),
   outputPortRef: attr(),
-  inputLinks: many("Link", "inputLinks"),
-  outputLinks: many("Link", "outputLinks"),
+  node: fk({
+      to: 'Node',
+      as: 'nodeModel',
+      relatedName: 'ports',
+  }),
 }
 
 export default Port;
