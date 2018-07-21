@@ -68,7 +68,7 @@ class Content extends React.Component {
           input: port.input,
           output: port.output,
           visible: port.visible,
-          enabled: port.editable,
+          editable: port.editable,
           // inputPortRef: port.inputPortRef,
           // outputPortRef: port.outputPortRef,
           value: port.value || '',  // #TODO insert proper default value
