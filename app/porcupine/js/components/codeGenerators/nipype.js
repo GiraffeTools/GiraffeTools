@@ -23,9 +23,9 @@ const itemToCode = node => {
   let code = '';
   let nodeType = true ? 'Node' : 'MapNode'; // #TODO condition on baing iterable
   let givenName = `my_${node.name}`;
-  code += `${givenName} = ${nodeType}(interface = ${node.name})
+  code += `
+${givenName} = ${nodeType}(interface = ${node.name})
 `;
-  console.log(node.ports);
   node.ports && node.ports.filter(port => port.value !== '').forEach(port => {
     if(port.isInput){
       code += `${givenName}.inputs.${port.name} = ${port.value}

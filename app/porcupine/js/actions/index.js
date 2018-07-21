@@ -16,6 +16,7 @@ import {
   CLICK_SCENE,
   SET_MOUSE_STATE,
   CLEAR_DATABASE,
+  TOGGLE_CODEEDITOR,
 } from './actionTypes';
 
 export const clearDatabase = () => ({
