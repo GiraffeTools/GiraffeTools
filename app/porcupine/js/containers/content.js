@@ -112,7 +112,7 @@ class Content extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  showSidebar: state.sidebar.showSidebar
+  showSidebar: state.ui.showSidebar
 })
 
 const mapDispatchToProps = dispatch => ({

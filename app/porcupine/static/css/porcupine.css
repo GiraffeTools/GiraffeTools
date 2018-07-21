@@ -9,22 +9,52 @@ html,body,#app,.app,.row-offcanvas{
 }
 
 body {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 #sidebar {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    width: 20%;
-    background-color: #F3F3F3;
-    overflow-y: auto;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  width: 20%;
+  background-color: #F3F3F3;
+  overflow-y: auto;
 }
 
 #sidebar-content{
   padding: 0 5% 0 5%;
+}
+
+.codeWindow{
+  position: fixed;
+  bottom: 0;
+  width: 70%;
+  height: 60%;
+}
+
+.codeButton, .codeButton-closed{
+  background: #ffffff;
+  display: inline-block;
+  text-align: center;
+  height: 30px;
+  width:  60px;
+  border-top-left-radius:  60px;
+  border-top-right-radius: 60px;
+  cursor: pointer;
+  font-size: 2rem;
+  color: black;
+}
+
+.codeButton-closed{
+  position: absolute;
+  bottom: 0;
+}
+
+
+.codeEditor-closed{
+  display: none;
 }
 
 .sidebar-heading{
@@ -63,8 +93,8 @@ body {
 }
 
 #parent {
-    background-color: blue;
-    height: 0;
+  background-color: blue;
+  height: 0;
 }
 
 #main {
@@ -81,7 +111,7 @@ body {
 
 .topBar .btn{
   margin: 5px;
-  overflow: auto;
+  /* overflow: auto; */
   flex: 0 1 auto;
 }
 
@@ -224,11 +254,9 @@ body {
   flex: 1 1 auto;
   width: 100%;
   position: relative;
-  overflow: scroll;
+  overflow:scroll;
   border: 1px solid #ddd;
   border-radius: 4px 4px 4px 4px;
-
-  /*background: yellow;*/
 }
 
 .setHead{

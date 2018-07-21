@@ -18,8 +18,9 @@ export const ADD_LINK = 'ADD_LINK';
 export const START_LINK = 'START_LINK';
 export const REMOVE_LINK = 'REMOVE_LINK';
 
-///// SIDEBAR /////
+///// UI /////
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
+export const TOGGLE_CODEEDITOR = 'TOGGLE_CODEEDITOR';
 
 ///// SCENE /////
 export const ZOOM_IN = 'ZOOM_IN';

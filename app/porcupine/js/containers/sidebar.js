@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { toggleSidebar } from '../actions';
+import {
+  toggleSidebar
+} from '../actions';
 import PaneGroup from '../components/paneGroup';
 import nodes from '../../static/assets/nipype.json';
 
@@ -37,7 +39,7 @@ const Sidebar = ({showSidebar, toggleSidebar}) => {
 };
 
 const mapStateToProps = state => ({
-  showSidebar: state.sidebar.showSidebar,
+  showSidebar: state.ui.showSidebar,
 });
 
 const mapDispatchToProps = dispatch => ({

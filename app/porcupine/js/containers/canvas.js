@@ -6,6 +6,7 @@ import { DropTarget } from 'react-dnd';
 import { connect } from 'react-redux';
 
 import ItemTypes from '../components/itemTypes';
+import CodeEditor from '../components/codeEditor';
 import Links from './links';
 import MouseTracker from '../components/mouseTracker';
 import Nodes from './nodes';
@@ -158,7 +159,7 @@ class Canvas extends React.Component {
           {isActive ? 'Release to drop' : 'Drag a box here'}
         </div>
          */}
-
+				 <CodeEditor />
       </div>,
     );
   }

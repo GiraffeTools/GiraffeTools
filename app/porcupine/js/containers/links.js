@@ -28,7 +28,7 @@ class Links extends React.Component {
 }
 
 const mapStateToProps = state => ({
-		links: linksWithPorts(state),
+	links: linksWithPorts(state),
 })
 
 const mapDispatchToProps = dispatch => ({
