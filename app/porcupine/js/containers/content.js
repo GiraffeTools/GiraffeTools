@@ -1,3 +1,4 @@
+import { v4 } from 'node-uuid';
 import React from 'react';
 import { DragDropContextProvider } from 'react-dnd'
 import TouchBackend from 'react-dnd-touch-backend'
@@ -10,9 +11,11 @@ import Canvas from './canvas';
 import ParameterPane from './parameterPane';
 import Sidebar from './sidebar';
 import Tooltip from './tooltip';
- // #TODO to be removed in #73
-// import zoomFunctions from '../zoomFunctions';
-
+import {
+  addNode,
+  addLink,
+  clearDatabase,
+} from '../actions/index';
 
 require('browsernizr/test/touchevents');
 var Modernizr = require('browsernizr');
@@ -31,34 +34,45 @@ class Content extends React.Component {
   }
 
   loadFromJson(json) {
-    // #TODO to be updated in #73
-    // const canvas = document.getElementById('jsplumbContainer');
-    const canvas = document.getElementById('mainSurface');
-    const zoom = instance.getZoom();
+    const { addNode, addLink, clearDatabase } = this.props;
 
+    clearDatabase();
     // load nodes
     json['nodes'].forEach(node => {
-      let category = node['category'].splice(1);
-      let name = node.title.name;
-      let currentNodes = nodes;
-      category.forEach(function (c) {
-        currentNodes = currentNodes['categories'][c];
-      })
-      const newNode = currentNodes.nodes[name];
-      newNode.colour = currentNodes.colour;
-      newNode.info = { category, name };
-      newNode.state = {
-        x: node['position'][0],
-        y: node['position'][1],
-        class: ''
+      const newNode = {
+        id: node.id || v4(),
+        name: node.title.name || '',
+        x: node['position'][0] + 900,
+        y: node['position'][1] + 400,
+  			colour: node.colour || '#BBB',
+  			web_url: node.web_url || '',
       };
+      newNode.ports = node.ports.map(port => {
+        const portId = port.input ? port.inputPort : port.outputPort;
+        return {
+          node: newNode.id,
+          id: portId || v4(),
+          name: port.name,
+          input: port.input,
+          output: port.output,
+          visible: port.visible,
+          enabled: port.editable,
+          // inputPortRef: port.inputPortRef,
+          // outputPortRef: port.outputPortRef,
+          value: port.value || '',  // #TODO insert proper default value
+        }
+      });
+      addNode(newNode);
     });
-    // #TODO to be removed in #73
-    // zoomFunctions().onLoaded();
 
     // load links
     json['links'].forEach(link => {
-
+      const newLink = {
+        id: v4(),
+        portFrom: link.from,
+        portTo: link.to,
+      };
+      addLink(newLink);
     });
   }
 
@@ -90,6 +104,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  addLink: (props) => dispatch(addLink(props)),
+  addNode: (node) => dispatch(addNode(node)),
+  clearDatabase: () => dispatch(clearDatabase()),
 })
 
 export default connect(

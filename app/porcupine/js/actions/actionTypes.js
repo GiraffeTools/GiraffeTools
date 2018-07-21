@@ -1,4 +1,5 @@
 
+export const CLEAR_DATABASE = 'CLEAR_DATABASE';
 
 ///// NODES /////
 export const ADD_NODE = 'ADD_NODE';

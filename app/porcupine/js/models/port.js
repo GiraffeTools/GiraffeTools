@@ -8,7 +8,8 @@ import {
   ADD_PORT_TO_NODE,
   REMOVE_PORT,
   UPDATE_PORT,
-  ADD_LINK
+  ADD_LINK,
+  CLEAR_DATABASE,
 } from '../actions/actionTypes';
 
 
@@ -16,6 +17,9 @@ class Port extends Model {
   static reducer(action, Port, session) {
     const { type, payload } = action;
     switch (type) {
+      case CLEAR_DATABASE:
+        session.Port.all().toRefArray().forEach(item => Port.withId(item.id).delete());
+        break;
       case ADD_NODE:
         const ports = payload.ports;
         ports.forEach(port => {

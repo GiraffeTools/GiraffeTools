@@ -31,12 +31,15 @@ export const selectedNode = createSelector(
     const node = orm.Node.withId(selectedNode);
     if (!selectedNode){ return null };
     const obj = Object.assign({}, node.ref);
+    //add ports
     obj.ports = node.ports.toRefArray().map(portRef => {
       const port = orm.Port.withId(portRef.id);
+      //add links
       const inputLinks  = port.inputLinks  ? port.inputLinks.toRefArray()  : [];
       const outputLinks = port.outputLinks ? port.outputLinks.toRefArray() : [];
 
-      return {...port, outputLinks, inputLinks }
+      const obj = Object.assign({}, port.ref);
+      return {...obj, outputLinks, inputLinks }
     });
     return obj;
   }

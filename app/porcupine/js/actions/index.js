@@ -15,11 +15,16 @@ import {
   CLICK_NODE,
   CLICK_SCENE,
   SET_MOUSE_STATE,
+  CLEAR_DATABASE,
 } from './actionTypes';
+
+export const clearDatabase = () => ({
+  type: CLEAR_DATABASE,
+})
 
 ///// SIDEBAR /////
 export const toggleSidebar = () => ({
-  type: TOGGLE_SIDEBAR
+  type: TOGGLE_SIDEBAR,
 });
 
 

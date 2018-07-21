@@ -5,6 +5,7 @@ import {
   ADD_LINK,
   REMOVE_LINK,
   REMOVE_NODE,
+  CLEAR_DATABASE,
 } from '../actions/actionTypes';
 
 
@@ -12,6 +13,9 @@ class Link extends Model {
   static reducer(action, Link, session) {
     const { type, payload } = action;
     switch (type) {
+      case CLEAR_DATABASE:
+        session.Link.all().toRefArray().forEach(item => Link.withId(item.id).delete());
+        break;
       case ADD_LINK:
         Link.create(payload);
         break;
