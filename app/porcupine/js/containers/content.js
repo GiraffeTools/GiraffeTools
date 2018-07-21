@@ -16,6 +16,8 @@ import {
   addLink,
   clearDatabase,
 } from '../actions/index';
+import nodeData from '../../static/assets/nipype.json';
+
 
 require('browsernizr/test/touchevents');
 var Modernizr = require('browsernizr');
@@ -39,12 +41,22 @@ class Content extends React.Component {
     clearDatabase();
     // load nodes
     json['nodes'].forEach(node => {
+
+      // This block is only for obtaining the colour:
+      let category = node['category'].splice(1);
+      let name = node.title.name;
+      let currentNodes = nodeData;
+      category.forEach(function (c) {
+        currentNodes = currentNodes['categories'][c];
+      })
+
       const newNode = {
         id: node.id || v4(),
         name: node.title.name || '',
-        x: node['position'][0] + 900,
+        // HACK: get position right for example
+        x: node['position'][0] + 1000,
         y: node['position'][1] + 400,
-  			colour: node.colour || '#BBB',
+  			colour: currentNodes.colour || '#BBB',
   			web_url: node.web_url || '',
       };
       newNode.ports = node.ports.map(port => {
