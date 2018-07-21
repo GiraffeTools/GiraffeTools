@@ -9,23 +9,56 @@ html,body,#app,.app,.row-offcanvas{
 }
 
 body {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 #sidebar {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    width: 20%;
-    background-color: #F3F3F3;
-    overflow-y: auto;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  width: 20%;
+  background-color: #F3F3F3;
+  overflow-y: auto;
 }
 
 #sidebar-content{
   padding: 0 5% 0 5%;
 }
+
+.codeWindow{
+  position: fixed;
+  bottom: 0;
+  width: 70%;
+  height: 60%;
+}
+
+.codeWindow{
+  position: fixed;
+  bottom: 0;
+  width: 70%;
+  height: 60%;
+}
+
+.codeWindowClosed{
+  transform: translateY(90%);
+  transition: transform 0.1s;
+}
+
+.codeButton {
+  background: #ffffff;
+  display: inline-block;
+  text-align: center;
+  height: 30px;
+  width:  60px;
+  border-top-left-radius:  60px;
+  border-top-right-radius: 60px;
+  cursor: pointer;
+  font-size: 2rem;
+  color: black;
+}
+
 
 .sidebar-heading{
   font-family: 'ProximaNova-Bold', sans-serif;
@@ -63,8 +96,8 @@ body {
 }
 
 #parent {
-    background-color: blue;
-    height: 0;
+  background-color: blue;
+  height: 0;
 }
 
 #main {
@@ -81,7 +114,7 @@ body {
 
 .topBar .btn{
   margin: 5px;
-  overflow: auto;
+  /* overflow: auto; */
   flex: 0 1 auto;
 }
 
@@ -164,6 +197,7 @@ body {
 }
 
 #logo_sidebar{
+  text-align: center;
   width: 100%;
   margin: 0px;
   background-color: #e8d210;
@@ -223,11 +257,9 @@ body {
   flex: 1 1 auto;
   width: 100%;
   position: relative;
-  overflow: scroll;
+  overflow:scroll;
   border: 1px solid #ddd;
   border-radius: 4px 4px 4px 4px;
-
-  /*background: yellow;*/
 }
 
 .setHead{
@@ -468,8 +500,7 @@ body {
   position: relative;
 }
 
-.node__port--input:before {
-  content: "";
+.node__port--input {
   position: absolute;
   width: 8px;
   height: 8px;
@@ -479,8 +510,7 @@ body {
   border-radius: 50%;
 }
 
-.node__port--output:after {
-  content: "";
+.node__port--output {
   position: absolute;
   width: 8px;
   height: 8px;
@@ -488,6 +518,24 @@ body {
   right: -15px;
   background: #e74c3c;
   border-radius: 50%;
+}
+
+.port-clicked {
+  width: 12px;
+  height: 12px;
+}
+
+
+svg, svg:not(:root) {
+    overflow: visible;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+path {
+    stroke: black;
+    fill: transparent;
 }
 
 .selected{
@@ -903,7 +951,7 @@ input[type="file"] {
   display: flex;
   flex-flow: column;
   top: 0;
-  left: 15rem;
+  left: 20%;
   position: absolute;
 }
 

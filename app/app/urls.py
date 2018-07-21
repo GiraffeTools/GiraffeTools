@@ -20,16 +20,12 @@ from django.contrib import admin
 
 import giraffe.views
 import porcupine.views
-import fabrik.views
 
 app_name = 'app'
 
 urlpatterns = [
     url(r'^$',           giraffe.views.index,       name='index'),
-    # The 'fabrik' is an application that I want to adapt to insert into porcupine
-    # It will be removed once it's no longer useful. It only renders in DEBUG mode
     url(r'^porcupine/?', porcupine.views.porcupine, name='porcupine'),
-    url(r'^fabrik/?', fabrik.views.fabrik, name='fabrik'),
     # Admin
     url(r'^admin/?',     admin.site.urls),
     # Slack
