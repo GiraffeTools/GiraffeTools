@@ -32,8 +32,8 @@ class Link extends React.Component {
 
     let startingPoint = portFrom && portFrom.outputPortRef ? portFrom.outputPortRef : null;
     let endPoint      = portTo   && portTo.inputPortRef    ? portTo.inputPortRef    : null;
-    startingPoint = startingPoint.current ? startingPoint.current.getBoundingClientRect() : {x: 0, y: 0};
-    endPoint      = endPoint.current      ? endPoint.current.getBoundingClientRect()      : {x: 0, y: 0};
+    startingPoint = startingPoint && startingPoint.current ? startingPoint.current.getBoundingClientRect() : {x: 0, y: 0};
+    endPoint      = endPoint      && endPoint.current      ? endPoint.current.getBoundingClientRect()      : {x: 0, y: 0};
 
     let viewport = {x: 0, y: 0}; // probably subtract the borders of the canvas
     startingPoint = {x: startingPoint.x - viewport.x, y: startingPoint.y - viewport.y};
