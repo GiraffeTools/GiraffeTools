@@ -17,6 +17,7 @@ import {
   clearDatabase,
 } from '../actions/index';
 import nodeData from '../../static/assets/nipype.json';
+import { loadPorkFile } from '../utils/loadPorkFile';
 
 
 require('browsernizr/test/touchevents');
@@ -36,55 +37,22 @@ class Content extends React.Component {
   }
 
   loadFromJson(json) {
-    const { addNode, addLink, clearDatabase } = this.props;
+    const {
+      addNode,
+      addLink,
+      clearDatabase
+    } = this.props;
+  //pass by reference and fill them in the load functions
+    let nodes = [];
+    let links = [];
+    loadPorkFile(json, nodes, links);
 
     clearDatabase();
-    // load nodes
-    json['nodes'].forEach(node => {
-
-      // This block is only for obtaining the colour:
-      let category = node['category'].splice(1);
-      let name = node.title.name;
-      let currentNodes = nodeData;
-      category.forEach(function (c) {
-        currentNodes = currentNodes['categories'][c];
-      })
-
-      const newNode = {
-        id: node.id || v4(),
-        name: node.title.name || '',
-        // HACK: get position right for example
-        x: node['position'][0] + 1000,
-        y: node['position'][1] + 400,
-  			colour: currentNodes.colour || '#BBB',
-  			web_url: node.web_url || '',
-      };
-      newNode.ports = node.ports.map(port => {
-        const portId = port.input ? port.inputPort : port.outputPort;
-        return {
-          node: newNode.id,
-          id: portId || v4(),
-          name: port.name,
-          input: port.input,
-          output: port.output,
-          visible: port.visible,
-          editable: port.editable,
-          // inputPortRef: port.inputPortRef,
-          // outputPortRef: port.outputPortRef,
-          value: port.value || '',  // #TODO insert proper default value
-        }
-      });
-      addNode(newNode);
+    nodes.forEach(node => {
+      addNode(node);
     });
-
-    // load links
-    json['links'].forEach(link => {
-      const newLink = {
-        id: v4(),
-        portFrom: link.from,
-        portTo: link.to,
-      };
-      addLink(newLink);
+    links.forEach(link => {
+      addLink(link);
     });
   }
 
@@ -116,7 +84,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  addLink: (props) => dispatch(addLink(props)),
+  addLink: (link) => dispatch(addLink(link)),
   addNode: (node) => dispatch(addNode(node)),
   clearDatabase: () => dispatch(clearDatabase()),
 })

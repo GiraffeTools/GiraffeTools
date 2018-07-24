@@ -46,7 +46,7 @@ analysisflow.run(plugin=plugin, plugin_args=plugin_args)
 `;
 }
 
-const NipypeCode = ({nodes, links}) => {
+const NipypeCode = (nodes, links) => {
   let code = `#This is a Nipype generator. Warning, here be dragons.
   `;
 
