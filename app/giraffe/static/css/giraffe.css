@@ -17,3 +17,16 @@
   font-weight: normal;
   font-style: normal;
 }
+
+.avatar-image{
+	height: 45px;
+	width: 45px;
+}
+
+#contributors li{
+ display: inline;
+ list-style-type: none;
+ padding-right: 20px;
+ float: left;
+ font-size: 0.8em;
+}

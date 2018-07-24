@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block head %}
+<script src="{% static "jquery.min.js" %}"></script>
+{% endblock %}
+
 {% block body %}
   <!-- What is Giraffe -->
   <div class="container-fluid base">
@@ -38,6 +42,45 @@
     </div>
   </div>
 
+
+  <div class="container right">
+    <h3>All contributors</h3>
+      <div class="card mb-12 text-center">
+        <div id="contributors">
+      </div>
+    </div>
+  </div>
+
+  <br />
+
+  <div class="container fluid mt-3">
+    <div class="col text-center">
+      <a href="https://github.com/TimVanMourik/GiraffeTools" target="_blank">
+        <img src="{% static 'img/gh-icon.png' %}" width="4%"/>
+      </a>
+      <h6>2018</h6>
+    </div>
+  </div>
+
+
 {% endblock %}
+
 {% block scripts %}
+<script>
+$.getJSON( "https://api.github.com/repos/TimVanMourik/GiraffeTools/contributors", function (data) {
+  var users = [];
+  $.each(data, function(key, val) {
+    users.push( `<li>
+                    <img class="avatar-image" src=${val.avatar_url} /><br />
+                    <a href=${val.html_url} target=_blank> <b>@${val.login}</b></a>
+                </li>`);
+  });
+
+  $( "<ul/>", {
+    "class": "contributor-list",
+    html: users.join( "" )
+  }).appendTo( "#contributors" );
+});
+</script>
+
 {% endblock %}
