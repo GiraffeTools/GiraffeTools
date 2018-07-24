@@ -1,13 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
 import { v4 } from 'node-uuid';
-
-import {
-  addLink,
-  startLink,
-  updatePort,
-} from '../actions/index';
 
 
 class Port extends React.Component {
@@ -15,6 +8,7 @@ class Port extends React.Component {
     super(props);
     this.inputRef  = React.createRef();
     this.outputRef = React.createRef();
+    this.createLink = this.createLink.bind(this);
     this.props.setPortRefs(props.id, this.inputRef, this.outputRef);
   }
 
@@ -66,17 +60,4 @@ class Port extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-	linkInConstruction: state.scene.linkInConstruction,
-})
-
-const mapDispatchToProps = dispatch => ({
-	addLink: (props) => dispatch(addLink(props)),
-  startLink: (props) => dispatch(startLink(props)),
-  setPortRefs: (portId, inputPortRef, outputPortRef) => dispatch(updatePort(portId, { inputPortRef, outputPortRef } )),
-});
-
-export default Port = connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(Port);
+export default Port;

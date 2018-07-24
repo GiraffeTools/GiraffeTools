@@ -1,6 +1,6 @@
 import { createSelector } from "redux-orm";
 
-import orm from "../models/index";
+import orm from "../models";
 
 
 export const nodes = createSelector(

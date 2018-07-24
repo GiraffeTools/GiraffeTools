@@ -1,16 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
-
-import {
-	removePort,
-  removePortFromNode,
-  deletePort,
-  updatePort,
-} from '../actions/index';
-import {
-	selectedNode,
-} from '../selectors/selectors';
 
 
 class Field extends React.Component {
@@ -155,17 +144,5 @@ Field.propTypes = {
   disabled: PropTypes.bool
 };
 
-const mapStateToProps = state => ({
-  selectedNode: selectedNode(state),
-})
 
-const mapDispatchToProps = dispatch => ({
-  removePort: (id) => dispatch(deletePort(id)),
-  removePortFromNode: (portId, nodeId) => dispatch(removePortFromNode(portId, nodeId)),
-  updatePort: (portId, newValues) => dispatch(updatePort(portId, newValues)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Field);
+export default Field;

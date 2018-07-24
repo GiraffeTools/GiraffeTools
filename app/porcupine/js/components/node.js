@@ -1,15 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { DragSource } from 'react-dnd';
-import { connect } from 'react-redux';
 
 import ItemTypes from './itemTypes';
-import Ports from '../containers/ports';
-import {
-	hoverNode,
-	clickNode,
-	updateNodePosition,
-} from '../actions/index';
+import Ports from './ports';
 
 
 const boxSource = {
@@ -22,7 +16,6 @@ const boxSource = {
   },
   endDrag(props, monitor) {
    const item = monitor.getItem()
-   // const dropResult = monitor.getDropResult()
    const offset = monitor.getDifferenceFromInitialOffset()
    if (item) {
 		 props.updateNodePosition(item.key, {x: props.x + offset.x, y: props.y + offset.y} );
@@ -48,9 +41,6 @@ class Node extends React.Component {
   }
 
   drag(event, nodeId) {
-		// When zoomed in, dragging nodes is impossible, as it drags the view instead.
-		// #TODO issue #73, figure this out.
-		// console.log('drag function');
     event.stopPropagation();
   }
 
@@ -64,7 +54,9 @@ class Node extends React.Component {
 			hoveredNode,
 			selectedNode,
       ports,
-      isDragging, connectDragSource, connectDragPreview } = this.props;
+      isDragging, connectDragSource, connectDragPreview
+		} = this.props;
+
     let content = (
       <div
 				draggable="true"
@@ -85,10 +77,13 @@ class Node extends React.Component {
         <div className="node__type">
           { name }
         </div>
-
-        <Ports
-          ports={ports}
-        />
+        <div className="node__ports">
+          <ul>
+            <Ports
+              ports={ports}
+            />
+          </ul>
+        </div>
       </div>
     )
 
@@ -109,25 +104,9 @@ Node.propTypes = {
   // isDragging: PropTypes.bool.isRequired,
 }
 
-const mapStateToProps = state => ({
-	hoveredNode: state.scene.hoveredNode,
-	selectedNode: state.scene.selectedNode,
-})
 
-const mapDispatchToProps = dispatch => ({
-	hoverNode: (nodeId) => dispatch(hoverNode(nodeId)),
-  clickNode: (nodeId) => dispatch(clickNode(nodeId)),
-	updateNodePosition: (nodeId, offset) => dispatch(updateNodePosition(nodeId, offset)),
-});
-
-
-Node = DragSource(ItemTypes.Node, boxSource, (connect, monitor) => ({
+export default Node = DragSource(ItemTypes.Node, boxSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
 //   connectDragPreview: connect.dragPreview(),
   isDragging: monitor.isDragging(),
 }))(Node)
-
-export default Node = connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(Node);

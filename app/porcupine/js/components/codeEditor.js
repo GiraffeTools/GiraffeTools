@@ -1,11 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
 
-import Code from './code';
-import {
-  toggleCodeEditor,
-} from '../actions/index';
+import CodeContainer from '../containers/codeContainer';
+
 
 class CodeEditor extends React.Component {
   constructor(props) {
@@ -19,7 +16,7 @@ class CodeEditor extends React.Component {
         <div className={'codeButton fas ' + (this.props.showCodeEditor ? 'fa-angle-up' : 'fa-angle-down')} onClick={() => this.props.toggleCodeEditor()} />
         {/* #TODO Make this a tab editor */}
         <div className='codeEditor'>
-          <Code
+          <CodeContainer
             language='Nipype'
           />
         </div>
@@ -28,15 +25,4 @@ class CodeEditor extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  showCodeEditor: state.ui.showCodeEditor,
-})
-
-const mapDispatchToProps = dispatch => ({
-  toggleCodeEditor: () => dispatch(toggleCodeEditor()),
-});
-
-export default Node = connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(CodeEditor);
+export default CodeEditor;

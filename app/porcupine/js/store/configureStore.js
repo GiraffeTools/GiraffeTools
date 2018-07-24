@@ -3,14 +3,15 @@ import { createLogger } from 'redux-logger';
 // import { throttle } from 'lodash/throttle';
 
 import { loadState, saveState } from './localStorage';
-import porcupineApp from '../reducers/index';
+import porcupineApp from '../reducers';
 
 
 const configureStore = () => {
   const persistedState = loadState();
   const store = createStore(
     porcupineApp,
-    persistedState
+    persistedState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   );
 
   if (module.hot) {

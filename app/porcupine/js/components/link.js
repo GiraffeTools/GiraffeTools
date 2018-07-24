@@ -1,14 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { PathLine } from 'react-svg-pathline';
-import { connect } from 'react-redux';
-
-import {
-  deleteLink,
-} from '../actions/index';
-import {
-  portById,
-} from '../selectors/selectors';
 
 
 class Link extends React.Component {
@@ -56,17 +48,4 @@ class Link extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-	linkInConstruction: state.scene.linkInConstruction,
-  mouseState: state.scene.mouseState,
-})
-
-const mapDispatchToProps = dispatch => ({
-  connectLink: (linkId, portFrom, portTo) => dispatch(connecLink(linkId, portFrom, portTo)),
-  deleteLink: (linkId) => dispatch(deleteLink(linkId)),
-});
-
-export default Node = connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(Link);
+export default Link;

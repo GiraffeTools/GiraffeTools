@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import $ from 'jquery';
 
 import { default as ItemPreview } from '../components/itemPreview';
+import CodeEditorContainer from './codeEditorContainer';
 import Canvas from './canvas';
 import ParameterPane from './parameterPane';
 import Sidebar from './sidebar';
@@ -15,7 +16,7 @@ import {
   addNode,
   addLink,
   clearDatabase,
-} from '../actions/index';
+} from '../actions';
 import nodeData from '../../static/assets/nipype.json';
 import { loadPorkFile } from '../utils/loadPorkFile';
 
@@ -71,6 +72,7 @@ class Content extends React.Component {
             <Canvas />
             <ParameterPane />
             <Tooltip />
+   				  <CodeEditorContainer />
           </div>
           { Modernizr.touchevents && <ItemPreview key="__preview" name="Item" /> }
         </div>

@@ -6,17 +6,14 @@ import { DropTarget } from 'react-dnd';
 import { connect } from 'react-redux';
 
 import ItemTypes from '../components/itemTypes';
-import CodeEditor from '../components/codeEditor';
-import Links from './links';
-import MouseTracker from '../components/mouseTracker';
-import Nodes from './nodes';
-// import zoomFunctions from '../zoomFunctions';
+import LinksContainer from './LinksContainer';
+import NodesContainer from './nodesContainer';
 import nodeData from '../../static/assets/nipype.json';
 import {
 	addNode,
 	addPortToNode,
 	clickScene,
-} from '../actions/index';
+} from '../actions';
 import {
 	nodes,
 } from '../selectors/selectors';
@@ -120,8 +117,6 @@ class Canvas extends React.Component {
   }
 
   render() {
-    const props = this.props;
-
     const { canDrop, isOver, connectDropTarget, nodes } = this.props;
 		const isActive = canDrop && isOver
 
@@ -139,27 +134,21 @@ class Canvas extends React.Component {
         onClick={this.clickCanvas}
       >
         {/* {errors} */}
-        {this.props.nodes.length == 0 ? (<h4 className="text-center" id="placeholder">Drag your nodes here!</h4>) : ''}
+        {nodes.length == 0 ? (<h4 className="text-center" id="placeholder">Drag your nodes here!</h4>) : ''}
 				{/* #TODO replace this container, issue #73 */}
 
 				<PinchView>
 					<div
 						id="mainSurface"
 					>
-	          <Nodes />
-						<Links />
+	          <NodesContainer />
+						<LinksContainer />
 					</div>
 				</PinchView>
 
 				<ZoomIn />
 				<ZoomOut />
 
-        {/*
-				<div >
-          {isActive ? 'Release to drop' : 'Drag a box here'}
-        </div>
-         */}
-				 <CodeEditor />
       </div>,
     );
   }

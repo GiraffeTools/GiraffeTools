@@ -6,7 +6,7 @@ import Fields from '../containers/fields';
 import {
   clickNode,
   deleteNode,
-} from '../actions/index';
+} from '../actions';
 import {
 	selectedNode,
 } from '../selectors/selectors';
