@@ -2,6 +2,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import SyntaxHighlighter, { registerLanguage } from "react-syntax-highlighter/light";
+import python from 'react-syntax-highlighter/languages/hljs/python';
+import tomorrow from 'react-syntax-highlighter/styles/hljs/tomorrow-night-bright';
+
+registerLanguage('python', python);
+
 import NipypeCode from './codeGenerators/nipype';
 import {
 	nodesWithPorts,
@@ -11,14 +17,6 @@ import {
 class Code extends React.Component {
   constructor(props) {
     super(props);
-    const initialCodeString = '';
-
-    this.state = {
-      code: initialCodeString,
-      showLineNumbers: false,
-      width:  window.innerWidth,
-      height: window.innerHeight
-    }
   }
 
   render() {
@@ -27,21 +25,22 @@ class Code extends React.Component {
     let code = '';
     switch (this.props.language) {
       case 'Nipype':
-        code = <NipypeCode
-                 nodes={nodes}
-               />;
+        code = NipypeCode(nodes);
         break;
       case 'Docker':
         break;
       default:
-        code = <NipypeCode />
+        code = NipypeCode(nodes);
         break;
     }
 
     return (
-      <pre className="prettyprint">
-        {code}
-      </pre>
+      <SyntaxHighlighter
+				language='python'
+				style={tomorrow}
+			>
+				{code}
+			</SyntaxHighlighter>
     );
   }
 }

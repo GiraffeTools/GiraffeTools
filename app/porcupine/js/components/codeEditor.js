@@ -16,8 +16,7 @@ class CodeEditor extends React.Component {
 
     return (
       <div className={"codeWindow " + (this.props.showCodeEditor ? 'codeWindowClosed' : '')}>
-        <div className={'codeButton fas ' + (this.props.showCodeEditor ? 'fa-angle-up' : 'fa-angle-down')} onClick={() => this.props.toggleCodeEditor()}>
-        </div>
+        <div className={'codeButton fas ' + (this.props.showCodeEditor ? 'fa-angle-up' : 'fa-angle-down')} onClick={() => this.props.toggleCodeEditor()} />
         {/* #TODO Make this a tab editor */}
         <div className='codeEditor'>
           <Code
