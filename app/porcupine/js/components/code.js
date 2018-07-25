@@ -3,7 +3,8 @@ import React from 'react';
 import SyntaxHighlighter, { registerLanguage } from "react-syntax-highlighter/light";
 import python from 'react-syntax-highlighter/languages/hljs/python';
 import tomorrow from 'react-syntax-highlighter/styles/hljs/tomorrow-night-bright';
-import NipypeCode from './codeGenerators/nipype';
+
+import NipypeCode from '../utils/codeGenerators/nipype';
 
 
 registerLanguage('python', python);

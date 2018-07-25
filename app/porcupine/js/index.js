@@ -6,10 +6,10 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import configureStore from './store/configureStore';
-import Content from './containers/content';
+import ContentContainer from './containers/contentContainer';
 
 const App = hot(module)( () =>
-  <Content classname="app"/>
+  <ContentContainer classname="app"/>
 )
 
 const store = configureStore();

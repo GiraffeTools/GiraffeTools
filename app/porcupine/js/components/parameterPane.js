@@ -1,15 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
 
-import Fields from '../containers/fields';
-import {
-  clickNode,
-  deleteNode,
-} from '../actions';
-import {
-	selectedNode,
-} from '../selectors/selectors';
+import Fields from '../components/fields';
 
 
 class ParameterPane extends React.Component {
@@ -74,16 +66,4 @@ ParameterPane.propTypes = {
   changeSelectedNode: PropTypes.func
 };
 
-const mapStateToProps = state => ({
-  selectedNode: selectedNode(state),
-})
-
-const mapDispatchToProps = dispatch => ({
-  deleteNode: (node) => dispatch(deleteNode(node)),
-  clickNode: (nodeId) => dispatch(clickNode(nodeId)),
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ParameterPane)
+export default ParameterPane;

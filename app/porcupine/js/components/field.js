@@ -15,7 +15,7 @@ class Field extends React.Component {
 
   change(e) {
     const dataType = this.props.data && this.props.data.type ? this.props.data.type : 'text';
-		const portId = this.props.port.id;
+		const portId = this.props.id;
     if (dataType === 'boolean') {
       this.changeParams(portId, 'value', e.target.checked);
     } else if(dataType === 'number') {
@@ -26,19 +26,29 @@ class Field extends React.Component {
   }
 
   render() {
-    const port  = this.props.port;
-    const value = port.value || '';
-    const type  = port.data && port.data.type ? port.data.type : 'text';
+    const {
+      id,
+      name,
+      isVisible,
+      value,
+      data,
+      isEnabled,
+      removePort,
+      removePortFromNode,
+      selectedNode,
+    } = this.props;
+
+    const type  = data && data.type ? data.type : 'text';
     let inputElement;
 
     if (type === 'text') {
       inputElement = (
         <input
           type="text"
-          disabled={!port.isEnabled}
-          value={port.value}
+          disabled={!isEnabled}
+          value={value}
           className="form-control"
-          id={port.id}
+          id={id}
           onChange={this.change}
         />
       );
@@ -46,10 +56,10 @@ class Field extends React.Component {
       inputElement = (
         <input
           type="number"
-          value={port.value}
-          disabled={!port.isEnabled}
+          value={value}
+          disabled={!isEnabled}
           className="form-control"
-          id={port.id}
+          id={id}
           onChange={this.change}
         />
       );
@@ -58,23 +68,23 @@ class Field extends React.Component {
         <input
           type="number"
           step="0.01"
-          disabled={!port.isEnabled}
-          value={port.value}
+          disabled={!isEnabled}
+          value={value}
           className="form-control"
-          id={port.id}
+          id={id}
           onChange={this.change}
         />
       );
     } else if (type === 'select') {
       const options = [];
-      port.data.options.forEach(i => {
+      data.options.forEach(i => {
         options.push(<option key={i} value={i}>{i}</option>);
       });
       inputElement = (
         <select
-          value={port.value}
-          id={port.id}
-          disabled={!port.isEnabled}
+          value={value}
+          id={id}
+          disabled={!isEnabled}
           className="form-control"
           onChange={this.change}
         >
@@ -86,12 +96,12 @@ class Field extends React.Component {
         <div className="paramsCheckbox">
           <input
             type="checkbox"
-            disabled={!port.isEnabled}
-            checked={port.value}
-            id={port.id}
+            disabled={!isEnabled}
+            checked={value}
+            id={id}
             onChange={this.change}
           />
-          <label htmlFor={port.id}></label>
+          <label htmlFor={id}></label>
         </div>
       );
     }
@@ -100,22 +110,21 @@ class Field extends React.Component {
       displayStyle = "flex";
     }
 
-    const { removePort, removePortFromNode, selectedNode } = this.props;
     return (
       <div>
         <div style={{display: displayStyle}}>
-          <label htmlFor={port.id} className="sidebar-heading" style={{fontSize:"0.85em"}}>
-            {port.name}
+          <label htmlFor={id} className="sidebar-heading" style={{fontSize:"0.85em"}}>
+            {name}
           </label>
              {inputElement}
         </div>
         <div
-          key={port.id}
+          key={id}
           className="sidebar__node-actions">
-          <div className="sidebar__node-visibility" onClick={() => this.changeParams(port.id, 'isVisible', !port.isVisible)} >
+          <div className="sidebar__node-visibility" onClick={() => this.changeParams(id, 'isVisible', !isVisible)} >
             <i
-              className={'fas ' + (port.isVisible ? 'fa-eye' : 'fa-eye-slash')}
-              title={'Make ' + (port.isVisible ? 'Invisible' : 'Visible')}
+              className={'fas ' + (isVisible ? 'fa-eye' : 'fa-eye-slash')}
+              title={'Make ' + (isVisible ? 'Invisible' : 'Visible')}
             />{' '}
           </div>
           <button
@@ -123,8 +132,8 @@ class Field extends React.Component {
             className="btn btn-outline-danger btn-sm"
             onClick={() => {
               // #TODO do this cleaner, and in a single command
-              removePortFromNode(port.id, selectedNode.id);
-              removePort(port.id);
+              removePortFromNode(id, selectedNode.id);
+              removePort(id);
             }}>
             <i className="fas fa-trash-alt" />
           </button>

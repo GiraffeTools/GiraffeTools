@@ -3,21 +3,14 @@ import React from 'react';
 import { DragDropContextProvider } from 'react-dnd'
 import TouchBackend from 'react-dnd-touch-backend'
 import HTML5Backend from 'react-dnd-html5-backend'
-import { connect } from 'react-redux';
 import $ from 'jquery';
 
 import { default as ItemPreview } from '../components/itemPreview';
-import CodeEditorContainer from './codeEditorContainer';
-import Canvas from './canvas';
-import ParameterPane from './parameterPane';
-import Sidebar from './sidebar';
-import Tooltip from './tooltip';
-import {
-  addNode,
-  addLink,
-  clearDatabase,
-} from '../actions';
-import nodeData from '../../static/assets/nipype.json';
+import CodeEditorContainer from '../containers/codeEditorContainer';
+import CanvasContainer from '../containers/canvasContainer';
+import ParameterPaneContainer from '../containers/parameterPaneContainer';
+import SidebarContainer from '../containers/sidebarContainer';
+import TooltipContainer from '../containers/tooltipContainer';
 import { loadPorkFile } from '../utils/loadPorkFile';
 
 
@@ -67,11 +60,11 @@ class Content extends React.Component {
     return (
       <DragDropContextProvider backend={ Modernizr.touchevents ? TouchBackend : HTML5Backend }>
         <div id="parent">
-          <Sidebar />
+          <SidebarContainer />
           <div id="main" className={(this.props.showSidebar ? "withSidebar" : "")}>
-            <Canvas />
-            <ParameterPane />
-            <Tooltip />
+            <CanvasContainer />
+            <ParameterPaneContainer />
+            <TooltipContainer />
    				  <CodeEditorContainer />
           </div>
           { Modernizr.touchevents && <ItemPreview key="__preview" name="Item" /> }
@@ -81,17 +74,4 @@ class Content extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  showSidebar: state.ui.showSidebar
-})
-
-const mapDispatchToProps = dispatch => ({
-  addLink: (link) => dispatch(addLink(link)),
-  addNode: (node) => dispatch(addNode(node)),
-  clearDatabase: () => dispatch(clearDatabase()),
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Content)
+export default Content;

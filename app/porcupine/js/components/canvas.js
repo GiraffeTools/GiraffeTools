@@ -3,20 +3,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { PinchView } from 'react-pinch-zoom-pan';
 import { DropTarget } from 'react-dnd';
-import { connect } from 'react-redux';
 
-import ItemTypes from '../components/itemTypes';
-import LinksContainer from './LinksContainer';
-import NodesContainer from './nodesContainer';
 import nodeData from '../../static/assets/nipype.json';
-import {
-	addNode,
-	addPortToNode,
-	clickScene,
-} from '../actions';
-import {
-	nodes,
-} from '../selectors/selectors';
+import ItemTypes from './itemTypes';
+import LinksContainer from '../containers/linksContainer';
+import NodesContainer from '../containers/nodesContainer';
 
 
 const ZoomIn = () => {
@@ -90,7 +81,7 @@ class Canvas extends React.Component {
 		node.ports ? node.ports : {};
 		node.ports = node.ports.map(port => {
 			// #TODO link to a proper default value
-			return {...port, id: v4()}
+			return {...port, id: v4(), value: port.value || port.default || ''}
 		});
 
 		const newNode = {
@@ -160,23 +151,8 @@ Canvas.propTypes = {
   canDrop: 		PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = state => ({
-	nodes: nodes(state),
-})
-
-const mapDispatchToProps = dispatch => ({
-	addNode: (node) => dispatch(addNode(node)),
-	addPortToNode: (port, nodeId) => dispatch(addPortToNode(port, nodeId)),
-	clickScene: () => dispatch(clickScene()),
-});
-
-Canvas = DropTarget(ItemTypes.PaneElement, boxTarget, (connection, monitor) => ({
+export default Canvas = DropTarget(ItemTypes.PaneElement, boxTarget, (connection, monitor) => ({
 	connectDropTarget: connection.dropTarget(),
 	isOver: monitor.isOver(),
 	canDrop: monitor.canDrop(),
-}))(Canvas)
-
-export default Canvas = connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(Canvas);
+}))(Canvas);

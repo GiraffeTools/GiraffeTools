@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
 import ReactTooltip from 'react-tooltip';
 
 import TooltipData from '../components/tooltipData';
@@ -44,18 +43,7 @@ class Tooltip extends React.Component {
         </div>
       </ReactTooltip>
     )
-
   }
 }
 
-const mapStateToProps = state => ({
-		hoveredNode: hoveredNode(state),
-});
-
-const mapDispatchToProps = dispatch => ({
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Tooltip);
+export default Tooltip;

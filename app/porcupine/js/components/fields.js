@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Field from '../components/field'
+import FieldContainer from '../containers/fieldContainer'
 
 
 class Fields extends React.Component {
@@ -13,9 +13,9 @@ class Fields extends React.Component {
       <form className="form-horizontal">
         {
           this.props.ports.map(port => (
-            <Field
+            <FieldContainer
+              {...port}
               key={port.id}
-              port={port}
             />
           ))
         }
