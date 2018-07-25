@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import CodeContainer from '../containers/codeContainer';
+import Code from './code';
 
 
 class CodeEditor extends React.Component {
@@ -10,14 +10,22 @@ class CodeEditor extends React.Component {
   }
 
   render() {
+    const {
+      showCodeEditor,
+      toggleCodeEditor,
+      nodes,
+      links,
+    } = this.props;
 
     return (
-      <div className={"codeWindow " + (this.props.showCodeEditor ? 'codeWindowClosed' : '')}>
-        <div className={'codeButton fas ' + (this.props.showCodeEditor ? 'fa-angle-up' : 'fa-angle-down')} onClick={() => this.props.toggleCodeEditor()} />
+      <div className={"codeWindow " + (showCodeEditor ? 'codeWindowClosed' : '')}>
+        <div className={'codeButton fas ' + (showCodeEditor ? 'fa-angle-up' : 'fa-angle-down')} onClick={() => toggleCodeEditor()} />
         {/* #TODO Make this a tab editor */}
         <div className='codeEditor'>
-          <CodeContainer
+          <Code
             language='Nipype'
+            nodes={nodes}
+            links={links}
           />
         </div>
       </div>
