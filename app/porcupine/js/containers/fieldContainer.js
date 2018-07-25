@@ -16,9 +16,8 @@ const mapStateToProps = state => ({
   selectedNode: selectedNode(state),
 })
 
-const mapDispatchToProps = dispatch => ({  
+const mapDispatchToProps = dispatch => ({
   removePort: (id) => dispatch(deletePort(id)),
-  removePortFromNode: (portId, nodeId) => dispatch(removePortFromNode(portId, nodeId)),
   updatePort: (portId, newValues) => dispatch(updatePort(portId, newValues)),
 });
 

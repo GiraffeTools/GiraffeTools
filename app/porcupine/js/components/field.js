@@ -34,7 +34,6 @@ class Field extends React.Component {
       data,
       isEnabled,
       removePort,
-      removePortFromNode,
       selectedNode,
     } = this.props;
 
@@ -131,8 +130,6 @@ class Field extends React.Component {
             type="button"
             className="btn btn-outline-danger btn-sm"
             onClick={() => {
-              // #TODO do this cleaner, and in a single command
-              removePortFromNode(id, selectedNode.id);
               removePort(id);
             }}>
             <i className="fas fa-trash-alt" />

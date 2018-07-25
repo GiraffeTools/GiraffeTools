@@ -4,7 +4,6 @@ import {
   UPDATE_NODE,
   ADD_PORT,
   ADD_PORT_TO_NODE,
-  REMOVE_PORT_FROM_NODE,
   REMOVE_PORT,
   UPDATE_PORT,
   ADD_LINK,
@@ -52,15 +51,6 @@ export const updateNodePosition = (nodeId, offset) => ({
     },
   }
 });
-export const removePortFromNode = (portId, nodeId) => {
-  return ({
-    type: REMOVE_PORT_FROM_NODE,
-    payload: {
-      portId,
-      nodeId,
-    },
-  });
-};
 export const addPortToNode = (port, nodeId) => ({
   type: ADD_PORT_TO_NODE,
   payload: {

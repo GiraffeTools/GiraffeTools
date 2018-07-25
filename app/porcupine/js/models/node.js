@@ -30,10 +30,6 @@ class Node extends Model {
       case ADD_PORT_TO_NODE:
         Node.withId(payload.nodeId).ports.add(payload.port);
         break;
-      case REMOVE_PORT_FROM_NODE:
-        const ports = Node.withId(payload.nodeId).ports;
-        Node.withId(payload.nodeId).ports = ports.filter(p => p !== payload.portId);
-        break;
       case UPDATE_NODE:
         Node.withId(payload.nodeId).update(payload.newValues);
         break;
