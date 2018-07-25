@@ -3,9 +3,6 @@ import React from 'react';
 import ReactTooltip from 'react-tooltip';
 
 import TooltipData from '../components/tooltipData';
-import {
-	hoveredNode,
-} from '../selectors/selectors';
 
 
 class Tooltip extends React.Component {

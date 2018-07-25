@@ -20,35 +20,8 @@ var Modernizr = require('browsernizr');
 class Content extends React.Component {
   constructor(props) {
     super(props);
-    this.loadFromJson       = this.loadFromJson.bind(this);
     this.modifyNodePos      = this.modifyNodePos.bind(this);
   };
-
-  componentWillMount() {
-    $.getJSON(jsonFile, function(result) {
-      this.loadFromJson(result);
-    }.bind(this));
-  }
-
-  loadFromJson(json) {
-    const {
-      addNode,
-      addLink,
-      clearDatabase
-    } = this.props;
-  //pass by reference and fill them in the load functions
-    let nodes = [];
-    let links = [];
-    loadPorkFile(json, nodes, links);
-
-    clearDatabase();
-    nodes.forEach(node => {
-      addNode(node);
-    });
-    links.forEach(link => {
-      addLink(link);
-    });
-  }
 
   modifyNodePos(node, nodeId = this.state.selectedNode) {
     const net = this.state.net;
@@ -59,12 +32,14 @@ class Content extends React.Component {
   render() {
     const {
       hoveredNode,
+      showSidebar,
     } = this.props;
+
     return (
       <DragDropContextProvider backend={ Modernizr.touchevents ? TouchBackend : HTML5Backend }>
         <div id="parent">
           <SidebarContainer />
-          <div id="main" className={(this.props.showSidebar ? "withSidebar" : "")}>
+          <div id="main" className={(showSidebar ? "withSidebar" : "")}>
             <CanvasContainer />
             <ParameterPaneContainer />
             <Tooltip

@@ -15,7 +15,7 @@ const ZoomIn = () => {
 		<div id='icon-plus' className="canvas-icon">
 			<p>Press</p>
 			<button className="btn btn-default text-center">
-					<span aria-hidden="true">+</span>
+				<span aria-hidden="true">+</span>
 			</button>
 		</div>
 	);
@@ -26,7 +26,7 @@ const ZoomOut = () => {
 		<div id='icon-minus' className="canvas-icon">
 			<p>Press</p>
 			<button className="btn btn-default text-center">
-					<span aria-hidden="true">-</span>
+				<span aria-hidden="true">-</span>
 			</button>
 		</div>
 	);
@@ -45,12 +45,39 @@ class Canvas extends React.Component {
     this.allowDrop            = this.allowDrop.bind(this);
     this.drop                 = this.drop.bind(this);
     this.clickCanvas          = this.clickCanvas.bind(this);
+    this.loadFromJson       = this.loadFromJson.bind(this);
   }
 
   componentDidMount() {
 		// #TODO remove/replace zoomFunctions in issue #73
 		// setBoundingBox();
     // this.mouseState = zoomFunctions();
+  }
+
+  componentWillMount() {
+    $.getJSON(jsonFile, function(result) {
+      this.loadFromJson(result);
+    }.bind(this));
+  }
+
+  loadFromJson(json) {
+    const {
+      addNode,
+      addLink,
+      clearDatabase
+    } = this.props;
+  //pass by reference and fill them in the load functions
+    let nodes = [];
+    let links = [];
+    loadPorkFile(json, nodes, links);
+
+    clearDatabase();
+    nodes.forEach(node => {
+      addNode(node);
+    });
+    links.forEach(link => {
+      addLink(link);
+    });
   }
 
   componentDidUpdate() {
@@ -138,18 +165,13 @@ class Canvas extends React.Component {
 					<div
 						id="mainSurface"
 					>
-	          <Nodes
-							nodes={nodes}
-						/>
-						<Links
-							links={links}
-						/>
+	          <Nodes nodes={nodes} />
+						<Links links={links} />
 					</div>
 				</PinchView>
 
 				<ZoomIn />
 				<ZoomOut />
-
       </div>,
     );
   }

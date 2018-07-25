@@ -19,8 +19,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	addNode: (node) => dispatch(addNode(node)),
+	addLink: (link) => dispatch(addLink(link)),
 	addPortToNode: (port, nodeId) => dispatch(addPortToNode(port, nodeId)),
 	clickScene: () => dispatch(clickScene()),
+	clearDatabase: () => dispatch(clearDatabase()),
 });
 
 const CanvasContainer = connect(
