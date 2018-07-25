@@ -7,12 +7,14 @@ import {
 	clickScene,
 } from '../actions';
 import {
-	nodes,
+	nodesWithPorts,
+	linksWithPorts,
 } from '../selectors/selectors';
 
 
 const mapStateToProps = state => ({
-	nodes: nodes(state),
+  nodes: nodesWithPorts(state),
+	links: linksWithPorts(state),
 })
 
 const mapDispatchToProps = dispatch => ({

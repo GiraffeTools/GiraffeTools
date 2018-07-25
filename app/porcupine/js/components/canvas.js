@@ -6,8 +6,8 @@ import { DropTarget } from 'react-dnd';
 
 import nodeData from '../../static/assets/nipype.json';
 import ItemTypes from './itemTypes';
-import LinksContainer from '../containers/linksContainer';
-import NodesContainer from '../containers/nodesContainer';
+import Links from './links';
+import Nodes from './nodes';
 
 
 const ZoomIn = () => {
@@ -108,7 +108,13 @@ class Canvas extends React.Component {
   }
 
   render() {
-    const { canDrop, isOver, connectDropTarget, nodes } = this.props;
+    const {
+			canDrop,
+			isOver,
+			connectDropTarget,
+			nodes,
+			links,
+		} = this.props;
 		const isActive = canDrop && isOver
 
 		let backgroundColor = '#222'
@@ -132,8 +138,12 @@ class Canvas extends React.Component {
 					<div
 						id="mainSurface"
 					>
-	          <NodesContainer />
-						<LinksContainer />
+	          <Nodes
+							nodes={nodes}
+						/>
+						<Links
+							links={links}
+						/>
 					</div>
 				</PinchView>
 

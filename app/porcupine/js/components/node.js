@@ -3,7 +3,8 @@ import React from 'react';
 import { DragSource } from 'react-dnd';
 
 import ItemTypes from './itemTypes';
-import Ports from './ports';
+// import Ports from './ports';
+import PortContainer from '../containers/portContainer';
 
 
 const boxSource = {
@@ -56,6 +57,7 @@ class Node extends React.Component {
       ports,
       isDragging, connectDragSource, connectDragPreview
 		} = this.props;
+    // ports = ports.filter(port => port.isVisible == true);
 
     let content = (
       <div
@@ -79,9 +81,16 @@ class Node extends React.Component {
         </div>
         <div className="node__ports">
           <ul>
-            <Ports
-              ports={ports}
-            />
+          {
+            ports.filter(port => port.isVisible == true).map(port => {
+              return (
+                <PortContainer
+                  {...port}
+                  key={port.id}
+                />
+              )
+            })
+          }
           </ul>
         </div>
       </div>
