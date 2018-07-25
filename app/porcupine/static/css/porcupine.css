@@ -846,7 +846,7 @@ input[type="file"] {
     transition: transform 0.1s ease-in-out;
   }
 
-  #sidebar.visible {
+  #sidebar.active {
     transform: translateX(0);
   }
 
@@ -890,7 +890,7 @@ input[type="file"] {
   }
 
   .sidebar-button.close:before {
-    background: white;
+    background:  #333;
     width: 1.2rem;
     transform: rotate(45deg)
   }
@@ -900,7 +900,7 @@ input[type="file"] {
     width: 1.2rem;
     border-top: 0px solid #333;
     border-bottom: 0px solid #333;
-    background: white;
+    background:  #333;
     transform: rotate(-45deg)
   }
 }

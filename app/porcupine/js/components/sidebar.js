@@ -17,7 +17,7 @@ const Sidebar = ({showSidebar, toggleSidebar}) => {
   return (
     <div>
       <a className={"sidebar-button" + (showSidebar ? "" : " close")} onClick={() => toggleSidebar()}></a>
-      <div id="sidebar" className={(showSidebar ? "active" : "")}>
+      <div id="sidebar" className={(showSidebar ? " active" : "")}>
         <div id="logo_sidebar">
           <a href="https://github.com/TimVanMourik"><img src={'/static/img/giraffe.png'} className="img-responsive" alt="logo" id="logo"/></a>
         </div>
