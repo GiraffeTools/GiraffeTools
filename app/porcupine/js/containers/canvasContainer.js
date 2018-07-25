@@ -2,7 +2,9 @@ import { connect } from 'react-redux';
 
 import Canvas from '../components/canvas';
 import {
-	addNode,
+  addNode,
+  addLink,
+  clearDatabase,
 	addPortToNode,
 	clickScene,
 } from '../actions';

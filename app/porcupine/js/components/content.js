@@ -3,7 +3,6 @@ import React from 'react';
 import { DragDropContextProvider } from 'react-dnd'
 import TouchBackend from 'react-dnd-touch-backend'
 import HTML5Backend from 'react-dnd-html5-backend'
-import $ from 'jquery';
 
 import { default as ItemPreview } from '../components/itemPreview';
 import CodeEditorContainer from '../containers/codeEditorContainer';
@@ -11,7 +10,6 @@ import CanvasContainer from '../containers/canvasContainer';
 import ParameterPaneContainer from '../containers/parameterPaneContainer';
 import Sidebar from './sidebar';
 import Tooltip from './tooltip';
-import { loadPorkFile } from '../utils/loadPorkFile';
 
 
 require('browsernizr/test/touchevents');

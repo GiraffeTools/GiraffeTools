@@ -2,9 +2,6 @@ import { connect } from 'react-redux';
 
 import Content from '../components/content';
 import {
-  addNode,
-  addLink,
-  clearDatabase,
   toggleSidebar,
 } from '../actions';
 import {

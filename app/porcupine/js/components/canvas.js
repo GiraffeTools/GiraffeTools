@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { PinchView } from 'react-pinch-zoom-pan';
 import { DropTarget } from 'react-dnd';
+import $ from 'jquery';
 
 import nodeData from '../../static/assets/nipype.json';
 import ItemTypes from './itemTypes';
 import Links from './links';
 import Nodes from './nodes';
+import { loadPorkFile } from '../utils/loadPorkFile';
 
 
 const ZoomIn = () => {
