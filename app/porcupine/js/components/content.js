@@ -9,7 +9,7 @@ import { default as ItemPreview } from '../components/itemPreview';
 import CodeEditorContainer from '../containers/codeEditorContainer';
 import CanvasContainer from '../containers/canvasContainer';
 import ParameterPaneContainer from '../containers/parameterPaneContainer';
-import SidebarContainer from '../containers/sidebarContainer';
+import Sidebar from './sidebar';
 import Tooltip from './tooltip';
 import { loadPorkFile } from '../utils/loadPorkFile';
 
@@ -33,12 +33,16 @@ class Content extends React.Component {
     const {
       hoveredNode,
       showSidebar,
+      toggleSidebar,
     } = this.props;
 
     return (
       <DragDropContextProvider backend={ Modernizr.touchevents ? TouchBackend : HTML5Backend }>
         <div id="parent">
-          <SidebarContainer />
+          <a className={"sidebar-button" + (showSidebar ? "" : " close")} onClick={() => toggleSidebar()}></a>
+          <Sidebar
+            showSidebar={showSidebar}
+          />
           <div id="main" className={(showSidebar ? "withSidebar" : "")}>
             <CanvasContainer />
             <ParameterPaneContainer />

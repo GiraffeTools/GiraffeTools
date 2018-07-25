@@ -5,6 +5,7 @@ import {
   addNode,
   addLink,
   clearDatabase,
+  toggleSidebar,
 } from '../actions';
 import {
 	hoveredNode,
@@ -17,8 +18,13 @@ const mapStateToProps = state => ({
   hoveredNode: hoveredNode(state),
 })
 
+const mapDispatchToProps = dispatch => ({
+  toggleSidebar: () => dispatch(toggleSidebar()),
+});
+
 const ContentContainer = connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(Content)
 
 export default ContentContainer;
