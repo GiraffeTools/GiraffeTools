@@ -21,14 +21,8 @@ class Link extends React.Component {
 
   render() {
     const  { id, portFrom, portTo } = this.props;
-
-    let startingPoint = portFrom && portFrom.outputPortRef ? portFrom.outputPortRef : null;
-    let endPoint      = portTo   && portTo.inputPortRef    ? portTo.inputPortRef    : null;
-    startingPoint = startingPoint && startingPoint.current ? startingPoint.current.getBoundingClientRect() : {x: 0, y: 0};
-    endPoint      = endPoint      && endPoint.current      ? endPoint.current.getBoundingClientRect()      : {x: 0, y: 0};
-
-    let viewport = {x: 0, y: 0}; // probably subtract the borders of the canvas
-    startingPoint = {x: startingPoint.x - viewport.x, y: startingPoint.y - viewport.y};
+    let startingPoint = portFrom ? {x: portFrom.x + 4, y: portFrom.y + 4} : {x: 0, y: 0};
+    let endPoint      = portTo   ? {x: portTo.x + 4,   y: portTo.y + 4}   : {x: 0, y: 0};
 
     return (
       <svg>

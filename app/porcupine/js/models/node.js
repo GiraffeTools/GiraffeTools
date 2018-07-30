@@ -42,6 +42,7 @@ Node.fields = {
   id: attr(),
   x: attr(),
   y: attr(),
+  width: attr(),
   colour: attr(),
   web_url: attr(),
 }

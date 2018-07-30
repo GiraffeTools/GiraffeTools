@@ -31,8 +31,8 @@ class Port extends Model {
     				isOutput: port.output,
     				isVisible: port.visible,
     				isEnabled: port.editable,
-            inputPortRef: port.inputPortRef,
-            outputPortRef: port.outputPortRef,
+            x: port.x,
+            y: port.y,
             value: port.value || '',  // #TODO insert proper default value
       		});
         });
@@ -72,6 +72,8 @@ Port.fields = {
   isEnabled: attr(),
   inputPortRef: attr(),
   outputPortRef: attr(),
+  x: attr(),
+  y: attr(),
   node: fk({
       to: 'Node',
       as: 'nodeModel',

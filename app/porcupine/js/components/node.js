@@ -19,7 +19,11 @@ const boxSource = {
    const item = monitor.getItem()
    const offset = monitor.getDifferenceFromInitialOffset()
    if (item) {
+     // TODO: item.key => item.id
 		 props.updateNodePosition(item.key, {x: props.x + offset.x, y: props.y + offset.y} );
+     props.ports.filter(port => port.isVisible == true).forEach(port => {
+       props.updatePortPosition(port.id, {x: port.x + offset.x, y: port.y + offset.y});
+     });
    }
   },
 }
@@ -51,6 +55,7 @@ class Node extends React.Component {
       name,
       x,
       y,
+      width,
       colour,
 			hoveredNode,
 			selectedNode,
@@ -66,7 +71,10 @@ class Node extends React.Component {
         style={{
           left:`${x}px`,
           top: `${y}px`,
-          background: colour
+          width: `${width}px`,
+          minWidth: `${width}px`,
+          maxWidth: `${width}px`,
+          background: colour,
         }}
         onClick     ={(event) => this.click(event, id)}
         onTouchEnd  ={(event) => this.click(event, id)}

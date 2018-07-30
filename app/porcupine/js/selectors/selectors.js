@@ -29,7 +29,7 @@ export const selectedNode = createSelector(
   state => state.scene.selectedNode,
   (orm, selectedNode) => {
     const node = orm.Node.withId(selectedNode);
-    if (!selectedNode){ return null };
+    if (!node){ return null };
     const obj = Object.assign({}, node.ref);
     //add ports
     obj.ports = node.ports.toRefArray().map(portRef => {
@@ -54,6 +54,9 @@ export const hoveredNode = createSelector(
       return null;
     }
     const selectedNode = orm.Node.withId(hoveredNode);
+    if (!selectedNode) {
+      return null;
+    }
     const obj = Object.assign({}, selectedNode.ref);
     obj.ports = selectedNode.ports.toRefArray();
     return obj;

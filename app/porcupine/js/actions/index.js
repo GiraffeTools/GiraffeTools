@@ -94,6 +94,16 @@ export const deletePort = (portId) => ({
     portId,
   },
 });
+export const updatePortPosition = (portId, offset) => ({
+  type: UPDATE_PORT,
+  payload: {
+    portId,
+    newValues: {
+      x: offset.x,
+      y: offset.y,
+    },
+  }
+});
 
 
 ///// SCENE /////

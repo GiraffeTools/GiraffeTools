@@ -29,19 +29,28 @@ const loadingVersion1 = (json, nodes, links) => {
     category.forEach(function (c) {
       currentNodes = currentNodes['categories'][c];
     })
-
+    // HACK: get position right for example
+		const nodeGeometry = {
+      x: node['position'][0] + 1000,
+      y: node['position'][1] + 400,
+      width: node.title.name.length * 12,
+		};
     const newNode = {
       id: node.id || v4(),
       name: node.title.name || '',
-      // HACK: get position right for example
-      x: node['position'][0] + 1000,
-      y: node['position'][1] + 400,
+      x: nodeGeometry.x,
+      y: nodeGeometry.y,
+      width: nodeGeometry.width,
       colour: currentNodes.colour || '#BBB',
       web_url: node.web_url || '',
     };
-    newNode.ports = node.ports.map(port => {
+    // HACK: hard-coded positions. To be removed
+		let y = 45;
+    newNode.ports = [];
+    node.ports.forEach(port => {
+			let x = port.input ? 0 : (nodeGeometry.width);
       const portId = port.input ? port.inputPort : port.outputPort;
-      return {
+      newNode.ports.push({
         node: newNode.id,
         id: portId || v4(),
         name: port.name,
@@ -49,9 +58,12 @@ const loadingVersion1 = (json, nodes, links) => {
         output: port.output,
         visible: port.visible,
         editable: port.editable,
-        // inputPortRef: port.inputPortRef,
-        // outputPortRef: port.outputPortRef,
+				x: port.visible ? nodeGeometry.x + x : undefined,
+				y: port.visible ? nodeGeometry.y + y : undefined,
         value: port.value || '',  // TODO insert proper default value
+      });
+      if (port.visible) {
+			  y += 24;
       }
     });
 

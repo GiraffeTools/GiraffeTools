@@ -8,6 +8,7 @@ import {
 	hoverNode,
 	clickNode,
 	updateNodePosition,
+	updatePortPosition,
 } from '../actions';
 
 const mapStateToProps = state => ({
@@ -19,6 +20,7 @@ const mapDispatchToProps = dispatch => ({
   hoverNode: (nodeId) => dispatch(hoverNode(nodeId)),
   clickNode: (nodeId) => dispatch(clickNode(nodeId)),
 	updateNodePosition: (nodeId, offset) => dispatch(updateNodePosition(nodeId, offset)),
+	updatePortPosition: (portId, offset) => dispatch(updatePortPosition(portId, offset)),
 });
 
 const NodeContainer = connect(

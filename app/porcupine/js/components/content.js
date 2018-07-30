@@ -37,11 +37,11 @@ class Content extends React.Component {
     return (
       <DragDropContextProvider backend={ Modernizr.touchevents ? TouchBackend : HTML5Backend }>
         <div id="parent">
-          <a className={"sidebar-button" + (showSidebar ? "" : " close")} onClick={() => toggleSidebar()}></a>
+          <a className={"sidebar-button" + (showSidebar ? " close" : "")} onClick={() => toggleSidebar()}></a>
           <Sidebar
             showSidebar={showSidebar}
           />
-          <div id="main" className={(showSidebar ? "withSidebar" : "")}>
+          <div id="main">
             <CanvasContainer />
             <ParameterPaneContainer />
             <Tooltip
