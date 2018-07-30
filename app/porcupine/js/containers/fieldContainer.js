@@ -6,6 +6,7 @@ import {
   removePortFromNode,
   deletePort,
   updatePort,
+	repositionPorts,
 } from '../actions';
 import {
 	selectedNode,
@@ -18,6 +19,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   removePort: (id) => dispatch(deletePort(id)),
+	repositionPorts: (nodeId) => dispatch(repositionPorts(nodeId)),
   updatePort: (portId, newValues) => dispatch(updatePort(portId, newValues)),
 });
 

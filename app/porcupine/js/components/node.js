@@ -21,9 +21,8 @@ const boxSource = {
    if (item) {
      // TODO: item.key => item.id
 		 props.updateNodePosition(item.key, {x: props.x + offset.x, y: props.y + offset.y} );
-     props.ports.filter(port => port.isVisible == true).forEach(port => {
-       props.updatePortPosition(port.id, {x: port.x + offset.x, y: port.y + offset.y});
-     });
+     //HACK: passing on all props is dirty
+     props.repositionPorts({...props, x: props.x + offset.x, y: props.y + offset.y});
    }
   },
 }
@@ -67,7 +66,7 @@ class Node extends React.Component {
     let content = (
       <div
 				draggable="true"
-        className={'node' + (id === selectedNode ? ' selected' : '') + (id === hoveredNode ? ' hover' : '')}
+        className={'node' + (selectedNode && id === selectedNode ? ' selected' : '') + (id === hoveredNode ? ' hover' : '')}
         style={{
           left:`${x}px`,
           top: `${y}px`,

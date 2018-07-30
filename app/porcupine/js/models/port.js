@@ -8,6 +8,7 @@ import {
   ADD_PORT_TO_NODE,
   REMOVE_PORT,
   UPDATE_PORT,
+  REPOSITION_PORTS ,
   ADD_LINK,
   CLEAR_DATABASE,
 } from '../actions/actionTypes';
@@ -53,6 +54,18 @@ class Port extends Model {
       case REMOVE_PORT:
         const port = Port.withId(payload.portId);
         port.delete();
+        break;
+      case REPOSITION_PORTS:
+        let x = 0, y = 21;
+        const node = payload.node;
+        Port.all().filter(port => port.node == node.id).toRefArray().forEach(port => {
+    			x = port.isInput ? 0 : (node.width);
+    			y = port.isVisible ? y + 24 : y;
+          Port.withId(port.id).update({
+            x: (port.isVisible ? node.x + x : null),
+            y: (port.isVisible ? node.y + y : null),
+          });
+        })
         break;
       case UPDATE_PORT:
         Port.withId(payload.portId).update(payload.newValues);

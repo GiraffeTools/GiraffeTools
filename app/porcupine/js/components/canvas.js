@@ -76,6 +76,7 @@ class Canvas extends React.Component {
     clearDatabase();
     nodes.forEach(node => {
       addNode(node);
+			this.props.repositionPorts(node);
     });
     links.forEach(link => {
       addLink(link);
@@ -105,42 +106,30 @@ class Canvas extends React.Component {
     let currentNodes = nodeData;
     category.forEach(function (c) {
       currentNodes = currentNodes['categories'][c];
-    })
+    });
     const node = $.extend(true, {}, currentNodes.nodes[name]);
-		const nodeGeometry = {
-      x: (offset.x - rec.left) / zoom - 45,
-      y: (offset.y - rec.top)  / zoom - 25,
-      width: node.title.name.length * 12,
-		};
 		node.ports ? node.ports : {};
-		let y = 45;
-		const newPorts = [];
-		node.ports.forEach(port => {
-			let x = port.input ? 0 : (nodeGeometry.width);
-			newPorts.push({...port,
+		node.ports = node.ports.map(port => {
+			// #TODO link to a proper default value
+			return {...port,
 				id: v4(),
-				// #TODO link to a proper default value
-				value: port.value || port.default || '',
-				x: port.visible ? nodeGeometry.x + x : undefined,
-				y: port.visible ? nodeGeometry.y + y : undefined,
-			});
-      if (port.visible) {
-			  y += 24;
-      }
+				value: port.value || port.default || '',}
 		});
 
 		const newNode = {
 			id: v4(),
 			name: name,
-			x: nodeGeometry.x,
-			y: nodeGeometry.y,
-      width: nodeGeometry.width,
+			// #TODO fix positioning of dropped node, issue #73
+			x: (offset.x - rec.left) / zoom - 45,
+			y: (offset.y - rec.top)  / zoom - 25,
+			width: name.length * 12,
 			colour: currentNodes.colour,
-			ports: newPorts,
+			ports: node.ports,
 			web_url: node.title.web_url || '',
 		};
 
 		addNode(newNode);
+		repositionPorts(newNode);
   }
 
   clickCanvas(event) {

@@ -11,6 +11,7 @@ export const ADD_PORT_TO_NODE = 'ADD_PORT_TO_NODE';
 export const ADD_PORT = 'ADD_PORT';
 export const REMOVE_PORT = 'REMOVE_PORT';
 export const UPDATE_PORT = 'UPDATE_PORT';
+export const REPOSITION_PORTS = 'REPOSITION_PORTS';
 
 ///// LINKS /////
 export const ADD_LINK = 'ADD_LINK';

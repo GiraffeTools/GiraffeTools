@@ -6,6 +6,7 @@ import {
   addLink,
   clearDatabase,
 	addPortToNode,
+  repositionPorts,
 	clickScene,
 } from '../actions';
 import {
@@ -24,6 +25,7 @@ const mapDispatchToProps = dispatch => ({
 	addLink: (link) => dispatch(addLink(link)),
 	addPortToNode: (port, nodeId) => dispatch(addPortToNode(port, nodeId)),
 	clickScene: () => dispatch(clickScene()),
+  repositionPorts: (node) => dispatch(repositionPorts(node)),
 	clearDatabase: () => dispatch(clearDatabase()),
 });
 
