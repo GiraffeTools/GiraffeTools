@@ -1,4 +1,7 @@
-[python]
+[all]
+ignore = node_modules/**
+
+[all.python]
 # Patches may conflict with autopep8 so putting them in own section so they
 # will be executed sequentially; also we need the LineLengthBear to double
 # check the line length because PEP8Bear sometimes isn't able to correct the
@@ -19,24 +22,21 @@ pycodestyle_ignore = E501, E402
 
 default_actions = PEP8Bear: ApplyPatchAction
 
-[flakes]
+[all.python.flakes]
 # Do not set default_action to ApplyPatchAction as it may lead to some
 # required imports being removed that might result in coala behaving weirdly.
 
 default_actions = *: ShowPatchAction
 
-files = app/**/*.py
 bears = PyUnusedCodeBear
 language = Python
 remove_all_unused_imports = true
 
-[linelength]  # Sometimes autopep8 makes too long lines, need to check after!
-files = app/**/*.py
+[all.python.linelength]  # Sometimes autopep8 makes too long lines, need to check after!
 bears = LineLengthBear
 ignore_length_regex = ^.*https?://
 
-[Pylint]
-files = app/**/*.py
+[all.python.Pylint]
 enabled = False
 
 bears = PyLintBear
@@ -54,7 +54,6 @@ pylint_disable = missing-docstring, # Lots of functions don't need docstrings
 
 [all.bash]
 bears = ShellCheckBear
-ignore = node_modules/**
-files = **.bash, **.sh
+files = **.bash
 shell = bash
 shellcheck_ignore = SC2046, SC2154
