@@ -40,15 +40,21 @@ from github.utils import (
 @override_settings(GITHUB_CLIENT_SECRET="TEST")
 @override_settings(GITHUB_SCOPE="user")
 class GithubUtilitiesTest(TestCase):
-    '""Define tests for Github utils.""'
+    """
+    Define tests for Github utils.
+    """
 
     def setUp(self):
-        '""Perform setup for the testcase.""'
+        """
+        Perform setup for the testcase.
+        """
         self.callback_code = "e7ab3584569f7b23d005"
         self.user_oauth_token = "bcd1c26b4fb8ddcbc7685ea9be33217434ef642f"
 
     def test_build_auth_dict(self):
-        '""Test the github utility build_auth_dict method.""'
+        """
+        Test the github utility build_auth_dict method.
+        """
         auth_dict = build_auth_dict(self.user_oauth_token)
 
         assert isinstance(auth_dict, dict)
@@ -60,7 +66,9 @@ class GithubUtilitiesTest(TestCase):
         }
 
     def test_get_auth_url(self):
-        '""Test the github utility get_auth_url method.""'
+        """
+        Test the github utility get_auth_url method.
+        """
         redirect = "/funding/new"
         github_callback = reverse("github:github_callback")
         redirect_params = {"redirect_uri": BASE_URI + redirect}
@@ -76,12 +84,16 @@ class GithubUtilitiesTest(TestCase):
             redirect) == f"{settings.GITHUB_AUTH_BASE_URL}?{auth_url}"
 
     def test_repo_url(self):
-        '""Test the github utility repo_url method.""'
+        """
+        Test the github utility repo_url method.
+        """
         assert repo_url(
             "https://github.com/gitcoinco/web/issues/1") == "https://github.com/gitcoinco/web"
 
     def test_org_name(self):
-        '""Test the github utility org_name method.""'
+        """
+        Test the github utility org_name method.
+        """
         assert org_name(
             "https://github.com/gitcoinco/web/issues/1") == "gitcoinco"
         assert org_name(
@@ -89,7 +101,9 @@ class GithubUtilitiesTest(TestCase):
 
     @responses.activate
     def test_search(self):
-        '""Test the github utility search method.""'
+        """
+        Test the github utility search method.
+        """
         url = "https://api.github.com/search/users"
         responses.add(responses.GET, url, json={
                       "total_count": "0"}, status=200)
@@ -104,7 +118,9 @@ class GithubUtilitiesTest(TestCase):
 
     @responses.activate
     def test_revoke_token(self):
-        '""Test the github utility revoke_token method.""'
+        """
+        Test the github utility revoke_token method.
+        """
         auth_dict = build_auth_dict(self.user_oauth_token)
         url = TOKEN_URL.format(**auth_dict)
         responses.add(responses.DELETE, url, headers=HEADERS, status=204)
@@ -115,7 +131,9 @@ class GithubUtilitiesTest(TestCase):
 
     @responses.activate
     def test_reset_token(self):
-        '""Test the github utility reset_token method.""'
+        """
+        Test the github utility reset_token method.
+        """
         auth_dict = build_auth_dict(self.user_oauth_token)
         url = TOKEN_URL.format(**auth_dict)
         data = {"token": self.user_oauth_token}
@@ -132,7 +150,9 @@ class GithubUtilitiesTest(TestCase):
 
     @responses.activate
     def test_get_github_user_token(self):
-        '""Test the github utility get_github_user_token method.""'
+        """
+        Test the github utility get_github_user_token method.
+        """
         data = {"access_token": self.user_oauth_token,
                 "scope": "read:user,user:email"}
         params = {
@@ -156,7 +176,9 @@ class GithubUtilitiesTest(TestCase):
 
     @responses.activate
     def test_get_github_user_data(self):
-        '""Test the github utility get_github_user_data method.""'
+        """
+        Test the github utility get_github_user_data method.
+        """
         headers = dict(
             {"Authorization": f"token {self.user_oauth_token}"}, **JSON_HEADER)
         data = {"login": "gitcoin"}
@@ -168,7 +190,9 @@ class GithubUtilitiesTest(TestCase):
 
     @responses.activate
     def test_get_github_user_data_failure(self):
-        '""Test the github utility get_github_user_data method.""'
+        """
+        Test the github utility get_github_user_data method.
+        """
         headers = dict(
             {"Authorization": f"token {self.user_oauth_token}"}, **JSON_HEADER)
         data = {"login": "gitcoin"}
@@ -180,7 +204,9 @@ class GithubUtilitiesTest(TestCase):
 
     @responses.activate
     def test_is_github_token_valid(self):
-        '""Test the github utility is_github_token_valid method.""'
+        """
+        Test the github utility is_github_token_valid method.
+        """
         now = timezone.now()
         expired = (now - timedelta(hours=2)).isoformat()
         return_false = is_github_token_valid()
@@ -198,7 +224,9 @@ class GithubUtilitiesTest(TestCase):
 
     @responses.activate
     def test_get_github_primary_email(self):
-        '""Test the github utility get_github_primary_email method.""'
+        """
+        Test the github utility get_github_primary_email method.
+        """
         data = [
             {"primary": True, "email": "test@gitcoin.co"},
             {"email": "test2@gitcoin.co"}
@@ -216,7 +244,9 @@ class GithubUtilitiesTest(TestCase):
 
     @responses.activate
     def test_get_user(self):
-        '""Test the github utility get_user method.""'
+        """
+        Test the github utility get_user method.
+        """
         url = "https://api.github.com/users/gitcoin"
         responses.add(responses.GET, url, headers=HEADERS, json={}, status=200)
         get_user("@gitcoin")
@@ -225,7 +255,9 @@ class GithubUtilitiesTest(TestCase):
 
     @responses.activate
     def test_get_user_subpath(self):
-        '""Test the github utility get_user method with a subpath.""'
+        """
+        Test the github utility get_user method with a subpath.
+        """
         url = "https://api.github.com/users/gitcoin/test"
         responses.add(responses.GET, url, headers=HEADERS, json={}, status=200)
         get_user("@gitcoin", "/test")

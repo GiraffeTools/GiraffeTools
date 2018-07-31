@@ -2,7 +2,9 @@ import json
 
 
 def insert_settings(request):
-    '""Handle inserting pertinent data into the current context.""'
+    """
+    Handle inserting pertinent data into the current context.
+    """
 
     context = {
         "github_handle": request.session.get("handle", False),
