@@ -1,16 +1,12 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import Link from '../components/link';
-import {
-  deleteLink,
-} from '../actions';
+import Link from "../components/link";
+import { deleteLink } from "../actions";
 
-
-const mapStateToProps = state => ({
-})
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
-  deleteLink: (linkId) => dispatch(deleteLink(linkId)),
+  deleteLink: linkId => dispatch(deleteLink(linkId))
 });
 
 const LinkContainer = connect(

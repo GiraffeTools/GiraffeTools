@@ -1,20 +1,21 @@
-import { Model, attr, fk } from 'redux-orm';
-import Port from './port';
+import { Model, attr, fk } from "redux-orm";
+import Port from "./port";
 
 import {
   ADD_LINK,
   REMOVE_LINK,
   REMOVE_NODE,
-  CLEAR_DATABASE,
-} from '../actions/actionTypes';
-
+  CLEAR_DATABASE
+} from "../actions/actionTypes";
 
 class Link extends Model {
   static reducer(action, Link, session) {
     const { type, payload } = action;
     switch (type) {
       case CLEAR_DATABASE:
-        session.Link.all().toRefArray().forEach(item => Link.withId(item.id).delete());
+        session.Link.all()
+          .toRefArray()
+          .forEach(item => Link.withId(item.id).delete());
         break;
       case ADD_LINK:
         Link.create(payload);
@@ -29,7 +30,9 @@ class Link extends Model {
           connectedLinks.push(port.inputLinks);
           connectedLinks.push(port.outputLinks);
         });
-        connectedLinks = connectedLinks.filter(value => Object.keys(value).length !== 0).reduce((acc, val) => acc.concat(val), []);
+        connectedLinks = connectedLinks
+          .filter(value => Object.keys(value).length !== 0)
+          .reduce((acc, val) => acc.concat(val), []);
         connectedLinks.forEach(link => {
           Link.withId(link.id).delete();
         });
@@ -37,21 +40,20 @@ class Link extends Model {
     }
     return undefined;
   }
-
 }
 Link.modelName = "Link";
 Link.fields = {
   id: attr(),
   portFrom: fk({
-      to: 'Port',
-      as: 'portFromModel',
-      relatedName: 'outputLinks',
+    to: "Port",
+    as: "portFromModel",
+    relatedName: "outputLinks"
   }),
   portTo: fk({
-      to: 'Port',
-      as: 'portToModel',
-      relatedName: 'inputLinks',
-  }),
-}
+    to: "Port",
+    as: "portToModel",
+    relatedName: "inputLinks"
+  })
+};
 
 export default Link;

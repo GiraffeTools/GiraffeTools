@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from "prop-types";
+import React from "react";
 
 class TooltipData extends React.Component {
   constructor(props) {
@@ -9,9 +9,9 @@ class TooltipData extends React.Component {
   render() {
     const type = this.props.data.type;
     let inputElement;
-    if (type === 'checkbox'){
-      inputElement = this.props.value ? 'True' : 'False';
-    } else{
+    if (type === "checkbox") {
+      inputElement = this.props.value ? "True" : "False";
+    } else {
       inputElement = this.props.value;
     }
 

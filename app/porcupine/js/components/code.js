@@ -1,13 +1,14 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import SyntaxHighlighter, { registerLanguage } from "react-syntax-highlighter/light";
-import python from 'react-syntax-highlighter/languages/hljs/python';
-import tomorrow from 'react-syntax-highlighter/styles/hljs/tomorrow-night-bright';
+import PropTypes from "prop-types";
+import React from "react";
+import SyntaxHighlighter, {
+  registerLanguage
+} from "react-syntax-highlighter/light";
+import python from "react-syntax-highlighter/languages/hljs/python";
+import tomorrow from "react-syntax-highlighter/styles/hljs/tomorrow-night-bright";
 
-import NipypeCode from '../utils/codeGenerators/nipype';
+import NipypeCode from "../utils/codeGenerators/nipype";
 
-
-registerLanguage('python', python);
+registerLanguage("python", python);
 
 class Code extends React.Component {
   constructor(props) {
@@ -17,12 +18,12 @@ class Code extends React.Component {
   render() {
     const { nodes, links } = this.props;
 
-    let code = '';
+    let code = "";
     switch (this.props.language) {
-      case 'Nipype':
+      case "Nipype":
         code = NipypeCode(nodes);
         break;
-      case 'Docker':
+      case "Docker":
         break;
       default:
         code = NipypeCode(nodes);
@@ -30,12 +31,9 @@ class Code extends React.Component {
     }
 
     return (
-      <SyntaxHighlighter
-				language='python'
-				style={tomorrow}
-			>
-				{code}
-			</SyntaxHighlighter>
+      <SyntaxHighlighter language="python" style={tomorrow}>
+        {code}
+      </SyntaxHighlighter>
     );
   }
 }

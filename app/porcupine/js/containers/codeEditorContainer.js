@@ -1,22 +1,17 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import CodeEditor from '../components/codeEditor';
-import {
-  toggleCodeEditor,
-} from '../actions';
-import {
-	nodesWithPorts,
-	links,
-} from '../selectors/selectors';
+import CodeEditor from "../components/codeEditor";
+import { toggleCodeEditor } from "../actions";
+import { nodesWithPorts, links } from "../selectors/selectors";
 
 const mapStateToProps = state => ({
   showCodeEditor: state.ui.showCodeEditor,
-	nodes: nodesWithPorts(state),
-  links: links(state),
-})
+  nodes: nodesWithPorts(state),
+  links: links(state)
+});
 
 const mapDispatchToProps = dispatch => ({
-  toggleCodeEditor: () => dispatch(toggleCodeEditor()),
+  toggleCodeEditor: () => dispatch(toggleCodeEditor())
 });
 
 const CodeEditorContainer = connect(

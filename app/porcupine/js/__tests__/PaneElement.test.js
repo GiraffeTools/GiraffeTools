@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import ReactTestUtils from 'react-dom/test-utils';
-import TestBackend from 'react-dnd-test-backend';
-import { DragDropContext } from 'react-dnd';
-import {shallow, mount} from "enzyme";
+import React, { Component } from "react";
+import ReactTestUtils from "react-dom/test-utils";
+import TestBackend from "react-dnd-test-backend";
+import { DragDropContext } from "react-dnd";
+import { shallow, mount } from "enzyme";
 import PaneElement from "../paneElement";
 
 /**
@@ -18,35 +18,35 @@ function wrapInTestContext(DecoratedComponent) {
   );
 }
 
-describe('<PaneElement>', () => {
+describe("<PaneElement>", () => {
   // Render with the test context that uses the test backend
-    const BoxContext = wrapInTestContext(PaneElement);
-    const root = mount(
-        <BoxContext
-          key = "testElement"
-          category = {['test', 'category']}
-          id  = "test.Element"
-        >testElement</BoxContext>
-    );
-    //
-    it('can be tested with the testing backend', () => {
+  const BoxContext = wrapInTestContext(PaneElement);
+  const root = mount(
+    <BoxContext
+      key="testElement"
+      category={["test", "category"]}
+      id="test.Element"
+    >
+      testElement
+    </BoxContext>
+  );
+  //
+  it("can be tested with the testing backend", () => {
+    // Test that the opacity is 1
+    let div = root.find("div.btn").get(0);
+    expect(div.props.style.opacity).toEqual(1);
+  });
+  // it('can be dragged', () => {
 
-      // Test that the opacity is 1
-      let div = root.find('div.btn').get(0)
-      expect(div.props.style.opacity).toEqual(1)
+  //   // Obtain a reference to the backend
+  //   const backend = root.instance().getManager().getBackend();
 
-    });
-    // it('can be dragged', () => {
+  //   // Find the drag source ID and use it to simulate the dragging operation
+  //   backend.simulateBeginDrag([root.find(PaneElement).instance().getHandlerId()]);
+  //   console.log(root.find(PaneElement).instance())
+  //   // Verify that the div changed its opacity
+  //   let div = root.find('div.btn').get(0)
+  //   expect(div.props.style.opacity).toEqual(0.5);
 
-    //   // Obtain a reference to the backend
-    //   const backend = root.instance().getManager().getBackend();
-
-    //   // Find the drag source ID and use it to simulate the dragging operation
-    //   backend.simulateBeginDrag([root.find(PaneElement).instance().getHandlerId()]);
-    //   console.log(root.find(PaneElement).instance())
-    //   // Verify that the div changed its opacity
-    //   let div = root.find('div.btn').get(0)
-    //   expect(div.props.style.opacity).toEqual(0.5);
-
-    // });
-})
+  // });
+});

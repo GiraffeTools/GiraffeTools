@@ -1,28 +1,28 @@
-var path = require("path")
-var webpack = require('webpack')
-var BundleTracker = require('webpack-bundle-tracker')
+var path = require("path");
+var webpack = require("webpack");
+var BundleTracker = require("webpack-bundle-tracker");
 
-var config = require('./webpack.base.config.js')
+var config = require("./webpack.base.config.js");
 
-config.mode = 'development';
+config.mode = "development";
 // Use webpack dev server
 config.entry = {
   porcupine: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    path.resolve(__dirname, '../app/porcupine/js/index.js')
+    "webpack-dev-server/client?http://localhost:3000",
+    "webpack/hot/only-dev-server",
+    path.resolve(__dirname, "../app/porcupine/js/index.js")
   ]
-}
+};
 
 // override django's STATIC_URL for webpack bundles
-config.output.publicPath = 'http://localhost:3000/app/assets/webpack_bundles/'
+config.output.publicPath = "http://localhost:3000/app/assets/webpack_bundles/";
 
 // Add HotModuleReplacementPlugin and BundleTracker plugins
 config.plugins = config.plugins.concat([
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
-  new BundleTracker({filename: './webpack/webpack-stats.json'}),
-])
+  new BundleTracker({ filename: "./webpack/webpack-stats.json" })
+]);
 
 config.watchOptions = {
   aggregateTimeout: 300,
@@ -30,4 +30,4 @@ config.watchOptions = {
   ignored: /node_modules/
 };
 
-module.exports = config
+module.exports = config;
