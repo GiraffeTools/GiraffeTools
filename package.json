@@ -5,7 +5,8 @@
     "node": "9.8.0",
     "npm": "6.1.0"
   },
-  "description": "Graphical Interface for Reproducible Analysis For workFlow Experiments",
+  "description":
+    "Graphical Interface for Reproducible Analysis For workFlow Experiments",
   "dependencies": {
     "babel-preset-stage-2": "^6.24.1",
     "bootstrap": "^4.1.1",
@@ -62,11 +63,16 @@
   },
   "scripts": {
     "preinstall": "node ./bin/pivotNodesByCategory.js",
-    "postinstall": "webpack --mode=production --config ./webpack/webpack.prod.config.js",
+    "postinstall":
+      "webpack --mode=production --config ./webpack/webpack.prod.config.js",
     "test": "jest",
-    "development": "webpack --mode=development --config ./webpack/webpack.dev.config.js --progress --colors",
-    "watch": "webpack --mode=development --config ./webpack/webpack.watch.config.js --progress --colors",
-    "production": "webpack --mode=production --config ./webpack/webpack.prod.config.js --progress --colors"
+    "development":
+      "webpack --mode=development --config ./webpack/webpack.dev.config.js --progress --colors",
+    "watch":
+      "webpack --mode=development --config ./webpack/webpack.watch.config.js --progress --colors",
+    "production":
+      "webpack --mode=production --config ./webpack/webpack.prod.config.js --progress --colors",
+    "coala": "docker run -ti -v $(pwd):/app --workdir=/app coala/base coala"
   },
   "repository": {
     "type": "git",
@@ -75,12 +81,8 @@
   "author": "Tim van Mourik",
   "license": "GPL-3.0",
   "jest": {
-    "setupFiles": [
-      "./app/porcupine/js/setupJest.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
+    "setupFiles": ["./app/porcupine/js/setupJest.js"],
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "coverageDirectory": "./code-coverage/",
     "collectCoverage": true
   }
