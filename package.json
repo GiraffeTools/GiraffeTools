@@ -73,7 +73,7 @@
     "production":
       "webpack --mode=production --config ./webpack/webpack.prod.config.js --progress --colors",
     "coala":
-      "docker run --rm -ti -v $(pwd):/app --workdir=/app coala/base coala"
+      "docker run --rm -ti -v $(pwd):/app --workdir=/app nemaniarjun/coala-docker-updated coala"
   },
   "repository": {
     "type": "git",
