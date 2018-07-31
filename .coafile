@@ -1,4 +1,8 @@
 [python]
+# Patches may conflict with autopep8 so putting them in own section so they
+# will be executed sequentially; also we need the LineLengthBear to double
+# check the line length because PEP8Bear sometimes isn't able to correct the
+# linelength.
 files = app/**/*.py
 ignore = **/__pycache__/*.py
 
@@ -6,12 +10,51 @@ bears = SpaceConsistencyBear, QuotesBear
 use_spaces = True
 max_line_length = 80
 language = Python
-preferred_quotation = 
+preferred_quotation = "
 default_actions = **: ApplyPatchAction
 
-[autopep8]
+[all.python.autopep8]
 bears = PEP8Bear, PycodestyleBear
-pycodestyle_ignore = E303, E121, E123, E126, E133, E226, E242, E704,
-                     W503, W504, W605
+pycodestyle_ignore = E501, E402
 
 default_actions = PEP8Bear: ApplyPatchAction
+
+[flakes]
+# Do not set default_action to ApplyPatchAction as it may lead to some
+# required imports being removed that might result in coala behaving weirdly.
+
+default_actions = *: ShowPatchAction
+
+files = app/**/*.py
+bears = PyUnusedCodeBear
+language = Python
+remove_all_unused_imports = true
+
+[linelength]  # Sometimes autopep8 makes too long lines, need to check after!
+files = app/**/*.py
+bears = LineLengthBear
+ignore_length_regex = ^.*https?://
+
+[Pylint]
+files = app/**/*.py
+enabled = False
+
+bears = PyLintBear
+
+pylint_cli_options = 
+pylint_disable = missing-docstring, # Lots of functions don't need docstrings
+                 bad-builtin, # Pylint doesn't like most builting functions
+                              # like filter, map etc. It prefers using for
+                              # loops for everything - although sometimes
+                              # map and other builtins are more intuitive.
+                 fixme, # Already done using KeywordBear
+                 locally-disabled, # Without this a pylint pragma is also
+                                   # considered an issue
+
+
+[all.bash]
+bears = ShellCheckBear
+ignore = node_modules/**
+files = **.bash, **.sh
+shell = bash
+shellcheck_ignore = SC2046, SC2154

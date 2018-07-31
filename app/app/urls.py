@@ -21,21 +21,25 @@ from django.contrib import admin
 import giraffe.views
 import porcupine.views
 
-app_name = 'app'
+app_name = "app"
 
 urlpatterns = [
-    url(r'^$',           giraffe.views.index,       name='index'),
-    url(r'^porcupine/?', porcupine.views.porcupine, name='porcupine'),
+    url(r"^$", giraffe.views.index, name="index"),
+    url(r"^porcupine/?", porcupine.views.porcupine, name="porcupine"),
     # Admin
-    url(r'^admin/?',     admin.site.urls),
+    url(r"^admin/?", admin.site.urls),
     # Slack
-    url(r'^slack/$',           giraffe.views.slack,            name='slack'),
-    url(r'^slack/thanks$',     giraffe.views.slack_thanks,     name='slack_thanks'),
+    url(r"^slack/$", giraffe.views.slack, name="slack"),
+    url(r"^slack/thanks$", giraffe.views.slack_thanks, name="slack_thanks"),
     # Github Integration
-    path('_github/',     include('github.urls', namespace='github')),
+    path("_github/", include("github.urls", namespace="github")),
     # Project
-    path('gh/<slug:ghuser>/',                                              giraffe.views.user,        name='user'),
-    path('gh/<slug:ghuser>/<slug:ghrepo>/',                                giraffe.views.project,     name='repo'),
-    path('gh/<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/',                giraffe.views.project,     name='branch'),
-    path('gh/<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/<slug:toolName>', giraffe.views.projectTool, name='projectTool'),
+    path("gh/<slug:ghuser>/",
+         giraffe.views.user, name="user"),
+    path("gh/<slug:ghuser>/<slug:ghrepo>/",
+         giraffe.views.project, name="repo"),
+    path("gh/<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/",
+         giraffe.views.project, name="branch"),
+    path("gh/<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/<slug:toolName>",
+         giraffe.views.projectTool, name="projectTool"),
 ]

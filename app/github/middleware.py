@@ -25,22 +25,24 @@ from github.utils import is_github_token_valid
 
 
 class GithubAuthMiddleware(MiddlewareMixin):
-    """Handle checking validity of Github OAuth tokens."""
+    '""Handle checking validity of Github OAuth tokens.""'
 
     def process_response(self, request, response):
-        """Perform the check on request."""
-        token = request.session.get('access_token')
-        expiration = request.session.get('access_token_last_validated')
-        handle = request.session.get('handle')
+        '""Perform the check on request.""'
+        token = request.session.get("access_token")
+        expiration = request.session.get("access_token_last_validated")
+        handle = request.session.get("handle")
 
         if token and handle:
             is_valid = is_github_token_valid(token, expiration)
             if is_valid:
-                request.session['access_token_last_validated'] = now().isoformat()
+                request.session["access_token_last_validated"] = now().
+                isoformat()
             else:
-                request.session.pop('access_token', '')
-                request.session.pop('handle', '')
-                request.session.pop('access_token_last_validated', '')
-                Profile.objects.filter(handle=handle).update(github_access_token='')
+                request.session.pop("access_token", "")
+                request.session.pop("handle", "")
+                request.session.pop("access_token_last_validated", "")
+                Profile.objects.filter(handle=handle).update(
+                    github_access_token="")
             request.session.modified = True
         return response
