@@ -1,5 +1,5 @@
 [all]
-ignore = node_modules/**
+ignore = node_modules/**, **.min.js, **.min.css
 
 [all.python]
 # Patches may conflict with autopep8 so putting them in own section so they
@@ -43,11 +43,6 @@ bears = PyLintBear
 
 pylint_cli_options = 
 pylint_disable = missing-docstring, # Lots of functions don't need docstrings
-                 bad-builtin, # Pylint doesn't like most builting functions
-                              # like filter, map etc. It prefers using for
-                              # loops for everything - although sometimes
-                              # map and other builtins are more intuitive.
-                 fixme, # Already done using KeywordBear
                  locally-disabled, # Without this a pylint pragma is also
                                    # considered an issue
 
@@ -57,3 +52,10 @@ bears = ShellCheckBear
 files = **.bash
 shell = bash
 shellcheck_ignore = SC2046, SC2154
+
+
+[all.javascript]
+files = **.js
+ignore = node_modules/**, db.sqlite3, **/staticfiles/**, **/webpack-stats.json, **/webpack-stats-prod.json, **/webpack_bundles/**, **/.idea, code-coverage/**
+bears = PrettierLintBear
+default_actions = **: ApplyPatchAction
