@@ -29,8 +29,10 @@ def user(request, ghuser=""):
 
 
 def project(request, ghuser="", ghrepo="", ghbranch="master"):
-    '""Recognise that this is a github repository that contains""'
-    '""a GIRAFFE.yml file""'
+    """
+    Recognise that this is a github repository that contains
+    a GIRAFFE.yml file
+    """
 
     if not are_valid_github_details(ghuser, ghrepo, ghbranch):
         raise Http404
@@ -51,8 +53,10 @@ def project(request, ghuser="", ghrepo="", ghbranch="master"):
 
 
 def projectTool(request, ghuser="", ghrepo="", ghbranch="master", toolName=""):
-    '""Recognise that this is a github repository with GIRAFFE.yml defining""'
-    '""this tool""'
+    """
+    Recognise that this is a github repository with GIRAFFE.yml defining
+    this tool
+    """
 
     if not are_valid_github_details(ghuser, ghrepo, ghbranch):
         raise Http404

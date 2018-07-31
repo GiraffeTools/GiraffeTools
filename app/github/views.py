@@ -39,7 +39,9 @@ from github.utils import (
 
 @require_GET
 def github_callback(request):
-    '""Handle the Github authentication callback.""'
+    """
+    Handle the Github authentication callback.
+    """
     # Get request parameters to handle authentication and the redirect.
     code = request.GET.get("code", None)
     redirect_uri = request.GET.get("redirect_uri")
@@ -89,7 +91,9 @@ def github_callback(request):
 
 @require_GET
 def github_authentication(request):
-    '""Handle Github authentication.""'
+    """
+    Handle Github authentication.
+    """
     redirect_uri = request.GET.get("redirect_uri", "/")
 
     if not request.session.get("access_token"):
@@ -101,7 +105,9 @@ def github_authentication(request):
 
 
 def github_logout(request):
-    '""Handle Github logout.""'
+    """
+    Handle Github logout.
+    """
     access_token = request.session.pop("access_token", "")
     request.session.pop("handle", "")
     request.session.pop("user_repos", "")

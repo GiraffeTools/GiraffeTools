@@ -55,10 +55,14 @@ def get_time():
 
 
 class SuperModel(models.Model):
-    '""Define the base abstract model.""'
+    """
+    Define the base abstract model.
+    """
 
     class Meta:
-        '""Define the model metadata.""'
+        """
+        Define the model metadata.
+        """
 
         abstract = True
 
@@ -73,7 +77,9 @@ class SuperModel(models.Model):
 
 class Profile(SuperModel):
     managed = False
-    '""Define the structure of the user profile.""'
+    """
+    Define the structure of the user profile.
+    """
 
     data = JSONField()
     handle = models.CharField(max_length=255, db_index=True)
@@ -113,7 +119,9 @@ class Profile(SuperModel):
         return settings.BASE_URL + self.get_relative_url(preceding_slash=False)
 
 # class UserAction(SuperModel):
-#     """Records Actions that a user has taken ."""
+#     """
+#     Records Actions that a user has taken .
+#     """
 #
 #     ACTION_TYPES = [
 #         ('Login',  'Login'),

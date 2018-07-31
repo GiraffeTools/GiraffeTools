@@ -25,7 +25,9 @@ from github.utils import is_github_token_valid
 
 
 class GithubAuthMiddleware(MiddlewareMixin):
-    '""Handle checking validity of Github OAuth tokens.""'
+    """
+    Handle checking validity of Github OAuth tokens.
+    """
 
     def process_response(self, request, response):
         '""Perform the check on request.""'
