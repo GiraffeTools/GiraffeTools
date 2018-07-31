@@ -20,6 +20,7 @@ export const REMOVE_LINK = "REMOVE_LINK";
 ///// UI /////
 export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
 export const TOGGLE_CODEEDITOR = "TOGGLE_CODEEDITOR";
+export const UPDATE_LOADING_PERCENT = "UPDATE_LOADING_PERCENT";
 
 ///// SCENE /////
 export const ZOOM_IN = "ZOOM_IN";
