@@ -8,7 +8,6 @@ env:
   - PYTHONPATH="$TRAVIS_BUILD_DIR/app/"
   - MODE=production
 before_install:
-  - docker pull timvanmourik/giraffe-tools
   - mv .env.sample .env
   - source ./bin/init-environment.bash
 install:
@@ -19,3 +18,4 @@ before_script:
   - bash ./bin/init-django.bash
 script:
   - bash ./bin/run-tests.bash
+  - npm run coala
