@@ -11,7 +11,7 @@ from slackclient import SlackClient
 sc = SlackClient(settings.SLACK_API_TOKEN)
 
 
-def are_valid_github_details(ghuser='', ghrepo='', ghbranch='master'):
+def are_valid_github_details(ghuser="", ghrepo="", ghbranch="master"):
     giturl = f"https://api.github.com/repos/{ghuser}/{ghrepo}/branches"
 
     try:
@@ -23,10 +23,10 @@ def are_valid_github_details(ghuser='', ghrepo='', ghbranch='master'):
     return pydash.collections.reduce_(
         branches,
         lambda isValid, branchInfo:
-        isValid or pydash.get(branchInfo, 'name', '') == ghbranch,
+        isValid or pydash.get(branchInfo, "name", "") == ghbranch,
         False
     )
 
 
 def send_slack_invitation_to_email(email):
-    sc.api_call('users.admin.invite', email=email)
+    sc.api_call("users.admin.invite", email=email)
