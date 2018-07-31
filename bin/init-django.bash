@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd app
+cd app || exit
 python manage.py collectstatic --noinput -i other
 python manage.py migrate
-cd ..
+cd .. || exit
