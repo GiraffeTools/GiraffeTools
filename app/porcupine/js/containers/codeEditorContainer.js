@@ -14,8 +14,9 @@ const mapDispatchToProps = dispatch => ({
   toggleCodeEditor: () => dispatch(toggleCodeEditor())
 });
 
-const CodeEditorContainer = connect(mapStateToProps, mapDispatchToProps)(
-  CodeEditor
-);
+const CodeEditorContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CodeEditor);
 
 export default CodeEditorContainer;

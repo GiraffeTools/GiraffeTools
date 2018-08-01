@@ -95,26 +95,40 @@ export const linksWithPortsAndNodes = createSelector(
   orm,
   state => state.orm,
   session => {
-    return session.Link.all().toRefArray().map(link => {
-      // TODO: check if all this Object.assign is strictly necessary
-      const newLink = Object.assign({}, link);
-      if (newLink.portFrom) {
-        const newPort = Object.assign({}, session.Port.withId(newLink.portFrom).ref);
-        const newNode = Object.assign({}, session.Node.withId(newPort.node).ref);
-        newPort.node = newNode;
-        newLink.portFrom = newPort;
-      } else {
-        newLink.portFrom = null;
-      }
-      if (newLink.portTo) {
-        const newPort = Object.assign({}, session.Port.withId(newLink.portTo).ref);
-        const newNode = Object.assign({}, session.Node.withId(newPort.node).ref);
-        newPort.node = newNode;
-        newLink.portTo = newPort;
-      } else {
-        newLink.portTo = null;
-      }
-      return newLink;
-    });
+    return session.Link.all()
+      .toRefArray()
+      .map(link => {
+        // TODO: check if all this Object.assign is strictly necessary
+        const newLink = Object.assign({}, link);
+        if (newLink.portFrom) {
+          const newPort = Object.assign(
+            {},
+            session.Port.withId(newLink.portFrom).ref
+          );
+          const newNode = Object.assign(
+            {},
+            session.Node.withId(newPort.node).ref
+          );
+          newPort.node = newNode;
+          newLink.portFrom = newPort;
+        } else {
+          newLink.portFrom = null;
+        }
+        if (newLink.portTo) {
+          const newPort = Object.assign(
+            {},
+            session.Port.withId(newLink.portTo).ref
+          );
+          const newNode = Object.assign(
+            {},
+            session.Node.withId(newPort.node).ref
+          );
+          newPort.node = newNode;
+          newLink.portTo = newPort;
+        } else {
+          newLink.portTo = null;
+        }
+        return newLink;
+      });
   }
 );
