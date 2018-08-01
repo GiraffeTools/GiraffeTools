@@ -30,9 +30,9 @@ body {
 .codeWindow{
   position: fixed;
   bottom: 0;
-  width: 70%;
+  width: 60%;
   height: 60%;
-  margin-top:
+  margin-left: 20px;
 }
 
 .codeWindowClosed{
