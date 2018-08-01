@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import SyntaxHighlighter, { registerLanguage } from "react-syntax-highlighter/light";
 import python from 'react-syntax-highlighter/languages/hljs/python';
-import tomorrow from 'react-syntax-highlighter/styles/hljs/tomorrow-night-bright';
+import atomDark from 'react-syntax-highlighter/styles/hljs/atom-one-dark';
 
 import NipypeCode from '../utils/codeGenerators/nipype';
 
@@ -32,7 +32,7 @@ class Code extends React.Component {
     return (
       <SyntaxHighlighter
 				language='python'
-				style={tomorrow}
+				style={atomDark}
 			>
 				{code}
 			</SyntaxHighlighter>
