@@ -19,6 +19,24 @@ const writeNodes = nodes => {
   return code;
 };
 
+const writeLinks = links => {
+  let code = `
+`;
+  links && links.forEach(link => {
+    code += linkToCode(link);
+  });
+  return code;
+};
+
+const linkToCode = link => {
+  let source = `my_${link.portFrom.node.name}`;
+  let sourceAttribute = `${link.portFrom.name}`;
+  let destination = `my_${link.portTo.node.name}`;
+  let destinationAttribute = `${link.portTo.name}`;
+  return `analysisflow.connect(${source}, "${sourceAttribute}", ${destination}, "${destinationAttribute}")
+`;
+}
+
 const itemToCode = node => {
   let code = '';
   let nodeType = true ? 'Node' : 'MapNode'; // #TODO condition on baing iterable
@@ -54,7 +72,7 @@ const NipypeCode = (nodes, links) => {
     writePreamble(nodes) +
     // writeParameters() + // #TODO Make parameter editor and write out
     writeNodes(nodes) +
-    // writeLinks(links) +
+    writeLinks(links) +
     writePostamble()
   );
   return code;

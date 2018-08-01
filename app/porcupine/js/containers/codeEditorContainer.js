@@ -6,13 +6,13 @@ import {
 } from '../actions';
 import {
 	nodesWithPorts,
-	links,
+	linksWithPortsAndNodes,
 } from '../selectors/selectors';
 
 const mapStateToProps = state => ({
   showCodeEditor: state.ui.showCodeEditor,
 	nodes: nodesWithPorts(state),
-  links: links(state),
+  links: linksWithPortsAndNodes(state),
 })
 
 const mapDispatchToProps = dispatch => ({

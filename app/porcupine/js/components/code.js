@@ -20,12 +20,12 @@ class Code extends React.Component {
     let code = '';
     switch (this.props.language) {
       case 'Nipype':
-        code = NipypeCode(nodes);
+        code = NipypeCode(nodes, links);
         break;
       case 'Docker':
         break;
       default:
-        code = NipypeCode(nodes);
+        code = NipypeCode(nodes, links);
         break;
     }
 
