@@ -1,26 +1,23 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import Field from '../components/field';
+import Field from "../components/field";
 import {
-	removePort,
+  removePort,
   removePortFromNode,
   deletePort,
   updatePort,
-	repositionPorts,
-} from '../actions';
-import {
-	selectedNode,
-} from '../selectors/selectors';
-
+  repositionPorts
+} from "../actions";
+import { selectedNode } from "../selectors/selectors";
 
 const mapStateToProps = state => ({
-  selectedNode: selectedNode(state),
-})
+  selectedNode: selectedNode(state)
+});
 
 const mapDispatchToProps = dispatch => ({
-  removePort: (id) => dispatch(deletePort(id)),
-	repositionPorts: (nodeId) => dispatch(repositionPorts(nodeId)),
-  updatePort: (portId, newValues) => dispatch(updatePort(portId, newValues)),
+  removePort: id => dispatch(deletePort(id)),
+  repositionPorts: nodeId => dispatch(repositionPorts(nodeId)),
+  updatePort: (portId, newValues) => dispatch(updatePort(portId, newValues))
 });
 
 const FieldContainer = connect(

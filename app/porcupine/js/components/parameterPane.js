@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from "prop-types";
+import React from "react";
 
-import Fields from '../components/fields';
-
+import Fields from "../components/fields";
 
 class ParameterPane extends React.Component {
   constructor(props) {
@@ -11,7 +10,7 @@ class ParameterPane extends React.Component {
   }
 
   handleKeyPress(event) {
-    if (event.key == 'Delete') {
+    if (event.key == "Delete") {
       deleteNode(this.props.selectedNode.id);
     }
   }
@@ -27,31 +26,35 @@ class ParameterPane extends React.Component {
   render() {
     const node = this.props.selectedNode;
     return (
-      <div className={"setparams" + (node ? " setparamsActive" : "")} >
+      <div className={"setparams" + (node ? " setparamsActive" : "")}>
         <div className="setHead">
-          <h4 className="sidebar__node-name">
-            {(node ? node.name : "")}
-          </h4>
+          <h4 className="sidebar__node-name">{node ? node.name : ""}</h4>
           <div className="sidebar__node-documentation">
-            {( node ? <a href={node.web_url} target="_blank">
-              <i className="fas fa-globe sidebar__globe-icon"></i>
-                <span>View documentation</span>{' '}
-            </a> : "")}
+            {node ? (
+              <a href={node.web_url} target="_blank">
+                <i className="fas fa-globe sidebar__globe-icon" />
+                <span>View documentation</span>{" "}
+              </a>
+            ) : (
+              ""
+            )}
           </div>
-          <i className="fas fa-times sidebar__close-icon"
+          <i
+            className="fas fa-times sidebar__close-icon"
             onClick={() => this.props.clickNode(null)}
-            aria-hidden="true"/>
+            aria-hidden="true"
+          />
         </div>
         <div className="setContain">
-          {node && node.ports ? <Fields ports={node.ports} /> : ''}
+          {node && node.ports ? <Fields ports={node.ports} /> : ""}
           <br />
           <button
             type="button"
             className="btn btn-block deleteLayerButton sidebar-heading"
             onClick={() => {
               this.props.deleteNode(node);
-              this.props.clickNode(null);}
-            }
+              this.props.clickNode(null);
+            }}
           >
             DELETE NODE
           </button>

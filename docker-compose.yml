@@ -13,3 +13,11 @@ services:
       - "8000:8000"   # application server
       - "3000:3000"   # webpack hot reload server
       - "35729:35729" # django live reload server
+
+  # coala is the 'linter', checking coding standard consistency
+  coala:
+    image: nemaniarjun/coala-docker-updated
+    command: coala
+    working_dir: /code
+    volumes:
+      - .:/code

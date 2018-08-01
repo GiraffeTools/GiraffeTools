@@ -1,6 +1,5 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-
+import PropTypes from "prop-types";
+import React from "react";
 
 class Field extends React.Component {
   constructor(props) {
@@ -9,20 +8,21 @@ class Field extends React.Component {
   }
 
   changeParams(portId, key, value) {
-    const newValues = {...this.props.port, [key]: value};
+    const newValues = { ...this.props.port, [key]: value };
     this.props.updatePort(portId, newValues);
     this.props.repositionPorts(this.props.selectedNode);
   }
 
   change(e) {
-    const dataType = this.props.data && this.props.data.type ? this.props.data.type : 'text';
-		const portId = this.props.id;
-    if (dataType === 'boolean') {
-      this.changeParams(portId, 'value', e.target.checked);
-    } else if(dataType === 'number') {
-      this.changeParams(portId, 'value', Number(e.target.value));
+    const dataType =
+      this.props.data && this.props.data.type ? this.props.data.type : "text";
+    const portId = this.props.id;
+    if (dataType === "boolean") {
+      this.changeParams(portId, "value", e.target.checked);
+    } else if (dataType === "number") {
+      this.changeParams(portId, "value", Number(e.target.value));
     } else {
-      this.changeParams(portId, 'value', e.target.value);
+      this.changeParams(portId, "value", e.target.value);
     }
   }
 
@@ -35,13 +35,13 @@ class Field extends React.Component {
       data,
       isEnabled,
       removePort,
-      selectedNode,
+      selectedNode
     } = this.props;
 
-    const type  = data && data.type ? data.type : 'text';
+    const type = data && data.type ? data.type : "text";
     let inputElement;
 
-    if (type === 'text') {
+    if (type === "text") {
       inputElement = (
         <input
           type="text"
@@ -52,7 +52,7 @@ class Field extends React.Component {
           onChange={this.change}
         />
       );
-    } else if (type === 'number') {
+    } else if (type === "number") {
       inputElement = (
         <input
           type="number"
@@ -63,7 +63,7 @@ class Field extends React.Component {
           onChange={this.change}
         />
       );
-    } else if (type === 'float') {
+    } else if (type === "float") {
       inputElement = (
         <input
           type="number"
@@ -75,10 +75,14 @@ class Field extends React.Component {
           onChange={this.change}
         />
       );
-    } else if (type === 'select') {
+    } else if (type === "select") {
       const options = [];
       data.options.forEach(i => {
-        options.push(<option key={i} value={i}>{i}</option>);
+        options.push(
+          <option key={i} value={i}>
+            {i}
+          </option>
+        );
       });
       inputElement = (
         <select
@@ -91,7 +95,7 @@ class Field extends React.Component {
           {options}
         </select>
       );
-    } else if (type === 'boolean') {
+    } else if (type === "boolean") {
       inputElement = (
         <div className="paramsCheckbox">
           <input
@@ -101,38 +105,44 @@ class Field extends React.Component {
             id={id}
             onChange={this.change}
           />
-          <label htmlFor={id}></label>
+          <label htmlFor={id} />
         </div>
       );
     }
     let displayStyle = "inherit";
-    if (inputElement.props.className == 'paramsCheckbox'){
+    if (inputElement.props.className == "paramsCheckbox") {
       displayStyle = "flex";
     }
 
     return (
       <div>
-        <div style={{display: displayStyle}}>
-          <label htmlFor={id} className="sidebar-heading" style={{fontSize:"0.85em"}}>
+        <div style={{ display: displayStyle }}>
+          <label
+            htmlFor={id}
+            className="sidebar-heading"
+            style={{ fontSize: "0.85em" }}
+          >
             {name}
           </label>
-             {inputElement}
+          {inputElement}
         </div>
-        <div
-          key={id}
-          className="sidebar__node-actions">
-          <div className="sidebar__node-visibility" onClick={() => this.changeParams(id, 'isVisible', !isVisible)} >
+        <div key={id} className="sidebar__node-actions">
+          <div
+            className="sidebar__node-visibility"
+            onClick={() => this.changeParams(id, "isVisible", !isVisible)}
+          >
             <i
-              className={'fas ' + (isVisible ? 'fa-eye' : 'fa-eye-slash')}
-              title={'Make ' + (isVisible ? 'Invisible' : 'Visible')}
-            />{' '}
+              className={"fas " + (isVisible ? "fa-eye" : "fa-eye-slash")}
+              title={"Make " + (isVisible ? "Invisible" : "Visible")}
+            />{" "}
           </div>
           <button
             type="button"
             className="btn btn-outline-danger btn-sm"
             onClick={() => {
               removePort(id);
-            }}>
+            }}
+          >
             <i className="fas fa-trash-alt" />
           </button>
         </div>
@@ -150,6 +160,5 @@ Field.propTypes = {
   ]),
   disabled: PropTypes.bool
 };
-
 
 export default Field;

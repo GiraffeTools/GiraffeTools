@@ -1,26 +1,25 @@
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import Node from '../components/node';
+import Node from "../components/node";
+import { nodes } from "../selectors/selectors";
 import {
-	nodes,
-} from '../selectors/selectors';
-import {
-	hoverNode,
-	clickNode,
-	updateNodePosition,
-	repositionPorts,
-} from '../actions';
+  hoverNode,
+  clickNode,
+  updateNodePosition,
+  repositionPorts
+} from "../actions";
 
 const mapStateToProps = state => ({
-	hoveredNode: state.scene.hoveredNode,
-	selectedNode: state.scene.selectedNode,
-})
+  hoveredNode: state.scene.hoveredNode,
+  selectedNode: state.scene.selectedNode
+});
 
 const mapDispatchToProps = dispatch => ({
-  hoverNode: (nodeId) => dispatch(hoverNode(nodeId)),
-  clickNode: (nodeId) => dispatch(clickNode(nodeId)),
-	repositionPorts: (node) => dispatch(repositionPorts(node)),
-	updateNodePosition: (nodeId, offset) => dispatch(updateNodePosition(nodeId, offset)),
+  hoverNode: nodeId => dispatch(hoverNode(nodeId)),
+  clickNode: nodeId => dispatch(clickNode(nodeId)),
+  repositionPorts: node => dispatch(repositionPorts(node)),
+  updateNodePosition: (nodeId, offset) =>
+    dispatch(updateNodePosition(nodeId, offset))
 });
 
 const NodeContainer = connect(

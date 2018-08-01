@@ -17,7 +17,6 @@ You should have received a copy of the GNU Affero General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 """
-import json
 import logging
 from datetime import timedelta
 from urllib.parse import quote_plus, urlencode
@@ -33,21 +32,24 @@ from rest_framework.reverse import reverse
 logger = logging.getLogger(__name__)
 
 _AUTH = (settings.GITHUB_API_USER, settings.GITHUB_API_TOKEN)
-BASE_URI = settings.BASE_URL.rstrip('/')
-HEADERS = {'Accept': 'application/vnd.github.squirrel-girl-preview'}
-V3HEADERS = {'Accept': 'application/vnd.github.v3.text-match+json'}
+BASE_URI = settings.BASE_URL.rstrip("/")
+HEADERS = {"Accept": "application/vnd.github.squirrel-girl-preview"}
+V3HEADERS = {"Accept": "application/vnd.github.v3.text-match+json"}
 JSON_HEADER = {
-    'Accept': 'application/json',
-    'User-Agent': settings.GITHUB_APP_NAME,
-    'Origin': settings.BASE_URL
+    "Accept": "application/json",
+    "User-Agent": settings.GITHUB_APP_NAME,
+    "Origin": settings.BASE_URL
 }
-TOKEN_URL = '{api_url}/applications/{client_id}/tokens/{oauth_token}'
+TOKEN_URL = "{api_url}/applications/{client_id}/tokens/{oauth_token}"
+
 
 def get_time():
     return localtime(timezone.now())
 
+
 def build_auth_dict(oauth_token):
-    """Collect authentication details.
+    """
+    Collect authentication details.
 
     Args:
         oauth_token (str): The Github OAuth token.
@@ -57,15 +59,16 @@ def build_auth_dict(oauth_token):
 
     """
     return {
-        'api_url':       settings.GITHUB_API_BASE_URL,
-        'client_id':     settings.GITHUB_CLIENT_ID,
-        'client_secret': settings.GITHUB_CLIENT_SECRET,
-        'oauth_token':   oauth_token
+        "api_url": settings.GITHUB_API_BASE_URL,
+        "client_id": settings.GITHUB_CLIENT_ID,
+        "client_secret": settings.GITHUB_CLIENT_SECRET,
+        "oauth_token": oauth_token
     }
 
 
 def is_github_token_valid(oauth_token=None, last_validated=None):
-    """Check whether or not a Github OAuth token is valid.
+    """
+    Check whether or not a Github OAuth token is valid.
 
     Args:
         access_token (str): The Github OAuth token.
@@ -83,7 +86,7 @@ def is_github_token_valid(oauth_token=None, last_validated=None):
         try:
             last_validated = dateutil.parser.parse(last_validated)
         except ValueError:
-            print('Validation of date failed.')
+            print("Validation of date failed.")
             last_validated = None
 
     # Check whether or not the user's access token has been validated recently.
@@ -92,7 +95,7 @@ def is_github_token_valid(oauth_token=None, last_validated=None):
             return True
 
     _params = build_auth_dict(oauth_token)
-    _auth = (_params['client_id'], _params['client_secret'])
+    _auth = (_params["client_id"], _params["client_secret"])
     url = TOKEN_URL.format(**_params)
     response = requests.get(url, auth=_auth, headers=HEADERS)
 
@@ -102,9 +105,9 @@ def is_github_token_valid(oauth_token=None, last_validated=None):
 
 
 def revoke_token(oauth_token):
-    """Revoke the specified token."""
+    '""Revoke the specified token.""'
     _params = build_auth_dict(oauth_token)
-    _auth = (_params['client_id'], _params['client_secret'])
+    _auth = (_params["client_id"], _params["client_secret"])
     url = TOKEN_URL.format(**_params)
     response = requests.delete(url, auth=_auth, headers=HEADERS)
     if response.status_code == 204:
@@ -113,7 +116,8 @@ def revoke_token(oauth_token):
 
 
 def reset_token(oauth_token):
-    """Reset the provided token.
+    """
+    Reset the provided token.
 
     Args:
         access_token (str): The Github OAuth token.
@@ -123,16 +127,17 @@ def reset_token(oauth_token):
 
     """
     _params = build_auth_dict(oauth_token)
-    _auth = (_params['client_id'], _params['client_secret'])
+    _auth = (_params["client_id"], _params["client_secret"])
     url = TOKEN_URL.format(**_params)
     response = requests.post(url, auth=_auth, headers=HEADERS)
     if response.status_code == 200:
-        return response.json().get('token')
-    return ''
+        return response.json().get("token")
+    return ""
 
 
-def get_auth_url(redirect_uri='/'):
-    """Build the Github authorization URL.
+def get_auth_url(redirect_uri="/"):
+    """
+    Build the Github authorization URL.
 
     Args:
         redirect_uri (str): The redirect URI to be used during authentication.
@@ -147,40 +152,44 @@ def get_auth_url(redirect_uri='/'):
         str: The Github authentication URL.
 
     """
-    github_callback = reverse('github:github_callback')
-    redirect_params = {'redirect_uri': BASE_URI + redirect_uri}
+    github_callback = reverse("github:github_callback")
+    redirect_params = {"redirect_uri": BASE_URI + redirect_uri}
     redirect_uri = urlencode(redirect_params, quote_via=quote_plus)
 
     params = {
-        'client_id':    settings.GITHUB_CLIENT_ID,
-        'scope':        settings.GITHUB_SCOPE,
-        'redirect_uri': f'{BASE_URI}{github_callback}?{redirect_uri}'
+        "client_id": settings.GITHUB_CLIENT_ID,
+        "scope": settings.GITHUB_SCOPE,
+        "redirect_uri": f"{BASE_URI}{github_callback}?{redirect_uri}"
     }
     auth_url = urlencode(params, quote_via=quote_plus)
 
-    return settings.GITHUB_AUTH_BASE_URL + f'?{auth_url}'
+    return settings.GITHUB_AUTH_BASE_URL + f"?{auth_url}"
 
 
 def get_github_user_token(code, **kwargs):
-    """Get the Github authorization token."""
+    """
+    Get the Github authorization token.
+    """
     _params = {
-        'code':          code,
-        'client_id':     settings.GITHUB_CLIENT_ID,
-        'client_secret': settings.GITHUB_CLIENT_SECRET
+        "code": code,
+        "client_id": settings.GITHUB_CLIENT_ID,
+        "client_secret": settings.GITHUB_CLIENT_SECRET
     }
     # Add additional parameters to the request paramaters.
     _params.update(kwargs)
-    response = requests.get(settings.GITHUB_TOKEN_URL, headers=JSON_HEADER, params=_params)
+    response = requests.get(settings.GITHUB_TOKEN_URL,
+                            headers=JSON_HEADER, params=_params)
     response = response.json()
-    scope    = response.get('scope', None)
+    scope = response.get("scope", None)
     if scope:
-        access_token = response.get('access_token', None)
+        access_token = response.get("access_token", None)
         return access_token
     return None
 
 
 def get_github_user_data(oauth_token):
-    """Get the user's github profile information.
+    """
+    Get the user's github profile information.
 
     Args:
         oauth_token (str): The Github OAuth2 token to use for authentication.
@@ -189,15 +198,16 @@ def get_github_user_data(oauth_token):
         requests.Response: The Github user response.
 
     """
-    headers = dict({'Authorization': f'token {oauth_token}'}, **JSON_HEADER)
-    response = requests.get('https://api.github.com/user', headers=headers)
+    headers = dict({"Authorization": f"token {oauth_token}"}, **JSON_HEADER)
+    response = requests.get("https://api.github.com/user", headers=headers)
     if response.status_code == 200:
         return response.json()
     return {}
 
 
 def get_github_primary_email(oauth_token):
-    """Get the primary email address associated with the github profile.
+    """
+    Get the primary email address associated with the github profile.
 
     Args:
         oauth_token (str): The Github OAuth2 token to use for authentication.
@@ -206,18 +216,22 @@ def get_github_primary_email(oauth_token):
         str: The user's primary github email address.
 
     """
-    headers = dict({'Authorization': f'token {oauth_token}'}, **JSON_HEADER)
-    response = requests.get('https://api.github.com/user/emails', headers=headers)
+    headers = dict({"Authorization": f"token {oauth_token}"}, **JSON_HEADER)
+    response = requests.get(
+        "https://api.github.com/user/emails", headers=headers)
 
     if response.status_code == 200:
         emails = response.json()
         for email in emails:
-            if email.get('primary'):
-                return email.get('email', '')
+            if email.get("primary"):
+                return email.get("email", "")
 
-    return ''
+    return ""
+
+
 def get_github_repos(oauth_token):
-    """Get the primary email address associated with the github profile.
+    """
+    Get the primary email address associated with the github profile.
 
     Args:
         oauth_token (str): The Github OAuth2 token to use for authentication.
@@ -226,18 +240,21 @@ def get_github_repos(oauth_token):
         str: The user's primary github email address.
 
     """
-    headers = dict({'Authorization': f'token {oauth_token}'}, **JSON_HEADER)
-    response = requests.get('https://api.github.com/user/repos', headers=headers)
+    headers = dict({"Authorization": f"token {oauth_token}"}, **JSON_HEADER)
+    response = requests.get(
+        "https://api.github.com/user/repos", headers=headers)
 
     if response.status_code == 200:
         repos = response.json()
-        names = [r['full_name'] for r in repos]
+        names = [r["full_name"] for r in repos]
         return names
 
-    return ''
+    return ""
+
 
 def search(query):
-    """Search for a user on github.
+    """
+    Search for a user on github.
 
     Args:
         q (str): The query text to match.
@@ -247,24 +264,29 @@ def search(query):
 
     """
     params = (
-        ('q', query),
-        ('sort', 'updated'),
+        ("q", query),
+        ("sort", "updated"),
     )
 
-    response = requests.get('https://api.github.com/search/users',
+    response = requests.get("https://api.github.com/search/users",
                             auth=_AUTH, headers=V3HEADERS, params=params)
     return response.json()
 
-def get_user(user, sub_path=''):
-    """Get the github user details."""
-    user = user.replace('@', '')
-    url = f'https://api.github.com/users/{user}{sub_path}'
+
+def get_user(user, sub_path=""):
+    """
+    Get the github user details.
+    """
+    user = user.replace("@", "")
+    url = f"https://api.github.com/users/{user}{sub_path}"
     response = requests.get(url, auth=_AUTH, headers=HEADERS)
 
     return response.json()
 
+
 def repo_url(issue_url):
-    """Build the repository URL.
+    """
+    Build the repository URL.
 
     Args:
         issue_url (str): The Github issue URL.
@@ -273,11 +295,12 @@ def repo_url(issue_url):
         str: The repository URL.
 
     """
-    return '/'.join(issue_url.split('/')[:-2])
+    return "/".join(issue_url.split("/")[:-2])
 
 
 def org_name(issue_url):
-    """Get the organization name from an issue URL.
+    """
+    Get the organization name from an issue URL.
 
     Args:
         issue_url (str): The Github issue URL.
@@ -286,11 +309,12 @@ def org_name(issue_url):
         str: The Github organization name.
 
     """
-    return issue_url.split('/')[3]
+    return issue_url.split("/")[3]
 
 
 def repo_name(issue_url):
-    """Get the repo name from an issue URL.
+    """
+    Get the repo name from an issue URL.
 
     Args:
         issue_url (str): The Github issue URL.
@@ -299,11 +323,12 @@ def repo_name(issue_url):
         str: The Github repo name.
 
     """
-    return issue_url.split('/')[4]
+    return issue_url.split("/")[4]
 
 
 def issue_number(issue_url):
-    """Get the issue_number from an issue URL.
+    """
+    Get the issue_number from an issue URL.
 
     Args:
         issue_url (str): The Github issue URL.
@@ -312,4 +337,4 @@ def issue_number(issue_url):
         str: The Github issue_number
 
     """
-    return issue_url.split('/')[6]
+    return issue_url.split("/")[6]

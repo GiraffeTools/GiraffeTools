@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import DragLayer from 'react-dnd/lib/DragLayer';
+import React from "react";
+import PropTypes from "prop-types";
+import DragLayer from "react-dnd/lib/DragLayer";
 
-function collect (monitor) {
+function collect(monitor) {
   var item = monitor.getItem();
   return {
     name: item && item.name,
@@ -12,10 +12,10 @@ function collect (monitor) {
   };
 }
 
-function getItemStyles (currentOffset) {
+function getItemStyles(currentOffset) {
   if (!currentOffset) {
     return {
-      display: 'none'
+      display: "none"
     };
   }
 
@@ -24,7 +24,7 @@ function getItemStyles (currentOffset) {
   var transform = `translate(${x}px, ${y}px)`;
 
   return {
-    pointerEvents: 'none',
+    pointerEvents: "none",
     transform: transform,
     WebkitTransform: transform
   };
@@ -33,10 +33,8 @@ function getItemStyles (currentOffset) {
 class ItemPreview extends React.Component {
   render() {
     if (!this.props.isDragging) {
-      return (
-        <div className="node preview" style={{display: 'none'}} />
-      );
-    } else if (this.props.itemType==='paneElement') {
+      return <div className="node preview" style={{ display: "none" }} />;
+    } else if (this.props.itemType === "paneElement") {
       return (
         <div
           className="node preview"
@@ -45,12 +43,9 @@ class ItemPreview extends React.Component {
           {this.props.name}
         </div>
       );
-    } else if (this.props.itemType==='node') {
-      return (
-        <div className="node preview" style={{display: 'none'}} />
-      );
+    } else if (this.props.itemType === "node") {
+      return <div className="node preview" style={{ display: "none" }} />;
     }
-
   }
 }
 

@@ -20,16 +20,13 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 from __future__ import print_function, unicode_literals
 
-import logging
 import time
 
-from django.conf import settings
 from django.http import Http404
 from django.shortcuts import redirect
 from django.utils import timezone
 from django.views.decorators.http import require_GET
 
-from giraffe.models import Profile
 from github.utils import (
     get_auth_url,
     get_github_primary_email,
@@ -39,12 +36,15 @@ from github.utils import (
     get_github_repos,
 )
 
+
 @require_GET
 def github_callback(request):
-    """Handle the Github authentication callback."""
+    """
+    Handle the Github authentication callback.
+    """
     # Get request parameters to handle authentication and the redirect.
-    code = request.GET.get('code', None)
-    redirect_uri = request.GET.get('redirect_uri')
+    code = request.GET.get("code", None)
+    redirect_uri = request.GET.get("redirect_uri")
 
     if not code or not redirect_uri:
         raise Http404
@@ -52,7 +52,7 @@ def github_callback(request):
     # Get OAuth token and github user data.
     access_token = get_github_user_token(code)
     github_user_data = get_github_user_data(access_token)
-    handle = github_user_data.get('login')
+    handle = github_user_data.get("login")
     github_repos = get_github_repos(access_token)
 
     if handle:
@@ -67,12 +67,12 @@ def github_callback(request):
 
         # Update the user's session with handle and email info.
         session_data = {
-            'handle': handle,
-            'user_repos': github_repos,
-            'email': get_github_primary_email(access_token),
-            'access_token': access_token,
-            'name': github_user_data.get('name', None),
-            'access_token_last_validated': timezone.now().isoformat(),
+            "handle": handle,
+            "user_repos": github_repos,
+            "email": get_github_primary_email(access_token),
+            "access_token": access_token,
+            "name": github_user_data.get("name", None),
+            "access_token_last_validated": timezone.now().isoformat(),
         }
         for k, v in session_data.items():
             request.session[k] = v
@@ -84,35 +84,38 @@ def github_callback(request):
         #     metadata={},
         #     )
 
-
     response = redirect(redirect_uri)
-    response.set_cookie('last_github_auth_mutation', int(time.time()))
+    response.set_cookie("last_github_auth_mutation", int(time.time()))
     return response
 
 
 @require_GET
 def github_authentication(request):
-    """Handle Github authentication."""
-    redirect_uri = request.GET.get('redirect_uri', '/')
+    """
+    Handle Github authentication.
+    """
+    redirect_uri = request.GET.get("redirect_uri", "/")
 
-    if not request.session.get('access_token'):
+    if not request.session.get("access_token"):
         return redirect(get_auth_url(redirect_uri))
 
     response = redirect(redirect_uri)
-    response.set_cookie('last_github_auth_mutation', int(time.time()))
+    response.set_cookie("last_github_auth_mutation", int(time.time()))
     return response
 
 
 def github_logout(request):
-    """Handle Github logout."""
-    access_token = request.session.pop('access_token', '')
-    handle       = request.session.pop('handle', '')
-    user_repos = request.session.pop('user_repos', '')
-    redirect_uri = request.GET.get('redirect_uri', '/')
+    """
+    Handle Github logout.
+    """
+    access_token = request.session.pop("access_token", "")
+    request.session.pop("handle", "")
+    request.session.pop("user_repos", "")
+    redirect_uri = request.GET.get("redirect_uri", "/")
 
     if access_token:
         revoke_token(access_token)
-        request.session.pop('access_token_last_validated')
+        request.session.pop("access_token_last_validated")
         # Profile.objects.filter(handle=handle).update(github_access_token='')
 
         # # record a useraction for this
@@ -125,5 +128,5 @@ def github_logout(request):
 
     request.session.modified = True
     response = redirect(redirect_uri)
-    response.set_cookie('last_github_auth_mutation', int(time.time()))
+    response.set_cookie("last_github_auth_mutation", int(time.time()))
     return response
