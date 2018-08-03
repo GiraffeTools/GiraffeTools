@@ -15,6 +15,8 @@ services:
       - "35729:35729" # django live reload server
 
   # coala is the 'linter', checking coding standard consistency
+  # Before you commit, run 'docker-compose run coala' to automatically fix all
+  # stylistic inconsistencies! :)
   coala:
     image: nemaniarjun/coala-docker-updated
     command: coala
