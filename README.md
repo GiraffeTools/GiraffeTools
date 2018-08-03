@@ -30,6 +30,7 @@ This is similar in usage to for example [GitPitch](https://gitpitch.com), which 
 * Code execution integration, via, e.g., Amazon
 * Analysis preregistration
 * [DOI](https://www.doi.org) (persistent identifiers) for analysis workflow
+* Analysis presentations along the lines of reaveal.js
 * [Your input here!]
 
 ## Development
