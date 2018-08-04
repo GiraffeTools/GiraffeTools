@@ -7,6 +7,8 @@ import $ from 'jquery';
 
 import nodeData from '../../static/assets/nipype.json';
 import ItemTypes from './itemTypes';
+import  PanZoomView from '../panzoom/PanZoomView';
+
 import Links from './links';
 import Nodes from './nodes';
 import { loadPorkFile } from '../utils/loadPorkFile';
@@ -158,6 +160,7 @@ class Canvas extends React.Component {
 
     return connectDropTarget(
       <div
+			  id="maincanvas"
         className="canvas"
         onDragOver={this.allowDrop}
         onClick={this.clickCanvas}
@@ -166,17 +169,15 @@ class Canvas extends React.Component {
         {nodes.length == 0 ? (<h4 className="text-center" id="placeholder">Drag your nodes here!</h4>) : ''}
 				{/* #TODO replace this container, issue #73 */}
 
-				<PinchView>
+				<PanZoomView>
 					<div
 						id="mainSurface"
 					>
 	          <Nodes nodes={nodes} />
 						<Links links={links} />
 					</div>
-				</PinchView>
+				</PanZoomView>
 
-				<ZoomIn />
-				<ZoomOut />
       </div>,
     );
   }
