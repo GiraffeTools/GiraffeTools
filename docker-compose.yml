@@ -21,3 +21,6 @@ services:
     working_dir: /code
     volumes:
       - .:/code
+      # this may not work on windows, need to think of a workaround
+      # this will speed up multiple runs by a LOT
+      - /tmp/coala:/cache
