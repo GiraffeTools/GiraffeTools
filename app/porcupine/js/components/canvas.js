@@ -72,13 +72,22 @@ class Canvas extends React.Component {
   }
 
   componentWillMount() {
-    if (jsonFile) {
+    if (ConfigError) {
+      console.log(ConfigError);
+    } else if (jsonFile) {
       $.getJSON(
         jsonFile,
         function(result) {
           this.loadFromJson(result);
         }.bind(this)
-      );
+      )
+        .done(function() {
+          console.log("Porcupine Config file loaded from URL");
+        })
+        .fail(function() {
+          console.log("Cannot load Porcupine Config file");
+          this.setPercent(-1);
+        });
     }
   }
 
@@ -89,16 +98,28 @@ class Canvas extends React.Component {
     //pass by reference and fill them in the load functions
     let nodes = [];
     let links = [];
-    loadPorkFile(json, nodes, links, this.setPercent);
-
+    try {
+      loadPorkFile(json, nodes, links, this.setPercent);
+    } catch (err) {
+      console.log(
+        "Error reading Porcupine Config file! Either data is missing or format is incorrect"
+      );
+      this.setPercent(-1);
+    }
     clearDatabase();
-    nodes.forEach(node => {
-      addNode(node);
-      this.props.repositionPorts(node);
-    });
-    links.forEach(link => {
-      addLink(link);
-    });
+    try {
+      nodes.forEach(node => {
+        addNode(node);
+        this.props.repositionPorts(node);
+      });
+      links.forEach(link => {
+        addLink(link);
+      });
+    } catch (err) {
+      console.log(
+        "Error while adding Link or Node to Canvas, Check Porcupine Config file "
+      );
+    }
   }
 
   componentDidUpdate() {
