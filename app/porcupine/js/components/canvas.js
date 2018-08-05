@@ -151,30 +151,27 @@ class Canvas extends React.Component {
     }
 
     return connectDropTarget(
-      <div
-        className="canvas"
-        onDragOver={this.allowDrop}
-        onClick={this.clickCanvas}
-      >
-        {/* {errors} */}
-        {nodes.length == 0 ? (
-          <h4 className="text-center" id="placeholder">
-            Drag your nodes here!
-          </h4>
-        ) : (
-          ""
-        )}
-        {/* #TODO replace this container, issue #73 */}
+      <div className="view-wrapper" ref={el => (this.viewWrapper = el)}>
+        <svg className="graph mainSurface">
+          {/*
+          <BackgroundPattern
+            gridSpacing={gridSpacing}
+            gridDotSize={gridDotSize}
+          />
+*/}
+          <Nodes nodes={nodes} />
+          {/* <Links links={links} /> */}
+          {/*
+          <g className="view" ref={(el) => (this.view = el)}>
+            <g className="entities" ref={(el) => (this.entities = el)} />
+          </g>
+        <div className="graph-controls-wrapper" />
+*/}
+        </svg>
 
-        <PinchView>
-          <div id="mainSurface">
-            <Nodes nodes={nodes} />
-            <Links links={links} />
-          </div>
-        </PinchView>
-
-        <ZoomIn />
-        <ZoomOut />
+        {/*
+      <div className="graph-controls-wrapper" />
+*/}
       </div>
     );
   }
