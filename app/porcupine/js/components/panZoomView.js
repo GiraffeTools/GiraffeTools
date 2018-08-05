@@ -73,7 +73,7 @@ class PanZoomView extends React.Component {
     if(e.deltaY < 0)
       scaleToApply = 1.25;
     else
-      scaleToApply = 0.75;
+      scaleToApply = 0.8;
 
     this.applyZoom(mousePos, scaleToApply);
   }
@@ -135,30 +135,37 @@ class PanZoomView extends React.Component {
     if(e.key=='+'||e.key=='=')
       this.applyZoom(center, 1.25);
     else if(e.key=='-')
-      this.applyZoom(center, 0.75);
+      this.applyZoom(center, 0.8);
   }
 
   render() {
 		const { children } = this.props;
+
+    const {
+      zoomIn,
+      zoomOut,
+      zoomLevel,
+    } = this.props;
+
     return (
       <div>
         <div id="panview" style={this.getContentStyle()} onWheel={(e) => this.wheel(e)} onMouseDown={(e) => this.mousedown(e)} onMouseMove={(e) => this.mousemove(e)}>
-			     {children}
-          </div>
-          <div id='icon-plus' className="canvas-icon">
-           <p>Press</p>
-           <button className="btn btn-default text-center" onClick={(e) => this.clickZoomButton(e,1.25)}>
-             <span aria-hidden="true">+</span>
-             </button>
-           </div>
+			    {children}
+        </div>
 
-           <div id='icon-minus' className="canvas-icon">
-             <p>Press</p>
-             <button className="btn btn-default text-center" onClick={(e) => this.clickZoomButton(e,0.75)}>
-                 <span aria-hidden="true">-</span>
-             </button>
-           </div>
+        <div id='icon-plus' className="canvas-icon">
+          <p>Press</p>
+          <button className="btn btn-default text-center" onClick={(e) => this.clickZoomButton(e,1.25)}>
+            <span aria-hidden="true">+</span>
+          </button>
+        </div>
 
+        <div id='icon-minus' className="canvas-icon">
+          <p>Press</p>
+          <button className="btn btn-default text-center" onClick={(e) => this.clickZoomButton(e,0.8)}>
+            <span aria-hidden="true">-</span>
+          </button>
+        </div>
       </div>
     );
   }

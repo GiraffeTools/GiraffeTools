@@ -1,40 +1,18 @@
 import { v4 } from 'node-uuid';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { PinchView } from 'react-pinch-zoom-pan';
 import { DropTarget } from 'react-dnd';
 import $ from 'jquery';
 
 import nodeData from '../../static/assets/nipype.json';
 import ItemTypes from './itemTypes';
-import  PanZoomView from '../panzoom/PanZoomView';
+import PanZoomViewContainer from '../components/panZoomView';
 
 import Links from './links';
 import Nodes from './nodes';
 import { loadPorkFile } from '../utils/loadPorkFile';
 
 
-const ZoomIn = () => {
-	return (
-		<div id='icon-plus' className="canvas-icon">
-			<p>Press</p>
-			<button className="btn btn-default text-center">
-				<span aria-hidden="true">+</span>
-			</button>
-		</div>
-	);
-}
-
-const ZoomOut = () => {
-	return(
-		<div id='icon-minus' className="canvas-icon">
-			<p>Press</p>
-			<button className="btn btn-default text-center">
-				<span aria-hidden="true">-</span>
-			</button>
-		</div>
-	);
-}
 
 const boxTarget = {
 	drop(props, monitor, component) {
@@ -94,7 +72,11 @@ class Canvas extends React.Component {
   }
 
   drop(item, offset) {
-		const { addNode, addPortToNode } = this.props;
+		const {
+      addNode,
+      addPortToNode,
+      repositionPorts
+    } = this.props;
 
     this.placeholder = false;
 		const rec = document.getElementById('main').getBoundingClientRect();
@@ -169,14 +151,14 @@ class Canvas extends React.Component {
         {nodes.length == 0 ? (<h4 className="text-center" id="placeholder">Drag your nodes here!</h4>) : ''}
 				{/* #TODO replace this container, issue #73 */}
 
-				<PanZoomView>
+				<PanZoomViewContainer>
 					<div
 						id="mainSurface"
 					>
 	          <Nodes nodes={nodes} />
 						<Links links={links} />
 					</div>
-				</PanZoomView>
+				</PanZoomViewContainer>
 
       </div>,
     );

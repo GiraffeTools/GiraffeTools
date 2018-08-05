@@ -1,12 +1,26 @@
+const defaultState = {
+  scene: {
+    selectedNode: null,
+    hoveredNode: null,
+    linkInConstruction: null,
+    zoomLevel: 1,
+  },
+  ui: {
+    showSidebar: false,
+    showCodeEditor: false,
+    loadingPercent: -1
+  }
+};
+
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state');
     if (serializedState === null) {
-      return undefined;
+      return defaultState;
     }
     return JSON.parse(serializedState);
   } catch (err) {
-    return undefined;
+    return defaultState;
   }
 }
 

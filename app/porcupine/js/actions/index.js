@@ -17,6 +17,8 @@ import {
   SET_MOUSE_STATE,
   CLEAR_DATABASE,
   TOGGLE_CODEEDITOR,
+  ZOOM_IN,
+  ZOOM_OUT,
 } from './actionTypes';
 
 export const clearDatabase = () => ({
@@ -118,6 +120,12 @@ export const clickNode = (nodeId) => ({
 });
 export const clickScene = () => ({
   type: CLICK_SCENE,
+});
+export const zoomIn  = () => ({
+  type: ZOOM_IN,
+});
+export const zoomOut = () => ({
+  type: ZOOM_OUT,
 });
 // export const setMouseState = (props) => ({
 //   type: SET_MOUSE_STATE,

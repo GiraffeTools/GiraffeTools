@@ -15,9 +15,9 @@ export default function scene(state = [], action) {
   const { type, payload } = action;
   switch (type) {
     case ZOOM_IN:
-      return state;
+      return {state, zoomLevel: state.zoomLevel *= 1.25};
     case ZOOM_OUT:
-      return state;
+      return {state, zoomLevel: state.zoomLevel *= 0.8};
     case HOVER_NODE:
       return {...state, hoveredNode: payload.nodeId};
     case CLICK_NODE:
