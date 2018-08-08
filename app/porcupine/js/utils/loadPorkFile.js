@@ -1,22 +1,23 @@
 import { v4 } from "node-uuid";
 import nodeData from "../../static/assets/nipype.json";
 
-export const loadPorkFile = (json, nodes, links) => {
+export const loadPorkFile = (json, nodes, links, setPercent) => {
   switch (json["version"]) {
     case "1":
-      loadingVersion1(json, nodes, links);
+      loadingVersion1(json, nodes, links, setPercent);
       break;
     case "2":
       // leaving room for future implementations
       break;
     default:
-      loadingVersion1(json, nodes, links);
+      loadingVersion1(json, nodes, links, setPercent);
       break;
   }
 };
 
-const loadingVersion1 = (json, nodes, links) => {
+const loadingVersion1 = (json, nodes, links, setPercent) => {
   // load nodes
+  setPercent(20);
   json["nodes"].forEach(node => {
     // This block is only for obtaining the colour:
     let category = node["category"].splice(1);
@@ -51,6 +52,7 @@ const loadingVersion1 = (json, nodes, links) => {
     });
 
     nodes.push(newNode);
+    setPercent(20 + (40 * nodes.length) / json["nodes"].length);
   });
 
   // load links
@@ -61,5 +63,6 @@ const loadingVersion1 = (json, nodes, links) => {
       portTo: link.to
     };
     links.push(newLink);
+    setPercent(60 + (40 * links.length) / json["links"].length);
   });
 };

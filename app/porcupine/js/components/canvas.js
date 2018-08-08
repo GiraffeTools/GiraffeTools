@@ -5,6 +5,9 @@ import { PinchView } from "react-pinch-zoom-pan";
 import { DropTarget } from "react-dnd";
 import $ from "jquery";
 
+import ProgressBar from "react-progress-bar-plus";
+import "react-progress-bar-plus/lib/progress-bar.css";
+
 import nodeData from "../../static/assets/nipype.json";
 import ItemTypes from "./itemTypes";
 import Links from "./links";
@@ -47,6 +50,19 @@ class Canvas extends React.Component {
     this.drop = this.drop.bind(this);
     this.clickCanvas = this.clickCanvas.bind(this);
     this.loadFromJson = this.loadFromJson.bind(this);
+    this.setPercent = this.setPercent.bind(this);
+  }
+
+  setPercent(percent) {
+    if (percent >= 100) {
+      this.props.updateLoadingPercent(99.9);
+      // Always leave percent at -1
+      this.timeout = setTimeout(() => {
+        this.props.updateLoadingPercent(-1);
+      }, 400);
+    } else {
+      this.props.updateLoadingPercent(percent);
+    }
   }
 
   componentDidMount() {
@@ -56,29 +72,54 @@ class Canvas extends React.Component {
   }
 
   componentWillMount() {
-    $.getJSON(
-      jsonFile,
-      function(result) {
-        this.loadFromJson(result);
-      }.bind(this)
-    );
+    if (ConfigError) {
+      console.log(ConfigError);
+    } else if (jsonFile) {
+      $.getJSON(
+        jsonFile,
+        function(result) {
+          this.loadFromJson(result);
+        }.bind(this)
+      )
+        .done(function() {
+          console.log("Porcupine Config file loaded from URL");
+        })
+        .fail(function() {
+          console.log("Cannot load Porcupine Config file");
+          this.setPercent(-1);
+        });
+    }
   }
 
   loadFromJson(json) {
+    this.setPercent(10); // Loading started!
+
     const { addNode, addLink, clearDatabase } = this.props;
     //pass by reference and fill them in the load functions
     let nodes = [];
     let links = [];
-    loadPorkFile(json, nodes, links);
-
+    try {
+      loadPorkFile(json, nodes, links, this.setPercent);
+    } catch (err) {
+      console.log(
+        "Error reading Porcupine Config file! Either data is missing or format is incorrect"
+      );
+      this.setPercent(-1);
+    }
     clearDatabase();
-    nodes.forEach(node => {
-      addNode(node);
-      this.props.repositionPorts(node);
-    });
-    links.forEach(link => {
-      addLink(link);
-    });
+    try {
+      nodes.forEach(node => {
+        addNode(node);
+        this.props.repositionPorts(node);
+      });
+      links.forEach(link => {
+        addLink(link);
+      });
+    } catch (err) {
+      console.log(
+        "Error while adding Link or Node to Canvas, Check Porcupine Config file "
+      );
+    }
   }
 
   componentDidUpdate() {
@@ -156,6 +197,11 @@ class Canvas extends React.Component {
         onDragOver={this.allowDrop}
         onClick={this.clickCanvas}
       >
+        <ProgressBar
+          percent={this.props.loadingPercent}
+          onTop={true}
+          spinner={"right"}
+        />
         {/* {errors} */}
         {nodes.length == 0 ? (
           <h4 className="text-center" id="placeholder">

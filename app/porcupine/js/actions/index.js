@@ -11,6 +11,7 @@ import {
   REMOVE_LINK,
   START_LINK,
   TOGGLE_SIDEBAR,
+  UPDATE_LOADING_PERCENT,
   HOVER_NODE,
   CLICK_NODE,
   CLICK_SCENE,
@@ -23,7 +24,12 @@ export const clearDatabase = () => ({
   type: CLEAR_DATABASE
 });
 
-///// SIDEBAR /////
+///// LOADING BAR /////
+export const updateLoadingPercent = percent => ({
+  type: UPDATE_LOADING_PERCENT,
+  percent
+});
+
 export const toggleSidebar = () => ({
   type: TOGGLE_SIDEBAR
 });
