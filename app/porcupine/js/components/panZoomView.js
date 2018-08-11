@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 class PanZoomView extends React.Component {
@@ -12,23 +12,24 @@ class PanZoomView extends React.Component {
   }
 
   componentDidMount() {
-    $("#panview").css({"height": `${this.props.height}`});
+    // const rec = document.getElementById('mainCanvas').getBoundingClientRect();
+    // console.log(rec.height);
+    // $("#panview").css({"height": `${rec.height}`});
 
     //Disable scrolling
     $("#panview").bind("mousewheel DOMMouseScroll", function(e) {
       var scrollTo = null;
+      if (e.type == 'mousewheel') {
+        scrollTo = (e.originalEvent.wheelDelta * -1);
+      }
+      else if (e.type == 'DOMMouseScroll') {
+        scrollTo = 40 * e.originalEvent.detail;
+      }
 
-         if (e.type == 'mousewheel') {
-             scrollTo = (e.originalEvent.wheelDelta * -1);
-         }
-         else if (e.type == 'DOMMouseScroll') {
-             scrollTo = 40 * e.originalEvent.detail;
-         }
-
-         if (scrollTo) {
-             e.preventDefault();
-             $(this).scrollTop(scrollTo + $(this).scrollTop());
-         }
+      if (scrollTo) {
+        e.preventDefault();
+        $(this).scrollTop(scrollTo + $(this).scrollTop());
+      }
     }
   );
 
@@ -57,11 +58,12 @@ class PanZoomView extends React.Component {
 
     const { x, y, width, height } = this.props;
     let translation = this.relativePos(position, { x, y, width, height });
-    translation.x = -translation.x*(scaleToApply-1);
-    translation.y = -translation.y*(scaleToApply-1);
 
-    translation.x = translation.x+prevTranslation.x*scaleToApply;
-    translation.y = translation.y+prevTranslation.y*scaleToApply;
+    translation.x = -translation.x * (scaleToApply - 1);
+    translation.y = -translation.y * (scaleToApply - 1);
+
+    translation.x = translation.x + prevTranslation.x * scaleToApply;
+    translation.y = translation.y + prevTranslation.y * scaleToApply;
 
     let newScale = prevScale*scaleToApply;
 
@@ -72,7 +74,10 @@ class PanZoomView extends React.Component {
   }
 
   handleZoom(e) {
-    let mousePos = {x: e.clientX, y: e.clientY };
+    let mousePos = {
+      x: e.clientX,
+      y: e.clientY,
+    };
     let scaleToApply;
     if(e.deltaY < 0)
       scaleToApply = 1.25;
@@ -155,14 +160,14 @@ class PanZoomView extends React.Component {
     } = this.props;
 
     return (
-      <div>
+      <Fragment>
         <div id="panview"
           style={this.getContentStyle()}
           onWheel={(e) => this.wheel(e)}
           onMouseDown={(e) => this.mousedown(e)}
           onMouseMove={(e) => this.mousemove(e)}
         >
-			    {children}
+          {children}
         </div>
 
         <div id='icon-plus' className="canvas-icon">
@@ -178,7 +183,7 @@ class PanZoomView extends React.Component {
             <span aria-hidden="true">-</span>
           </button>
         </div>
-      </div>
+      </Fragment>
     );
   }
 }

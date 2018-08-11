@@ -14,7 +14,6 @@ import Nodes from './nodes';
 import { loadPorkFile } from '../utils/loadPorkFile';
 
 
-
 const boxTarget = {
 	drop(props, monitor, component) {
 		component.drop(monitor.getItem(), monitor.getClientOffset())
@@ -35,21 +34,12 @@ class Canvas extends React.Component {
     this.clickCanvas  = this.clickCanvas.bind(this);
     this.loadFromJson = this.loadFromJson.bind(this);
 
-    this.state = {
-      width: null,
-      height: null,
+		this.state = {
+			width: null,
+			height: null,
 			x: null,
 			y: null,
-    };
-  }
-
-  componentDidMount() {
-		// #TODO remove/replace zoomFunctions in issue #73
-		// setBoundingBox();
-    // this.mouseState = zoomFunctions();
-    this.element = ReactDOM.findDOMNode(this);
-    this.setState(getDimensions(this.element));
-    window.addEventListener('resize', this.onResize);
+		};
   }
 
   componentWillMount() {
@@ -58,13 +48,20 @@ class Canvas extends React.Component {
     }.bind(this));
   }
 
+  componentDidMount() {
+    this.element = ReactDOM.findDOMNode(this);
+    this.setState(getDimensions(this.element));
+    window.addEventListener('resize', this.onResize);
+  }
+
   loadFromJson(json) {
     const {
       addNode,
       addLink,
       clearDatabase
     } = this.props;
-  //pass by reference and fill them in the load functions
+
+  	//pass by reference and fill them in the load functions
     let nodes = [];
     let links = [];
     loadPorkFile(json, nodes, links);
@@ -159,7 +156,7 @@ class Canvas extends React.Component {
     return connectDropTarget(
 			// Only native element nodes can now be passed to React DnD, so div first
       <div
-			  id="maincanvas"
+			  id="mainCanvas"
         className="canvas"
         onDragOver={this.allowDrop}
         onClick={this.clickCanvas}
@@ -180,7 +177,6 @@ class Canvas extends React.Component {
 						<Links links={links} />
 					</div>
 				</PanZoomViewContainer>
-
       </div>,
     );
   }
