@@ -1,6 +1,7 @@
 import { v4 } from 'node-uuid';
 import PropTypes from 'prop-types';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { DropTarget } from 'react-dnd';
 import $ from 'jquery';
 
@@ -21,6 +22,11 @@ const boxTarget = {
 	},
 }
 
+const getDimensions = (element) => {
+  const { width, height } = element.getBoundingClientRect();
+  return { width, height };
+};
+
 class Canvas extends React.Component {
   constructor(props) {
     super(props);
@@ -28,12 +34,22 @@ class Canvas extends React.Component {
     this.drop         = this.drop.bind(this);
     this.clickCanvas  = this.clickCanvas.bind(this);
     this.loadFromJson = this.loadFromJson.bind(this);
+
+    this.state = {
+      width: null,
+      height: null,
+			x: null,
+			y: null,
+    };
   }
 
   componentDidMount() {
 		// #TODO remove/replace zoomFunctions in issue #73
 		// setBoundingBox();
     // this.mouseState = zoomFunctions();
+    this.element = ReactDOM.findDOMNode(this);
+    this.setState(getDimensions(this.element));
+    window.addEventListener('resize', this.onResize);
   }
 
   componentWillMount() {
@@ -141,6 +157,7 @@ class Canvas extends React.Component {
 		}
 
     return connectDropTarget(
+			// Only native element nodes can now be passed to React DnD, so div first
       <div
 			  id="maincanvas"
         className="canvas"
@@ -151,7 +168,13 @@ class Canvas extends React.Component {
         {nodes.length == 0 ? (<h4 className="text-center" id="placeholder">Drag your nodes here!</h4>) : ''}
 				{/* #TODO replace this container, issue #73 */}
 
-				<PanZoomViewContainer>
+				<PanZoomViewContainer
+					width={this.state.width}
+					height={this.state.height}
+					x={this.state.x}
+					y={this.state.y}
+				>
+					{/* Expected a single ReactElement as child*/}
 					<div>
 						<Nodes nodes={nodes} />
 						<Links links={links} />

@@ -12,8 +12,7 @@ class PanZoomView extends React.Component {
   }
 
   componentDidMount() {
-    const rec = document.getElementById('maincanvas').getBoundingClientRect();
-    $("#panview").css({"height": `${rec.height}`});
+    $("#panview").css({"height": `${this.props.height}`});
 
     //Disable scrolling
     $("#panview").bind("mousewheel DOMMouseScroll", function(e) {
@@ -40,8 +39,14 @@ class PanZoomView extends React.Component {
 
 
   relativePos(pos, canvasRect) {
-    let center = { x:canvasRect.x+0.5*canvasRect.width, y:canvasRect.y+0.5*canvasRect.height }
-    let newp = { x:pos.x-center.x, y:(pos.y-center.y) }
+    let center = {
+      x: canvasRect.x + 0.5 * canvasRect.width,
+      y: canvasRect.y + 0.5 * canvasRect.height,
+    };
+    let newp = {
+      x: pos.x - center.x,
+      y: pos.y - center.y,
+    };
 
     return newp;
   }
@@ -50,9 +55,8 @@ class PanZoomView extends React.Component {
     const prevScale = this.state.scale;
     const prevTranslation = this.state.translation;
 
-    let rect = document.getElementById('maincanvas').getBoundingClientRect();
-
-    let translation = this.relativePos(position, rect);
+    const { x, y, width, height } = this.props;
+    let translation = this.relativePos(position, { x, y, width, height });
     translation.x = -translation.x*(scaleToApply-1);
     translation.y = -translation.y*(scaleToApply-1);
 
@@ -107,9 +111,10 @@ class PanZoomView extends React.Component {
 
   clickZoomButton(e, scale)
   {
-    let rect = document.getElementById('maincanvas').getBoundingClientRect();
-    let center = { x:rect.x+0.5*rect.width, y:rect.y+0.5*rect.height }
-
+    let center = {
+      x: this.props.x + 0.5 * this.props.width,
+      y: this.props.y + 0.5 * this.props.height,
+    };
     this.applyZoom(center, scale);
   }
 
@@ -130,8 +135,10 @@ class PanZoomView extends React.Component {
   keypress(e)
   {
     console.log(e);
-    let rect = document.getElementById('maincanvas').getBoundingClientRect();
-    let center = { x:rect.x+0.5*rect.width, y:rect.y+0.5*rect.height }
+    let center = {
+      x: this.props.x + 0.5 * this.props.width,
+      y: this.props.y + 0.5 * this.props.height,
+    };
     if(e.key=='+'||e.key=='=')
       this.applyZoom(center, 1.25);
     else if(e.key=='-')
@@ -149,7 +156,12 @@ class PanZoomView extends React.Component {
 
     return (
       <div>
-        <div id="panview" style={this.getContentStyle()} onWheel={(e) => this.wheel(e)} onMouseDown={(e) => this.mousedown(e)} onMouseMove={(e) => this.mousemove(e)}>
+        <div id="panview"
+          style={this.getContentStyle()}
+          onWheel={(e) => this.wheel(e)}
+          onMouseDown={(e) => this.mousedown(e)}
+          onMouseMove={(e) => this.mousemove(e)}
+        >
 			    {children}
         </div>
 
