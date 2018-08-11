@@ -152,10 +152,8 @@ class Canvas extends React.Component {
 				{/* #TODO replace this container, issue #73 */}
 
 				<PanZoomViewContainer>
-					<div
-						id="mainSurface"
-					>
-	          <Nodes nodes={nodes} />
+					<div>
+						<Nodes nodes={nodes} />
 						<Links links={links} />
 					</div>
 				</PanZoomViewContainer>
