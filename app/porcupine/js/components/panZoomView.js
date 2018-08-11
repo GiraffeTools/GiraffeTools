@@ -1,3 +1,4 @@
+import ReactDOM from 'react-dom';
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
@@ -10,34 +11,6 @@ class PanZoomView extends React.Component {
        translation:{ x:0, y: 0 },
     };
   }
-
-  componentDidMount() {
-    // const rec = document.getElementById('mainCanvas').getBoundingClientRect();
-    // console.log(rec.height);
-    // $("#panview").css({"height": `${rec.height}`});
-
-    //Disable scrolling
-    $("#panview").bind("mousewheel DOMMouseScroll", function(e) {
-      var scrollTo = null;
-      if (e.type == 'mousewheel') {
-        scrollTo = (e.originalEvent.wheelDelta * -1);
-      }
-      else if (e.type == 'DOMMouseScroll') {
-        scrollTo = 40 * e.originalEvent.detail;
-      }
-
-      if (scrollTo) {
-        e.preventDefault();
-        $(this).scrollTop(scrollTo + $(this).scrollTop());
-      }
-    }
-  );
-
-		// #TODO remove/replace zoomFunctions in issue #73
-		// setBoundingBox();
-    // this.mouseState = zoomFunctions();
-  }
-
 
   relativePos(pos, canvasRect) {
     let center = {
@@ -163,7 +136,7 @@ class PanZoomView extends React.Component {
       <Fragment>
         <div id="panview"
           style={this.getContentStyle()}
-          onWheel={(e) => this.wheel(e)}
+          onWheel={(e) => {e.preventDefault(); this.wheel(e)}}
           onMouseDown={(e) => this.mousedown(e)}
           onMouseMove={(e) => this.mousemove(e)}
         >
