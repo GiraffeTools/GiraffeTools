@@ -28,6 +28,12 @@ SLACK_API_TOKEN = os.environ["SLACK_API_TOKEN"]
 
 
 WEBPACK_LOADER = {
+    "GIRAFFE": {
+        "CACHE": not DEBUG,
+        "BUNDLE_DIR_NAME": "webpack_bundles/",  # must end with slash
+        "STATS_FILE": os.path.join(BASE_DIR,
+                                   "../webpack/webpack-stats-prod.json"),
+    },
     "PORCUPINE": {
         "CACHE": not DEBUG,
         "BUNDLE_DIR_NAME": "webpack_bundles/",  # must end with slash

@@ -17,7 +17,7 @@ def index(request):
     context = {
         "github_handle": request.session.get("handle"),
     }
-    return TemplateResponse(request, "index.html", context)
+    return TemplateResponse(request, "giraffe.html", context)
 
 
 def user(request, ghuser=""):
