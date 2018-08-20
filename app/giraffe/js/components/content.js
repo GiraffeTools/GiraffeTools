@@ -28,7 +28,7 @@ class Content extends React.Component {
             With Porcupine, you can visually build your pipeline!
           </div>
           <div class="col text-center">
-            <a class="btn btn-lg btn-warning" role="button" href="{% url "/porcupine" %}">Get started!</a>
+            <a class="btn btn-lg btn-warning" role="button" href="/porcupine">Get started!</a>
           </div>
         </div>
 
