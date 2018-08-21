@@ -3,7 +3,7 @@ import ReactTestUtils from "react-dom/test-utils";
 import TestBackend from "react-dnd-test-backend";
 import { DragDropContext } from "react-dnd";
 import { shallow, mount } from "enzyme";
-import PaneElement from "../paneElement";
+import PaneElement from "../components/paneElement";
 
 /**
  * Wraps a component into a DragDropContext that uses the TestBackend.
