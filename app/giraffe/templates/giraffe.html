@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load render_bundle from webpack_loader %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static "css/giraffe.css" %}"/>
+<script src="{% static "jquery.min.js" %}"></script>
+{% endblock %}
+
+{% block body %}
+  <div id="giraffe"></div>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+$.getJSON( "https://api.github.com/repos/TimVanMourik/GiraffeTools/contributors", function (data) {
+  var users = [];
+  $.each(data, function(key, val) {
+    users.push( `<li>
+                    <img class="avatar-image" src=${val.avatar_url} /><br />
+                    <a href=${val.html_url} target=_blank> <b>@${val.login}</b></a>
+                </li>`);
+  });
+
+  $( "<ul/>", {
+    "class": "contributor-list",
+    html: users.join( "" )
+  }).appendTo( "#contributors" );
+});
+</script>
+
+{% render_bundle 'giraffe' 'js' 'GIRAFFE' %}
+{% endblock %}
