@@ -1,20 +1,25 @@
 import React from "react";
 
-const Contributor = (contributor) => {
-  console.log(contributor);
+import { shuffle } from "../utils/utils";
+
+const Contributor = contributor => {
   return (
     <li>
-      <img className="avatar-image" src={contributor.avatar_url} /><br />
-      <a href={contributor.html_url} target="_blank"> <b>@{contributor.login}</b></a>
+      <img className="avatar-image" src={contributor.avatar_url} />
+      <br />
+      <a href={contributor.html_url} target="_blank">
+        {" "}
+        <b>@{contributor.login}</b>
+      </a>
     </li>
-  )
+  );
 };
 
 class Contributors extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      contributors: null,
+      contributors: null
     };
   }
 
@@ -32,20 +37,16 @@ class Contributors extends React.Component {
         <h3>All contributors</h3>
         <div className="card mb-12 text-center">
           <div id="contributors" />
-            <ul className="contributor-list">
-            {
-              contributors && contributors.map(contributor => (
-                <Contributor
-                  key={contributor.id}
-                  {...contributor}
-                />
-              ))
-            }
+          <ul className="contributor-list">
+            {contributors &&
+              shuffle(contributors).map(contributor => (
+                <Contributor key={contributor.id} {...contributor} />
+              ))}
           </ul>
         </div>
       </div>
-    )
+    );
   }
-};
+}
 
 export default Contributors;

@@ -12,7 +12,6 @@ import Thanks from "./thanks.js";
 import Tools from "./tools.js";
 import WhyGiraffe from "./whyGiraffe.js";
 
-
 class Content extends React.Component {
   constructor(props) {
     super(props);

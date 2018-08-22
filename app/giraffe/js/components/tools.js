@@ -6,11 +6,10 @@ const Tools = () => (
       <div className="col text-center">
         <h1>Giraffe</h1>
         <h4 className="">
-          Graphical Interface for Reproducible Analysis For workFlow
-          Experiments
+          Graphical Interface for Reproducible Analysis For workFlow Experiments
         </h4>
-        Giraffe tools are applications that make it easier to analyse all
-        kinds of data!
+        Giraffe tools are applications that make it easier to analyse all kinds
+        of data!
       </div>
       <div />
     </div>
@@ -22,11 +21,7 @@ const Tools = () => (
         With Porcupine, you can visually build your pipeline!
       </div>
       <div className="col text-center">
-        <a
-          className="btn btn-lg btn-warning"
-          role="button"
-          href="/porcupine"
-        >
+        <a className="btn btn-lg btn-warning" role="button" href="/porcupine">
           Get started!
         </a>
       </div>
