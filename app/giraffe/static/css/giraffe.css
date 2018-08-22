@@ -23,7 +23,7 @@
 	width: 45px;
 }
 
-#contributors li{
+.contributor-list li{
  display: inline;
  list-style-type: none;
  padding-right: 20px;
