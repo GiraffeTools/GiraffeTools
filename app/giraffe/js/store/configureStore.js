@@ -6,7 +6,8 @@ import { loadState, saveState } from "./localStorage";
 import giraffeApp from "../reducers";
 
 const configureStore = () => {
-  const persistedState = loadState();
+  // const persistedState = loadState();
+  const persistedState = {};
   const store = createStore(
     giraffeApp,
     persistedState,

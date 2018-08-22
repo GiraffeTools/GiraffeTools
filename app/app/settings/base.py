@@ -42,7 +42,6 @@ STATIC_PRECOMPILER_COMPILERS = (
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    # other finders..
     "static_precompiler.finders.StaticPrecompilerFinder",
 )
 
