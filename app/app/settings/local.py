@@ -31,6 +31,14 @@ SLACK_API_TOKEN = ""
 
 #
 WEBPACK_LOADER = {
+    "GIRAFFE": {
+        "CACHE": not DEBUG,
+        "BUNDLE_DIR_NAME": "webpack_bundles/",  # must end with slash
+        "STATS_FILE": os.path.join(BASE_DIR, "../webpack/webpack-stats.json"),
+        "POLL_INTERVAL": 0.1,
+        "TIMEOUT": None,
+        "IGNORE": [".+\.hot-update.js", ".+\.map"]
+    },
     "PORCUPINE": {
         "CACHE": not DEBUG,
         "BUNDLE_DIR_NAME": "webpack_bundles/",  # must end with slash

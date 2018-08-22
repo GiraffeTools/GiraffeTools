@@ -4,6 +4,7 @@ django-livereload-server
 django-webpack-loader
 djangorestframework==3.7.3
 django-settings-export
+django-static-precompiler[watch,libsass]
 gunicorn
 psycopg2-binary
 pydash
