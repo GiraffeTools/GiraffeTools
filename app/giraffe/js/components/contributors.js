@@ -33,10 +33,9 @@ class Contributors extends React.Component {
     const { contributors } = this.state;
 
     return (
-      <div className="container right">
+      <div className="container right" id="contributors" >
         <h3>All contributors</h3>
         <div className="card mb-12 text-center">
-          <div id="contributors" />
           <ul className="contributor-list">
             {contributors &&
               shuffle(contributors).map(contributor => (

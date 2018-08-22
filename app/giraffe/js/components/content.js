@@ -6,7 +6,7 @@ import ExplainerVideo from "./explainerVideo";
 import Footer from "./footer";
 import Hero from "./hero";
 import People from "./people";
-import RoadMap from "./roadmap";
+import Roadmap from "./roadmap";
 import Slack from "./slack";
 import Thanks from "./thanks";
 import Tools from "./tools";
@@ -23,7 +23,7 @@ class Content extends React.Component {
         <Hero />
         <Tools />
         <ExplainerVideo />
-        <RoadMap />
+        <Roadmap />
         <WhyGiraffe />
         <People />
         <Contributors />

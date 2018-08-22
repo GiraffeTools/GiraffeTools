@@ -18,9 +18,28 @@
   font-style: normal;
 }
 
+$primary-color: #F7A81C;
+$secondary-color: #FAE0A3;
+$tertiary-color: #F25226;
+
 .avatar-image{
 	height: 45px;
 	width: 45px;
+}
+
+#why-giraffe {
+  text-align: center;
+  background-color: white;
+}
+
+#people {
+  text-align: center;
+  background-color: $secondary-color;
+}
+
+#contributors {
+  text-align: center;
+  background-color: white;
 }
 
 .contributor-list li{
@@ -29,4 +48,19 @@
  padding-right: 20px;
  float: left;
  font-size: 0.8em;
+}
+
+#contact {
+  text-align: center;
+  background-color: $secondary-color;
+}
+
+#thanks {
+  text-align: center;
+  background-color: $primary-color;
+}
+
+#footer {
+  text-align:left;
+  background-color: white;
 }
