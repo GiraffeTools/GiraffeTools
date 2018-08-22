@@ -10,12 +10,12 @@ config.entry = {
   porcupine: [
     "webpack-dev-server/client?http://localhost:3000",
     "webpack/hot/only-dev-server",
-    path.resolve(__dirname, "../app/porcupine/js/index.js"),
+    path.resolve(__dirname, "../app/porcupine/js/index.js")
   ],
   giraffe: [
     "webpack-dev-server/client?http://localhost:3000",
     "webpack/hot/only-dev-server",
-    path.resolve(__dirname, "../app/giraffe/js/index.js"),
+    path.resolve(__dirname, "../app/giraffe/js/index.js")
   ]
 };
 

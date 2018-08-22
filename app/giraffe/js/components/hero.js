@@ -1,9 +1,5 @@
 import React from "react";
 
-
-const Hero = () => (
-  <div>
-  </div>
-);
+const Hero = () => <div />;
 
 export default Hero;

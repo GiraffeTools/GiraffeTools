@@ -3,9 +3,8 @@ import { createReducer } from "redux-orm";
 
 import ui from "./ui";
 
-
 const giraffeApp = combineReducers({
-  ui,
+  ui
 });
 
 export default giraffeApp;

@@ -1,5 +1,3 @@
-
-
 const ui = (state = {}, action) => {
   switch (action.type) {
     default:

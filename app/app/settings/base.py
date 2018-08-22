@@ -26,17 +26,24 @@ INSTALLED_APPS = [
 
 # This compiles the scss files to css
 STATIC_PRECOMPILER_COMPILERS = (
-    ('static_precompiler.compilers.libsass.SCSS', {
+    ("static_precompiler.compilers.libsass.SCSS", {
         "sourcemap_enabled": True,
         # "load_paths": [""],
         "precision": 8,
     }),
-    ('static_precompiler.compilers.libsass.SASS', {
+    ("static_precompiler.compilers.libsass.SASS", {
         "sourcemap_enabled": True,
         # "load_paths": [""],
         "precision": 8,
         "output_style": "compressed",
     }),
+)
+
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    # other finders..
+    "static_precompiler.finders.StaticPrecompilerFinder",
 )
 
 MIDDLEWARE = [

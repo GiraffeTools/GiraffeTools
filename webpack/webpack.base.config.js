@@ -7,7 +7,7 @@ module.exports = {
   context: __dirname,
   entry: {
     porcupine: path.resolve(__dirname, "../app/porcupine/js/index.js"),
-    giraffe: path.resolve(__dirname, "../app/giraffe/js/index.js"),
+    giraffe: path.resolve(__dirname, "../app/giraffe/js/index.js")
   },
 
   output: {
