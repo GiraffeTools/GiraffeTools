@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% load compile_static %}
+<!-- {% load compile_static %} -->
 {% load static %}
 {% load render_bundle from webpack_loader %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static "css/porcupine.scss"|compile %}"/>
+<link rel="stylesheet" href="{% static "css/porcupine.css" %}"/>
 {% endblock %}
 
 {% block body %}
