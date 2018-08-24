@@ -22,9 +22,9 @@ $primary-color: #F7A81C;
 $secondary-color: #FAE0A3;
 $tertiary-color: #F25226;
 
-.avatar-image{
-	height: 45px;
-	width: 45px;
+#roadmap {
+  text-align: center;
+  background-color: $secondary-color;
 }
 
 #why-giraffe {
@@ -48,6 +48,11 @@ $tertiary-color: #F25226;
  padding-right: 20px;
  float: left;
  font-size: 0.8em;
+}
+
+.avatar-image{
+	height: 45px;
+	width: 45px;
 }
 
 #contact {
