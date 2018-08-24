@@ -1,0 +1,14 @@
+setup:
+build:
+  languages:
+    - nodejs
+    - python
+  pre:
+    - cd app || exit
+    - python manage.py migrate
+    - python manage.py compilestatic
+  post:
+  packages:
+  config:
+run:
+  web: gunicorn app.wsgi
