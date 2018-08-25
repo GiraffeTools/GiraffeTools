@@ -1,3 +1,4 @@
 #!/bin/bash
 
-gunicorn app.app.wsgi
+cd app || exit
+gunicorn app.wsgi
