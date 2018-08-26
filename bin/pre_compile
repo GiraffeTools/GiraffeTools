@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd app || exit
+python manage.py compilestatic
