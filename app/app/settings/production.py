@@ -11,6 +11,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 # Setup instructions:
 # https://github.com/gitcoinco/web#setup-github-oauth2-app-integration
 
+ADMINS = [("admin", os.environ["ADMIN_EMAIL"])]
 GA_ID = os.environ["GA_ID"]
 GITHUB_CLIENT_ID = os.environ["GITHUB_CLIENT_ID"]
 GITHUB_CLIENT_SECRET = os.environ["GITHUB_CLIENT_SECRET"]
