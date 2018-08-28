@@ -18,15 +18,54 @@
   font-style: normal;
 }
 
-.avatar-image{
-	height: 45px;
-	width: 45px;
+$primary-color: #F7A81C;
+$secondary-color: #FAE0A3;
+$tertiary-color: #F25226;
+
+#roadmap {
+  text-align: center;
+  background-color: $secondary-color;
 }
 
-#contributors li{
+#why-giraffe {
+  text-align: center;
+  background-color: white;
+}
+
+#people {
+  text-align: center;
+  background-color: $secondary-color;
+}
+
+#contributors {
+  text-align: center;
+  background-color: white;
+}
+
+.contributor-list li{
  display: inline;
  list-style-type: none;
  padding-right: 20px;
  float: left;
  font-size: 0.8em;
+}
+
+.avatar-image{
+	height: 45px;
+	width: 45px;
+}
+
+#contact {
+  text-align: center;
+  background-color: $secondary-color;
+}
+
+#thanks {
+  text-align: center;
+  background-color: $primary-color;
+}
+
+#footer {
+  text-align:left;
+  background-color: white;
 }
