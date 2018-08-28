@@ -19,16 +19,28 @@
 }
 
 .container-fluid {
-   padding: 0px;
+  padding: 0px;
 }
 
+$text-color: #F25226;
 $primary-color: #F7A81C;
 $secondary-color: #FAE0A3;
 $tertiary-color: #F25226;
+$quaternary-color: #FFFAEF;
+
 
 #roadmap {
   text-align: center;
-  background-color: $secondary-color;
+  background-color: $quaternary-color;
+
+  #roadmap-elements {
+    .year {
+      margin-top: -40px;
+    }
+    .description {
+      margin-top: 40px;
+    }
+  }
 }
 
 #why-giraffe {
@@ -43,41 +55,55 @@ $tertiary-color: #F25226;
 
 #contributors {
   text-align: center;
-  background-color: white;
+  background-color: $quaternary-color;
 }
 
 .contributor-list li{
- display: inline;
- list-style-type: none;
- padding-right: 20px;
- float: left;
- font-size: 0.8em;
+  display: inline;
+  list-style-type: none;
+  padding-right: 20px;
+  float: left;
+  font-size: 0.8em;
+  background-color: none;
 
+  .avatar-image{
+    filter: grayscale(1);
+    height: 120px;
+    width: 120px;
+    padding-top: 5px;
+  }
 
- .avatar-image{
-   filter: grayscale(1);
- 	height: 120px;
- 	width: 120px;
- }
- 
- #contributor-tag {
-   a {
-     color: black;
-   }
-   background-color: $primary-color;
- }
-
+  #contributor-tag {
+    a {
+      color: black;
+    }
+    background-color: $primary-color;
+  }
 }
 
+#thanks {
+  text-align: center;
+  background-color: $primary-color;
+}
 
 #contact {
   text-align: center;
   background-color: $secondary-color;
 }
 
-#thanks {
+#slack {
   text-align: center;
   background-color: $primary-color;
+  a {
+    color: white;
+    font-size: 32px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  img {
+    fill: white;
+  }
 }
 
 #footer {
