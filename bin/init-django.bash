@@ -1,7 +1,8 @@
 #!/bin/bash
 
 cd app || exit
-python manage.py migrate
-python manage.py compilestatic
+if [ "$MODE" = "production" ]; then
+  python manage.py compilescss
+fi
 python manage.py collectstatic --noinput -i other
 cd .. || exit

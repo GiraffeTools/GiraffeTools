@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
-{% load compile_static %}
+{% load sass_tags %}
 {% load static %}
 {% load render_bundle from webpack_loader %}
 
 {% block head %}
-<link rel="stylesheet" href="{% static "css/giraffe.scss"|compile %}"/>
+<link href="{% sass_src "css/giraffe.scss" %}" rel="stylesheet" type="text/css" />
+
 <script src="{% static "jquery.min.js" %}"></script>
 {% endblock %}
 
