@@ -10,11 +10,11 @@
 {% block body %}
   <div id="porcupine"></div>
 {% endblock %}
-
 {% block scripts %}
 <script>var jsonFile = "{{filename}}";</script>
 <script>var ConfigError = "{{config_error}}";</script>
 <script src="{% static "jquery.min.js" %}"></script>
 <script src="{% static "js/bootstrap.min.js" %}"></script>
+
 {% render_bundle 'porcupine' 'js' 'PORCUPINE' %}
 {% endblock %}
