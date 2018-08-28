@@ -1,11 +1,13 @@
 Django==2.0
+django-compressor
 django-heroku
 django-livereload-server
 django-webpack-loader
 djangorestframework==3.7.3
+django-sass-processor
 django-settings-export
-django-static-precompiler[watch,libsass]
 gunicorn
+libsass 
 psycopg2-binary
 pydash
 PyYAML
@@ -14,3 +16,4 @@ requests
 requests_oauthlib
 rollbar==0.13.17
 slackclient==1.2.1
+WhiteNoise
