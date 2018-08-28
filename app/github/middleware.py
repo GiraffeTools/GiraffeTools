@@ -39,7 +39,7 @@ class GithubAuthMiddleware(MiddlewareMixin):
             is_valid = is_github_token_valid(token, expiration)
             if is_valid:
                 request.session["access_token_last_validated"] = now(
-                    ).isoformat()
+                    ).isoformat()  # Ignore PycodestyleBear (E123)
             else:
                 request.session.pop("access_token", "")
                 request.session.pop("handle", "")

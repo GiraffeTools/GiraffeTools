@@ -2,4 +2,3 @@
 
 cd app || exit
 python manage.py compilescss
-python manage.py collectstatic --noinput -i other
