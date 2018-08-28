@@ -18,6 +18,10 @@
   font-style: normal;
 }
 
+.container-fluid {
+   padding: 0px;
+}
+
 $primary-color: #F7A81C;
 $secondary-color: #FAE0A3;
 $tertiary-color: #F25226;
@@ -48,12 +52,23 @@ $tertiary-color: #F25226;
  padding-right: 20px;
  float: left;
  font-size: 0.8em;
+
+
+ .avatar-image{
+   filter: grayscale(1);
+ 	height: 120px;
+ 	width: 120px;
+ }
+ 
+ #contributor-tag {
+   a {
+     color: black;
+   }
+   background-color: $primary-color;
+ }
+
 }
 
-.avatar-image{
-	height: 45px;
-	width: 45px;
-}
 
 #contact {
   text-align: center;

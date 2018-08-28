@@ -2,7 +2,7 @@ import React from "react";
 
 const Tools = () => (
   <div>
-    <div className="container-fluid base">
+    <div className="container-fluid">
       <div className="col text-center">
         <h1>Giraffe</h1>
         <h4 className="">
@@ -14,7 +14,7 @@ const Tools = () => (
       <div />
     </div>
 
-    <div className="container-fluid mt-3 ">
+    <div className="container-fluid">
       <div className="col text-center">
         <h1>Porcupine</h1>
         <h4 className="">PORcupine Creates Ur PipelINE</h4>
@@ -27,7 +27,7 @@ const Tools = () => (
       </div>
     </div>
 
-    <div className="container-fluid mt-3 ">
+    <div className="container-fluid">
       <div className="col text-center">
         <h1>Armadillo</h1>
         <h4 className="">Augmented Reality [madillo]</h4>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import Contact from "./contact";
 import Contributors from "./contributors";
@@ -19,7 +19,7 @@ class Content extends React.Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
         <Hero />
         <Tools />
         <ExplainerVideo />
@@ -31,7 +31,7 @@ class Content extends React.Component {
         <Contact />
         <Slack />
         <Footer />
-      </div>
+      </Fragment>
     );
   }
 }

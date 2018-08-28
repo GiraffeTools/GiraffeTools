@@ -7,10 +7,12 @@ const Contributor = contributor => {
     <li>
       <img className="avatar-image" src={contributor.avatar_url} />
       <br />
-      <a href={contributor.html_url} target="_blank">
-        {" "}
-        <b>@{contributor.login}</b>
-      </a>
+      <div id="contributor-tag">
+        <a href={contributor.html_url} target="_blank">
+          {" "}
+          <b>@{contributor.login}</b>
+        </a>
+      </div>
     </li>
   );
 };
@@ -33,15 +35,24 @@ class Contributors extends React.Component {
     const { contributors } = this.state;
 
     return (
-      <div className="container right" id="contributors">
-        <h3>All contributors</h3>
-        <div className="card mb-12 text-center">
-          <ul className="contributor-list">
-            {contributors &&
-              shuffle(contributors).map(contributor => (
-                <Contributor key={contributor.id} {...contributor} />
-              ))}
-          </ul>
+      <div className="container-fluid" id="contributors">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <h3>All contributors</h3>
+              <div className="card mb-12 text-center">
+                <ul className="contributor-list">
+                  {contributors &&
+                    shuffle(contributors).map(contributor => (
+                      <Contributor key={contributor.id} {...contributor} />
+                    ))}
+                </ul>
+              </div>
+            </div>
+            <div class="col">
+              Most contributors have contributed to this Open Source project with Gitcoin. If you want to help grow this platform, you can donate or fund projects and issues directly!
+            </div>
+          </div>
         </div>
       </div>
     );
