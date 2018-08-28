@@ -4,6 +4,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))))
 
+# TODO: check if it is a smart move to allow all hosts
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
@@ -47,6 +48,7 @@ STATICFILES_FINDERS = (
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -146,6 +148,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "..", "node_modules", "jsplumb", "dist"),
     os.path.join(BASE_DIR, "..", "node_modules", "font-proxima-nova"),
 )
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_PRECOMPILER_FINDER_LIST_FILES = True
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
