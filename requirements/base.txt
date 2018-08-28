@@ -14,3 +14,4 @@ requests
 requests_oauthlib
 rollbar==0.13.17
 slackclient==1.2.1
+WhiteNoise
