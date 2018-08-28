@@ -33,7 +33,7 @@ class Contributors extends React.Component {
     const { contributors } = this.state;
 
     return (
-      <div className="container right" id="contributors">
+      <div className="container-fluid" id="contributors">
         <h3>All contributors</h3>
         <div className="card mb-12 text-center">
           <ul className="contributor-list">

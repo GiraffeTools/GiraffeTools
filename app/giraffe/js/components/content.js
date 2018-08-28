@@ -19,7 +19,7 @@ class Content extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container-fluid">
         <Hero />
         <Tools />
         <ExplainerVideo />
