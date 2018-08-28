@@ -22,33 +22,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "webpack_loader",
-    "static_precompiler",
+    "sass_processor",
 ]
-
-# This compiles the scss files to css
-STATIC_PRECOMPILER_COMPILERS = (
-    ("static_precompiler.compilers.libsass.SCSS", {
-        "sourcemap_enabled": True,
-        # "load_paths": [""],
-        "precision": 8,
-    }),
-    ("static_precompiler.compilers.libsass.SASS", {
-        "sourcemap_enabled": True,
-        # "load_paths": [""],
-        "precision": 8,
-        "output_style": "compressed",
-    }),
-)
-
-STATICFILES_FINDERS = (
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    "static_precompiler.finders.StaticPrecompilerFinder",
-)
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -138,8 +117,10 @@ USE_TZ = True
 
 # to be copied to:
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
+
 # to refer to:
 STATIC_URL = "/static/"
+
 # files to include:
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "assets"),
@@ -148,8 +129,13 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "..", "node_modules", "jsplumb", "dist"),
     os.path.join(BASE_DIR, "..", "node_modules", "font-proxima-nova"),
 )
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_PRECOMPILER_FINDER_LIST_FILES = True
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+STATICFILES_FINDERS = [
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "sass_processor.finders.CssFinder",
+]
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
