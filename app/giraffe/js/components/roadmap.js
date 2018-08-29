@@ -1,23 +1,21 @@
 import React, { Fragment } from "react";
 
-const Event = event => {
-  return (
-    <Fragment>
-      <span className="year">{event.year}</span>
-      <svg width="100" height="100">
-        <circle
-          cx="50"
-          cy="50"
-          r="10"
-          stroke="#FFFAEF"
-          stroke-width="4"
-          fill="#F25226"
-        />
-      </svg>
-      <span className="description">{event.description}</span>
-    </Fragment>
-  );
-};
+const Event = event => (
+  <div className="col-sm">
+    <div className="year">{event.year}</div>
+    <svg width="60" height="60">
+      <circle
+        cx="30"
+        cy="30"
+        r="14"
+        stroke="#FFFAEF"
+        stroke-width="10"
+        fill="#F25226"
+      />
+    </svg>
+    <div className="description">{event.description}</div>
+  </div>
+);
 
 const Roadmap = () => {
   const events = [
@@ -27,6 +25,16 @@ const Roadmap = () => {
     { year: 2019, description: "wait for big news" },
     { year: 2020, description: "we are on the moon" }
   ];
+  let spacing = 100 / events.length;
+  let offset = 0;
+
+  const eventsOnRoadmap = [];
+  events.forEach(event => {
+    eventsOnRoadmap.push(
+      <Event key={event.year} width={spacing} offset={offset} {...event} />
+    );
+    offset += spacing;
+  });
 
   return (
     <div className="container-fluid" id="roadmap">
@@ -41,10 +49,8 @@ const Roadmap = () => {
           strokeWidth="12px"
         />
       </svg>
-      <div className="col text-center">
-        <span id="roadmap-elements">
-          {events && events.map(event => <Event key={event.year} {...event} />)}
-        </span>
+      <div className="row" id="roadmap-elements">
+        {eventsOnRoadmap}
       </div>
     </div>
   );

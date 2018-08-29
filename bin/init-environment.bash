@@ -8,6 +8,9 @@ fi
 if [ -z "$MODE" ]; then
   export MODE=watch
 fi
+
+echo Running in ${MODE} mode
+
 export NODE_ENV=$MODE
 if [ "$MODE" == "production" ]; then
   export DJANGO_SETTINGS_MODULE=app.settings.production

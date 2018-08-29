@@ -5,7 +5,6 @@
 #   .env.sample --> .env
 source ./bin/init-environment.bash
 
-echo Running in ${MODE} mode
 # initialise node and django
 bash ./bin/init-node.bash
 bash ./bin/init-django.bash

@@ -32,15 +32,10 @@ $quaternary-color: #FFFAEF;
 #roadmap {
   text-align: center;
   background-color: $quaternary-color;
+}
 
-  #roadmap-elements {
-    .year {
-      margin-top: -40px;
-    }
-    .description {
-      margin-top: 40px;
-    }
-  }
+#roadmap-elements {
+  margin-top: -67px;
 }
 
 #why-giraffe {
