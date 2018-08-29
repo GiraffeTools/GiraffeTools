@@ -6,7 +6,7 @@ services:
   - docker
 env:
   - PYTHONPATH="$TRAVIS_BUILD_DIR/app/"
-  - MODE=production
+  - MODE="production"
 before_install:
   - mv .env.sample .env
   - source ./bin/init-environment.bash
