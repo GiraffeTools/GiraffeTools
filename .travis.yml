@@ -5,9 +5,11 @@ python:
 services:
   - docker
 env:
-  - PYTHONPATH="$TRAVIS_BUILD_DIR/app/"
-  - MODE="production"
+  # Rather than specifying different environment variables, this specifies
+  # different environments as a whole
+  - PYTHONPATH="$TRAVIS_BUILD_DIR/app/";
 before_install:
+  - export MODE=production
   - mv .env.sample .env
   - source ./bin/init-environment.bash
 install:
