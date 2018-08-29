@@ -25,16 +25,6 @@ const Roadmap = () => {
     { year: 2019, description: "wait for big news" },
     { year: 2020, description: "we are on the moon" }
   ];
-  let spacing = 100 / events.length;
-  let offset = 0;
-
-  const eventsOnRoadmap = [];
-  events.forEach(event => {
-    eventsOnRoadmap.push(
-      <Event key={event.year} width={spacing} offset={offset} {...event} />
-    );
-    offset += spacing;
-  });
 
   return (
     <div className="container-fluid" id="roadmap">
@@ -50,7 +40,9 @@ const Roadmap = () => {
         />
       </svg>
       <div className="row" id="roadmap-elements">
-        {eventsOnRoadmap}
+        {events.map(event => {
+          <Event key={event.year} {...event} />;
+        })}
       </div>
     </div>
   );
