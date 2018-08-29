@@ -40,9 +40,9 @@ const Roadmap = () => {
         />
       </svg>
       <div className="row" id="roadmap-elements">
-        {events.map(event => {
-          <Event key={event.year} {...event} />;
-        })}
+        {events.map(event => (
+          <Event key={event.year} {...event} />
+        ))}
       </div>
     </div>
   );
