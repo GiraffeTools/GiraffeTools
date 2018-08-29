@@ -48,7 +48,9 @@ class Contributors extends React.Component {
               </ul>
             </div>
             <div className="col">
-              Most contributors have contributed to this Open Source project with Gitcoin. If you want to help grow this platform, you can donate or fund projects and issues directly!
+              Most contributors have contributed to this Open Source project
+              with Gitcoin. If you want to help grow this platform, you can
+              donate or fund projects and issues directly!
             </div>
           </div>
         </div>
