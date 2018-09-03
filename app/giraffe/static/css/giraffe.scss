@@ -66,6 +66,11 @@ $quaternary-color: #FFFAEF;
     height: 120px;
     width: 120px;
     padding-top: 5px;
+    transition: filter 0.3s;
+
+    &:hover {
+      filter: grayscale(0);
+    }
   }
 
   #contributor-tag {

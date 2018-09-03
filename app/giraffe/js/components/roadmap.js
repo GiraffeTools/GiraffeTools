@@ -9,7 +9,7 @@ const Event = event => (
         cy="30"
         r="14"
         stroke="#FFFAEF"
-        stroke-width="10"
+        strokeWidth="10"
         fill="#F25226"
       />
     </svg>
