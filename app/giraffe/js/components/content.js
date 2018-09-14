@@ -7,7 +7,7 @@ import Footer from "./footer";
 import Hero from "./hero";
 import People from "./people";
 import Roadmap from "./roadmap";
-import Slack from "./slack";
+import SlackBanner from "./slackBanner";
 import Thanks from "./thanks";
 import Tools from "./tools";
 import WhyGiraffe from "./whyGiraffe";
@@ -29,7 +29,7 @@ class Content extends React.Component {
         <Contributors />
         <Thanks />
         <Contact />
-        <Slack />
+        <SlackBanner />
         <Footer />
       </Fragment>
     );

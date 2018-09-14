@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "q": "Why is GiraffeTools so super awesome?",
+    "a": "lorem ipsum is such a nice text don't you think? I really have a great time writing this here, it is fun and entertaining, you are allowerd to put in your darkest thoughts. lorem ipsum is such a nice text don't you think? I really have a great time writing this here, it is fun!"
+  },
+  {
+    "id": 2,
+    "q": "What does 'Giraffe' stand for?",
+    "a": "Answer 2"
+  },
+  {
+    "id": 3,
+    "q": "Can I use my GitHub account?",
+    "a": "Absolutely!"
+  },
+  {
+    "id": 4,
+    "q": "How do you handle my data privacy? Are you complying with the European GDPR?",
+    "a": "Answer 4"
+  },
+  {
+    "id": 5,
+    "q": "What has done this nice design?",
+    "a": "Answer 5"
+  }
+]

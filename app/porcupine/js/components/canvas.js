@@ -75,16 +75,12 @@ class Canvas extends React.Component {
     if (ConfigError) {
       console.log(ConfigError);
     } else if (jsonFile) {
-      $.getJSON(
-        jsonFile,
-        function(result) {
-          this.loadFromJson(result);
-        }.bind(this)
-      )
-        .done(function() {
-          console.log("Porcupine Config file loaded from URL");
-        })
-        .fail(function() {
+      fetch(jsonFile)
+        .then(result => result.json())
+        .then(data => {
+          this.loadFromJson(data);
+          console.log("Porcupine Config file loaded from URL")})
+        .catch(error => {
           console.log("Cannot load Porcupine Config file");
           this.setPercent(-1);
         });

@@ -20,11 +20,20 @@ from django.contrib import admin
 
 import giraffe.views
 import porcupine.views
+from api.urls import api_urls
 
 app_name = "app"
 
 urlpatterns = [
+    # api calls
+    url(r"^api/", include(api_urls)),
+
     url(r"^$", giraffe.views.index, name="index"),
+    # Make sure everything from the giraffe router is used.
+    url(r"^(?:.*)/?$", giraffe.views.index, name="index"),
+
+
+
     url(r"^porcupine/?", porcupine.views.porcupine, name="porcupine"),
     # Admin
     url(r"^admin/?", admin.site.urls),

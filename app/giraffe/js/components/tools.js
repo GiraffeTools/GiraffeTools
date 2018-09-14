@@ -21,7 +21,7 @@ const Tools = () => (
         With Porcupine, you can visually build your pipeline!
       </div>
       <div className="col text-center">
-        <a className="btn btn-lg btn-warning" role="button" href="/porcupine">
+        <a className="btn btn-lg btn-warning" role="button" href="/test">
           Get started!
         </a>
       </div>

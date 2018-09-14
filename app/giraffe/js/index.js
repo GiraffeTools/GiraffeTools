@@ -3,19 +3,18 @@ import React from "react";
 import { render } from "react-dom";
 import { hot } from "react-hot-loader";
 import { Provider } from "react-redux";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import configureStore from "./store/configureStore";
 import Content from "./components/content";
-
-const App = hot(module)(() => <Content classname="app" />);
+import App from "./app";
 
 const store = configureStore();
 
 render(
   <Provider className="app" store={store}>
     <BrowserRouter>
-      <Route path="/" component={App} />
+      <App />
     </BrowserRouter>
   </Provider>,
   document.getElementById("giraffe")
