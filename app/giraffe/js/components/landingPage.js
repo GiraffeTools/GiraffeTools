@@ -12,7 +12,7 @@ import Thanks from "./thanks";
 import Tools from "./tools";
 import WhyGiraffe from "./whyGiraffe";
 
-class Content extends React.Component {
+class LandingPage extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -36,4 +36,4 @@ class Content extends React.Component {
   }
 }
 
-export default Content;
+export default LandingPage;

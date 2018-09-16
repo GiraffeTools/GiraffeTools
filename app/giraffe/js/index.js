@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import configureStore from "./store/configureStore";
-import Content from "./components/content";
 import App from "./app";
 
 const store = configureStore();

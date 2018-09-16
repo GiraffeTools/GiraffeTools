@@ -15,6 +15,7 @@ const Tools = () => (
     </div>
 
     <div className="container-fluid">
+      <img src="/static/img/rec_porcupine_collage.png" id="porcupine-collage" />
       <div className="col text-center">
         <h1>Porcupine</h1>
         <h4 className="">PORcupine Creates Ur PipelINE</h4>
@@ -28,6 +29,7 @@ const Tools = () => (
     </div>
 
     <div className="container-fluid">
+      <img src="/static/img/rec_armadillo_collage.png" id="armadillo-collage" />
       <div className="col text-center">
         <h1>Armadillo</h1>
         <h4 className="">Augmented Reality [madillo]</h4>

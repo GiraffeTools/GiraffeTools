@@ -2,20 +2,16 @@ import React, { Fragment } from "react";
 
 import Banner from "./banner";
 import Footer from "./footer";
-import SlackBanner from "./slackBanner";
+import TryOut from "./tryOut";
 
 const Question = question => {
   return (
     <li>
-      <div className="question">
-        {question.q}
-      </div>
-      <div className="answer">
-        {question.a}
-      </div>
+      <div className="question">{question.q}</div>
+      <div className="answer">{question.a}</div>
     </li>
   );
-}
+};
 
 class Faq extends React.Component {
   constructor(props) {
@@ -36,14 +32,14 @@ class Faq extends React.Component {
 
     return (
       <Fragment>
-        <Banner />
-        <ul className="question-list">
+        <Banner title="FAQs" />
+        <ul className="faq-question-list">
           {questions &&
             questions.map(question => (
               <Question key={question.id} {...question} />
             ))}
         </ul>
-        <SlackBanner />
+        <TryOut />
         <Footer />
       </Fragment>
     );

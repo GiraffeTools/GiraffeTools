@@ -1,21 +1,12 @@
 @font-face {
-  font-family: 'ProximaNova-Bold';
-  src: url('../fonts/ProximaNova-Bold.eot');
-  src: url('../fonts/ProximaNova-Bold.woff') format('woff'),
-       url('../fonts/ProximaNova-Bold.ttf') format('truetype'),
-       url('../fonts/ProximaNova-Bold.eot?#iefix') format('embedded-opentype');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'Nexa-Bold';
+  src: url('../fonts/Nexa-Bold.otf');
+  font-weight: bold;
 }
 
 @font-face {
-  font-family: 'ProximaNova-Regular';
-  src: url('../fonts/ProximaNova-Regular.eot');
-  src: url('../fonts/ProximaNova-Regular.woff') format('woff'),
-       url('../fonts/ProximaNova-Regular.ttf') format('truetype'),
-       url('../fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'PT Sans', sans-serif;
+  src: url('../fonts/PT_Sans-Web-Regular.ttf')  format('truetype');
 }
 
 .container-fluid {
@@ -28,6 +19,19 @@ $secondary-color: #FAE0A3;
 $tertiary-color: #F25226;
 $quaternary-color: #FFFAEF;
 
+#hero{
+  background-color: $primary-color;
+  background-image: url('../img/code_dark_hero_img.png');
+}
+
+#tools{
+  #porcupine-collage{
+    width: 20%;
+  }
+  #armadillo-collage{
+    width: 20%;
+  }
+}
 
 #roadmap {
   text-align: center;
@@ -81,6 +85,18 @@ $quaternary-color: #FFFAEF;
   }
 }
 
+.faq-question-list {
+  list-style-image: url('../img/chevron_right.svg');
+  .open {
+    list-style-image: url('../img/chevron_down.svg');
+  }
+
+  li {
+    display: inline;
+    list-style-type: none;
+  }
+}
+
 #thanks {
   text-align: center;
   background-color: $primary-color;
@@ -93,7 +109,9 @@ $quaternary-color: #FFFAEF;
 
 #slack {
   text-align: center;
+  height: 200px;
   background-color: $primary-color;
+  background-image: url('../img/slack_section_background.jpg');
   a {
     color: white;
     font-size: 32px;
@@ -106,7 +124,13 @@ $quaternary-color: #FFFAEF;
   }
 }
 
+#banner {
+  background-image: url('../img/header_subpage_background.jpg');
+  height: 200px;
+}
+
 #footer {
   text-align:left;
   background-color: white;
+  height: 200px;
 }

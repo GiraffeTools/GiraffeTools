@@ -2,9 +2,8 @@ import React, { Fragment } from "react";
 
 import Banner from "./banner";
 import Footer from "./footer";
-import SlackBanner from "./slackBanner";
 
-class Slack extends React.Component {
+class Project extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -12,13 +11,11 @@ class Slack extends React.Component {
   render() {
     return (
       <Fragment>
-        <Banner />
-        <div>Slack form</div>
-        <SlackBanner />
+        <Banner title="Project" />
         <Footer />
       </Fragment>
     );
   }
 }
 
-export default Slack;
+export default Project;
