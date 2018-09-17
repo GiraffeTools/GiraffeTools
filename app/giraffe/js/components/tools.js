@@ -1,33 +1,23 @@
 import React from "react";
 
-const Tools = () => (
-  <div>
-    <div className="container-fluid">
-      <div className="col text-center">
-        <h1>Giraffe</h1>
-        <h4 className="">
-          Graphical Interface for Reproducible Analysis For workFlow Experiments
-        </h4>
-        Giraffe tools are applications that make it easier to analyse all kinds
-        of data!
-      </div>
-      <div />
-    </div>
 
-    <div className="container-fluid">
-      <img src="/static/img/rec_porcupine_collage.png" id="porcupine-collage" />
-      <div className="col text-center">
-        <h1>Porcupine</h1>
-        <h4 className="">PORcupine Creates Ur PipelINE</h4>
-        With Porcupine, you can visually build your pipeline!
-      </div>
-      <div className="col text-center">
-        <a className="btn btn-lg btn-warning" role="button" href="/test">
-          Get started!
-        </a>
-      </div>
+const Porcupine = () => (
+  <div className="container-fluid">
+    <img src="/static/img/rec_porcupine_collage.png" id="porcupine-collage" />
+    <div className="col text-center">
+      <h1>Porcupine</h1>
+      <h4 className="">PORcupine Creates Ur PipelINE</h4>
+      With Porcupine, you can visually build your pipeline!
     </div>
+    <div className="col text-center">
+      <a className="btn btn-lg btn-warning" role="button" href="/test">
+        Get started!
+      </a>
+    </div>
+  </div>
+);
 
+const Armadillo = () => (
     <div className="container-fluid">
       <img src="/static/img/rec_armadillo_collage.png" id="armadillo-collage" />
       <div className="col text-center">
@@ -45,6 +35,13 @@ const Tools = () => (
         </a>
       </div>
     </div>
+);
+
+const Tools = () => (
+  <div>
+    <h3> Our Tools</h3>
+    <Porcupine />
+    <Armadillo />
   </div>
 );
 

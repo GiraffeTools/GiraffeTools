@@ -65,8 +65,10 @@ $quinternary-color: #FCF0D6;
 }
 
 #hero{
-  background-color: $primary-color;
+  background-color: $quinternary-color;
   background-image: url('../img/code_dark_hero_img.png');
+  background-repeat: no-repeat;
+  background-position: right;
 }
 
 #tools{

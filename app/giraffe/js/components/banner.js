@@ -2,6 +2,7 @@ import React from "react";
 
 import Navbar from "./navbar";
 
+
 const Banner = ({ title }) => (
   <div className="container-fluid text-center" id="banner">
     <Navbar />
