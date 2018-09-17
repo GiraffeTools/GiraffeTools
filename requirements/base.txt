@@ -1,13 +1,15 @@
 Django==2.0
+django-bootstrap4
 django-compressor
 django-heroku
+django-jquery
 django-livereload-server
 django-webpack-loader
 djangorestframework==3.7.3
 django-sass-processor
 django-settings-export
 gunicorn
-libsass 
+libsass
 psycopg2-binary
 pydash
 PyYAML

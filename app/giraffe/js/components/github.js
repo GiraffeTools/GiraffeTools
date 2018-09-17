@@ -16,13 +16,10 @@ class GitHub extends React.Component {
     return (
       <Switch>
         <Route
-          path={match.url + '/:username/:repository'}
+          path={match.url + "/:username/:repository"}
           component={Project}
         />
-        <Route
-          path={match.url + '/:username'}
-          component={User}
-        />
+        <Route path={match.url + "/:username"} component={User} />
       </Switch>
     );
   }

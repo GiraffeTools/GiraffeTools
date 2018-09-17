@@ -8,7 +8,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import configureStore from "./store/configureStore";
 import Faq from "./components/faq";
 import LandingPage from "./components/landingPage";
-import Navbar from "./components/navbar";
 import Slack from "./components/slack";
 import Github from "./components/github";
 import Gallery from "./components/gallery";
@@ -19,13 +18,12 @@ class App extends React.Component {
   render() {
     return (
       <Fragment>
-        <Navbar />
         <Switch>
           <Route path="/faq" component={Faq} />
           <Route path="/slack" component={Slack} />
           <Route path="/gallery" component={Gallery} />
           <Route path="/github" component={Github} />
-          <Route path="/home" component={LandingPage} />
+          <Route path="/" component={LandingPage} />
         </Switch>
       </Fragment>
     );

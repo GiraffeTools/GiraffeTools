@@ -18,6 +18,51 @@ $primary-color: #F7A81C;
 $secondary-color: #FAE0A3;
 $tertiary-color: #F25226;
 $quaternary-color: #FFFAEF;
+$quinternary-color: #FCF0D6;
+
+#banner {
+  background-image: url('../img/header_subpage_background.jpg');
+  background-size: cover;
+  height: 250px;
+  margin-bottom: 50px;
+}
+
+#nav{
+  float: right;
+}
+
+#nav-triangle{
+  height: 250px;
+}
+
+#banner-title{
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  font-size: 65px;
+}
+
+#banner-logo{
+  height: 70%;
+  float: left;
+  padding-left: 100px;
+  padding-top: 50px;
+}
+
+#footer-logo{
+  transform: scaleX(-1);
+  float: right;
+}
+
+.giraffe-box{
+  background-color: $quinternary-color;
+  margin: 16px;
+}
+
+#profile-pic{
+  width: 50%;
+  clip-path: circle(50% at center);
+}
 
 #hero{
   background-color: $primary-color;
@@ -124,9 +169,8 @@ $quaternary-color: #FFFAEF;
   }
 }
 
-#banner {
-  background-image: url('../img/header_subpage_background.jpg');
-  height: 200px;
+#your-project-tag {
+  background-image: url('../img/headline_lines_background.svg');
 }
 
 #footer {

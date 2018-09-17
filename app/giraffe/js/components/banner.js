@@ -1,10 +1,14 @@
 import React from "react";
 
-const Banner = ({ title }) => (
-  <div className="container-fluid" id="banner">
-    <img src="/static/img/giraffetools_logo.png" width="20%" />
+import Navbar from "./navbar";
 
-    <h1>{title}</h1>
+const Banner = ({ title }) => (
+  <div className="container-fluid text-center" id="banner">
+    <Navbar />
+    <img src="/static/img/giraffetools_logo.png" id="banner-logo" />
+    <h1 id="banner-title">
+      {title}
+    </h1>
   </div>
 );
 

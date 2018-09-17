@@ -1,18 +1,20 @@
-{% extends 'base.html' %}
+{% extends 'shared/base.html' %}
 {% load sass_tags %}
 {% load static %}
 {% load render_bundle from webpack_loader %}
 
-{% block head %}
-<link href="{% sass_src "css/giraffe.scss" %}" rel="stylesheet" type="text/css" />
-
-<script src="{% static "jquery.min.js" %}"></script>
-{% endblock %}
+<head>
+  {% block head %}
+    {{ block.super }}
+    <link href="{% sass_src "css/giraffe.scss" %}" rel="stylesheet" type="text/css" />
+  {% endblock head %}
+</head>
 
 {% block body %}
   <div id="giraffe" class="container-fluid"></div>
-{% endblock %}
+{% endblock body %}
 
 {% block scripts %}
-{% render_bundle 'giraffe' 'js' 'GIRAFFE' %}
-{% endblock %}
+  {{ block.super }}
+  {% render_bundle 'giraffe' 'js' 'GIRAFFE' %}
+{% endblock scripts %}
