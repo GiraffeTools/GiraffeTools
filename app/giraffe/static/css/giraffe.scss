@@ -35,6 +35,19 @@ $quinternary-color: #FCF0D6;
   height: 250px;
 }
 
+
+.giraffe-button{
+  background-color: $primary-color;
+  color: white;
+}
+
+.no-giraffe-button{
+  background-color: #EDEDEE;
+  color: $primary-color;
+  border-color: $primary-color;
+  border-width: 4px;
+}
+
 #banner-title{
   position: absolute;
   top: 15%;
@@ -52,11 +65,32 @@ $quinternary-color: #FCF0D6;
 #footer-logo{
   transform: scaleX(-1);
   float: right;
+  max-width: 200px;
+  margin-top: 20px;
 }
 
 .giraffe-box{
   background-color: $quinternary-color;
   margin: 16px;
+}
+
+.no-giraffe{
+  background-color: #EDEDEE;
+}
+
+#username{
+  color: $primary-color;
+}
+
+#active-project-counter{
+  font-size: 40px;
+  color: $primary-color;
+
+  -webkit-border-radius:30px;
+  border: 4px solid $primary-color;
+  width: 60px;
+  height: 60px;
+  // font-weight: bold;
 }
 
 #profile-pic{
@@ -176,7 +210,8 @@ $quinternary-color: #FCF0D6;
 }
 
 #footer {
-  text-align:left;
+  text-align: left;
   background-color: white;
   height: 200px;
+  margin-left: 15px;
 }

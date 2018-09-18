@@ -17,7 +17,9 @@ import {
   CLICK_SCENE,
   SET_MOUSE_STATE,
   CLEAR_DATABASE,
-  TOGGLE_CODEEDITOR
+  TOGGLE_CODEEDITOR,
+  SET_USER,
+  SET_REPOSITORY,
 } from "./actionTypes";
 
 export const clearDatabase = () => ({
@@ -127,3 +129,18 @@ export const clickScene = () => ({
 //   type: SET_MOUSE_STATE,
 //   payload: props,
 // });
+
+
+///// SCENE /////
+export const setUser = user => ({
+  type: SET_USER,
+  payload: {
+    user
+  }
+});
+export const setRepository = repository => ({
+  type: SET_REPOSITORY,
+  payload: {
+    repository
+  }
+});

@@ -1,21 +1,20 @@
-{% extends 'base.html' %}
+{% extends 'shared/base.html' %}
 {% load sass_tags %}
 {% load static %}
 {% load render_bundle from webpack_loader %}
 
-{% block head %}
-<link href="{% sass_src "css/porcupine.scss" %}" rel="stylesheet" type="text/css" />
-
-{% endblock %}
+<head>
+  {% block head %}
+    {{ block.super }}
+    <link href="{% sass_src "css/porcupine.scss" %}" rel="stylesheet" type="text/css" />
+  {% endblock head %}
+</head>
 
 {% block body %}
   <div id="porcupine"></div>
-{% endblock %}
+{% endblock body %}
 
 {% block scripts %}
-<script>var jsonFile = "{{filename}}";</script>
-<script>var ConfigError = "{{config_error}}";</script>
-<script src="{% static "jquery.min.js" %}"></script>
-<script src="{% static "js/bootstrap.min.js" %}"></script>
-{% render_bundle 'porcupine' 'js' 'PORCUPINE' %}
-{% endblock %}
+  {{ block.super }}
+  {% render_bundle 'porcupine' 'js' 'PORCUPINE' %}
+{% endblock scripts %}

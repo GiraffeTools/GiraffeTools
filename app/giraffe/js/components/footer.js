@@ -10,7 +10,7 @@ const Footer = () => (
       Designed by Fuchsfabrik
       <br />
     </div>
-    <img src="/static/img/giraffetools_logo.png" id="footer-logo" />
+    <img src="/static/img/giraffetools_logo_notext.png" id="footer-logo" />
   </div>
 );
 

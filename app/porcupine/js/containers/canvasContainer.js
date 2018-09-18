@@ -8,7 +8,6 @@ import {
   addPortToNode,
   repositionPorts,
   clickScene,
-  updateLoadingPercent
 } from "../actions";
 import { nodesWithPorts, linksWithPorts } from "../selectors/selectors";
 

@@ -28,13 +28,18 @@ urlpatterns = [
     # api calls
     url(r"^api/", include(api_urls)),
 
+    # porcupine calls
+    url(r"^porcupine/?", porcupine.views.porcupine, name="porcupine"),
+    # Make sure everything from the react router is used.
+    # url(r"^porcupine/^(?:.*)/?$?", porcupine.views.porcupine, name="porcupine"),
+
+    # giraffe calls
     url(r"^$", giraffe.views.index, name="index"),
-    # Make sure everything from the giraffe router is used.
+    # Make sure everything from the react router is used.
     url(r"^(?:.*)/?$", giraffe.views.index, name="index"),
 
 
 
-    url(r"^porcupine/?", porcupine.views.porcupine, name="porcupine"),
     # Admin
     url(r"^admin/?", admin.site.urls),
     # Slack
@@ -43,12 +48,12 @@ urlpatterns = [
     # Github Integration
     path("_github/", include("github.urls", namespace="github")),
     # Project
-    path("gh/<slug:ghuser>/",
-         giraffe.views.user, name="user"),
-    path("gh/<slug:ghuser>/<slug:ghrepo>/",
-         giraffe.views.project, name="repo"),
-    path("gh/<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/",
-         giraffe.views.project, name="branch"),
-    path("gh/<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/<slug:toolName>",
-         giraffe.views.projectTool, name="projectTool"),
+    # path("gh/<slug:ghuser>/",
+    #      giraffe.views.user, name="user"),
+    # path("gh/<slug:ghuser>/<slug:ghrepo>/",
+    #      giraffe.views.project, name="repo"),
+    # path("gh/<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/",
+    #      giraffe.views.project, name="branch"),
+    # path("gh/<slug:ghuser>/<slug:ghrepo>/<slug:ghbranch>/<slug:toolName>",
+    #      giraffe.views.projectTool, name="projectTool"),
 ]

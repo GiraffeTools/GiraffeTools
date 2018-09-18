@@ -1,18 +1,42 @@
 import React, { Fragment } from "react";
+import { urlExists } from "../utils/utils";
+import pluralize from "pluralize";
 
 import Banner from "./banner";
 import Footer from "./footer";
 import SlackBanner from "./slackBanner";
 
 const ProjectBox = repository => (
-  <div className="giraffe-box">
-    {repository.name}
-    <br />
-    {repository.private ? "Private" : "Public"}
-    <br />
-    <img src="/static/img/separator_red.svg" width="20%" />
-    <br />
-    {repository.created_at}
+  <div className={"giraffe-box row " + (repository.isGiraffeProject ? "" : "no-giraffe")} >
+    <div className="col-6 text-left">
+      <h4>{repository.name}</h4>
+      {repository.private ? "Private" : "Public"}
+      <br />
+      <img src="/static/img/separator_red.svg" width="20%" />
+      <br />
+      added {new Intl.DateTimeFormat('en-GB', {
+                year: 'numeric',
+                month: 'long',
+                day: '2-digit'
+              }).format(new Date(repository.created_at))}
+    </div>
+    <div className="col-6 text-right">
+    {
+      repository.isGiraffeProject ? (
+        <a
+          type="button btn-primary"
+          className="btn giraffe-button"
+          href={`/github/${repository.full_name}/master/porcupine`}
+        >
+          Open
+        </a>
+      ) : (
+        <a type="button btn-primary" className="btn no-giraffe-button">
+          Add
+        </a>
+      )
+    }
+    </div>
   </div>
 );
 
@@ -22,27 +46,33 @@ const Projects = ({ repositories }) => (
       <h3 id="your-project-tag">Your projects</h3>
     </div>
     {repositories ? (
-      repositories.map(repository => (
-        <ProjectBox {...repository} key={repository.id} />
+      repositories.sort(function(a,b){return b.isGiraffeProject - a.isGiraffeProject }).map(repository => (
+        <ProjectBox
+          key={repository.id}
+          {...repository}
+        />
       ))
     ) : (
-      <div>This user does not have any projects</div>
+      <div>This user does not have any GitHub projects.</div>
     )}
   </div>
 );
 
-const ProfileBox = ({ user }) => (
+const ProfileBox = ({ user, active_giraffe_projects }) => (
   <div className="col-3 text-center giraffe-box">
-    <h3>{user.name}</h3>
     <img src={user.avatar_url} id="profile-pic" />
     <br />
     <img src="/static/img/separator_grey.svg" width="80%" />
     <br />
-    {user.active_giraffe_projects}
-    active giraffe projects
+    <h3 id="username">{user.name}</h3>
+
+    <div className="text-center" id="active-project-counter">
+      {active_giraffe_projects}
+    </div>
+    active GiraffeTools {pluralize("project", active_giraffe_projects)}
     <br />
     <img src="/static/img/separator_grey.svg" width="80%" />
-    {user.loggedIn && <button>Logout</button>}
+      {user.loggedIn && <button type="button" className="btn">Logout</button>}
   </div>
 );
 
@@ -51,7 +81,7 @@ class User extends React.Component {
     super(props);
     this.state = {
       user: null,
-      repositories: null
+      repositories: []
     };
   }
 
@@ -64,7 +94,16 @@ class User extends React.Component {
       .catch();
     fetch(`https://api.github.com/users/${username}/repos`)
       .then(response => response.json())
-      .then(repositories => this.setState({ repositories }))
+      .then(repositories => {
+        repositories.forEach((repository) => {
+          // I want no error message when polling existence, which can't be turned off in regular fetch call
+          urlExists(`https://raw.githubusercontent.com/${repository.full_name}/master/GIRAFFE.yml`, (exists) => {
+            this.setState({
+              repositories: [...this.state.repositories, {...repository, isGiraffeProject: exists}]
+            });
+          });
+        });
+      })
       .catch();
   }
 
@@ -78,7 +117,10 @@ class User extends React.Component {
         {user ? (
           <div className="row">
             <div className="col-1" />
-            <ProfileBox user={user} />
+            <ProfileBox
+              user={user}
+              active_giraffe_projects={repositories.filter((e) => e.isGiraffeProject).length}
+            />
             <Projects repositories={repositories} />
             <div className="col-1" />
           </div>

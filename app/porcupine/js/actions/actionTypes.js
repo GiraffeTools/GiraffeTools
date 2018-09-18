@@ -22,6 +22,12 @@ export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
 export const TOGGLE_CODEEDITOR = "TOGGLE_CODEEDITOR";
 export const UPDATE_LOADING_PERCENT = "UPDATE_LOADING_PERCENT";
 
+///// USER /////
+export const SET_USER = "SET_USER";
+export const SET_REPOSITORY = "SET_REPOSITORY";
+export const SET_BRANCH = "SET_BRANCH";
+export const SET_COMMIT = "SET_COMMIT";
+
 ///// SCENE /////
 export const ZOOM_IN = "ZOOM_IN";
 export const ZOOM_OUT = "ZOOM_OUT";
