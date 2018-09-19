@@ -7,6 +7,7 @@ class PaneHeader extends React.Component {
   }
 
   render() {
+    const divRef = "#" + this.props.name;
     return (
       <div className="panel-heading" role="tab">
         <a

@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { urlExists } from "../utils/utils";
-import pluralize from "pluralize";
 
 import Banner from "./banner";
 import Footer from "./footer";
@@ -30,7 +29,7 @@ const ProjectBox = repository => (
         <a
           type="button btn-primary"
           className="btn giraffe-button"
-          href={`/github/${repository.full_name}/master/porcupine`}
+          href={`/github/${repository.full_name}`}
         >
           Open
         </a>
@@ -122,11 +121,11 @@ class User extends React.Component {
 
   render() {
     const { user, repositories } = this.state;
-    const banner = user ? `Giraffe & ${user.login}` : "GiraffeTools";
+    const bannerTitle = user ? `Giraffe & ${user.login}` : "GiraffeTools";
 
     return (
       <Fragment>
-        <Banner title={banner} />
+        <Banner title={bannerTitle} />
         {user ? (
           <div className="row">
             <div className="col-1" />
