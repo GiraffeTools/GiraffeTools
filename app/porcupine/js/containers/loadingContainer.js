@@ -1,15 +1,19 @@
 import { connect } from "react-redux";
 
-import Canvas from "../components/canvas";
+import LoadData from "../utils/loadData";
 import {
   addNode,
   addLink,
   clearDatabase,
-  addPortToNode,
+  setUser,
+  setRepository,
   repositionPorts,
-  clickScene,
+  updateLoadingPercent
 } from "../actions";
-import { nodesWithPorts, linksWithPorts } from "../selectors/selectors";
+import {
+  nodesWithPorts,
+  linksWithPorts
+} from "../selectors/selectors";
 
 const mapStateToProps = state => ({
   loadingPercent: state.ui.loadingPercent,
@@ -20,15 +24,16 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   addNode: node => dispatch(addNode(node)),
   addLink: link => dispatch(addLink(link)),
-  addPortToNode: (port, nodeId) => dispatch(addPortToNode(port, nodeId)),
-  clickScene: () => dispatch(clickScene()),
   repositionPorts: node => dispatch(repositionPorts(node)),
   clearDatabase: () => dispatch(clearDatabase()),
+  updateLoadingPercent: percent => dispatch(updateLoadingPercent(percent)),
+  setUser: user => dispatch(setUser(user)),
+  setRepository: repository => dispatch(setRepository(repository)),
 });
 
-const CanvasContainer = connect(
+const LoadDataContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Canvas);
+)(LoadData);
 
-export default CanvasContainer;
+export default LoadDataContainer;

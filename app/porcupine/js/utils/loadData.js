@@ -1,15 +1,6 @@
 import React from "react";
 import { load as loadYaml} from 'yaml-js';
 
-import {
-  addNode,
-  addLink,
-  clearDatabase,
-  setUser,
-  setRepository,
-  repositionPorts,
-  updateLoadingPercent
-} from "../actions";
 import { loadPorkFile } from "./loadPorkFile";
 
 class LoadData extends React.Component {
@@ -23,6 +14,7 @@ class LoadData extends React.Component {
   }
 
   setPercent(percent) {
+    const { updateLoadingPercent } = this.props;
     if (percent >= 100) {
       updateLoadingPercent(99.9);
       // Always leave percent at -1
@@ -36,7 +28,7 @@ class LoadData extends React.Component {
 
   loadFromJson(json) {
     this.setPercent(10); // Loading started!
-    // const { addNode, addLink, clearDatabase } = this.props;
+    const { addNode, addLink, clearDatabase, repositionPorts } = this.props;
     //pass by reference and fill them in the load functions
     let nodes = [];
     let links = [];
@@ -66,7 +58,10 @@ class LoadData extends React.Component {
 
   componentWillMount() {
     const { username, repository } = this.props.match.params;
-    // const { setUser, setRepository } = this.props;
+    const { setUser, setRepository } = this.props;
+    setUser(username);
+    setRepository(repository);
+
     const baseName = `https://raw.githubusercontent.com/${username}/${repository}/master`;
     const configFile = `${baseName}/GIRAFFE.yml`;
     fetch(configFile)

@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import configureStore from "./store/configureStore";
 import ContentContainer from "./containers/contentContainer";
-import LoadData from "./utils/loadData";
+import LoadDataContainer from "./containers/loadingContainer";
 
 const store = configureStore();
 
@@ -16,7 +16,7 @@ class App extends React.Component {
     return (
       <Fragment>
         <Route path="/porcupine" component={ContentContainer} />
-        <Route path="/porcupine/:username/:repository" component={LoadData} />*/}
+        <Route path="/porcupine/:username/:repository" component={LoadDataContainer} />
       </Fragment>
     );
   }

@@ -12,7 +12,6 @@ import nodeData from "../../static/assets/nipype.json";
 import ItemTypes from "./itemTypes";
 import Links from "./links";
 import Nodes from "./nodes";
-import { loadPorkFile } from "../utils/loadPorkFile";
 
 const ZoomIn = () => {
   return (
