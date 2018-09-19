@@ -6,8 +6,8 @@
   },
   {
     "id": 2,
-    "q": "What does 'Giraffe' stand for?",
-    "a": "Answer 2"
+    "q": "What does 'giraffe' stand for?",
+    "a": "Graphical Interface for Reproducible Analysis oF workFlow Experiments"
   },
   {
     "id": 3,
@@ -17,11 +17,11 @@
   {
     "id": 4,
     "q": "How do you handle my data privacy? Are you complying with the European GDPR?",
-    "a": "Answer 4"
+    "a": "Answer"
   },
   {
     "id": 5,
     "q": "What has done this nice design?",
-    "a": "Answer 5"
+    "a": "Fuchsfabrik"
   }
 ]

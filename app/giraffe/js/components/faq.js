@@ -7,8 +7,15 @@ import TryOut from "./tryOut";
 const Question = question => {
   return (
     <li>
-      <div className="question">{question.q}</div>
-      <div className="answer">{question.a}</div>
+      <div className="question">
+        <img src="/static/img/chevron_right.svg" />
+        <h3>{question.q}</h3>
+      </div>
+      <br />
+      <div className="answer panel-collapse">{question.a}</div>
+      <svg width="80%" height="3">
+        <line x1="0" y1="0" x2="80%" y2="0" stroke="grey" />
+      </svg>
     </li>
   );
 };

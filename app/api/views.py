@@ -8,3 +8,11 @@ def faq_questions(request):
         questions = json.load(f)
 
     return HttpResponse(json.dumps(questions), content_type="application/json")
+
+
+def example_repos(request):
+    # with open(static("misc/examples.json")) as f:
+    with open("staticfiles/misc/examples.json") as f:
+        questions = json.load(f)
+
+    return HttpResponse(json.dumps(questions), content_type="application/json")

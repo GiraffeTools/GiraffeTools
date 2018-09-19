@@ -20,9 +20,14 @@ $tertiary-color: #F25226;
 $quaternary-color: #FFFAEF;
 $quinternary-color: #FCF0D6;
 
+#gallery-box{
+  width: 80%;
+}
+
 #banner {
   background-image: url('../img/header_subpage_background.jpg');
   background-size: cover;
+
   height: 250px;
   margin-bottom: 50px;
 }
@@ -35,6 +40,9 @@ $quinternary-color: #FCF0D6;
   height: 250px;
 }
 
+.question img{
+  float: left;
+}
 
 .giraffe-button{
   background-color: $primary-color;
@@ -46,6 +54,15 @@ $quinternary-color: #FCF0D6;
   color: $primary-color;
   border-color: $primary-color;
   border-width: 4px;
+}
+
+#example-card{
+  margin: 4px;
+  background-color: $quinternary-color;
+
+  .card-image{
+    width: 100%;
+  }
 }
 
 #banner-title{
@@ -79,7 +96,8 @@ $quinternary-color: #FCF0D6;
 }
 
 #project-box{
-  background-image: url('../img/sidemenu_lines_background.svg');
+  background-image: url('../img/line_bg_coin.png');
+  background-size: cover;
 }
 
 #username{
