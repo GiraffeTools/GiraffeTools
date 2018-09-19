@@ -20,6 +20,16 @@ $tertiary-color: #F25226;
 $quaternary-color: #FFFAEF;
 $quinternary-color: #FCF0D6;
 
+h1 {
+  background-image: url('../img/headline_lines_background.svg');
+  color: $text-color;
+  font-size: 40px;
+}
+
+h1 {
+  font-size: 34px;
+}
+
 #gallery-box{
   width: 80%;
 }
@@ -79,6 +89,12 @@ $quinternary-color: #FCF0D6;
   padding-top: 50px;
 }
 
+#hero-logo{
+  height: 25%;
+  padding-left: 100px;
+  padding-top: 50px;
+}
+
 #footer-logo{
   transform: scaleX(-1);
   float: right;
@@ -125,14 +141,23 @@ $quinternary-color: #FCF0D6;
   background-image: url('../img/code_dark_hero_img.png');
   background-repeat: no-repeat;
   background-position: right;
+  height: 750px;
+}
+
+#typewriter-text{
+  float: left;
+  font-size: 80px;
+  font-weight: bold;
 }
 
 #tools{
   #porcupine-collage{
     width: 20%;
+    float: left;
   }
   #armadillo-collage{
     width: 20%;
+    float: right;
   }
 }
 

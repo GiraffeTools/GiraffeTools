@@ -3,13 +3,18 @@ import React from "react";
 const Porcupine = () => (
   <div className="container-fluid">
     <img src="/static/img/rec_porcupine_collage.png" id="porcupine-collage" />
-    <div className="col text-center">
-      <h1>Porcupine</h1>
-      <h4 className="">PORcupine Creates Ur PipelINE</h4>
+    <div className="col text-left">
+      <h2>Porcupine</h2>
+      <b>POR</b>
+      cupine <b>C</b>
+      reates <b>U</b>r <b>P</b>
+      ipel
+      <b>INE</b>
+      <br />
+      <img src="/static/img/separator_red.svg" width="20%" />
+      <br />
       With Porcupine, you can visually build your pipeline!
-    </div>
-    <div className="col text-center">
-      <a className="btn btn-lg btn-warning" role="button" href="/test">
+      <a className="btn btn-lg giraffe-button" role="button" href="/porcupine">
         Get started!
       </a>
     </div>
@@ -19,14 +24,17 @@ const Porcupine = () => (
 const Armadillo = () => (
   <div className="container-fluid">
     <img src="/static/img/rec_armadillo_collage.png" id="armadillo-collage" />
-    <div className="col text-center">
-      <h1>Armadillo</h1>
-      <h4 className="">Augmented Reality [madillo]</h4>
-      Augmented Reality brain images!
-    </div>
-    <div className="col text-center">
+    <div className="col text-left">
+      <h2>Armadillo</h2>
+      <br />
+      <img src="/static/img/separator_red.svg" width="20%" />
+      <br />
+      <b>A</b>
+      ugmented <b>R</b>
+      eality [madillo] This web app creates 3D Augmented Reality images from the
+      Neurovault database
       <a
-        className="btn btn-lg btn-warning"
+        className="btn btn-lg giraffe-button"
         role="button"
         href="https://armadillo-brain.herokuapp.com"
       >
@@ -37,8 +45,12 @@ const Armadillo = () => (
 );
 
 const Tools = () => (
-  <div>
-    <h3> Our Tools</h3>
+  <div className="row">
+    <div className="col">
+      <div className="col-6 text-center">
+        <h1>Our Tools</h1>
+      </div>
+    </div>
     <Porcupine />
     <Armadillo />
   </div>
