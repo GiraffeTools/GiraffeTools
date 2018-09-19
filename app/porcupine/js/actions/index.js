@@ -19,7 +19,7 @@ import {
   CLEAR_DATABASE,
   TOGGLE_CODEEDITOR,
   SET_USER,
-  SET_REPOSITORY,
+  SET_REPOSITORY
 } from "./actionTypes";
 
 export const clearDatabase = () => ({
@@ -129,7 +129,6 @@ export const clickScene = () => ({
 //   type: SET_MOUSE_STATE,
 //   payload: props,
 // });
-
 
 ///// SCENE /////
 export const setUser = user => ({

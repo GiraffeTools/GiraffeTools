@@ -3,10 +3,10 @@ import {
   SET_USER,
   SET_REPOSITORY,
   SET_BRANCH,
-  SET_COMMIT,
+  SET_COMMIT
 } from "../actions/actionTypes";
 
-const user = (state = {} , action) => {
+const user = (state = {}, action) => {
   switch (action.type) {
     case SET_USER:
       return { ...state, user: action.user };

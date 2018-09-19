@@ -7,7 +7,7 @@ import {
   clearDatabase,
   addPortToNode,
   repositionPorts,
-  clickScene,
+  clickScene
 } from "../actions";
 import { nodesWithPorts, linksWithPorts } from "../selectors/selectors";
 
@@ -23,7 +23,7 @@ const mapDispatchToProps = dispatch => ({
   addPortToNode: (port, nodeId) => dispatch(addPortToNode(port, nodeId)),
   clickScene: () => dispatch(clickScene()),
   repositionPorts: node => dispatch(repositionPorts(node)),
-  clearDatabase: () => dispatch(clearDatabase()),
+  clearDatabase: () => dispatch(clearDatabase())
 });
 
 const CanvasContainer = connect(

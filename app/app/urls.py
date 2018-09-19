@@ -31,7 +31,7 @@ urlpatterns = [
     # porcupine calls
     url(r"^porcupine/?", porcupine.views.porcupine, name="porcupine"),
     # Make sure everything from the react router is used.
-    # url(r"^porcupine/^(?:.*)/?$?", porcupine.views.porcupine, name="porcupine"),
+    # url(r"^porcupine/^(?:.*)/?$?", porcupine.views.porcupine, name="porcupine"),  # Ignore LineLengthBear
 
     # giraffe calls
     url(r"^$", giraffe.views.index, name="index"),

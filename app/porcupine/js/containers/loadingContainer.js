@@ -10,10 +10,7 @@ import {
   repositionPorts,
   updateLoadingPercent
 } from "../actions";
-import {
-  nodesWithPorts,
-  linksWithPorts
-} from "../selectors/selectors";
+import { nodesWithPorts, linksWithPorts } from "../selectors/selectors";
 
 const mapStateToProps = state => ({
   loadingPercent: state.ui.loadingPercent,
@@ -28,7 +25,7 @@ const mapDispatchToProps = dispatch => ({
   clearDatabase: () => dispatch(clearDatabase()),
   updateLoadingPercent: percent => dispatch(updateLoadingPercent(percent)),
   setUser: user => dispatch(setUser(user)),
-  setRepository: repository => dispatch(setRepository(repository)),
+  setRepository: repository => dispatch(setRepository(repository))
 });
 
 const LoadDataContainer = connect(

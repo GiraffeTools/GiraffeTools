@@ -1,5 +1,5 @@
 import React from "react";
-import { load as loadYaml} from 'yaml-js';
+import { load as loadYaml } from "yaml-js";
 
 import { loadPorkFile } from "./loadPorkFile";
 
@@ -67,9 +67,13 @@ class LoadData extends React.Component {
     fetch(configFile)
       .then(result => result.body.getReader())
       .then(reader => {
-        reader.read().then( ({ done, value }) => {
-          const configuration = loadYaml(new TextDecoder("utf-8").decode(value));
-          const porcupineFile = `${baseName}/${configuration.tools.porcupine.file[0]}`;
+        reader.read().then(({ done, value }) => {
+          const configuration = loadYaml(
+            new TextDecoder("utf-8").decode(value)
+          );
+          const porcupineFile = `${baseName}/${
+            configuration.tools.porcupine.file[0]
+          }`;
 
           fetch(porcupineFile)
             .then(result => result.json())
@@ -81,13 +85,13 @@ class LoadData extends React.Component {
               console.log("Cannot load Porcupine Config file");
               this.setPercent(-1);
             });
-        })
+        });
       })
       .catch();
   }
 
   render() {
-    return <div />
+    return <div />;
   }
 }
 

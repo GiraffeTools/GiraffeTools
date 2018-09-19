@@ -10,7 +10,7 @@ const porcupineApp = combineReducers({
   orm: createReducer(orm), // database components
   scene,
   ui,
-  user,
+  user
 });
 
 export default porcupineApp;

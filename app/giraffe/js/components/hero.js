@@ -1,8 +1,7 @@
 import React from "react";
-import Typing from 'react-typing-animation';
+import Typing from "react-typing-animation";
 
 import Navbar from "./navbar";
-
 
 const Hero = () => (
   <div id="hero">
@@ -11,9 +10,7 @@ const Hero = () => (
 
     <h1>
       Open
-      <Typing
-        loop={true}
-      >
+      <Typing loop={true}>
         Science
         <Typing.Delay ms={2000} />
         <Typing.Backspace count={7} />

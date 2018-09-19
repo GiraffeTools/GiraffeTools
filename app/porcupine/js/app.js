@@ -16,7 +16,10 @@ class App extends React.Component {
     return (
       <Fragment>
         <Route path="/porcupine" component={ContentContainer} />
-        <Route path="/porcupine/:username/:repository" component={LoadDataContainer} />
+        <Route
+          path="/porcupine/:username/:repository"
+          component={LoadDataContainer}
+        />
       </Fragment>
     );
   }

@@ -7,12 +7,10 @@ class PaneHeader extends React.Component {
   }
 
   render() {
-    const divRef = "#" + this.props.name;
     return (
       <div className="panel-heading" role="tab">
         <a
           data-toggle="collapse"
-          href={divRef}
           aria-expanded="false"
           aria-controls={this.props.name}
         >
