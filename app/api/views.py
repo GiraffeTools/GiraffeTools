@@ -1,6 +1,5 @@
 import json
 from django.http import HttpResponse
-from django.contrib.staticfiles.templatetags.staticfiles import static
 
 
 def faq_questions(request):

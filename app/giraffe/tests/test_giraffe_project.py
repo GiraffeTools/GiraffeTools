@@ -1,12 +1,12 @@
-import io
-import os
-from unittest import mock
-
-from django.test import TestCase
-
-from giraffe.models import GiraffeProject
-from giraffe.tests.utils import random_id
-
+# import io
+# import os
+# from unittest import mock
+#
+# from django.test import TestCase
+#
+# from giraffe.models import GiraffeProject
+# from giraffe.tests.utils import random_id
+#
 #
 # class TestGiraffeProject(TestCase):
 #

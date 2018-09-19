@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { urlExists } from "../utils/utils";
+import pluralize from "pluralize";
 
 import Banner from "./banner";
 import Footer from "./footer";

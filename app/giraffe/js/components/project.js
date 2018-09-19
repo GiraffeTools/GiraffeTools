@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import pluralize from "pluralize";
 
 import Banner from "./banner";
 import CommitBox from "./commitBox";
