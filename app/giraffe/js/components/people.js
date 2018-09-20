@@ -8,9 +8,8 @@ const People = () => (
     <br />
     <img src="/static/img/separator_red.svg" width="20%" />
     <br />
-    And I automatically create the code for your analysis
-    pipeline. Get started immediately by checking out the example files! It''s
-    so super duper easy.
+    And I automatically create the code for your analysis pipeline. Get started
+    immediately by checking out the example files! It''s so super duper easy.
     <br />
     <a href="https://github.com/TimVanMourik" target="_blank">
       <img src="/static/img/github_icon.svg" />
