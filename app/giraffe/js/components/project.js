@@ -36,6 +36,7 @@ class Project extends React.Component {
           <div className="row">
             <div className="col-1" />
             <RepositoryBox repository={repository} />
+            <CommitBox repository={repository} />
             <div className="col-1" />
           </div>
         ) : (

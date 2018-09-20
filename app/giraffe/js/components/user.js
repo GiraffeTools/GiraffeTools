@@ -13,7 +13,7 @@ const ProjectBox = repository => (
     }
   >
     <div className="col-6 text-left">
-      <h4>{repository.name}</h4>
+      <h5>{repository.name}</h5>
       {repository.private ? "Private" : "Public"}
       <br />
       <img src="/static/img/separator_red.svg" width="20%" />
@@ -46,7 +46,7 @@ const ProjectBox = repository => (
 const Projects = ({ repositories }) => (
   <div className="col-7 text-center">
     <div>
-      <h3 id="your-project-tag">Your projects</h3>
+      <h4 className="with-lines">Your projects</h4>
     </div>
     {repositories ? (
       repositories
@@ -66,7 +66,7 @@ const ProfileBox = ({ user, active_giraffe_projects }) => (
     <br />
     <img src="/static/img/separator_grey.svg" width="80%" />
     <br />
-    <h3 id="username">{user.name}</h3>
+    <h3 id="username">{user.login}</h3>
     <div className="text-center" id="active-project-counter">
       {active_giraffe_projects}
     </div>
