@@ -20,14 +20,41 @@ $tertiary-color: #F25226;
 $quaternary-color: #FFFAEF;
 $quinternary-color: #FCF0D6;
 
+
+// Banner text
 h1 {
   background-image: url('../img/headline_lines_background.svg');
-  color: $text-color;
   font-size: 40px;
+  font-weight: bold;
+}
+// Big red text
+h2 {
+  color: $text-color;
+  font-size: 34px;
+}
+// Sextion titles
+h3 {
+  font-size: 30px;
+}
+// Box titles
+h4 {
+  font-size: 26px;
+  font-weight: bold;
+}
+// Within box titles
+h5{
+  font-size: 22px;
+  font-weight: bold;
+}
+// Next to icon text
+h6{
+  color: $text-color;
+  font-size: 32px;
+  font-weight: bold;
 }
 
-h1 {
-  font-size: 34px;
+.with-lines{
+  background-image: url('../img/headline_lines_background.svg');
 }
 
 #gallery-box{

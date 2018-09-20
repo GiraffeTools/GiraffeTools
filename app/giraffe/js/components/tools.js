@@ -4,7 +4,7 @@ const Porcupine = () => (
   <div className="container-fluid">
     <img src="/static/img/rec_porcupine_collage.png" id="porcupine-collage" />
     <div className="col text-left">
-      <h2>Porcupine</h2>
+      <h3>Porcupine</h3>
       <b>POR</b>
       cupine <b>C</b>
       reates <b>U</b>r <b>P</b>
@@ -25,7 +25,7 @@ const Armadillo = () => (
   <div className="container-fluid">
     <img src="/static/img/rec_armadillo_collage.png" id="armadillo-collage" />
     <div className="col text-left">
-      <h2>Armadillo</h2>
+      <h3>Armadillo</h3>
       <br />
       <img src="/static/img/separator_red.svg" width="20%" />
       <br />
@@ -48,7 +48,7 @@ const Tools = () => (
   <div className="row">
     <div className="col">
       <div className="col-6 text-center">
-        <h1>Our Tools</h1>
+        <h2 className="with-lines">Our Tools</h2>
       </div>
     </div>
     <Porcupine />

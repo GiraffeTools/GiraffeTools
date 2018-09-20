@@ -61,7 +61,7 @@ class RepositoryBox extends React.Component {
 
     return (
       <div className="col-3 text-center giraffe-box" id="project-box">
-        <h3>About the project</h3>
+        <h4>About the project</h4>
         <img src="/static/img/separator_grey.svg" width="80%" />
         <br />
         <div className="text-left">

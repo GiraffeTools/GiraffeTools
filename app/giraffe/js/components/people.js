@@ -1,11 +1,14 @@
 import React from "react";
 
 const People = () => (
-  <div className="container-fluid" id="people">
-    <h1>The People</h1>
-    <div className="col text-center">Tim van Mourik</div>
+  <div className="container-fluid text-left" id="people">
+    <h2 className="with-lines">The People</h2>
     <img src="/static/img/tim_artsy_portrait.png" width="20%" />
-    Dr. Tim van Mourik And I automatically create the code for your analysis
+    Dr. Tim van Mourik
+    <br />
+    <img src="/static/img/separator_red.svg" width="20%" />
+    <br />
+    And I automatically create the code for your analysis
     pipeline. Get started immediately by checking out the example files! It''s
     so super duper easy.
     <br />
