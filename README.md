@@ -1,32 +1,31 @@
 Website: www.giraffe.tools
 # Giraffe Tools
-_This web application is in the early stages of construction_
 
 [![Build Status](https://travis-ci.org/TimVanMourik/GiraffeTools.svg?branch=master)](https://travis-ci.org/TimVanMourik/GiraffeTools)
 [![codecov](https://codecov.io/gh/TimVanMourik/GiraffeTools/branch/master/graph/badge.svg)](https://codecov.io/gh/TimVanMourik/GiraffeTools)
 
-### Giraffe
-a **G**raphical **I**nterface for **R**eproducible **A**nalysis o**F** work**F**low **E**xperiments
+### GiraffeTools
+Tools for **G**raphical **I**nterface for **R**eproducible **A**nalysis o**F** work**F**low **E**xperiments
 
-This is a web application with a set of tools to build and improve your data analysis! Initially, this will focus on neuroscientific applications. The first goal is to make a web application from my earlier project [Porcupine](https://timvanmourik.github.io/Porcupine), a visual workflow editor. This can further be developped to support version control of a workflow by means of Github integration, connect to visualisation or execution platforms, and much more. If you want to know more about Porcupine, please read it in the [paper here](https://doi.org/10.1371/journal.pcbi.1006064)!
+This is a web application with a set of tools to build a data analysis pipeline graphically and save the code straight to GitHub. Initially, this will focus on neuroscientific data analysis and be a web version of [Porcupine](https://timvanmourik.github.io/Porcupine), a visual workflow editor of which you can read it in the [paper here](https://doi.org/10.1371/journal.pcbi.1006064).
 
 ## Intended usage
-The plan is to have a user go to:
-https://www.giraffe.tools/gh/$username/$repository/$branch
-and there find a dashboard of the project. A project is a GitHub repository that is characterised by a GIRAFFE.yml configuration file in its root and links to configuration files of specific tools. The rest of the repository doesn't matter.
+GiraffeTools reads information straight from an analysis repository, just to:
+https://www.giraffe.tools/github/$username/$repository/$branch
+to find a dashboard of the project. A GiraffeTools repository is characterised by a GIRAFFE.yml configuration file in its root and links to configuration files of specific tools.
 
-Example (work in progress): https://www.giraffe.tools/gh/TimVanMourik/SomeGiraffeExample/master
+Example (work in progress): https://www.giraffe.tools/github/TimVanMourik/SomeGiraffeExample/master
 
-This is similar in usage to for example [GitPitch](https://gitpitch.com), which is how the exaplantory presentation about this repository was made: https://gitpitch.com/TimVanMourik/GiraffeTools/master.
-
-## Potential Tools
+## Tools
+Currently, GiraffeTools features:
 * Porcupine [Visual workflow editor](https://www.biorxiv.org/content/early/2017/10/11/187344)
   * Visual representation of data flow
   * Connect input/output ports on functions/nodes
   * From this workflow representation, make code for execution this workflow
 * Visualisation of the data that flows through pipeline
-  * We have a working prototype of Augmented Reality brain visualisation [here](http://armadillo-brain.herokuapp.com), ARmadillo!
-* OAuth Github link to easily save (commit) workflows to GitHub
+  * We have a working prototype of Augmented Reality brain visualisation [here](http://armadillo-brain.herokuapp.com), ARmadillo
+
+We intend to create:
 * Code execution integration, via, e.g., Amazon
 * Analysis preregistration
 * [DOI](https://www.doi.org) (persistent identifiers) for analysis workflow
