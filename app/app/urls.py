@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.conf.urls import include, url
 from django.urls import path
-from django.contrib import admin
+# from django.contrib import admin
 
 import giraffe.views
 import porcupine.views
