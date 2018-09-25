@@ -4,7 +4,7 @@ const SlackBanner = () => (
   <div className="container-fluid" id="slack">
     <a href="/slack">
       <img src="/static/img/slack_logo.svg" width="10%" />
-      <b>Join the team Slack!</b>
+      <div className="h7">Join the team Slack!</div>
     </a>
   </div>
 );

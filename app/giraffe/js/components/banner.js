@@ -1,6 +1,6 @@
 import React from "react";
 
-import Navbar from "./navbar";
+import Navbar from "./navigation";
 
 const Banner = ({ title }) => (
   <div className="container-fluid text-center" id="banner">

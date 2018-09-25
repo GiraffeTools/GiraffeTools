@@ -1,9 +1,9 @@
 import React, { Fragment } from "react";
 import { urlExists } from "../utils/utils";
-import pluralize from "pluralize";
 
 import Banner from "./banner";
 import Footer from "./footer";
+import ProfileBox from "./profileBox";
 import SlackBanner from "./slackBanner";
 
 const ProjectBox = repository => (
@@ -56,27 +56,6 @@ const Projects = ({ repositories }) => (
         .map(repository => <ProjectBox key={repository.id} {...repository} />)
     ) : (
       <div>This user does not have any GitHub projects.</div>
-    )}
-  </div>
-);
-
-const ProfileBox = ({ user, active_giraffe_projects }) => (
-  <div className="col-3 text-center giraffe-box">
-    <img src={user.avatar_url} id="profile-pic" />
-    <br />
-    <img src="/static/img/separator_grey.svg" width="80%" />
-    <br />
-    <h3 id="username">{user.login}</h3>
-    <div className="text-center" id="active-project-counter">
-      {active_giraffe_projects}
-    </div>
-    active GiraffeTools {pluralize("project", active_giraffe_projects)}
-    <br />
-    <img src="/static/img/separator_grey.svg" width="80%" />
-    {user.loggedIn && (
-      <button type="button" className="btn">
-        Logout
-      </button>
     )}
   </div>
 );

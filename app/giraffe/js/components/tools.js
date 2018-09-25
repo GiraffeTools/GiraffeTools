@@ -36,7 +36,7 @@ const Armadillo = () => (
       <a
         className="btn btn-lg giraffe-button"
         role="button"
-        href="https://armadillo-brain.herokuapp.com"
+        href="https://armadillobrain.app"
       >
         Get started!
       </a>
@@ -48,7 +48,7 @@ const Tools = () => (
   <div className="row">
     <div className="col">
       <div className="col-6 text-center">
-        <h2 className="with-lines">Our Tools</h2>
+        <h2 className="with-lines">OUR TOOLS</h2>
       </div>
     </div>
     <Porcupine />

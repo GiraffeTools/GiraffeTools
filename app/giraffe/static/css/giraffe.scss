@@ -23,34 +23,60 @@ $quinternary-color: #FCF0D6;
 
 // Banner text
 h1 {
+  font-family: 'Nexa-Bold';
+  font-weight: bold;
   background-image: url('../img/headline_lines_background.svg');
   font-size: 40px;
-  font-weight: bold;
 }
 // Big red text
 h2 {
-  color: $text-color;
+  font-family: 'Nexa-Bold';
   font-size: 34px;
+  color: $text-color;
 }
 // Sextion titles
 h3 {
+  font-family: 'Nexa-Bold';
   font-size: 30px;
 }
 // Box titles
 h4 {
+  font-family: 'Nexa-Bold';
   font-size: 26px;
   font-weight: bold;
 }
 // Within box titles
 h5{
+  font-family: 'Nexa-Bold';
   font-size: 22px;
   font-weight: bold;
 }
 // Next to icon text
 h6{
+  font-family: 'Nexa-Bold';
   color: $text-color;
   font-size: 32px;
   font-weight: bold;
+}
+// Browsers can't handle more than 6 headlines
+.h7{
+  font-family: 'Nexa-Bold';
+  color: white;
+  font-size: 32px;
+}
+
+div {
+  font-family: 'PT Sans', sans-serif;
+
+}
+
+#typewriter-text{
+  div{
+    font-family: 'Nexa-Bold';
+    font-size: 80px;
+    font-weight: bold;
+    float: left;
+  }
 }
 
 .with-lines{
@@ -82,15 +108,19 @@ h6{
 }
 
 .giraffe-button{
+  font-family: 'Nexa-Bold';
   background-color: $primary-color;
   color: white;
+  border-radius: 0px;
 }
 
 .no-giraffe-button{
+  font-family: 'Nexa-Bold';
   background-color: #EDEDEE;
   color: $primary-color;
   border-color: $primary-color;
   border-width: 4px;
+  border-radius: 0px;
 }
 
 #example-card{
@@ -112,12 +142,6 @@ h6{
 #banner-logo{
   height: 70%;
   float: left;
-  padding-left: 100px;
-  padding-top: 50px;
-}
-
-#hero-logo{
-  height: 25%;
   padding-left: 100px;
   padding-top: 50px;
 }
@@ -171,10 +195,19 @@ h6{
   height: 750px;
 }
 
-#typewriter-text{
-  float: left;
-  font-size: 80px;
-  font-weight: bold;
+#hero-logo{
+  height: 25%;
+  padding-left: 100px;
+  padding-top: 50px;
+}
+
+#github-button{
+  width: 15%;
+}
+
+#headline-dot{
+  margin-top: 70px;
+  width: 17px;
 }
 
 #tools{
@@ -198,8 +231,8 @@ h6{
 }
 
 #why-giraffe {
+  position: relative;
   text-align: center;
-  background-color: white;
 }
 
 #people {
@@ -265,7 +298,7 @@ h6{
 #slack {
   text-align: center;
   height: 200px;
-  background-color: $primary-color;
+  background-color: $quaternary-color;
   background-image: url('../img/slack_section_background.jpg');
   a {
     color: white;

@@ -28,7 +28,7 @@ const Roadmap = () => {
 
   return (
     <div className="container-fluid" id="roadmap">
-      <h2>Roadmap</h2>
+      <h3>&amp; more to come</h3>
       <svg height="10px" width="100%">
         <line
           x1="0"

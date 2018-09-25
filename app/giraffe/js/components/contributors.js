@@ -39,7 +39,7 @@ class Contributors extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col">
-              <h3>All contributors</h3>
+              <h3>&amp; all the brave contributors</h3>
               <ul className="contributor-list">
                 {contributors &&
                   shuffle(contributors).map(contributor => (
@@ -47,11 +47,11 @@ class Contributors extends React.Component {
                   ))}
               </ul>
             </div>
-            <div className="col">
+            <h3 className="col">
               Most contributors have contributed to this Open Source project
               with Gitcoin. If you want to help grow this platform, you can
               donate or fund projects and issues directly!
-            </div>
+            </h3>
           </div>
         </div>
       </div>

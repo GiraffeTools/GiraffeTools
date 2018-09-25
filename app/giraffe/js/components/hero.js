@@ -1,7 +1,7 @@
 import React from "react";
 import Typing from "react-typing-animation";
 
-import Navbar from "./navbar";
+import Navbar from "./navigation";
 
 const Hero = () => (
   <div id="hero">
@@ -24,23 +24,22 @@ const Hero = () => (
           <Typing.Backspace count={8} />
         </Typing>
       </div>
-      <img src="/static/img/headline_dot.svg" />
+      <img id="headline-dot" src="/static/img/headline_dot.svg" />
     </div>
     <br />
     <br />
     <br />
     <br />
     <div>
-      <h3>
-        Giraffe Tools are applications that make it easier to analyse all kinds
-        of data
-      </h3>
+      Giraffe Tools are applications that make it easier to analyse all kinds of
+      data!
+      <br />
       <a
         type="button btn-primary btn-lg "
         className="btn giraffe-button"
-        href="/auth"
+        href="/_github/auth"
       >
-        <img src="/static/img/gh-icon.png" width="20px" />
+        <img src="/static/img/gh-icon-white.svg" id="github-button" />
         Login with GitHub
       </a>
     </div>
