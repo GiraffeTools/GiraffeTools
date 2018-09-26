@@ -2,7 +2,7 @@ import React from "react";
 import Typing from "react-typing-animation";
 
 import Navbar from "./navigation";
-import { login } from "../utils/auth"
+import { login } from "../utils/auth";
 
 const Hero = () => (
   <div id="hero">
