@@ -1,3 +1,4 @@
+import React from "react";
 import pluralize from "pluralize";
 
 const ProfileBox = ({ user, active_giraffe_projects }) => (
