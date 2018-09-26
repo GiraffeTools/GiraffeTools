@@ -7,6 +7,7 @@
   },
   "description": "Graphical Interface for Reproducible Analysis For workFlow Experiments",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-core": "^6.26.3",
     "babel-jest": "^22.4.4",
     "babel-loader": "^7.1.2",

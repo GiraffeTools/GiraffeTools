@@ -2,6 +2,7 @@ import React from "react";
 import Typing from "react-typing-animation";
 
 import Navbar from "./navigation";
+import { login } from "../utils/auth"
 
 const Hero = () => (
   <div id="hero">
@@ -35,7 +36,7 @@ const Hero = () => (
         type="button btn-primary btn-lg "
         className="btn giraffe-button"
         id="hero-login-button"
-        href="/_github/auth/"
+        onClick={login}
       >
         <img src="/static/img/gh-icon-white.svg" id="github-button" />
         Login with GitHub

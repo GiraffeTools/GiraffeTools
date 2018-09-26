@@ -11,11 +11,9 @@ export function InvalidCredentialsException(message) {
 
 export function login(username, password) {
   return axios
-    .post(URL + LOGIN, {
-      username,
-      password
-    })
+    .post(LOGIN)
     .then(function(response) {
+      console.log(response);
       store.dispatch(setToken(response.data.token));
     })
     .catch(function(error) {
