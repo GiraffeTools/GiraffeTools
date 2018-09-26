@@ -192,13 +192,18 @@ div {
   background-image: url('../img/code_dark_hero_img.png');
   background-repeat: no-repeat;
   background-position: right;
-  height: 750px;
+  height: 600px;
+}
+
+.hero-text{
+  top: 36px;
+  left: 6%;
+  position: relative;
 }
 
 #hero-logo{
-  height: 25%;
-  padding-left: 100px;
-  padding-top: 50px;
+  width: 10%;
+  margin-bottom: 60px;
 }
 
 #github-button{
@@ -206,8 +211,19 @@ div {
 }
 
 #headline-dot{
-  margin-top: 70px;
-  width: 17px;
+  margin-top: 66px;
+  margin-bottom: 34px;
+  width: 20px;
+}
+
+#hero-subtitle{
+  font-size: 24px;
+  color: grey;
+}
+
+#hero-login-button{
+  margin-top: 30px;
+  font-size: 22px;
 }
 
 #tools{
