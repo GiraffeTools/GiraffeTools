@@ -5,14 +5,12 @@ import { hot } from "react-hot-loader";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import configureStore from "./store/configureStore";
 import Faq from "./components/faq";
 import LandingPage from "./components/landingPage";
 import Slack from "./components/slack";
 import Github from "./components/github";
 import Gallery from "./components/gallery";
 
-const store = configureStore();
 
 class App extends React.Component {
   render() {

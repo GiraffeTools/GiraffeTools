@@ -97,10 +97,12 @@ div {
 
 #nav{
   float: right;
+  width: 16%;
 }
 
 #nav-triangle{
-  height: 250px;
+  // max-width: 350px;
+  // height: 350px;
 }
 
 .question img{
@@ -187,6 +189,10 @@ div {
   clip-path: circle(50% at center);
 }
 
+#why-giraffe-image{
+  width: 55%;
+}
+
 #hero{
   background-color: $quinternary-color;
   background-image: url('../img/code_dark_hero_img.png');
@@ -226,15 +232,13 @@ div {
   font-size: 22px;
 }
 
-#tools{
-  #porcupine-collage{
-    width: 20%;
-    float: left;
-  }
-  #armadillo-collage{
-    width: 20%;
-    float: right;
-  }
+#porcupine-collage{
+  width: 40%;
+  float: left;
+}
+#armadillo-collage{
+  width: 40%;
+  float: right;
 }
 
 #roadmap {

@@ -35,7 +35,7 @@ const Hero = () => (
         type="button btn-primary btn-lg "
         className="btn giraffe-button"
         id="hero-login-button"
-        href="/_github/auth"
+        href="/_github/auth/"
       >
         <img src="/static/img/gh-icon-white.svg" id="github-button" />
         Login with GitHub

@@ -53,7 +53,7 @@ const WhyGiraffe = () => {
         </g>
       </svg>
       */}
-      <img src="/static/img/giraffe_tooltips.png" id="circle" />
+      <img src="/static/img/giraffe_tooltips.png" id="giraffe-circle" />
       {descriptions &&
         descriptions.map(description => (
           <Description key={description.id} description={description} />
