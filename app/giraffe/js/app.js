@@ -11,7 +11,6 @@ import Slack from "./components/slack";
 import Github from "./components/github";
 import Gallery from "./components/gallery";
 
-
 class App extends React.Component {
   render() {
     return (

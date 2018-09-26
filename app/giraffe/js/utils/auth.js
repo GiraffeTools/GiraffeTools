@@ -1,12 +1,12 @@
-import axios from 'axios';
-import _ from 'lodash';
-import store from '../store';
-import { setToken } from '../actions'
-import { URL, LOGIN } from '../config';
+import axios from "axios";
+import _ from "lodash";
+import store from "../store";
+import { setToken } from "../actions";
+import { URL, LOGIN } from "../config";
 
 export function InvalidCredentialsException(message) {
-    this.message = message;
-    this.name = 'InvalidCredentialsException';
+  this.message = message;
+  this.name = "InvalidCredentialsException";
 }
 
 export function login(username, password) {
@@ -15,12 +15,12 @@ export function login(username, password) {
       username,
       password
     })
-    .then(function (response) {
+    .then(function(response) {
       store.dispatch(setToken(response.data.token));
     })
-    .catch(function (error) {
+    .catch(function(error) {
       // raise different exception if due to invalid credentials
-      if (_.get(error, 'response.status') === 400) {
+      if (_.get(error, "response.status") === 400) {
         throw new InvalidCredentialsException(error);
       }
       throw error;

@@ -1,7 +1,5 @@
-import { combineReducers } from 'redux';
-import {
-  SET_TOKEN
-} from "../actions/actionTypes"
+import { combineReducers } from "redux";
+import { SET_TOKEN } from "../actions/actionTypes";
 
 const tokenInitialState = null;
 
@@ -13,14 +11,14 @@ const login = (state = tokenInitialState, action) => {
     default:
       return state;
   }
-}
+};
 
 const appReducer = combineReducers({
-  login,
-})
+  login
+});
 
 const rootReducer = (state, action) => {
   return appReducer(state, action);
-}
+};
 
 export default rootReducer;

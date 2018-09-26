@@ -28,8 +28,8 @@ const Hero = () => (
         <img id="headline-dot" src="/static/img/headline_dot.svg" />
       </div>
       <div id="hero-subtitle">
-        Giraffe Tools are applications that make it easier to analyse all kinds of
-        data!
+        Giraffe Tools are applications that make it easier to analyse all kinds
+        of data!
       </div>
       <a
         type="button btn-primary btn-lg "

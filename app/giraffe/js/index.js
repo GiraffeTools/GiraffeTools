@@ -8,7 +8,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import store from "./store";
 import App from "./app";
 
-
 render(
   <Provider className="app" store={store}>
     <BrowserRouter>
