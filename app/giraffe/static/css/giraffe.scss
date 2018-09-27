@@ -260,6 +260,11 @@ div {
   background-color: $secondary-color;
 }
 
+#people-box{
+  position: relative;
+  transform: translateY(30%);
+}
+
 #contributors {
   text-align: center;
   background-color: $quaternary-color;
