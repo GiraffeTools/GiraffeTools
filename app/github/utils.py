@@ -48,16 +48,6 @@ def get_time():
 
 
 def build_auth_dict(oauth_token):
-    """
-    Collect authentication details.
-
-    Args:
-        oauth_token (str): The Github OAuth token.
-
-    Returns:
-        dict: An authentication dictionary.
-
-    """
     return {
         "api_url": settings.GITHUB_API_BASE_URL,
         "client_id": settings.GITHUB_CLIENT_ID,
@@ -67,16 +57,6 @@ def build_auth_dict(oauth_token):
 
 
 def is_github_token_valid(oauth_token=None, last_validated=None):
-    """
-    Check whether or not a Github OAuth token is valid.
-
-    Args:
-        access_token (str): The Github OAuth token.
-
-    Returns:
-        bool: Whether or not the provided OAuth token is valid.
-
-    """
     # If no OAuth token was provided, no checks necessary.
     if not oauth_token:
         return False
@@ -116,16 +96,6 @@ def revoke_token(oauth_token):
 
 
 def reset_token(oauth_token):
-    """
-    Reset the provided token.
-
-    Args:
-        access_token (str): The Github OAuth token.
-
-    Returns:
-        str: The new Github OAuth token.
-
-    """
     _params = build_auth_dict(oauth_token)
     _auth = (_params["client_id"], _params["client_secret"])
     url = TOKEN_URL.format(**_params)
@@ -167,9 +137,6 @@ def get_auth_url(redirect_uri="/"):
 
 
 def get_github_user_token(code, **kwargs):
-    """
-    Get the Github authorization token.
-    """
     _params = {
         "code": code,
         "client_id": settings.GITHUB_CLIENT_ID,
@@ -188,16 +155,6 @@ def get_github_user_token(code, **kwargs):
 
 
 def get_github_user_data(oauth_token):
-    """
-    Get the user's github profile information.
-
-    Args:
-        oauth_token (str): The Github OAuth2 token to use for authentication.
-
-    Returns:
-        requests.Response: The Github user response.
-
-    """
     headers = dict({"Authorization": f"token {oauth_token}"}, **JSON_HEADER)
     response = requests.get("https://api.github.com/user", headers=headers)
     if response.status_code == 200:
@@ -206,16 +163,6 @@ def get_github_user_data(oauth_token):
 
 
 def get_github_primary_email(oauth_token):
-    """
-    Get the primary email address associated with the github profile.
-
-    Args:
-        oauth_token (str): The Github OAuth2 token to use for authentication.
-
-    Returns:
-        str: The user's primary github email address.
-
-    """
     headers = dict({"Authorization": f"token {oauth_token}"}, **JSON_HEADER)
     response = requests.get(
         "https://api.github.com/user/emails", headers=headers)
@@ -230,16 +177,6 @@ def get_github_primary_email(oauth_token):
 
 
 def get_github_repos(oauth_token):
-    """
-    Get the primary email address associated with the github profile.
-
-    Args:
-        oauth_token (str): The Github OAuth2 token to use for authentication.
-
-    Returns:
-        str: The user's primary github email address.
-
-    """
     headers = dict({"Authorization": f"token {oauth_token}"}, **JSON_HEADER)
     response = requests.get(
         "https://api.github.com/user/repos", headers=headers)
@@ -253,16 +190,6 @@ def get_github_repos(oauth_token):
 
 
 def search(query):
-    """
-    Search for a user on github.
-
-    Args:
-        q (str): The query text to match.
-
-    Returns:
-        request.Response: The github search response.
-
-    """
     params = (
         ("q", query),
         ("sort", "updated"),
@@ -274,9 +201,6 @@ def search(query):
 
 
 def get_user(user, sub_path=""):
-    """
-    Get the github user details.
-    """
     user = user.replace("@", "")
     url = f"https://api.github.com/users/{user}{sub_path}"
     response = requests.get(url, auth=_AUTH, headers=HEADERS)
@@ -285,56 +209,16 @@ def get_user(user, sub_path=""):
 
 
 def repo_url(issue_url):
-    """
-    Build the repository URL.
-
-    Args:
-        issue_url (str): The Github issue URL.
-
-    Returns:
-        str: The repository URL.
-
-    """
     return "/".join(issue_url.split("/")[:-2])
 
 
 def org_name(issue_url):
-    """
-    Get the organization name from an issue URL.
-
-    Args:
-        issue_url (str): The Github issue URL.
-
-    Returns:
-        str: The Github organization name.
-
-    """
     return issue_url.split("/")[3]
 
 
 def repo_name(issue_url):
-    """
-    Get the repo name from an issue URL.
-
-    Args:
-        issue_url (str): The Github issue URL.
-
-    Returns:
-        str: The Github repo name.
-
-    """
     return issue_url.split("/")[4]
 
 
 def issue_number(issue_url):
-    """
-    Get the issue_number from an issue URL.
-
-    Args:
-        issue_url (str): The Github issue URL.
-
-    Returns:
-        str: The Github issue_number
-
-    """
     return issue_url.split("/")[6]

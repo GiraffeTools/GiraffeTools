@@ -35,12 +35,6 @@ const Porcupine = () => (
 const Armadillo = () => (
   <div className="container-fluid">
     <div className="row">
-      <div className="col">
-        <img
-          src="/static/img/rec_armadillo_collage.png"
-          id="armadillo-collage"
-        />
-      </div>
       <div className="col text-left">
         <h3>Armadillo</h3>
         <br />
@@ -57,6 +51,12 @@ const Armadillo = () => (
         >
           Get started!
         </a>
+      </div>
+      <div className="col">
+        <img
+          src="/static/img/rec_armadillo_collage.png"
+          id="armadillo-collage"
+        />
       </div>
     </div>
   </div>

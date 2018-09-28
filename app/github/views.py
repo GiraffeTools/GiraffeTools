@@ -39,9 +39,6 @@ from github.utils import (
 
 @require_GET
 def github_callback(request):
-    """
-    Handle the Github authentication callback.
-    """
     # Get request parameters to handle authentication and the redirect.
     code = request.GET.get("code", None)
     redirect_uri = request.GET.get("redirect_uri")
