@@ -3,11 +3,11 @@ import React from "react";
 const People = () => (
   <div className="container-fluid text-center" id="people">
     <h2 className="with-lines">THE PEOPLE</h2>
-    <div className="row justify-content-md-center" id="people">
+    <div className="row justify-content-md-center">
       <div className="col col-lg-4 text-center">
         <img src="/static/img/tim_artsy_portrait.png" width="80%" />
       </div>
-      <div className="col col-lg-4 text-left people-box">
+      <div className="col col-lg-4 text-left people-box" id="tool-text">
         <h3>Dr. Tim van Mourik</h3>
         <br />
         <img src="/static/img/separator_red.svg" width="80%" />
@@ -17,19 +17,24 @@ const People = () => (
         duper easy.
         <br />
         <a href="https://github.com/TimVanMourik" target="_blank">
-          <img src="/static/img/github_icon.svg" />
+          <img src="/static/img/github_icon.svg" className="icon" />
         </a>
         <a
           href="https://nl.linkedin.com/in/tim-van-mourik-616249a1"
           target="_blank"
+          className="icon"
         >
-          <img src="/static/img/linkedin_icon.svg" />
+          <img src="/static/img/linkedin_icon.svg" className="icon" />
         </a>
-        <a href="mailto:timvanmourik@gmail.com" target="_blank">
-          <img src="/static/img/mail_icon.svg" />
+        <a
+          href="mailto:timvanmourik@gmail.com"
+          target="_blank"
+          className="icon"
+        >
+          <img src="/static/img/mail_icon.svg" className="icon" />
         </a>
-        <a href="https://www.timvanmourik.com" target="_blank">
-          <img src="/static/img/web_icon.svg" />
+        <a href="https://www.timvanmourik.com" target="_blank" className="icon">
+          <img src="/static/img/web_icon.svg" className="icon" />
         </a>
       </div>
     </div>

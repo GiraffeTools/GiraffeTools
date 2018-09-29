@@ -31,13 +31,16 @@ h1 {
 // Big red text
 h2 {
   font-family: 'Nexa-Bold';
-  font-size: 34px;
+  font-size: 3rem;
   color: $text-color;
+  padding: 3rem;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 // Sextion titles
 h3 {
   font-family: 'Nexa-Bold';
-  font-size: 30px;
+  font-size: 1.8rem;
 }
 // Box titles
 h4 {
@@ -50,19 +53,6 @@ h5{
   font-family: 'Nexa-Bold';
   font-size: 22px;
   font-weight: bold;
-}
-// Next to icon text
-h6{
-  font-family: 'Nexa-Bold';
-  color: $text-color;
-  font-size: 32px;
-  font-weight: bold;
-}
-// Browsers can't handle more than 6 headlines
-.h7{
-  font-family: 'Nexa-Bold';
-  color: white;
-  font-size: 32px;
 }
 
 div {
@@ -78,12 +68,15 @@ div {
   }
 }
 
+#our-tools{
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
 .with-lines{
   background-image: url('../img/headline_lines_background.svg');
-  background-size: cover;
-  padding: 2rem;
-  padding-left: 4rem;
-  padding-right: 5rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 #gallery-box{
@@ -221,6 +214,11 @@ padding-bottom: 1.5rem;
   // font-weight: bold;
 }
 
+.inner-tool-text{
+  font-size: 1.3rem;
+  color: grey;
+}
+
 #profile-pic{
   width: 50%;
   margin-top: 3rem;
@@ -233,8 +231,14 @@ padding-bottom: 1.5rem;
   margin-top: 1rem;
 }
 
+#tool-text{
+  padding-top: 8rem;
+}
+
 .separator-red{
-  width: 50%;
+  width: 60%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .separator-grey{
@@ -243,8 +247,8 @@ padding-bottom: 1.5rem;
   margin-bottom: 1rem;
 }
 
-#why-giraffe-image{
-  width: 55%;
+#tool-button{
+  margin-bottom: 1rem;
 }
 
 #hero{
@@ -284,20 +288,31 @@ padding-bottom: 1.5rem;
 #hero-login-button{
   margin-top: 30px;
   font-size: 22px;
+  color: white;
 }
 
 #porcupine-collage{
-  width: 40%;
+  width: 90%;
   float: left;
 }
 #armadillo-collage{
-  width: 40%;
+  width: 90%;
   float: right;
 }
 
 #roadmap {
+  height: 22rem;
   text-align: center;
   background-color: $quaternary-color;
+}
+
+.roadmap-text{
+  font-size: 1.3rem;
+}
+
+#and-more{
+  padding-top: 4rem;
+  padding-bottom: 5rem;
 }
 
 #roadmap-elements {
@@ -309,9 +324,31 @@ padding-bottom: 1.5rem;
   text-align: center;
 }
 
+#why-giraffe-box{
+  float: left;
+}
+
+#why-giraffe-image{
+  width: 60%;
+  position: relative;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.description{
+  font-size: 1.3rem;
+}
+
+.icon{
+  margin: 0.2rem;
+  width: 3rem;
+}
+
 #people {
   text-align: center;
-  background-color: $secondary-color;
+  background-color: $quinternary-color;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 #people-box{
@@ -320,6 +357,8 @@ padding-bottom: 1.5rem;
 }
 
 #contributors {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   text-align: center;
   background-color: $quaternary-color;
 }
@@ -371,24 +410,50 @@ padding-bottom: 1.5rem;
 
 #contact {
   text-align: center;
-  background-color: $secondary-color;
+  background-color: $quinternary-color;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.icon-title-text{
+  font-family: 'Nexa-Bold';
+  color: $text-color;
+  font-size: 2.3rem;
+  font-weight: bold;
+}
+
+.icon-tile{
+  width: 25%;
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
 }
 
 #slack {
   text-align: center;
-  height: 200px;
-  background-color: $quaternary-color;
-  background-image: url('../img/slack_section_background.jpg');
+  height: 15rem;
+  padding: 3rem;
+  background-color: #FFFAEF;
+  background-image: url(../img/slack_section_background.jpg);
+  background-position-x: center;
+  background-repeat: no-repeat;
+  padding-top: 5rem;
   a {
-    color: white;
-    font-size: 32px;
     &:hover {
       text-decoration: none;
     }
   }
-  img {
-    fill: white;
-  }
+}
+
+#slack-logo{
+  width: 5rem;
+  margin-right: 3rem;
+}
+
+// Browsers can't handle more than 6 headlines
+#slack-text{
+  font-family: 'Nexa-Bold';
+  color: white;
+  font-size: 2.2rem;
 }
 
 #your-project-tag {
@@ -400,4 +465,8 @@ padding-bottom: 1.5rem;
   background-color: white;
   height: 200px;
   margin-left: 15px;
+}
+
+.footer-text{
+  margin: 2rem;
 }

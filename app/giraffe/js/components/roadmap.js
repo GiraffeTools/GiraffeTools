@@ -13,7 +13,7 @@ const Event = event => (
         fill="#F25226"
       />
     </svg>
-    <div className="description">{event.description}</div>
+    <h3 className="description roadmap-text">{event.description}</h3>
   </div>
 );
 
@@ -28,7 +28,9 @@ const Roadmap = () => {
 
   return (
     <div className="container-fluid" id="roadmap">
-      <h3>&amp; more to come</h3>
+      <h3 className="roadmap-text" id="and-more">
+        &amp; more to come
+      </h3>
       <svg height="10px" width="100%">
         <line
           x1="0"

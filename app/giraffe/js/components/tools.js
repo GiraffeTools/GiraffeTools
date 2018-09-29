@@ -2,28 +2,36 @@ import React from "react";
 
 const Porcupine = () => (
   <div className="container-fluid">
-    <div className="row">
-      <div className="col">
+    <div className="d-flex justify-content-begin">
+      <div className="col-6">
         <img
           src="/static/img/rec_porcupine_collage.png"
           id="porcupine-collage"
         />
       </div>
-      <div className="col text-left">
+      <div className="col-4 text-left" id="tool-text">
         <h3>Porcupine</h3>
-        <b>POR</b>
-        cupine <b>C</b>
-        reates <b>U</b>r <b>P</b>
-        ipel
-        <b>INE</b>
-        <br />
-        <img src="/static/img/separator_red.svg" width="20%" />
-        <br />
-        With Porcupine, you can visually build your pipeline!
+        <img src="/static/img/separator_red.svg" id="separator-red" />
+        <div className="inner-tool-text">
+          <b>POR</b>
+          {"cupine "}
+          <b>C</b>
+          {"reates "}
+          <b>U</b>
+          {"r "}
+          <b>P</b>
+          ipel
+          <b>INE</b>
+          <br />
+          <br />
+          With Porcupine, you can visually build your pipeline!
+          <br />
+        </div>
         <a
           className="btn btn-lg giraffe-button"
           role="button"
           href="/porcupine"
+          id="tool-button"
         >
           Get started!
         </a>
@@ -34,25 +42,31 @@ const Porcupine = () => (
 
 const Armadillo = () => (
   <div className="container-fluid">
-    <div className="row">
-      <div className="col text-left">
+    <div className="d-flex justify-content-end">
+      <div className="col-4 text-left" id="tool-text">
         <h3>Armadillo</h3>
         <br />
-        <img src="/static/img/separator_red.svg" width="20%" />
-        <br />
-        <b>A</b>
-        ugmented <b>R</b>
-        eality [madillo] This web app creates 3D Augmented Reality images from
-        the Neurovault database
+        <img src="/static/img/separator_red.svg" id="separator-red" />
+        <div className="inner-tool-text">
+          <br />
+          <b>A</b>
+          ugmented <b>R</b>
+          eality [madillo]
+          <br />
+          This web app creates 3D Augmented Reality images from the Neurovault
+          database
+          <br />
+        </div>
         <a
           className="btn btn-lg giraffe-button"
           role="button"
           href="https://armadillobrain.app"
+          id="tool-button"
         >
           Get started!
         </a>
       </div>
-      <div className="col">
+      <div className="col-6">
         <img
           src="/static/img/rec_armadillo_collage.png"
           id="armadillo-collage"
@@ -64,10 +78,8 @@ const Armadillo = () => (
 
 const Tools = () => (
   <div className="row">
-    <div className="col">
-      <div className="col-6 text-center">
-        <h2 className="with-lines">OUR TOOLS</h2>
-      </div>
+    <div className="col-6 text-center" id="our-tools">
+      <h2 className="with-lines">OUR TOOLS</h2>
     </div>
     <Porcupine />
     <Armadillo />

@@ -1,11 +1,13 @@
 import React from "react";
 
 const SlackBanner = () => (
-  <div className="container-fluid" id="slack">
-    <a href="/slack">
-      <img src="/static/img/slack_logo.svg" width="10%" />
-      <div className="h7">Join the team Slack!</div>
-    </a>
+  <div className="d-flex justify-content-center" id="slack">
+    <div className="col">
+      <a href="/slack">
+        <img src="/static/img/slack_logo.svg" id="slack-logo" />
+        <span id="slack-text">Join the team Slack!</span>
+      </a>
+    </div>
   </div>
 );
 

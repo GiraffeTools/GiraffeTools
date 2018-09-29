@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => (
   <div className="container-fluid row" id="footer">
-    <div className="col">
+    <div className="col footer-text">
       <b>&copy; 2018 Tim van Mourik</b>
       <br />
       Imprint | Privacy
