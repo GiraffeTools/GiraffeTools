@@ -41,7 +41,7 @@ const Roadmap = () => {
           strokeWidth="12px"
         />
       </svg>
-      <div className="row" id="roadmap-elements">
+      <div className="d-flex" id="roadmap-elements">
         {events.map(event => (
           <Event key={event.year} {...event} />
         ))}

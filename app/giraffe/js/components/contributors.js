@@ -35,24 +35,22 @@ class Contributors extends React.Component {
     const { contributors } = this.state;
 
     return (
-      <div className="container-fluid" id="contributors">
-        <div className="row">
-          <div className="col-6 border-right">
-            <h3>&amp; all the brave contributors</h3>
-            <ul className="contributor-list">
-              {contributors &&
-                shuffle(contributors).map(contributor => (
-                  <Contributor key={contributor.id} {...contributor} />
-                ))}
-            </ul>
-          </div>
-          <div className="col-6">
-            <h3>
-              Most contributors have contributed to this Open Source project
-              with Gitcoin. If you want to help grow this platform, you can
-              donate or fund projects and issues directly!
-            </h3>
-          </div>
+      <div className="d-flex" id="contributors">
+        <div className="col-6 border-right">
+          <h3>&amp; all the brave contributors</h3>
+          <ul className="contributor-list">
+            {contributors &&
+              shuffle(contributors).map(contributor => (
+                <Contributor key={contributor.id} {...contributor} />
+              ))}
+          </ul>
+        </div>
+        <div className="col-6">
+          <h3>
+            Most contributors have contributed to this Open Source project with
+            Gitcoin. If you want to help grow this platform, you can donate or
+            fund projects and issues directly!
+          </h3>
         </div>
       </div>
     );

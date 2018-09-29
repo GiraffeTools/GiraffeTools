@@ -3,7 +3,7 @@ import React from "react";
 const People = () => (
   <div className="container-fluid text-center" id="people">
     <h2 className="with-lines">THE PEOPLE</h2>
-    <div className="row justify-content-md-center">
+    <div className="d-flex justify-content-md-center">
       <div className="col col-lg-4 text-center">
         <img src="/static/img/tim_artsy_portrait.png" width="80%" />
       </div>

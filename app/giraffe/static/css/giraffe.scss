@@ -68,6 +68,10 @@ div {
   }
 }
 
+.tools{
+
+}
+
 #our-tools{
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -94,6 +98,10 @@ div {
 #nav{
   float: right;
   width: 16%;
+}
+
+#video{
+
 }
 
 #nav-triangle{
@@ -261,8 +269,7 @@ padding-bottom: 1.5rem;
 
 .hero-text{
   top: 36px;
-  left: 6%;
-  position: relative;
+  padding-left: 5rem;
 }
 
 #hero-logo{
@@ -298,6 +305,10 @@ padding-bottom: 1.5rem;
 #armadillo-collage{
   width: 90%;
   float: right;
+}
+
+.collage{
+  padding-right: 0rem;
 }
 
 #roadmap {
@@ -464,7 +475,6 @@ padding-bottom: 1.5rem;
   text-align: left;
   background-color: white;
   height: 200px;
-  margin-left: 15px;
 }
 
 .footer-text{

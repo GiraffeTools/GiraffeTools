@@ -1,5 +1,5 @@
 import React from "react";
 
-const ExplainerVideo = () => <div />;
+const ExplainerVideo = () => <div className="video" />;
 
 export default ExplainerVideo;
