@@ -2,70 +2,78 @@ import PropTypes from "prop-types";
 import React from "react";
 import PaneHeader from "./paneHeader";
 import PaneElement from "./paneElement";
-import nodes from "../../static/assets/nipype.json";
+
+const NestedPaneGroup = ({ categories }) =>
+  Object.keys(categories).map(category => (
+    <PaneGroup
+      key={category}
+      category={category}
+      nodes={categories[category]}
+    />
+  ));
+
+const PaneElements = ({ nodes, colour }) =>
+  Object.keys(nodes).map(node => {
+    const name = nodes[node]["title"]["name"].toString();
+    nodes[node].colour = colour;
+    return (
+      <PaneElement key={name} category={nodes[node]} id={name}>
+        {name}
+      </PaneElement>
+    );
+  });
 
 class PaneGroup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { active: false };
+    this.state = {
+      active: false
+    };
+    this.toggleActive = this.toggleActive.bind(this);
+  }
+
+  toggleActive() {
+    this.setState({ active: !this.state.active });
   }
 
   render() {
-    const category = this.props.category;
-    const divName = category.join("");
-    let currentNodes = nodes;
-    category.forEach(function(c) {
-      currentNodes = currentNodes["categories"][c];
-    });
-
-    const subGroups =
-      currentNodes.categories === undefined
-        ? []
-        : Object.keys(currentNodes.categories);
-    const subElements =
-      currentNodes.nodes === undefined ? [] : Object.keys(currentNodes.nodes);
-
-    const subgroupList = subGroups.map(function(group) {
-      return (
-        <PaneGroup
-          key={category.concat(group).join("") + "_key"}
-          category={category.concat(group)}
-        />
-      );
-    });
-
-    const nodeList = subElements.map(function(element) {
-      return (
-        <PaneElement
-          key={currentNodes["nodes"][element]["title"]["name"].toString()}
-          category={category}
-          id={currentNodes["nodes"][element]["title"]["name"].toString()}
-        >
-          {currentNodes["nodes"][element]["title"]["name"].toString()}
-        </PaneElement>
-      );
-    });
+    const { nodes, category } = this.props;
+    const { active } = this.state;
 
     return (
       <div className="panel panel-default">
-        <PaneHeader name={divName} color={currentNodes["colour"]} />
-        <div id={divName} className="panel-collapse collapse" role="tabpanel">
+        <div className="panel-heading" role="tab" onClick={this.toggleActive}>
+          <span
+            className="badge sidebar-badge"
+            style={{ backgroundColor: nodes.colour }}
+          >
+            {" "}
+          </span>
+          {category}
+          <span className="sidebar-dropdown">></span>
+        </div>
+        <div
+          className={`panel-collapse` + (active ? "" : " collapse")}
+          role="tabpanel"
+        >
           <div
             className="panel-group"
             role="tablist"
             aria-multiselectable="true"
           >
-            {subgroupList}
-            {nodeList}
+            {active &&
+              nodes.categories && (
+                <NestedPaneGroup categories={nodes.categories} />
+              )}
+            {active &&
+              nodes.nodes && (
+                <PaneElements nodes={nodes.nodes} colour={nodes.colour} />
+              )}
           </div>
         </div>
       </div>
     );
   }
 }
-
-PaneGroup.propTypes = {
-  category: PropTypes.array.isRequired
-};
 
 export default PaneGroup;

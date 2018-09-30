@@ -8,7 +8,6 @@ import $ from "jquery";
 import ProgressBar from "react-progress-bar-plus";
 import "react-progress-bar-plus/lib/progress-bar.css";
 
-import nodeData from "../../static/assets/nipype.json";
 import ItemTypes from "./itemTypes";
 import Links from "./links";
 import Nodes from "./nodes";
@@ -65,7 +64,7 @@ class Canvas extends React.Component {
   }
 
   drop(item, offset) {
-    const { addNode, addPortToNode } = this.props;
+    const { addNode, addPortToNode, repositionPorts } = this.props;
 
     this.placeholder = false;
     const rec = document.getElementById("main").getBoundingClientRect();
@@ -74,13 +73,10 @@ class Canvas extends React.Component {
     // const zoom = instance.getZoom();
     const zoom = 1;
 
-    let category = item.element_type;
-    let name = category.splice(-1)[0];
-    let currentNodes = nodeData;
-    category.forEach(function(c) {
-      currentNodes = currentNodes["categories"][c];
-    });
-    const node = $.extend(true, {}, currentNodes.nodes[name]);
+    const templateNode = item.element_type;
+    const node = $.extend(true, {}, templateNode);
+
+    const name = node.title.name;
     node.ports ? node.ports : {};
     node.ports = node.ports.map(port => {
       // #TODO link to a proper default value
@@ -98,7 +94,7 @@ class Canvas extends React.Component {
       x: (offset.x - rec.left) / zoom - 45,
       y: (offset.y - rec.top) / zoom - 25,
       width: name.length * 12,
-      colour: currentNodes.colour,
+      colour: node.colour,
       ports: node.ports,
       web_url: node.title.web_url || ""
     };

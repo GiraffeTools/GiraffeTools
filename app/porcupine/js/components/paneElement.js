@@ -7,7 +7,7 @@ const boxSource = {
   beginDrag(props) {
     return {
       name: props.id,
-      element_type: props.category.concat(props.id)
+      element_type: props.category
     };
   },
 
@@ -47,7 +47,6 @@ class PaneElement extends React.Component {
 }
 
 PaneElement.propTypes = {
-  category: PropTypes.array.isRequired,
   id: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
   connectDragSource: PropTypes.func.isRequired,

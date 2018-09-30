@@ -16,3 +16,10 @@ def example_repos(request):
         questions = json.load(f)
 
     return HttpResponse(json.dumps(questions), content_type="application/json")
+
+
+def nodes(request):
+
+    with open("staticfiles/assets/nipype.json") as f:
+        nodes = json.load(f)
+    return HttpResponse(json.dumps(nodes), content_type="application/json")
