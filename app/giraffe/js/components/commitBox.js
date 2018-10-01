@@ -1,14 +1,16 @@
 import React, { Fragment } from "react";
 import pluralize from "pluralize";
 
+import { groupByDate } from "../utils/utils";
+
 const Commit = ({ commit }) => {
   const days_ago = Math.floor(
-    (Date.now() - new Date(commit.commit.author.date)) / 1000 / 3600 / 24
+    (Date.now() - new Date(commit.author.date)) / 1000 / 3600 / 24
   );
   return (
-    <div className="row">
+    <li className="commit-box row border-bottom">
       <div className="col-6 text-left">
-        <h5>{commit.commit.message}</h5>
+        <h5>{commit.message}</h5>
         <b>@{commit.author.login}</b>
         {` committed ${days_ago} ` + pluralize("day", days_ago) + " ago"}
       </div>
@@ -19,12 +21,35 @@ const Commit = ({ commit }) => {
           id="commit-hash-button"
           href={``}
         >
-          {commit.sha.substring(0, 6)}
+          {commit.tree.sha.substring(0, 6)}
         </a>
         <a type="button btn-primary" className="btn giraffe-button" href={``}>
           open
         </a>
       </div>
+    </li>
+  );
+};
+
+const Commits = ({ commits }) => {
+  const groupedCommits = groupByDate(commits);
+  const dates = Object.keys(groupedCommits).sort(function(a, b) {
+    a = new Date(a);
+    b = new Date(b);
+    return a > b ? -1 : a < b ? 1 : 0;
+  });
+  return (
+    <div>
+      {dates.map(date => (
+        <div>
+          <h6>{new Date(date) - Date.now() == 0 ? "Today" : `${date}`}</h6>
+          <ul className="commit-day border" key={date}>
+            {groupedCommits[date].map(({ commit }) => (
+              <Commit key={commit.tree.sha} commit={commit} />
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 };
@@ -48,18 +73,14 @@ class CommitBox extends React.Component {
 
   render() {
     const { commits } = this.state;
-    const branch = 'master';
+    const branch = "master";
     return (
-      <div className="col-7 text-center">
+      <div className="col-7">
         <div>
           <h4 className="with-lines">
             Commits for Branch <span id="branch-text">{branch}</span>{" "}
           </h4>
-          {commits ? (
-            commits.map(commit => <Commit key={commit.sha} commit={commit} />)
-          ) : (
-            <div />
-          )}
+          {commits && <Commits commits={commits} />}
         </div>
       </div>
     );

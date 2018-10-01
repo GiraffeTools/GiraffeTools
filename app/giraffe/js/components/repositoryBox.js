@@ -25,13 +25,17 @@ class RepositoryBox extends React.Component {
           repo: repository.name,
           sha: lastCommit.object.sha
         }).then(firstCommit => {
-          fetch(`${apiBaseLink}/compare/${lastCommit.object.sha}...${firstCommit.sha}`)
+          fetch(
+            `${apiBaseLink}/compare/${lastCommit.object.sha}...${
+              firstCommit.sha
+            }`
+          )
             .then(response => response.json())
             .then(diff =>
               this.setState({
                 numberOfCommits: diff.behind_by + 1
               })
-            )
+            );
         });
       })
       .catch();
@@ -72,9 +76,12 @@ class RepositoryBox extends React.Component {
 
     return (
       <div className="col-4 text-center">
-        <div className="giraffe-box"  id="project-box">
+        <div className="giraffe-box" id="project-box">
           <h4>About the project</h4>
-          <img src="/static/img/separator_grey.svg" className="separator-grey" />
+          <img
+            src="/static/img/separator_grey.svg"
+            className="separator-grey"
+          />
           <br />
           <div className="text-left">
             <img src="/static/img/commits_icon.svg" />{" "}
@@ -92,7 +99,10 @@ class RepositoryBox extends React.Component {
             <br />
           </div>
 
-          <img src="/static/img/separator_grey.svg" className="separator-grey" />
+          <img
+            src="/static/img/separator_grey.svg"
+            className="separator-grey"
+          />
           <br />
 
           {`owned by ${repository.owner.login}`}

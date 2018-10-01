@@ -137,6 +137,25 @@ div {
 
 }
 
+.commit-box{
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  margin-left: 0rem;
+  margin-right: 0rem;
+}
+
+.commit-day{
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  border-color: grey!important;
+  border-radius: 3px;
+  padding: 1rem 1rem;
+}
+
+.commit-day li:last-child {
+  border-bottom: 0px!important;
+}
+
 #commit-hash-button{
   font-family: 'Nexa-Bold';
   font-size: 1.2rem;
@@ -175,7 +194,6 @@ div {
   width: 6rem;
   margin-right: 0.7rem;
 }
-
 
 .public-private{
   -webkit-border-radius: 1px;
