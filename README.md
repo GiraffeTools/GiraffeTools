@@ -1,4 +1,4 @@
-Website: www.giraffe.tools
+Website: https://giraffe.tools
 # Giraffe Tools
 
 [![Build Status](https://travis-ci.org/TimVanMourik/GiraffeTools.svg?branch=master)](https://travis-ci.org/TimVanMourik/GiraffeTools)
