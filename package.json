@@ -50,6 +50,7 @@
     "redux-logger": "^3.0.6",
     "redux-orm": "^0.12.1",
     "redux-persist": "^5.10.0",
+    "repo-first-commit": "^1.0.0",
     "style-loader": "^0.21.0",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.10.0",

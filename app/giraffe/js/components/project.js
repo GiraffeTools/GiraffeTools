@@ -32,16 +32,15 @@ class Project extends React.Component {
     return (
       <Fragment>
         <Banner title={`${bannerTitle}`} />
-        {repository ? (
-          <div className="row">
-            <div className="col-1" />
-            <RepositoryBox repository={repository} />
-            <CommitBox repository={repository} />
-            <div className="col-1" />
-          </div>
-        ) : (
-          <div />
-        )}
+        <div className="d-flex justify-content-center">
+          {repository && (
+            <Fragment>
+              <div className="col col-1" />
+              <RepositoryBox repository={repository} />
+              <CommitBox repository={repository} />
+            </Fragment>
+          )}
+        </div>
         <Footer />
       </Fragment>
     );

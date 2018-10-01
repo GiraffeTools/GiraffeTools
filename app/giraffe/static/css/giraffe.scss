@@ -31,16 +31,13 @@ h1 {
 // Big red text
 h2 {
   font-family: 'Nexa-Bold';
-  font-size: 3rem;
+  font-size: 34px;
   color: $text-color;
-  padding: 3rem;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 // Sextion titles
 h3 {
   font-family: 'Nexa-Bold';
-  font-size: 1.8rem;
+  font-size: 30px;
 }
 // Box titles
 h4 {
@@ -53,6 +50,19 @@ h5{
   font-family: 'Nexa-Bold';
   font-size: 22px;
   font-weight: bold;
+}
+// Next to icon text
+h6{
+  font-family: 'Nexa-Bold';
+  color: $text-color;
+  font-size: 32px;
+  font-weight: bold;
+}
+// Browsers can't handle more than 6 headlines
+.h7{
+  font-family: 'Nexa-Bold';
+  color: white;
+  font-size: 32px;
 }
 
 div {
@@ -68,19 +78,12 @@ div {
   }
 }
 
-.tools{
-
-}
-
-#our-tools{
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
 .with-lines{
   background-image: url('../img/headline_lines_background.svg');
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  background-size: cover;
+  padding: 2rem;
+  padding-left: 4rem;
+  padding-right: 5rem;
 }
 
 #gallery-box{
@@ -100,10 +103,6 @@ div {
   width: 16%;
 }
 
-#video{
-
-}
-
 #nav-triangle{
   // max-width: 350px;
   // height: 350px;
@@ -117,9 +116,9 @@ div {
   font-family: 'Nexa-Bold';
   background-color: $primary-color;
   color: white;
-  border-radius: 0px;
+  border-radius: 2px;
   font-size: 1.7rem;
-  padding: 0.4rem;
+  padding: 0.2rem;
   padding-right: 3rem;
   padding-left: 3rem;
 }
@@ -134,6 +133,23 @@ div {
   border-radius: 0px;
 }
 
+#branch-text{
+
+}
+
+#commit-hash-button{
+  font-family: 'Nexa-Bold';
+  font-size: 1.2rem;
+  background-color: white;
+  color: black;
+  border-color: grey;
+  border-width: 1px;
+  border-radius: 2px;
+  padding: 0.5rem;
+  width: 6rem;
+  margin-right: 0.7rem;
+}
+
 #no-giraffe-project{
   font-family: 'Nexa-Bold';
   background-color: #EDEDEE;
@@ -146,6 +162,20 @@ div {
   padding-right: 3rem;
   padding-left: 3rem;
 }
+
+#commit-hash-button{
+  font-family: 'Nexa-Bold';
+  font-size: 1.2rem;
+  background-color: white;
+  color: black;
+  border-color: grey;
+  border-width: 1px;
+  border-radius: 2px;
+  padding: 0.5rem;
+  width: 6rem;
+  margin-right: 0.7rem;
+}
+
 
 .public-private{
   -webkit-border-radius: 1px;
@@ -222,11 +252,6 @@ padding-bottom: 1.5rem;
   // font-weight: bold;
 }
 
-.inner-tool-text{
-  font-size: 1.3rem;
-  color: grey;
-}
-
 #profile-pic{
   width: 50%;
   margin-top: 3rem;
@@ -239,14 +264,8 @@ padding-bottom: 1.5rem;
   margin-top: 1rem;
 }
 
-#tool-text{
-  padding-top: 8rem;
-}
-
 .separator-red{
-  width: 60%;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  width: 50%;
 }
 
 .separator-grey{
@@ -255,8 +274,8 @@ padding-bottom: 1.5rem;
   margin-bottom: 1rem;
 }
 
-#tool-button{
-  margin-bottom: 1rem;
+#why-giraffe-image{
+  width: 55%;
 }
 
 #hero{
@@ -269,7 +288,8 @@ padding-bottom: 1.5rem;
 
 .hero-text{
   top: 36px;
-  padding-left: 5rem;
+  left: 6%;
+  position: relative;
 }
 
 #hero-logo{
@@ -295,36 +315,20 @@ padding-bottom: 1.5rem;
 #hero-login-button{
   margin-top: 30px;
   font-size: 22px;
-  color: white;
 }
 
 #porcupine-collage{
-  width: 90%;
+  width: 40%;
   float: left;
 }
 #armadillo-collage{
-  width: 90%;
+  width: 40%;
   float: right;
 }
 
-.collage{
-  padding-right: 0rem;
-  padding-left: 0rem;
-}
-
 #roadmap {
-  height: 22rem;
   text-align: center;
   background-color: $quaternary-color;
-}
-
-.roadmap-text{
-  font-size: 1.3rem;
-}
-
-#and-more{
-  padding-top: 4rem;
-  padding-bottom: 5rem;
 }
 
 #roadmap-elements {
@@ -334,34 +338,11 @@ padding-bottom: 1.5rem;
 #why-giraffe {
   position: relative;
   text-align: center;
-  width: 80%;
-}
-
-#why-giraffe-box{
-  float: left;
-}
-
-#why-giraffe-image{
-  width: 60%;
-  position: relative;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-.description{
-  font-size: 1.3rem;
-}
-
-.icon{
-  margin: 0.2rem;
-  width: 3rem;
 }
 
 #people {
   text-align: center;
-  background-color: $quinternary-color;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  background-color: $secondary-color;
 }
 
 #people-box{
@@ -370,8 +351,6 @@ padding-bottom: 1.5rem;
 }
 
 #contributors {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
   text-align: center;
   background-color: $quaternary-color;
 }
@@ -423,50 +402,24 @@ padding-bottom: 1.5rem;
 
 #contact {
   text-align: center;
-  background-color: $quinternary-color;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-.icon-title-text{
-  font-family: 'Nexa-Bold';
-  color: $text-color;
-  font-size: 2.3rem;
-  font-weight: bold;
-}
-
-.icon-tile{
-  width: 25%;
-  margin-left: 1.2rem;
-  margin-right: 1.2rem;
+  background-color: $secondary-color;
 }
 
 #slack {
   text-align: center;
-  height: 15rem;
-  padding: 3rem;
-  background-color: #FFFAEF;
-  background-image: url(../img/slack_section_background.jpg);
-  background-position-x: center;
-  background-repeat: no-repeat;
-  padding-top: 5rem;
+  height: 200px;
+  background-color: $quaternary-color;
+  background-image: url('../img/slack_section_background.jpg');
   a {
+    color: white;
+    font-size: 32px;
     &:hover {
       text-decoration: none;
     }
   }
-}
-
-#slack-logo{
-  width: 5rem;
-  margin-right: 3rem;
-}
-
-// Browsers can't handle more than 6 headlines
-#slack-text{
-  font-family: 'Nexa-Bold';
-  color: white;
-  font-size: 2.2rem;
+  img {
+    fill: white;
+  }
 }
 
 #your-project-tag {
@@ -477,8 +430,5 @@ padding-bottom: 1.5rem;
   text-align: left;
   background-color: white;
   height: 200px;
-}
-
-.footer-text{
-  margin: 2rem;
+  margin-left: 15px;
 }

@@ -6,7 +6,7 @@ const Commit = ({ commit }) => {
     (Date.now() - new Date(commit.commit.author.date)) / 1000 / 3600 / 24
   );
   return (
-    <div className="giraffe-box row">
+    <div className="row">
       <div className="col-6 text-left">
         <h5>{commit.commit.message}</h5>
         <b>@{commit.author.login}</b>
@@ -15,13 +15,14 @@ const Commit = ({ commit }) => {
       <div className="col-6 text-right">
         <a
           type="button btn-primary"
-          className="btn no-giraffe-button"
+          className="btn"
+          id="commit-hash-button"
           href={``}
         >
           {commit.sha.substring(0, 6)}
         </a>
         <a type="button btn-primary" className="btn giraffe-button" href={``}>
-          Open
+          open
         </a>
       </div>
     </div>
@@ -47,11 +48,12 @@ class CommitBox extends React.Component {
 
   render() {
     const { commits } = this.state;
+    const branch = 'master';
     return (
       <div className="col-7 text-center">
         <div>
           <h4 className="with-lines">
-            Commits for Branch <span>master</span>{" "}
+            Commits for Branch <span id="branch-text">{branch}</span>{" "}
           </h4>
           {commits ? (
             commits.map(commit => <Commit key={commit.sha} commit={commit} />)

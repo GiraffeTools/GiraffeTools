@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import pluralize from "pluralize";
+import repoFirstCommit from "repo-first-commit";
 
 class RepositoryBox extends React.Component {
   constructor(props) {
@@ -16,13 +17,23 @@ class RepositoryBox extends React.Component {
     const { repository } = this.props;
     const apiBaseLink = `https://api.github.com/repos/${repository.full_name}`;
 
-    fetch(`${apiBaseLink}/commits`)
+    fetch(`${apiBaseLink}/git/refs/heads/master`)
       .then(response => response.json())
-      .then(commits =>
-        this.setState({
-          numberOfCommits: commits.length
-        })
-      )
+      .then(lastCommit => {
+        repoFirstCommit({
+          owner: repository.owner.login,
+          repo: repository.name,
+          sha: lastCommit.object.sha
+        }).then(firstCommit => {
+          fetch(`${apiBaseLink}/compare/${lastCommit.object.sha}...${firstCommit.sha}`)
+            .then(response => response.json())
+            .then(diff =>
+              this.setState({
+                numberOfCommits: diff.behind_by + 1
+              })
+            )
+        });
+      })
       .catch();
     fetch(`${apiBaseLink}/branches`)
       .then(response => response.json())
@@ -60,46 +71,48 @@ class RepositoryBox extends React.Component {
     const { repository } = this.props;
 
     return (
-      <div className="col-3 text-center giraffe-box" id="project-box">
-        <h4>About the project</h4>
-        <img src="/static/img/separator_grey.svg" width="80%" />
-        <br />
-        <div className="text-left">
-          <img src="/static/img/commits_icon.svg" />{" "}
-          {`${numberOfCommits} ` + pluralize("commits", numberOfCommits)}
+      <div className="col-4 text-center">
+        <div className="giraffe-box"  id="project-box">
+          <h4>About the project</h4>
+          <img src="/static/img/separator_grey.svg" className="separator-grey" />
           <br />
-          <img src="/static/img/branch_icon.svg" />{" "}
-          {`${numberOfBranches} ` + pluralize("branches", numberOfBranches)}
+          <div className="text-left">
+            <img src="/static/img/commits_icon.svg" />{" "}
+            {`${numberOfCommits} ` + pluralize("commits", numberOfCommits)}
+            <br />
+            <img src="/static/img/branch_icon.svg" />{" "}
+            {`${numberOfBranches} ` + pluralize("branches", numberOfBranches)}
+            <br />
+            <img src="/static/img/contributors_icon.svg" />{" "}
+            {`${numberOfContributors} ` +
+              pluralize("contributors", numberOfContributors)}
+            <br />
+            <img src="/static/img/release_icon.svg" />{" "}
+            {`${numberOfReleases} ` + pluralize("releases", numberOfReleases)}
+            <br />
+          </div>
+
+          <img src="/static/img/separator_grey.svg" className="separator-grey" />
           <br />
-          <img src="/static/img/contributors_icon.svg" />{" "}
-          {`${numberOfContributors} ` +
-            pluralize("contributors", numberOfContributors)}
+
+          {`owned by ${repository.owner.login}`}
           <br />
-          <img src="/static/img/release_icon.svg" />{" "}
-          {`${numberOfReleases} ` + pluralize("releases", numberOfReleases)}
+          {"added on "}
+          {new Intl.DateTimeFormat("en-GB", {
+            year: "numeric",
+            month: "long",
+            day: "2-digit"
+          }).format(new Date(repository.created_at))}
+
           <br />
+          <a
+            type="button btn-primary"
+            className="btn giraffe-button"
+            href={`/porcupine/${repository.full_name}`}
+          >
+            Open project
+          </a>
         </div>
-
-        <img src="/static/img/separator_grey.svg" width="80%" />
-        <br />
-
-        {`owned by ${repository.owner.login}`}
-        <br />
-        {"added on "}
-        {new Intl.DateTimeFormat("en-GB", {
-          year: "numeric",
-          month: "long",
-          day: "2-digit"
-        }).format(new Date(repository.created_at))}
-
-        <br />
-        <a
-          type="button btn-primary"
-          className="btn giraffe-button"
-          href={`/porcupine/${repository.full_name}`}
-        >
-          Open project
-        </a>
       </div>
     );
   }
