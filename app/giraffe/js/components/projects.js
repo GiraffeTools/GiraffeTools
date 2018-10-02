@@ -25,7 +25,7 @@ const ProjectBox = repository => (
       {repository.isGiraffeProject ? (
         <a
           type="button btn-primary"
-          className="btn giraffe-button"
+          className="btn giraffe-button-small"
           href={`/github/${repository.full_name}`}
         >
           open
