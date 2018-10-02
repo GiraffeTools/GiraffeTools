@@ -169,6 +169,15 @@ div {
   border-bottom: 0px!important;
 }
 
+#tool-text{
+  padding-top: 8rem;
+}
+
+.inner-tool-text{
+  font-size: 1.3rem;
+  color: grey;
+}
+
 #commit-hash-button{
   font-family: 'Nexa-Bold';
   font-size: 1.2rem;
@@ -231,13 +240,6 @@ div {
   padding-top: 50px;
 }
 
-#footer-logo{
-  transform: scaleX(-1);
-  float: right;
-  max-width: 200px;
-  margin-top: 20px;
-}
-
 .giraffe-box{
   background-color: $quinternary-color;
   margin: 16px;
@@ -283,7 +285,9 @@ padding-bottom: 1.5rem;
 }
 
 .separator-red{
-  width: 50%;
+  width: 60%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .separator-grey{
@@ -305,8 +309,8 @@ padding-bottom: 1.5rem;
 }
 
 .hero-text{
-  top: 36px;
-  left: 6%;
+  padding-top: 2rem;
+  margin-left: 6rem;
   position: relative;
 }
 
@@ -333,20 +337,35 @@ padding-bottom: 1.5rem;
 #hero-login-button{
   margin-top: 30px;
   font-size: 22px;
+  color: white;
 }
 
 #porcupine-collage{
-  width: 40%;
+  width: 90%;
   float: left;
 }
 #armadillo-collage{
-  width: 40%;
+  width: 90%;
   float: right;
 }
+.collage{
+  padding-right: 0rem;
+  padding-left: 0rem;
+}
+
+#video{
+ }
 
 #roadmap {
   text-align: center;
   background-color: $quaternary-color;
+}
+.roadmap-text{
+  font-size: 1.3rem;
+}
+ #and-more{
+  padding-top: 4rem;
+  padding-bottom: 5rem;
 }
 
 #roadmap-elements {
@@ -356,11 +375,31 @@ padding-bottom: 1.5rem;
 #why-giraffe {
   position: relative;
   text-align: center;
+  width: 80%;
+}
+
+#why-giraffe-box{
+  float: left;
+}
+ #why-giraffe-image{
+  width: 60%;
+  position: relative;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+ .description{
+  font-size: 1.3rem;
+}
+ .icon{
+  margin: 0.2rem;
+  width: 3rem;
 }
 
 #people {
   text-align: center;
-  background-color: $secondary-color;
+  background-color: $quinternary-color;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 #people-box{
@@ -369,6 +408,8 @@ padding-bottom: 1.5rem;
 }
 
 #contributors {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
   text-align: center;
   background-color: $quaternary-color;
 }
@@ -416,18 +457,44 @@ padding-bottom: 1.5rem;
 #thanks {
   text-align: center;
   background-color: $primary-color;
+  padding: 2rem 0rem;
+}
+
+.thanks-logo {
+  width: 20%;
+  margin: 2rem;
 }
 
 #contact {
   text-align: center;
-  background-color: $secondary-color;
+  background-color: $quinternary-color;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
+
+.icon-title-text{
+ font-family: 'Nexa-Bold';
+ color: $text-color;
+ font-size: 2.3rem;
+ font-weight: bold;
+}
+
+.icon-tile{
+ width: 25%;
+ margin-left: 1.2rem;
+ margin-right: 1.2rem;
+}
+
 
 #slack {
   text-align: center;
-  height: 200px;
-  background-color: $quaternary-color;
-  background-image: url('../img/slack_section_background.jpg');
+  height: 15rem;
+  padding: 3rem;
+  background-color: #FFFAEF;
+  background-image: url(../img/slack_section_background.jpg);
+  background-position-x: center;
+  background-repeat: no-repeat;
+  padding-top: 5rem;
   a {
     color: white;
     font-size: 32px;
@@ -440,13 +507,29 @@ padding-bottom: 1.5rem;
   }
 }
 
+#slack-logo{
+  width: 5rem;
+  margin-right: 3rem;
+}
+
+#slack-text{
+  font-family: 'Nexa-Bold';
+  color: white;
+  font-size: 2.2rem;
+}
+
+
 #your-project-tag {
   background-image: url('../img/headline_lines_background.svg');
 }
 
-#footer {
-  text-align: left;
-  background-color: white;
-  height: 200px;
-  margin-left: 15px;
+.footer-text{
+  margin: 2rem;
+}
+
+#footer-logo{
+  transform: scaleX(-1);
+  float: right;
+  margin-top: 1rem;
+  height: 12rem;
 }
