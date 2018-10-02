@@ -24,7 +24,7 @@ const Porcupine = () => (
         <br />
       </div>
       <a
-        className="btn btn-lg giraffe-button"
+        className="btn btn-lg giraffe-button-small"
         role="button"
         href="/porcupine"
         id="tool-button"
@@ -52,7 +52,7 @@ const Armadillo = () => (
         <br />
       </div>
       <a
-        className="btn btn-lg giraffe-button"
+        className="btn btn-lg giraffe-button-small"
         role="button"
         href="https://armadillobrain.app"
         id="tool-button"

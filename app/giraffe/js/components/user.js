@@ -63,6 +63,7 @@ class User extends React.Component {
               }
             />
             <Projects repositories={repositories} />
+            <div className="col col-1" />
           </div>
         ) : (
           <div>User not found</div>

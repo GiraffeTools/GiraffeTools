@@ -8,7 +8,7 @@ const ProjectBox = repository => (
   >
     <div className="col text-left">
       <div className="d-flex align-items-center">
-        <h5 className="project-title">{repository.name}</h5>
+        <h5 className="project-title float-left">{repository.name}</h5>
         <div className="public-private">
           {repository.private ? "Private" : "Public"}
         </div>

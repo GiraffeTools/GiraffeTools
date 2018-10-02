@@ -11,7 +11,7 @@ const Hero = () => (
       <img src="/static/img/giraffetools_logo.png" id="hero-logo" />
       <div>
         <div id="typewriter-text">
-          <Typing loop={true}>
+          <Typing loop={true} className="float-left">
             Open Science
             <Typing.Delay ms={4000} />
             <Typing.Backspace count={7} />

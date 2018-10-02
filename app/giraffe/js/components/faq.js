@@ -8,7 +8,7 @@ const Question = question => {
   return (
     <li>
       <div className="question">
-        <img src="/static/img/chevron_right.svg" />
+        <img src="/static/img/chevron_right.svg" className="float-left" />
         <h3>{question.q}</h3>
       </div>
       <br />

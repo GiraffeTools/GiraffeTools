@@ -25,7 +25,6 @@ $quinternary-color: #FCF0D6;
 h1 {
   font-family: 'Nexa-Bold';
   font-weight: bold;
-  background-image: url('../img/headline_lines_background.svg');
   font-size: 40px;
 }
 // Big red text
@@ -37,7 +36,7 @@ h2 {
 // Sextion titles
 h3 {
   font-family: 'Nexa-Bold';
-  font-size: 30px;
+  font-size: 2.6rem;
 }
 // Box titles
 h4 {
@@ -74,13 +73,14 @@ div {
     font-family: 'Nexa-Bold';
     font-size: 80px;
     font-weight: bold;
-    float: left;
   }
 }
 
 .with-lines{
   background-image: url('../img/headline_lines_background.svg');
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   padding: 2rem;
   padding-left: 4rem;
   padding-right: 5rem;
@@ -90,17 +90,32 @@ div {
   width: 80%;
 }
 
-#banner {
+.banner {
+  position: relative;
   background-image: url('../img/header_subpage_background.jpg');
   background-size: cover;
+  height: 20rem;
+  margin-bottom: 5rem;
+}
 
-  height: 250px;
-  margin-bottom: 50px;
+#banner-title{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 25%;
+  font-size: 65px;
+}
+
+#banner-logo{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 50%;
+  margin-left: 6rem;
 }
 
 #nav{
-  float: right;
-  width: 16%;
+  width: 12rem;
 }
 
 #nav-triangle{
@@ -108,19 +123,22 @@ div {
   // height: 350px;
 }
 
-.question img{
-  float: left;
-}
-
 .giraffe-button{
   font-family: 'Nexa-Bold';
   background-color: $primary-color;
   color: white;
-  border-radius: 2px;
   font-size: 1.7rem;
   padding: 0.2rem;
-  padding-right: 3rem;
-  padding-left: 3rem;
+  border-radius: 2px;
+}
+
+.giraffe-button-small{
+  font-family: 'Nexa-Bold';
+  background-color: $primary-color;
+  color: white;
+  font-size: 1.7rem;
+  padding: 0.2rem 2rem;
+  border-radius: 2px;
 }
 
 .no-giraffe-button{
@@ -130,11 +148,13 @@ div {
   color: $primary-color;
   border-color: $primary-color;
   border-width: 2px;
-  border-radius: 0px;
 }
 
 #branch-text{
-
+  border-color: #F7A81C!important;
+  border-width: 3px!important;
+  padding: 0rem 1rem;
+  margin: 0rem 1rem;
 }
 
 .project-icon{
@@ -167,6 +187,10 @@ div {
 
 .commit-day li:last-child {
   border-bottom: 0px!important;
+}
+
+#commit-title{
+  margin: 2rem;
 }
 
 #tool-text{
@@ -221,23 +245,8 @@ div {
 }
 
 .project-title{
-  float: left;
   font-size: 2rem;
   margin-right: 1rem;
-}
-
-#banner-title{
-  position: absolute;
-  top: 15%;
-  left: 25%;
-  font-size: 65px;
-}
-
-#banner-logo{
-  height: 70%;
-  float: left;
-  padding-left: 100px;
-  padding-top: 50px;
 }
 
 .giraffe-box{
@@ -305,7 +314,8 @@ padding-bottom: 1.5rem;
   background-image: url('../img/code_dark_hero_img.png');
   background-repeat: no-repeat;
   background-position: right;
-  height: 600px;
+  background-size: contain;
+  height: 37rem;
 }
 
 .hero-text{
@@ -529,7 +539,6 @@ padding-bottom: 1.5rem;
 
 #footer-logo{
   transform: scaleX(-1);
-  float: right;
   margin-top: 1rem;
   height: 12rem;
 }

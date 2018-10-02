@@ -9,13 +9,24 @@ class Project extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      repository: null
+      repository: null,
+      branch: null,
+      commit: null
     };
   }
 
   componentDidMount() {
-    const { username, repository } = this.props.match.params;
+    const { username, repository, branchOrCommit } = this.props.match.params;
 
+    if (true) {
+      this.setState({
+        branch: "master"
+      });
+    } else {
+      this.setState({
+        commit: ""
+      });
+    }
     fetch(`https://api.github.com/repos/${username}/${repository}`)
       .then(response => response.json())
       .then(repository => this.setState({ repository }))
@@ -23,7 +34,7 @@ class Project extends React.Component {
   }
 
   render() {
-    const { repository } = this.state;
+    const { repository, branch, commit } = this.state;
     const bannerTitle =
       repository && repository.name
         ? `${repository.name}`
@@ -37,7 +48,31 @@ class Project extends React.Component {
             <Fragment>
               <div className="col col-1" />
               <RepositoryBox repository={repository} />
-              <CommitBox repository={repository} />
+              <div className="col-7">
+                <div>
+                  <h4 className="text-center" id="commit-title">
+                    {branch && (
+                      <div>
+                        Commits for Branch
+                        <span id="branch-text" className="border-bottom">
+                          {branch}
+                        </span>
+                      </div>
+                    )}
+                    {commit && (
+                      <div>
+                        Commits for Commit
+                        <span
+                          id="branch-text"
+                          className="border-bottom"
+                        >{` ${commit.substring(0, 6)} `}</span>{" "}
+                        )
+                      </div>
+                    )}
+                  </h4>
+                  <CommitBox repository={repository} />
+                </div>
+              </div>
             </Fragment>
           )}
         </div>

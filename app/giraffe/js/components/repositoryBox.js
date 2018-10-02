@@ -75,7 +75,7 @@ class RepositoryBox extends React.Component {
     const { repository } = this.props;
 
     return (
-      <div className="col-4 text-center">
+      <div className="col-3 text-center">
         <div className="giraffe-box" id="project-box">
           <h4>About the project</h4>
           <div id="repo-box-content">
@@ -118,8 +118,7 @@ class RepositoryBox extends React.Component {
             />
             <br />
           </div>
-
-          {`owned by ${repository.owner.login}`}
+          owned by <b>{repository.owner.login}</b>
           <br />
           {"added on "}
           {new Intl.DateTimeFormat("en-GB", {
@@ -127,11 +126,10 @@ class RepositoryBox extends React.Component {
             month: "long",
             day: "2-digit"
           }).format(new Date(repository.created_at))}
-
           <br />
           <a
             type="button btn-primary"
-            className="btn giraffe-button"
+            className="btn giraffe-button-small"
             href={`/porcupine/${repository.full_name}`}
           >
             Open project

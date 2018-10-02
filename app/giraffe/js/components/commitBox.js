@@ -24,7 +24,11 @@ const Commit = ({ commit }) => {
           <img src="/static/img/gh-icon.png" className="gh-icon-small" />
           {commit.tree.sha.substring(0, 6)}
         </a>
-        <a type="button btn-primary" className="btn giraffe-button" href={``}>
+        <a
+          type="button btn-primary"
+          className="btn giraffe-button-small"
+          href={``}
+        >
           open
         </a>
       </div>
@@ -82,16 +86,7 @@ class CommitBox extends React.Component {
   render() {
     const { commits } = this.state;
     const branch = "master";
-    return (
-      <div className="col-7">
-        <div>
-          <h4 className="with-lines">
-            Commits for Branch <span id="branch-text">{branch}</span>{" "}
-          </h4>
-          {commits && <Commits commits={commits} />}
-        </div>
-      </div>
-    );
+    return commits && <Commits commits={commits} />;
   }
 }
 
