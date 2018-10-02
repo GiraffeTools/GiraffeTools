@@ -19,8 +19,9 @@ const Commit = ({ commit }) => {
           type="button btn-primary"
           className="btn"
           id="commit-hash-button"
-          href={``}
+          href={`${commit.tree.url}`}
         >
+          <img src="/static/img/gh-icon.png" className="gh-icon-small" />
           {commit.tree.sha.substring(0, 6)}
         </a>
         <a type="button btn-primary" className="btn giraffe-button" href={``}>
@@ -38,18 +39,25 @@ const Commits = ({ commits }) => {
     b = new Date(b);
     return a > b ? -1 : a < b ? 1 : 0;
   });
+
   return (
     <div>
-      {dates.map(date => (
-        <div>
-          <h6>{new Date(date) - Date.now() == 0 ? "Today" : `${date}`}</h6>
-          <ul className="commit-day border" key={date}>
-            {groupedCommits[date].map(({ commit }) => (
-              <Commit key={commit.tree.sha} commit={commit} />
-            ))}
-          </ul>
-        </div>
-      ))}
+      {dates.map(date => {
+        const days_ago = (Date.now() - new Date(date)) / 1000 / 3600 / 24;
+
+        return (
+          <div key={`${date}`}>
+            <h6>
+              {days_ago < 1 ? "Today" : days_ago < 2 ? "Yesterday" : `${date}`}
+            </h6>
+            <ul className="commit-day border">
+              {groupedCommits[date].map(({ commit }) => (
+                <Commit key={commit.tree.sha} commit={commit} />
+              ))}
+            </ul>
+          </div>
+        );
+      })}
     </div>
   );
 };

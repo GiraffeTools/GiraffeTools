@@ -78,32 +78,46 @@ class RepositoryBox extends React.Component {
       <div className="col-4 text-center">
         <div className="giraffe-box" id="project-box">
           <h4>About the project</h4>
-          <img
-            src="/static/img/separator_grey.svg"
-            className="separator-grey"
-          />
-          <br />
-          <div className="text-left">
-            <img src="/static/img/commits_icon.svg" />{" "}
-            {`${numberOfCommits} ` + pluralize("commits", numberOfCommits)}
+          <div id="repo-box-content">
+            <img
+              src="/static/img/separator_grey.svg"
+              className="separator-grey"
+            />
             <br />
-            <img src="/static/img/branch_icon.svg" />{" "}
-            {`${numberOfBranches} ` + pluralize("branches", numberOfBranches)}
-            <br />
-            <img src="/static/img/contributors_icon.svg" />{" "}
-            {`${numberOfContributors} ` +
-              pluralize("contributors", numberOfContributors)}
-            <br />
-            <img src="/static/img/release_icon.svg" />{" "}
-            {`${numberOfReleases} ` + pluralize("releases", numberOfReleases)}
+            <div className="text-left">
+              <img
+                src="/static/img/commits_icon.svg"
+                className="project-icon"
+              />{" "}
+              {`${numberOfCommits} ` + pluralize("commits", numberOfCommits)}
+              <br />
+              <img
+                src="/static/img/branch_icon.svg"
+                className="project-icon"
+              />{" "}
+              {`${numberOfBranches} ` + pluralize("branches", numberOfBranches)}
+              <br />
+              <img
+                src="/static/img/contributors_icon.svg"
+                className="project-icon"
+              />{" "}
+              {`${numberOfContributors} ` +
+                pluralize("contributors", numberOfContributors)}
+              <br />
+              <img
+                src="/static/img/release_icon.svg"
+                className="project-icon"
+              />{" "}
+              {`${numberOfReleases} ` + pluralize("releases", numberOfReleases)}
+              <br />
+            </div>
+
+            <img
+              src="/static/img/separator_grey.svg"
+              className="separator-grey"
+            />
             <br />
           </div>
-
-          <img
-            src="/static/img/separator_grey.svg"
-            className="separator-grey"
-          />
-          <br />
 
           {`owned by ${repository.owner.login}`}
           <br />

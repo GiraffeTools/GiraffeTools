@@ -137,6 +137,20 @@ div {
 
 }
 
+.project-icon{
+  margin: 0.5rem 0rem;
+}
+
+#repo-box-content{
+  margin: 1rem;
+}
+
+.gh-icon-small{
+  width: 1.25rem;
+  margin: 0.2rem 0.3rem 0.2rem 0rem;
+  padding-bottom: 1px;
+}
+
 .commit-box{
   margin-top: 1rem;
   padding-bottom: 1rem;
@@ -147,7 +161,6 @@ div {
 .commit-day{
   margin-top: 1rem;
   margin-bottom: 2rem;
-  border-color: grey!important;
   border-radius: 3px;
   padding: 1rem 1rem;
 }
@@ -165,7 +178,7 @@ div {
   border-width: 1px;
   border-radius: 2px;
   padding: 0.5rem;
-  width: 6rem;
+  width: 8rem;
   margin-right: 0.7rem;
 }
 
@@ -180,19 +193,6 @@ div {
   padding: 0.4rem;
   padding-right: 3rem;
   padding-left: 3rem;
-}
-
-#commit-hash-button{
-  font-family: 'Nexa-Bold';
-  font-size: 1.2rem;
-  background-color: white;
-  color: black;
-  border-color: grey;
-  border-width: 1px;
-  border-radius: 2px;
-  padding: 0.5rem;
-  width: 6rem;
-  margin-right: 0.7rem;
 }
 
 .public-private{
@@ -287,7 +287,7 @@ padding-bottom: 1.5rem;
 }
 
 .separator-grey{
-  width: 80%;
+  width: 100%;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
