@@ -7,7 +7,7 @@ const Porcupine = () => (
     </div>
     <div className="col-4 text-left" id="tool-text">
       <h3>Porcupine</h3>
-      <img src="/static/img/separator_red.svg" id="separator-red" />
+      <img src="/static/img/separator_red.svg" className="separator-red" />
       <div className="inner-tool-text">
         <b>POR</b>
         {"cupine "}
@@ -19,9 +19,7 @@ const Porcupine = () => (
         ipel
         <b>INE</b>
         <br />
-        <br />
         With Porcupine, you can visually build your pipeline!
-        <br />
       </div>
       <a
         className="btn btn-lg giraffe-button-small"
@@ -39,10 +37,8 @@ const Armadillo = () => (
   <div className="d-flex justify-content-end">
     <div className="col-4 text-left" id="tool-text">
       <h3>Armadillo</h3>
-      <br />
-      <img src="/static/img/separator_red.svg" id="separator-red" />
+      <img src="/static/img/separator_red.svg" className="separator-red" />
       <div className="inner-tool-text">
-        <br />
         <b>A</b>
         ugmented <b>R</b>
         eality [madillo]
@@ -67,7 +63,7 @@ const Armadillo = () => (
 );
 
 const Tools = () => (
-  <div className="tools">
+  <div id="tools">
     <div className="col-6 text-center" id="our-tools">
       <h2 className="with-lines">OUR TOOLS</h2>
     </div>

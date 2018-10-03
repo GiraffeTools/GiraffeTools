@@ -4,18 +4,33 @@ import { shuffle } from "../utils/utils";
 
 const Contributor = contributor => {
   return (
-    <li>
-      <img className="avatar-image" src={contributor.avatar_url} />
-      <br />
-      <div id="contributor-tag">
-        <a href={contributor.html_url} target="_blank">
-          {" "}
-          <b>@{contributor.login}</b>
-        </a>
+    <div className="col-4 justify-content-center d-flex">
+      <div className="card">
+        <img className="avatar-image" src={contributor.avatar_url} />
+        <div id="contributor-tag">
+          <a href={contributor.html_url} target="_blank">
+            {" "}
+            <b>@{contributor.login}</b>
+          </a>
+        </div>
       </div>
-    </li>
+    </div>
   );
 };
+
+const SelectedContributors = ({ contributors }) => (
+  <div className="d-flex">
+    <img className="contributor-arrow" src="/static/img/arrow_left.svg" />
+    <div className="contributor-list">
+      {shuffle(contributors)
+        .slice(0, 9)
+        .map(contributor => (
+          <Contributor key={contributor.id} {...contributor} />
+        ))}
+    </div>
+    <img className="contributor-arrow" src="/static/img/arrow_right.svg" />
+  </div>
+);
 
 class Contributors extends React.Component {
   constructor(props) {
@@ -36,21 +51,17 @@ class Contributors extends React.Component {
 
     return (
       <div className="d-flex" id="contributors">
-        <div className="col-6 border-right">
+        <div className="col-6 border-right" id="contributor-panel">
           <h3>&amp; all the brave contributors</h3>
-          <ul className="contributor-list">
-            {contributors &&
-              shuffle(contributors).map(contributor => (
-                <Contributor key={contributor.id} {...contributor} />
-              ))}
-          </ul>
+          {contributors && <SelectedContributors contributors={contributors} />}
         </div>
-        <div className="col-6">
-          <h3>
+        <div className="col-6 justify-content-center d-flex">
+          <h3 id="gitcoin-text">
             Most contributors have contributed to this Open Source project with
             Gitcoin. If you want to help grow this platform, you can donate or
             fund projects and issues directly!
           </h3>
+          <img id="eth-qr-code" src="/static/img/eth-qr.svg" />
         </div>
       </div>
     );

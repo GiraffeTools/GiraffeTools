@@ -17,3 +17,8 @@ if [ "$MODE" == "production" ]; then
 else
   export DJANGO_SETTINGS_MODULE=app.settings.local
 fi
+
+# remove old webpack bundles
+for bundle in ./app/assets/webpack_bundles/*.js; do
+  rm $bundle
+done

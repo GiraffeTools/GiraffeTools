@@ -34,7 +34,7 @@ const Hero = () => (
       </div>
       <a
         type="button btn-primary btn-lg "
-        className="btn giraffe-button"
+        className="btn giraffe-button-large"
         id="hero-login-button"
         onClick={login}
       >

@@ -30,13 +30,13 @@ h1 {
 // Big red text
 h2 {
   font-family: 'Nexa-Bold';
-  font-size: 34px;
+  font-size: 2.5rem;
   color: $text-color;
 }
 // Sextion titles
 h3 {
   font-family: 'Nexa-Bold';
-  font-size: 2.6rem;
+  font-size: 1.6rem;
 }
 // Box titles
 h4 {
@@ -71,8 +71,9 @@ div {
 #typewriter-text{
   div{
     font-family: 'Nexa-Bold';
-    font-size: 80px;
+    font-size: 5rem;
     font-weight: bold;
+    color: black;
   }
 }
 
@@ -93,7 +94,7 @@ div {
 .banner {
   background-image: url('../img/header_subpage_background.jpg');
   background-size: cover;
-  height: 20rem;
+  height: 22rem;
   margin-bottom: 5rem;
 }
 
@@ -125,12 +126,10 @@ div {
   color: black;
 }
 
-.giraffe-button{
+.giraffe-button-large{
   font-family: 'Nexa-Bold';
   background-color: $primary-color;
   color: white;
-  font-size: 1.7rem;
-  padding: 0.2rem;
   border-radius: 2px;
 }
 
@@ -193,15 +192,6 @@ div {
 
 #commit-title{
   margin: 2rem;
-}
-
-#tool-text{
-  padding-top: 8rem;
-}
-
-.inner-tool-text{
-  font-size: 1.3rem;
-  color: grey;
 }
 
 #commit-hash-button{
@@ -322,7 +312,7 @@ padding-bottom: 1.5rem;
   background-repeat: no-repeat;
   background-position: right;
   background-size: contain;
-  height: 37rem;
+  height: 35.5rem;
 }
 
 .hero-text{
@@ -331,7 +321,7 @@ padding-bottom: 1.5rem;
 }
 
 #hero-logo{
-  width: 10%;
+  width: 11%;
   margin-bottom: 60px;
 }
 
@@ -346,14 +336,37 @@ padding-bottom: 1.5rem;
 }
 
 #hero-subtitle{
-  font-size: 24px;
+  margin-top: 0.7rem;
+  font-size: 1.2rem;
   color: grey;
 }
 
 #hero-login-button{
-  margin-top: 30px;
-  font-size: 22px;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  padding: 0.2rem 0rem;
   color: white;
+  &:hover {
+    color: black;
+  }
+}
+
+#tools{
+  margin-bottom: 11rem;
+}
+
+#tool-text{
+  padding-top: 5rem;
+}
+
+.inner-tool-text{
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: grey;
+}
+
+#our-tools{
+  margin: 4rem;
 }
 
 #porcupine-collage{
@@ -370,15 +383,18 @@ padding-bottom: 1.5rem;
 }
 
 #video{
- }
+}
 
 #roadmap {
   text-align: center;
   background-color: $quaternary-color;
+  padding-bottom: 5rem;
 }
+
 .roadmap-text{
-  font-size: 1.3rem;
+  margin-top: 1rem;
 }
+
  #and-more{
   padding-top: 4rem;
   padding-bottom: 5rem;
@@ -388,9 +404,14 @@ padding-bottom: 1.5rem;
   margin-top: -67px;
 }
 
+.flip-background{
+  //No idea how to flip background
+}
+
 #why-giraffe {
   text-align: center;
   width: 80%;
+  padding-top: 7rem;
 }
 
 #why-giraffe-box{
@@ -401,10 +422,8 @@ padding-bottom: 1.5rem;
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
- .description{
-  font-size: 1.3rem;
-}
- .icon{
+
+.icon{
   margin: 0.2rem;
   width: 3rem;
 }
@@ -412,13 +431,21 @@ padding-bottom: 1.5rem;
 #people {
   text-align: center;
   background-color: $quinternary-color;
-  padding-top: 4rem;
   padding-bottom: 4rem;
 }
 
-#people-box{
-  transform: translateY(30%);
+#slant-separator{
+  margin-bottom: 4rem;
 }
+
+#people-box{
+  margin-top: 2rem;
+}
+
+.people-title{
+  font-size: 2.2rem;
+}
+
 
 #contributors {
   padding-top: 4rem;
@@ -427,33 +454,50 @@ padding-bottom: 1.5rem;
   background-color: $quaternary-color;
 }
 
-.contributor-list li{
-  display: inline;
-  list-style-type: none;
-  padding-right: 20px;
-  float: left;
-  font-size: 0.8em;
-  background-color: none;
+#contributor-panel{
+  padding: 0rem 7%;
+}
 
-  .avatar-image{
-    filter: grayscale(1);
-    height: 120px;
-    width: 120px;
-    padding-top: 5px;
-    transition: filter 0.3s;
+.contributor-list{
+  margin-top: 4rem;
+  div{
+    width: 100%;
+    float: left;
+    border: none;
+    padding: 2% 2%;
+    background: none;
 
-    &:hover {
-      filter: grayscale(0);
+    .avatar-image{
+      filter: grayscale(1);
+      width: 100%;
+      padding-top: 5px;
+      transition: filter 0.3s;
+
+      &:hover {
+        filter: grayscale(0);
+      }
     }
-  }
 
-  #contributor-tag {
-    a {
-      color: black;
-    }
+    #contributor-tag {
     background-color: $primary-color;
+    padding: 0.3rem 0rem;
+      a {
+        color: black;
+      }
+    }
   }
 }
+
+#gitcoin-text{
+  margin-top: 7rem;
+}
+
+#eth-qr-code{
+  width: 50%;
+  bottom: 0;
+  position: absolute;
+}
+
 
 .faq-question-list {
   list-style-image: url('../img/chevron_right.svg');
@@ -479,10 +523,27 @@ padding-bottom: 1.5rem;
 }
 
 #contact {
-  text-align: center;
+  height: 22rem;
   background-color: $quinternary-color;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+}
+
+#join-us{
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#mail-tag{
+  left: 63%;
+  top: 22%;
+  float: left;
+  position: absolute;
+}
+
+#github-tag{
+  left: 42%;
+  top: 46%;
+  float: left;
+  position: absolute;
 }
 
 .icon-title-text{
@@ -536,6 +597,11 @@ padding-bottom: 1.5rem;
   background-image: url('../img/headline_lines_background.svg');
 }
 
+#footer{
+  font-size: 0.8rem;
+  padding-left: 6rem;
+}
+
 .footer-text{
   margin: 2rem;
 }
@@ -543,5 +609,5 @@ padding-bottom: 1.5rem;
 #footer-logo{
   transform: scaleX(-1);
   margin-top: 1rem;
-  height: 12rem;
+  height: 7rem;
 }

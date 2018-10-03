@@ -13,7 +13,7 @@ const Event = event => (
         fill="#F25226"
       />
     </svg>
-    <h3 className="description roadmap-text">{event.description}</h3>
+    <h3 className="roadmap-text">{event.description}</h3>
   </div>
 );
 
