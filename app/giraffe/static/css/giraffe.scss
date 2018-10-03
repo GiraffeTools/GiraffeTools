@@ -91,7 +91,6 @@ div {
 }
 
 .banner {
-  position: relative;
   background-image: url('../img/header_subpage_background.jpg');
   background-size: cover;
   height: 20rem;
@@ -99,7 +98,6 @@ div {
 }
 
 #banner-title{
-  position: absolute;
   top: 50%;
   transform: translateY(-50%);
   left: 25%;
@@ -107,7 +105,6 @@ div {
 }
 
 #banner-logo{
-  position: absolute;
   top: 50%;
   transform: translateY(-50%);
   height: 50%;
@@ -116,11 +113,16 @@ div {
 
 #nav{
   width: 12rem;
+  left: auto;
 }
 
 #nav-triangle{
   // max-width: 350px;
   // height: 350px;
+}
+
+.giraffe-link{
+  color: black;
 }
 
 .giraffe-button{
@@ -289,6 +291,10 @@ padding-bottom: 1.5rem;
   clip-path: circle(50% at center);
 }
 
+#user-section{
+  padding: 0 8%;
+}
+
 #active-giraffe-text{
   font-size: 1.3rem;
   margin-top: 1rem;
@@ -322,7 +328,6 @@ padding-bottom: 1.5rem;
 .hero-text{
   padding-top: 2rem;
   margin-left: 6rem;
-  position: relative;
 }
 
 #hero-logo{
@@ -384,7 +389,6 @@ padding-bottom: 1.5rem;
 }
 
 #why-giraffe {
-  position: relative;
   text-align: center;
   width: 80%;
 }
@@ -394,7 +398,6 @@ padding-bottom: 1.5rem;
 }
  #why-giraffe-image{
   width: 60%;
-  position: relative;
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
@@ -414,7 +417,6 @@ padding-bottom: 1.5rem;
 }
 
 #people-box{
-  position: relative;
   transform: translateY(30%);
 }
 

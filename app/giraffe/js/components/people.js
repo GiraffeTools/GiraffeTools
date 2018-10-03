@@ -7,7 +7,10 @@ const People = () => (
       <div className="col col-lg-4 text-center">
         <img src="/static/img/tim_artsy_portrait.png" width="80%" />
       </div>
-      <div className="col col-lg-4 text-left people-box" id="tool-text">
+      <div
+        className="col col-lg-4 text-left people-box position-relative"
+        id="tool-text"
+      >
         <h3>Dr. Tim van Mourik</h3>
         <br />
         <img src="/static/img/separator_red.svg" width="80%" />

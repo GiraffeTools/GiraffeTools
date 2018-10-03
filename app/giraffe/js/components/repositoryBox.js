@@ -76,7 +76,7 @@ class RepositoryBox extends React.Component {
 
     return (
       <div className="col-3 text-center">
-        <div className="giraffe-box" id="project-box">
+        <div className="giraffe-box sticky-top" id="project-box">
           <h4>About the project</h4>
           <div id="repo-box-content">
             <img
@@ -118,7 +118,10 @@ class RepositoryBox extends React.Component {
             />
             <br />
           </div>
-          owned by <b>{repository.owner.login}</b>
+          owned by{" "}
+          <a className="giraffe-link" href="./">
+            <b>{repository.owner.login}</b>
+          </a>
           <br />
           {"added on "}
           {new Intl.DateTimeFormat("en-GB", {

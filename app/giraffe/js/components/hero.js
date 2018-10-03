@@ -7,7 +7,7 @@ import { login } from "../utils/auth";
 const Hero = () => (
   <div id="hero">
     <Navbar />
-    <div className="hero-text">
+    <div className="hero-text position-relative">
       <img src="/static/img/giraffetools_logo.png" id="hero-logo" />
       <div>
         <div id="typewriter-text">

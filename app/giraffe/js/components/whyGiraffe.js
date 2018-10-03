@@ -51,7 +51,7 @@ const WhyGiraffe = () => {
   ];
 
   return (
-    <div className="container-fluid" id="why-giraffe">
+    <div className="container-fluid position-relative" id="why-giraffe">
       <h2 className="with-lines">WHY GIRAFFE</h2>
       <div id="why-giraffe-box justify-content-center">
         {/*
@@ -61,7 +61,11 @@ const WhyGiraffe = () => {
           </g>
         </svg>
         */}
-        <img src="/static/img/giraffe_tooltips.png" id="why-giraffe-image" />
+        <img
+          src="/static/img/giraffe_tooltips.png"
+          id="why-giraffe-image"
+          className="position-relative"
+        />
         {descriptions &&
           descriptions.map(description => (
             <Description key={description.id} description={description} />

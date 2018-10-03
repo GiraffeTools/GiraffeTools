@@ -54,8 +54,7 @@ class User extends React.Component {
       <Fragment>
         <Banner title={bannerTitle} />
         {user ? (
-          <div className="d-flex justify-content-center">
-            <div className="col col-1" />
+          <div className="d-flex justify-content-center" id="user-section">
             <ProfileBox
               user={user}
               active_giraffe_projects={
@@ -63,7 +62,6 @@ class User extends React.Component {
               }
             />
             <Projects repositories={repositories} />
-            <div className="col col-1" />
           </div>
         ) : (
           <div>User not found</div>

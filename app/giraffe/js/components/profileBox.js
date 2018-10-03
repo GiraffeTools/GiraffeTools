@@ -3,7 +3,7 @@ import pluralize from "pluralize";
 
 const ProfileBox = ({ user, active_giraffe_projects }) => (
   <div className="col-4 text-center">
-    <div className="giraffe-box">
+    <div className="giraffe-box sticky-top">
       <img src={user.avatar_url} id="profile-pic" />
       <h3 id="username">{user.login}</h3>
       <img src="/static/img/separator_grey.svg" className="separator-grey" />
