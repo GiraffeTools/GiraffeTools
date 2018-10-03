@@ -19,8 +19,9 @@ else
 fi
 
 # remove old webpack bundles
-if [ -f ./app/assets/webpack_bundles/*.js ]; then
-  for bundle in ./app/assets/webpack_bundles/*.js; do
+bundles=./app/assets/webpack_bundles
+if [ -d $bundles ] && ! [ -z "$(ls -A $bundles)" ]; then
+  for bundle in $bundles/*.js; do
     rm $bundle
   done
 fi
