@@ -3,6 +3,7 @@ import React from "react";
 const Porcupine = () => (
   <div className="d-flex justify-content-begin">
     <div className="col-6 collage">
+      <div className="float-left" id="giraffe-lines" />
       <img src="/static/img/rec_porcupine_collage.png" id="porcupine-collage" />
     </div>
     <div className="col-4 text-left" id="tool-text">
