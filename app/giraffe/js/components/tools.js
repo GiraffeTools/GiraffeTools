@@ -3,7 +3,11 @@ import React from "react";
 const Porcupine = () => (
   <div className="d-flex justify-content-begin">
     <div className="col-6 collage">
-      <div className="float-left" id="giraffe-lines" />
+      <div className="float-left" id="giraffe-lines">
+        <img src="/static/img/giraffe-line-dots.svg" />
+        <img src="/static/img/giraffe-lines.svg" id="inbetween-lines" />
+        <img src="/static/img/giraffe-lines.svg" id="lower-lines" />
+      </div>
       <img src="/static/img/rec_porcupine_collage.png" id="porcupine-collage" />
     </div>
     <div className="col-4 text-left" id="tool-text">
@@ -58,7 +62,9 @@ const Armadillo = () => (
       </a>
     </div>
     <div className="col-6 collage">
+      <img src="/static/img/giraffe-lines-diag.svg" id="diag-lines-first" />
       <img src="/static/img/rec_armadillo_collage.png" id="armadillo-collage" />
+      <img src="/static/img/giraffe-lines-diag.svg" id="diag-lines-second" />
     </div>
   </div>
 );

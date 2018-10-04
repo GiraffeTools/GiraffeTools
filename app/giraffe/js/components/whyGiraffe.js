@@ -55,13 +55,11 @@ const WhyGiraffe = () => {
       <h2 className="with-lines flip-background">WHY GIRAFFE</h2>
       <div className="position-relative">
         <div id="why-giraffe-box justify-content-center">
-          {/*
-          <svg id="giraffe-image" >
+          <svg id="giraffe-image">
             <g fill="#FCF0D6">
-              <circle cx="50%" cy="50%" r="20%"></circle>
+              <circle cx="50%" cy="50%" r="30%" />
             </g>
           </svg>
-          */}
           <img
             src="/static/img/giraffe_tooltips.png"
             id="why-giraffe-image"
