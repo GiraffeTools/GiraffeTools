@@ -1,5 +1,7 @@
 import axios from "axios";
 import _ from "lodash";
+import cookie from "react-cookies";
+
 import store from "../store";
 import { setToken } from "../actions";
 import { URL, LOGIN } from "../config";
@@ -10,8 +12,16 @@ export function InvalidCredentialsException(message) {
 }
 
 export function login(username, password) {
+  axios.defaults.xsrfCookieName = 'csrftoken';
+  axios.defaults.xsrfHeaderName = 'X-CSRFToken';
+
+  const csrftoken = cookie.load('csrftoken');
+  const config = {
+    headers: {'HTTP_X_CSRFTOKEN': csrftoken},
+    "Content-Type": 'text/plain;',
+  }
   return axios
-    .post(LOGIN)
+    .post(`${LOGIN}?redirect_uri=/`, config)
     .then(function(response) {
       console.log(response);
       store.dispatch(setToken(response.data.token));

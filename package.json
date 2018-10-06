@@ -27,6 +27,7 @@
     "pluralize": "^7.0.0",
     "popper.js": "^1.14.3",
     "react": "^16.4.0",
+    "react-cookies": "^0.1.0",
     "react-dnd": "^2.6.0",
     "react-dnd-html5-backend": "^2.6.0",
     "react-dnd-test-backend": "^2.6.0",
