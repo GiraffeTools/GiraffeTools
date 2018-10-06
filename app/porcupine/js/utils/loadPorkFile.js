@@ -1,4 +1,4 @@
-import { v4 } from "node-uuid";
+import { v4 } from "uuid";
 import nodeData from "../../static/assets/nipype.json";
 
 export const loadPorkFile = (json, nodes, links, setPercent) => {

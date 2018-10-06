@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { v4 } from "node-uuid";
+import { v4 } from "uuid";
 
 class Port extends React.Component {
   constructor(props) {

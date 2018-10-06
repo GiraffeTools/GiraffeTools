@@ -1,11 +1,14 @@
 {
-  "presets": [
-     "react",
-     "es2015",
-     "stage-2"
-  ],
   "plugins": [
-  	"react-hot-loader/babel",
-    "transform-object-rest-spread"
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    "@babel/plugin-proposal-function-sent",
+    "@babel/plugin-proposal-export-namespace-from",
+    "@babel/plugin-proposal-numeric-separator",
+    "@babel/plugin-proposal-throw-expressions",
+
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-syntax-import-meta",
+    ["@babel/plugin-proposal-class-properties", { "loose": false }],
+    "@babel/plugin-proposal-json-strings"
   ]
 }

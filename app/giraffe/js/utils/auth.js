@@ -12,21 +12,8 @@ export function InvalidCredentialsException(message) {
 }
 
 export function login(username, password) {
-  axios.defaults.xsrfCookieName = "csrftoken";
-  axios.defaults.xsrfHeaderName = "X-CSRFToken";
-
-  const csrftoken = cookie.load("csrftoken");
-  const config = {
-    headers: { HTTP_X_CSRFTOKEN: csrftoken },
-    "Content-Type": "text/plain;"
-  };
-  return axios({
-    method: "post",
-    url: `${LOGIN}?redirect_uri=/`,
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8"
-    }
-  })
+  return axios
+    .get(`${LOGIN}?redirect_uri=/`)
     .then(function(response) {
       console.log(response);
       store.dispatch(setToken(response.data.token));

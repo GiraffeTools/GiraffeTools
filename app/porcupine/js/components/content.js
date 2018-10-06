@@ -1,4 +1,4 @@
-import { v4 } from "node-uuid";
+import { v4 } from "uuid";
 import React from "react";
 import { DragDropContextProvider } from "react-dnd";
 import TouchBackend from "react-dnd-touch-backend";

@@ -1,4 +1,4 @@
-import { v4 } from "node-uuid";
+import { v4 } from "uuid";
 import PropTypes from "prop-types";
 import React from "react";
 import { PinchView } from "react-pinch-zoom-pan";
