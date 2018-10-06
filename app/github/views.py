@@ -24,7 +24,7 @@ import time
 
 from django.http import Http404
 from django.shortcuts import redirect
-from django.utils import timezone
+# from django.utils import timezone
 from django.views.decorators.http import require_GET
 
 from github.utils import (
@@ -50,7 +50,7 @@ def github_callback(request):
     access_token = get_github_user_token(code)
     github_user_data = get_github_user_data(access_token)
     handle = github_user_data.get("login")
-    github_repos = get_github_repos(access_token)
+    # github_repos = get_github_repos(access_token)
 
     if handle:
         # Create or update the Profile with the github user data.
@@ -65,11 +65,11 @@ def github_callback(request):
         # Update the user's session with handle and email info.
         session_data = {
             "handle": handle,
-            "user_repos": github_repos,
-            "email": get_github_primary_email(access_token),
-            "access_token": access_token,
+            # "user_repos": github_repos,
+            # "email": get_github_primary_email(access_token),
+            # "access_token": access_token,
             "name": github_user_data.get("name", None),
-            "access_token_last_validated": timezone.now().isoformat(),
+            # "access_token_last_validated": timezone.now().isoformat(),
         }
         for k, v in session_data.items():
             request.session[k] = v
