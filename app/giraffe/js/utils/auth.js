@@ -16,6 +16,7 @@ export function login(username, password) {
     .get(`${LOGIN}?redirect_uri=/`)
     .then(function(response) {
       console.log(response);
+      console.log(response.header);
       store.dispatch(setToken(response.data.token));
     })
     .catch(function(error) {

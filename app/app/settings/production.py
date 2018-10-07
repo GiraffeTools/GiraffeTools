@@ -23,7 +23,7 @@ GITHUB_APP_NAME = os.environ["GITHUB_APP_NAME"]
 CODEFUND = False
 CODEFUND_ID = os.environ["CODEFUND_ID"]
 
-BASE_URL = "https://www.giraffe.tools/"
+BASE_URL = "https://giraffe.tools/"
 
 SLACK_API_TOKEN = os.environ["SLACK_API_TOKEN"]
 

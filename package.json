@@ -66,7 +66,8 @@
     "webpack": "^4.20.2",
     "webpack-bundle-tracker": "^0.3.0",
     "webpack-cli": "^3.1.2",
-    "yaml-js": "^0.2.3"
+    "yaml-js": "^0.2.3",
+    "webpack-dev-server": "^3.1.4"
   },
   "devDependencies": {
     "codecov": "^3.0.2",
@@ -77,8 +78,7 @@
     "jest": "^23.6.0",
     "jest-enzyme": "^6.0.1",
     "raf": "^3.4.0",
-    "redux-devtools": "^3.4.1",
-    "webpack-dev-server": "^3.1.4"
+    "redux-devtools": "^3.4.1"
   },
   "scripts": {
     "preinstall": "node ./bin/pivotNodesByCategory.js",
