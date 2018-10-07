@@ -12,8 +12,18 @@ export function InvalidCredentialsException(message) {
 }
 
 export function login(username, password) {
+  const config = {
+    method: 'GET',
+    mode: 'no-cors',
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+    },
+    withCredentials: true,
+    credentials: 'same-origin',
+  }
   return axios
-    .get(`${LOGIN}?redirect_uri=/`)
+    .get(`${LOGIN}?redirect_uri=/`, config)
     .then(function(response) {
       console.log(response);
       console.log(response.header);
