@@ -2,7 +2,7 @@ import React from "react";
 import Typing from "react-typing-animation";
 
 import Navbar from "./navigation";
-import { login } from "../utils/auth";
+import LoginButton from "./loginButton";
 
 const Hero = () => (
   <div id="hero">
@@ -32,15 +32,7 @@ const Hero = () => (
         Giraffe Tools are applications that make it easier to analyse all kinds
         of data!
       </div>
-      <a
-        type="button btn-primary btn-lg "
-        className="btn giraffe-button-large"
-        id="hero-login-button"
-        onClick={login}
-      >
-        <img src="/static/img/gh-icon-white.svg" id="github-button" />
-        Login with GitHub
-      </a>
+      <LoginButton id="hero-login-button" />
     </div>
   </div>
 );
