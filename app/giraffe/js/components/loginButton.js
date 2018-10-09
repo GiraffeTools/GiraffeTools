@@ -22,7 +22,7 @@ class LoginButton extends React.Component {
       <a
         type="button btn-primary btn-lg "
         className="btn giraffe-button-large"
-        href={`/_github/auth/?redirect_uri=/`}
+        href={user && user.access_token ? `/_github/auth/?redirect_uri=/` : `/github/${user.github_name}`}
       >
         <img src="/static/img/gh-icon-white.svg" id="github-button" />
         {user && user.access_token ? user.github_name : "Login with GitHub"}
