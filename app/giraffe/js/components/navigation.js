@@ -51,7 +51,7 @@ class Navigation extends React.Component {
                 className="nav-link"
                 href={
                   user && user.access_token
-                    ? `/github/${user.github_name}`
+                    ? `/github/${user.github_handle}`
                     : `/_github/auth/?redirect_uri=/`
                 }
               >
