@@ -31,6 +31,7 @@
     "es6-spread": "^0.2.2",
     "font-proxima-nova": "^1.0.1",
     "jquery": "^3.3.1",
+    "jsplumb": "^2.7.3",
     "lodash": "^4.17.10",
     "pluralize": "^7.0.0",
     "popper.js": "^1.14.3",
@@ -75,7 +76,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
     "jest": "^23.6.0",
-    "jest-enzyme": "^7.0.0",
+    "jest-enzyme": "^6.0.1",
     "raf": "^3.4.0",
     "redux-devtools": "^3.4.1"
   },
