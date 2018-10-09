@@ -1,1 +1,2 @@
 export const SET_TOKEN = "SET_TOKEN";
+export const TOGGLE_NAVIGATION = "TOGGLE_NAVIGATION";

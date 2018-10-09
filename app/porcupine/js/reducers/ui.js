@@ -5,7 +5,8 @@ import {
 } from "../actions/actionTypes";
 
 const ui = (state = { showSidebar: true }, action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
     case TOGGLE_SIDEBAR:
       return { ...state, showSidebar: !state.showSidebar };
     case TOGGLE_CODEEDITOR:

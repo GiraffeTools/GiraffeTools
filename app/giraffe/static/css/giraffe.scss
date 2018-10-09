@@ -112,14 +112,35 @@ div {
   margin-left: 6rem;
 }
 
-#nav{
+#nav-triangle{
   width: 12rem;
-  left: auto;
+  float: right;
 }
 
-#nav-triangle{
-  // max-width: 350px;
-  // height: 350px;
+.nav-out{
+  width: 25%;
+  padding-left: 2rem;
+  padding-right: 0.5rem;
+  padding-top: 0.5rem;
+  background-color: $quinternary-color;
+  box-shadow: 0px 0px 5rem black;
+}
+
+#nav-list{
+  list-style: none;
+  a {
+    color: black;
+  }
+  margin: 2rem 0rem;
+}
+
+#brand-box{
+  justify-content: flex-end;
+}
+
+#giraffe-brand{
+  width: 50%;
+  text-align: right;
 }
 
 .giraffe-link{
