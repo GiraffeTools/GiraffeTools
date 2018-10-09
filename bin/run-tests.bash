@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # javascript tests
-npm test
-bash <(curl -s https://codecov.io/bash) -cF javascript
+# comment back in as soon as they're written
+# npm test
+# bash <(curl -s https://codecov.io/bash) -cF javascript
 
 # python tests
 cd app || exit
