@@ -9,7 +9,9 @@ env:
   # different environments as a whole
   - PYTHONPATH="$TRAVIS_BUILD_DIR/app/";
 before_install:
-  - export MODE=test
+  # chnge to 'test' soon
+  # - export MODE=test
+  - export MODE=development
   - mv .env.sample .env
   - source ./bin/init-environment.bash
 install:

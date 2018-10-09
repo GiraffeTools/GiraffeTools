@@ -20,10 +20,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 from django.urls import path
 
-from .views import github_authentication,
-    github_callback,  # Ignore PycodestyleBear (E113)
-    github_logout,
-    logged_in
+from .views import (github_authentication,
+                    github_callback,
+                    github_logout,
+                    logged_in)
 
 
 app_name = "github"
