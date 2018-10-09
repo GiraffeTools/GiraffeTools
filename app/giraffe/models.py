@@ -87,7 +87,7 @@ class Profile(SuperModel):
     email = models.CharField(max_length=255, blank=True, db_index=True)
     github_access_token = models.CharField(
         max_length=255, blank=True, db_index=True)
-    repos_data = JSONField(default={})
+    # repos_data = JSONField(default={})
 
     @property
     def is_org(self):

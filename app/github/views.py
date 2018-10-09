@@ -21,8 +21,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 from __future__ import print_function, unicode_literals
 
 import time
+import json
 
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import redirect
 # from django.utils import timezone
 from django.views.decorators.http import require_GET
@@ -67,7 +68,7 @@ def github_callback(request):
             "handle": handle,
             # "user_repos": github_repos,
             # "email": get_github_primary_email(access_token),
-            # "access_token": access_token,
+            "access_token": access_token,
             "name": github_user_data.get("name", None),
             # "access_token_last_validated": timezone.now().isoformat(),
         }
@@ -88,12 +89,10 @@ def github_callback(request):
 
 @require_GET
 def github_authentication(request):
-    """
-    Handle Github authentication.
-    """
     redirect_uri = request.GET.get("redirect_uri", "/")
 
     if not request.session.get("access_token"):
+        print(get_auth_url(redirect_uri))
         return redirect(get_auth_url(redirect_uri))
 
     response = redirect(redirect_uri)
@@ -101,10 +100,23 @@ def github_authentication(request):
     return response
 
 
+def logged_in(request):
+    user = {
+        "access_token": request.session.get("handle", False),
+        "github_handle": request.session.get("handle", False),
+        "github_email": request.session.get("email", False),
+        "github_name": request.session.get("name", False),
+    }
+    # user = {
+    #     "access_token": True,
+    #     "github_handle":"test_handle",
+    #     "github_email": "test_email",
+    #     "github_name": "test_name",
+    # }
+    return HttpResponse(json.dumps(user), content_type="application/json")
+
+
 def github_logout(request):
-    """
-    Handle Github logout.
-    """
     access_token = request.session.pop("access_token", "")
     request.session.pop("handle", "")
     request.session.pop("user_repos", "")
@@ -114,7 +126,6 @@ def github_logout(request):
         revoke_token(access_token)
         request.session.pop("access_token_last_validated")
         # Profile.objects.filter(handle=handle).update(github_access_token='')
-
         # # record a useraction for this
         # if Profile.objects.filter(handle=handle).count():
         #     UserAction.objects.create(

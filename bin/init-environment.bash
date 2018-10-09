@@ -12,8 +12,10 @@ fi
 echo Running in ${MODE} mode
 
 export NODE_ENV=$MODE
-if [ "$MODE" == "production" ]; then
+if [ "$MODE" == "production" ] || [ "$MODE" == "test" ]; then
   export DJANGO_SETTINGS_MODULE=app.settings.production
+elif [ "$MODE" == "development" ]; then
+  export DJANGO_SETTINGS_MODULE=app.settings.local
 else
   export DJANGO_SETTINGS_MODULE=app.settings.local
 fi
