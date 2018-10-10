@@ -45,7 +45,7 @@ class Navigation extends React.Component {
             </a>
           </div>
           <ul id="nav-list">
-            <li className="nav-item">
+            <li className="nav-item border-bottom">
               <a
                 className="nav-link"
                 href={
@@ -74,6 +74,14 @@ class Navigation extends React.Component {
             <li className="nav-item">
               <a className="nav-link" href="/slack">
                 <h3>Join Slack</h3>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                href="/github/TimVanMourik/SomeGiraffeExample"
+              >
+                <h3>Example project</h3>
               </a>
             </li>
             <li className="nav-item">

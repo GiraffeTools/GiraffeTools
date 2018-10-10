@@ -31,7 +31,14 @@ const ProjectBox = repository => (
           open
         </a>
       ) : (
-        <a type="button btn-primary" className="btn" id="no-giraffe-project">
+        <a
+          type="button btn-primary"
+          className="btn"
+          id="no-giraffe-project"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Not implemented yet!"
+        >
           add
         </a>
       )}

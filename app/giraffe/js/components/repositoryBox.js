@@ -122,14 +122,14 @@ class RepositoryBox extends React.Component {
           <a className="giraffe-link" href="./">
             <b>{repository.owner.login}</b>
           </a>
-          <br />
-          {"added on "}
-          {new Intl.DateTimeFormat("en-GB", {
-            year: "numeric",
-            month: "long",
-            day: "2-digit"
-          }).format(new Date(repository.created_at))}
-          <br />
+          <p>
+            {"added on "}
+            {new Intl.DateTimeFormat("en-GB", {
+              year: "numeric",
+              month: "long",
+              day: "2-digit"
+            }).format(new Date(repository.created_at))}
+          </p>
           <a
             type="button btn-primary"
             className="btn giraffe-button-small"
