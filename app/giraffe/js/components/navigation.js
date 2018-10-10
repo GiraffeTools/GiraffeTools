@@ -21,7 +21,6 @@ class Navigation extends React.Component {
   render() {
     const { toggleNavigation, showNavigation } = this.props;
     const { user } = this.state;
-    console.log(showNavigation);
 
     return (
       <div className="fixed-top">

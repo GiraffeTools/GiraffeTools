@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "engines": {
     "node": "9.8.0",
-    "npm": "6.4.0"
+    "npm": "6.4.1"
   },
   "description": "Graphical Interface for Reproducible Analysis For workFlow Experiments",
   "dependencies": {
@@ -31,7 +31,6 @@
     "es6-spread": "^0.2.2",
     "font-proxima-nova": "^1.0.1",
     "jquery": "^3.3.1",
-    "jsplumb": "^2.7.3",
     "lodash": "^4.17.10",
     "pluralize": "^7.0.0",
     "popper.js": "^1.14.3",
