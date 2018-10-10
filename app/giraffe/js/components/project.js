@@ -46,7 +46,6 @@ class Project extends React.Component {
         <div className="d-flex justify-content-center">
           {repository && (
             <Fragment>
-              <div className="col col-1" />
               <RepositoryBox repository={repository} />
               <div className="col-7">
                 <div>

@@ -2,15 +2,7 @@ import React from "react";
 
 const People = () => (
   <div className="container-fluid text-center" id="people">
-    <div id="slant-separator">
-      <svg width="100%">
-        <svg width="120%">
-          <g transform="rotate(-3)">
-            <rect x="-5%" y="0%" width="100%" height="100%" fill="white" />
-          </g>
-        </svg>
-      </svg>
-    </div>
+    <div id="people-background" />
     <h2 className="with-lines">THE PEOPLE</h2>
     <div className="d-flex justify-content-md-center" id="people-box">
       <div className="col col-lg-4 text-center">

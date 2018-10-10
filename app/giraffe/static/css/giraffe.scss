@@ -498,6 +498,28 @@ padding-bottom: 1.5rem;
   margin-top: 5rem;
 }
 
+#people-background{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $quinternary-color;
+  transform: skewY(-6deg);
+  transform-origin: top left;
+  z-index: -1;
+}
+
+#people-lines{
+  position: absolute;
+  bottom: -10%;
+  z-index: -5;
+  width: 20%;
+  left: 40%;
+}
+
 #people-box{
   margin-top: 2rem;
 }

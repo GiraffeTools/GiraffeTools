@@ -2,12 +2,15 @@ import React from "react";
 
 const Description = ({ description }) => {
   const divStyle = {
-    position: "absolute",
     left: description.position[0],
     top: description.position[1],
     textAlign: description.textAlign
   };
-  return <h3 style={divStyle}>{description.description}</h3>;
+  return (
+    <h3 className="position-absolute" style={divStyle}>
+      {description.description}
+    </h3>
+  );
 };
 
 const WhyGiraffe = () => {
@@ -70,6 +73,7 @@ const WhyGiraffe = () => {
               <Description key={description.id} description={description} />
             ))}
         </div>
+        <img src="/static/img/giraffe-lines.svg" id="people-lines" />
       </div>
     </div>
   );

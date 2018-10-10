@@ -84,11 +84,14 @@ class Navigation extends React.Component {
                 <h3>Example project</h3>
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                <h3>Log out</h3>
-              </a>
-            </li>
+            {user &&
+              user.access_token && (
+                <li className="nav-item">
+                  <a className="nav-link" href="#">
+                    <h3>Log out</h3>
+                  </a>
+                </li>
+              )}
           </ul>
         </WatchOutsideClick>
       </div>
