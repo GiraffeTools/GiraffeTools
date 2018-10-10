@@ -76,67 +76,69 @@ class RepositoryBox extends React.Component {
 
     return (
       <div className="col-3 text-center">
-        <div className="giraffe-box sticky-top" id="project-box">
-          <h4>About the project</h4>
-          <div id="repo-box-content">
-            <img
-              src="/static/img/separator_grey.svg"
-              className="separator-grey"
-            />
-            <br />
-            <div className="text-left">
+        <div className="sticky-top">
+          <div className="whitespace" />
+          <div className="giraffe-box" id="project-box">
+            <h4>About the project</h4>
+            <div id="repo-box-content">
               <img
-                src="/static/img/commits_icon.svg"
-                className="project-icon"
-              />{" "}
-              {`${numberOfCommits} ` + pluralize("commits", numberOfCommits)}
-              <br />
-              <img
-                src="/static/img/branch_icon.svg"
-                className="project-icon"
-              />{" "}
-              {`${numberOfBranches} ` + pluralize("branches", numberOfBranches)}
-              <br />
-              <img
-                src="/static/img/contributors_icon.svg"
-                className="project-icon"
-              />{" "}
-              {`${numberOfContributors} ` +
-                pluralize("contributors", numberOfContributors)}
-              <br />
-              <img
-                src="/static/img/release_icon.svg"
-                className="project-icon"
-              />{" "}
-              {`${numberOfReleases} ` + pluralize("releases", numberOfReleases)}
-              <br />
-            </div>
+                src="/static/img/separator_grey.svg"
+                className="separator-grey"
+              />
+              <p className="text-left">
+                <img
+                  src="/static/img/commits_icon.svg"
+                  className="project-icon"
+                />{" "}
+                {`${numberOfCommits} ` + pluralize("commits", numberOfCommits)}
+                <br />
+                <img
+                  src="/static/img/branch_icon.svg"
+                  className="project-icon"
+                />{" "}
+                {`${numberOfBranches} ` +
+                  pluralize("branches", numberOfBranches)}
+                <br />
+                <img
+                  src="/static/img/contributors_icon.svg"
+                  className="project-icon"
+                />{" "}
+                {`${numberOfContributors} ` +
+                  pluralize("contributors", numberOfContributors)}
+                <br />
+                <img
+                  src="/static/img/release_icon.svg"
+                  className="project-icon"
+                />{" "}
+                {`${numberOfReleases} ` +
+                  pluralize("releases", numberOfReleases)}
+              </p>
 
-            <img
-              src="/static/img/separator_grey.svg"
-              className="separator-grey"
-            />
-            <br />
+              <img
+                src="/static/img/separator_grey.svg"
+                className="separator-grey"
+              />
+            </div>
+            <p>
+              owned by{" "}
+              <a className="giraffe-link" href="./">
+                <b>{repository.owner.login}</b>
+              </a>
+              {" added on "}
+              {new Intl.DateTimeFormat("en-GB", {
+                year: "numeric",
+                month: "long",
+                day: "2-digit"
+              }).format(new Date(repository.created_at))}
+            </p>
+            <a
+              type="button btn-primary"
+              className="btn giraffe-button-small"
+              href={`/porcupine/${repository.full_name}`}
+            >
+              Open project
+            </a>
           </div>
-          owned by{" "}
-          <a className="giraffe-link" href="./">
-            <b>{repository.owner.login}</b>
-          </a>
-          <p>
-            {"added on "}
-            {new Intl.DateTimeFormat("en-GB", {
-              year: "numeric",
-              month: "long",
-              day: "2-digit"
-            }).format(new Date(repository.created_at))}
-          </p>
-          <a
-            type="button btn-primary"
-            className="btn giraffe-button-small"
-            href={`/porcupine/${repository.full_name}`}
-          >
-            Open project
-          </a>
         </div>
       </div>
     );

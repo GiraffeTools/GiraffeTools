@@ -95,13 +95,17 @@ div {
   background-image: url('../img/header_subpage_background.jpg');
   background-size: cover;
   height: 22rem;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
+}
+
+.whitespace{
+  padding-top: 1rem;
 }
 
 #banner-title{
   top: 50%;
   transform: translateY(-50%);
-  left: 25%;
+  left: 30%;
   font-size: 65px;
 }
 
@@ -115,6 +119,8 @@ div {
 #nav-triangle{
   width: 12rem;
   float: right;
+  pointer-events: auto;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
 }
 
 .nav-out{
@@ -124,6 +130,10 @@ div {
   padding-top: 0.5rem;
   background-color: $quinternary-color;
   box-shadow: 0px 0px 5rem black;
+}
+
+#nav-top{
+  pointer-events: none;
 }
 
 #nav-list{

@@ -23,7 +23,7 @@ class Navigation extends React.Component {
     const { user } = this.state;
 
     return (
-      <div className="fixed-top">
+      <div className="fixed-top" id="nav-top">
         <a
           className={showNavigation ? " collapse" : ""}
           onClick={toggleNavigation}
