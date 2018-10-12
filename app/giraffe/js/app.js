@@ -10,11 +10,13 @@ import LandingPage from "./components/landingPage";
 import Slack from "./components/slack";
 import Github from "./components/github";
 import Gallery from "./components/gallery";
+import SmallScreenAlertContainer from "./containers/smallScreenAlertContainer";
 
 class App extends React.Component {
   render() {
     return (
       <Fragment>
+        <SmallScreenAlertContainer />
         <Switch>
           <Route path="/faq" component={Faq} />
           <Route path="/slack" component={Slack} />
