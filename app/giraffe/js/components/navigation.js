@@ -54,11 +54,14 @@ class Navigation extends React.Component {
                     : `/_github/auth/?redirect_uri=/`
                 }
               >
-                <h3>
-                  {user && user.access_token
-                    ? `My projects`
-                    : "Login with GitHub"}
-                </h3>
+                {user && user.access_token ? (
+                  <h3>My projects</h3>
+                ) : (
+                  <span id="login-text-nav">
+                    <img src="/static/img/gh-icon.png" id="github-button" />
+                    Login with GitHub
+                  </span>
+                )}
               </a>
             </li>
             <li className="nav-item">

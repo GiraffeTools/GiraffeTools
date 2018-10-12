@@ -77,6 +77,11 @@ div {
   }
 }
 
+#login-text-nav{
+  font-family: 'Nexa-Bold';
+  font-size: 1.6rem;
+}
+
 .with-lines{
   background-image: url('../img/headline_lines_background.svg');
   background-size: contain;
@@ -356,6 +361,7 @@ padding-bottom: 1.5rem;
 
 #github-button{
   width: 15%;
+  margin-right: 0.5rem;
 }
 
 #headline-dot{
