@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import DragLayer from "react-dnd/lib/DragLayer";
 
 function collect(monitor) {
@@ -48,14 +47,5 @@ class ItemPreview extends React.Component {
     }
   }
 }
-
-ItemPreview.propTypes = {
-  name: PropTypes.string,
-  currentOffset: PropTypes.shape({
-    x: PropTypes.number,
-    y: PropTypes.number
-  }),
-  isDragging: PropTypes.bool
-};
 
 export default DragLayer(collect)(ItemPreview);

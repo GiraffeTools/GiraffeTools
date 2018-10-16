@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React from "react";
 
 class Field extends React.Component {
@@ -150,15 +149,5 @@ class Field extends React.Component {
     );
   }
 }
-
-Field.propTypes = {
-  data: PropTypes.object,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.bool
-  ]),
-  disabled: PropTypes.bool
-};
 
 export default Field;

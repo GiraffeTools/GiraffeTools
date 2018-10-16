@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React from "react";
 
 class PaneHeader extends React.Component {
@@ -28,10 +27,5 @@ class PaneHeader extends React.Component {
     );
   }
 }
-
-PaneHeader.propTypes = {
-  name: PropTypes.string.isRequired,
-  color: PropTypes.string.isRequired
-};
 
 export default PaneHeader;

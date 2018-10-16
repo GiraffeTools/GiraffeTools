@@ -1,37 +1,7 @@
-import PropTypes from "prop-types";
 import React from "react";
-import { DragSource } from "react-dnd";
 
 import ItemTypes from "./itemTypes";
-// import Ports from './ports';
 import PortContainer from "../containers/portContainer";
-
-const boxSource = {
-  beginDrag(props) {
-    event.stopPropagation();
-    return {
-      key: props.id,
-      type: props.type
-    };
-  },
-  endDrag(props, monitor) {
-    const item = monitor.getItem();
-    const offset = monitor.getDifferenceFromInitialOffset();
-    if (item) {
-      // TODO: item.key => item.id
-      props.updateNodePosition(item.key, {
-        x: props.x + offset.x,
-        y: props.y + offset.y
-      });
-      //HACK: passing on all props is dirty
-      props.repositionPorts({
-        ...props,
-        x: props.x + offset.x,
-        y: props.y + offset.y
-      });
-    }
-  }
-};
 
 class Node extends React.Component {
   constructor(props) {
@@ -64,16 +34,12 @@ class Node extends React.Component {
       colour,
       hoveredNode,
       selectedNode,
-      ports,
-      isDragging,
-      connectDragSource,
-      connectDragPreview
+      ports
     } = this.props;
     // ports = ports.filter(port => port.isVisible == true);
 
-    let content = (
+    return (
       <div
-        draggable="true"
         className={
           "node" +
           (selectedNode && id === selectedNode ? " selected" : "") +
@@ -98,37 +64,16 @@ class Node extends React.Component {
         <div className="node__type">{name}</div>
         <div className="node__ports">
           <ul>
-            {ports.filter(port => port.isVisible == true).map(port => {
-              return <PortContainer {...port} key={port.id} />;
-            })}
+            {ports &&
+              ports.filter(port => port.isVisible == true).map(port => {
+                return <PortContainer {...port} key={port.id} />;
+              })}
           </ul>
         </div>
       </div>
     );
-
-    content = connectDragSource(content);
-    // content = connectDragPreview(content);
     return content;
   }
 }
 
-Node.propTypes = {
-  name: PropTypes.string.isRequired,
-  colour: PropTypes.string.isRequired,
-  x: PropTypes.number.isRequired,
-  y: PropTypes.number.isRequired,
-  class: PropTypes.string
-  // connectDragSource: PropTypes.func.isRequired,
-  // connectDragPreview: PropTypes.func.isRequired,
-  // isDragging: PropTypes.bool.isRequired,
-};
-
-export default (Node = DragSource(
-  ItemTypes.Node,
-  boxSource,
-  (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    //   connectDragPreview: connect.dragPreview(),
-    isDragging: monitor.isDragging()
-  })
-)(Node));
+export default Node;

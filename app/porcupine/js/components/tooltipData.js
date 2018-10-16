@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React from "react";
 
 class TooltipData extends React.Component {
@@ -23,16 +22,5 @@ class TooltipData extends React.Component {
     );
   }
 }
-
-TooltipData.propTypes = {
-  id: PropTypes.string.isRequired,
-  data: PropTypes.object,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.bool
-  ]),
-  disabled: PropTypes.bool
-};
 
 export default TooltipData;

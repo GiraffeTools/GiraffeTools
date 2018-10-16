@@ -16,6 +16,13 @@ $dark-color: black;
 $light-grey: lightgrey;
 $background-color: #f9f9f9;
 
+$text-color: #F25226;
+$primary-color: #F7A81C;
+$secondary-color: #FAE0A3;
+$tertiary-color: #F25226;
+$quaternary-color: #FFFAEF;
+$quinternary-color: #FCF0D6;
+
 .view-wrapper {
   height: 100%;
   width: 100%;
@@ -165,7 +172,7 @@ $background-color: #f9f9f9;
   left: 0px;
   bottom: 0px;
   width: 20%;
-  background-color: #F3F3F3;
+  background-color: $quinternary-color;
   overflow-y: auto;
 }
 
@@ -213,6 +220,7 @@ $background-color: #f9f9f9;
 
 .panel-heading{
   padding: 8px 0;
+  cursor: pointer;
 }
 
 .panel-heading > a{
@@ -248,11 +256,13 @@ $background-color: #f9f9f9;
 #main {
   overflow: hidden;
   width: 80%;
+  height: 100%;
   display: flex;
   flex-flow: column;
   top: 0px;
   left: 20%;
   /* bottom: 0px; */
+  background-color: $quaternary-color;
   position: absolute;
 }
 
@@ -345,7 +355,7 @@ $background-color: #f9f9f9;
   text-align: center;
   width: 100%;
   margin: 0px;
-  background-color: #e8d210;
+  background-color: $secondary-color;
 }
 
 #logo{

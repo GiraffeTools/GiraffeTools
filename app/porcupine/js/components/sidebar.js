@@ -17,16 +17,16 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    const showSidebar = true;
+    const { showSidebar } = this.props;
     const toggleSidebar = () => {};
     const { nodes } = this.state;
     return (
       <div>
         <div id="sidebar" className={showSidebar ? " active" : ""}>
           <div id="logo_sidebar">
-            <a href="https://github.com/TimVanMourik">
+            <a href="https://giraffe.tools">
               <img
-                src={"/static/img/giraffe.png"}
+                src={"/static/img/giraffetools_logo_notext.png"}
                 className="img-responsive"
                 alt="logo"
                 id="logo"
@@ -54,10 +54,10 @@ class Sidebar extends React.Component {
             <h5 className="sidebar-heading">EXTRAS</h5>
             <a
               className="btn btn-block extra-buttons text-left"
-              href="https://github.com/TimVanMourik"
+              href="https://github.com/TimVanMourik/GiraffeTools"
               target="_blank"
             >
-              Tim van Mourik
+              Github
             </a>
             <a
               className="btn btn-block extra-buttons text-left"

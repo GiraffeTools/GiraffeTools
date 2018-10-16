@@ -1,7 +1,6 @@
-import PropTypes from "prop-types";
 import React from "react";
 import PaneHeader from "./paneHeader";
-import PaneElement from "./paneElement";
+import DraggablePaneElement from "../draggables/draggablePaneElement";
 
 const NestedPaneGroup = ({ categories }) =>
   Object.keys(categories).map(category => (
@@ -17,9 +16,9 @@ const PaneElements = ({ nodes, colour }) =>
     const name = nodes[node]["title"]["name"].toString();
     nodes[node].colour = colour;
     return (
-      <PaneElement key={name} category={nodes[node]} id={name}>
+      <DraggablePaneElement key={name} category={nodes[node]} id={name}>
         {name}
-      </PaneElement>
+      </DraggablePaneElement>
     );
   });
 

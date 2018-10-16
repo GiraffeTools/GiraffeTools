@@ -1,8 +1,8 @@
 import { v4 } from "uuid";
 import React from "react";
-import { DragDropContextProvider } from "react-dnd";
-import TouchBackend from "react-dnd-touch-backend";
-import HTML5Backend from "react-dnd-html5-backend";
+import { DragDropContext } from "react-dnd";
+import HTML5TouchBackend from "react-dnd-html5-touch-backend";
+import Modernizr from "browsernizr";
 
 import { default as ItemPreview } from "../components/itemPreview";
 import CodeEditorContainer from "../containers/codeEditorContainer";
@@ -11,43 +11,34 @@ import ParameterPaneContainer from "../containers/parameterPaneContainer";
 import Sidebar from "./sidebar";
 import Tooltip from "./tooltip";
 
-require("browsernizr/test/touchevents");
-var Modernizr = require("browsernizr");
-
+@DragDropContext(HTML5TouchBackend)
 class Content extends React.Component {
   constructor(props) {
     super(props);
-    this.modifyNodePos = this.modifyNodePos.bind(this);
-  }
-
-  modifyNodePos(node, nodeId = this.state.selectedNode) {
-    const net = this.state.net;
-    net[nodeId] = node;
-    this.setState({ net });
+    this.state = {
+      snapToGridAfterDrop: false,
+      snapToGridWhileDragging: false
+    };
   }
 
   render() {
+    // const { snapToGridAfterDrop, snapToGridWhileDragging } = this.state
     const { hoveredNode, showSidebar, toggleSidebar } = this.props;
 
     return (
-      <DragDropContextProvider
-        backend={Modernizr.touchevents ? TouchBackend : HTML5Backend}
-      >
-        <div id="parent">
-          <a
-            className={"sidebar-button" + (showSidebar ? " close" : "")}
-            onClick={() => toggleSidebar()}
-          />
-          <Sidebar showSidebar={showSidebar} />
-          <div id="main">
-            <CanvasContainer />
-            <ParameterPaneContainer />
-            <Tooltip hoveredNode={hoveredNode} />
-            <CodeEditorContainer />
-          </div>
-          {Modernizr.touchevents && <ItemPreview key="__preview" name="Item" />}
+      <div id="parent">
+        <Sidebar showSidebar={showSidebar} />
+        <a
+          className={"sidebar-button" + (showSidebar ? " close" : "")}
+          onClick={() => toggleSidebar()}
+        />
+        <div id="main">
+          <CanvasContainer />
+          <ParameterPaneContainer />
+          <Tooltip hoveredNode={hoveredNode} />
+          <CodeEditorContainer />
         </div>
-      </DragDropContextProvider>
+      </div>
     );
   }
 }

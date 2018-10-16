@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import { render } from "react-dom";
 import { hot } from "react-hot-loader";
@@ -15,6 +14,7 @@ class App extends React.Component {
   render() {
     return (
       <Fragment>
+        {/*Note that both routes will be rendered with user+repo */}
         <Route path="/porcupine" component={ContentContainer} />
         <Route
           path="/porcupine/:username/:repository"

@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React from "react";
 
 import Fields from "../components/fields";
@@ -63,10 +62,5 @@ class ParameterPane extends React.Component {
     );
   }
 }
-
-ParameterPane.propTypes = {
-  modifyNode: PropTypes.func,
-  changeSelectedNode: PropTypes.func
-};
 
 export default ParameterPane;
