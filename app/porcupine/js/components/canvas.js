@@ -44,7 +44,7 @@ const boxTarget = {
         props.repositionPorts({ ...item, x, y });
         break;
       case ItemTypes.PANE_ELEMENT:
-        const { addNode, addPortToNode, repositionPorts } = props;
+        const { addNode, repositionPorts } = props;
         const zoom = 1;
 
         const templateNode = item.category;

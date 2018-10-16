@@ -16,4 +16,4 @@ class PaneElementDragPreview extends React.PureComponent {
   }
 }
 
-export default NodeDragPreview;
+export default PaneElementDragPreview;

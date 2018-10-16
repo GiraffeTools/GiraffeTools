@@ -1,8 +1,8 @@
 import React from "react";
 import { DragLayer, XYCoord } from "react-dnd";
 import ItemTypes from "../components/itemTypes";
-import NodeDragPreview from "./NodeDragPreview";
-import PaneElementDragPreview from "./NodeDragPreview";
+import NodeDragPreview from "./nodeDragPreview";
+import PaneElementDragPreview from "./paneElementDragPreview";
 // import snapToGrid from './snapToGrid'
 
 const layerStyles = {
