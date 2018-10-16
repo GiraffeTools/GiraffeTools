@@ -1,6 +1,6 @@
 import React from "react";
 import { DragSource, ConnectDragSource, ConnectDragPreview } from "react-dnd";
-import { getEmptyImage } from "react-dnd-html5-touch-backend";
+import { getEmptyImage } from "react-dnd-html5-backend";
 
 import ItemTypes from "../components/itemTypes";
 import NodeContainer from "../containers/nodeContainer";
