@@ -18,7 +18,6 @@ import {
   SET_MOUSE_STATE,
   CLEAR_DATABASE,
   TOGGLE_CODEEDITOR,
-  SET_ACTIVE_TAB,
   SET_USER,
   SET_REPOSITORY
 } from "./actionTypes";
@@ -38,12 +37,6 @@ export const toggleSidebar = () => ({
 });
 export const toggleCodeEditor = () => ({
   type: TOGGLE_CODEEDITOR
-});
-export const setActiveTab = tab => ({
-  type: SET_ACTIVE_TAB,
-  payload: {
-    tab
-  }
 });
 
 ///// NODES /////

@@ -20,7 +20,6 @@ export const REMOVE_LINK = "REMOVE_LINK";
 ///// UI /////
 export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
 export const TOGGLE_CODEEDITOR = "TOGGLE_CODEEDITOR";
-export const SET_ACTIVE_TAB = "SET_ACTIVE_TAB";
 export const UPDATE_LOADING_PERCENT = "UPDATE_LOADING_PERCENT";
 
 ///// USER /////

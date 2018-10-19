@@ -1,12 +1,7 @@
 module.exports = api => {
   api.cache(false);
 
-  const presets = [
-    // [
-    //   "@babel/env",
-    //   "@babel/preset-react",
-    // ],
-  ];
+  // const presets = [];
   const plugins = [
     ["@babel/plugin-proposal-decorators", { legacy: true }],
     "@babel/plugin-proposal-function-sent",
@@ -22,7 +17,7 @@ module.exports = api => {
   ];
 
   return {
-    presets,
+    // presets,
     plugins
   };
 };

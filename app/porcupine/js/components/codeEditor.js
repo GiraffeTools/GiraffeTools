@@ -8,16 +8,7 @@ class CodeEditor extends React.Component {
   }
 
   render() {
-    const {
-      showCodeEditor,
-      setActiveTab,
-      toggleCodeEditor,
-      nodes,
-      links,
-      activeTab
-    } = this.props;
-
-    const languages = ["Nipype", "Docker", "MATLAB"];
+    const { showCodeEditor, toggleCodeEditor, nodes, links } = this.props;
 
     return (
       <div
@@ -30,44 +21,9 @@ class CodeEditor extends React.Component {
           }
           onClick={() => toggleCodeEditor()}
         />
+        {/* #TODO Make this a tab editor */}
         <div className="codeEditor">
-          <nav>
-            <div className="nav nav-tabs" id="nav-tab" role="tablist">
-              {languages.map(language => (
-                <a
-                  className={
-                    "nav-item nav-link code-nav" +
-                    (language === activeTab ? " active" : "")
-                  }
-                  key={`nav-${language}-tab`}
-                  id={`nav-${language}-tab`}
-                  data-toggle="tab"
-                  role="tab"
-                  aria-controls={`nav-${language}`}
-                  aria-selected="true"
-                  onClick={() => setActiveTab(language)}
-                >
-                  {`${language}`}
-                </a>
-              ))}
-            </div>
-          </nav>
-          <div className="tab-content" id="nav-tabContent">
-            {languages.map(language => (
-              <div
-                key={`nav-${language}-panel`}
-                className={
-                  "tab-pane fade" +
-                  (language === activeTab ? " show active" : "")
-                }
-                id={`nav-${language}`}
-                role="tabpanel"
-                aria-labelledby={`nav-${language}-tab`}
-              >
-                <Code language={`${language}`} nodes={nodes} links={links} />
-              </div>
-            ))}
-          </div>
+          <Code language="Nipype" nodes={nodes} links={links} />
         </div>
       </div>
     );

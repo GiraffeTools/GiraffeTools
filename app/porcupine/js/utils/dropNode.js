@@ -12,7 +12,6 @@ export const drop = (item, offset) => {
   const node = $.extend(true, {}, templateNode);
 
   const name = node.title.name;
-  const code = node.title.code;
   node.ports ? node.ports : {};
   node.ports = node.ports.map(port => {
     // #TODO link to a proper default value
@@ -32,8 +31,7 @@ export const drop = (item, offset) => {
     width: name.length * 12,
     colour: node.colour,
     ports: node.ports,
-    web_url: node.title.web_url || "",
-    code: code || ""
+    web_url: node.title.web_url || ""
   };
 
   addNode(newNode);

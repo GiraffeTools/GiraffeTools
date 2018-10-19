@@ -1,7 +1,13 @@
 import React from "react";
-import NipypeCode from "./codeGenerators/nipype";
-import DockerCode from "./codeGenerators/docker";
-import UnknownCode from "./codeGenerators/unknown";
+import SyntaxHighlighter, {
+  registerLanguage
+} from "react-syntax-highlighter/light";
+import python from "react-syntax-highlighter/languages/hljs/python";
+import atomDark from "react-syntax-highlighter/styles/hljs/atom-one-dark";
+
+import NipypeCode from "../utils/codeGenerators/nipype";
+
+registerLanguage("python", python);
 
 class Code extends React.Component {
   constructor(props) {
@@ -14,16 +20,20 @@ class Code extends React.Component {
     let code = "";
     switch (this.props.language) {
       case "Nipype":
-        code = <NipypeCode nodes={nodes} links={links} />;
+        code = NipypeCode(nodes, links);
         break;
       case "Docker":
-        code = <DockerCode nodes={nodes} />;
         break;
       default:
-        code = <UnknownCode />;
+        code = NipypeCode(nodes, links);
         break;
     }
-    return code;
+
+    return (
+      <SyntaxHighlighter language="python" style={atomDark}>
+        {code}
+      </SyntaxHighlighter>
+    );
   }
 }
 
