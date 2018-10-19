@@ -1,6 +1,7 @@
 import {
   TOGGLE_SIDEBAR,
   TOGGLE_CODEEDITOR,
+  SET_ACTIVE_TAB,
   UPDATE_LOADING_PERCENT
 } from "../actions/actionTypes";
 
@@ -11,6 +12,8 @@ const ui = (state = { showSidebar: true }, action) => {
       return { ...state, showSidebar: !state.showSidebar };
     case TOGGLE_CODEEDITOR:
       return { ...state, showCodeEditor: !state.showCodeEditor };
+    case SET_ACTIVE_TAB:
+      return { ...state, activeTab: payload.tab };
     case UPDATE_LOADING_PERCENT:
       return { ...state, loadingPercent: action.percent };
     default:
