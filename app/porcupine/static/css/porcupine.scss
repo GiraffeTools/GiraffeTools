@@ -184,12 +184,26 @@ $quinternary-color: #FCF0D6;
   margin-top: -5px;
 }
 
+.code-nav{
+  background-color: $quinternary-color!important;
+  margin: 0 5px 0 0;
+  border-bottom: 0px!important;
+  &.active {
+    background-color: $secondary-color!important;
+  }
+}
+
+#code-scroll{
+  overflow-y: scroll;
+  height: 20rem;
+}
+
 .codeWindow{
   position: fixed;
   bottom: 0;
   width: 60%;
-  height: 60%;
-  margin-left: 20px;
+  height: 40%;
+  margin-left: 2rem;
 }
 
 .codeWindowClosed{
@@ -266,6 +280,11 @@ $quinternary-color: #FCF0D6;
   position: absolute;
 }
 
+#nav-tabContent{
+  overflow-y: scroll;
+  height: -webkit-fill-available;
+  background-color: rgb(40, 44, 52);
+}
 
 .topBar .btn{
   margin: 5px;
@@ -285,6 +304,7 @@ $quinternary-color: #FCF0D6;
 }
 
 .canvas-icon{
+  overflow: hidden;
   margin: 0px;
   position: fixed;
   bottom: 4%;
@@ -412,9 +432,10 @@ $quinternary-color: #FCF0D6;
   flex: 1 1 auto;
   width: 100%;
   position: relative;
-  overflow:scroll;
+  // overflow: scroll;
   border: 1px solid #ddd;
   border-radius: 4px 4px 4px 4px;
+
 }
 
 .setHead{
