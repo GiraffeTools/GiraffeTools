@@ -181,7 +181,6 @@ $quinternary-color: #FCF0D6;
 }
 
 .codeEditor{
-  margin-top: -5px;
 }
 
 .code-nav{
@@ -199,11 +198,12 @@ $quinternary-color: #FCF0D6;
 }
 
 .codeWindow{
-  position: fixed;
+  position: absolute;
   bottom: 0;
+  height: 60%;
   width: 60%;
-  height: 40%;
   margin-left: 2rem;
+  margin-bottom: 0rem;
 }
 
 .codeWindowClosed{
@@ -211,14 +211,25 @@ $quinternary-color: #FCF0D6;
   transition: transform 0.1s;
 }
 
+.codeNav{
+  position: absolute;
+  top: 0;
+  transform: translateY(-100%);
+}
+
 .codeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(-100%);
+
   background: #d9a005;
   display: inline-block;
   text-align: center;
-  height: 30px;
-  width:  60px;
-  border-top-left-radius:  60px;
-  border-top-right-radius: 60px;
+  height: 2rem;
+  width: 4rem;
+  border-top-left-radius: 8rem;
+  border-top-right-radius: 8rem;
   cursor: pointer;
   font-size: 2rem;
   color: black;

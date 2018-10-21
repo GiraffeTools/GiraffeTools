@@ -23,15 +23,15 @@ class CodeEditor extends React.Component {
       <div
         className={"codeWindow " + (showCodeEditor ? "codeWindowClosed" : "")}
       >
-        <div
-          className={
-            "codeButton fas " +
-            (showCodeEditor ? "fa-angle-up" : "fa-angle-down")
-          }
-          onClick={() => toggleCodeEditor()}
-        />
-        <div className="codeEditor">
-          <nav>
+        <div>
+          <div
+            className={
+              "codeButton fas " +
+              (showCodeEditor ? "fa-angle-up" : "fa-angle-down")
+            }
+            onClick={() => toggleCodeEditor()}
+          />
+          <nav className="codeNav">
             <div className="nav nav-tabs" id="nav-tab" role="tablist">
               {languages.map(language => (
                 <a
@@ -52,6 +52,8 @@ class CodeEditor extends React.Component {
               ))}
             </div>
           </nav>
+        </div>
+        <div className="codeEditor">
           <div className="tab-content" id="nav-tabContent">
             {languages.map(language => (
               <div
