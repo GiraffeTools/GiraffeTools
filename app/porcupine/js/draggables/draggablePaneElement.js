@@ -10,11 +10,11 @@ const boxSource = {
     return props;
   }
   // endDrag(props, monitor) {
-  // 	const item = monitor.getItem()
-  // 	const dropResult = monitor.getDropResult()
+  // 	const item = monitor.getItem();
+  // 	const dropResult = monitor.getDropResult();
   //
   // 	if (dropResult) {
-  // 		alert(`You dropped ${item.name} into ${dropResult.name}!`)
+  // 		alert(`You dropped ${item.category.title.name} into ${dropResult.name}!`);
   // 	}
   // },
 };

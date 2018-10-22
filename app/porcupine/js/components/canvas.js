@@ -44,6 +44,7 @@ const boxTarget = {
         props.repositionPorts({ ...item, x, y });
         break;
       case ItemTypes.PANE_ELEMENT:
+        const contentPosition = monitor.getSourceClientOffset();
         const { addNode, repositionPorts } = props;
         const zoom = 1;
 
@@ -66,8 +67,8 @@ const boxTarget = {
           id: v4(),
           name: name,
           // #TODO fix positioning of dropped node, issue #73
-          x: x / zoom,
-          y: y / zoom,
+          x: (contentPosition.x - monitor.getInitialClientOffset().x) / zoom,
+          y: contentPosition.y / zoom,
           width: name.length * 12,
           colour: node.colour,
           ports: node.ports,
