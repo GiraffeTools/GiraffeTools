@@ -1,6 +1,5 @@
 import { v4 } from "uuid";
 import React from "react";
-import { PinchView } from "react-pinch-zoom-pan";
 import {
   DropTarget,
   ConnectDropTarget,
@@ -12,6 +11,7 @@ import ProgressBar from "react-progress-bar-plus";
 import "react-progress-bar-plus/lib/progress-bar.css";
 
 import ItemTypes from "./itemTypes";
+import GraphView from "./graphView";
 import Links from "./links";
 import Nodes from "./nodes";
 import ZoomIn from "./zoomIn";
@@ -132,16 +132,41 @@ class Canvas extends React.PureComponent {
           ) : (
             ""
           )}
-          {/* #TODO replace this container, issue #73 */}
 
-          {/* <PinchView> */}
+          {/*
           <div id="mainSurface">
             <Nodes nodes={nodes} />
             <Links links={links} />
             <CustomDragLayer />
           </div>
-          {/* </PinchView> */}
+          */}
 
+          <div
+            id='graph'
+            // style={styles.graph}
+          >
+            <GraphView
+              ref={(el) => this.GraphView = el}
+              // nodeKey={NODE_KEY}
+              // emptyType={EMPTY_TYPE}
+              nodes={nodes}
+              links={links}
+              // edges={edges}
+              // selected={selected}
+              // nodeTypes={NodeTypes}
+              // nodeSubtypes={NodeSubtypes}
+              // edgeTypes={EdgeTypes}
+              enableFocus={true}
+              getViewNode={this.getViewNode}
+              onSelectNode={this.onSelectNode}
+              onCreateNode={this.onCreateNode}
+              onUpdateNode={this.onUpdateNode}
+              onDeleteNode={this.onDeleteNode}
+              onSelectEdge={this.onSelectEdge}
+              onCreateEdge={this.onCreateEdge}
+              onSwapEdge={this.onSwapEdge}
+              onDeleteEdge={this.onDeleteEdge}/>
+          </div>
           <div className ="row" id="zoom-icons">
             <ZoomIn />
             <ZoomOut />

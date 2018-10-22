@@ -25,21 +25,19 @@ class Link extends React.Component {
       : { x: 0, y: 0 };
 
     return (
-      <svg>
-        <PathLine
-          points={[
-            startingPoint,
-            // #TODO Add intermediate points to make the connection smoother
-            { x: (startingPoint.x + endPoint.x) / 2, y: startingPoint.y },
-            { x: (startingPoint.x + endPoint.x) / 2, y: endPoint.y },
-            endPoint
-          ]}
-          stroke="red"
-          strokeWidth="2"
-          fill="none"
-          r={10}
-        />
-      </svg>
+      <PathLine
+        points={[
+          startingPoint,
+          // #TODO Add intermediate points to make the connection smoother
+          { x: (startingPoint.x + endPoint.x) / 2, y: startingPoint.y },
+          { x: (startingPoint.x + endPoint.x) / 2, y: endPoint.y },
+          endPoint
+        ]}
+        stroke="red"
+        strokeWidth="2"
+        fill="none"
+        r={10}
+      />
     );
   }
 }

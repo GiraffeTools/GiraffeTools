@@ -39,7 +39,14 @@ class Node extends React.Component {
     // ports = ports.filter(port => port.isVisible == true);
 
     return (
-      <div
+      <rect
+        fill={colour}
+        x={`${x}px`}
+        y={`${y}px`}
+        width={`${width}px`}
+        height={100}
+      >
+        {/*
         className={
           "node" +
           (selectedNode && id === selectedNode ? " selected" : "") +
@@ -70,7 +77,8 @@ class Node extends React.Component {
               })}
           </ul>
         </div>
-      </div>
+        */}
+      </rect>
     );
     return content;
   }

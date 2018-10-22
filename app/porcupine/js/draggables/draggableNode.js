@@ -50,9 +50,9 @@ class NodeDragLayer extends React.PureComponent {
     return (
       connectDragSource &&
       connectDragSource(
-        <div style={getStyles(this.props)}>
+        <g style={getStyles(this.props)}>
           <NodeContainer {...this.props} />
-        </div>
+        </g>
       )
     );
   }
