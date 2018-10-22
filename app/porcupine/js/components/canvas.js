@@ -142,8 +142,10 @@ class Canvas extends React.PureComponent {
           </div>
           {/* </PinchView> */}
 
-          <ZoomIn />
-          <ZoomOut />
+          <div className ="row" id="zoom-icons">
+            <ZoomIn />
+            <ZoomOut />
+          </div>
         </div>
       )
     );

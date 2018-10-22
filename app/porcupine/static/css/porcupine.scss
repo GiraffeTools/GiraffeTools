@@ -315,9 +315,11 @@ $quinternary-color: #FCF0D6;
 }
 
 .canvas-icon{
-  overflow: hidden;
-  margin: 0px;
-  position: fixed;
+  margin: 0.4rem;
+}
+
+#zoom-icons{
+  position: absolute;
   bottom: 4%;
   right: 4%;
 }
