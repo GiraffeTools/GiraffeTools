@@ -52,7 +52,7 @@ const boxTarget = {
         const node = $.extend(true, {}, templateNode);
 
         const name = node.title.name;
-        const code = node.title.code;
+        const code = node.title && node.title.code;
         node.ports ? node.ports : {};
         node.ports = node.ports.map(port => {
           // #TODO link to a proper default value
