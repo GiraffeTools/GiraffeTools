@@ -29,13 +29,12 @@ import nipype.pipeline as pe
       );
     });
 
-  const code = [preamble, [...new Set(imports)].join("\r\n"), ""].join("\r\n");
-  return code;
+  return [preamble, [...new Set(imports)].join("\r\n"), ""].join("\r\n");
 };
 
 const writeNodes = nodes => {
   const code = nodes && nodes.map(node => itemToCode(node));
-  return code.join("\r\n");
+  return code && code.join("\r\n");
 };
 
 const writeLinks = links => {
@@ -56,7 +55,8 @@ const linkToCode = link => {
 };
 
 const itemToCode = node => {
-  const codeArgument = node.code.filter(a => a.language === LANGUAGE)[0];
+  const codeArgument =
+    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
   if (!codeArgument) {
     return "";
   }
