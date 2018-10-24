@@ -125,52 +125,22 @@ class Canvas extends React.PureComponent {
             spinner={"right"}
           />
           {/* {errors} */}
-          {nodes.length == 0 ? (
-            <h4 className="text-center" id="placeholder">
-              Drag your nodes here!
-            </h4>
-          ) : (
-            ""
-          )}
 
-          {/*
-          <div id="mainSurface">
-            <Nodes nodes={nodes} />
-            <Links links={links} />
-            <CustomDragLayer />
-          </div>
-          */}
-
-          <div
-            id='graph'
-            // style={styles.graph}
-          >
-            <GraphView
-              ref={(el) => this.GraphView = el}
-              // nodeKey={NODE_KEY}
-              // emptyType={EMPTY_TYPE}
-              nodes={nodes}
-              links={links}
-              // edges={edges}
-              // selected={selected}
-              // nodeTypes={NodeTypes}
-              // nodeSubtypes={NodeSubtypes}
-              // edgeTypes={EdgeTypes}
-              enableFocus={true}
-              getViewNode={this.getViewNode}
-              onSelectNode={this.onSelectNode}
-              onCreateNode={this.onCreateNode}
-              onUpdateNode={this.onUpdateNode}
-              onDeleteNode={this.onDeleteNode}
-              onSelectEdge={this.onSelectEdge}
-              onCreateEdge={this.onCreateEdge}
-              onSwapEdge={this.onSwapEdge}
-              onDeleteEdge={this.onDeleteEdge}/>
-          </div>
-          <div className ="row" id="zoom-icons">
-            <ZoomIn />
-            <ZoomOut />
-          </div>
+          <GraphView
+            nodes={nodes}
+            links={links}
+            // selected={selected}
+            // enableFocus={true}
+            getViewNode={this.getViewNode}
+            onSelectNode={this.onSelectNode}
+            onCreateNode={this.onCreateNode}
+            onUpdateNode={this.onUpdateNode}
+            onDeleteNode={this.onDeleteNode}
+            onSelectEdge={this.onSelectEdge}
+            onCreateEdge={this.onCreateEdge}
+            onSwapEdge={this.onSwapEdge}
+            onDeleteEdge={this.onDeleteEdge}
+          />
         </div>
       )
     );

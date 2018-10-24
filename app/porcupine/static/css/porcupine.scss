@@ -167,41 +167,31 @@ $quinternary-color: #FCF0D6;
 }
 
 #zoom-controls {
-  position: 'absolute';
-  bottom: '30px';
-  left: '15px';
+  position: absolute;
+  top: 30px;
+  left: 15px;
   z-index: 100;
-  display: 'grid';
-  grid-template-columns: 'auto auto';
-  grid-gap: '15px';
-  align-items: 'center';
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 15px;
+  align-items: center;
 }
 
 #zoom-slider-wrapper {
-  background-color: 'white';
-  color: "primary";
-  border: "solid 1px lightgray";
-  padding: '6.5px';
-  border-radius: '2px';
+  background-color: white;
+  border: solid 1px lightgray;
+  padding: 6px;
+  border-radius: 2px;
 }
 
-// # {
-//   position: 'relative';
-//   top: '6px';
-//   margin-left: 5;
-//   margin-right: 5;
-//   cursor: 'pointer';
-// }
-
 #zoom-to-fit {
-  background-color: 'white';
-  color: "primary";
-  border: "solid 1px lightgray";
-  outline: 'none';
-  width: 31;
-  height: 31;
-  border-radius: '2px';
-  cursor: 'pointer';
+  background-color: white;
+  border: solid 1px lightgray;
+  outline: none;
+  width: 31px;
+  height: 31px;
+  border-radius: 2px;
+  cursor: pointer;
 }
 
 
@@ -323,9 +313,7 @@ $quinternary-color: #FCF0D6;
   height: 100%;
   display: flex;
   flex-flow: column;
-  top: 0px;
   left: 20%;
-  /* bottom: 0px; */
   background-color: $quaternary-color;
   position: absolute;
 }
@@ -483,9 +471,18 @@ $quinternary-color: #FCF0D6;
 .canvas{
   flex: 1 1 auto;
   width: 100%;
+  height: 100%;
   position: relative;
   border: 1px solid #ddd;
   border-radius: 0;
+}
+
+.viewWrapper{
+  height: 100%;
+  margin: 0;
+  display: flex;
+  box-shadow: none;
+  transition: opacity 0.167s;
 }
 
 .setHead{
@@ -613,38 +610,6 @@ $quinternary-color: #FCF0D6;
   border-radius: 5px !important;
 }
 
-.__react_component_tooltip{
-  padding: 0px;
-}
-
-.ReactModal__Content {
-  max-height: 90%;
-  width: 65%;
-  overflow: auto;
-}
-
-.zoo-modal {
-  text-align: center;
-}
-
-.centered-zoo-modal {
-  display: inline-block;
-  text-align: left;
-}
-
-.zoo-modal-model {
-  display: inline-block;
-  vertical-align: top;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.zoo-modal-text {
-  padding-left: 12px;
-  padding-right: 12px;
-  font-weight: bold;
-}
-
 .setparams{
   position: absolute;
   background-color: white;
@@ -712,19 +677,6 @@ $quinternary-color: #FCF0D6;
 .port-clicked {
   width: 12px;
   height: 12px;
-}
-
-
-svg, svg:not(:root) {
-    overflow: visible;
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-path {
-    stroke: black;
-    fill: transparent;
 }
 
 .selected{

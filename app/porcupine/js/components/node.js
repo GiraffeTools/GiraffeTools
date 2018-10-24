@@ -1,4 +1,5 @@
 import React from "react";
+import * as d3 from 'd3';
 
 import ItemTypes from "./itemTypes";
 import PortContainer from "../containers/portContainer";
@@ -6,22 +7,53 @@ import PortContainer from "../containers/portContainer";
 class Node extends React.Component {
   constructor(props) {
     super(props);
+    this.click = this.click.bind(this);
+    this.hover = this.hover.bind(this);
+    this.drag = this.drag.bind(this);
+
+    this.state = {
+      hovered: false
+    };
   }
 
-  click(event, nodeId) {
-    const { clickNode } = this.props;
-    clickNode(nodeId);
-    event.stopPropagation();
+  componentDidMount() {
+    d3
+      .select(this.svgRef)
+      .on("click", this.click)
+      .on("mouseenter", () => this.hover(true))
+      .on("mouseleave", () => this.hover(false))
+      .call(d3.drag().on("start", () => this.drag()));
   }
 
-  hover(event, nodeId) {
-    const { hoverNode } = this.props;
-    hoverNode(nodeId);
-    event.stopPropagation();
+  click() {
+    const { clickNode, id } = this.props;
+    clickNode(id);
+    d3.event.stopPropagation();
   }
 
-  drag(event, nodeId) {
-    event.stopPropagation();
+  hover(enter) {
+    const { hoverNode, id } = this.props;
+    hoverNode(enter ? id : null);
+    this.setState({
+      hovered: enter
+    })
+    d3.event.stopPropagation();
+  }
+
+  drag() {
+    const { x, y, id, updateNodePosition } = this.props;
+    let dx = 0, dy = 0;
+    function dragged() {
+      dx += d3.event.dx
+      dy += d3.event.dy
+      updateNodePosition(id, {x: x + dx, y: y + dy})
+    }
+
+    function ended() {
+    }
+    d3.event
+      .on("drag", dragged)
+      .on("end", ended);
   }
 
   render() {
@@ -45,30 +77,30 @@ class Node extends React.Component {
       portBlock.push(
         <PortContainer {...port} key={port.id}
           width={width}
-          x={x}
-          y={y + dy}
+          x={0}
+          y={dy}
         />
       );
       dy += 24;
     })
 
     return (
-      <g>
+      <g
+        ref={(svg) => this.svgRef = svg}
+        transform={`translate(${x},${y})`}
+      >
         <rect
           fill={colour}
-          x={`${x}px`}
-          y={`${y}px`}
           rx={6}
           ry={6}
           width={`${width}px`}
           height={dy}
-          onClick={()=>console.log("test")}
         />
         <text
           fill="white"
           textAnchor="middle"
-          x={x + width / 2}
-          y={y + 28}
+          x={width / 2}
+          y={28}
           fontSize={"1.4rem"}
         >
           {name}
@@ -81,15 +113,6 @@ class Node extends React.Component {
       //     (selectedNode && id === selectedNode ? " selected" : "") +
       //     (id === hoveredNode ? " hover" : "")
       //   }
-      //   style={{
-      //     left: `${x}px`,
-      //     top: `${y}px`,
-      //     width: `${width}px`,
-      //     minWidth: `${width}px`,
-      //     maxWidth: `${width}px`,
-      //     background: colour
-      //   }}
-      //   onClick={event => this.click(event, id)}
       //   onTouchEnd={event => this.click(event, id)}
       //   onMouseEnter={event => this.hover(event, id)}
       //   onMouseLeave={event => this.hover(event, null)}
@@ -97,9 +120,6 @@ class Node extends React.Component {
       //   data-tip="tooltip"
       //   data-for="getContent"
       // >
-      //   <div>{name}</div>
-
-
     );
     return content;
   }

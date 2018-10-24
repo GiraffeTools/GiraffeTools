@@ -15,10 +15,6 @@ const defaults = {
   gridSize: 40960,
 }
 
-const background = () => {
-
-}
-
 class GraphView extends React.Component {
 
   constructor(props) {
@@ -34,11 +30,21 @@ class GraphView extends React.Component {
     //   styles: makeStyles(props.primary, props.light, props.dark, props.background)
     };
   }
+
+  componentDidMount() {
+    // Window event listeners for keypresses
+    // and to control blur/focus of graph
+    d3.select(this.viewWrapper)
+      // .on("touchstart", () => console.log("touchstart node"))
+      // .on("touchmove", () => console.log("touchmove node"))
+      .on("click", () => console.log("click canvas"))
+  }
+
+
   // Keeps 'zoom' contained
   containZoom = () => {
     d3.event.preventDefault();
   }
-
   // View 'zoom' handler
   handleZoom = () => {
     if (this.state.focused) {
@@ -154,32 +160,27 @@ class GraphView extends React.Component {
     const { nodes, links } = this.props;
     return (
       <div
-          className='viewWrapper'
-          tabIndex={0}
-          onFocus={() => {this.setState({focused: true})}}
-          // onBlur={() => {if (this.props.enableFocus) {this.setState({focused: false});}}}
-          // ref={(el) => this.viewWrapper = el}
-          // style={[styles.wrapper.base, !!focused && styles.wrapper.focused, this.props.style]}
+        className='viewWrapper'
+        ref={(el) => this.viewWrapper = el}
       >
         <svg
-          // style={styles.svg.base}
+          height="100%"
+          width="100%"
         >
           { this.renderDefs() }
           <g
             className='view'
-            // ref={(el) => this.view = el}
+            ref={(el) => this.view = el}
           >
-            <rect className='background'
-              x={-defaults.gridSize/4}
-              y={-defaults.gridSize/4}
+            <rect
+              className='background'
+              x={ -defaults.gridSize / 4 }
+              y={ -defaults.gridSize / 4 }
               width={ defaults.gridSize }
               height={ defaults.gridSize }
               fill="url(#grid)"
             />
-            <g
-              className='entities'
-              ref={(el) => this.entities = el}
-            >
+            <g>
               <Nodes nodes={nodes} />
               <Links links={links} />
               <CustomDragLayer />
