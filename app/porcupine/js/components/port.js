@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { v4 } from "uuid";
 
 class Port extends React.Component {
@@ -49,33 +49,56 @@ class Port extends React.Component {
       linkInConstruction.startingAt === "output"
         ? " port-clicked"
         : "";
-    const inputPort = isInput ? (
-      <span
-        id={"input-" + id}
-        className={"node__port--input" + inputClicked}
-        onClick={event => this.createLink(event, "input")}
-      />
-    ) : (
-      ""
-    );
-    const outputPort = isOutput ? (
-      <span
-        id={"output-" + id}
-        className={"node__port--output" + outputClicked}
-        onClick={event => this.createLink(event, "output")}
-      />
-    ) : (
-      ""
-    );
+    // const inputPort = isInput ? (
+    //   <span
+    //     id={"input-" + id}
+    //     className={"node__port--input" + inputClicked}
+    //     onClick={event => this.createLink(event, "input")}
+    //   />
+    // ) : (
+    //   ""
+    // );
+    // const outputPort = isOutput ? (
+    //   <span
+    //     id={"output-" + id}
+    //     className={"node__port--output" + outputClicked}
+    //     onClick={event => this.createLink(event, "output")}
+    //   />
+    // ) : (
+    //   ""
+    // );
+
+    const { x, y, width } = this.props;
 
     return (
-      <li>
-        <div className="node__port">
+      <Fragment>
+        <text
+          fill="white"
+          textAnchor="middle"
+          x={x + width / 2}
+          y={y}
+        >
           {name}
-          {inputPort}
-          {outputPort}
-        </div>
-      </li>
+        </text>
+        {/* input */}
+        {
+          isInput && <circle
+            cx={x}
+            cy={y - 4}
+            r={4}
+            fill="#3498db"
+          />
+        }
+        {/* output */}
+        {
+          isOutput && <circle
+            cx={x + width}
+            cy={y - 4}
+            r={4}
+            fill="#e74c3c"
+          />
+        }
+      </Fragment>
     );
   }
 }

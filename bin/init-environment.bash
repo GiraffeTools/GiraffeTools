@@ -27,3 +27,9 @@ if [ -d $bundles ] && ! [ -z "$(ls -A $bundles)" ]; then
     rm $bundle
   done
 fi
+
+# remove old static files
+STATIC_FILES_FOLDER=./app/staticfiles
+if [ -d $STATIC_FILES_FOLDER ]; then
+  rm -r $STATIC_FILES_FOLDER;
+fi

@@ -18,19 +18,19 @@ class Link extends React.Component {
   render() {
     const { id, portFrom, portTo } = this.props;
     let startingPoint = portFrom
-      ? { x: portFrom.x + 4, y: portFrom.y + 4 }
-      : { x: 0, y: 0 };
+      ? { x: portFrom.x, y: portFrom.y + 5}
+      : { x: 0, y: 5 };
     let endPoint = portTo
-      ? { x: portTo.x + 4, y: portTo.y + 4 }
-      : { x: 0, y: 0 };
+      ? { x: portTo.x, y: portTo.y + 5}
+      : { x: 0, y: 5 };
 
     return (
       <PathLine
         points={[
           startingPoint,
           // #TODO Add intermediate points to make the connection smoother
-          { x: (startingPoint.x + endPoint.x) / 2, y: startingPoint.y },
-          { x: (startingPoint.x + endPoint.x) / 2, y: endPoint.y },
+          { x: (startingPoint.x + endPoint.x) / 2, y: startingPoint.y},
+          { x: (startingPoint.x + endPoint.x) / 2, y: endPoint.y},
           endPoint
         ]}
         stroke="red"

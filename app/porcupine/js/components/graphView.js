@@ -5,6 +5,7 @@ import CustomDragLayer from "../draggables/customDragLayer";
 import GraphControls from "./graphControls";
 import Links from "./links";
 import Nodes from "./nodes";
+import SVG from 'react-inlinesvg';
 
 const defaults = {
   minZoom: 0.15,

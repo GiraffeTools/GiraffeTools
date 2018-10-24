@@ -185,13 +185,13 @@ $quinternary-color: #FCF0D6;
   border-radius: '2px';
 }
 
-#zoom-slider {
-  position: 'relative';
-  top: '6px';
-  margin-left: 5;
-  margin-right: 5;
-  cursor: 'pointer';
-}
+// # {
+//   position: 'relative';
+//   top: '6px';
+//   margin-left: 5;
+//   margin-right: 5;
+//   cursor: 'pointer';
+// }
 
 #zoom-to-fit {
   background-color: 'white';
@@ -707,43 +707,6 @@ $quinternary-color: #FCF0D6;
 .node.preview{
   background: #eee;
   color: #222;
-}
-
-.node__ports {
-  font-size: 16px;
-  list-style: none;
-}
-
-.node__ports ul {
-  padding: 0;
-}
-
-.node__ports li {
-  list-style: none;
-}
-
-.node__port {
-  position: relative;
-}
-
-.node__port--input {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  top: calc(50% - 4px);
-  left: -15px;
-  background: #3498db;
-  border-radius: 50%;
-}
-
-.node__port--output {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  top: calc(50% - 4px);
-  right: -15px;
-  background: #e74c3c;
-  border-radius: 50%;
 }
 
 .port-clicked {
