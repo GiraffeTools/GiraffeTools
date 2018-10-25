@@ -181,6 +181,11 @@ $quinternary-color: #FCF0D6;
   align-items: center;
 }
 
+#zoom-slider{
+  transform: translateY(30%);
+  margin: 0rem 1rem 0.7rem 1rem;
+}
+
 #zoom-slider-wrapper {
   background-color: white;
   border: solid 1px lightgray;

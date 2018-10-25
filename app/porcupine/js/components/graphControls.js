@@ -40,7 +40,7 @@ class GraphControls extends React.Component {
         id="zoom-controls"
         className="graphControls"
       >
-        <div id="#zoom-slider-wrapper">
+        <div id="zoom-slider-wrapper">
           -
           <input
             id="zoom-slider"

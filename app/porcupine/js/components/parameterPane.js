@@ -10,7 +10,8 @@ class ParameterPane extends React.Component {
 
   handleKeyPress(event) {
     if (event.key == "Delete") {
-      deleteNode(this.props.selectedNode.id);
+      console.log("implement delete (parameter pane)");
+      // deleteNode(this.props.selectedNode.id);
     }
   }
 
@@ -23,14 +24,14 @@ class ParameterPane extends React.Component {
   }
 
   render() {
-    const node = this.props.selectedNode;
+    const { selectedNode, deleteNode, clickNode } = this.props;
     return (
-      <div className={"setparams" + (node ? " setparamsActive" : "")}>
+      <div className={"setparams" + (selectedNode ? " setparamsActive" : "")}>
         <div className="setHead">
-          <h4 className="sidebar__node-name">{node ? node.name : ""}</h4>
+          <h4 className="sidebar__node-name">{selectedNode ? selectedNode.name : ""}</h4>
           <div className="sidebar__node-documentation">
-            {node ? (
-              <a href={node.web_url} target="_blank">
+            {selectedNode ? (
+              <a href={selectedNode.web_url} target="_blank">
                 <i className="fas fa-globe sidebar__globe-icon" />
                 <span>View documentation</span>{" "}
               </a>
@@ -40,19 +41,19 @@ class ParameterPane extends React.Component {
           </div>
           <i
             className="fas fa-times sidebar__close-icon"
-            onClick={() => this.props.clickNode(null)}
+            onClick={() => clickNode(null)}
             aria-hidden="true"
           />
         </div>
         <div className="setContain">
-          {node && node.ports ? <Fields ports={node.ports} /> : ""}
+          {selectedNode && selectedNode.ports ? <Fields ports={selectedNode.ports} /> : ""}
           <br />
           <button
             type="button"
             className="btn btn-block deleteLayerButton sidebar-heading"
             onClick={() => {
-              this.props.deleteNode(node);
-              this.props.clickNode(null);
+              deleteNode(selectedNode);
+              clickNode(null);
             }}
           >
             DELETE NODE

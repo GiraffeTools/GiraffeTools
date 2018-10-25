@@ -8,14 +8,16 @@ import {
   addPortToNode,
   repositionPorts,
   updateNodePosition,
-  clickScene
+  clickScene,
+  updateLoadingPercent
 } from "../actions";
 import { nodesWithPorts, linksWithPorts } from "../selectors/selectors";
 
 const mapStateToProps = state => ({
   loadingPercent: state.ui.loadingPercent,
   nodes: nodesWithPorts(state),
-  links: linksWithPorts(state)
+  links: linksWithPorts(state),
+  user: state.user,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -24,6 +26,7 @@ const mapDispatchToProps = dispatch => ({
   addPortToNode: (port, nodeId) => dispatch(addPortToNode(port, nodeId)),
   clickScene: () => dispatch(clickScene()),
   repositionPorts: node => dispatch(repositionPorts(node)),
+  updateLoadingPercent: percent => dispatch(updateLoadingPercent(percent)),
   updateNodePosition: (nodeId, offset) =>
     dispatch(updateNodePosition(nodeId, offset)),
   clearDatabase: () => dispatch(clearDatabase())

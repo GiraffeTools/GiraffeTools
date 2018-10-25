@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
 import nodeData from "../../static/assets/nipype.json";
+import { load as loadYaml } from "yaml-js";
 
 export const loadPorkFile = (json, nodes, links, setPercent) => {
   switch (json["version"]) {
@@ -30,9 +31,8 @@ const loadingVersion1 = (json, nodes, links, setPercent) => {
     const newNode = {
       id: node.id || v4(),
       name: node.title.name || "",
-      // HACK: get position right for example
-      x: node["position"][0] + 1000,
-      y: node["position"][1] + 400,
+      x: node["position"][0],
+      y: node["position"][1],
       width: node.title.name.length * 12,
       colour: currentNodes.colour || "#BBB",
       web_url: node.web_url || "",

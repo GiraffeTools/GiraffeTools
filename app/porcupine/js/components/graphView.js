@@ -13,6 +13,7 @@ const defaults = {
   gridSpacing: 36,
   gridDot: 2,
   gridSize: 40960,
+  zoomDuration: 750,
 }
 
 const Background = () => (
@@ -38,17 +39,17 @@ class GraphView extends React.Component {
 
     this.zoom = d3
       .zoom()
-      // .scaleExtent([defaults.minZoom, defaults.maxZoom])
+      .scaleExtent([defaults.minZoom, defaults.maxZoom])
       .on("zoom", this.handleZoom);
   }
 
   componentDidMount() {
-    // Window event listeners for keypresses
-    // and to control blur/focus of graph
     d3.select(this.viewWrapper)
-      // .on("touchstart", () => console.log("touchstart node"))
-      // .on("touchmove", () => console.log("touchmove node"))
+      .on('keydown', this.handleWrapperKeydown);
+      // .on("touchstart", this.containZoom)
+      // .on("touchmove", this.containZoom)
       // .on("click", this.handleSvgClicked)
+    d3.select(this.viewWrapper)
       .select("svg")
       .call(this.zoom);
   }
@@ -75,19 +76,15 @@ class GraphView extends React.Component {
     const width = parent.clientWidth;
     const height = parent.clientHeight;
 
-    let dx,
-        dy,
-        x,
-        y,
-        translate = [this.state.viewTransform.x, this.state.viewTransform.y],
-      next = { x: translate[0], y: translate[1], k: this.state.viewTransform.k };
+    let translate = [this.state.viewTransform.x, this.state.viewTransform.y],
+        next = { x: translate[0], y: translate[1], k: this.state.viewTransform.k };
 
     if (viewBBox.width > 0 && viewBBox.height > 0){
       // There are entities
-      dx = viewBBox.width,
-      dy = viewBBox.height,
-      x = viewBBox.x + viewBBox.width / 2,
-      y = viewBBox.y + viewBBox.height / 2;
+      let dx = viewBBox.width,
+          dy = viewBBox.height,
+          x = viewBBox.x + viewBBox.width / 2,
+          y = viewBBox.y + viewBBox.height / 2;
 
       next.k = .9 / Math.max(dx / width, dy / height);
 
@@ -106,7 +103,7 @@ class GraphView extends React.Component {
       next.y = 0;
     }
 
-    this.setZoom(next.k, next.x, next.y, this.props.zoomDur);
+    this.setZoom(next.k, next.x, next.y, defaults.zoomDuration);
   }
 
   // Updates current viewTransform with some delta
@@ -115,34 +112,49 @@ class GraphView extends React.Component {
     const width = parent.clientWidth;
     const height = parent.clientHeight;
 
-    let target_zoom,
-        center = [width/2, height/2],
+    let center = [width/2, height/2],
         extent = this.zoom.scaleExtent(),
         translate = [this.state.viewTransform.x, this.state.viewTransform.y],
-        translate0 = [],
-        l = [],
         next = {x: translate[0], y: translate[1], k:  this.state.viewTransform.k};
 
-    target_zoom = next.k * (1 + modK);
+    const target_zoom = next.k * (1 + modK);
+    if (target_zoom < extent[0] || target_zoom > extent[1]) {
+      return false;
+    }
 
-    if (target_zoom < extent[0] || target_zoom > extent[1]) { return false; }
-
-    translate0 = [(center[0] - next.x) / next.k, (center[1] - next.y) / next.k];
+    const translate0 = [(center[0] - next.x) / next.k, (center[1] - next.y) / next.k];
     next.k = target_zoom;
-    l = [translate0[0] * next.k + next.x, translate0[1] * next.k + next.y];
 
+    const l = [translate0[0] * next.k + next.x, translate0[1] * next.k + next.y];
     next.x += center[0] - l[0] + modX;
     next.y += center[1] - l[1] + modY;
     this.setZoom(next.k, next.x, next.y, dur)
   }
 
   // Programmatically resets zoom
-  setZoom = (k=1, x=0, y=0, dur=0) => {
+  setZoom = (k = 1, x = 0, y = 0, dur = 0) => {
     var t = d3.zoomIdentity.translate(x, y).scale(k);
     d3.select(this.viewWrapper).select('svg')
       .transition()
       .duration(dur)
       .call(this.zoom.transform, t);
+  }
+
+  handleWrapperKeydown = () => {
+    // Conditionally ignore keypress events on the window
+    // if the Graph isn't focused
+    switch (d3.event.key) {
+      case "Delete":
+        console.log("Delete");
+        // this.handleDelete();
+        break;
+      case "Backspace":
+        console.log("Backspace");
+        // this.handleDelete();
+        break;
+      default:
+        break;
+    }
   }
 
   renderDefs() {
@@ -156,8 +168,8 @@ class GraphView extends React.Component {
           patternUnits="userSpaceOnUse"
         >
           <circle
-            cx={defaults.gridSpacing/2}
-            cy={defaults.gridSpacing/2}
+            cx={defaults.gridSpacing / 2}
+            cy={defaults.gridSpacing / 2}
             r={defaults.gridDot}
             fill="lightgray"
           />
@@ -173,7 +185,6 @@ class GraphView extends React.Component {
     if (viewNode) {
       const { k, x, y } = this.state.viewTransform;
       view.attr("transform", this.state.viewTransform);
-      // viewNode.style.transform = null;
     }
 
     return (

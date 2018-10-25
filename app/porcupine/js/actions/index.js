@@ -20,7 +20,8 @@ import {
   TOGGLE_CODEEDITOR,
   SET_ACTIVE_TAB,
   SET_USER,
-  SET_REPOSITORY
+  SET_REPOSITORY,
+  SET_BRANCH,
 } from "./actionTypes";
 
 export const clearDatabase = () => ({
@@ -148,5 +149,11 @@ export const setRepository = repository => ({
   type: SET_REPOSITORY,
   payload: {
     repository
+  }
+});
+export const setBranch = branch => ({
+  type: SET_BRANCH,
+  payload: {
+    branch
   }
 });
