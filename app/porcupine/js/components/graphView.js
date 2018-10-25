@@ -15,6 +15,17 @@ const defaults = {
   gridSize: 40960,
 }
 
+const Background = () => (
+  <rect
+    className='background'
+    x={ -defaults.gridSize / 4 }
+    y={ -defaults.gridSize / 4 }
+    width={ defaults.gridSize }
+    height={ defaults.gridSize }
+    fill="url(#grid)"
+  />
+)
+
 class GraphView extends React.Component {
 
   constructor(props) {
@@ -23,12 +34,12 @@ class GraphView extends React.Component {
 
     this.state = {
       viewTransform: d3.zoomIdentity,
-    //   selectionChanged: false,
-      focused: true,
-    //   enableFocus: props.enableFocus || false, // Enables focus/unfocus
-    //   edgeSwapQueue: [],    // Stores nodes to be swapped
-    //   styles: makeStyles(props.primary, props.light, props.dark, props.background)
     };
+
+    this.zoom = d3
+      .zoom()
+      // .scaleExtent([defaults.minZoom, defaults.maxZoom])
+      .on("zoom", this.handleZoom);
   }
 
   componentDidMount() {
@@ -37,7 +48,9 @@ class GraphView extends React.Component {
     d3.select(this.viewWrapper)
       // .on("touchstart", () => console.log("touchstart node"))
       // .on("touchmove", () => console.log("touchmove node"))
-      .on("click", () => console.log("click canvas"))
+      // .on("click", this.handleSvgClicked)
+      .select("svg")
+      .call(this.zoom);
   }
 
 
@@ -47,11 +60,9 @@ class GraphView extends React.Component {
   }
   // View 'zoom' handler
   handleZoom = () => {
-    if (this.state.focused) {
-      this.setState({
-        viewTransform: d3.event.transform
-      });
-    }
+    this.setState({
+      viewTransform: d3.event.transform
+    });
   }
 
   // Zooms to contents of this.refs.entities
@@ -122,7 +133,6 @@ class GraphView extends React.Component {
 
     next.x += center[0] - l[0] + modX;
     next.y += center[1] - l[1] + modY;
-
     this.setZoom(next.k, next.x, next.y, dur)
   }
 
@@ -158,6 +168,14 @@ class GraphView extends React.Component {
 
   render() {
     const { nodes, links } = this.props;
+    const view = d3.select(this.view);
+    const viewNode = view.node();
+    if (viewNode) {
+      const { k, x, y } = this.state.viewTransform;
+      view.attr("transform", this.state.viewTransform);
+      // viewNode.style.transform = null;
+    }
+
     return (
       <div
         className='viewWrapper'
@@ -172,15 +190,11 @@ class GraphView extends React.Component {
             className='view'
             ref={(el) => this.view = el}
           >
-            <rect
-              className='background'
-              x={ -defaults.gridSize / 4 }
-              y={ -defaults.gridSize / 4 }
-              width={ defaults.gridSize }
-              height={ defaults.gridSize }
-              fill="url(#grid)"
-            />
-            <g>
+            <Background />
+            <g
+             className='entities'
+             ref={(el) => this.entities = el}
+            >
               <Nodes nodes={nodes} />
               <Links links={links} />
               <CustomDragLayer />
@@ -188,7 +202,6 @@ class GraphView extends React.Component {
           </g>
         </svg>
         <GraphControls
-          primary={this.props.primary}
           minZoom={defaults.minZoom}
           maxZoom={defaults.maxZoom}
           zoomLevel={this.state.viewTransform.k}

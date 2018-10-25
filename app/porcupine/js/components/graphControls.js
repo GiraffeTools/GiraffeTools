@@ -26,19 +26,18 @@ class GraphControls extends React.Component {
   // Modify current zoom of graph-view
   zoom = (e) => {
     let sliderVal = e.target.value;
-    console.log(sliderVal);
     let zoomLevelNext = this.sliderToZoom(sliderVal);
     let delta = zoomLevelNext - this.props.zoomLevel;
 
     if (zoomLevelNext <= this.props.maxZoom && zoomLevelNext >= this.props.minZoom) {
       this.props.modifyZoom(delta);
     }
-  };
+  }
 
   render() {
     return (
       <div
-        id="#zoom-controls"
+        id="zoom-controls"
         className="graphControls"
       >
         <div id="#zoom-slider-wrapper">
