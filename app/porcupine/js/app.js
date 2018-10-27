@@ -6,7 +6,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import configureStore from "./store/configureStore";
 import ContentContainer from "./containers/contentContainer";
-import LoadDataContainer from "./containers/loadingContainer";
 
 const store = configureStore();
 
@@ -14,11 +13,9 @@ class App extends React.Component {
   render() {
     return (
       <Fragment>
-        {/*Note that both routes will be rendered with user+repo */}
-        <Route path="/porcupine" component={ContentContainer} />
         <Route
-          path="/porcupine/:username/:repository"
-          component={LoadDataContainer}
+          path="/porcupine/:username?/:repository?/:branch?"
+          component={ContentContainer}
         />
       </Fragment>
     );

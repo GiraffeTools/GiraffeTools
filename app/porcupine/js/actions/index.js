@@ -13,6 +13,7 @@ import {
   TOGGLE_SIDEBAR,
   UPDATE_LOADING_PERCENT,
   HOVER_NODE,
+  HOVER_PORT,
   CLICK_NODE,
   CLICK_SCENE,
   SET_MOUSE_STATE,
@@ -20,7 +21,8 @@ import {
   TOGGLE_CODEEDITOR,
   SET_ACTIVE_TAB,
   SET_USER,
-  SET_REPOSITORY
+  SET_REPOSITORY,
+  SET_BRANCH
 } from "./actionTypes";
 
 export const clearDatabase = () => ({
@@ -80,9 +82,11 @@ export const addLink = props => ({
   type: ADD_LINK,
   payload: props
 });
-export const startLink = props => ({
+export const startLink = portId => ({
   type: START_LINK,
-  payload: props
+  payload: {
+    portId
+  }
 });
 export const deleteLink = linkId => ({
   type: REMOVE_LINK,
@@ -123,6 +127,12 @@ export const hoverNode = nodeId => ({
     nodeId
   }
 });
+export const hoverPort = portId => ({
+  type: HOVER_PORT,
+  payload: {
+    portId
+  }
+});
 export const clickNode = nodeId => ({
   type: CLICK_NODE,
   payload: {
@@ -148,5 +158,11 @@ export const setRepository = repository => ({
   type: SET_REPOSITORY,
   payload: {
     repository
+  }
+});
+export const setBranch = branch => ({
+  type: SET_BRANCH,
+  payload: {
+    branch
   }
 });

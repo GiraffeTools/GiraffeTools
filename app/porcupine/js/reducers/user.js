@@ -7,15 +7,16 @@ import {
 } from "../actions/actionTypes";
 
 const user = (state = {}, action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
     case SET_USER:
-      return { ...state, user: action.user };
+      return { ...state, user: payload.user };
     case SET_REPOSITORY:
-      return { ...state, repository: action.repository };
+      return { ...state, repository: payload.repository };
     case SET_BRANCH:
-      return { ...state, branch: action.branch };
+      return { ...state, branch: payload.branch };
     case SET_COMMIT:
-      return { ...state, commit: action.commit };
+      return { ...state, commit: payload.commit };
     default:
       return state;
   }

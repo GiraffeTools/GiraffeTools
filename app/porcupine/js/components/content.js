@@ -16,9 +16,17 @@ class Content extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      snapToGridAfterDrop: false,
-      snapToGridWhileDragging: false
+      // snapToGridAfterDrop: false,
+      // snapToGridWhileDragging: false
     };
+  }
+
+  componentWillMount() {
+    const { username, repository, branch } = this.props.match.params;
+    const { setUser, setRepository, setBranch } = this.props;
+    setUser(username);
+    setRepository(repository);
+    setBranch(branch || "master");
   }
 
   render() {
