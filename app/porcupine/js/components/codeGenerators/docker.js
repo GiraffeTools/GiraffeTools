@@ -41,18 +41,18 @@ class DockerCode extends React.Component {
   render() {
     const { codeMappings, preamble, postamble } = this.state;
     const { nodes } = this.props;
-    const languagesInEditor =
-      nodes ?
-      nodes.map(node => {
-        const codeArgument =
-          node.code && node.code.filter(a => a.language === LANGUAGE)[0];
-        return (
-          codeArgument &&
-          codeArgument.argument &&
-          codeArgument.argument.name &&
-          codeArgument.argument.name.split(",")
-        );
-      }) : [];
+    const languagesInEditor = nodes
+      ? nodes.map(node => {
+          const codeArgument =
+            node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+          return (
+            codeArgument &&
+            codeArgument.argument &&
+            codeArgument.argument.name &&
+            codeArgument.argument.name.split(",")
+          );
+        })
+      : [];
     const nodeCode =
       languagesInEditor &&
       [...new Set(languagesInEditor.flat())].map(
