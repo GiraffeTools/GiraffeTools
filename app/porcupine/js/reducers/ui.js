@@ -5,7 +5,7 @@ import {
   UPDATE_LOADING_PERCENT
 } from "../actions/actionTypes";
 
-const ui = (state = { showSidebar: true }, action) => {
+const ui = (state = { showSidebar: false }, action) => {
   const { type, payload } = action;
   switch (type) {
     case TOGGLE_SIDEBAR:

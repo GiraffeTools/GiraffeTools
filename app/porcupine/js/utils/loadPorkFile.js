@@ -34,7 +34,7 @@ const loadingVersion1 = (json, nodes, links, setPercent) => {
       x: node["position"][0],
       y: node["position"][1],
       width: node.title.name.length * 12,
-      colour: currentNodes.colour || "#BBB",
+      colour: (currentNodes && currentNodes.colour) || "#BBB",
       web_url: node.web_url || "",
       code: node.title.code
     };

@@ -94,10 +94,10 @@ export const linksWithPorts = createSelector(
       .toRefArray()
       .map(link => {
         const obj = Object.assign({}, link);
-        obj.portFrom = obj.portFrom
-          ? session.Port.withId(obj.portFrom).ref
-          : null;
-        obj.portTo = obj.portTo ? session.Port.withId(obj.portTo).ref : null;
+        let portFrom = obj.portFrom ? session.Port.withId(obj.portFrom) : null;
+        obj.portFrom = portFrom && portFrom.ref;
+        let portTo = obj.portTo ? session.Port.withId(obj.portTo) : null;
+        obj.portTo = portTo && portTo.ref;
         return obj;
       });
   }
@@ -112,29 +112,21 @@ export const linksWithPortsAndNodes = createSelector(
       .map(link => {
         // TODO: check if all this Object.assign is strictly necessary
         const newLink = Object.assign({}, link);
-        if (newLink.portFrom) {
-          const newPort = Object.assign(
-            {},
-            session.Port.withId(newLink.portFrom).ref
-          );
-          const newNode = Object.assign(
-            {},
-            session.Node.withId(newPort.node).ref
-          );
+        let portRef = session.Port.withId(newLink.portFrom);
+        if (portRef && portRef.ref) {
+          const newPort = portRef && Object.assign({}, portRef.ref);
+          let nodeRef = session.Node.withId(newPort.node);
+          const newNode = nodeRef && Object.assign({}, nodeRef.ref);
           newPort.node = newNode;
           newLink.portFrom = newPort;
         } else {
           newLink.portFrom = null;
         }
-        if (newLink.portTo) {
-          const newPort = Object.assign(
-            {},
-            session.Port.withId(newLink.portTo).ref
-          );
-          const newNode = Object.assign(
-            {},
-            session.Node.withId(newPort.node).ref
-          );
+        portRef = session.Port.withId(newLink.portTo);
+        if (portRef && portRef.ref) {
+          const newPort = portRef && Object.assign({}, portRef.ref);
+          let nodeRef = session.Node.withId(newPort.node);
+          const newNode = nodeRef && Object.assign({}, nodeRef.ref);
           newPort.node = newNode;
           newLink.portTo = newPort;
         } else {

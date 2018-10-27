@@ -16,7 +16,7 @@ class Link extends React.Component {
   connect(el) {}
 
   render() {
-    const { id, portFrom, portTo } = this.props;
+    const { portFrom, portTo } = this.props;
     let startingPoint = portFrom
       ? { x: portFrom.x, y: portFrom.y + 5 }
       : { x: 0, y: 5 };

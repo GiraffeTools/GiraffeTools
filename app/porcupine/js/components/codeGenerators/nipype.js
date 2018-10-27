@@ -48,11 +48,21 @@ const writeLinks = links => {
 };
 
 const linkToCode = link => {
-  let source = `my_${link.portFrom.node.name}`;
-  let sourceAttribute = `${link.portFrom.name}`;
-  let destination = `my_${link.portTo.node.name}`;
-  let destinationAttribute = `${link.portTo.name}`;
-  return `analysisflow.connect(${source}, "${sourceAttribute}", ${destination}, "${destinationAttribute}")`;
+  if (
+    link &&
+    link.portFrom &&
+    link.portTo &&
+    link.portFrom.node &&
+    link.portTo.node
+  ) {
+    let source = `my_${link.portFrom.node.name}`;
+    let sourceAttribute = `${link.portFrom.name}`;
+    let destination = `my_${link.portTo.node.name}`;
+    let destinationAttribute = `${link.portTo.name}`;
+    return `analysisflow.connect(${source}, "${sourceAttribute}", ${destination}, "${destinationAttribute}")`;
+  } else {
+    return "";
+  }
 };
 
 const itemToCode = node => {
