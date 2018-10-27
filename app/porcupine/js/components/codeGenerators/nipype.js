@@ -21,7 +21,8 @@ import nipype.pipeline as pe
   const imports =
     nodes &&
     nodes.map(node => {
-      const codeArgument = node.code.filter(a => a.language === LANGUAGE)[0];
+      const codeArgument =
+        node.code && node.code.filter(a => a.language === LANGUAGE)[0];
       return (
         codeArgument &&
         codeArgument.argument &&
@@ -56,7 +57,8 @@ const linkToCode = link => {
 };
 
 const itemToCode = node => {
-  const codeArgument = node.code.filter(a => a.language === LANGUAGE)[0];
+  const codeArgument =
+    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
   if (!codeArgument) {
     return "";
   }
