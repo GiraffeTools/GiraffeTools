@@ -57,9 +57,9 @@ class Port extends Model {
         port.delete();
         break;
       case REPOSITION_PORTS:
+        const node = payload.node;
         let x = 0,
           y = 21;
-        const node = payload.node;
         Port.all()
           .filter(port => port.node == node.id)
           .toRefArray()

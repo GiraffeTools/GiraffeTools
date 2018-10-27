@@ -66,6 +66,18 @@ export const hoveredNode = createSelector(
   }
 );
 
+export const hoveredPort = createSelector(
+  orm,
+  state => state.orm,
+  state => state.scene.hoveredPort,
+  (orm, hoveredPort) => {
+    if (!hoveredPort) {
+      return null;
+    }
+    return orm.Port.withId(hoveredPort);
+  }
+);
+
 export const links = createSelector(
   orm,
   state => state.orm,

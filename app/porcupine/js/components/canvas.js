@@ -199,11 +199,7 @@ class Canvas extends React.PureComponent {
             onTop={true}
             spinner={"right"}
           />
-          <GraphView
-            ref={this.graphview}
-            nodes={nodes}
-            links={links}
-          />
+          <GraphView ref={this.graphview} nodes={nodes} links={links} />
         </div>
       )
     );

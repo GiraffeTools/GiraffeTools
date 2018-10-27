@@ -2,12 +2,9 @@ import {
   ZOOM_IN,
   ZOOM_OUT,
   HOVER_NODE,
+  HOVER_PORT,
   CLICK_NODE,
   CLICK_SCENE,
-  ADD_LINK,
-  CONNECT_LINK,
-  REMOVE_LINK,
-  START_LINK,
   SET_MOUSE_STATE
 } from "../actions/actionTypes";
 
@@ -20,6 +17,8 @@ export default function scene(state = [], action) {
       return state;
     case HOVER_NODE:
       return { ...state, hoveredNode: payload.nodeId };
+    case HOVER_PORT:
+      return { ...state, hoveredPort: payload.portId };
     case CLICK_NODE:
       return {
         ...state,
@@ -28,18 +27,6 @@ export default function scene(state = [], action) {
       };
     case CLICK_SCENE:
       return { ...state, selectedNode: null };
-    case START_LINK:
-      return {
-        ...state,
-        linkInConstruction: {
-          port: payload.port,
-          startingAt: payload.startingAt
-        }
-      };
-    case ADD_LINK:
-      return { ...state, linkInConstruction: null };
-    case REMOVE_LINK:
-      return { ...state, linkInConstruction: null };
     // case SET_MOUSE_STATE:
     // return {...state, mouseState: payload};
     default:

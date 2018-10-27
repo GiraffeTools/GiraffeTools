@@ -11,9 +11,7 @@ const Nodes = ({ nodes }) => (
       </h4>
     )*/}
     {nodes.map(node => (
-      <NodeContainer
-        {...node} key={node.id}
-      />
+      <NodeContainer {...node} key={node.id} />
     ))}
   </Fragment>
 );

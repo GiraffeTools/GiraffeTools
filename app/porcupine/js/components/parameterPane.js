@@ -28,7 +28,9 @@ class ParameterPane extends React.Component {
     return (
       <div className={"setparams" + (selectedNode ? " setparamsActive" : "")}>
         <div className="setHead">
-          <h4 className="sidebar__node-name">{selectedNode ? selectedNode.name : ""}</h4>
+          <h4 className="sidebar__node-name">
+            {selectedNode ? selectedNode.name : ""}
+          </h4>
           <div className="sidebar__node-documentation">
             {selectedNode ? (
               <a href={selectedNode.web_url} target="_blank">
@@ -46,7 +48,11 @@ class ParameterPane extends React.Component {
           />
         </div>
         <div className="setContain">
-          {selectedNode && selectedNode.ports ? <Fields ports={selectedNode.ports} /> : ""}
+          {selectedNode && selectedNode.ports ? (
+            <Fields ports={selectedNode.ports} />
+          ) : (
+            ""
+          )}
           <br />
           <button
             type="button"

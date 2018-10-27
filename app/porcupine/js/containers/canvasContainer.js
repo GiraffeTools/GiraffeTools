@@ -17,7 +17,7 @@ const mapStateToProps = state => ({
   loadingPercent: state.ui.loadingPercent,
   nodes: nodesWithPorts(state),
   links: linksWithPorts(state),
-  user: state.user,
+  user: state.user
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -13,7 +13,10 @@ class App extends React.Component {
   render() {
     return (
       <Fragment>
-        <Route path="/porcupine/:username?/:repository?/:branch?" component={ContentContainer} />
+        <Route
+          path="/porcupine/:username?/:repository?/:branch?"
+          component={ContentContainer}
+        />
       </Fragment>
     );
   }

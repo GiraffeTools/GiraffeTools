@@ -230,6 +230,12 @@ $quinternary-color: #FCF0D6;
   }
 }
 
+.tab-pane{
+  pre{
+    overflow-x: hidden!important;
+  }
+}
+
 #code-scroll{
   overflow-y: scroll;
   height: 20rem;

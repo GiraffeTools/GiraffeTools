@@ -1,5 +1,5 @@
 import React from "react";
-import * as d3 from 'd3';
+import * as d3 from "d3";
 
 import ItemTypes from "./itemTypes";
 import PortContainer from "../containers/portContainer";
@@ -17,8 +17,7 @@ class Node extends React.Component {
   }
 
   componentDidMount() {
-    d3
-      .select(this.svgRef)
+    d3.select(this.svgRef)
       .on("click", this.click)
       .on("mouseenter", () => this.hover(true))
       .on("mouseleave", () => this.hover(false))
@@ -36,24 +35,23 @@ class Node extends React.Component {
     hoverNode(enter ? id : null);
     this.setState({
       hovered: enter
-    })
+    });
     d3.event.stopPropagation();
   }
 
   drag() {
-    const { x, y, id, updateNodePosition } = this.props;
-    let dx = 0, dy = 0;
+    const { x, y, width, id, updateNodePosition, repositionPorts } = this.props;
+    let dx = 0,
+      dy = 0;
     function dragged() {
-      dx += d3.event.dx
-      dy += d3.event.dy
-      updateNodePosition(id, {x: x + dx, y: y + dy})
+      dx += d3.event.dx;
+      dy += d3.event.dy;
+      updateNodePosition(id, { x: x + dx, y: y + dy });
+      repositionPorts({ x: x + dx, y: y + dy, width, id });
     }
 
-    function ended() {
-    }
-    d3.event
-      .on("drag", dragged)
-      .on("end", ended);
+    function ended() {}
+    d3.event.on("drag", dragged).on("end", ended);
   }
 
   render() {
@@ -70,32 +68,19 @@ class Node extends React.Component {
     } = this.props;
 
     // ports = ports.filter(port => port.isVisible == true);
-
-    const portBlock = []
+    const portBlock = [];
     let dy = 54;
-    ports && ports.filter(port => port.isVisible == true).forEach(port => {
-      portBlock.push(
-        <PortContainer {...port} key={port.id}
-          width={width}
-          x={0}
-          y={dy}
-        />
-      );
-      dy += 24;
-    })
+    ports &&
+      ports.filter(port => port.isVisible == true).forEach(port => {
+        portBlock.push(
+          <PortContainer {...port} key={port.id} width={width} x={0} y={dy} />
+        );
+        dy += 24;
+      });
 
     return (
-      <g
-        ref={(svg) => this.svgRef = svg}
-        transform={`translate(${x},${y})`}
-      >
-        <rect
-          fill={colour}
-          rx={6}
-          ry={6}
-          width={`${width}px`}
-          height={dy}
-        />
+      <g ref={svg => (this.svgRef = svg)} transform={`translate(${x},${y})`}>
+        <rect fill={colour} rx={6} ry={6} width={`${width}px`} height={dy} />
         <text
           fill="white"
           textAnchor="middle"
