@@ -54,7 +54,7 @@ class DockerCode extends React.Component {
         })
       : [];
     const nodeCode =
-      languagesInEditor &&
+      Array.isArray(languagesInEditor) &&
       [...new Set(languagesInEditor.flat())].map(
         language => codeMappings[language]
       );
