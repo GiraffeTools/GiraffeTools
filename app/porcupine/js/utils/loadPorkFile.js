@@ -36,7 +36,7 @@ const loadingVersion1 = (json, nodes, links, setPercent) => {
       y: node["position"][1],
       width: node.title.name.length * 12,
       colour: (currentNodes && currentNodes.colour) || "#BBB",
-      web_url: node.web_url || "",
+      web_url: node.title.web_url || "",
       code: node.title.code
     };
     newNode.parameters = node.ports.map(parameter => ({
