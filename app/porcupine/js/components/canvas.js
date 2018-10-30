@@ -145,7 +145,7 @@ class Canvas extends React.PureComponent {
       // Always leave percent at -1
       this.timeout = setTimeout(() => {
         updateLoadingPercent(-1);
-      }, 400);
+      }, 4000);
     } else {
       updateLoadingPercent(percent);
     }
@@ -167,18 +167,24 @@ class Canvas extends React.PureComponent {
     }
     clearDatabase();
     try {
+      let i = 0;
       nodes.forEach(node => {
         addNode(node);
         repositionPorts(node);
+        this.setPercent(50 + (30 * i++) / nodes.length);
       });
+      i = 0;
       links.forEach(link => {
         addLink(link);
+        this.setPercent(80 + (20 * i++) / links.length);
       });
     } catch (err) {
+      this.setPercent(-1);
       console.log(
         "Error while adding Link or Node to Canvas, Check Porcupine Config file "
       );
     }
+    this.setPercent(-1);
   }
 
   clickCanvas(event) {

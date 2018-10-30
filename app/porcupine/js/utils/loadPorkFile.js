@@ -51,7 +51,7 @@ const loadingVersion1 = (json, nodes, links, setPercent) => {
     }));
 
     nodes.push(newNode);
-    setPercent(20 + (40 * nodes.length) / json["nodes"].length);
+    setPercent(10 + (20 * nodes.length) / json["nodes"].length);
   });
 
   // load links
@@ -62,6 +62,6 @@ const loadingVersion1 = (json, nodes, links, setPercent) => {
       portTo: link.to
     };
     links.push(newLink);
-    setPercent(60 + (40 * links.length) / json["links"].length);
+    setPercent(30 + (20 * links.length) / json["links"].length);
   });
 };
