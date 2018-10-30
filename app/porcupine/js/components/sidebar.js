@@ -18,6 +18,7 @@ class Sidebar extends React.Component {
 
   render() {
     const { showSidebar } = this.props;
+    const { user, repository, branch } = this.props.user;
     const toggleSidebar = () => {};
     const { nodes } = this.state;
     return (
@@ -52,20 +53,16 @@ class Sidebar extends React.Component {
                 })}
             </div>
             <h5 className="sidebar-heading">EXTRAS</h5>
-            <a
-              className="btn btn-block extra-buttons text-left"
-              href="https://github.com/TimVanMourik/GiraffeTools"
-              target="_blank"
-            >
-              Github
-            </a>
-            <a
-              className="btn btn-block extra-buttons text-left"
-              href="https://timvanmourik.github.io/Porcupine"
-              target="_blank"
-            >
-              Porcupine
-            </a>
+            {user && (
+              <a
+                className="btn btn-block extra-buttons text-left"
+                href={`https://github.com/${user}/${repository}`}
+                target="_blank"
+              >
+                <img src="/static/img/gh-icon.png" width={"10%"} />
+                {` ${repository}`} on GitHub
+              </a>
+            )}
           </div>
         </div>
       </div>

@@ -23,7 +23,7 @@ class Content extends React.Component {
 
   componentWillMount() {
     const { username, repository, branch } = this.props.match.params;
-    const { setUser, setRepository, setBranch } = this.props;
+    const { setUser, setRepository, setBranch, user } = this.props;
     setUser(username);
     setRepository(repository);
     setBranch(branch || "master");
@@ -31,11 +31,11 @@ class Content extends React.Component {
 
   render() {
     // const { snapToGridAfterDrop, snapToGridWhileDragging } = this.state
-    const { hoveredNode, showSidebar, toggleSidebar } = this.props;
+    const { hoveredNode, showSidebar, toggleSidebar, user } = this.props;
 
     return (
       <div id="parent">
-        <Sidebar showSidebar={showSidebar} />
+        <Sidebar showSidebar={showSidebar} user={user} />
         <a
           className={"sidebar-button" + (showSidebar ? " close" : "")}
           onClick={() => toggleSidebar()}

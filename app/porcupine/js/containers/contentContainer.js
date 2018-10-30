@@ -7,6 +7,7 @@ import nodeData from "../../static/assets/nipype.json";
 
 const mapStateToProps = state => ({
   showSidebar: state.ui.showSidebar,
+  user: state.user,
   hoveredNode: hoveredNode(state)
 });
 
