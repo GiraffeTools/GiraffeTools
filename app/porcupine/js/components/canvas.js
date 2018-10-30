@@ -55,8 +55,8 @@ const boxTarget = {
 
         const name = node.title.name;
         const code = node.title && node.title.code;
-        node.ports ? node.ports : {};
-        node.ports = node.ports.map(port => {
+        node.parameters ? node.parameters : {};
+        node.parameters = node.parameters.map(port => {
           // #TODO link to a proper default value
           return {
             ...port,
@@ -73,7 +73,7 @@ const boxTarget = {
           y: contentPosition.y / zoom,
           width: name.length * 12,
           colour: node.colour,
-          ports: node.ports,
+          parameters: node.parameters,
           web_url: node.title.web_url || "",
           code: code || ""
         };

@@ -5,17 +5,16 @@ import {
   addNode,
   addLink,
   clearDatabase,
-  addPortToNode,
   repositionPorts,
   updateNodePosition,
   clickScene,
   updateLoadingPercent
 } from "../actions";
-import { nodesWithPorts, linksWithPorts } from "../selectors/selectors";
+import { nodesWithParameters, linksWithPorts } from "../selectors/selectors";
 
 const mapStateToProps = state => ({
   loadingPercent: state.ui.loadingPercent,
-  nodes: nodesWithPorts(state),
+  nodes: nodesWithParameters(state),
   links: linksWithPorts(state),
   user: state.user
 });
@@ -23,7 +22,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   addNode: node => dispatch(addNode(node)),
   addLink: link => dispatch(addLink(link)),
-  addPortToNode: (port, nodeId) => dispatch(addPortToNode(port, nodeId)),
+  addParameterToNode: (parameter, nodeId) =>
+    dispatch(addParameterToNode(parameter, nodeId)),
   clickScene: () => dispatch(clickScene()),
   repositionPorts: node => dispatch(repositionPorts(node)),
   updateLoadingPercent: percent => dispatch(updateLoadingPercent(percent)),

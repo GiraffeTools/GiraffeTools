@@ -2,7 +2,7 @@ import React from "react";
 import * as d3 from "d3";
 
 import ItemTypes from "./itemTypes";
-import PortContainer from "../containers/portContainer";
+import Parameter from "./parameter";
 
 class Node extends React.Component {
   constructor(props) {
@@ -64,19 +64,20 @@ class Node extends React.Component {
       colour,
       hoveredNode,
       selectedNode,
-      ports
+      parameters
     } = this.props;
 
-    // ports = ports.filter(port => port.isVisible == true);
-    const portBlock = [];
+    const parameterBlock = [];
     let dy = 54;
-    ports &&
-      ports.filter(port => port.isVisible == true).forEach(port => {
-        portBlock.push(
-          <PortContainer {...port} key={port.id} width={width} x={0} y={dy} />
-        );
-        dy += 24;
-      });
+    parameters &&
+      parameters
+        .filter(parameter => parameter.isVisible == true)
+        .forEach(port => {
+          parameterBlock.push(
+            <Parameter {...port} key={port.id} width={width} x={0} y={dy} />
+          );
+          dy += 24;
+        });
 
     return (
       <g ref={svg => (this.svgRef = svg)} transform={`translate(${x},${y})`}>
@@ -90,21 +91,8 @@ class Node extends React.Component {
         >
           {name}
         </text>
-        {portBlock}
+        {parameterBlock}
       </g>
-
-      //   className={
-      //     "node" +
-      //     (selectedNode && id === selectedNode ? " selected" : "") +
-      //     (id === hoveredNode ? " hover" : "")
-      //   }
-      //   onTouchEnd={event => this.click(event, id)}
-      //   onMouseEnter={event => this.hover(event, id)}
-      //   onMouseLeave={event => this.hover(event, null)}
-      //   onDrag={event => this.drag(event, id)}
-      //   data-tip="tooltip"
-      //   data-for="getContent"
-      // >
     );
     return content;
   }

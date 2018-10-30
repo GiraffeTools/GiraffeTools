@@ -17,8 +17,10 @@ class Tooltip extends React.Component {
     const params = [];
     // Get the ports of the hovered node from state, issue #72
     // let nodePorts = this.props.hoveredNode.ports;
-    if (hoveredNode.ports.length > 10) {
-      hoveredNode.ports = hoveredNode.ports.filter(port => port.value);
+    if (hoveredNode.parameters.length > 10) {
+      hoveredNode.parameters = hoveredNode.parameters.filter(
+        port => port.value
+      );
     }
 
     return (
@@ -30,7 +32,7 @@ class Tooltip extends React.Component {
         className="customTooltip"
       >
         <div style={{ display: "inline-grid" }}>
-          {hoveredNode.ports.map(port => (
+          {hoveredNode.parameters.map(port => (
             <TooltipData
               id={port.name}
               key={port.name}

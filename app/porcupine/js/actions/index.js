@@ -2,10 +2,10 @@ import {
   ADD_NODE,
   REMOVE_NODE,
   UPDATE_NODE,
-  ADD_PORT,
-  ADD_PORT_TO_NODE,
-  REMOVE_PORT,
-  UPDATE_PORT,
+  ADD_PARAMETER,
+  ADD_PARAMETER_TO_NODE,
+  REMOVE_PARAMETER,
+  UPDATE_PARAMETER,
   REPOSITION_PORTS,
   ADD_LINK,
   REMOVE_LINK,
@@ -69,10 +69,10 @@ export const updateNodePosition = (nodeId, offset) => ({
     }
   }
 });
-export const addPortToNode = (port, nodeId) => ({
-  type: ADD_PORT_TO_NODE,
+export const addParameterToNode = (parameter, nodeId) => ({
+  type: ADD_PARAMETER_TO_NODE,
   payload: {
-    port,
+    parameter,
     nodeId
   }
 });
@@ -96,21 +96,21 @@ export const deleteLink = linkId => ({
 });
 
 ///// PORTS /////
-export const addPort = props => ({
-  type: ADD_PORT,
+export const addParameter = props => ({
+  type: ADD_PARAMETER,
   payload: props
 });
-export const updatePort = (portId, newValues) => ({
-  type: UPDATE_PORT,
+export const updateParameter = (parameterId, newValues) => ({
+  type: UPDATE_PARAMETER,
   payload: {
-    portId,
+    parameterId,
     newValues
   }
 });
-export const deletePort = portId => ({
-  type: REMOVE_PORT,
+export const deleteParameter = ParameterId => ({
+  type: REMOVE_PARAMETER,
   payload: {
-    portId
+    ParameterId
   }
 });
 export const repositionPorts = node => ({
@@ -127,10 +127,11 @@ export const hoverNode = nodeId => ({
     nodeId
   }
 });
-export const hoverPort = portId => ({
+export const hoverPort = (portId, type) => ({
   type: HOVER_PORT,
   payload: {
-    portId
+    portId,
+    type
   }
 });
 export const clickNode = nodeId => ({

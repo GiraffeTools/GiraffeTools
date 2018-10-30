@@ -26,7 +26,7 @@ class Link extends Model {
         break;
       case REMOVE_NODE:
         let connectedLinks = [];
-        payload.node.ports.forEach(port => {
+        payload.node.parameters.forEach(port => {
           connectedLinks.push(port.inputLinks);
           connectedLinks.push(port.outputLinks);
         });

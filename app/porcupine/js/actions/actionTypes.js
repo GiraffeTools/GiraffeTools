@@ -4,12 +4,12 @@ export const CLEAR_DATABASE = "CLEAR_DATABASE";
 export const ADD_NODE = "ADD_NODE";
 export const REMOVE_NODE = "REMOVE_NODE";
 export const UPDATE_NODE = "UPDATE_NODE";
-export const ADD_PORT_TO_NODE = "ADD_PORT_TO_NODE";
+export const ADD_PARAMETER_TO_NODE = "ADD_PARAMETER_TO_NODE";
 
 ///// PORTS /////
-export const ADD_PORT = "ADD_PORT";
-export const REMOVE_PORT = "REMOVE_PORT";
-export const UPDATE_PORT = "UPDATE_PORT";
+export const ADD_PARAMETER = "ADD_PARAMETER";
+export const REMOVE_PARAMETER = "REMOVE_PARAMETER";
+export const UPDATE_PARAMETER = "UPDATE_PARAMETER";
 export const REPOSITION_PORTS = "REPOSITION_PORTS";
 
 ///// LINKS /////

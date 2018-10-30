@@ -23,38 +23,23 @@ class Port extends Model {
           .forEach(item => Port.withId(item.id).delete());
         break;
       case ADD_NODE:
-        const ports = payload.ports;
-        ports.forEach(port => {
-          Port.create({
-            node: payload.id,
-            id: port.id,
-            name: port.name,
-            isInput: port.input,
-            isOutput: port.output,
-            isVisible: port.visible,
-            isEnabled: port.editable,
-            x: port.x,
-            y: port.y,
-            value: port.value || "" // #TODO insert proper default value
-          });
+        const parameters = payload.parameters;
+        parameters.forEach(parameter => {
+          parameter.input &&
+            Port.create({
+              type: "input",
+              node: payload.id,
+              isVisible: parameter.isVisible,
+              id: parameter.input
+            });
+          parameter.output &&
+            Port.create({
+              type: "output",
+              node: payload.id,
+              isVisible: parameter.isVisible,
+              id: parameter.output
+            });
         });
-        break;
-      case REMOVE_NODE:
-        payload.node.ports.forEach(portRef => {
-          Port.withId(portRef.id).delete();
-        });
-        break;
-      case ADD_PORT:
-        Port.create(payload);
-        break;
-      case ADD_PORT_TO_NODE:
-        if (!Port.filter({ id: payload.id }).exists()) {
-          Port.create(payload);
-        }
-        break;
-      case REMOVE_PORT:
-        const port = Port.withId(payload.portId);
-        port.delete();
         break;
       case REPOSITION_PORTS:
         const node = payload.node;
@@ -62,18 +47,21 @@ class Port extends Model {
           y = 21;
         Port.all()
           .filter(port => port.node == node.id)
+          .filter(port => port.isVisible)
           .toRefArray()
           .forEach(port => {
-            x = port.isInput ? 0 : node.width;
-            y = port.isVisible ? y + 24 : y;
+            x = port.type === "input" ? 0 : node.width;
+            y += 24;
             Port.withId(port.id).update({
-              x: port.isVisible ? node.x + x : null,
-              y: port.isVisible ? node.y + y : null
+              x: node.x + x,
+              y: node.y + y
             });
           });
         break;
-      case UPDATE_PORT:
-        Port.withId(payload.portId).update(payload.newValues);
+      case REMOVE_NODE:
+        // payload.node.parameters.forEach(portRef => {
+        //   Port.withId(portRef.id).delete();
+        // });
         break;
     }
     return undefined;
@@ -82,21 +70,12 @@ class Port extends Model {
 Port.modelName = "Port";
 Port.fields = {
   name: attr(),
-  value: attr(),
-  data: attr(), //leaving room for data types here
-  isInput: attr(),
-  isOutput: attr(),
+  type: attr(),
   isVisible: attr(),
-  isEnabled: attr(),
-  inputPortRef: attr(),
-  outputPortRef: attr(),
+  value: attr(),
   x: attr(),
   y: attr(),
-  node: fk({
-    to: "Node",
-    as: "nodeModel",
-    relatedName: "ports"
-  })
+  data: attr() //leaving room for data types here
 };
 
 export default Port;

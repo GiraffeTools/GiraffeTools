@@ -18,7 +18,10 @@ export default function scene(state = [], action) {
     case HOVER_NODE:
       return { ...state, hoveredNode: payload.nodeId };
     case HOVER_PORT:
-      return { ...state, hoveredPort: payload.portId };
+      return {
+        ...state,
+        hoveredPort: { id: payload.portId, type: payload.type }
+      };
     case CLICK_NODE:
       return {
         ...state,

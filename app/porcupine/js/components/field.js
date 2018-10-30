@@ -6,9 +6,9 @@ class Field extends React.Component {
     this.change = this.change.bind(this);
   }
 
-  changeParams(portId, key, value) {
+  changeParams(paramId, key, value) {
     const newValues = { ...this.props.port, [key]: value };
-    this.props.updatePort(portId, newValues);
+    this.props.updateParameter(paramId, newValues);
     this.props.repositionPorts(this.props.selectedNode);
   }
 

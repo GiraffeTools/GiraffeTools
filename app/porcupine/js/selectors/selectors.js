@@ -10,7 +10,7 @@ export const nodes = createSelector(
   }
 );
 
-export const nodesWithPorts = createSelector(
+export const nodesWithParameters = createSelector(
   orm,
   state => state.orm,
   session => {
@@ -18,7 +18,8 @@ export const nodesWithPorts = createSelector(
       .toRefArray()
       .map(node => {
         const obj = Object.assign({}, node);
-        obj.ports = session.Node.withId(node.id).ports.toRefArray();
+        const parameters = session.Node.withId(node.id).parameters;
+        obj.parameters = parameters && parameters.toRefArray();
         return obj;
       });
   }
@@ -34,14 +35,18 @@ export const selectedNode = createSelector(
       return null;
     }
     const obj = Object.assign({}, node.ref);
-    //add ports
-    obj.ports = node.ports.toRefArray().map(portRef => {
-      const port = orm.Port.withId(portRef.id);
+    //add parameters
+    obj.parameters = node.parameters.toRefArray().map(parameterRef => {
+      const parameter = orm.Parameter.withId(parameterRef.id);
       //add links
-      const inputLinks = port.inputLinks ? port.inputLinks.toRefArray() : [];
-      const outputLinks = port.outputLinks ? port.outputLinks.toRefArray() : [];
+      const inputLinks = parameter.inputLinks
+        ? parameter.inputLinks.toRefArray()
+        : [];
+      const outputLinks = parameter.outputLinks
+        ? parameter.outputLinks.toRefArray()
+        : [];
 
-      const obj = Object.assign({}, port.ref);
+      const obj = Object.assign({}, parameter.ref);
       return { ...obj, outputLinks, inputLinks };
     });
     return obj;
@@ -61,20 +66,8 @@ export const hoveredNode = createSelector(
       return null;
     }
     const obj = Object.assign({}, selectedNode.ref);
-    obj.ports = selectedNode.ports.toRefArray();
+    obj.parameters = selectedNode.parameters.toRefArray();
     return obj;
-  }
-);
-
-export const hoveredPort = createSelector(
-  orm,
-  state => state.orm,
-  state => state.scene.hoveredPort,
-  (orm, hoveredPort) => {
-    if (!hoveredPort) {
-      return null;
-    }
-    return orm.Port.withId(hoveredPort);
   }
 );
 
@@ -115,6 +108,7 @@ export const linksWithPortsAndNodes = createSelector(
         let portRef = session.Port.withId(newLink.portFrom);
         if (portRef && portRef.ref) {
           const newPort = portRef && Object.assign({}, portRef.ref);
+          newPort.name = portRef.outputParent && portRef.outputParent.name;
           let nodeRef = session.Node.withId(newPort.node);
           const newNode = nodeRef && Object.assign({}, nodeRef.ref);
           newPort.node = newNode;
@@ -122,9 +116,11 @@ export const linksWithPortsAndNodes = createSelector(
         } else {
           newLink.portFrom = null;
         }
+
         portRef = session.Port.withId(newLink.portTo);
         if (portRef && portRef.ref) {
           const newPort = portRef && Object.assign({}, portRef.ref);
+          newPort.name = portRef.inputParent && portRef.inputParent.name;
           let nodeRef = session.Node.withId(newPort.node);
           const newNode = nodeRef && Object.assign({}, nodeRef.ref);
           newPort.node = newNode;

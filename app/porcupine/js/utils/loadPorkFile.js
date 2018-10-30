@@ -1,6 +1,7 @@
 import { v4 } from "uuid";
 import nodeData from "../../static/assets/nipype.json";
 import { load as loadYaml } from "yaml-js";
+import { isUUID } from "../utils";
 
 export const loadPorkFile = (json, nodes, links, setPercent) => {
   switch (json["version"]) {
@@ -38,19 +39,16 @@ const loadingVersion1 = (json, nodes, links, setPercent) => {
       web_url: node.web_url || "",
       code: node.title.code
     };
-    newNode.ports = node.ports.map(port => {
-      const portId = port.input ? port.inputPort : port.outputPort;
-      return {
-        node: newNode.id,
-        id: portId || v4(),
-        name: port.name,
-        input: port.input,
-        output: port.output,
-        visible: port.visible,
-        editable: port.editable,
-        value: port.value || "" // TODO insert proper default value
-      };
-    });
+    newNode.parameters = node.ports.map(parameter => ({
+      node: newNode.id,
+      id: isUUID(parameter.id) ? parameter.id : v4(),
+      name: parameter.name,
+      input: parameter.input ? parameter.inputPort : null,
+      output: parameter.output ? parameter.outputPort : null,
+      isVisible: parameter.visible,
+      isEditable: parameter.editable,
+      value: parameter.value || "" // TODO insert proper default value
+    }));
 
     nodes.push(newNode);
     setPercent(20 + (40 * nodes.length) / json["nodes"].length);

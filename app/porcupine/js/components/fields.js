@@ -10,7 +10,7 @@ class Fields extends React.Component {
   render() {
     return (
       <form className="form-horizontal">
-        {this.props.ports.map(port => (
+        {this.props.parameters.map(port => (
           <FieldContainer {...port} key={port.id} />
         ))}
       </form>

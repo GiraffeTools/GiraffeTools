@@ -2,12 +2,15 @@ import { connect } from "react-redux";
 
 import CodeEditor from "../components/codeEditor";
 import { toggleCodeEditor, setActiveTab } from "../actions";
-import { nodesWithPorts, linksWithPortsAndNodes } from "../selectors/selectors";
+import {
+  nodesWithParameters,
+  linksWithPortsAndNodes
+} from "../selectors/selectors";
 
 const mapStateToProps = state => ({
   showCodeEditor: state.ui.showCodeEditor,
   activeTab: state.ui.activeTab,
-  nodes: nodesWithPorts(state),
+  nodes: nodesWithParameters(state),
   links: linksWithPortsAndNodes(state)
 });
 

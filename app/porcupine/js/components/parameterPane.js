@@ -48,8 +48,8 @@ class ParameterPane extends React.Component {
           />
         </div>
         <div className="setContain">
-          {selectedNode && selectedNode.ports ? (
-            <Fields ports={selectedNode.ports} />
+          {selectedNode && selectedNode.parameters ? (
+            <Fields parameters={selectedNode.parameters} />
           ) : (
             ""
           )}

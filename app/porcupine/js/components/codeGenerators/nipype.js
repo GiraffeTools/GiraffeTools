@@ -78,13 +78,16 @@ const itemToCode = node => {
   code += `${givenName} = pe.${nodeType}(interface = ${
     codeArgument.argument.name
   }, name='${givenName}')\r\n`;
-  node.ports &&
-    node.ports.filter(port => port.value !== "").forEach(port => {
-      if (port.isInput) {
-        code += `${givenName}.inputs.${port.name} = ${port.value}
-`;
-      }
-    });
+  node.parameters &&
+    node.parameters
+      .filter(parameter => parameter.value !== "")
+      .forEach(parameter => {
+        if (parameter.input) {
+          code += `${givenName}.inputs.${parameter.name} = ${
+            parameter.value
+          }\r\n`;
+        }
+      });
   return code;
 };
 

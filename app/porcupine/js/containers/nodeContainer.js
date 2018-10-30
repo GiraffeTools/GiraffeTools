@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 
 import Node from "../components/node";
-import { nodes } from "../selectors/selectors";
 import {
   hoverNode,
   clickNode,

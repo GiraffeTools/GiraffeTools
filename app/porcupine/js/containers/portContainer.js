@@ -1,19 +1,18 @@
 import { connect } from "react-redux";
 
 import Port from "../components/port";
-import { hoveredPort } from "../selectors/selectors";
-import { addLink, hoverPort, startLink, updatePort } from "../actions";
+import { addLink, hoverPort, startLink, updateParameter } from "../actions";
 
 const mapStateToProps = state => ({
-  hoveredPort: hoveredPort(state)
+  hoveredPort: state.scene.hoveredPort
 });
 
 const mapDispatchToProps = dispatch => ({
-  hoverPort: portId => dispatch(hoverPort(portId)),
+  hoverPort: (portId, type) => dispatch(hoverPort(portId, type)),
   addLink: props => dispatch(addLink(props)),
   startLink: portId => dispatch(startLink(portId)),
   setPortRefs: (portId, inputPortRef, outputPortRef) =>
-    dispatch(updatePort(portId, { inputPortRef, outputPortRef }))
+    dispatch(updateParameter(portId, { inputPortRef, outputPortRef }))
 });
 
 const PortContainer = connect(

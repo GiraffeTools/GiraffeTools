@@ -17,10 +17,12 @@ class Link extends React.Component {
 
   render() {
     const { portFrom, portTo } = this.props;
-    let startingPoint = portFrom
-      ? { x: portFrom.x, y: portFrom.y + 5 }
-      : { x: 0, y: 5 };
-    let endPoint = portTo ? { x: portTo.x, y: portTo.y + 5 } : { x: 0, y: 5 };
+    if (!portFrom || !portTo) {
+      return <g />;
+    }
+    let startingPoint = { x: portFrom.x, y: portFrom.y + 5 };
+    let endPoint = { x: portTo.x, y: portTo.y + 5 };
+
     return (
       <PathLine
         points={[

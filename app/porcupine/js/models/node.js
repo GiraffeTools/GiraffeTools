@@ -5,8 +5,7 @@ import {
   ADD_NODE,
   REMOVE_NODE,
   UPDATE_NODE,
-  ADD_PORT_TO_NODE,
-  REMOVE_PORT_FROM_NODE,
+  ADD_PARAMETER_TO_NODE,
   CLEAR_DATABASE
 } from "../actions/actionTypes";
 
@@ -20,16 +19,19 @@ class Node extends Model {
           .forEach(item => Node.withId(item.id).delete());
         break;
       case ADD_NODE:
-        // ports are automatically saved in the Port reducer
-        const props = Object.assign({}, payload, { ports: undefined });
+        // parameters are automatically saved in the Port reducer
+        const props = Object.assign({}, payload, { parameters: undefined });
         Node.create(payload);
         break;
       case REMOVE_NODE:
         const node = Node.withId(payload.node.id);
         node.delete();
         break;
-      case ADD_PORT_TO_NODE:
-        Node.withId(payload.nodeId).ports.add(payload.port);
+      case ADD_PARAMETER_TO_NODE:
+        Node.withId(payload.nodeId).parameters.add(payload.parameter);
+        break;
+        // case REMOVE_PARAMETER_FROM_NODE:
+        // Node.withId(payload.nodeId).parameters.add(payload.port);
         break;
       case UPDATE_NODE:
         Node.withId(payload.nodeId).update(payload.newValues);
