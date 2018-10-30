@@ -112,30 +112,28 @@ class Canvas extends React.PureComponent {
     const baseName = `https://raw.githubusercontent.com/${user}/${repository}/${branch}`;
     const configFile = `${baseName}/GIRAFFE.yml`;
     fetch(configFile)
-      .then(result => result.body.getReader())
-      .then(reader => {
-        reader.read().then(({ done, value }) => {
-          const configuration = loadYaml(
-            new TextDecoder("utf-8").decode(value)
-          );
-          const porcupineFile = `${baseName}/${
-            configuration.tools.porcupine.file[0]
-          }`;
+      .then(response => response.ok && response.text())
+      .then(text => {
+        const configuration = loadYaml(text);
+        const porcupineFile = `${baseName}/${
+          configuration.tools.porcupine.file[0]
+        }`;
 
-          fetch(porcupineFile)
-            .then(result => result.json())
-            .then(data => {
-              this.loadFromJson(data);
-              this.graphview.current.handleZoomToFit();
-              console.log("Porcupine Config file loaded from URL");
-            })
-            .catch(error => {
-              console.log("Cannot load Porcupine Config file");
-              this.setPercent(-1);
-            });
-        });
+        fetch(porcupineFile)
+          .then(result => result.json())
+          .then(data => {
+            this.loadFromJson(data);
+            this.graphview.current.handleZoomToFit();
+            console.log("Porcupine Config file loaded from URL");
+          })
+          .catch(error => {
+            console.log("Cannot load Porcupine Config file");
+            this.setPercent(-1);
+          });
       })
-      .catch();
+      .catch(error => {
+        debugger;
+      });
   }
 
   setPercent(percent) {
