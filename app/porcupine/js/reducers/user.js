@@ -6,7 +6,14 @@ import {
   SET_COMMIT
 } from "../actions/actionTypes";
 
-const user = (state = {}, action) => {
+const INITIAL_STATE = {
+  user: null,
+  repository: null,
+  branch: null,
+  commit: null
+};
+
+const user = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
   switch (type) {
     case SET_USER:

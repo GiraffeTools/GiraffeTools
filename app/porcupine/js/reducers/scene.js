@@ -8,7 +8,13 @@ import {
   SET_MOUSE_STATE
 } from "../actions/actionTypes";
 
-export default function scene(state = [], action) {
+const INITIAL_STATE = {
+  hoveredNode: null,
+  hoveredPort: null,
+  selectedNode: null
+};
+
+export default function scene(state = INITIAL_STATE, action) {
   const { type, payload } = action;
   switch (type) {
     case ZOOM_IN:
@@ -30,8 +36,6 @@ export default function scene(state = [], action) {
       };
     case CLICK_SCENE:
       return { ...state, selectedNode: null };
-    // case SET_MOUSE_STATE:
-    // return {...state, mouseState: payload};
     default:
       return state;
   }

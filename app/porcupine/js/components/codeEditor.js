@@ -18,6 +18,7 @@ class CodeEditor extends React.Component {
     } = this.props;
 
     const languages = ["Nipype", "Docker", "MATLAB"];
+    let currentTab = activeTab || "Nipype";
 
     return (
       <div
@@ -37,7 +38,7 @@ class CodeEditor extends React.Component {
                 <a
                   className={
                     "nav-item nav-link code-nav" +
-                    (language === activeTab ? " active" : "")
+                    (language === currentTab ? " active" : "")
                   }
                   key={`nav-${language}-tab`}
                   id={`nav-${language}-tab`}
@@ -60,7 +61,7 @@ class CodeEditor extends React.Component {
                 key={`nav-${language}-panel`}
                 className={
                   "tab-pane fade" +
-                  (language === activeTab ? " show active" : "")
+                  (language === currentTab ? " show active" : "")
                 }
                 id={`nav-${language}`}
                 role="tabpanel"

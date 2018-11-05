@@ -5,7 +5,14 @@ import {
   UPDATE_LOADING_PERCENT
 } from "../actions/actionTypes";
 
-const ui = (state = { showSidebar: false }, action) => {
+const INITIAL_STATE = {
+  showSidebar: false,
+  showCodeEditor: false,
+  activeTab: "Nipype",
+  loadingPercent: -1
+};
+
+const ui = (state = [], action) => {
   const { type, payload } = action;
   switch (type) {
     case TOGGLE_SIDEBAR:
