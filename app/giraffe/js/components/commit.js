@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
 import pluralize from "pluralize";
 
-const Commit = ({ commit, commitUrl }) => {
+const Commit = ({ commit, full_name }) => {
   const days_ago = Math.floor(
     (Date.now() - new Date(commit.commit.author.date)) / 1000 / 3600 / 24
   );
+
   return (
     <li className="commit-box row border-bottom">
       <div className="col-6 text-left">
@@ -26,10 +27,9 @@ const Commit = ({ commit, commitUrl }) => {
         <a
           type="button btn-primary"
           className="btn giraffe-button-small"
-          href={``}
+          href={`/porcupine/${full_name}/${commit.sha}`}
           data-toggle="tooltip"
           data-placement="top"
-          title="Not implemented yet!"
         >
           open
         </a>

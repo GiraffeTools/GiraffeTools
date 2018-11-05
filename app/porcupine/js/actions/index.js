@@ -22,7 +22,8 @@ import {
   SET_ACTIVE_TAB,
   SET_USER,
   SET_REPOSITORY,
-  SET_BRANCH
+  SET_BRANCH,
+  SET_COMMIT
 } from "./actionTypes";
 
 export const clearDatabase = () => ({
@@ -165,5 +166,11 @@ export const setBranch = branch => ({
   type: SET_BRANCH,
   payload: {
     branch
+  }
+});
+export const setCommit = commit => ({
+  type: SET_COMMIT,
+  payload: {
+    commit
   }
 });

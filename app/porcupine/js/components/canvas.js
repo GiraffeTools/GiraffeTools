@@ -55,15 +55,18 @@ const boxTarget = {
 
         const name = node.title.name;
         const code = node.title && node.title.code;
-        node.parameters ? node.parameters : {};
-        node.parameters = node.parameters.map(port => {
-          // #TODO link to a proper default value
-          return {
-            ...port,
-            id: v4(),
-            value: port.value || port.default || ""
-          };
-        });
+        node.ports =
+          node.ports &&
+          node.ports.map(port => {
+            // #TODO link to a proper default value
+            return {
+              ...port,
+              id: v4(),
+              value: port.value || port.default || "",
+              isVisible: port.visible,
+              isEditable: port.editable
+            };
+          });
 
         const newNode = {
           id: v4(),
@@ -73,7 +76,7 @@ const boxTarget = {
           y: contentPosition.y / zoom,
           width: name.length * 12,
           colour: node.colour,
-          parameters: node.parameters,
+          parameters: node.ports,
           web_url: node.title.web_url || "",
           code: code || ""
         };
@@ -103,13 +106,14 @@ class Canvas extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { user, repository, branch } = this.props.user;
-    if (!user || !repository || !branch) {
+    const { user, repository, branch, commit } = this.props.user;
+    if (!user || !repository || (!branch && !commit)) {
       console.log("No username, repository, or branch provided");
       return;
     }
 
-    const baseName = `https://raw.githubusercontent.com/${user}/${repository}/${branch}`;
+    const baseName = `https://raw.githubusercontent.com/${user}/${repository}/${branch ||
+      commit}`;
     const configFile = `${baseName}/GIRAFFE.yml`;
     fetch(configFile)
       .then(response => response.ok && response.text())
@@ -132,7 +136,7 @@ class Canvas extends React.PureComponent {
           });
       })
       .catch(error => {
-        debugger;
+        console.log("Cannot load config file");
       });
   }
 
@@ -150,8 +154,10 @@ class Canvas extends React.PureComponent {
   }
 
   loadFromJson(json) {
-    this.setPercent(10); // Loading started!
     const { addNode, addLink, clearDatabase, repositionPorts } = this.props;
+    this.setPercent(10); // Loading started!
+    clearDatabase();
+
     //pass by reference and fill them in the load functions
     let nodes = [];
     let links = [];
@@ -163,7 +169,6 @@ class Canvas extends React.PureComponent {
       );
       this.setPercent(-1);
     }
-    clearDatabase();
     try {
       let i = 0;
       nodes.forEach(node => {

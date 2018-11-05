@@ -10,6 +10,7 @@ import CanvasContainer from "../containers/canvasContainer";
 import ParameterPaneContainer from "../containers/parameterPaneContainer";
 import Sidebar from "./sidebar";
 import Tooltip from "./tooltip";
+import { isGitHash } from "../utils";
 
 @DragDropContext(MultiBackend(HTML5toTouch))
 class Content extends React.Component {
@@ -22,11 +23,14 @@ class Content extends React.Component {
   }
 
   componentWillMount() {
-    const { username, repository, branch } = this.props.match.params;
-    const { setUser, setRepository, setBranch, user } = this.props;
+    const { username, repository, branchOrCommit } = this.props.match.params;
+    const { setUser, setRepository, setBranch, setCommit, user } = this.props;
     setUser(username);
     setRepository(repository);
-    setBranch(branch || "master");
+    let string = branchOrCommit || "master";
+    let isCommit = isGitHash(branchOrCommit);
+    setCommit(isCommit && string);
+    setBranch(!isCommit && string);
   }
 
   render() {

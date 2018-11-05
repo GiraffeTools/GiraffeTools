@@ -22,6 +22,7 @@ class CommitBox extends React.Component {
 
   render() {
     const { commits } = this.state;
+    const { full_name } = this.props.repository;
     const branch = "master";
     const groupedCommits = commits && groupByDate(commits);
     const dates =
@@ -47,7 +48,11 @@ class CommitBox extends React.Component {
               </h6>
               <ul className="commit-day border">
                 {groupedCommits[date].map(({ commit }) => (
-                  <Commit key={commit.sha} commit={commit} />
+                  <Commit
+                    key={commit.sha}
+                    commit={commit}
+                    full_name={full_name}
+                  />
                 ))}
               </ul>
             </div>

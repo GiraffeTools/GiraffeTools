@@ -13,13 +13,23 @@
   padding: 0px;
 }
 
-$text-color: #F25226;
 $primary-color: #F7A81C;
-$secondary-color: #FAE0A3;
-$tertiary-color: #F25226;
-$quaternary-color: #FFFAEF;
-$quinternary-color: #FCF0D6;
+$primary-light-secondary-color: #FFFAEF;
+$primary-light-color: #FDEFD6;
 
+$secondary-color: #F25226;
+$tertiary-color: #FAE0A3;
+
+$h1-color: #000000;
+$h2-color: #000000;
+$h2-color-secondary: $secondary-color;
+$h3-color: #000000;
+$h4-color: #4A4A4A;
+$content-text-color: #A4A4A4;
+$button-color: #FFFFFF;
+
+// h1 : h2 : h3 : h4
+// 90 : 40 : 30 : 17 : 17
 
 // Banner text
 h1 {
@@ -31,7 +41,7 @@ h1 {
 h2 {
   font-family: 'Nexa-Bold';
   font-size: 2.5rem;
-  color: $text-color;
+  color: $secondary-color;
 }
 // Sextion titles
 h3 {
@@ -53,7 +63,7 @@ h5{
 // Next to icon text
 h6{
   font-family: 'Nexa-Bold';
-  color: $text-color;
+  color: $secondary-color;
   font-size: 32px;
   font-weight: bold;
 }
@@ -134,7 +144,7 @@ div {
   padding-left: 2rem;
   padding-right: 0.5rem;
   padding-top: 0.5rem;
-  background-color: $quinternary-color;
+  background-color: $primary-light-color;
   box-shadow: 0px 0px 5rem black;
 }
 
@@ -267,7 +277,7 @@ div {
 
 #example-card{
   margin: 4px;
-  background-color: $quinternary-color;
+  background-color: $primary-light-color;
 
   .card-image{
     width: 100%;
@@ -280,7 +290,7 @@ div {
 }
 
 .giraffe-box{
-  background-color: $quinternary-color;
+  background-color: $primary-light-color;
   margin: 16px;
   padding: 1rem;
   padding-top: 1.5rem;
@@ -341,7 +351,7 @@ padding-bottom: 1.5rem;
 
 
 #hero{
-  background-color: $quinternary-color;
+  background-color: $primary-light-color;
   background-image: url('../img/code_dark_hero_img.png');
   background-repeat: no-repeat;
   background-position: right;
@@ -458,7 +468,7 @@ padding-bottom: 1.5rem;
 
 #roadmap {
   text-align: center;
-  background-color: $quaternary-color;
+  background-color: $primary-light-secondary-color;
   padding-bottom: 5rem;
 }
 
@@ -508,7 +518,7 @@ padding-bottom: 1.5rem;
 }
 
 #people {
-  background-color: $quinternary-color;
+  background-color: $primary-light-color;
   padding-bottom: 4rem;
   position: relative;
   z-index: -5;
@@ -523,7 +533,7 @@ padding-bottom: 1.5rem;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: $quinternary-color;
+  background-color: $primary-light-color;
   transform: skewY(-6deg);
   transform-origin: top left;
   z-index: -1;
@@ -550,7 +560,7 @@ padding-bottom: 1.5rem;
   padding-top: 4rem;
   padding-bottom: 4rem;
   text-align: center;
-  background-color: $quaternary-color;
+  background-color: $primary-light-secondary-color;
 }
 
 #contributor-panel{
@@ -623,7 +633,7 @@ padding-bottom: 1.5rem;
 
 #contact {
   height: 22rem;
-  background-color: $quinternary-color;
+  background-color: $primary-light-color;
 }
 
 #join-us{
@@ -647,7 +657,7 @@ padding-bottom: 1.5rem;
 
 .icon-title-text{
  font-family: 'Nexa-Bold';
- color: $text-color;
+ color: $secondary-color;
  font-size: 2.3rem;
  font-weight: bold;
 }
