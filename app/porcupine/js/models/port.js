@@ -18,9 +18,13 @@ class Port extends Model {
     const { type, payload } = action;
     switch (type) {
       case CLEAR_DATABASE:
-        session.Port.all()
-          .toRefArray()
-          .forEach(item => Port.withId(item.id).delete());
+        try {
+          session.Port.all()
+            .toRefArray()
+            .forEach(item => Port.withId(item.id).delete());
+        } catch (err) {
+          console.log("There were probably duplicate Ports in the database");
+        }
         break;
       case ADD_NODE:
         const parameters = payload.parameters;

@@ -61,6 +61,11 @@ class GraphView extends React.Component {
       viewTransform: d3.event.transform
     });
   };
+
+  getViewTransform = () => {
+    return this.state.viewTransform;
+  };
+
   // Zooms to contents of this.refs.entities
   handleZoomToFit = () => {
     const parent = d3.select(this.viewWrapper).node();

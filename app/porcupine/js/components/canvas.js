@@ -48,7 +48,6 @@ const boxTarget = {
       case ItemTypes.PANE_ELEMENT:
         const contentPosition = monitor.getSourceClientOffset();
         const { addNode, repositionPorts } = props;
-        const zoom = 1;
 
         const templateNode = item.category;
         const node = $.extend(true, {}, templateNode);
@@ -68,12 +67,19 @@ const boxTarget = {
             };
           });
 
+        let transform = component.graphview.current.getViewTransform();
+        const zoom = transform.k;
+
         const newNode = {
           id: v4(),
           name: name,
           // #TODO fix positioning of dropped node, issue #73
-          x: (contentPosition.x - monitor.getInitialClientOffset().x) / zoom,
-          y: contentPosition.y / zoom,
+          x:
+            (contentPosition.x -
+              monitor.getInitialClientOffset().x -
+              transform.x) /
+            zoom,
+          y: (contentPosition.y - transform.y) / zoom,
           width: name.length * 12,
           colour: node.colour,
           parameters: node.ports,
