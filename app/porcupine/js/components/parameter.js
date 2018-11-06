@@ -17,9 +17,9 @@ class PortPair extends React.Component {
         <text fill="white" textAnchor="middle" x={x + width / 2} y={y}>
           {name}
         </text>
-        {input && <PortContainer id={id} type="input" x={x} y={y - 4} />}
+        {input && <PortContainer id={input} type="input" x={x} y={y - 4} />}
         {output && (
-          <PortContainer id={id} type="output" x={x + width} y={y - 4} />
+          <PortContainer id={output} type="output" x={x + width} y={y - 4} />
         )}
       </Fragment>
     );
