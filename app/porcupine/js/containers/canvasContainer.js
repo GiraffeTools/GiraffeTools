@@ -1,6 +1,8 @@
 import { connect } from "react-redux";
 
 import Canvas from "../components/canvas";
+
+import { nodesWithParameters, linksWithPorts } from "../selectors/selectors";
 import {
   addNode,
   addLink,
@@ -8,20 +10,21 @@ import {
   repositionPorts,
   updateNodePosition,
   clickScene,
-  updateLoadingPercent
+  updateLoadingPercent,
+  setPorkFile
 } from "../actions";
-import { nodesWithParameters, linksWithPorts } from "../selectors/selectors";
 
 const mapStateToProps = state => ({
   loadingPercent: state.ui.loadingPercent,
+  user: state.user,
   nodes: nodesWithParameters(state),
-  links: linksWithPorts(state),
-  user: state.user
+  links: linksWithPorts(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   addNode: node => dispatch(addNode(node)),
   addLink: link => dispatch(addLink(link)),
+  setPorkFile: porkfile => dispatch(setPorkFile(porkfile)),
   addParameterToNode: (parameter, nodeId) =>
     dispatch(addParameterToNode(parameter, nodeId)),
   clickScene: () => dispatch(clickScene()),

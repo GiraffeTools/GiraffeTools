@@ -112,6 +112,7 @@ class Canvas extends React.PureComponent {
   }
 
   componentDidMount() {
+    const { setPorkFile } = this.props;
     const { user, repository, branch, commit } = this.props.user;
     if (!user || !repository || (!branch && !commit)) {
       console.log("No username, repository, or branch provided");
@@ -125,9 +126,9 @@ class Canvas extends React.PureComponent {
       .then(response => response.ok && response.text())
       .then(text => {
         const configuration = loadYaml(text);
-        const porcupineFile = `${baseName}/${
-          configuration.tools.porcupine.file[0]
-        }`;
+        const configFile = configuration.tools.porcupine.file[0];
+        setPorkFile(configFile);
+        const porcupineFile = `${baseName}/${configFile}`;
 
         fetch(porcupineFile)
           .then(result => result.json())

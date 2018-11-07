@@ -37,7 +37,8 @@ const loadingVersion1 = (json, nodes, links, setPercent) => {
       width: node.title.name.length * 12,
       colour: (currentNodes && currentNodes.colour) || "#BBB",
       web_url: node.title.web_url || "",
-      code: node.title.code
+      code: node.title.code,
+      category: ["Nipype"].concat(category)
     };
     newNode.parameters = node.ports.map(parameter => ({
       node: newNode.id,

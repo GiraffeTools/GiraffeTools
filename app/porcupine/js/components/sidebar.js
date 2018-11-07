@@ -1,26 +1,25 @@
 import React from "react";
+import { v4 } from "uuid";
 
-import PaneGroup from "../components/paneGroup";
+import PaneGroup from "./paneGroup";
 
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nodes: null
+      nodeElements: null
     };
   }
 
   componentDidMount() {
     fetch("/api/nodes")
       .then(response => response.json())
-      .then(nodes => this.setState({ nodes }));
+      .then(nodeElements => this.setState({ nodeElements }));
   }
 
   render() {
-    const { showSidebar } = this.props;
-    const { user, repository, branch } = this.props.user;
-    const toggleSidebar = () => {};
-    const { nodes } = this.state;
+    const { showSidebar, user, openModal } = this.props;
+    const { nodeElements } = this.state;
     return (
       <div>
         <div id="sidebar" className={showSidebar ? " active" : ""}>
@@ -41,28 +40,45 @@ class Sidebar extends React.Component {
               role="tablist"
               aria-multiselectable="true"
             >
-              {nodes &&
-                Object.keys(nodes.categories).map(category => {
+              {nodeElements &&
+                Object.keys(nodeElements.categories).map(category => {
                   return (
                     <PaneGroup
                       key={category}
                       category={category}
-                      nodes={nodes.categories[category]}
+                      nodes={nodeElements.categories[category]}
                     />
                   );
                 })}
             </div>
-            <h5 className="sidebar-heading">EXTRAS</h5>
-            {user && (
+            <h5 className="sidebar-heading">ACTIONS</h5>
+            {user &&
+              user.user && (
+                <a
+                  className="btn btn-block extra-buttons text-left"
+                  href={`https://github.com/${user.user}/${user.repository}`}
+                  target="_blank"
+                >
+                  <img src="/static/img/gh-icon.png" width={"10%"} />
+                  {` ${user.repository} on GitHub`}
+                </a>
+              )}
+            {
               <a
                 className="btn btn-block extra-buttons text-left"
-                href={`https://github.com/${user}/${repository}`}
-                target="_blank"
+                onClick={() =>
+                  openModal({
+                    id: v4(),
+                    type: "save_to_github",
+                    onClose: () => console.log("fire at closing event"),
+                    onConfirm: () => console.log("fire at confirming event")
+                  })
+                }
               >
-                <img src="/static/img/gh-icon.png" width={"10%"} />
-                {` ${repository}`} on GitHub
+                <i className="fas fa-save save-button" width={"10%"} />
+                <span className="text-black">Save to Github</span>
               </a>
-            )}
+            }
           </div>
         </div>
       </div>

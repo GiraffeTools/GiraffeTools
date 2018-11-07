@@ -28,6 +28,7 @@ export const SET_USER = "SET_USER";
 export const SET_REPOSITORY = "SET_REPOSITORY";
 export const SET_BRANCH = "SET_BRANCH";
 export const SET_COMMIT = "SET_COMMIT";
+export const SET_PORK_FILE = "SET_PORK_FILE";
 
 ///// SCENE /////
 export const ZOOM_IN = "ZOOM_IN";
@@ -36,4 +37,7 @@ export const HOVER_NODE = "HOVER_NODE";
 export const HOVER_PORT = "HOVER_PORT";
 export const CLICK_NODE = "CLICK_NODE";
 export const CLICK_SCENE = "CLICK_SCENE";
-// export const SET_MOUSE_STATE = 'SET_MOUSE_STATE';
+
+///// MODALS /////
+export const OPEN_MODAL = "OPEN_MODAL";
+export const CLOSE_MODAL = "CLOSE_MODAL";

@@ -4,9 +4,7 @@ import LinkContainer from "../containers/linkContainer";
 
 const Links = ({ links }) => (
   <Fragment>
-    {links.map(link => (
-      <LinkContainer {...link} key={link.id} />
-    ))}
+    {links && links.map(link => <LinkContainer {...link} key={link.id} />)}
   </Fragment>
 );
 

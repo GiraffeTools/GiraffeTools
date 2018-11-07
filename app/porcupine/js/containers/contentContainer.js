@@ -8,12 +8,16 @@ import {
   setBranch,
   setCommit
 } from "../actions";
-import { hoveredNode } from "../selectors/selectors";
-import nodeData from "../../static/assets/nipype.json";
+import {
+  hoveredNode,
+  nodesWithParameters,
+  linksWithPorts
+} from "../selectors/selectors";
 
 const mapStateToProps = state => ({
   showSidebar: state.ui.showSidebar,
   user: state.user,
+  modals: state.modals,
   hoveredNode: hoveredNode(state)
 });
 

@@ -23,7 +23,10 @@ import {
   SET_USER,
   SET_REPOSITORY,
   SET_BRANCH,
-  SET_COMMIT
+  SET_COMMIT,
+  SET_PORK_FILE,
+  OPEN_MODAL,
+  CLOSE_MODAL
 } from "./actionTypes";
 
 export const clearDatabase = () => ({
@@ -172,5 +175,25 @@ export const setCommit = commit => ({
   type: SET_COMMIT,
   payload: {
     commit
+  }
+});
+export const setPorkFile = pork_file => ({
+  type: SET_PORK_FILE,
+  payload: {
+    pork_file
+  }
+});
+
+///// MODALS /////
+export const openModal = item => ({
+  type: OPEN_MODAL,
+  payload: {
+    item
+  }
+});
+export const closeModal = id => ({
+  type: CLOSE_MODAL,
+  payload: {
+    id
   }
 });

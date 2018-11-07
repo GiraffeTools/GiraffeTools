@@ -8,8 +8,9 @@ import { default as ItemPreview } from "../components/itemPreview";
 import CodeEditorContainer from "../containers/codeEditorContainer";
 import CanvasContainer from "../containers/canvasContainer";
 import ParameterPaneContainer from "../containers/parameterPaneContainer";
-import Sidebar from "./sidebar";
+import SidebarContainer from "../containers/sidebarContainer";
 import Tooltip from "./tooltip";
+import ModalsContainer from "../containers/modalsContainer";
 import { isGitHash } from "../utils";
 
 @DragDropContext(MultiBackend(HTML5toTouch))
@@ -24,7 +25,7 @@ class Content extends React.Component {
 
   componentWillMount() {
     const { username, repository, branchOrCommit } = this.props.match.params;
-    const { setUser, setRepository, setBranch, setCommit, user } = this.props;
+    const { setUser, setRepository, setBranch, setCommit } = this.props;
     setUser(username);
     setRepository(repository);
     let string = branchOrCommit || "master";
@@ -35,11 +36,11 @@ class Content extends React.Component {
 
   render() {
     // const { snapToGridAfterDrop, snapToGridWhileDragging } = this.state
-    const { hoveredNode, showSidebar, toggleSidebar, user } = this.props;
+    const { hoveredNode, showSidebar, toggleSidebar } = this.props;
 
     return (
       <div id="parent">
-        <Sidebar showSidebar={showSidebar} user={user} />
+        <SidebarContainer />
         <a
           className={"sidebar-button" + (showSidebar ? " close" : "")}
           onClick={() => toggleSidebar()}
@@ -49,6 +50,7 @@ class Content extends React.Component {
           <ParameterPaneContainer />
           <Tooltip hoveredNode={hoveredNode} />
           <CodeEditorContainer />
+          <ModalsContainer />
         </div>
       </div>
     );
