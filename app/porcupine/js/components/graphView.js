@@ -42,9 +42,10 @@ class GraphView extends React.Component {
   }
 
   componentDidMount() {
-    d3.select(this.viewWrapper).on("keydown", this.handleWrapperKeydown);
-    // .on("touchstart", this.containZoom)
-    // .on("touchmove", this.containZoom)
+    d3.select(this.viewWrapper)
+      .on("keydown", this.handleWrapperKeydown)
+      .on("touchstart", this.containZoom)
+      .on("touchmove", this.containZoom);
     // .on("click", this.handleSvgClicked)
     d3.select(this.viewWrapper)
       .select("svg")

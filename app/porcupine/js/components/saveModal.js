@@ -6,7 +6,6 @@ class SaveModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      github_api_token: null,
       commit_message: null,
       save_succes: null
     };
@@ -21,14 +20,10 @@ class SaveModal extends React.Component {
   onConfirm() {
     const { onClose } = this.props;
     const { nodes, links, user } = this.props;
-    const { github_api_token, commit_message } = this.state;
-    let response = savePorkFile(
-      nodes,
-      links,
-      user,
-      github_api_token,
-      commit_message
-    );
+    const { commit_message } = this.state;
+    savePorkFile(nodes, links, user, commit_message).then(response => {
+      console.log(response);
+    });
     // onClose();
   }
 
@@ -70,15 +65,6 @@ class SaveModal extends React.Component {
                 name="github_repo"
                 disabled="True"
                 value={user.repository}
-              />
-            </div>
-            <div className="form-group">
-              <label className="col-form-label">GitHub API Access Token</label>
-              <input
-                type="text"
-                className="form-control"
-                name="github_api_token"
-                onChange={this.handleInputChange}
               />
             </div>
             <div className="form-group">

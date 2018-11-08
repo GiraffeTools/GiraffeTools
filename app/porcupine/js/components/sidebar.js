@@ -60,7 +60,7 @@ class Sidebar extends React.Component {
                   target="_blank"
                 >
                   <img src="/static/img/gh-icon.png" width={"10%"} />
-                  {` ${user.repository} on GitHub`}
+                  {` ${user.repository}`}
                 </a>
               )}
             {
