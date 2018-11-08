@@ -41,7 +41,7 @@ def push_to_github(request):
     # Clearly it should only do this on your own repo when you're logged in...
     logged_in_user = logged_in(request)
     github_user = json.loads(logged_in_user.content)
-    print(github_user])
+    print(github_user)
     print("access_token" in github_user)
     print(is_github_token_valid(github_user["access_token"]))
 
