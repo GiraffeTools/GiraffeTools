@@ -73,6 +73,7 @@ def github_callback(request):
             # "access_token_last_validated": timezone.now().isoformat(),
         }
         for k, v in session_data.items():
+            print({request.session[k]: v})
             request.session[k] = v
 
         # # record a useraction for this
@@ -102,7 +103,7 @@ def github_authentication(request):
 
 def logged_in(request):
     user = {
-        "access_token": request.session.get("handle", False),
+        "access_token": request.session.get("access_token", False),
         "github_handle": request.session.get("handle", False),
         "github_email": request.session.get("email", False),
         "github_name": request.session.get("name", False),
