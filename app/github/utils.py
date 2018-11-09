@@ -80,9 +80,6 @@ def is_github_token_valid(oauth_token=None, last_validated=None):
     url = TOKEN_URL.format(**_params)
     response = requests.get(url, auth=_auth, headers=HEADERS)
 
-    print(_params)
-    print(url)
-    print(response)
     if response.status_code == 200:
         return True
     return False
