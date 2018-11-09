@@ -73,8 +73,8 @@ def github_callback(request):
             # "access_token_last_validated": timezone.now().isoformat(),
         }
         for k, v in session_data.items():
-            print({request.session[k]: v})
             request.session[k] = v
+            print({request.session[k]: v})
 
         # # record a useraction for this
         # UserAction.objects.create(
