@@ -41,20 +41,21 @@ def push_to_github(request):
     # Clearly it should only do this on your own repo when you're logged in...
     logged_in_user = logged_in(request)
     github_user = json.loads(logged_in_user.content)
-    print(github_user)
-    print(is_github_token_valid(github_user["access_token"]))
 
     if (github_user["github_handle"] != user or
             not is_github_token_valid(github_user["access_token"])):
+        print("Nope!")
+        print(github_user["github_handle"] != user)
+        print(is_github_token_valid(github_user["access_token"]))
         response = {}
         return HttpResponse(response, content_type="application/json")
 
     url = f"https://api.github.com/repos/{user}/{repo}/contents/{filename}"
+    print("Whoohoo, saving to GitHub!")
 
     token = settings.GITHUB_API_TOKEN
     headers = {"Authorization": "token " + token}
     data = requests.get(f"{url}?ref={branch}", headers=headers).json()
-
     # #TODO: commit conditionally on contents being different
     # if body["content"] + "\n" != data['content']:
     message = json.dumps({
@@ -64,6 +65,6 @@ def push_to_github(request):
         "sha": data["sha"]
     })
     headers["Content-Type"] = "application/json"
-    # response = requests.put(url, data=message, headers=headers)
+    response = requests.put(url, data=message, headers=headers)
 
     return HttpResponse(response, content_type="application/json")

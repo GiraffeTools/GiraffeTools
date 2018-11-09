@@ -58,7 +58,6 @@ def build_auth_dict(oauth_token):
 
 def is_github_token_valid(oauth_token=None, last_validated=None):
     # If no OAuth token was provided, no checks necessary.
-    print(oauth_token)
     if not oauth_token:
         return False
 

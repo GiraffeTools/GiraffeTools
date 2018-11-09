@@ -73,7 +73,6 @@ def github_callback(request):
             # "access_token_last_validated": timezone.now().isoformat(),
         }
         for k, v in session_data.items():
-            print({k: v})
             request.session[k] = v
 
         # # record a useraction for this
@@ -93,7 +92,6 @@ def github_authentication(request):
     redirect_uri = request.GET.get("redirect_uri", "/")
 
     if not request.session.get("access_token"):
-        print(get_auth_url(redirect_uri))
         return redirect(get_auth_url(redirect_uri))
 
     response = redirect(redirect_uri)
