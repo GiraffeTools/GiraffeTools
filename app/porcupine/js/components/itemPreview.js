@@ -29,23 +29,18 @@ function getItemStyles(currentOffset) {
   };
 }
 
-class ItemPreview extends React.Component {
-  render() {
-    if (!this.props.isDragging) {
-      return <div className="node preview" style={{ display: "none" }} />;
-    } else if (this.props.itemType === "paneElement") {
-      return (
-        <div
-          className="node preview"
-          style={getItemStyles(this.props.currentOffset)}
-        >
-          {this.props.name}
-        </div>
-      );
-    } else if (this.props.itemType === "node") {
-      return <div className="node preview" style={{ display: "none" }} />;
-    }
+const ItemPreview = props => {
+  if (!props.isDragging) {
+    return <div className="node preview" style={{ display: "none" }} />;
+  } else if (props.itemType === "paneElement") {
+    return (
+      <div className="node preview" style={getItemStyles(props.currentOffset)}>
+        {props.name}
+      </div>
+    );
+  } else if (props.itemType === "node") {
+    return <div className="node preview" style={{ display: "none" }} />;
   }
-}
+};
 
 export default DragLayer(collect)(ItemPreview);

@@ -44,14 +44,10 @@ def push_to_github(request):
 
     if (github_user["github_handle"] != user or
             not is_github_token_valid(github_user["access_token"])):
-        print("Nope!")
-        print(github_user["github_handle"] != user)
-        print(is_github_token_valid(github_user["access_token"]))
         response = {}
         return HttpResponse(response, content_type="application/json")
 
     url = f"https://api.github.com/repos/{user}/{repo}/contents/{filename}"
-    print("Whoohoo, saving to GitHub!")
 
     token = settings.GITHUB_API_TOKEN
     headers = {"Authorization": "token " + token}

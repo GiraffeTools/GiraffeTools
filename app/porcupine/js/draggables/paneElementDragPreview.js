@@ -6,14 +6,10 @@ const styles = {
   // WebkitTransform: 'rotate(-2deg)',
 };
 
-class PaneElementDragPreview extends React.PureComponent {
-  render() {
-    return (
-      <div style={styles}>
-        <PaneElement {...this.props} />
-      </div>
-    );
-  }
-}
+const PaneElementDragPreview = props => (
+  <div style={styles}>
+    <PaneElement {...props} />
+  </div>
+);
 
 export default PaneElementDragPreview;
