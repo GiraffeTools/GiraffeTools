@@ -52,8 +52,10 @@ const boxTarget = {
         const templateNode = item.category;
         const node = $.extend(true, {}, templateNode);
 
+        debugger;
         const name = node.title.name;
         const code = node.title && node.title.code;
+        debugger;
         node.parameters =
           node.ports &&
           node.ports.map(parameter => {
@@ -87,7 +89,8 @@ const boxTarget = {
           colour: node.colour,
           parameters: node.parameters,
           web_url: node.title.web_url || "",
-          code: code || ""
+          code: code || "",
+          category: node.category
         };
 
         addNode(newNode);

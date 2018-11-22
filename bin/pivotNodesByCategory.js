@@ -5,7 +5,7 @@ var modulesToParse = fs.readdirSync(nipypePath);
 // modulesToParse = ['fsl.JSON', 'io.JSON'];
 
 allNodes = [];
-modulesToParse.forEach(function(module) {
+modulesToParse.forEach(module => {
   allNodes = allNodes.concat(
     JSON.parse(fs.readFileSync(nipypePath + module))["nodes"]
   );
@@ -23,7 +23,7 @@ function insertNode(nodeList, newNode) {
       eval(c + " = {};");
     }
   }
-  delete newNode["category"];
+  // delete newNode["category"];
   if (eval(c + " .nodes === undefined")) {
     eval(c + ".nodes = {};");
   }
