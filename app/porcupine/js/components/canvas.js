@@ -54,16 +54,19 @@ const boxTarget = {
 
         const name = node.title.name;
         const code = node.title && node.title.code;
-        node.ports =
+        node.parameters =
           node.ports &&
-          node.ports.map(port => {
+          node.ports.map(parameter => {
             // #TODO link to a proper default value
             return {
-              ...port,
+              ...parameter,
+              node: node.id,
               id: v4(),
-              value: port.value || port.default || "",
-              isVisible: port.visible,
-              isEditable: port.editable
+              value: parameter.value || parameter.default || "",
+              input: parameter.input ? v4() : null,
+              output: parameter.output ? v4() : null,
+              isVisible: parameter.visible,
+              isEditable: parameter.editable
             };
           });
 
@@ -82,7 +85,7 @@ const boxTarget = {
           y: (contentPosition.y - transform.y) / zoom,
           width: name.length * 12,
           colour: node.colour,
-          parameters: node.ports,
+          parameters: node.parameters,
           web_url: node.title.web_url || "",
           code: code || ""
         };

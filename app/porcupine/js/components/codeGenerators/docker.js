@@ -55,15 +55,18 @@ class DockerCode extends React.Component {
       });
     const nodeCode =
       languagesInEditor &&
-      [...new Set(languagesInEditor.flat())].map(
-        language => codeMappings[language.replace(/\s/g, "")]
-      );
+      [...new Set(languagesInEditor.flat())]
+        .map(
+          // remove white space from 'language' first
+          language => codeMappings[language.replace(/\s/g, "")]
+          // remove 'undefined' items and join
+        )
+        .filter(Boolean)
+        .join("\r\n");
     // debugger;
     return (
       <SyntaxHighlighter language="dockerfile" style={atomDark}>
-        {[preamble, nodeCode.filter(Boolean).join("\r\n"), postamble].join(
-          "\r\n"
-        )}
+        {[preamble, nodeCode, postamble].join("\r\n")}
       </SyntaxHighlighter>
     );
   }
