@@ -8,17 +8,12 @@ import {
   setBranch,
   setCommit
 } from "../actions";
-import {
-  hoveredNode,
-  nodesWithParameters,
-  linksWithPorts
-} from "../selectors/selectors";
+import { nodesWithParameters, linksWithPorts } from "../selectors/selectors";
 
 const mapStateToProps = state => ({
   showSidebar: state.ui.showSidebar,
   user: state.user,
-  modals: state.modals,
-  hoveredNode: hoveredNode(state)
+  modals: state.modals
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -3,6 +3,7 @@ import * as d3 from "d3";
 
 import ItemTypes from "./itemTypes";
 import Parameter from "./parameter";
+import Tooltip from "./tooltip";
 
 class Node extends React.Component {
   constructor(props) {
@@ -31,8 +32,6 @@ class Node extends React.Component {
   }
 
   hover(enter) {
-    const { hoverNode, id } = this.props;
-    hoverNode(enter ? id : null);
     this.setState({
       hovered: enter
     });
@@ -62,19 +61,25 @@ class Node extends React.Component {
       y,
       width,
       colour,
-      hoveredNode,
       selectedNode,
       parameters
     } = this.props;
+    const { hovered } = this.state;
 
     const parameterBlock = [];
     let dy = 54;
     parameters &&
       parameters
         .filter(parameter => parameter.isVisible == true)
-        .forEach(port => {
+        .forEach(parameter => {
           parameterBlock.push(
-            <Parameter {...port} key={port.id} width={width} x={0} y={dy} />
+            <Parameter
+              {...parameter}
+              key={parameter.id}
+              width={width}
+              x={0}
+              y={dy}
+            />
           );
           dy += 24;
         });
@@ -92,6 +97,7 @@ class Node extends React.Component {
           {name}
         </text>
         {parameterBlock}
+        {hovered && <Tooltip parameters={parameters} />}
       </g>
     );
     return content;

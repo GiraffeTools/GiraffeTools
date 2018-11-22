@@ -12,7 +12,6 @@ import {
   START_LINK,
   TOGGLE_SIDEBAR,
   UPDATE_LOADING_PERCENT,
-  HOVER_NODE,
   HOVER_PORT,
   CLICK_NODE,
   CLICK_SCENE,
@@ -125,12 +124,6 @@ export const repositionPorts = node => ({
 });
 
 ///// SCENE /////
-export const hoverNode = nodeId => ({
-  type: HOVER_NODE,
-  payload: {
-    nodeId
-  }
-});
 export const hoverPort = (portId, type) => ({
   type: HOVER_PORT,
   payload: {

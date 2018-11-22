@@ -9,7 +9,6 @@ import CodeEditorContainer from "../containers/codeEditorContainer";
 import CanvasContainer from "../containers/canvasContainer";
 import ParameterPaneContainer from "../containers/parameterPaneContainer";
 import SidebarContainer from "../containers/sidebarContainer";
-import Tooltip from "./tooltip";
 import ModalsContainer from "../containers/modalsContainer";
 import { isGitHash } from "../utils";
 
@@ -36,7 +35,7 @@ class Content extends React.Component {
 
   render() {
     // const { snapToGridAfterDrop, snapToGridWhileDragging } = this.state
-    const { hoveredNode, showSidebar, toggleSidebar } = this.props;
+    const { showSidebar, toggleSidebar } = this.props;
 
     return (
       <div id="parent">
@@ -48,7 +47,6 @@ class Content extends React.Component {
         <div id="main">
           <CanvasContainer />
           <ParameterPaneContainer />
-          <Tooltip hoveredNode={hoveredNode} />
           <CodeEditorContainer />
           <ModalsContainer />
         </div>

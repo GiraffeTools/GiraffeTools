@@ -1,7 +1,6 @@
 import {
   ZOOM_IN,
   ZOOM_OUT,
-  HOVER_NODE,
   HOVER_PORT,
   CLICK_NODE,
   CLICK_SCENE,
@@ -9,7 +8,6 @@ import {
 } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
-  hoveredNode: null,
   hoveredPort: null,
   selectedNode: null
 };
@@ -21,8 +19,6 @@ export default function scene(state = INITIAL_STATE, action) {
       return state;
     case ZOOM_OUT:
       return state;
-    case HOVER_NODE:
-      return { ...state, hoveredNode: payload.nodeId };
     case HOVER_PORT:
       return {
         ...state,

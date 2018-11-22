@@ -1,19 +1,23 @@
 import React from "react";
 
-const TooltipData = ({ data, value }) => {
-  const type = data.type;
+const TooltipData = ({ name, type, value, height }) => {
   let inputElement;
   if (type === "checkbox") {
     inputElement = value ? "True" : "False";
   } else {
     inputElement = value;
   }
+  let fieldText = `${name}: ${inputElement}`;
+  const maxFieldWidth = 45;
+  fieldText =
+    fieldText.length < maxFieldWidth
+      ? fieldText
+      : fieldText.substring(0, maxFieldWidth) + "...";
 
   return (
-    <div className="tooltipData">
-      <p className="tooltipLabel">{data.name}:</p>
-      <p className="tooltipField">{inputElement}</p>
-    </div>
+    <text fill="white" y={height} x={8}>
+      {fieldText}
+    </text>
   );
 };
 

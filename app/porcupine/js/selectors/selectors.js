@@ -53,24 +53,6 @@ export const selectedNode = createSelector(
   }
 );
 
-export const hoveredNode = createSelector(
-  orm,
-  state => state.orm,
-  state => state.scene.hoveredNode,
-  (orm, hoveredNode) => {
-    if (!hoveredNode) {
-      return null;
-    }
-    const selectedNode = orm.Node.withId(hoveredNode);
-    if (!selectedNode) {
-      return null;
-    }
-    const obj = Object.assign({}, selectedNode.ref);
-    obj.parameters = selectedNode.parameters.toRefArray();
-    return obj;
-  }
-);
-
 export const links = createSelector(
   orm,
   state => state.orm,

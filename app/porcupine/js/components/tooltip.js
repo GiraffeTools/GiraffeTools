@@ -3,38 +3,45 @@ import ReactTooltip from "react-tooltip";
 
 import TooltipData from "../components/tooltipData";
 
-const Tooltip = ({ hoveredNode }) => {
-  if (!hoveredNode) {
-    return <div />;
-  }
+const Tooltip = ({ parameters }) => {
+  const parametersWithValues =
+    parameters && parameters.filter(parameter => parameter.value !== "");
+  const fieldHeight = 28;
 
-  const params = [];
-  // Get the ports of the hovered node from state, issue #72
-  // let nodePorts = this.props.hoveredNode.ports;
-  if (hoveredNode.parameters.length > 10) {
-    hoveredNode.parameters = hoveredNode.parameters.filter(port => port.value);
+  let parameterBlock;
+  if (parametersWithValues.length == 0) {
+    parameterBlock = (
+      <text fill="white" y={fieldHeight / 2} x={8}>
+        {"No parameters set"}
+      </text>
+    );
+  } else {
+    parameterBlock = parametersWithValues.map(function(parameter, index) {
+      return (
+        <TooltipData
+          id={parameter.name}
+          key={parameter.name}
+          name={parameter.name}
+          type={parameter.type}
+          value={parameter.value}
+          height={(index + 1) * fieldHeight}
+        />
+      );
+    });
   }
 
   return (
-    <ReactTooltip
-      multiline={true}
-      id="getContent"
-      effect="solid"
-      place="right"
-      className="customTooltip"
-    >
-      <div style={{ display: "inline-grid" }}>
-        {hoveredNode.parameters.map(port => (
-          <TooltipData
-            id={port.name}
-            key={port.name}
-            data={{ name: port.name, type: port.type }}
-            value={port.value}
-            disabled={false}
-          />
-        ))}
-      </div>
-    </ReactTooltip>
+    <g transform={`translate(${0},${-(parametersWithValues.length + 1) * 28})`}>
+      <rect
+        fill="black"
+        opacity={0.5}
+        rx={6}
+        ry={6}
+        width={400}
+        height={(parametersWithValues.length + 0.6) * 28}
+      />
+      {parameterBlock}
+    </g>
   );
 };
 
