@@ -29,21 +29,22 @@ export const selectedNode = createSelector(
   orm,
   state => state.orm,
   state => state.scene.selectedNode,
-  (orm, selectedNode) => {
-    const node = orm.Node.withId(selectedNode);
-    if (!node) {
+  (orm, selection) => {
+    if (!selection) {
       return null;
     }
+    const node = orm.Node.withId(selection);
     const obj = Object.assign({}, node.ref);
     //add parameters
     obj.parameters = node.parameters.toRefArray().map(parameterRef => {
       const parameter = orm.Parameter.withId(parameterRef.id);
       //add links
-      const inputLinks = parameter.inputLinks
-        ? parameter.inputLinks.toRefArray()
+
+      const inputLinks = parameter.input
+        ? parameter.input.inputLinks.toRefArray()
         : [];
-      const outputLinks = parameter.outputLinks
-        ? parameter.outputLinks.toRefArray()
+      const outputLinks = parameter.output
+        ? parameter.output.outputLinks.toRefArray()
         : [];
 
       const obj = Object.assign({}, parameter.ref);
