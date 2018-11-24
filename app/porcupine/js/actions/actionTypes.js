@@ -34,8 +34,7 @@ export const SET_PORK_FILE = "SET_PORK_FILE";
 export const ZOOM_IN = "ZOOM_IN";
 export const ZOOM_OUT = "ZOOM_OUT";
 export const HOVER_PORT = "HOVER_PORT";
-export const CLICK_NODE = "CLICK_NODE";
-export const CLICK_SCENE = "CLICK_SCENE";
+export const CLICK_ITEM = "CLICK_ITEM";
 
 ///// MODALS /////
 export const OPEN_MODAL = "OPEN_MODAL";

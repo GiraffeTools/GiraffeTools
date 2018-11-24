@@ -28,12 +28,16 @@ export const nodesWithParameters = createSelector(
 export const selectedNode = createSelector(
   orm,
   state => state.orm,
-  state => state.scene.selectedNode,
+  state => state.scene.selection,
   (orm, selection) => {
-    if (!selection) {
+    if (!selection || !selection.nodes || selection.nodes.length != 1) {
       return null;
     }
-    const node = orm.Node.withId(selection);
+    const node = orm.Node.withId(selection.nodes[0]);
+    if (!node) {
+      return null;
+    }
+
     const obj = Object.assign({}, node.ref);
     //add parameters
     obj.parameters = node.parameters.toRefArray().map(parameterRef => {

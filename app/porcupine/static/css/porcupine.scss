@@ -47,7 +47,7 @@ $button-color: #FFFFFF;
   left: 10%;
   z-index: 100;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto;
   grid-gap: 15px;
   align-items: center;
 }
@@ -74,6 +74,15 @@ $button-color: #FFFFFF;
   cursor: pointer;
 }
 
+#delete-selection {
+  background-color: white;
+  border: solid 1px lightgray;
+  outline: none;
+  width: 31px;
+  height: 31px;
+  border-radius: 2px;
+  cursor: pointer;
+}
 
 #sidebar {
   position: fixed;

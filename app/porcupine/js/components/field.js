@@ -33,7 +33,7 @@ class Field extends React.Component {
       value,
       data,
       isEnabled,
-      removePort,
+      removeParameter,
       selectedNode
     } = this.props;
 
@@ -139,7 +139,7 @@ class Field extends React.Component {
             type="button"
             className="btn btn-outline-danger btn-sm"
             onClick={() => {
-              removePort(id);
+              removeParameter(id);
             }}
           >
             <i className="fas fa-trash-alt" />

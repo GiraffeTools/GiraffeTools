@@ -5,37 +5,54 @@ import {
   ADD_LINK,
   REMOVE_LINK,
   REMOVE_NODE,
-  CLEAR_DATABASE
+  CLEAR_DATABASE,
+  REMOVE_PARAMETER
 } from "../actions/actionTypes";
 
 class Link extends Model {
-  static reducer(action, Link, session) {
+  static reducer(action, Link) {
     const { type, payload } = action;
     switch (type) {
       case CLEAR_DATABASE:
-        session.Link.all()
-          .toRefArray()
-          .forEach(item => Link.withId(item.id).delete());
+        Link.all().delete();
         break;
       case ADD_LINK:
         Link.create(payload);
         break;
       case REMOVE_LINK:
-        const link = Link.withId(payload);
-        Link.delete();
+        Link.withId(payload.id).delete();
         break;
       case REMOVE_NODE:
-        let connectedLinks = [];
-        payload.node.parameters.forEach(port => {
-          connectedLinks.push(port.inputLinks);
-          connectedLinks.push(port.outputLinks);
-        });
-        connectedLinks = connectedLinks
-          .filter(value => Object.keys(value).length !== 0)
-          .reduce((acc, val) => acc.concat(val), []);
-        connectedLinks.forEach(link => {
-          Link.withId(link.id).delete();
-        });
+        Link.all()
+          .toModelArray()
+          .forEach(link => {
+            if (link.portFromModel.outputParent.nodeModel.id == payload.id) {
+              link.delete();
+            }
+          });
+        Link.all()
+          .toModelArray()
+          .forEach(link => {
+            if (link.portToModel.inputParent.nodeModel.id == payload.id) {
+              link.delete();
+            }
+          });
+        break;
+      case REMOVE_PARAMETER:
+        Link.all()
+          .toModelArray()
+          .forEach(link => {
+            if (link.portFromModel.outputParent.id == payload.id) {
+              link.delete();
+            }
+          });
+        Link.all()
+          .toModelArray()
+          .forEach(link => {
+            if (link.portToModel.inputParent.id == payload.id) {
+              link.delete();
+            }
+          });
         break;
     }
     return undefined;

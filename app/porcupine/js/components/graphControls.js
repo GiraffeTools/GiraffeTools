@@ -1,5 +1,5 @@
 import React from "react";
-import { FaExpand } from "react-icons/fa";
+import { FaExpand, FaTrash } from "react-icons/fa";
 
 const steps = 100; // Slider steps
 
@@ -61,6 +61,9 @@ class GraphControls extends React.Component {
         </div>
         <button id="zoom-to-fit" onMouseDown={this.props.zoomToFit}>
           <FaExpand />
+        </button>
+        <button id="delete-selection" onMouseDown={this.props.deleteSelection}>
+          <FaTrash />
         </button>
       </div>
     );

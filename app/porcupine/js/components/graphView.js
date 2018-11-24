@@ -72,6 +72,10 @@ class GraphView extends React.Component {
     const parent = d3.select(this.viewWrapper).node();
     const entities = d3.select(this.entities).node();
 
+    if (entities.childElementCount == 0) {
+      return;
+    }
+
     const viewBBox = entities.getBBox();
 
     const width = parent.clientWidth;
@@ -189,6 +193,21 @@ class GraphView extends React.Component {
             fill="lightgray"
           />
         </pattern>
+
+        <filter id="selection-glow">
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0   0
+                       0 0 0 0   0
+                       0 0 0 0   0
+                       0 0 0 0.7 0"
+          />
+          <feGaussianBlur stdDeviation="5" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
       </defs>
     );
   }
@@ -221,6 +240,7 @@ class GraphView extends React.Component {
           zoomLevel={this.state.viewTransform.k}
           zoomToFit={this.handleZoomToFit}
           modifyZoom={this.modifyZoom}
+          deleteSelection={this.props.deleteSelection}
         />
       </div>
     );

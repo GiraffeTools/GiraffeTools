@@ -13,8 +13,7 @@ import {
   TOGGLE_SIDEBAR,
   UPDATE_LOADING_PERCENT,
   HOVER_PORT,
-  CLICK_NODE,
-  CLICK_SCENE,
+  CLICK_ITEM,
   SET_MOUSE_STATE,
   CLEAR_DATABASE,
   TOGGLE_CODEEDITOR,
@@ -56,10 +55,10 @@ export const addNode = props => ({
   type: ADD_NODE,
   payload: props
 });
-export const deleteNode = node => ({
+export const deleteNode = id => ({
   type: REMOVE_NODE,
   payload: {
-    node
+    id
   }
 });
 export const updateNodePosition = (nodeId, offset) => ({
@@ -91,10 +90,10 @@ export const startLink = portId => ({
     portId
   }
 });
-export const deleteLink = linkId => ({
+export const deleteLink = id => ({
   type: REMOVE_LINK,
   payload: {
-    linkId
+    id
   }
 });
 
@@ -110,10 +109,10 @@ export const updateParameter = (parameterId, newValues) => ({
     newValues
   }
 });
-export const deleteParameter = ParameterId => ({
+export const deleteParameter = id => ({
   type: REMOVE_PARAMETER,
   payload: {
-    ParameterId
+    id
   }
 });
 export const repositionPorts = node => ({
@@ -131,14 +130,12 @@ export const hoverPort = (portId, type) => ({
     type
   }
 });
-export const clickNode = nodeId => ({
-  type: CLICK_NODE,
+export const clickItem = (id, item) => ({
+  type: CLICK_ITEM,
   payload: {
-    nodeId
+    id,
+    item
   }
-});
-export const clickScene = () => ({
-  type: CLICK_SCENE
 });
 // export const setMouseState = (props) => ({
 //   type: SET_MOUSE_STATE,

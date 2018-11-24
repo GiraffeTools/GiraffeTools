@@ -1,14 +1,14 @@
 import { connect } from "react-redux";
 
 import Node from "../components/node";
-import { clickNode, updateNodePosition, repositionPorts } from "../actions";
+import { clickItem, updateNodePosition, repositionPorts } from "../actions";
 
 const mapStateToProps = state => ({
-  selectedNode: state.scene.selectedNode
+  selectedNodes: state.scene.selection.nodes
 });
 
 const mapDispatchToProps = dispatch => ({
-  clickNode: nodeId => dispatch(clickNode(nodeId)),
+  clickItem: (nodeId, type) => dispatch(clickItem(nodeId, type)),
   repositionPorts: node => dispatch(repositionPorts(node)),
   updateNodePosition: (nodeId, offset) =>
     dispatch(updateNodePosition(nodeId, offset))

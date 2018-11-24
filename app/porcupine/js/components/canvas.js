@@ -52,10 +52,8 @@ const boxTarget = {
         const templateNode = item.category;
         const node = $.extend(true, {}, templateNode);
 
-        debugger;
         const name = node.title.name;
         const code = node.title && node.title.code;
-        debugger;
         node.parameters =
           node.ports &&
           node.ports.map(parameter => {
@@ -112,9 +110,23 @@ class Canvas extends React.PureComponent {
   constructor(props) {
     super(props);
     this.graphview = React.createRef();
-    this.clickCanvas = this.clickCanvas.bind(this);
+    this.deleteSelection = this.deleteSelection.bind(this);
     this.loadFromJson = this.loadFromJson.bind(this);
     this.setPercent = this.setPercent.bind(this);
+  }
+
+  deleteSelection() {
+    const { selection, deleteNode, deleteLink } = this.props;
+    selection &&
+      selection.nodes &&
+      selection.nodes.forEach(node => {
+        deleteNode(node);
+      });
+    selection &&
+      selection.links &&
+      selection.links.forEach(link => {
+        deleteLink(link);
+      });
   }
 
   componentDidMount() {
@@ -203,25 +215,23 @@ class Canvas extends React.PureComponent {
     this.setPercent(-1);
   }
 
-  clickCanvas(event) {
-    const { clickScene } = this.props;
-    clickScene();
-    event.preventDefault();
-    event.stopPropagation();
-  }
-
   render() {
     const { connectDropTarget, nodes, links, loadingPercent } = this.props;
     return (
       connectDropTarget &&
       connectDropTarget(
-        <div className="canvas" onClick={this.clickCanvas}>
+        <div className="canvas">
           <ProgressBar
             percent={loadingPercent}
             onTop={true}
             spinner={"right"}
           />
-          <GraphView ref={this.graphview} nodes={nodes} links={links} />
+          <GraphView
+            ref={this.graphview}
+            nodes={nodes}
+            links={links}
+            deleteSelection={this.deleteSelection}
+          />
         </div>
       )
     );

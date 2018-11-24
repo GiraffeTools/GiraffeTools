@@ -26,8 +26,8 @@ class Node extends React.Component {
   }
 
   click() {
-    const { clickNode, id } = this.props;
-    clickNode(id);
+    const { clickItem, id } = this.props;
+    clickItem(id, "node");
     d3.event.stopPropagation();
   }
 
@@ -61,7 +61,7 @@ class Node extends React.Component {
       y,
       width,
       colour,
-      selectedNode,
+      selectedNodes,
       parameters
     } = this.props;
     const { hovered } = this.state;
@@ -86,7 +86,18 @@ class Node extends React.Component {
 
     return (
       <g ref={svg => (this.svgRef = svg)} transform={`translate(${x},${y})`}>
-        <rect fill={colour} rx={6} ry={6} width={`${width}px`} height={dy} />
+        <rect
+          fill={colour}
+          rx={6}
+          ry={6}
+          width={`${width}px`}
+          height={dy}
+          filter={
+            selectedNodes && selectedNodes.includes(id)
+              ? "url(#selection-glow)"
+              : ""
+          }
+        />
         <text
           fill="white"
           textAnchor="middle"

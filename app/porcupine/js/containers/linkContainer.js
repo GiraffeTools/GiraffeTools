@@ -1,11 +1,14 @@
 import { connect } from "react-redux";
 
 import Link from "../components/link";
-import { deleteLink } from "../actions";
+import { clickItem, deleteLink } from "../actions";
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  selectedLinks: state.scene.selection.links
+});
 
 const mapDispatchToProps = dispatch => ({
+  clickItem: (linkId, type) => dispatch(clickItem(linkId, type)),
   deleteLink: linkId => dispatch(deleteLink(linkId))
 });
 

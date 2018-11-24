@@ -38,21 +38,21 @@ class Parameter extends Model {
         });
         break;
       case REMOVE_NODE:
-        payload.node.parameters.forEach(portRef => {
-          Parameter.withId(portRef.id).delete();
-        });
+        Parameter.all()
+          .filter(parameter => parameter.node == payload.id)
+          .delete();
         break;
       case ADD_PARAMETER:
         Parameter.create(payload);
         break;
       case ADD_PARAMETER_TO_NODE:
-        if (!Parameter.filter({ id: payload.id }).exists()) {
+        const { id } = payload;
+        if (!Parameter.filter({ id }).exists()) {
           Parameter.create(payload);
         }
         break;
       case REMOVE_PARAMETER:
-        const port = Parameter.withId(payload.portId);
-        port.delete();
+        Parameter.withId(payload.id).delete();
         break;
       case UPDATE_PARAMETER:
         Parameter.withId(payload.parameterId).update(payload.newValues);

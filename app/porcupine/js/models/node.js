@@ -10,13 +10,11 @@ import {
 } from "../actions/actionTypes";
 
 class Node extends Model {
-  static reducer(action, Node, session) {
+  static reducer(action, Node) {
     const { type, payload } = action;
     switch (type) {
       case CLEAR_DATABASE:
-        session.Node.all()
-          .toRefArray()
-          .forEach(item => Node.withId(item.id).delete());
+        Node.all().delete();
         break;
       case ADD_NODE:
         // parameters are automatically saved in the Port reducer
@@ -24,15 +22,14 @@ class Node extends Model {
         Node.create(payload);
         break;
       case REMOVE_NODE:
-        const node = Node.withId(payload.node.id);
-        node.delete();
+        Node.withId(payload.id).delete();
         break;
       case ADD_PARAMETER_TO_NODE:
         Node.withId(payload.nodeId).parameters.add(payload.parameter);
         break;
-        // case REMOVE_PARAMETER_FROM_NODE:
-        // Node.withId(payload.nodeId).parameters.add(payload.port);
-        break;
+      // case REMOVE_PARAMETER_FROM_NODE:
+      // Node.withId(payload.nodeId).parameters.add(payload.port);
+      // break;
       case UPDATE_NODE:
         Node.withId(payload.nodeId).update(payload.newValues);
         break;

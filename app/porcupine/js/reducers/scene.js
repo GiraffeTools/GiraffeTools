@@ -2,14 +2,17 @@ import {
   ZOOM_IN,
   ZOOM_OUT,
   HOVER_PORT,
-  CLICK_NODE,
-  CLICK_SCENE,
+  CLICK_ITEM,
+  REMOVE_NODE,
   SET_MOUSE_STATE
 } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
   hoveredPort: null,
-  selectedNode: null
+  selection: {
+    links: null,
+    nodes: null
+  }
 };
 
 export default function scene(state = INITIAL_STATE, action) {
@@ -24,14 +27,36 @@ export default function scene(state = INITIAL_STATE, action) {
         ...state,
         hoveredPort: { id: payload.portId, type: payload.type }
       };
-    case CLICK_NODE:
+    case REMOVE_NODE:
       return {
         ...state,
-        selectedNode:
-          payload.nodeId === state.selectedNode ? null : payload.nodeId
+        selection: {
+          links: state.selection.links,
+          nodes: null
+        }
       };
-    case CLICK_SCENE:
-      return { ...state, selectedNode: null };
+    case CLICK_ITEM:
+      const selection = {
+        nodes:
+          payload.item === "node" &&
+          !(
+            state.selection.nodes &&
+            state.selection.nodes.includes(payload.id) &&
+            state.selection.nodes.length == 1
+          )
+            ? [payload.id]
+            : null,
+        links:
+          payload.item === "link" &&
+          !(
+            state.selection.links &&
+            state.selection.links.includes(payload.id) &&
+            state.selection.links.length == 1
+          )
+            ? [payload.id]
+            : null
+      };
+      return { ...state, selection };
     default:
       return state;
   }

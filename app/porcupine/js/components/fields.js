@@ -4,8 +4,8 @@ import FieldContainer from "../containers/fieldContainer";
 
 const Fields = ({ parameters }) => (
   <form className="form-horizontal">
-    {parameters.map(port => (
-      <FieldContainer {...port} key={port.id} />
+    {parameters.map(parameter => (
+      <FieldContainer {...parameter} key={parameter.id} />
     ))}
   </form>
 );

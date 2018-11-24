@@ -24,7 +24,7 @@ class ParameterPane extends React.Component {
   }
 
   render() {
-    const { selectedNode, deleteNode, clickNode } = this.props;
+    const { selectedNode, deleteNode, clickItem } = this.props;
     return (
       <div className={"setparams" + (selectedNode ? " setparamsActive" : "")}>
         <div className="setHead">
@@ -43,7 +43,7 @@ class ParameterPane extends React.Component {
           </div>
           <i
             className="fas fa-times sidebar__close-icon"
-            onClick={() => clickNode(null)}
+            onClick={() => clickItem(null)}
             aria-hidden="true"
           />
         </div>
@@ -58,8 +58,7 @@ class ParameterPane extends React.Component {
             type="button"
             className="btn btn-block deleteLayerButton sidebar-heading"
             onClick={() => {
-              deleteNode(selectedNode);
-              clickNode(null);
+              deleteNode(selectedNode.id);
             }}
           >
             DELETE NODE

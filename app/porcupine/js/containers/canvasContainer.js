@@ -9,7 +9,9 @@ import {
   clearDatabase,
   repositionPorts,
   updateNodePosition,
-  clickScene,
+  clickItem,
+  deleteNode,
+  deleteLink,
   updateLoadingPercent,
   setPorkFile
 } from "../actions";
@@ -17,6 +19,7 @@ import {
 const mapStateToProps = state => ({
   loadingPercent: state.ui.loadingPercent,
   user: state.user,
+  selection: state.scene.selection,
   nodes: nodesWithParameters(state),
   links: linksWithPorts(state)
 });
@@ -24,10 +27,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   addNode: node => dispatch(addNode(node)),
   addLink: link => dispatch(addLink(link)),
+  deleteNode: nodeId => dispatch(deleteNode(nodeId)),
+  deleteLink: linkId => dispatch(deleteLink(linkId)),
   setPorkFile: porkfile => dispatch(setPorkFile(porkfile)),
   addParameterToNode: (parameter, nodeId) =>
     dispatch(addParameterToNode(parameter, nodeId)),
-  clickScene: () => dispatch(clickScene()),
+  clickItem: () => dispatch(clickItem()),
   repositionPorts: node => dispatch(repositionPorts(node)),
   updateLoadingPercent: percent => dispatch(updateLoadingPercent(percent)),
   updateNodePosition: (nodeId, offset) =>

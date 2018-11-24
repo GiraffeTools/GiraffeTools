@@ -20,10 +20,6 @@ class Port extends React.Component {
       .call(d3.drag().on("start", () => this.drag(this.props.type)));
   }
 
-  click() {
-    d3.event.stopPropagation();
-  }
-
   hover() {
     const { hoverPort, id, type } = this.props;
     hoverPort(id, type);
