@@ -4,7 +4,7 @@ import Node from "../components/node";
 import { clickItem, updateNodePosition, repositionPorts } from "../actions";
 
 const mapStateToProps = state => ({
-  selectedNodes: state.scene.selection.nodes
+  selectedNodes: state.scene.selection && state.scene.selection.nodes
 });
 
 const mapDispatchToProps = dispatch => ({

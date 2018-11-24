@@ -3,10 +3,10 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { createLogger } from "redux-logger";
 import { persistStore } from "redux-persist";
 
-import giraffeApp from "../reducers";
+import porcupineApp from "../reducers";
 
 const store = createStore(
-  giraffeApp,
+  porcupineApp,
   composeWithDevTools(applyMiddleware(createLogger()))
 );
 

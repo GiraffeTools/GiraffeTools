@@ -4,7 +4,7 @@ import Link from "../components/link";
 import { clickItem, deleteLink } from "../actions";
 
 const mapStateToProps = state => ({
-  selectedLinks: state.scene.selection.links
+  selectedLinks: state.scene.selection && state.scene.selection.links
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -5,7 +5,7 @@ import { addLink, hoverPort, startLink, updateParameter } from "../actions";
 
 const mapStateToProps = state => ({
   hoveredPort: state.scene.hoveredPort,
-  selectedLinks: state.scene.selection.links
+  selectedLinks: state.scene.selection && state.scene.selection.links
 });
 
 const mapDispatchToProps = dispatch => ({
