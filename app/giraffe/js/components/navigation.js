@@ -79,7 +79,7 @@ class Navigation extends React.Component {
                 <h3>Join Slack</h3>
               </a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item border-bottom">
               <a
                 className="nav-link"
                 href="/github/TimVanMourik/SomeGiraffeExample"
@@ -89,12 +89,22 @@ class Navigation extends React.Component {
             </li>
             {user &&
               user.access_token && (
-                <li className="nav-item">
+                <li className="nav-item border-bottom">
                   <a className="nav-link" href="#">
                     <h3>Log out</h3>
                   </a>
                 </li>
               )}
+            <li className="nav-item">
+              <a className="nav-link" href="/slack">
+                <h3>Slack</h3>
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="/faq">
+                <h3>FAQ</h3>
+              </a>
+            </li>
           </ul>
         </WatchOutsideClick>
       </div>

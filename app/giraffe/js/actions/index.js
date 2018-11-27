@@ -1,8 +1,4 @@
-import {
-  SET_TOKEN,
-  TOGGLE_NAVIGATION,
-  TOGGLE_SMALL_SCREEN_ALERT
-} from "./actionTypes";
+import { SET_TOKEN, TOGGLE_NAVIGATION } from "./actionTypes";
 
 export const setToken = token => ({
   type: SET_TOKEN,
@@ -11,8 +7,4 @@ export const setToken = token => ({
 
 export const toggleNavigation = () => ({
   type: TOGGLE_NAVIGATION
-});
-
-export const toggleSmallScreenAlert = () => ({
-  type: TOGGLE_SMALL_SCREEN_ALERT
 });

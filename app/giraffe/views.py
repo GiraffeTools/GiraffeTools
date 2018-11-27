@@ -2,15 +2,12 @@ import urllib.error
 import urllib.request
 
 from django.http import Http404
-from django.http import HttpResponseRedirect
 from django.template.response import TemplateResponse
 from django.template.exceptions import TemplateDoesNotExist
 from django.template import loader
 
 from giraffe.models import GiraffeProject
 from giraffe.utils import are_valid_github_details
-from giraffe.utils import send_slack_invitation_to_email
-from giraffe.forms import SlackForm
 
 
 def index(request):
@@ -94,20 +91,3 @@ def projectTool(request, ghuser="", ghrepo="", ghbranch="master", toolName=""):
         }
 
     return TemplateResponse(request, template_name, params)
-
-
-def slack(request):
-    if request.method == "POST":
-        form = SlackForm(request.POST)
-        if form.is_valid():
-            send_slack_invitation_to_email(form.cleaned_data["email"])
-            return HttpResponseRedirect("/slack/thanks")
-
-    else:
-        form = SlackForm()
-
-    return TemplateResponse(request, "slack.html", {"form": form})
-
-
-def slack_thanks(request):
-    return TemplateResponse(request, "slack_thanks.html")

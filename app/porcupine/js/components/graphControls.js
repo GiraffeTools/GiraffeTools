@@ -1,5 +1,5 @@
 import React from "react";
-import { FaExpand, FaTrash } from "react-icons/fa";
+import { FaExpand, FaTrashAlt } from "react-icons/fa";
 
 const steps = 100; // Slider steps
 
@@ -63,7 +63,7 @@ class GraphControls extends React.Component {
           <FaExpand />
         </button>
         <button id="delete-selection" onMouseDown={this.props.deleteSelection}>
-          <FaTrash />
+          <FaTrashAlt />
         </button>
       </div>
     );

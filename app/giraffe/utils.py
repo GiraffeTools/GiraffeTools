@@ -2,13 +2,7 @@ import json
 from urllib.error import HTTPError
 from urllib.request import urlopen
 
-from django.conf import settings
-
 import pydash
-from slackclient import SlackClient
-
-
-sc = SlackClient(settings.SLACK_API_TOKEN)
 
 
 def are_valid_github_details(ghuser="", ghrepo="", ghbranch="master"):
@@ -26,7 +20,3 @@ def are_valid_github_details(ghuser="", ghrepo="", ghbranch="master"):
         isValid or pydash.get(branchInfo, "name", "") == ghbranch,
         False
     )
-
-
-def send_slack_invitation_to_email(email):
-    sc.api_call("users.admin.invite", email=email)

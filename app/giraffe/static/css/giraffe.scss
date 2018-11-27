@@ -47,6 +47,7 @@ h2 {
 h3 {
   font-family: 'Nexa-Bold';
   font-size: 1.6rem;
+  color: $h3-color;
 }
 // Box titles
 h4 {
@@ -378,6 +379,12 @@ padding-bottom: 1.5rem;
   margin-top: 66px;
   margin-bottom: 34px;
   width: 20px;
+}
+
+#slack-info{
+  color: grey;
+  margin-bottom: 3rem;
+  font-size: 1.4rem;
 }
 
 #hero-subtitle{

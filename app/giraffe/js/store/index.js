@@ -7,7 +7,7 @@ import giraffeApp from "../reducers";
 
 const store = createStore(
   giraffeApp,
-  composeWithDevTools(applyMiddleware(createLogger()))
+  composeWithDevTools(applyMiddleware(/*createLogger()*/))
 );
 
 persistStore(store, null, () => store.getState());

@@ -1,9 +1,14 @@
 import json
 import requests
+from slackclient import SlackClient
 from django.http import HttpResponse
 from django.conf import settings
+from rest_framework import status
+
 from github.views import logged_in
 from github.utils import is_github_token_valid
+
+sc = SlackClient(settings.SLACK_API_TOKEN)
 
 
 def faq_questions(request):
@@ -64,3 +69,11 @@ def push_to_github(request):
     response = requests.put(url, data=message, headers=headers)
 
     return HttpResponse(response, content_type="application/json")
+
+
+def send_slack_invite(request):
+    body = json.loads(request.body)
+    email = body["email"]
+    sc.api_call("users.admin.invite", email=email)
+
+    return HttpResponse(status=status.HTTP_200_OK)

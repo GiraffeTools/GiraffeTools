@@ -7,8 +7,15 @@ import porcupineApp from "../reducers";
 
 const store = createStore(
   porcupineApp,
-  composeWithDevTools(applyMiddleware(createLogger()))
+  composeWithDevTools(applyMiddleware(/*createLogger()*/))
 );
+
+if (module.hot) {
+  // Enable Webpack hot module replacement for reducers
+  module.hot.accept("../reducers", () => {
+    store.replaceReducer(require("../reducers/index"));
+  });
+}
 
 persistStore(store, null, () => store.getState());
 
