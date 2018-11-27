@@ -6,8 +6,9 @@ class SlackInvite extends React.Component {
     super(props);
     this.state = {
       value: "",
+      submitted: false,
       emailValid: true,
-      submitted: false
+      succes: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -31,6 +32,9 @@ class SlackInvite extends React.Component {
         emailValid: true
       });
     }
+    this.setState({
+      submitted: true
+    });
     const body = JSON.stringify({ email });
 
     const headers = {
@@ -48,12 +52,11 @@ class SlackInvite extends React.Component {
       credentials: "same-origin",
       body
     })
-      .then(response => {
-        if (response.status == 200) {
-          setState({
-            submitted: true
-          });
-        }
+      .then(response => response.json())
+      .then(answer => {
+        this.setState({
+          success: answer["ok"]
+        });
       })
       .catch(error => {
         console.log(error);
@@ -64,14 +67,13 @@ class SlackInvite extends React.Component {
   }
 
   render() {
-    const { emailValid, submitted } = this.state;
+    const { success, emailValid, submitted } = this.state;
 
     return (
       <div className="container text-center" id="slack-info">
         <p>
           Would you like to join the GiraffeTools Slack? Fill in your email
-          address here, and you'll automatically receive an invitation link in
-          your inbox!
+          address here, and you'll receive an invitation link in your inbox!
         </p>
         <img src="/static/img/separator_red.svg" className="separator-red" />
         <div>
@@ -84,39 +86,58 @@ class SlackInvite extends React.Component {
             />
           </label>
           <input type="submit" value="Submit" onClick={this.handleSubmit} />
-          <div
-            className={
-              "alert alert-success alert-dismissible fade" +
-              (submitted ? " show" : "")
-            }
-            role="alert"
-          >
-            <button
-              type="button"
-              className="close"
-              data-dismiss="alert"
-              aria-label="Close"
+          <div className="float">
+            <div
+              className={
+                "alert alert-success alert-dismissible fade" +
+                (submitted && success ? " show" : "")
+              }
+              role="alert"
             >
-              <span aria-hidden="true">&times;</span>
-            </button>
-            Thanks for signing up! Check your email for the Slack invite!
-          </div>
-          <div
-            className={
-              "alert alert-danger alert-dismissible fade" +
-              (emailValid ? "" : " show")
-            }
-            role="alert"
-          >
-            Please enter a valid email address
-            <button
-              type="button"
-              className="close"
-              data-dismiss="alert"
-              aria-label="Close"
+              <button
+                type="button"
+                className="close"
+                data-dismiss="alert"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+              Thanks for signing up! Check your email for the Slack invite!
+            </div>
+            <div
+              className={
+                "alert alert-danger alert-dismissible fade" +
+                (!emailValid ? " show" : "")
+              }
+              role="alert"
             >
-              <span aria-hidden="true">&times;</span>
-            </button>
+              Please enter a valid email address
+              <button
+                type="button"
+                className="close"
+                data-dismiss="alert"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div
+              className={
+                "alert alert-danger alert-dismissible fade" +
+                (submitted && !success ? " show" : "")
+              }
+              role="alert"
+            >
+              Hmm, something went wrong... Maybe you already signed up?
+              <button
+                type="button"
+                className="close"
+                data-dismiss="alert"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
