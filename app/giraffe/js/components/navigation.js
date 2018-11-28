@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import WatchOutsideClick from "./watchOutsideClick";
 
@@ -71,14 +71,6 @@ class Navigation extends React.Component {
                 <h3>Example project</h3>
               </a>
             </li>
-            {user &&
-              user.access_token && (
-                <li className="nav-item border-bottom">
-                  <a className="nav-link" href="#">
-                    <h3>Log out</h3>
-                  </a>
-                </li>
-              )}
             <li className="nav-item">
               <a className="nav-link" href="/slack">
                 <h3>Slack</h3>
@@ -99,7 +91,10 @@ class Navigation extends React.Component {
                 }
               >
                 {user && user.access_token ? (
-                  <h3>My projects</h3>
+                  <Fragment>
+                    <h3>{`@${user.github_handle}`}</h3>
+                    <h3>My projects</h3>
+                  </Fragment>
                 ) : (
                   <span id="login-text-nav">
                     <img src="/static/img/gh-icon.png" id="github-button" />
@@ -108,6 +103,14 @@ class Navigation extends React.Component {
                 )}
               </a>
             </li>
+            {user &&
+              user.access_token && (
+                <li className="nav-item border-bottom">
+                  <a className="nav-link" href="#">
+                    <h3>Log out</h3>
+                  </a>
+                </li>
+              )}
           </ul>
         </div>
         <a
