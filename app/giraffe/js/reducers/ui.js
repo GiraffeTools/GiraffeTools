@@ -1,10 +1,8 @@
-import { TOGGLE_NAVIGATION } from "../actions/actionTypes";
+const INITIAL_STATE = {};
 
-const ui = (state = { showNavigation: false }, action) => {
+const ui = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
   switch (type) {
-    case TOGGLE_NAVIGATION:
-      return { ...state, showNavigation: !state.showNavigation };
     default:
       return state;
   }

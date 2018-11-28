@@ -86,7 +86,7 @@ class SlackInvite extends React.Component {
             />
           </label>
           <input type="submit" value="Submit" onClick={this.handleSubmit} />
-          <div className="float">
+          <div className="">
             <div
               className={
                 "alert alert-success alert-dismissible fade" +

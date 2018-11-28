@@ -1,10 +1,10 @@
 import React from "react";
 
-import NavigationContainer from "../containers/navigationContainer";
+import Navigation from "./navigation";
 
 const Banner = ({ title }) => (
   <div className="container-fluid banner position-relative">
-    <NavigationContainer />
+    <Navigation />
     <a href="/">
       <img
         src="/static/img/giraffetools_logo.png"

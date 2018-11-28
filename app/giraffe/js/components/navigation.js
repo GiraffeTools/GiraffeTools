@@ -7,8 +7,10 @@ class Navigation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+      user: null,
+      showNavigation: false
     };
+    this.toggleNavigation = this.toggleNavigation.bind(this);
   }
 
   componentDidMount() {
@@ -18,25 +20,26 @@ class Navigation extends React.Component {
       .catch();
   }
 
+  toggleNavigation() {
+    this.setState({
+      showNavigation: !this.state.showNavigation
+    });
+  }
+
   render() {
-    const { toggleNavigation, showNavigation } = this.props;
+    const { showNavigation } = this.state;
     const { user } = this.state;
 
     return (
-      <div className="fixed-top" id="nav-top">
-        <a
-          className={showNavigation ? " collapse" : ""}
-          onClick={toggleNavigation}
-        >
-          <img src="/static/img/nav_triangle.svg" id="nav-triangle" />
-        </a>
-
-        <WatchOutsideClick
-          onOutsideClick={toggleNavigation}
-          isActive={showNavigation}
-          classes={
-            "nav nav-out flex-column float-right" +
-            (showNavigation ? "" : " collapse")
+      <div
+        className={"fixed-top" + (showNavigation ? " out" : "")}
+        id="nav-top"
+      >
+        <div
+          id="collapseable-nav"
+          className={
+            "nav navigation flex-column float-right" +
+            (showNavigation ? " out" : "")
           }
         >
           <div className="d-flex" id="brand-box">
@@ -45,25 +48,6 @@ class Navigation extends React.Component {
             </a>
           </div>
           <ul id="nav-list">
-            <li className="nav-item border-bottom">
-              <a
-                className="nav-link"
-                href={
-                  user && user.access_token
-                    ? `/github/${user.github_handle}`
-                    : `/_github/auth/?redirect_uri=/`
-                }
-              >
-                {user && user.access_token ? (
-                  <h3>My projects</h3>
-                ) : (
-                  <span id="login-text-nav">
-                    <img src="/static/img/gh-icon.png" id="github-button" />
-                    Login with GitHub
-                  </span>
-                )}
-              </a>
-            </li>
             <li className="nav-item">
               <a className="nav-link" href="/porcupine">
                 <h3>Porcupine</h3>
@@ -100,13 +84,40 @@ class Navigation extends React.Component {
                 <h3>Slack</h3>
               </a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item border-bottom">
               <a className="nav-link" href="/faq">
                 <h3>FAQ</h3>
               </a>
             </li>
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                href={
+                  user && user.access_token
+                    ? `/github/${user.github_handle}`
+                    : `/_github/auth/?redirect_uri=/`
+                }
+              >
+                {user && user.access_token ? (
+                  <h3>My projects</h3>
+                ) : (
+                  <span id="login-text-nav">
+                    <img src="/static/img/gh-icon.png" id="github-button" />
+                    Login with GitHub
+                  </span>
+                )}
+              </a>
+            </li>
           </ul>
-        </WatchOutsideClick>
+        </div>
+        <a
+          role="button"
+          onClick={() => {
+            this.toggleNavigation();
+          }}
+        >
+          <img src="/static/img/nav_triangle.svg" id="nav-triangle" />
+        </a>
       </div>
     );
   }

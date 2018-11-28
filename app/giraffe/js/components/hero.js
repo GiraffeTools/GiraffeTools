@@ -1,12 +1,12 @@
 import React from "react";
 import Typing from "react-typing-animation";
 
-import NavigationContainer from "../containers/navigationContainer";
+import Navigation from "./navigation";
 import LoginButton from "./loginButton";
 
 const Hero = () => (
   <div id="hero">
-    <NavigationContainer />
+    <Navigation />
     <div className="hero-text position-relative">
       <img src="/static/img/giraffetools_logo.png" id="hero-logo" />
       <div>
