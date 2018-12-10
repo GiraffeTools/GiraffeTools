@@ -19,6 +19,7 @@ from django.urls import path
 # from django.contrib import admin
 
 import giraffe.views
+import armadillo.views
 import porcupine.views
 from api.urls import api_urls
 
@@ -33,6 +34,10 @@ urlpatterns = [
 
     # porcupine calls
     url(r"^porcupine/?", porcupine.views.porcupine, name="porcupine"),
+
+    # armadillo calls
+    url(r"^armadillo/?", armadillo.views.armadillo, name="armadillo"),
+
     # Make sure everything from the react router is used.
     # url(r"^porcupine/^(?:.*)/?$?", porcupine.views.porcupine,
     # name="porcupine"),  # Ignore LineLengthBear
@@ -40,6 +45,8 @@ urlpatterns = [
     # giraffe calls
     url(r"^$", giraffe.views.index, name="index"),
     # Make sure everything from the react router is used.
+    #TODO: This also makes every giraffe.tools/[rubbish] refer to the homepage.
+    #      instead, return 404
     url(r"^(?:.*)/?$", giraffe.views.index, name="index"),
 
 

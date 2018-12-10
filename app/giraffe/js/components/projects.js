@@ -14,12 +14,14 @@ const ProjectBox = repository => (
         </div>
       </div>
       <img src="/static/img/separator_red.svg" />
+      <p>
       added{" "}
       {new Intl.DateTimeFormat("en-GB", {
         year: "numeric",
         month: "long",
         day: "2-digit"
       }).format(new Date(repository.created_at))}
+      </p>
     </div>
     <div className="col text-right">
       {repository.isGiraffeProject ? (

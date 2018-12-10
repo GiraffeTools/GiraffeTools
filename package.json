@@ -22,6 +22,8 @@
     "@babel/plugin-transform-object-assign": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-es2015": "^7.0.0-beta.53",
+    "aframe": "^0.8.2",
+    "aframe-react": "^4.4.0",
     "axios": "^0.18.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",

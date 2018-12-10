@@ -35,6 +35,12 @@ WEBPACK_LOADER = {
         "STATS_FILE": os.path.join(BASE_DIR,
                                    "../webpack/webpack-stats-prod.json"),
     },
+    "ARMADILLO": {
+        "CACHE": not DEBUG,
+        "BUNDLE_DIR_NAME": "webpack_bundles/",  # must end with slash
+        "STATS_FILE": os.path.join(BASE_DIR,
+                                   "../webpack/webpack-stats-prod.json"),
+    },
     "PORCUPINE": {
         "CACHE": not DEBUG,
         "BUNDLE_DIR_NAME": "webpack_bundles/",  # must end with slash

@@ -7,6 +7,11 @@ var config = require("./webpack.base.config.js");
 config.mode = "development";
 // Use webpack dev server
 config.entry = {
+  armadillo: [
+    "webpack-dev-server/client?http://localhost:3000",
+    "webpack/hot/only-dev-server",
+    path.resolve(__dirname, "../app/armadillo/js/index.js")
+  ],
   porcupine: [
     "webpack-dev-server/client?http://localhost:3000",
     "webpack/hot/only-dev-server",
