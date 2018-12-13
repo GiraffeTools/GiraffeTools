@@ -53,9 +53,7 @@ class GraphView extends React.Component {
   }
 
   // Keeps 'zoom' contained
-  containZoom = () => {
-    d3.event.preventDefault();
-  };
+  containZoom = () => {};
   // View 'zoom' handler
   handleZoom = () => {
     this.setState({

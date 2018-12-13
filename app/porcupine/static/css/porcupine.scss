@@ -241,6 +241,13 @@ $button-color: #FFFFFF;
   z-index: auto;
 }
 
+.field-icon{
+  color: black;
+  &.toggled{
+    color: lightgrey;
+  }
+}
+
 .canvas-icon{
   margin: 0.4rem;
 }

@@ -30,6 +30,7 @@ class Field extends React.Component {
       id,
       name,
       isVisible,
+      isIterable,
       value,
       data,
       isEnabled,
@@ -132,7 +133,18 @@ class Field extends React.Component {
           >
             <i
               className={"fas " + (isVisible ? "fa-eye" : "fa-eye-slash")}
-              title={"Make " + (isVisible ? "Invisible" : "Visible")}
+              title={"Make " + (isVisible ? "invisible" : "visible")}
+            />{" "}
+          </div>
+          <div
+            className="sidebar__node-visibility"
+            onClick={() => this.changeParams(id, "isIterable", !isIterable)}
+          >
+            <i
+              className={
+                "fas fa-retweet field-icon" + (isIterable ? "" : " toggled")
+              }
+              title={"Make " + (isIterable ? "non-iterable" : "iterable")}
             />{" "}
           </div>
           <button
