@@ -47,11 +47,6 @@ const styles = {
     "&active": {
       backgroundColor: styleSheet.tertiaryColor
     }
-  },
-  tabPane: {
-    "> pre": {
-      overflowX: "hidden!important"
-    }
   }
 };
 
