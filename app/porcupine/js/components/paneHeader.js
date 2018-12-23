@@ -20,11 +20,7 @@ const PaneHeader = ({ name, color }) => {
           {" "}
         </span>
         {name}
-        <span
-          style={[styles.sidebarDropdown]}
-        >
-          {">"}
-        </span>
+        <span style={[styles.sidebarDropdown]}>{">"}</span>
       </a>
     </div>
   );

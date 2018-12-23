@@ -1,17 +1,25 @@
 const styles = {
-  nodePreview: {
-    fontSize: "22px",
-    minWidth: "130px",
-    padding: "5px 8px",
-    textAlign: "center",
-    position: "absolute",
-    borderRadius: "6px",
-    background: "#e15e4f",
-    color: "white",
-    cursor: "pointer",
-    userSelect: "none",
-    background: "#eee",
-    color: "#222"
+  actions: {
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: "10px",
+    alignItems: "center"
+  },
+  visibility: {
+    cursor: "pointer"
+  },
+  icon: {
+    color: "black",
+    toggled: {
+      color: "lightgrey"
+    }
+  },
+  checkbox: {
+    height: "20px",
+    width: "20px",
+    position: "fixed",
+    right: "6%",
+    margin: "7px"
   }
 };
 

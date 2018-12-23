@@ -1,6 +1,6 @@
 const styles = {
   panelHeading: {
-    // padding: "8px 0",
+    marginBottom: "0.4rem",
     cursor: "pointer",
     border: "none",
     backgroundColor: "transparent",

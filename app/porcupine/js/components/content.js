@@ -12,7 +12,7 @@ import ParameterPaneContainer from "../containers/parameterPaneContainer";
 import SidebarContainer from "../containers/sidebarContainer";
 import ModalsContainer from "../containers/modalsContainer";
 import { isGitHash } from "../utils";
-import styles from '../styles/content';
+import styles from "../styles/content";
 
 @DragDropContext(MultiBackend(HTML5toTouch))
 class Content extends React.Component {
@@ -42,12 +42,8 @@ class Content extends React.Component {
       <StyleRoot>
         <SidebarContainer />
         <a style={[styles.sidebarButton, styles.close]} onClick={toggleSidebar}>
-          <label
-            style={[showSidebar ? styles.close1 : styles.open1]}
-          />
-          <label
-            style={[showSidebar ? styles.close2 : styles.open2]}
-          />
+          <label style={[showSidebar ? styles.close1 : styles.open1]} />
+          <label style={[showSidebar ? styles.close2 : styles.open2]} />
         </a>
         <div style={[styles.main]}>
           <CanvasContainer />

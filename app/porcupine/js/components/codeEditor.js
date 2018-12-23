@@ -53,17 +53,18 @@ const CodeEditor = props => {
         </nav>
       </div>
       <div>
-        <div styles={[styles.navTabContent]}>
+        <div style={[styles.navTabContent]}>
           {languages.map(language => (
             <div
               key={`nav-${language}-panel`}
               className={
-                "tab-pane fade" +
+                "code-pane fade" +
                 (language === currentTab ? " show active" : "")
               }
               id={`nav-${language}`}
               role="tabpanel"
               aria-labelledby={`nav-${language}-tab`}
+              style={[styles.tabPane]}
             >
               <Code language={`${language}`} nodes={nodes} links={links} />
             </div>

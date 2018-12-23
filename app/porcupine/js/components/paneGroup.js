@@ -7,7 +7,6 @@ import DraggablePaneElement from "../draggables/draggablePaneElement";
 import styles from "../styles/paneGroup";
 import headerStyles from "../styles/paneHeader";
 
-
 const PaneElements = ({ nodes, colour }) =>
   Object.keys(nodes).map(node => {
     const name = nodes[node]["title"]["name"].toString();
@@ -38,13 +37,13 @@ class PaneGroup extends React.Component {
 
     return (
       <div style={[styles.panel]}>
-        <div
-          style={[headerStyles.panelHeading]}
-          onClick={this.toggleActive}
-        >
+        <div style={[headerStyles.panelHeading]} onClick={this.toggleActive}>
           <span
             className="badge" //bootstrap badge class
-            style={[headerStyles.sidebarBadge, { backgroundColor: nodes.colour }]}
+            style={[
+              headerStyles.sidebarBadge,
+              { backgroundColor: nodes.colour }
+            ]}
           >
             {" "}
           </span>

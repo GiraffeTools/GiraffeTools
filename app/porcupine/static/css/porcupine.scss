@@ -7,110 +7,17 @@ html,body,#app,.app,.row-offcanvas{
 body {
   padding: 0;
   margin: 0;
+  overflow: hidden;
 }
 
 #porcupine{
   height: 100%;
 }
 
-.modal {
-  display: block;
-  pointer-events: none;
-}
-
-.tab-pane{
-  pre{
-    overflow-x: hidden!important;
+.code-pane{
+  pre {
+    overflow-x: hidden!important,
   }
-}
-
-.btn-primary{
-  background-color: #455062;
-  border-color: #455062;
-  box-shadow: none;
-  outline: none
-}
-
-.btn-primary:hover {
-  background-color: #455062;
-  border-color: #455062;
-  box-shadow: none;
-  outline: none;
-}
-
-.btn-primary:focus {
-  background-color: #455062;
-  border-color: #455062;
-  outline: none;
-}
-
-.btn-default{
-  background-color: #cdcfd2;
-  border-color: #cdcfd2;
-  box-shadow: none;
-  outline: none
-}
-
-.btn-default:hover {
-  background-color: #cdcfd2;
-  border-color: #cdcfd2;
-  box-shadow: none;
-  outline: none;
-}
-
-.btn-default:focus {
-  background-color: #cdcfd2;
-  border-color: #cdcfd2;
-  outline: none;
-}
-
-.btn:focus{
-  outline: none;
-}
-
-[draggable] {
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-  /* Required to make elements draggable in old WebKit */
-  -khtml-user-drag: element;
-  -webkit-user-drag: element;
-}
-
-button
-{
-    border: 0;
-    padding: 0px;
-    margin: 0px;
-    /*font-size: 28px;*/
-    -webkit-appearance: none;
-    outline: none;
-    background: transparent;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    /*user-select: none;*/
-}
-
-input[type="file"] {
-    display: none;
-}
-
-#sidebar::-webkit-scrollbar-track
-{
-  background-color: #F5F5F5;
-}
-
-#sidebar::-webkit-scrollbar
-{
-  width: 12px;
-  background-color: #F5F5F5;
-}
-
-#sidebar::-webkit-scrollbar-thumb
-{
-  background-color: #455062;
 }
 
 .customScrollbar::-webkit-scrollbar-track

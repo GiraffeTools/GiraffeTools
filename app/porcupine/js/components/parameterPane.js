@@ -61,7 +61,6 @@ class ParameterPane extends React.Component {
           <br />
           <button
             style={[styles.delete]}
-            type="button"
             className="btn btn-block"
             onClick={() => {
               deleteNode(selectedNode.id);

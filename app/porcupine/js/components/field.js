@@ -1,7 +1,7 @@
 import React from "react";
 import Radium from "radium";
 
-import styles from "../styles/sidebar";
+import styles from "../styles/field";
 
 class Field extends React.Component {
   constructor(props) {
@@ -140,7 +140,7 @@ class Field extends React.Component {
             onClick={() => this.changeParams(id, "isIterable", !isIterable)}
           >
             <i
-              style={[styles.icon, isIterable && styles.icon.toggled]}
+              style={[styles.icon, !isIterable && styles.icon.toggled]}
               className="fas fa-retweet"
               title={"Make " + (isIterable ? "non-iterable" : "iterable")}
             />{" "}
