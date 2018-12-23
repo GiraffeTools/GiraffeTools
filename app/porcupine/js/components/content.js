@@ -43,10 +43,10 @@ class Content extends React.Component {
         <SidebarContainer />
         <a style={[styles.sidebarButton, styles.close]} onClick={toggleSidebar}>
           <label
-          // style={[showSidebar ? styles.close1 : styles.open1]}
+            style={[showSidebar ? styles.close1 : styles.open1]}
           />
           <label
-          // style={[showSidebar ? styles.close2 : styles.open2]}
+            style={[showSidebar ? styles.close2 : styles.open2]}
           />
         </a>
         <div style={[styles.main]}>

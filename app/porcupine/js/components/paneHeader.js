@@ -14,13 +14,17 @@ const PaneHeader = ({ name, color }) => {
         aria-controls={name}
       >
         <span
-          className="badge sidebar-badge"
-          style={{ backgroundColor: color }}
+          className="badge"
+          style={[styles.sidebarBadge, { backgroundColor: color }]}
         >
           {" "}
         </span>
         {name}
-        <span className="sidebar-dropdown">{">"}</span>
+        <span
+          style={[styles.sidebarDropdown]}
+        >
+          {">"}
+        </span>
       </a>
     </div>
   );

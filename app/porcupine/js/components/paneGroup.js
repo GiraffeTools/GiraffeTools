@@ -1,18 +1,12 @@
 import React from "react";
 import Radium from "radium";
 
+import NestedPaneGroup from "./nestedPaneGroup";
 import PaneHeader from "./paneHeader";
 import DraggablePaneElement from "../draggables/draggablePaneElement";
 import styles from "../styles/paneGroup";
+import headerStyles from "../styles/paneHeader";
 
-const NestedPaneGroup = ({ categories }) =>
-  Object.keys(categories).map(category => (
-    <PaneGroup
-      key={category}
-      category={category}
-      nodes={categories[category]}
-    />
-  ));
 
 const PaneElements = ({ nodes, colour }) =>
   Object.keys(nodes).map(node => {
@@ -43,29 +37,27 @@ class PaneGroup extends React.Component {
     const { active } = this.state;
 
     return (
-      <div style={[styles.panel]} className="panel">
+      <div style={[styles.panel]}>
         <div
-          style={[styles.panelHeading]}
-          role="tab"
+          style={[headerStyles.panelHeading]}
           onClick={this.toggleActive}
         >
           <span
-            className="badge"
-            style={[styles.sidebarBadge, { backgroundColor: nodes.colour }]}
+            className="badge" //bootstrap badge class
+            style={[headerStyles.sidebarBadge, { backgroundColor: nodes.colour }]}
           >
             {" "}
           </span>
           {category}
-          <span style={[styles.sidebarDropdown]}>{">"}</span>
+          <span style={[headerStyles.sidebarDropdown]}>{">"}</span>
         </div>
         <div
           style={[
             styles.panelCollapse,
             active && styles.panelCollapse.collapse
           ]}
-          role="tabpanel"
         >
-          <div role="tablist" aria-multiselectable="true">
+          <div aria-multiselectable="true">
             {active &&
               nodes.categories && (
                 <NestedPaneGroup categories={nodes.categories} />

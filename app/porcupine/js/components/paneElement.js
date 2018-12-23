@@ -1,5 +1,7 @@
 import React from "react";
+import Radium from "radium";
 import { DragSource } from "react-dnd";
+
 import ItemTypes from "./itemTypes";
 import styles from "../styles/paneElement";
 
@@ -19,4 +21,4 @@ const PaneElement = props => {
   );
 };
 
-export default PaneElement;
+export default Radium(PaneElement);
