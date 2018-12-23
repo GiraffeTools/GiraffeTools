@@ -1,10 +1,12 @@
 import React from "react";
+import Radium from "radium";
 import * as d3 from "d3";
 
 import CustomDragLayer from "../draggables/customDragLayer";
 import GraphControls from "./graphControls";
 import Links from "./links";
 import Nodes from "./nodes";
+import styles from "../styles/graphView";
 
 const defaults = {
   minZoom: 0.15,
@@ -220,7 +222,7 @@ class GraphView extends React.Component {
     }
 
     return (
-      <div className="viewWrapper" ref={el => (this.viewWrapper = el)}>
+      <div style={[styles.viewWrapper]} ref={el => (this.viewWrapper = el)}>
         <svg height="100%" width="100%">
           {this.renderDefs()}
           <g className="view" ref={el => (this.view = el)}>
@@ -245,4 +247,4 @@ class GraphView extends React.Component {
   }
 }
 
-export default GraphView;
+export default Radium(GraphView);

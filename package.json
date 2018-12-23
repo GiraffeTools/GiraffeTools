@@ -35,6 +35,7 @@
     "lodash": "^4.17.10",
     "pluralize": "^7.0.0",
     "popper.js": "^1.14.3",
+    "radium": "^0.25.1",
     "react": "^16.4.0",
     "react-cookies": "^0.1.0",
     "react-dnd": "^5.0.0",

@@ -1,10 +1,18 @@
 import React from "react";
+import Radium from "radium";
+
+import styles from "../styles/paneHeader";
 
 const PaneHeader = ({ name, color }) => {
   const divRef = "#" + name;
   return (
-    <div className="panel-heading" role="tab">
-      <a data-toggle="collapse" aria-expanded="false" aria-controls={name}>
+    <div style={[styles.panelHeading]} role="tab">
+      <a
+        style={[styles.panelLink]}
+        data-toggle="collapse"
+        aria-expanded="false"
+        aria-controls={name}
+      >
         <span
           className="badge sidebar-badge"
           style={{ backgroundColor: color }}
@@ -12,10 +20,10 @@ const PaneHeader = ({ name, color }) => {
           {" "}
         </span>
         {name}
-        <span className="sidebar-dropdown">></span>
+        <span className="sidebar-dropdown">{">"}</span>
       </a>
     </div>
   );
 };
 
-export default PaneHeader;
+export default Radium(PaneHeader);

@@ -1,7 +1,9 @@
 import React from "react";
+import Radium from "radium";
 import { v4 } from "uuid";
 
 import PaneGroup from "./paneGroup";
+import styles from "../styles/sidebar";
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -22,21 +24,23 @@ class Sidebar extends React.Component {
     const { nodeElements } = this.state;
     return (
       <div>
-        <div id="sidebar" className={showSidebar ? " active" : ""}>
-          <div id="logo_sidebar">
+        <div
+          style={[styles.sidebar, showSidebar && styles.sidebar.active]}
+          className="customScrollbar"
+        >
+          <div style={[styles.logoSidebar]}>
             <a href="https://giraffe.tools">
               <img
+                style={[styles.logo]}
                 src={"/static/img/giraffetools_logo_notext.png"}
                 className="img-responsive"
                 alt="logo"
-                id="logo"
               />
             </a>
           </div>
           <div className="col-md-12">
             <div
-              className="panel-group"
-              id="menu"
+              style={[styles.panelGroup]}
               role="tablist"
               aria-multiselectable="true"
             >
@@ -51,21 +55,26 @@ class Sidebar extends React.Component {
                   );
                 })}
             </div>
-            <h5 className="sidebar-heading">ACTIONS</h5>
+            <h5 style={[styles.sidebarHeading]}>ACTIONS</h5>
             {user &&
               user.user && (
                 <a
-                  className="btn btn-block extra-buttons text-left"
+                  style={[styles.panelText]}
+                  className="btn btn-block"
                   href={`https://github.com/${user.user}/${user.repository}`}
                   target="_blank"
                 >
-                  <img src="/static/img/gh-icon.png" width={"10%"} />
-                  {` ${user.repository}`}
+                  <img
+                    style={[styles.panelIcon, { width: "10%" }]}
+                    src="/static/img/gh-icon.png"
+                  />
+                  Check out on GitHub
                 </a>
               )}
             {
               <a
-                className="btn btn-block extra-buttons text-left"
+                style={[styles.panelText]}
+                className="btn btn-block text-left"
                 onClick={() =>
                   openModal({
                     id: v4(),
@@ -75,8 +84,11 @@ class Sidebar extends React.Component {
                   })
                 }
               >
-                <i className="fas fa-save save-button" width={"10%"} />
-                <span className="text-black">Save to Github</span>
+                <i
+                  style={[styles.panelIcon, { width: "10%" }]}
+                  className="fas fa-save"
+                />
+                Save to GitHub
               </a>
             }
           </div>
@@ -86,4 +98,4 @@ class Sidebar extends React.Component {
   }
 }
 
-export default Sidebar;
+export default Radium(Sidebar);

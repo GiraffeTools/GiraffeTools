@@ -1,6 +1,8 @@
 import React from "react";
+import Radium from "radium";
 
 import Code from "./code";
+import styles from "../styles/codeEditor";
 
 const CodeEditor = props => {
   const {
@@ -16,21 +18,24 @@ const CodeEditor = props => {
   let currentTab = activeTab || "Nipype";
 
   return (
-    <div className={"codeWindow " + (showCodeEditor ? "codeWindowClosed" : "")}>
+    <div
+      style={[styles.codeWindow, showCodeEditor && styles.codeWindow.closed]}
+    >
       <div>
         <div
+          style={[styles.codeButton]}
           className={
-            "codeButton fas " +
-            (showCodeEditor ? "fa-angle-up" : "fa-angle-down")
+            "fas " + (showCodeEditor ? "fa-angle-up" : "fa-angle-down")
           }
           onClick={() => toggleCodeEditor()}
         />
-        <nav className="codeNav">
+        <nav style={[styles.codeNav]}>
           <div className="nav nav-tabs" id="nav-tab" role="tablist">
             {languages.map(language => (
               <a
+                style={[styles.codeNavItem]}
                 className={
-                  "nav-item nav-link code-nav" +
+                  "nav-item nav-link" +
                   (language === currentTab ? " active" : "")
                 }
                 key={`nav-${language}-tab`}
@@ -47,8 +52,8 @@ const CodeEditor = props => {
           </div>
         </nav>
       </div>
-      <div className="codeEditor">
-        <div className="tab-content" id="nav-tabContent">
+      <div>
+        <div styles={[styles.navTabContent]}>
           {languages.map(language => (
             <div
               key={`nav-${language}-panel`}
@@ -69,4 +74,4 @@ const CodeEditor = props => {
   );
 };
 
-export default CodeEditor;
+export default Radium(CodeEditor);

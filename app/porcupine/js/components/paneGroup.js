@@ -1,6 +1,9 @@
 import React from "react";
+import Radium from "radium";
+
 import PaneHeader from "./paneHeader";
 import DraggablePaneElement from "../draggables/draggablePaneElement";
+import styles from "../styles/paneGroup";
 
 const NestedPaneGroup = ({ categories }) =>
   Object.keys(categories).map(category => (
@@ -40,26 +43,29 @@ class PaneGroup extends React.Component {
     const { active } = this.state;
 
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading" role="tab" onClick={this.toggleActive}>
+      <div style={[styles.panel]} className="panel">
+        <div
+          style={[styles.panelHeading]}
+          role="tab"
+          onClick={this.toggleActive}
+        >
           <span
-            className="badge sidebar-badge"
-            style={{ backgroundColor: nodes.colour }}
+            className="badge"
+            style={[styles.sidebarBadge, { backgroundColor: nodes.colour }]}
           >
             {" "}
           </span>
           {category}
-          <span className="sidebar-dropdown">></span>
+          <span style={[styles.sidebarDropdown]}>{">"}</span>
         </div>
         <div
-          className={`panel-collapse` + (active ? "" : " collapse")}
+          style={[
+            styles.panelCollapse,
+            active && styles.panelCollapse.collapse
+          ]}
           role="tabpanel"
         >
-          <div
-            className="panel-group"
-            role="tablist"
-            aria-multiselectable="true"
-          >
+          <div role="tablist" aria-multiselectable="true">
             {active &&
               nodes.categories && (
                 <NestedPaneGroup categories={nodes.categories} />
@@ -75,4 +81,4 @@ class PaneGroup extends React.Component {
   }
 }
 
-export default PaneGroup;
+export default Radium(PaneGroup);

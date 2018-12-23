@@ -1,6 +1,8 @@
 import React from "react";
 import { FaExpand, FaTrashAlt } from "react-icons/fa";
 
+import styles from "../styles/graphControls";
+
 const steps = 100; // Slider steps
 
 class GraphControls extends React.Component {
@@ -45,11 +47,11 @@ class GraphControls extends React.Component {
 
   render() {
     return (
-      <div id="zoom-controls" className="graphControls">
-        <div id="zoom-slider-wrapper">
+      <div style={styles.zoomControls}>
+        <div style={styles.zoomSliderWrapper}>
           -
           <input
-            id="zoom-slider"
+            style={styles.zoomSlider}
             type="range"
             min={this.zoomToSlider(this.props.minZoom)}
             max={this.zoomToSlider(this.props.maxZoom)}
@@ -59,10 +61,13 @@ class GraphControls extends React.Component {
           />
           +
         </div>
-        <button id="zoom-to-fit" onMouseDown={this.props.zoomToFit}>
+        <button style={styles.zoomToFit} onMouseDown={this.props.zoomToFit}>
           <FaExpand />
         </button>
-        <button id="delete-selection" onMouseDown={this.props.deleteSelection}>
+        <button
+          style={styles.deleteSelection}
+          onMouseDown={this.props.deleteSelection}
+        >
           <FaTrashAlt />
         </button>
       </div>
