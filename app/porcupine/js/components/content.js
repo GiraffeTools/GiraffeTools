@@ -42,7 +42,9 @@ class Content extends React.Component {
     fetch("/_github/logged_in/")
       .then(response => response.json())
       .then(user => updateAuth(user))
-      .catch();
+      .catch(error => {
+        console.log({ error });
+      });
   }
 
   render() {
