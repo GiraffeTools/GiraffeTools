@@ -3,7 +3,7 @@ import _ from "lodash";
 import cookie from "react-cookies";
 
 import store from "../store";
-import { setToken } from "../actions";
+import { updateAuth } from "../actions";
 import { URL, LOGIN } from "../config";
 
 export function InvalidCredentialsException(message) {
@@ -11,7 +11,7 @@ export function InvalidCredentialsException(message) {
   this.name = "InvalidCredentialsException";
 }
 
-export function login(username, password) {
+export function login() {
   const config = {
     method: "GET",
     mode: "no-cors",
@@ -25,9 +25,11 @@ export function login(username, password) {
   return axios
     .get(`${LOGIN}?redirect_uri=/`, config)
     .then(function(response) {
-      console.log(response);
-      console.log(response.header);
-      store.dispatch(setToken(response.data.token));
+      store.dispatch(
+        updateAuth({
+          access_token: response.data.token
+        })
+      );
     })
     .catch(function(error) {
       // raise different exception if due to invalid credentials

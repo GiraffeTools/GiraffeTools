@@ -1,6 +1,9 @@
 import React from "react";
+import Radium from "radium";
 
+import LoginButton from "../../../giraffe/js/components/loginButton";
 import { savePorkFile } from "../utils/savePorkFile";
+import styles from "../styles/saveModal";
 
 class SaveModal extends React.Component {
   constructor(props) {
@@ -38,7 +41,14 @@ class SaveModal extends React.Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, auth } = this.props;
+    const loggedIn = auth && auth.access_token;
+    const yourRepo =
+      auth &&
+      auth.github_handle &&
+      user &&
+      user.user &&
+      auth.github_handle.toLowerCase() == user.user.toLowerCase();
 
     return (
       <div className="modal-content">
@@ -79,10 +89,19 @@ class SaveModal extends React.Component {
           </form>
         </div>
         <div className="modal-footer">
+          <LoginButton user={auth} styles={[styles.loginButton]} />
           <button
             type="button"
             className="btn btn-secondary"
             onClick={() => this.onConfirm()}
+            disabled={!loggedIn || !yourRepo}
+            data-toggle="tooltip"
+            data-placement="top"
+            title={
+              (!loggedIn && "You're not logged in...") ||
+              (!yourRepo && "This is not your repository...") ||
+              "Push to GitHub!"
+            }
           >
             Confirm
           </button>
@@ -99,4 +118,4 @@ class SaveModal extends React.Component {
   }
 }
 
-export default SaveModal;
+export default Radium(SaveModal);

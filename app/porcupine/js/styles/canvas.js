@@ -1,5 +1,3 @@
-// import styleSheet from '../constants/styles'
-
 const styles = {
   canvas: {
     flex: "1 1 auto",

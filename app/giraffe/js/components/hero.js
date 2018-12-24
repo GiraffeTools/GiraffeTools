@@ -1,14 +1,16 @@
 import React from "react";
+import Radium from "radium";
 import Typing from "react-typing-animation";
 
 import Navigation from "./navigation";
-import LoginButton from "./loginButton";
+import LoginButton from "../containers/loginButton";
+import styles from "../styles/hero.js";
 
 const Hero = () => (
-  <div id="hero">
+  <div style={[styles.hero]}>
     <Navigation />
-    <div className="hero-text position-relative">
-      <img src="/static/img/giraffetools_logo.png" id="hero-logo" />
+    <div className="position-relative" style={[styles.heroText]}>
+      <img src="/static/img/giraffetools_logo.png" style={[styles.heroLogo]} />
       <div>
         <div id="typewriter-text">
           <Typing loop={true} className="float-left">
@@ -26,15 +28,15 @@ const Hero = () => (
             <Typing.Backspace count={8} />
           </Typing>
         </div>
-        <img id="headline-dot" src="/static/img/headline_dot.svg" />
+        <img src="/static/img/headline_dot.svg" style={[styles.headlineDot]} />
       </div>
-      <div id="hero-subtitle">
+      <div style={[styles.heroSubtitle]}>
         Giraffe Tools are applications that make it easier to analyse all kinds
         of data!
       </div>
-      <LoginButton id="hero-login-button" />
+      <LoginButton style={[styles.heroSubtitle]} />
     </div>
   </div>
 );
 
-export default Hero;
+export default Radium(Hero);

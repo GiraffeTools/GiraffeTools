@@ -1,1 +1,1 @@
-export const SET_TOKEN = "SET_TOKEN";
+export const UPDATE_AUTH = "UPDATE_AUTH";

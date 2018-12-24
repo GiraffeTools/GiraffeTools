@@ -6,7 +6,8 @@ import {
   setUser,
   setRepository,
   setBranch,
-  setCommit
+  setCommit,
+  updateAuth
 } from "../actions";
 import { nodesWithParameters, linksWithPorts } from "../selectors/selectors";
 
@@ -21,7 +22,8 @@ const mapDispatchToProps = dispatch => ({
   setUser: user => dispatch(setUser(user)),
   setRepository: repository => dispatch(setRepository(repository)),
   setBranch: branch => dispatch(setBranch(branch)),
-  setCommit: commit => dispatch(setCommit(commit))
+  setCommit: commit => dispatch(setCommit(commit)),
+  updateAuth: user => dispatch(updateAuth(user))
 });
 
 const ContentContainer = connect(

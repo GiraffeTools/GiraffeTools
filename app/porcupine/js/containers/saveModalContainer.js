@@ -6,6 +6,7 @@ import { nodesWithParameters, linksWithPorts } from "../selectors/selectors";
 
 const mapStateToProps = state => ({
   user: state.user,
+  auth: state.auth,
   nodes: nodesWithParameters(state),
   links: linksWithPorts(state)
 });

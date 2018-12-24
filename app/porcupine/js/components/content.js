@@ -26,13 +26,23 @@ class Content extends React.Component {
 
   componentWillMount() {
     const { username, repository, branchOrCommit } = this.props.match.params;
-    const { setUser, setRepository, setBranch, setCommit } = this.props;
+    const {
+      setUser,
+      setRepository,
+      setBranch,
+      setCommit,
+      updateAuth
+    } = this.props;
     setUser(username);
     setRepository(repository);
     let string = branchOrCommit || "master";
     let isCommit = isGitHash(branchOrCommit);
     setCommit(isCommit && string);
     setBranch(!isCommit && string);
+    fetch("/_github/logged_in/")
+      .then(response => response.json())
+      .then(auth => updateAuth(auth))
+      .catch();
   }
 
   render() {
