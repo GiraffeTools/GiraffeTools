@@ -49,6 +49,7 @@ class SaveModal extends React.Component {
       user &&
       user.user &&
       auth.github_handle.toLowerCase() == user.user.toLowerCase();
+    // console.log(auth);
 
     return (
       <div className="modal-content">

@@ -11,8 +11,7 @@ const auth = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
   switch (type) {
     case UPDATE_AUTH:
-      const auth = payload.auth;
-      return { ...state, auth: { ...state.auth, auth } };
+      return { ...state, ...payload.auth };
     default:
       return state;
   }

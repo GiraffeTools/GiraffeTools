@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import LoginButton from "../components/loginButton";
 
 const mapStateToProps = state => ({
-  user: state.auth.user
+  user: state.auth
 });
 
 const mapDispatchToProps = dispatch => ({});
