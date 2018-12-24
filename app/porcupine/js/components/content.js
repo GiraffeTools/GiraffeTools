@@ -41,7 +41,7 @@ class Content extends React.Component {
     setBranch(!isCommit && string);
     fetch("/_github/logged_in/")
       .then(response => response.json())
-      .then(auth => updateAuth(auth))
+      .then(user => updateAuth(user))
       .catch();
   }
 

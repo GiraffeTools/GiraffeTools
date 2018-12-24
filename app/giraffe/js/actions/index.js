@@ -1,8 +1,8 @@
 import { UPDATE_AUTH } from "./actionTypes";
 
-export const updateAuth = auth => ({
+export const updateAuth = user => ({
   type: UPDATE_AUTH,
   payload: {
-    auth
+    user
   }
 });
