@@ -12,7 +12,7 @@ const styles = {
     overflow: "auto",
     left: "100%",
     transition: "transform 0.1s",
-    transform: "translateX(0px)",
+    transform: "translateX(0%)",
     boxShadow: "-5px 0px 10px #F3F3F3",
     active: {
       transform: "translateX(-100%)"

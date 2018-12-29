@@ -11,6 +11,9 @@ const styles = {
     closed: {
       transform: "translateY(90%)",
       transition: "transform 0.1s"
+    },
+    withSidebar: {
+      left: " 20%"
     }
   },
   codeNav: {
@@ -43,8 +46,8 @@ const styles = {
   codeNavItem: {
     backgroundColor: styleSheet.primaryLightColor,
     margin: "0 5px 0 0",
-    borderBottom: "0px!important",
-    "&active": {
+    borderBottom: "0px",
+    active: {
       backgroundColor: styleSheet.tertiaryColor
     }
   }

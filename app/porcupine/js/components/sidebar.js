@@ -29,7 +29,7 @@ class Sidebar extends React.Component {
           className="customScrollbar"
         >
           <div style={[styles.logoSidebar]}>
-            <a href="https://giraffe.tools">
+            <a href="/">
               <img
                 style={[styles.logo]}
                 src={"/static/img/giraffetools_logo_notext.png"}

@@ -11,7 +11,8 @@ const mapStateToProps = state => ({
   showCodeEditor: state.ui.showCodeEditor,
   activeTab: state.ui.activeTab,
   nodes: nodesWithParameters(state),
-  links: linksWithPortsAndNodes(state)
+  links: linksWithPortsAndNodes(state),
+  showSidebar: state.ui.showSidebar
 });
 
 const mapDispatchToProps = dispatch => ({
