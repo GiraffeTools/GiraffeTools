@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
+import Radium from "radium";
 
-import WatchOutsideClick from "./watchOutsideClick";
+import styles from "../styles/navigation.js";
 
 // <nav className="fixed-top navbar" id="nav-triangle">
 class Navigation extends React.Component {
@@ -32,22 +33,22 @@ class Navigation extends React.Component {
 
     return (
       <div
-        className={"fixed-top" + (showNavigation ? " out" : "")}
-        id="nav-top"
+        className="fixed-top"
+        style={[styles.navTop, showNavigation && styles.navTop.out]}
       >
         <div
-          id="collapseable-nav"
-          className={
-            "nav navigation flex-column float-right" +
-            (showNavigation ? " out" : "")
-          }
+          className="nav flex-column float-right"
+          style={[styles.navigation, showNavigation && styles.navigation.out]}
         >
-          <div className="d-flex" id="brand-box">
-            <a className="navbar-brand" href="/" id="giraffe-brand">
-              <img src="/static/img/giraffetools_logo.png" id="giraffe-brand" />
+          <div className="d-flex" style={[styles.brandBox]}>
+            <a className="navbar-brand" href="/" style={[styles.giraffeBrand]}>
+              <img
+                src="/static/img/giraffetools_logo.png"
+                style={[styles.giraffeBrandLogo]}
+              />
             </a>
           </div>
-          <ul id="nav-list">
+          <ul style={[styles.navList]}>
             <li className="nav-item">
               <a className="nav-link" href="/porcupine">
                 <h3>Porcupine</h3>
@@ -96,8 +97,11 @@ class Navigation extends React.Component {
                     <h3>My projects</h3>
                   </Fragment>
                 ) : (
-                  <span id="login-text-nav">
-                    <img src="/static/img/gh-icon.png" id="github-button" />
+                  <span style={[styles.loginTextNav]}>
+                    <img
+                      src="/static/img/gh-icon.png"
+                      style={[styles.githubButton]}
+                    />
                     Login with GitHub
                   </span>
                 )}
@@ -119,11 +123,14 @@ class Navigation extends React.Component {
             this.toggleNavigation();
           }}
         >
-          <img src="/static/img/nav_triangle.svg" id="nav-triangle" />
+          <img
+            src="/static/img/nav_triangle.svg"
+            style={[styles.navTriangle]}
+          />
         </a>
       </div>
     );
   }
 }
 
-export default Navigation;
+export default Radium(Navigation);

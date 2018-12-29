@@ -1,5 +1,8 @@
 import React from "react";
+import Radium from "radium";
+
 import { getCookie, validateEmail } from "../utils";
+import styles from "../styles/slackInvite.js";
 
 class SlackInvite extends React.Component {
   constructor(props) {
@@ -70,12 +73,12 @@ class SlackInvite extends React.Component {
     const { success, emailValid, submitted } = this.state;
 
     return (
-      <div className="container text-center" id="slack-info">
+      <div className="container text-center" style={[styles.slackInfo]}>
         <p>
           Would you like to join the GiraffeTools Slack? Fill in your email
           address here, and you'll receive an invitation link in your inbox!
         </p>
-        <img src="/static/img/separator_red.svg" className="separator-red" />
+        <img src="/static/img/separator_red.svg" style={[styles.separator]} />
         <div>
           <label>
             <h3>Email:</h3>

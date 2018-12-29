@@ -17,6 +17,20 @@ const styles = {
     ":hover": {
       textDecoration: "none"
     }
+  },
+
+  // .no-giraffe-button{
+  //   font-family: 'Nexa-Bold';
+  //   font-size: 1.2rem;
+  //   background-color: #EDEDEE;
+  //   color: $primary-color;
+  //   border-color: $primary-color;
+  //   border-width: 2px;
+  // }
+
+  githubButton: {
+    width: "15%",
+    marginRight: "0.5rem"
   }
 };
 

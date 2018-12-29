@@ -1,24 +1,11 @@
 import React, { Fragment } from "react";
+import Radium from "radium";
 
 import Banner from "./banner";
 import Footer from "./footer";
 import TryOut from "./tryOut";
-
-const Question = question => {
-  return (
-    <li>
-      <div className="question">
-        <img src="/static/img/chevron_right.svg" className="float-left" />
-        <h3>{question.q}</h3>
-      </div>
-      <br />
-      <div className="answer panel-collapse">{question.a}</div>
-      <svg width="80%" height="3">
-        <line x1="0" y1="0" x2="80%" y2="0" stroke="grey" />
-      </svg>
-    </li>
-  );
-};
+import Question from "./question";
+import styles from "../styles/faq.js";
 
 class Faq extends React.Component {
   constructor(props) {
@@ -40,7 +27,7 @@ class Faq extends React.Component {
     return (
       <Fragment>
         <Banner title="FAQs" />
-        <ul className="faq-question-list">
+        <ul style={[styles.faqQuestionList]}>
           {questions &&
             questions.map(question => (
               <Question key={question.id} {...question} />
@@ -53,4 +40,4 @@ class Faq extends React.Component {
   }
 }
 
-export default Faq;
+export default Radium(Faq);

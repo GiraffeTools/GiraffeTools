@@ -1,8 +1,11 @@
 import React, { Fragment } from "react";
+import Radium from "radium";
+
+import styles from "../styles/roadmap.js";
 
 const Event = event => (
   <div className="col-sm">
-    <div className="year">{event.year}</div>
+    <div>{event.year}</div>
     <svg width="60" height="60">
       <circle
         cx="30"
@@ -13,9 +16,10 @@ const Event = event => (
         fill="#F25226"
       />
     </svg>
-    <h3 className="roadmap-text">{event.description}</h3>
+    <h3 style={[styles.roadmapText]}>{event.description}</h3>
   </div>
 );
+const StyledEvent = Radium(Event);
 
 const Roadmap = () => {
   const events = [
@@ -27,10 +31,8 @@ const Roadmap = () => {
   ];
 
   return (
-    <div className="container-fluid" id="roadmap">
-      <h3 className="roadmap-text" id="and-more">
-        &amp; more to come
-      </h3>
+    <div className="container-fluid" style={[styles.roadmap]}>
+      <h3 style={[styles.roadmapText, styles.andMore]}>&amp; more to come</h3>
       <svg height="10px" width="100%">
         <line
           x1="0"
@@ -41,13 +43,13 @@ const Roadmap = () => {
           strokeWidth="12px"
         />
       </svg>
-      <div className="d-flex" id="roadmap-elements">
+      <div className="d-flex" style={[styles.roadmapElements]}>
         {events.map(event => (
-          <Event key={event.year} {...event} />
+          <StyledEvent key={event.year} {...event} />
         ))}
       </div>
     </div>
   );
 };
 
-export default Roadmap;
+export default Radium(Roadmap);
