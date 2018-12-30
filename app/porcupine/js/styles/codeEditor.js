@@ -47,6 +47,7 @@ const styles = {
     backgroundColor: styleSheet.primaryLightColor,
     margin: "0 5px 0 0",
     borderBottom: "0px",
+    cursor: "pointer",
     active: {
       backgroundColor: styleSheet.tertiaryColor
     }

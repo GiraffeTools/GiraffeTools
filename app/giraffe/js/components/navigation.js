@@ -92,10 +92,7 @@ class Navigation extends React.Component {
                 }
               >
                 {user && user.access_token ? (
-                  <Fragment>
-                    <h3>{`@${user.github_handle}`}</h3>
-                    <h3>My projects</h3>
-                  </Fragment>
+                  <h3>My projects</h3>
                 ) : (
                   <span style={[styles.loginTextNav]}>
                     <img
@@ -110,7 +107,7 @@ class Navigation extends React.Component {
             {user &&
               user.access_token && (
                 <li className="nav-item border-bottom">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="/_github/logout/">
                     <h3>Log out</h3>
                   </a>
                 </li>

@@ -23,7 +23,12 @@ const LoginButton = props => {
       }
     >
       <img src="/static/img/gh-icon-white.svg" style={[styles.githubButton]} />
-      {user && user.access_token ? user.github_handle : "Login with GitHub"}
+      <span>
+        {" "}
+        {user && user.access_token
+          ? user.github_handle
+          : "Login with GitHub"}{" "}
+      </span>
     </a>
   );
 };

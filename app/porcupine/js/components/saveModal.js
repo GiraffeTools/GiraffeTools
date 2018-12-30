@@ -27,7 +27,7 @@ class SaveModal extends React.Component {
     const { nodes, links, user } = this.props;
     const { commit_message } = this.state;
     this.setState({
-      commit_pending: false,
+      commit_pending: true,
       commit_succes: false,
       commit_error: false
     });

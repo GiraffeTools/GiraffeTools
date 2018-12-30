@@ -7,7 +7,14 @@ const styles = {
     backgroundRepeat: "no-repeat",
     backgroundPosition: "right",
     backgroundSize: "contain",
-    height: "35.5rem"
+    height: "35.5rem",
+    "@media(max-width: 1200px)": {
+      height: "27rem"
+    }
+  },
+  typewriterText: {},
+  open: {
+    marginRight: "1rem"
   },
   heroText: {
     paddingTop: "2rem",
@@ -17,14 +24,14 @@ const styles = {
     width: "11%",
     marginBottom: "60px"
   },
-  typewriterText: {},
+  typewriterText: {
+    width: "100%"
+  },
   headlineDot: {
-    marginTop: "66px",
-    marginBottom: "34px",
-    width: "20px"
+    marginTop: "2rem",
+    width: "1rem"
   },
   heroSubtitle: {
-    marginTop: "0.7rem",
     fontSize: "1.2rem",
     color: "grey"
   },

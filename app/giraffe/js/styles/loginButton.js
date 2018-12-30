@@ -1,7 +1,10 @@
 const styles = {
+  block: {
+    fontFamily: "Nexa-Bold"
+  },
   githubButton: {
-    width: "15%",
-    marginRight: "0.5rem"
+    width: "2rem",
+    height: "2rem"
   }
 };
 

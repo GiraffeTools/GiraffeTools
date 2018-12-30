@@ -116,12 +116,16 @@ def logged_in(request):
 
 
 def github_logout(request):
+    print(request)
     access_token = request.session.pop("access_token", "")
     request.session.pop("handle", "")
     request.session.pop("user_repos", "")
+    print(access_token)
     redirect_uri = request.GET.get("redirect_uri", "/")
+    print(redirect_uri)
 
     if access_token:
+        print(access_token)
         revoke_token(access_token)
         request.session.pop("access_token_last_validated")
         # Profile.objects.filter(handle=handle).update(github_access_token='')
@@ -136,4 +140,5 @@ def github_logout(request):
     request.session.modified = True
     response = redirect(redirect_uri)
     response.set_cookie("last_github_auth_mutation", int(time.time()))
+    print("Cookie set")
     return response
