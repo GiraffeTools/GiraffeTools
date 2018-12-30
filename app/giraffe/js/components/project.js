@@ -11,7 +11,7 @@ const Project = repository => (
       !repository.isGiraffeProject && styles.project.noGiraffe
     ]}
   >
-    <div className="col text-left">
+    <div className="col-6 text-left">
       <div className="d-flex align-items-center">
         <h5 className="float-left" style={[styles.projectTitle]}>
           {repository.name}
@@ -28,7 +28,7 @@ const Project = repository => (
         day: "2-digit"
       }).format(new Date(repository.created_at))}
     </div>
-    <div className="col text-right">
+    <div className="col-6 text-right">
       {repository.isGiraffeProject ? (
         <a
           type="button btn-primary"

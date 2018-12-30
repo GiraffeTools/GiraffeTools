@@ -87,9 +87,13 @@ def is_github_token_valid(oauth_token=None, last_validated=None):
 def revoke_token(oauth_token):
     '""Revoke the specified token.""'
     _params = build_auth_dict(oauth_token)
+    print(_params)
     _auth = (_params["client_id"], _params["client_secret"])
     url = TOKEN_URL.format(**_params)
+    print(url)
     response = requests.delete(url, auth=_auth, headers=HEADERS)
+    print(response)
+    print(response.status_code)
     if response.status_code == 204:
         return True
     return False

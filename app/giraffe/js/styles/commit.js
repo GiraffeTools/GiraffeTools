@@ -12,7 +12,10 @@ const styles = {
     borderRadius: "2px",
     padding: "0.5rem",
     width: "8rem",
-    marginRight: "0.7rem"
+    marginRight: "0.7rem",
+    "@media(max-width: 1200px)": {
+      display: "none"
+    }
   },
 
   commitBox: {
