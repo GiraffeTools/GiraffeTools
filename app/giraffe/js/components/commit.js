@@ -8,11 +8,16 @@ const Commit = ({ commit, full_name }) => {
   const days_ago = Math.floor(
     (Date.now() - new Date(commit.commit.author.date)) / 1000 / 3600 / 24
   );
+  const maxLength = 28;
+  const message =
+    commit.commit.message.length < maxLength
+      ? commit.commit.message
+      : commit.commit.message.substring(0, maxLength - 3) + "...";
 
   return (
     <li className="row border-bottom" style={[styles.commitBox]}>
       <div className="col-6 text-left">
-        <h5>{commit.commit.message}</h5>
+        <h5>{message}</h5>
         <b>@{commit.commit.author.login}</b>
         {` committed ${days_ago} ` + pluralize("day", days_ago) + " ago"}
       </div>

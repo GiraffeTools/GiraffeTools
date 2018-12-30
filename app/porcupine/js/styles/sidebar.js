@@ -49,8 +49,15 @@ const styles = {
     marginRight: "0.4rem"
   },
   panelIcon: {
+    width: "10%",
     fontSize: "1.4rem",
     marginRight: "0.4rem"
+  },
+  buttons: {
+    textAlign: "center"
+  },
+  githubButton: {
+    marginLeft: "0.2rem"
   }
 };
 

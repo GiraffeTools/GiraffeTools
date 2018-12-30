@@ -78,7 +78,7 @@ class RepositoryBox extends React.Component {
     const { repository } = this.props;
 
     return (
-      <div className="col-3 text-center">
+      <div className="col-4 text-center">
         <div className="sticky-top">
           <div style={[styles.whitespace]} />
           <div style={[styles.projectBox]}>

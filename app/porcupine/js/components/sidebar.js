@@ -57,6 +57,28 @@ class Sidebar extends React.Component {
                 })}
             </div>
             <h5 style={[styles.sidebarHeading]}>ACTIONS</h5>
+            <div style={[styles.buttons]}>
+              <a
+                className="github-button"
+                href={`https://github.com/${user.user}/${user.repository}`}
+                data-size="large"
+                data-show-count="true"
+                aria-label={`Star ${user.user}/${user.repository} on GitHub`}
+                style={[styles.githubButton]}
+              >
+                Star
+              </a>{" "}
+              <a
+                className="github-button"
+                href={`https://github.com/${user.user}/${user.repository}/fork`}
+                data-size="large"
+                data-show-count="true"
+                aria-label={`Fork ${user.user}/${user.repository} on GitHub`}
+                style={[styles.githubButton]}
+              >
+                Fork
+              </a>
+            </div>
             {user &&
               user.user && (
                 <a
@@ -66,7 +88,7 @@ class Sidebar extends React.Component {
                   target="_blank"
                 >
                   <img
-                    style={[styles.panelIcon, { width: "10%" }]}
+                    style={[styles.panelIcon]}
                     src="/static/img/gh-icon.png"
                   />
                   Check out on GitHub
@@ -85,10 +107,7 @@ class Sidebar extends React.Component {
                   })
                 }
               >
-                <i
-                  style={[styles.panelIcon, { width: "10%" }]}
-                  className="fas fa-save"
-                />
+                <i style={[styles.panelIcon]} className="fas fa-save" />
                 Save to GitHub
               </a>
             }
