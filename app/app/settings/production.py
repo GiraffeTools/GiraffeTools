@@ -42,3 +42,8 @@ WEBPACK_LOADER = {
                                    "../webpack/webpack-stats-prod.json"),
     },
 }
+
+# If ever we want to host the back-end on e.g. api.giraffe.tools, include those
+# domains in whitelist
+CORS_ORIGIN_WHITELIST = ["giraffe.tools"]
+CSRF_TRUSTED_ORIGINS = ["giraffe.tools"]

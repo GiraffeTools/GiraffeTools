@@ -4,7 +4,7 @@ import cookie from "react-cookies";
 
 import store from "../store";
 import { updateAuth } from "../actions";
-import { URL, LOGIN } from "../config";
+import { API_HOST, LOGIN } from "../config";
 
 export function InvalidCredentialsException(message) {
   this.message = message;
@@ -42,4 +42,32 @@ export function login() {
 
 export function loggedIn() {
   return store.getState().token !== null;
+}
+
+export function getCsrfToken() {
+  return fetch(`${API_HOST}/csrf`, {
+    credentials: "include"
+  })
+    .then(response => response.json())
+    .then(response => response.csrfToken)
+    .catch(error => {
+      throw "Cannot obtain CSRF token";
+    });
+}
+
+export function testRequest(method) {
+  return getCsrfToken()
+    .then(token => {
+      console.log({ token, method });
+      return fetch(`${API_HOST}/ping`, {
+        method: method,
+        headers: method === "POST" ? { "X-CSRFToken": token } : {},
+        credentials: "include"
+      })
+        .then(response => response.json())
+        .then(response => response.result);
+    })
+    .catch(error => {
+      throw "Ping error";
+    });
 }

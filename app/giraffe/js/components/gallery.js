@@ -5,6 +5,7 @@ import Banner from "./banner";
 import Footer from "./footer";
 import GalleryElement from "./galleryElement";
 import styles from "../styles/gallery.js";
+import { API_HOST } from "../config";
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class Gallery extends React.Component {
   }
 
   componentDidMount() {
-    fetch("/api/example_repos")
+    fetch(`${API_HOST}/example_repos`)
       .then(response => response.json())
       .then(examples => this.setState({ examples }));
   }

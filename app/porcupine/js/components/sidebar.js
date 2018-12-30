@@ -4,6 +4,7 @@ import { v4 } from "uuid";
 
 import PaneGroup from "./paneGroup";
 import styles from "../styles/sidebar";
+import { API_HOST } from "../../../giraffe/js/config";
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Sidebar extends React.Component {
   }
 
   componentDidMount() {
-    fetch("/api/nodes")
+    fetch(`${API_HOST}/nodes`)
       .then(response => response.json())
       .then(nodeElements => this.setState({ nodeElements }));
   }

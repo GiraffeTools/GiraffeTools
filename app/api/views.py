@@ -2,8 +2,9 @@ import json
 import requests
 from slackclient import SlackClient
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseForbidden, JsonResponse
 from django.http import HttpResponseForbidden
+from django.middleware.csrf import get_token
 
 from github.views import logged_in
 from github.utils import is_github_token_valid
@@ -35,6 +36,7 @@ def nodes(request):
 
 
 def push_to_github(request):
+    print(request)
     body = json.loads(request.body)
     user = body["user"]
     repo = body["repository"]
@@ -76,3 +78,12 @@ def send_slack_invite(request):
     slack_answer = sc.api_call("users.admin.invite", email=email)
     return HttpResponse(json.dumps(slack_answer),
                         content_type="application/json")
+
+
+def csrf(request):
+    return JsonResponse({"csrfToken": get_token(request)})
+
+
+def ping(request):
+    # With a POST request, this fails if the CSRFToken is not set
+    return JsonResponse({"result": "OK"})

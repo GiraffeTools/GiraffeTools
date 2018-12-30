@@ -9,4 +9,6 @@ api_urls = [
     path("push_to_github", api.views.push_to_github, name="push_to_github"),
     path("send_slack_invite", api.views.send_slack_invite,
          name="send_slack_invite"),  # Ignore LineLengthBear
+    path("csrf", api.views.csrf),
+    path("ping", api.views.ping),
 ]

@@ -6,6 +6,7 @@ import Footer from "./footer";
 import TryOut from "./tryOut";
 import Question from "./question";
 import styles from "../styles/faq.js";
+import { API_HOST } from "../config";
 
 class Faq extends React.Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class Faq extends React.Component {
   }
 
   componentDidMount() {
-    fetch("/api/faq_questions")
+    fetch(`${API_HOST}/faq_questions`)
       .then(response => response.json())
       .then(questions => this.setState({ questions }));
   }

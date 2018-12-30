@@ -1,8 +1,10 @@
 import React from "react";
 import Radium from "radium";
 
-import { getCookie, validateEmail } from "../utils";
+import { getCsrfToken } from "../utils/auth";
+import { validateEmail } from "../utils/utils";
 import styles from "../styles/slackInvite.js";
+import { API_HOST } from "../config";
 
 class SlackInvite extends React.Component {
   constructor(props) {
@@ -23,7 +25,6 @@ class SlackInvite extends React.Component {
   }
 
   handleSubmit(event) {
-    const token = getCookie("csrftoken");
     const email = this.state.value;
     if (!validateEmail(email)) {
       this.setState({
@@ -40,31 +41,25 @@ class SlackInvite extends React.Component {
     });
     const body = JSON.stringify({ email });
 
-    const headers = {
-      "X-Requested-With": "XMLHttpRequest",
-      "X-CSRF-Token": token,
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    };
-
-    // #TODO: CSRF protection is turned off, because I couldn't get this to work!
-    // Fix this!!
-    return fetch("/api/send_slack_invite", {
-      method: "POST",
-      headers,
-      credentials: "same-origin",
-      body
-    })
-      .then(response => response.json())
-      .then(answer => {
-        this.setState({
-          success: answer["ok"]
-        });
+    getCsrfToken().then(token => {
+      return fetch(`${API_HOST}/send_slack_invite`, {
+        method: "POST",
+        headers: { "X-CSRFToken": token },
+        body,
+        credentials: "include"
       })
-      .catch(error => {
-        console.log(error);
-        console.log("Oops, something went wrong there");
-      });
+        .then(response => response.json())
+        .then(answer => {
+          debugger;
+          this.setState({
+            success: answer["ok"]
+          });
+        })
+        .catch(error => {
+          console.log(error);
+          console.log("Oops, something went wrong there");
+        });
+    });
 
     event.preventDefault();
   }

@@ -48,7 +48,7 @@ class SaveModal extends React.Component {
       auth.github_handle &&
       user &&
       user.user &&
-      auth.github_handle.toLowerCase() == user.user.toLowerCase();
+      String(auth.github_handle).toLowerCase() == user.user.toLowerCase();
     // console.log(auth);
 
     return (

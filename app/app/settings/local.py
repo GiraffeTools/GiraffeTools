@@ -49,6 +49,6 @@ WEBPACK_LOADER = {
     },
 }
 
-# SESSION_COOKIE_SECURE = False
-# CSRF_COOKIE_SECURE = False
-# SECURE_SSL_REDIRECT = False
+# port 3000 hosts front-end, port 8000 hosts back-end
+CORS_ORIGIN_WHITELIST = ["localhost:3000", "localhost:8000"]
+CSRF_TRUSTED_ORIGINS = ["localhost:3000", "localhost:8000"]
