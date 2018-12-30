@@ -19,7 +19,7 @@ const styles = {
   lines3: {
     objectFit: "cover",
     width: " 100%",
-    height: "13rem"
+    height: "8rem"
   },
   porcupineCollage: {
     width: "90%",

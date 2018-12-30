@@ -1,7 +1,7 @@
 import React from "react";
 import Radium from "radium";
 
-import Navigation from "./navigation";
+import Navigation from "../containers/navigation";
 import styles from "../styles/banner.js";
 
 const Banner = ({ title }) => (

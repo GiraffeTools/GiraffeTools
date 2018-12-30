@@ -7,10 +7,6 @@ import User from "./user";
 import SlackBanner from "./slackBanner";
 
 class GitHub extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { match } = this.props;
     return (

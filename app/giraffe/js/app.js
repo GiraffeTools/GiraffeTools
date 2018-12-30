@@ -11,8 +11,18 @@ import Slack from "./components/slack";
 import Github from "./components/github";
 import Gallery from "./components/gallery";
 import SmallScreenAlert from "./components/smallScreenAlert";
+import { updateAuth } from "./actions";
 
 class App extends React.Component {
+  componentWillMount() {
+    fetch("/_github/logged_in/")
+      .then(response => response.json())
+      .then(user => updateAuth(user))
+      .catch(error => {
+        console.log({ error });
+      });
+  }
+
   render() {
     return (
       <Fragment>

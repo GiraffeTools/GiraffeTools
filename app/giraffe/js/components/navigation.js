@@ -14,13 +14,6 @@ class Navigation extends React.Component {
     this.toggleNavigation = this.toggleNavigation.bind(this);
   }
 
-  componentDidMount() {
-    fetch("/_github/logged_in/")
-      .then(response => response.json())
-      .then(user => this.setState({ user }))
-      .catch();
-  }
-
   toggleNavigation() {
     this.setState({
       showNavigation: !this.state.showNavigation
@@ -29,7 +22,7 @@ class Navigation extends React.Component {
 
   render() {
     const { showNavigation } = this.state;
-    const { user } = this.state;
+    const { user } = this.props;
 
     return (
       <div

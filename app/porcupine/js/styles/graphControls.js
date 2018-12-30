@@ -21,7 +21,7 @@ const styles = {
   zoomControls: {
     position: "absolute",
     top: "30px",
-    left: "10%",
+    left: "30%",
     zIndex: 100,
     display: "grid",
     gridTemplateColumns: " auto auto auto",

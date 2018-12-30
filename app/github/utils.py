@@ -89,6 +89,7 @@ def revoke_token(oauth_token):
     _params = build_auth_dict(oauth_token)
     print(_params)
     _auth = (_params["client_id"], _params["client_secret"])
+    print(_auth)
     url = TOKEN_URL.format(**_params)
     print(url)
     response = requests.delete(url, auth=_auth, headers=HEADERS)
