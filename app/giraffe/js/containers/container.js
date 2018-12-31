@@ -6,7 +6,7 @@ import { updateAuth } from "../actions";
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
-  updateAuth: () => dispatch(updateAuth())
+  updateAuth: user => dispatch(updateAuth(user))
 });
 
 const Container = connect(

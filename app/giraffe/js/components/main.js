@@ -9,9 +9,7 @@ class Main extends React.Component {
     const { updateAuth } = this.props;
     fetch("/_github/logged_in/")
       .then(response => response.json())
-      .then(user => {
-        updateAuth(user);
-      })
+      .then(user => updateAuth(user))
       .catch(error => {
         console.log({ error });
       });
