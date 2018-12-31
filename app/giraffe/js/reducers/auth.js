@@ -1,4 +1,4 @@
-import { UPDATE_AUTH } from "../../../giraffe/js/actions/actionTypes";
+import { UPDATE_AUTH } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
   access_token: false,
