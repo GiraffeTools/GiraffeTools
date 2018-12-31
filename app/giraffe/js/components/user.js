@@ -1,5 +1,8 @@
 import React, { Fragment } from "react";
+import Radium from "radium";
+
 import { urlExists } from "../utils/utils";
+import styles from "../styles/user.js";
 
 import Banner from "./banner";
 import Footer from "./footer";
@@ -54,7 +57,10 @@ class User extends React.Component {
       <Fragment>
         <Banner title={bannerTitle} />
         {user ? (
-          <div className="d-flex justify-content-center" id="user-section">
+          <div
+            className="d-flex justify-content-center"
+            style={[styles.userSection]}
+          >
             <ProfileBox
               user={user}
               active_giraffe_projects={
@@ -73,4 +79,4 @@ class User extends React.Component {
   }
 }
 
-export default User;
+export default Radium(User);

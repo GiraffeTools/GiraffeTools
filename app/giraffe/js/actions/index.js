@@ -1,6 +1,8 @@
-import { SET_TOKEN } from "./actionTypes";
+import { UPDATE_AUTH } from "./actionTypes";
 
-export const setToken = token => ({
-  type: SET_TOKEN,
-  payload: token
+export const updateAuth = user => ({
+  type: UPDATE_AUTH,
+  payload: {
+    user
+  }
 });

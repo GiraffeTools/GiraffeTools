@@ -1,4 +1,7 @@
 import React from "react";
+import Radium from "radium";
+
+import styles from "../styles/whyGiraffe.js";
 
 const Description = ({ description }) => {
   const divStyle = {
@@ -54,18 +57,18 @@ const WhyGiraffe = () => {
   ];
 
   return (
-    <div className="container-fluid" id="why-giraffe">
-      <h2 className="with-lines flip-background">WHY GIRAFFE</h2>
+    <div className="container-fluid" style={[styles.whyGiraffe]}>
+      <h2 style={[styles.whyGiraffeHeading]}>WHY GIRAFFE</h2>
       <div className="position-relative">
-        <div id="why-giraffe-box justify-content-center">
-          <svg id="giraffe-image">
+        <div id="justify-content-center" style={[styles.whyGiraffeBox]}>
+          <svg style={[styles.giraffeImage]}>
             <g fill="#FCF0D6">
               <circle cx="50%" cy="50%" r="30%" />
             </g>
           </svg>
           <img
             src="/static/img/giraffe_tooltips.png"
-            id="why-giraffe-image"
+            style={[styles.whyGiraffeImage]}
             className="position-relative"
           />
           {descriptions &&
@@ -73,10 +76,10 @@ const WhyGiraffe = () => {
               <Description key={description.id} description={description} />
             ))}
         </div>
-        <img src="/static/img/giraffe-lines.svg" id="people-lines" />
+        <img src="/static/img/giraffe-lines.svg" style={[styles.peopleLines]} />
       </div>
     </div>
   );
 };
 
-export default WhyGiraffe;
+export default Radium(WhyGiraffe);

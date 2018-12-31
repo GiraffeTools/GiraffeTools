@@ -1,4 +1,7 @@
 import React from "react";
+import Radium from "radium";
+
+import styles from "../styles/field";
 
 class Field extends React.Component {
   constructor(props) {
@@ -30,6 +33,7 @@ class Field extends React.Component {
       id,
       name,
       isVisible,
+      isIterable,
       value,
       data,
       isEnabled,
@@ -96,7 +100,7 @@ class Field extends React.Component {
       );
     } else if (type === "boolean") {
       inputElement = (
-        <div className="paramsCheckbox">
+        <div style={[styles.checkbox]}>
           <input
             type="checkbox"
             disabled={!isEnabled}
@@ -104,7 +108,7 @@ class Field extends React.Component {
             id={id}
             onChange={this.change}
           />
-          <label htmlFor={id} />
+          <label style={[styles.checkboxLabel]} htmlFor={id} />
         </div>
       );
     }
@@ -116,23 +120,29 @@ class Field extends React.Component {
     return (
       <div>
         <div style={{ display: displayStyle }}>
-          <label
-            htmlFor={id}
-            className="sidebar-heading"
-            style={{ fontSize: "0.85em" }}
-          >
+          <label htmlFor={id} style={{ fontSize: "0.85em" }}>
             {name}
           </label>
           {inputElement}
         </div>
-        <div key={id} className="sidebar__node-actions">
+        <div key={id} style={[styles.actions]}>
           <div
-            className="sidebar__node-visibility"
+            style={[styles.visibility]}
             onClick={() => this.changeParams(id, "isVisible", !isVisible)}
           >
             <i
               className={"fas " + (isVisible ? "fa-eye" : "fa-eye-slash")}
-              title={"Make " + (isVisible ? "Invisible" : "Visible")}
+              title={"Make " + (isVisible ? "invisible" : "visible")}
+            />{" "}
+          </div>
+          <div
+            style={[styles.visibility]}
+            onClick={() => this.changeParams(id, "isIterable", !isIterable)}
+          >
+            <i
+              style={[styles.icon, !isIterable && styles.icon.toggled]}
+              className="fas fa-retweet"
+              title={"Make " + (isIterable ? "non-iterable" : "iterable")}
             />{" "}
           </div>
           <button
@@ -150,4 +160,4 @@ class Field extends React.Component {
   }
 }
 
-export default Field;
+export default Radium(Field);

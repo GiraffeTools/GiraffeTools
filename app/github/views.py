@@ -70,7 +70,7 @@ def github_callback(request):
             # "email": get_github_primary_email(access_token),
             "access_token": access_token,
             "name": github_user_data.get("name", None),
-            # "access_token_last_validated": timezone.now().isoformat(),
+            "access_token_last_validated": timezone.now().isoformat(),
         }
         for k, v in session_data.items():
             request.session[k] = v
@@ -123,7 +123,9 @@ def github_logout(request):
 
     if access_token:
         revoke_token(access_token)
+        print("Token revoked")
         request.session.pop("access_token_last_validated")
+        print("Token popped")
         # Profile.objects.filter(handle=handle).update(github_access_token='')
         # # record a useraction for this
         # if Profile.objects.filter(handle=handle).count():
@@ -134,6 +136,9 @@ def github_logout(request):
         #         )
 
     request.session.modified = True
+    print("Session modified")
     response = redirect(redirect_uri)
+    print("Redirected")
     response.set_cookie("last_github_auth_mutation", int(time.time()))
+    print("Cookie set")
     return response

@@ -1,5 +1,8 @@
 import React from "react";
 import DragLayer from "react-dnd/lib/DragLayer";
+import Radium from "radium";
+
+import styles from "../styles/sidebar";
 
 function collect(monitor) {
   var item = monitor.getItem();
@@ -34,7 +37,7 @@ const ItemPreview = props => {
     return <div className="node preview" style={{ display: "none" }} />;
   } else if (props.itemType === "paneElement") {
     return (
-      <div className="node preview" style={getItemStyles(props.currentOffset)}>
+      <div style={[styles.nodePreview, getItemStyles(props.currentOffset)]}>
         {props.name}
       </div>
     );

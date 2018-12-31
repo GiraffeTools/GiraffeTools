@@ -1,15 +1,11 @@
 import React from "react";
+import Radium from "radium";
+
+import NestedPaneGroup from "./nestedPaneGroup";
 import PaneHeader from "./paneHeader";
 import DraggablePaneElement from "../draggables/draggablePaneElement";
-
-const NestedPaneGroup = ({ categories }) =>
-  Object.keys(categories).map(category => (
-    <PaneGroup
-      key={category}
-      category={category}
-      nodes={categories[category]}
-    />
-  ));
+import styles from "../styles/paneGroup";
+import headerStyles from "../styles/paneHeader";
 
 const PaneElements = ({ nodes, colour }) =>
   Object.keys(nodes).map(node => {
@@ -40,26 +36,27 @@ class PaneGroup extends React.Component {
     const { active } = this.state;
 
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading" role="tab" onClick={this.toggleActive}>
+      <div style={[styles.panel]}>
+        <div style={[headerStyles.panelHeading]} onClick={this.toggleActive}>
           <span
-            className="badge sidebar-badge"
-            style={{ backgroundColor: nodes.colour }}
+            className="badge" //bootstrap badge class
+            style={[
+              headerStyles.sidebarBadge,
+              { backgroundColor: nodes.colour }
+            ]}
           >
             {" "}
           </span>
           {category}
-          <span className="sidebar-dropdown">></span>
+          <span style={[headerStyles.sidebarDropdown]}>{">"}</span>
         </div>
         <div
-          className={`panel-collapse` + (active ? "" : " collapse")}
-          role="tabpanel"
+          style={[
+            styles.panelCollapse,
+            active && styles.panelCollapse.collapse
+          ]}
         >
-          <div
-            className="panel-group"
-            role="tablist"
-            aria-multiselectable="true"
-          >
+          <div aria-multiselectable="true">
             {active &&
               nodes.categories && (
                 <NestedPaneGroup categories={nodes.categories} />
@@ -75,4 +72,4 @@ class PaneGroup extends React.Component {
   }
 }
 
-export default PaneGroup;
+export default Radium(PaneGroup);

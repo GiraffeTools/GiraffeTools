@@ -1,6 +1,8 @@
 import React from "react";
+import Radium from "radium";
 
 import Fields from "../components/fields";
+import styles from "../styles/parameterPane";
 
 class ParameterPane extends React.Component {
   constructor(props) {
@@ -26,15 +28,17 @@ class ParameterPane extends React.Component {
   render() {
     const { selectedNode, deleteNode, clickItem } = this.props;
     return (
-      <div className={"setparams" + (selectedNode ? " setparamsActive" : "")}>
-        <div className="setHead">
-          <h4 className="sidebar__node-name">
-            {selectedNode ? selectedNode.name : ""}
-          </h4>
-          <div className="sidebar__node-documentation">
+      <div
+        style={[styles.parameters, selectedNode && styles.parameters.active]}
+        rules={styles.parameters.rules}
+        className="customScrollbar"
+      >
+        <div style={[styles.header]}>
+          <h4 style={[styles.name]}>{selectedNode ? selectedNode.name : ""}</h4>
+          <div style={[styles.documentation]}>
             {selectedNode ? (
               <a href={selectedNode.web_url} target="_blank">
-                <i className="fas fa-globe sidebar__globe-icon" />
+                <i style={[styles.globe]} className="fas fa-globe" />
                 <span>View documentation</span>{" "}
               </a>
             ) : (
@@ -42,12 +46,13 @@ class ParameterPane extends React.Component {
             )}
           </div>
           <i
-            className="fas fa-times sidebar__close-icon"
+            style={[styles.close]}
+            className="fas fa-times"
             onClick={() => clickItem(null)}
             aria-hidden="true"
           />
         </div>
-        <div className="setContain">
+        <div style={[styles.fields]}>
           {selectedNode && selectedNode.parameters ? (
             <Fields parameters={selectedNode.parameters} />
           ) : (
@@ -55,8 +60,8 @@ class ParameterPane extends React.Component {
           )}
           <br />
           <button
-            type="button"
-            className="btn btn-block deleteLayerButton sidebar-heading"
+            style={[styles.delete]}
+            className="btn btn-block"
             onClick={() => {
               deleteNode(selectedNode.id);
             }}
@@ -69,4 +74,4 @@ class ParameterPane extends React.Component {
   }
 }
 
-export default ParameterPane;
+export default Radium(ParameterPane);

@@ -26,6 +26,7 @@ import {
   OPEN_MODAL,
   CLOSE_MODAL
 } from "./actionTypes";
+import { UPDATE_AUTH } from "../../../giraffe/js/actions/actionTypes";
 
 export const clearDatabase = () => ({
   type: CLEAR_DATABASE
@@ -143,6 +144,12 @@ export const clickItem = (id, item) => ({
 // });
 
 ///// SCENE /////
+export const updateAuth = user => ({
+  type: UPDATE_AUTH,
+  payload: {
+    user
+  }
+});
 export const setUser = user => ({
   type: SET_USER,
   payload: {

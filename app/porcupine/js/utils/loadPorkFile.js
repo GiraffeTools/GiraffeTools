@@ -46,8 +46,9 @@ const loadingVersion1 = (json, nodes, links, setPercent) => {
       name: parameter.name,
       input: parameter.input ? parameter.inputPort : null,
       output: parameter.output ? parameter.outputPort : null,
-      isVisible: parameter.visible,
-      isEditable: parameter.editable,
+      isVisible: parameter.visible || false,
+      isEditable: parameter.editable || false,
+      isIterable: parameter.iterator || false,
       value: parameter.value || "" // TODO insert proper default value
     }));
 

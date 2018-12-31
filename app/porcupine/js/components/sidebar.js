@@ -1,7 +1,10 @@
 import React from "react";
+import Radium from "radium";
 import { v4 } from "uuid";
 
 import PaneGroup from "./paneGroup";
+import styles from "../styles/sidebar";
+import { API_HOST } from "../../../giraffe/js/config";
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -12,7 +15,7 @@ class Sidebar extends React.Component {
   }
 
   componentDidMount() {
-    fetch("/api/nodes")
+    fetch(`${API_HOST}/nodes`)
       .then(response => response.json())
       .then(nodeElements => this.setState({ nodeElements }));
   }
@@ -22,21 +25,23 @@ class Sidebar extends React.Component {
     const { nodeElements } = this.state;
     return (
       <div>
-        <div id="sidebar" className={showSidebar ? " active" : ""}>
-          <div id="logo_sidebar">
-            <a href="https://giraffe.tools">
+        <div
+          style={[styles.sidebar, showSidebar && styles.sidebar.active]}
+          className="customScrollbar"
+        >
+          <div style={[styles.logoSidebar]}>
+            <a href="/">
               <img
+                style={[styles.logo]}
                 src={"/static/img/giraffetools_logo_notext.png"}
                 className="img-responsive"
                 alt="logo"
-                id="logo"
               />
             </a>
           </div>
           <div className="col-md-12">
             <div
-              className="panel-group"
-              id="menu"
+              style={[styles.panelGroup]}
               role="tablist"
               aria-multiselectable="true"
             >
@@ -51,21 +56,48 @@ class Sidebar extends React.Component {
                   );
                 })}
             </div>
-            <h5 className="sidebar-heading">ACTIONS</h5>
+            <h5 style={[styles.sidebarHeading]}>ACTIONS</h5>
+            <div style={[styles.buttons]}>
+              <a
+                className="github-button"
+                href={`https://github.com/${user.user}/${user.repository}`}
+                data-size="large"
+                data-show-count="true"
+                aria-label={`Star ${user.user}/${user.repository} on GitHub`}
+                style={[styles.githubButton]}
+              >
+                Star
+              </a>{" "}
+              <a
+                className="github-button"
+                href={`https://github.com/${user.user}/${user.repository}/fork`}
+                data-size="large"
+                data-show-count="true"
+                aria-label={`Fork ${user.user}/${user.repository} on GitHub`}
+                style={[styles.githubButton]}
+              >
+                Fork
+              </a>
+            </div>
             {user &&
               user.user && (
                 <a
-                  className="btn btn-block extra-buttons text-left"
+                  style={[styles.panelText]}
+                  className="btn btn-block"
                   href={`https://github.com/${user.user}/${user.repository}`}
                   target="_blank"
                 >
-                  <img src="/static/img/gh-icon.png" width={"10%"} />
-                  {` ${user.repository}`}
+                  <img
+                    style={[styles.panelIcon]}
+                    src="/static/img/gh-icon.png"
+                  />
+                  Check out on GitHub
                 </a>
               )}
             {
               <a
-                className="btn btn-block extra-buttons text-left"
+                style={[styles.panelText]}
+                className="btn btn-block text-left"
                 onClick={() =>
                   openModal({
                     id: v4(),
@@ -75,8 +107,8 @@ class Sidebar extends React.Component {
                   })
                 }
               >
-                <i className="fas fa-save save-button" width={"10%"} />
-                <span className="text-black">Save to Github</span>
+                <i style={[styles.panelIcon]} className="fas fa-save" />
+                Save to GitHub
               </a>
             }
           </div>
@@ -86,4 +118,4 @@ class Sidebar extends React.Component {
   }
 }
 
-export default Sidebar;
+export default Radium(Sidebar);

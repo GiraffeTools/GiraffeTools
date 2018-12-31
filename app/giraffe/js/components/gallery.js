@@ -1,8 +1,11 @@
 import React, { Fragment } from "react";
+import Radium from "radium";
 
 import Banner from "./banner";
 import Footer from "./footer";
-import GalleryElements from "./galleryElements";
+import GalleryElement from "./galleryElement";
+import styles from "../styles/gallery.js";
+import { API_HOST } from "../config";
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -10,6 +13,12 @@ class Gallery extends React.Component {
     this.state = {
       examples: null
     };
+  }
+
+  componentDidMount() {
+    fetch(`${API_HOST}/example_repos`)
+      .then(response => response.json())
+      .then(examples => this.setState({ examples }));
   }
 
   render() {
@@ -23,10 +32,19 @@ class Gallery extends React.Component {
           more examples, so if you feel like contributing to our bank, check our
           instructions to contribute to our example gallery.
           <br />
-          <a type="button btn-primary" className="btn giraffe-button">
+          <a
+            type="button btn-primary"
+            className="btn"
+            style={[styles.contribute]}
+          >
             Contribute
           </a>
-          <GalleryElements examples={examples} />
+          <div className="row" style={[styles.galleryBox]}>
+            {examples &&
+              examples.map(example => (
+                <GalleryElement key={example.id} example={example} />
+              ))}
+          </div>
         </div>
         <svg width="100%" height="3">
           <line
@@ -44,4 +62,4 @@ class Gallery extends React.Component {
   }
 }
 
-export default Gallery;
+export default Radium(Gallery);

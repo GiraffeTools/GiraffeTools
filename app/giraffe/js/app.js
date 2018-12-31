@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Faq from "./components/faq";
 import LandingPage from "./components/landingPage";
 import Slack from "./components/slack";
+import Container from "./containers/container";
 import Github from "./components/github";
 import Gallery from "./components/gallery";
 import SmallScreenAlert from "./components/smallScreenAlert";
@@ -15,7 +16,7 @@ import SmallScreenAlert from "./components/smallScreenAlert";
 class App extends React.Component {
   render() {
     return (
-      <Fragment>
+      <Container>
         <SmallScreenAlert />
         <Switch>
           <Route path="/faq" component={Faq} />
@@ -24,7 +25,7 @@ class App extends React.Component {
           <Route path="/github" component={Github} />
           <Route path="/" component={LandingPage} />
         </Switch>
-      </Fragment>
+      </Container>
     );
   }
 }

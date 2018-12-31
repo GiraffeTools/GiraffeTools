@@ -1,6 +1,9 @@
 import React, { Fragment } from "react";
+import Radium from "radium";
 import pluralize from "pluralize";
 import repoFirstCommit from "repo-first-commit";
+
+import styles from "../styles/repositoryBox.js";
 
 class RepositoryBox extends React.Component {
   constructor(props) {
@@ -75,40 +78,40 @@ class RepositoryBox extends React.Component {
     const { repository } = this.props;
 
     return (
-      <div className="col-3 text-center">
+      <div className="col-4 text-center">
         <div className="sticky-top">
-          <div className="whitespace" />
-          <div className="giraffe-box" id="project-box">
-            <h4>About the project</h4>
-            <div id="repo-box-content">
+          <div style={[styles.whitespace]} />
+          <div style={[styles.projectBox]}>
+            <h4 style={[styles.about]}>About the project</h4>
+            <div style={[styles.repoBoxContent]}>
               <img
                 src="/static/img/separator_grey.svg"
-                className="separator-grey"
+                style={[styles.separator]}
               />
               <p className="text-left">
                 <img
                   src="/static/img/commits_icon.svg"
-                  className="project-icon"
+                  style={[styles.projectIcon]}
                 />{" "}
                 {`${numberOfCommits} ` + pluralize("commits", numberOfCommits)}
                 <br />
                 <img
                   src="/static/img/branch_icon.svg"
-                  className="project-icon"
+                  style={[styles.projectIcon]}
                 />{" "}
                 {`${numberOfBranches} ` +
                   pluralize("branches", numberOfBranches)}
                 <br />
                 <img
                   src="/static/img/contributors_icon.svg"
-                  className="project-icon"
+                  style={[styles.projectIcon]}
                 />{" "}
                 {`${numberOfContributors} ` +
                   pluralize("contributors", numberOfContributors)}
                 <br />
                 <img
                   src="/static/img/release_icon.svg"
-                  className="project-icon"
+                  style={[styles.projectIcon]}
                 />{" "}
                 {`${numberOfReleases} ` +
                   pluralize("releases", numberOfReleases)}
@@ -116,12 +119,12 @@ class RepositoryBox extends React.Component {
 
               <img
                 src="/static/img/separator_grey.svg"
-                className="separator-grey"
+                style={[styles.separator]}
               />
             </div>
             <p>
               owned by{" "}
-              <a className="giraffe-link" href="./">
+              <a href="./" style={[styles.giraffeLink]}>
                 <b>{repository.owner.login}</b>
               </a>
               {" added on "}
@@ -133,8 +136,9 @@ class RepositoryBox extends React.Component {
             </p>
             <a
               type="button btn-primary"
-              className="btn giraffe-button-small"
+              className="btn"
               href={`/porcupine/${repository.full_name}`}
+              style={[styles.open]}
             >
               Open project
             </a>
@@ -145,4 +149,4 @@ class RepositoryBox extends React.Component {
   }
 }
 
-export default RepositoryBox;
+export default Radium(RepositoryBox);

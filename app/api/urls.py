@@ -14,4 +14,6 @@ api_urls = [
 
     # api calls
     url("armadillo/", include(armadillo_api)),
+    path("csrf", api.views.csrf),
+    path("ping", api.views.ping),
 ]

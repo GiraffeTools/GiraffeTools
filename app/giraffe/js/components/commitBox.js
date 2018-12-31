@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
+import Radium from "radium";
 
 import Commit from "./commit";
 import { groupByDate } from "../utils/utils";
+import styles from "../styles/people.js";
 
 class CommitBox extends React.Component {
   constructor(props) {
@@ -46,7 +48,7 @@ class CommitBox extends React.Component {
                     ? "Yesterday"
                     : `${date}`}
               </h6>
-              <ul className="commit-day border">
+              <ul className="commit-day border" style={[styles.commitDay]}>
                 {groupedCommits[date].map(({ commit }) => (
                   <Commit
                     key={commit.sha}

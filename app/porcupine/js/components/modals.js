@@ -1,5 +1,8 @@
 import React from "react";
+import Radium from "radium";
+
 import SaveModalContainer from "../containers/saveModalContainer";
+import styles from "../styles/modals";
 
 class Modal extends React.Component {
   onClose() {
@@ -23,7 +26,7 @@ class Modal extends React.Component {
     if (type === "confirmation") {
       const { text } = this.props.item;
       return (
-        <div className="modal-dialog" style={{ zIndex: (zIndex + 1) * 10 }}>
+        <div className="modal-dialog" style={[{ zIndex: (zIndex + 1) * 10 }]}>
           <div className="modal-content">
             <h5 class="modal-title" id="exampleModalLabel">
               Confirmation modal
@@ -52,7 +55,7 @@ class Modal extends React.Component {
       const { content } = this.props.item;
 
       return (
-        <div className="modal-dialog" style={{ zIndex: (zIndex + 1) * 10 }}>
+        <div className="modal-dialog" style={[{ zIndex: (zIndex + 1) * 10 }]}>
           <div className="modal-content">
             <h5 className="modal-title" id="exampleModalLabel">
               Confirmation modal
@@ -80,7 +83,7 @@ class Modal extends React.Component {
     } else if (type === "save_to_github") {
       const { onClose, item } = this.props;
       return (
-        <div className="modal-dialog" style={{ zIndex: (zIndex + 1) * 10 }}>
+        <div className="modal-dialog" style={[{ zIndex: (zIndex + 1) * 10 }]}>
           <SaveModalContainer onClose={() => onClose(item.id)} />
         </div>
       );
@@ -93,7 +96,10 @@ class Modals extends React.Component {
   render() {
     const { modals, closeModal } = this.props;
     return (
-      <div className={"modal fade" + (modals.length != 0 ? " show" : "")}>
+      <div
+        className={"modal fade" + (modals.length != 0 ? " show" : "")}
+        style={[styles.modal]}
+      >
         {modals.map((item, i) => (
           <Modal
             item={item}
@@ -107,4 +113,4 @@ class Modals extends React.Component {
   }
 }
 
-export default Modals;
+export default Radium(Modals);

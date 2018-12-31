@@ -1,6 +1,7 @@
 Django==2.1.2
 django-bootstrap4
 django-compressor
+django-cors-headers
 django-heroku
 django-jquery
 django-livereload-server

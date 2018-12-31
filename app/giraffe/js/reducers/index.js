@@ -3,7 +3,7 @@ import { persistCombineReducers } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import ui from "./ui";
-import login from "./login";
+import auth from "./auth";
 
 const config = {
   key: "giraffe",
@@ -12,7 +12,7 @@ const config = {
 
 const giraffeApp = persistCombineReducers(config, {
   ui,
-  login
+  auth
 });
 
 export default giraffeApp;

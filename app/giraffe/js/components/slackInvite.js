@@ -1,5 +1,10 @@
 import React from "react";
-import { getCookie, validateEmail } from "../utils";
+import Radium from "radium";
+
+import { getCsrfToken } from "../utils/auth";
+import { validateEmail } from "../utils/utils";
+import styles from "../styles/slackInvite.js";
+import { API_HOST } from "../config";
 
 class SlackInvite extends React.Component {
   constructor(props) {
@@ -20,7 +25,6 @@ class SlackInvite extends React.Component {
   }
 
   handleSubmit(event) {
-    const token = getCookie("csrftoken");
     const email = this.state.value;
     if (!validateEmail(email)) {
       this.setState({
@@ -37,31 +41,25 @@ class SlackInvite extends React.Component {
     });
     const body = JSON.stringify({ email });
 
-    const headers = {
-      "X-Requested-With": "XMLHttpRequest",
-      "X-CSRF-Token": token,
-      "Content-Type": "application/json",
-      Accept: "application/json"
-    };
-
-    // #TODO: CSRF protection is turned off, because I couldn't get this to work!
-    // Fix this!!
-    return fetch("/api/send_slack_invite", {
-      method: "POST",
-      headers,
-      credentials: "same-origin",
-      body
-    })
-      .then(response => response.json())
-      .then(answer => {
-        this.setState({
-          success: answer["ok"]
-        });
+    getCsrfToken().then(token => {
+      return fetch(`${API_HOST}/send_slack_invite`, {
+        method: "POST",
+        headers: { "X-CSRFToken": token },
+        body,
+        credentials: "include"
       })
-      .catch(error => {
-        console.log(error);
-        console.log("Oops, something went wrong there");
-      });
+        .then(response => response.json())
+        .then(answer => {
+          debugger;
+          this.setState({
+            success: answer["ok"]
+          });
+        })
+        .catch(error => {
+          console.log(error);
+          console.log("Oops, something went wrong there");
+        });
+    });
 
     event.preventDefault();
   }
@@ -70,12 +68,12 @@ class SlackInvite extends React.Component {
     const { success, emailValid, submitted } = this.state;
 
     return (
-      <div className="container text-center" id="slack-info">
+      <div className="container text-center" style={[styles.slackInfo]}>
         <p>
           Would you like to join the GiraffeTools Slack? Fill in your email
           address here, and you'll receive an invitation link in your inbox!
         </p>
-        <img src="/static/img/separator_red.svg" className="separator-red" />
+        <img src="/static/img/separator_red.svg" style={[styles.separator]} />
         <div>
           <label>
             <h3>Email:</h3>

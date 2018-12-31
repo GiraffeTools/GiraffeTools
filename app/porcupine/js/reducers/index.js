@@ -3,6 +3,7 @@ import { persistCombineReducers } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import orm from "../models";
+import auth from "../../../giraffe/js/reducers/auth";
 import modals from "./modals";
 import ui from "./ui";
 import user from "./user";
@@ -18,7 +19,8 @@ const porcupineApp = persistCombineReducers(config, {
   scene,
   ui,
   modals,
-  user
+  user,
+  auth
 });
 
 export default porcupineApp;

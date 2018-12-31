@@ -3,15 +3,15 @@ import _ from "lodash";
 import cookie from "react-cookies";
 
 import store from "../store";
-import { setToken } from "../actions";
-import { URL, LOGIN } from "../config";
+import { updateAuth } from "../actions";
+import { API_HOST, LOGIN } from "../config";
 
 export function InvalidCredentialsException(message) {
   this.message = message;
   this.name = "InvalidCredentialsException";
 }
 
-export function login(username, password) {
+export function login() {
   const config = {
     method: "GET",
     mode: "no-cors",
@@ -25,9 +25,11 @@ export function login(username, password) {
   return axios
     .get(`${LOGIN}?redirect_uri=/`, config)
     .then(function(response) {
-      console.log(response);
-      console.log(response.header);
-      store.dispatch(setToken(response.data.token));
+      store.dispatch(
+        updateAuth({
+          access_token: response.data.token
+        })
+      );
     })
     .catch(function(error) {
       // raise different exception if due to invalid credentials
@@ -40,4 +42,32 @@ export function login(username, password) {
 
 export function loggedIn() {
   return store.getState().token !== null;
+}
+
+export function getCsrfToken() {
+  return fetch(`${API_HOST}/csrf`, {
+    credentials: "include"
+  })
+    .then(response => response.json())
+    .then(response => response.csrfToken)
+    .catch(error => {
+      throw "Cannot obtain CSRF token";
+    });
+}
+
+export function testRequest(method) {
+  return getCsrfToken()
+    .then(token => {
+      console.log({ token, method });
+      return fetch(`${API_HOST}/ping`, {
+        method: method,
+        headers: method === "POST" ? { "X-CSRFToken": token } : {},
+        credentials: "include"
+      })
+        .then(response => response.json())
+        .then(response => response.result);
+    })
+    .catch(error => {
+      throw "Ping error";
+    });
 }

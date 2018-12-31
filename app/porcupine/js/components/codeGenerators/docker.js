@@ -55,7 +55,9 @@ class DockerCode extends React.Component {
       });
     const nodeCode =
       languagesInEditor &&
-      [...new Set(languagesInEditor.flat())]
+      // flat() breaks stuff in older browsers:
+      // [...new Set(languagesInEditor.flat())]
+      [...new Set(languagesInEditor.reduce((acc, val) => acc.concat(val), []))]
         .map(
           // remove white space from 'language' first
           language => codeMappings[language.replace(/\s/g, "")]

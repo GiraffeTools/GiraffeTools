@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
 import React from "react";
+import Radium from "radium";
 import {
   DropTarget,
   ConnectDropTarget,
@@ -15,11 +16,10 @@ import ItemTypes from "./itemTypes";
 import GraphView from "./graphView";
 import Links from "./links";
 import Nodes from "./nodes";
-import ZoomIn from "./zoomIn";
-import ZoomOut from "./zoomOut";
 import CustomDragLayer from "../draggables/customDragLayer";
 import { drop } from "../utils/dropNode";
 import { loadPorkFile } from "../utils/loadPorkFile";
+import styles from "../styles/content";
 
 const boxTarget = {
   drop(props, monitor, component) {
@@ -220,7 +220,7 @@ class Canvas extends React.PureComponent {
     return (
       connectDropTarget &&
       connectDropTarget(
-        <div className="canvas">
+        <div style={[styles.canvas]}>
           <ProgressBar
             percent={loadingPercent}
             onTop={true}
@@ -237,4 +237,4 @@ class Canvas extends React.PureComponent {
     );
   }
 }
-export default Canvas;
+export default Radium(Canvas);

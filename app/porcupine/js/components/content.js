@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
 import React from "react";
+import { StyleRoot } from "radium";
 import { DragDropContext } from "react-dnd";
 import MultiBackend from "react-dnd-multi-backend";
 import HTML5toTouch from "react-dnd-multi-backend/lib/HTML5toTouch";
@@ -11,46 +12,58 @@ import ParameterPaneContainer from "../containers/parameterPaneContainer";
 import SidebarContainer from "../containers/sidebarContainer";
 import ModalsContainer from "../containers/modalsContainer";
 import { isGitHash } from "../utils";
+import styles from "../styles/content";
 
 @DragDropContext(MultiBackend(HTML5toTouch))
 class Content extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // snapToGridAfterDrop: false,
-      // snapToGridWhileDragging: false
-    };
-  }
+  // constructor(props) {
+  // super(props);
+  // this.state = {
+  // snapToGridAfterDrop: false,
+  // snapToGridWhileDragging: false
+  // };
+  // }
 
   componentWillMount() {
     const { username, repository, branchOrCommit } = this.props.match.params;
-    const { setUser, setRepository, setBranch, setCommit } = this.props;
+    const {
+      setUser,
+      setRepository,
+      setBranch,
+      setCommit,
+      updateAuth
+    } = this.props;
     setUser(username);
     setRepository(repository);
     let string = branchOrCommit || "master";
     let isCommit = isGitHash(branchOrCommit);
     setCommit(isCommit && string);
     setBranch(!isCommit && string);
+    fetch("/_github/logged_in/")
+      .then(response => response.json())
+      .then(user => updateAuth(user))
+      .catch(error => {
+        console.log({ error });
+      });
   }
 
   render() {
     // const { snapToGridAfterDrop, snapToGridWhileDragging } = this.state
     const { showSidebar, toggleSidebar } = this.props;
-
     return (
-      <div id="parent">
+      <StyleRoot>
         <SidebarContainer />
-        <a
-          className={"sidebar-button" + (showSidebar ? " close" : "")}
-          onClick={() => toggleSidebar()}
-        />
-        <div id="main">
+        <a style={[styles.sidebarButton, styles.close]} onClick={toggleSidebar}>
+          <label style={[showSidebar ? styles.close1 : styles.open1]} />
+          <label style={[showSidebar ? styles.close2 : styles.open2]} />
+        </a>
+        <div style={[styles.main]}>
           <CanvasContainer />
           <ParameterPaneContainer />
           <CodeEditorContainer />
           <ModalsContainer />
         </div>
-      </div>
+      </StyleRoot>
     );
   }
 }

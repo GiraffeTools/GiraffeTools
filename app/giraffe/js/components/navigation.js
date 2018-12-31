@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
+import Radium from "radium";
 
-import WatchOutsideClick from "./watchOutsideClick";
+import styles from "../styles/navigation.js";
 
 // <nav className="fixed-top navbar" id="nav-triangle">
 class Navigation extends React.Component {
@@ -13,13 +14,6 @@ class Navigation extends React.Component {
     this.toggleNavigation = this.toggleNavigation.bind(this);
   }
 
-  componentDidMount() {
-    fetch("/_github/logged_in/")
-      .then(response => response.json())
-      .then(user => this.setState({ user }))
-      .catch();
-  }
-
   toggleNavigation() {
     this.setState({
       showNavigation: !this.state.showNavigation
@@ -28,26 +22,26 @@ class Navigation extends React.Component {
 
   render() {
     const { showNavigation } = this.state;
-    const { user } = this.state;
+    const { user } = this.props;
 
     return (
       <div
-        className={"fixed-top" + (showNavigation ? " out" : "")}
-        id="nav-top"
+        className="fixed-top"
+        style={[styles.navTop, showNavigation && styles.navTop.out]}
       >
         <div
-          id="collapseable-nav"
-          className={
-            "nav navigation flex-column float-right" +
-            (showNavigation ? " out" : "")
-          }
+          className="nav flex-column float-right"
+          style={[styles.navigation, showNavigation && styles.navigation.out]}
         >
-          <div className="d-flex" id="brand-box">
-            <a className="navbar-brand" href="/" id="giraffe-brand">
-              <img src="/static/img/giraffetools_logo.png" id="giraffe-brand" />
+          <div className="d-flex" style={[styles.brandBox]}>
+            <a className="navbar-brand" href="/" style={[styles.giraffeBrand]}>
+              <img
+                src="/static/img/giraffetools_logo.png"
+                style={[styles.giraffeBrandLogo]}
+              />
             </a>
           </div>
-          <ul id="nav-list">
+          <ul style={[styles.navList]}>
             <li className="nav-item">
               <a className="nav-link" href="/porcupine">
                 <h3>Porcupine</h3>
@@ -91,13 +85,13 @@ class Navigation extends React.Component {
                 }
               >
                 {user && user.access_token ? (
-                  <Fragment>
-                    <h3>{`@${user.github_handle}`}</h3>
-                    <h3>My projects</h3>
-                  </Fragment>
+                  <h3>My projects</h3>
                 ) : (
-                  <span id="login-text-nav">
-                    <img src="/static/img/gh-icon.png" id="github-button" />
+                  <span style={[styles.loginTextNav]}>
+                    <img
+                      src="/static/img/gh-icon.png"
+                      style={[styles.githubButton]}
+                    />
                     Login with GitHub
                   </span>
                 )}
@@ -106,7 +100,7 @@ class Navigation extends React.Component {
             {user &&
               user.access_token && (
                 <li className="nav-item border-bottom">
-                  <a className="nav-link" href="#">
+                  <a className="nav-link" href="/_github/logout/">
                     <h3>Log out</h3>
                   </a>
                 </li>
@@ -119,11 +113,14 @@ class Navigation extends React.Component {
             this.toggleNavigation();
           }}
         >
-          <img src="/static/img/nav_triangle.svg" id="nav-triangle" />
+          <img
+            src="/static/img/nav_triangle.svg"
+            style={[styles.navTriangle]}
+          />
         </a>
       </div>
     );
   }
 }
 
-export default Navigation;
+export default Radium(Navigation);

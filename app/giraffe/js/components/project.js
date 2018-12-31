@@ -1,84 +1,58 @@
 import React, { Fragment } from "react";
+import Radium from "radium";
 
-import Banner from "./banner";
-import CommitBox from "./commitBox";
-import Footer from "./footer";
-import RepositoryBox from "./repositoryBox";
+import styles from "../styles/project.js";
 
-class Project extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      repository: null,
-      branch: null,
-      commit: null
-    };
-  }
-
-  componentDidMount() {
-    const { username, repository, branchOrCommit } = this.props.match.params;
-
-    if (true) {
-      this.setState({
-        branch: "master"
-      });
-    } else {
-      this.setState({
-        commit: ""
-      });
-    }
-    fetch(`https://api.github.com/repos/${username}/${repository}`)
-      .then(response => response.json())
-      .then(repository => this.setState({ repository }))
-      .catch();
-  }
-
-  render() {
-    const { repository, branch, commit } = this.state;
-    const bannerTitle =
-      repository && repository.name
-        ? `${repository.name}`
-        : "Repository not found";
-
-    return (
-      <Fragment>
-        <Banner title={`${bannerTitle}`} />
-        <div className="d-flex justify-content-center">
-          {repository && (
-            <Fragment>
-              <RepositoryBox repository={repository} />
-              <div className="col-7">
-                <div>
-                  <h4 className="text-center" id="commit-title">
-                    {branch && (
-                      <div>
-                        Commits for Branch
-                        <span id="branch-text" className="border-bottom">
-                          {branch}
-                        </span>
-                      </div>
-                    )}
-                    {commit && (
-                      <div>
-                        Commits for Commit
-                        <span
-                          id="branch-text"
-                          className="border-bottom"
-                        >{` ${commit.substring(0, 6)} `}</span>{" "}
-                        )
-                      </div>
-                    )}
-                  </h4>
-                  <CommitBox repository={repository} />
-                </div>
-              </div>
-            </Fragment>
-          )}
+const Project = repository => (
+  <div
+    className="d-flex"
+    style={[
+      styles.project,
+      !repository.isGiraffeProject && styles.project.noGiraffe
+    ]}
+  >
+    <div className="col-6 text-left">
+      <div className="d-flex align-items-center">
+        <h5 className="float-left" style={[styles.projectTitle]}>
+          {repository.name}
+        </h5>
+        <div style={[styles.publicPrivate]}>
+          {repository.private ? "Private" : "Public"}
         </div>
-        <Footer />
-      </Fragment>
-    );
-  }
-}
+      </div>
+      <img src="/static/img/separator_red.svg" />
+      added{" "}
+      {new Intl.DateTimeFormat("en-GB", {
+        year: "numeric",
+        month: "long",
+        day: "2-digit"
+      }).format(new Date(repository.created_at))}
+    </div>
+    <div className="col-6 text-right">
+      {repository.isGiraffeProject ? (
+        <a
+          type="button btn-primary"
+          className="btn"
+          href={`/github/${repository.full_name}`}
+          style={[styles.open]}
+        >
+          open
+        </a>
+      ) : (
+        <a
+          type="button btn-primary"
+          className="btn"
+          id="no-giraffe-project"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Not implemented yet!"
+          style={[styles.add]}
+        >
+          add
+        </a>
+      )}
+    </div>
+  </div>
+);
 
-export default Project;
+export default Radium(Project);

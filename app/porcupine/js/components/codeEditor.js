@@ -1,10 +1,13 @@
 import React from "react";
+import Radium from "radium";
 
 import Code from "./code";
+import styles from "../styles/codeEditor";
 
 const CodeEditor = props => {
   const {
     showCodeEditor,
+    showSidebar,
     setActiveTab,
     toggleCodeEditor,
     nodes,
@@ -16,23 +19,30 @@ const CodeEditor = props => {
   let currentTab = activeTab || "Nipype";
 
   return (
-    <div className={"codeWindow " + (showCodeEditor ? "codeWindowClosed" : "")}>
+    <div
+      style={[
+        styles.codeWindow,
+        showCodeEditor && styles.codeWindow.closed,
+        showSidebar && styles.codeWindow.withSidebar
+      ]}
+    >
       <div>
         <div
+          style={[styles.codeButton]}
           className={
-            "codeButton fas " +
-            (showCodeEditor ? "fa-angle-up" : "fa-angle-down")
+            "fas " + (showCodeEditor ? "fa-angle-up" : "fa-angle-down")
           }
           onClick={() => toggleCodeEditor()}
         />
-        <nav className="codeNav">
+        <nav style={[styles.codeNav]}>
           <div className="nav nav-tabs" id="nav-tab" role="tablist">
             {languages.map(language => (
               <a
-                className={
-                  "nav-item nav-link code-nav" +
-                  (language === currentTab ? " active" : "")
-                }
+                style={[
+                  styles.codeNavItem,
+                  language === currentTab && styles.codeNavItem.active
+                ]}
+                className="nav-item nav-link"
                 key={`nav-${language}-tab`}
                 id={`nav-${language}-tab`}
                 data-toggle="tab"
@@ -47,14 +57,13 @@ const CodeEditor = props => {
           </div>
         </nav>
       </div>
-      <div className="codeEditor">
-        <div className="tab-content" id="nav-tabContent">
+      <div>
+        <div style={[styles.navTabContent]} className="tab-content">
           {languages.map(language => (
             <div
               key={`nav-${language}-panel`}
               className={
-                "tab-pane fade" +
-                (language === currentTab ? " show active" : "")
+                "tab-pane" + (language === currentTab ? " show active" : "")
               }
               id={`nav-${language}`}
               role="tabpanel"
@@ -69,4 +78,4 @@ const CodeEditor = props => {
   );
 };
 
-export default CodeEditor;
+export default Radium(CodeEditor);

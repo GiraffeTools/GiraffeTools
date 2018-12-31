@@ -9,6 +9,17 @@ registerLanguage("python", python);
 
 const LANGUAGE = "Nipype";
 
+const mapNodeFields = node => {
+  const iteratorFields = node.parameters
+    .filter(parameter => {
+      return parameter.isIterable && parameter;
+    })
+    .map(parameter => {
+      return parameter.name;
+    });
+  return iteratorFields;
+};
+
 const writePreamble = nodes => {
   const preamble = `#This is a Nipype generator. Warning, here be dragons.
 #!/usr/bin/env python
@@ -73,21 +84,36 @@ const itemToCode = node => {
   }
 
   let code = `#${codeArgument.comment}\r\n`;
-  let nodeType = true ? "Node" : "MapNode"; // #TODO condition on baing iterable
+  let iteratorFields = mapNodeFields(node);
+  let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
   let givenName = `my_${node.name}`;
   code += `${givenName} = pe.${nodeType}(interface = ${
     codeArgument.argument.name
-  }, name='${givenName}')\r\n`;
+  }, name='${givenName}'`;
+  code += iteratorFields.length
+    ? `, iterfield = ['${iteratorFields.join(`', '`)}']`
+    : "";
+  code += `)\r\n`;
+  let iterables = {};
   node.parameters &&
     node.parameters
-      .filter(parameter => parameter.value !== "")
+      .filter(parameter => parameter.value !== "" && parameter.input)
       .forEach(parameter => {
-        if (parameter.input) {
+        if (parameter.isIterable) {
+          iterables[parameter.name] = parameter.value;
+        } else {
           code += `${givenName}.inputs.${parameter.name} = ${
             parameter.value
           }\r\n`;
         }
       });
+  if (Object.keys(iterables).length) {
+    code += `my_${node.name}.iterables = [${Object.keys(iterables)
+      .map(key => {
+        return `('${key}', ${iterables[key]})`;
+      })
+      .join(",")}]\r\n`;
+  }
   return code;
 };
 

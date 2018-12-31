@@ -1,22 +1,27 @@
 import React from "react";
+import { StyleRoot } from "radium";
+
+import styles from "../styles/smallScreenAlert";
 
 const SmallScreenAlert = () => (
-  <div
-    id="alert-small-screen"
-    className="alert alert-info alert-dismissible fade show"
-    role="alert"
-  >
-    <button
-      type="button"
-      className="close"
-      data-dismiss="alert"
-      aria-label="Close"
+  <StyleRoot>
+    <div
+      className="alert alert-info alert-dismissible fade show"
+      style={[styles.alertSmallScreen]}
+      role="alert"
     >
-      <span aria-hidden="true">&times;</span>
-    </button>
-    Welcome! This website has not been optimised for small screens so things
-    might look a bit quirky!
-  </div>
+      <button
+        type="button"
+        className="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+      Welcome! This website has not been optimised for small screens so things
+      might look a bit quirky!
+    </div>
+  </StyleRoot>
 );
 
 export default SmallScreenAlert;
