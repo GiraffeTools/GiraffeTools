@@ -5,11 +5,16 @@ import SyntaxHighlighter, {
 import python from "react-syntax-highlighter/languages/hljs/python";
 import atomDark from "react-syntax-highlighter/styles/hljs/atom-one-dark";
 
-registerLanguage("python", python);
+import { exceptionNodes, exceptionCode } from "./nipypeStupidExceptions";
 
+registerLanguage("python", python);
 const LANGUAGE = "Nipype";
 
-const mapNodeFields = node => {
+export const nodeToName = node => {
+  return `my_${node.name}`;
+};
+
+export const mapNodeFields = node => {
   const iteratorFields = node.parameters
     .filter(parameter => {
       return parameter.isIterable && parameter;
@@ -18,6 +23,32 @@ const mapNodeFields = node => {
       return parameter.name;
     });
   return iteratorFields;
+};
+
+export const iterableCode = node => {
+  let iterables = {};
+  let givenName = nodeToName(node);
+  let code = "";
+  node.parameters &&
+    node.parameters
+      .filter(parameter => parameter.value !== "" && parameter.input)
+      .forEach(parameter => {
+        if (parameter.isIterable) {
+          iterables[parameter.name] = parameter.value;
+        } else {
+          code += `${givenName}.inputs.${parameter.name} = ${
+            parameter.value
+          }\r\n`;
+        }
+      });
+  if (Object.keys(iterables).length) {
+    code += `my_${node.name}.iterables = [${Object.keys(iterables)
+      .map(key => {
+        return `('${key}', ${iterables[key]})`;
+      })
+      .join(",")}]\r\n`;
+  }
+  return code;
 };
 
 const writePreamble = nodes => {
@@ -83,37 +114,23 @@ const itemToCode = node => {
     return "";
   }
 
+  if (exceptionNodes.includes(codeArgument.argument.name)) {
+    return exceptionCode(node);
+  }
+
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
   let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
-  let givenName = `my_${node.name}`;
+  let givenName = nodeToName(node);
   code += `${givenName} = pe.${nodeType}(interface = ${
     codeArgument.argument.name
   }, name='${givenName}'`;
-  code += iteratorFields.length
-    ? `, iterfield = ['${iteratorFields.join(`', '`)}']`
-    : "";
-  code += `)\r\n`;
-  let iterables = {};
-  node.parameters &&
-    node.parameters
-      .filter(parameter => parameter.value !== "" && parameter.input)
-      .forEach(parameter => {
-        if (parameter.isIterable) {
-          iterables[parameter.name] = parameter.value;
-        } else {
-          code += `${givenName}.inputs.${parameter.name} = ${
-            parameter.value
-          }\r\n`;
-        }
-      });
-  if (Object.keys(iterables).length) {
-    code += `my_${node.name}.iterables = [${Object.keys(iterables)
-      .map(key => {
-        return `('${key}', ${iterables[key]})`;
-      })
-      .join(",")}]\r\n`;
+  if (!iteratorFields.length) {
+    code += `, iterfield = ['${iteratorFields.join(`', '`)}']`;
   }
+  code += `)\r\n`;
+  code += iterableCode(node);
+
   return code;
 };
 
