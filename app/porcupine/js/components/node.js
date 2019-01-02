@@ -46,7 +46,7 @@ class Node extends React.Component {
       dx += d3.event.dx;
       dy += d3.event.dy;
       updateNodePosition(id, { x: x + dx, y: y + dy });
-      repositionPorts({ x: x + dx, y: y + dy, width, id });
+      repositionPorts(id);
     }
 
     function ended() {}

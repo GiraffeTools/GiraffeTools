@@ -118,9 +118,9 @@ class Field extends React.Component {
     }
 
     return (
-      <div>
+      <div className="border-top" style={[styles.field]}>
         <div style={{ display: displayStyle }}>
-          <label htmlFor={id} style={{ fontSize: "0.85em" }}>
+          <label htmlFor={id} style={[styles.label]}>
             {name}
           </label>
           {inputElement}

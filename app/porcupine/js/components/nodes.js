@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 
 // import DraggableNode from "../draggables/draggableNode";
-import NodeContainer from "../containers/nodeContainer";
+import Node from "../containers/node";
 
 const Nodes = ({ nodes }) => (
   <Fragment>
-    {nodes && nodes.map(node => <NodeContainer {...node} key={node.id} />)}
+    {nodes && nodes.map(node => <Node {...node} key={node.id} />)}
   </Fragment>
 );
 

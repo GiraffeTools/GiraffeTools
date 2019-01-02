@@ -4,7 +4,7 @@ import { hot } from "react-hot-loader";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import ContentContainer from "./containers/contentContainer";
+import Content from "./containers/content";
 
 class App extends React.Component {
   render() {
@@ -12,7 +12,7 @@ class App extends React.Component {
       <Fragment>
         <Route
           path="/porcupine/:username?/:repository?/:branchOrCommit?"
-          component={ContentContainer}
+          component={Content}
         />
       </Fragment>
     );

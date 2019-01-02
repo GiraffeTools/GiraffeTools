@@ -1,6 +1,7 @@
 import React from "react";
 import Radium from "radium";
 
+import AddParameter from "../containers/addParameter";
 import Fields from "../components/fields";
 import styles from "../styles/parameterPane";
 
@@ -53,6 +54,7 @@ class ParameterPane extends React.Component {
           />
         </div>
         <div style={[styles.fields]}>
+          <AddParameter nodeId={selectedNode && selectedNode.id} />
           {selectedNode && selectedNode.parameters ? (
             <Fields parameters={selectedNode.parameters} />
           ) : (

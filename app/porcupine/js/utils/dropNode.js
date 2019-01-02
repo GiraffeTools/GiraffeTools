@@ -37,5 +37,5 @@ export const drop = (item, offset) => {
   };
 
   addNode(newNode);
-  repositionPorts(newNode);
+  repositionPorts(newNode.id);
 };

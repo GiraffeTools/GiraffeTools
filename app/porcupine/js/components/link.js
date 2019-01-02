@@ -60,7 +60,6 @@ class Link extends React.Component {
     d += ` ${(startingPoint.x * 3) / 4 + (endPoint.x * 1) / 4} ${endPoint.y}`;
     // end point
     d += ` ${endPoint.x} ${endPoint.y}`;
-
     return (
       <path
         ref={svg => (this.svgRef = svg)}

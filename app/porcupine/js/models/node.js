@@ -6,7 +6,8 @@ import {
   REMOVE_NODE,
   UPDATE_NODE,
   ADD_PARAMETER_TO_NODE,
-  CLEAR_DATABASE
+  CLEAR_DATABASE,
+  REPOSITION_PORTS
 } from "../actions/actionTypes";
 
 class Node extends Model {
@@ -24,14 +25,32 @@ class Node extends Model {
       case REMOVE_NODE:
         Node.withId(payload.id).delete();
         break;
-      case ADD_PARAMETER_TO_NODE:
-        Node.withId(payload.nodeId).parameters.add(payload.parameter);
-        break;
       // case REMOVE_PARAMETER_FROM_NODE:
       // Node.withId(payload.nodeId).parameters.add(payload.port);
       // break;
+      case ADD_PARAMETER_TO_NODE:
+      // call UPDATE_NODE on adding parameter, so NO break here
       case UPDATE_NODE:
-        Node.withId(payload.nodeId).update(payload.newValues);
+        const node = Node.withId(payload.nodeId);
+        node.update(payload.newValues);
+        let x = 0;
+        let y = 21;
+        node.parameters
+          .filter(parameter => parameter.isVisible)
+          .toModelArray()
+          .forEach(parameter => {
+            y += 24;
+            parameter.input &&
+              parameter.input.update({
+                x: node.x + x,
+                y: node.y + y
+              });
+            parameter.output &&
+              parameter.output.update({
+                x: node.x + x + node.width,
+                y: node.y + y
+              });
+          });
         break;
     }
     return undefined;

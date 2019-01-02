@@ -1,7 +1,7 @@
 import React from "react";
 import Radium from "radium";
 
-import SaveModalContainer from "../containers/saveModalContainer";
+import SaveModal from "../containers/saveModal";
 import styles from "../styles/modals";
 
 class Modal extends React.Component {
@@ -84,7 +84,7 @@ class Modal extends React.Component {
       const { onClose, item } = this.props;
       return (
         <div className="modal-dialog" style={[{ zIndex: (zIndex + 1) * 10 }]}>
-          <SaveModalContainer onClose={() => onClose(item.id)} />
+          <SaveModal onClose={() => onClose(item.id)} />
         </div>
       );
     }

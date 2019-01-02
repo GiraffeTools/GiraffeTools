@@ -30,10 +30,8 @@ const mapDispatchToProps = dispatch => ({
   deleteNode: nodeId => dispatch(deleteNode(nodeId)),
   deleteLink: linkId => dispatch(deleteLink(linkId)),
   setPorkFile: porkfile => dispatch(setPorkFile(porkfile)),
-  addParameterToNode: (parameter, nodeId) =>
-    dispatch(addParameterToNode(parameter, nodeId)),
   clickItem: () => dispatch(clickItem()),
-  repositionPorts: node => dispatch(repositionPorts(node)),
+  repositionPorts: nodeId => dispatch(repositionPorts(nodeId)),
   updateLoadingPercent: percent => dispatch(updateLoadingPercent(percent)),
   updateNodePosition: (nodeId, offset) =>
     dispatch(updateNodePosition(nodeId, offset)),
