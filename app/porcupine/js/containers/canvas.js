@@ -7,8 +7,7 @@ import {
   addNode,
   addLink,
   clearDatabase,
-  repositionPorts,
-  updateNodePosition,
+  updateNode,
   clickItem,
   deleteNode,
   deleteLink,
@@ -31,10 +30,8 @@ const mapDispatchToProps = dispatch => ({
   deleteLink: linkId => dispatch(deleteLink(linkId)),
   setPorkFile: porkfile => dispatch(setPorkFile(porkfile)),
   clickItem: () => dispatch(clickItem()),
-  repositionPorts: nodeId => dispatch(repositionPorts(nodeId)),
   updateLoadingPercent: percent => dispatch(updateLoadingPercent(percent)),
-  updateNodePosition: (nodeId, offset) =>
-    dispatch(updateNodePosition(nodeId, offset)),
+  updateNode: (nodeId, offset) => dispatch(updateNode(nodeId, offset)),
   clearDatabase: () => dispatch(clearDatabase())
 });
 

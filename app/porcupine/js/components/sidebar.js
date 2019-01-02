@@ -57,28 +57,37 @@ class Sidebar extends React.Component {
                 })}
             </div>
             <h5 style={[styles.sidebarHeading]}>ACTIONS</h5>
-            <div style={[styles.buttons]}>
-              <a
-                className="github-button"
-                href={`https://github.com/${user.user}/${user.repository}`}
-                data-size="large"
-                data-show-count="true"
-                aria-label={`Star ${user.user}/${user.repository} on GitHub`}
-                style={[styles.githubButton]}
-              >
-                Star
-              </a>{" "}
-              <a
-                className="github-button"
-                href={`https://github.com/${user.user}/${user.repository}/fork`}
-                data-size="large"
-                data-show-count="true"
-                aria-label={`Fork ${user.user}/${user.repository} on GitHub`}
-                style={[styles.githubButton]}
-              >
-                Fork
-              </a>
-            </div>
+            {user.user &&
+              user.repository && (
+                <div style={[styles.buttons]}>
+                  <a
+                    className="github-button"
+                    href={`https://github.com/${user.user}/${user.repository}`}
+                    data-size="large"
+                    data-show-count="true"
+                    aria-label={`Star ${user.user}/${
+                      user.repository
+                    } on GitHub`}
+                    style={[styles.githubButton]}
+                  >
+                    Star
+                  </a>{" "}
+                  <a
+                    className="github-button"
+                    href={`https://github.com/${user.user}/${
+                      user.repository
+                    }/fork`}
+                    data-size="large"
+                    data-show-count="true"
+                    aria-label={`Fork ${user.user}/${
+                      user.repository
+                    } on GitHub`}
+                    style={[styles.githubButton]}
+                  >
+                    Fork
+                  </a>
+                </div>
+              )}
             {user &&
               user.user && (
                 <a

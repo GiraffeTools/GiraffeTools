@@ -12,7 +12,6 @@ class Field extends React.Component {
   changeParams(paramId, key, value) {
     const newValues = { ...this.props.port, [key]: value };
     this.props.updateParameter(paramId, newValues);
-    this.props.repositionPorts(this.props.selectedNode);
   }
 
   change(e) {

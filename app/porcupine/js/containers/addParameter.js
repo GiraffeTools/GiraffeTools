@@ -1,14 +1,13 @@
 import { connect } from "react-redux";
 
 import AddParameter from "../components/addParameter";
-import { addParameterToNode, repositionPorts } from "../actions";
+import { addParameterToNode } from "../actions";
 
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
   addParameterToNode: (parameter, nodeId) =>
-    dispatch(addParameterToNode(parameter, nodeId)),
-  repositionPorts: node => dispatch(repositionPorts(node))
+    dispatch(addParameterToNode(parameter, nodeId))
 });
 
 const AddParameterContainer = connect(

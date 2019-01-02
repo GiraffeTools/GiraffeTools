@@ -41,13 +41,11 @@ const boxTarget = {
       case ItemTypes.NODE:
         x = Math.round(item.x + x);
         y = Math.round(item.y + y);
-        props.updateNodePosition(item.id, { x, y });
-        //HACK: passing on all props is dirty
-        props.repositionPorts({ ...item, x, y });
+        props.updateNode(item.id, { x, y });
         break;
       case ItemTypes.PANE_ELEMENT:
         const contentPosition = monitor.getSourceClientOffset();
-        const { addNode, repositionPorts } = props;
+        const { addNode } = props;
 
         const templateNode = item.category;
         const node = $.extend(true, {}, templateNode);
@@ -92,7 +90,7 @@ const boxTarget = {
         };
 
         addNode(newNode);
-        repositionPorts(newNode);
+        updateNode(newNode.id);
         break;
       default:
         return null;
@@ -179,7 +177,7 @@ class Canvas extends React.PureComponent {
   }
 
   loadFromJson(json) {
-    const { addNode, addLink, clearDatabase, repositionPorts } = this.props;
+    const { addNode, addLink, clearDatabase, updateNode } = this.props;
     this.setPercent(10); // Loading started!
     clearDatabase();
 
@@ -198,7 +196,7 @@ class Canvas extends React.PureComponent {
       let i = 0;
       nodes.forEach(node => {
         addNode(node);
-        repositionPorts(node);
+        updateNode(node.id);
         this.setPercent(50 + (30 * i++) / nodes.length);
       });
       i = 0;
@@ -206,11 +204,12 @@ class Canvas extends React.PureComponent {
         addLink(link);
         this.setPercent(80 + (20 * i++) / links.length);
       });
-    } catch (err) {
+    } catch (error) {
       this.setPercent(-1);
       console.log(
         "Error while adding Link or Node to Canvas, Check Porcupine Config file "
       );
+      console.log(error);
     }
     this.setPercent(-1);
   }

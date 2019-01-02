@@ -28,9 +28,7 @@ class Node extends Model {
       // case REMOVE_PARAMETER_FROM_NODE:
       // Node.withId(payload.nodeId).parameters.add(payload.port);
       // break;
-      case ADD_PARAMETER_TO_NODE:
-      // call UPDATE_NODE on adding parameter, so NO break here
-      case UPDATE_NODE:
+      case UPDATE_NODE || ADD_PARAMETER_TO_NODE:
         const node = Node.withId(payload.nodeId);
         node.update(payload.newValues);
         let x = 0;

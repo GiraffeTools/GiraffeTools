@@ -40,20 +40,22 @@ export const selectedNode = createSelector(
 
     const obj = Object.assign({}, node.ref);
     //add parameters
-    obj.parameters = node.parameters.toRefArray().map(parameterRef => {
-      const parameter = orm.Parameter.withId(parameterRef.id);
-      //add links
+    obj.parameters =
+      node.parameters &&
+      node.parameters.toRefArray().map(parameterRef => {
+        const parameter = orm.Parameter.withId(parameterRef.id);
+        //add links
 
-      const inputLinks = parameter.input
-        ? parameter.input.inputLinks.toRefArray()
-        : [];
-      const outputLinks = parameter.output
-        ? parameter.output.outputLinks.toRefArray()
-        : [];
+        const inputLinks = parameter.input
+          ? parameter.input.inputLinks.toRefArray()
+          : [];
+        const outputLinks = parameter.output
+          ? parameter.output.outputLinks.toRefArray()
+          : [];
 
-      const obj = Object.assign({}, parameter.ref);
-      return { ...obj, outputLinks, inputLinks };
-    });
+        const obj = Object.assign({}, parameter.ref);
+        return { ...obj, outputLinks, inputLinks };
+      });
     return obj;
   }
 );

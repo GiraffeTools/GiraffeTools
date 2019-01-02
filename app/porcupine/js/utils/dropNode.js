@@ -1,5 +1,5 @@
 export const drop = (item, offset) => {
-  const { addNode, addPortToNode, repositionPorts } = this.props;
+  const { addNode, addPortToNode } = this.props;
 
   this.placeholder = false;
   const rec = document.getElementById("main").getBoundingClientRect();
@@ -37,5 +37,5 @@ export const drop = (item, offset) => {
   };
 
   addNode(newNode);
-  repositionPorts(newNode.id);
+  updateNode(newNode.id);
 };

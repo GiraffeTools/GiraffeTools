@@ -5,7 +5,6 @@ import {
   ADD_PARAMETER_TO_NODE,
   REMOVE_PARAMETER,
   UPDATE_PARAMETER,
-  REPOSITION_PORTS,
   ADD_LINK,
   REMOVE_LINK,
   START_LINK,
@@ -61,14 +60,11 @@ export const deleteNode = id => ({
     id
   }
 });
-export const updateNodePosition = (nodeId, offset) => ({
+export const updateNode = (nodeId, newValues) => ({
   type: UPDATE_NODE,
   payload: {
     nodeId,
-    newValues: {
-      x: offset.x,
-      y: offset.y
-    }
+    newValues
   }
 });
 export const addParameterToNode = (parameter, nodeId) => ({
@@ -109,12 +105,6 @@ export const deleteParameter = id => ({
   type: REMOVE_PARAMETER,
   payload: {
     id
-  }
-});
-export const repositionPorts = nodeId => ({
-  type: REPOSITION_PORTS,
-  payload: {
-    nodeId
   }
 });
 

@@ -17,7 +17,7 @@ class AddParameter extends React.Component {
   }
 
   addParameter() {
-    const { addParameterToNode, repositionPorts, nodeId } = this.props;
+    const { addParameterToNode, nodeId } = this.props;
     const { name, input, output } = this.state;
     const parameter = {
       id: v4(),
@@ -31,7 +31,6 @@ class AddParameter extends React.Component {
     if (output) parameter["output"] = v4();
 
     addParameterToNode(parameter, nodeId);
-    repositionPorts(nodeId);
   }
 
   handleInputChange(event) {

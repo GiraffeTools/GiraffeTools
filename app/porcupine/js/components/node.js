@@ -39,14 +39,13 @@ class Node extends React.Component {
   }
 
   drag() {
-    const { x, y, width, id, updateNodePosition, repositionPorts } = this.props;
+    const { x, y, width, id, updateNode } = this.props;
     let dx = 0,
       dy = 0;
     function dragged() {
       dx += d3.event.dx;
       dy += d3.event.dy;
-      updateNodePosition(id, { x: x + dx, y: y + dy });
-      repositionPorts(id);
+      updateNode(id, { x: x + dx, y: y + dy });
     }
 
     function ended() {}
