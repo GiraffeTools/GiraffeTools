@@ -1,0 +1,6 @@
+export default `#--------------------------------
+# Add custom analysis file as CMD
+#--------------------------------
+ADD /path/to/pipeline/script.py /code/workflow.py
+CMD ["python", "/code/workflow.py"]
+`

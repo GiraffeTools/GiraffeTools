@@ -13,6 +13,7 @@ gunicorn
 libsass
 psycopg2-binary
 pydash
+pygithub
 PyYAML
 python-dateutil
 requests

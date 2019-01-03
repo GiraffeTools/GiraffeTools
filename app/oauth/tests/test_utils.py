@@ -27,7 +27,7 @@ from django.urls import reverse
 from django.utils import timezone
 
 import responses
-from github.utils import (
+from oauth.utils import (
     BASE_URI, HEADERS, JSON_HEADER, TOKEN_URL, build_auth_dict, get_auth_url,
     get_github_primary_email, get_github_user_data, get_github_user_token,
     get_user, is_github_token_valid, org_name, repo_url, reset_token,

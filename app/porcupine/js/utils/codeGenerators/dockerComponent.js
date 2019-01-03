@@ -1,11 +1,4 @@
-import React from "react";
-import SyntaxHighlighter, {
-  registerLanguage
-} from "react-syntax-highlighter/light";
-import dockerfile from "react-syntax-highlighter/languages/hljs/dockerfile";
-import atomDark from "react-syntax-highlighter/styles/hljs/atom-one-dark";
-
-registerLanguage("dockerfile", dockerfile);
+import React, { Fragment } from "react";
 
 const LANGUAGE = "Docker";
 
@@ -66,11 +59,7 @@ class DockerCode extends React.Component {
         .filter(Boolean)
         .join("\r\n");
     // debugger;
-    return (
-      <SyntaxHighlighter language="dockerfile" style={atomDark}>
-        {[preamble, nodeCode, postamble].join("\r\n")}
-      </SyntaxHighlighter>
-    );
+    return [preamble, nodeCode, postamble].join("\r\n");
   }
 }
 

@@ -26,7 +26,7 @@ from .views import (github_authentication,
                     logged_in)
 
 
-app_name = "github"
+app_name = "oauth"
 urlpatterns = [
     path("callback/", github_callback, name="github_callback"),
     path("auth/", github_authentication, name="github_auth"),

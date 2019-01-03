@@ -1,13 +1,5 @@
-import React, { Fragment } from "react";
-import SyntaxHighlighter, {
-  registerLanguage
-} from "react-syntax-highlighter/light";
-import python from "react-syntax-highlighter/languages/hljs/python";
-import atomDark from "react-syntax-highlighter/styles/hljs/atom-one-dark";
-
 import { exceptionNodes, exceptionCode } from "./nipypeStupidExceptions";
 
-registerLanguage("python", python);
 const LANGUAGE = "Nipype";
 
 export const nodeToName = node => {
@@ -144,7 +136,7 @@ analysisflow.run(plugin=plugin, plugin_args=plugin_args)
 `;
 };
 
-const NipypeCode = ({ nodes, links }) => {
+export default function nipypeCode(nodes, links) {
   const preamble = writePreamble(nodes);
   const nodeCode = writeNodes(nodes);
   const linkCode = writeLinks(links);
@@ -152,11 +144,5 @@ const NipypeCode = ({ nodes, links }) => {
   // const parametrs = writeParameters();
   const postAmble = writePostamble();
 
-  return (
-    <SyntaxHighlighter language="python" style={atomDark}>
-      {[preamble, nodeCode, linkCode, postAmble].join("\r\n")}
-    </SyntaxHighlighter>
-  );
-};
-
-export default NipypeCode;
+  return [preamble, nodeCode, linkCode, postAmble].join("\r\n");
+}

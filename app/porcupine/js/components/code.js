@@ -1,22 +1,50 @@
 import React from "react";
-import NipypeCode from "./codeGenerators/nipype";
-import DockerCode from "./codeGenerators/docker";
-import UnknownCode from "./codeGenerators/unknown";
+import SyntaxHighlighter, {
+  registerLanguage
+} from "react-syntax-highlighter/light";
+import python from "react-syntax-highlighter/languages/hljs/python";
+import dockerfile from "react-syntax-highlighter/languages/hljs/dockerfile";
+import atomDark from "react-syntax-highlighter/styles/hljs/atom-one-dark";
 
-const Code = ({ nodes, links, language }) => {
-  let code = "";
-  switch (language) {
-    case "Nipype":
-      code = <NipypeCode nodes={nodes} links={links} />;
-      break;
-    case "Docker":
-      code = <DockerCode nodes={nodes} />;
-      break;
-    default:
-      code = <UnknownCode />;
-      break;
+registerLanguage("python", python);
+registerLanguage("dockerfile", dockerfile);
+
+import nipypeCode from "../utils/codeGenerators/nipype";
+import dockerCode from "../utils/codeGenerators/docker";
+import unknownCode from "../utils/codeGenerators/unknown";
+
+class Code extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      code: ""
+    };
   }
-  return code;
-};
+
+  render() {
+    const { nodes, links, language } = this.props;
+    let code = "";
+    let formatting = "";
+    switch (language) {
+      case "Nipype":
+        formatting = "python";
+        code = nipypeCode(nodes, links);
+        break;
+      case "Docker":
+        formatting = "dockerfile";
+        code = dockerCode(nodes, links);
+        break;
+      default:
+        formatting = "";
+        code = unknownCode();
+        break;
+    }
+    return (
+      <SyntaxHighlighter language={formatting} style={atomDark}>
+        {code}
+      </SyntaxHighlighter>
+    );
+  }
+}
 
 export default Code;

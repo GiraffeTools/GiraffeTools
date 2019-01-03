@@ -13,7 +13,7 @@ INSTALLED_APPS = [
     # 'django.contrib.admin',
     "giraffe.apps.GiraffeConfig",
     "porcupine.apps.PorcupineConfig",
-    "github.apps.GithubConfig",
+    "oauth.apps.OAuthConfig",
     "livereload",
     "django.contrib.auth",
     "django.contrib.contenttypes",

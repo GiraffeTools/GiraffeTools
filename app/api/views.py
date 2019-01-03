@@ -1,13 +1,14 @@
 import json
 import requests
+import github
 from slackclient import SlackClient
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseForbidden, JsonResponse
 from django.http import HttpResponseForbidden
 from django.middleware.csrf import get_token
 
-from github.views import logged_in
-from github.utils import is_github_token_valid
+from oauth.views import logged_in
+from oauth.utils import is_github_token_valid
 
 sc = SlackClient(settings.SLACK_API_TOKEN)
 
@@ -36,40 +37,42 @@ def nodes(request):
 
 
 def push_to_github(request):
-    print(request)
     body = json.loads(request.body)
-    user = body["user"]
-    repo = body["repository"]
-    filename = body["filename"]
+
+    user_name = body["user"]
+    repo_name = body["repository"]
     branch = body["branch"]
     commit_message = body["message"]
-    content = body["content"]
+    contents = body["contents"]
 
-    # Clearly it should only do this on your own repo when you're logged in...
     logged_in_user = logged_in(request)
     github_user = json.loads(logged_in_user.content)
-
-    if (github_user["github_handle"] != user or
+    if (github_user["github_handle"] != user_name or
             not is_github_token_valid(github_user["access_token"])):
         return HttpResponseForbidden()
 
-    url = f"https://api.github.com/repos/{user}/{repo}/contents/{filename}"
-
     token = settings.GITHUB_API_TOKEN
-    headers = {"Authorization": "token " + token}
-    data = requests.get(f"{url}?ref={branch}", headers=headers).json()
-    # #TODO: commit conditionally on contents being different
-    # if body["content"] + "\n" != data['content']:
-    message = json.dumps({
-        "message": commit_message,
-        "branch": branch,
-        "content": content,
-        "sha": data["sha"]
-    })
-    headers["Content-Type"] = "application/json"
-    response = requests.put(url, data=message, headers=headers)
+    g = github.Github(token)
+    repo = g.get_repo(f"{user_name}/{repo_name}")
+    master_ref = repo.get_git_ref(f"heads/{branch}")
+    master_sha = master_ref.object.sha
+    base_tree = repo.get_git_tree(master_sha)
 
-    return HttpResponse(response, content_type="application/json")
+    element_list = list()
+    for key, value in contents.items():
+        file_code = "100644"
+        element = github.InputGitTreeElement(key, file_code, "blob", value)
+        element_list.append(element)
+
+    tree = repo.create_git_tree(element_list, base_tree)
+    parent = repo.get_git_commit(master_sha)
+    commit = repo.create_git_commit(commit_message, tree, [parent])
+    master_ref.edit(commit.sha)
+
+    if master_ref.object.sha == commit.sha:
+        return HttpResponse(status=200, content_type="application/json")
+    else:
+        return HttpResponse(status=400, content_type="application/json")
 
 
 def send_slack_invite(request):

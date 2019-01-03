@@ -33,7 +33,7 @@ class SaveModal extends React.Component {
     });
     savePorkFile(nodes, links, user, commit_message)
       .then(response => {
-        if (response.ok) {
+        if (response.ok && response.status == 200) {
           this.setState({
             commit_pending: false,
             commit_succes: true,
@@ -133,7 +133,7 @@ class SaveModal extends React.Component {
             type="button"
             className="btn btn-secondary"
             onClick={() => this.onConfirm()}
-            disabled={!loggedIn || !yourRepo}
+            // disabled={!loggedIn || !yourRepo}
             data-toggle="tooltip"
             data-placement="top"
             title={

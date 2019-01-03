@@ -28,7 +28,7 @@ from django.shortcuts import redirect
 # from django.utils import timezone
 from django.views.decorators.http import require_GET
 
-from github.utils import (
+from oauth.utils import (
     get_auth_url,
     get_github_primary_email,
     get_github_user_data,
