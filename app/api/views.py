@@ -1,5 +1,4 @@
 import json
-import requests
 import github
 from slackclient import SlackClient
 from django.conf import settings

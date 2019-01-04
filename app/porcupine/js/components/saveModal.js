@@ -133,7 +133,7 @@ class SaveModal extends React.Component {
             type="button"
             className="btn btn-secondary"
             onClick={() => this.onConfirm()}
-            // disabled={!loggedIn || !yourRepo}
+            disabled={!loggedIn || !yourRepo}
             data-toggle="tooltip"
             data-placement="top"
             title={
