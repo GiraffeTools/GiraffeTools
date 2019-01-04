@@ -7,7 +7,10 @@ const styles = {
   loginButton: {
     backgroundColor: styleSheet.primaryColor,
     fontSize: "1.1rem",
-    padding: "0.2rem 0rem",
+    paddingTop: "0.2rem",
+    paddingRight: "1rem",
+    paddingBottom: "0.2rem",
+    paddingLeft: "0.5rem",
     color: "white",
     ":hover": {
       color: "black"

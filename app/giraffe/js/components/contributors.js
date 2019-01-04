@@ -9,39 +9,73 @@ class Contributors extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      contributors: null
+      contributors: null,
+      selectedContributors: null
     };
+    this.selectContributors = this.selectContributors.bind(this);
   }
 
   componentDidMount() {
     fetch("https://api.github.com/repos/TimVanMourik/GiraffeTools/contributors")
       .then(response => response.json())
-      .then(contributors => this.setState({ contributors }));
+      .then(contributors =>
+        this.setState({
+          contributors,
+          selectContributors: shuffle(
+            Array.apply(null, { length: contributors.length }).map(
+              Number.call,
+              Number
+            )
+          ).slice(0, 9)
+        })
+      );
+  }
+
+  selectContributors(direction) {
+    const { contributors, selectContributors } = this.state;
+    // #TODO implement pagination
+    switch (direction) {
+      case "next":
+        break;
+      case "previous":
+        break;
+    }
+    // Just reshuffle them randomly for now
+    this.setState({
+      selectContributors: shuffle(
+        Array.apply(null, { length: contributors.length }).map(
+          Number.call,
+          Number
+        )
+      ).slice(0, 9)
+    });
   }
 
   render() {
-    const { contributors } = this.state;
+    const { contributors, selectContributors } = this.state;
 
     return (
       <div className="d-flex" style={[styles.contributors]}>
-        <div className="col-6 border-right" id="contributor-panel">
+        <div className="col-6 border-right">
           <h3>&amp; all the brave contributors</h3>
           {contributors && (
             <div className="d-flex">
               <img
-                className="contributor-arrow"
                 src="/static/img/arrow_left.svg"
+                style={[styles.contributorArrow]}
+                onClick={() => this.selectContributors("previous")}
               />
               <div style={[styles.contributorList]}>
-                {shuffle(contributors)
-                  .slice(0, 9)
+                {contributors
+                  .filter((item, index) => selectContributors.includes(index))
                   .map(contributor => (
                     <Contributor key={contributor.id} {...contributor} />
                   ))}
               </div>
               <img
-                className="contributor-arrow"
+                style={[styles.contributorArrow]}
                 src="/static/img/arrow_right.svg"
+                onClick={() => this.selectContributors("next")}
               />
             </div>
           )}

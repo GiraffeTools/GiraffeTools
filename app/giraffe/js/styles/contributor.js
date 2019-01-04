@@ -8,11 +8,15 @@ const styles = {
     padding: "2% 2%",
     background: "none"
   },
-
+  username: {
+    whiteSpace: "nowrap"
+  },
+  contributorCard: {
+    width: "100%"
+  },
   avatarImage: {
     filter: "grayscale(1)",
     width: "100%",
-    paddingTop: "5px",
     transition: "filter 0.3s",
 
     ":hover": {
