@@ -3,7 +3,7 @@ import { exceptionNodes, exceptionCode } from "./nipypeStupidExceptions";
 const LANGUAGE = "Nipype";
 
 export const nodeToName = node => {
-  return `my_${node.name}`.replace(".", "_");
+  return `my_${node.name.replace(".", "_")}`;
 };
 
 export const mapNodeFields = node => {
@@ -34,7 +34,9 @@ export const iterableCode = node => {
         }
       });
   if (Object.keys(iterables).length) {
-    code += `my_${node.name}.iterables = [${Object.keys(iterables)
+    code += `my_${node.name.replace(".", "_")}.iterables = [${Object.keys(
+      iterables
+    )
       .map(key => {
         return `('${key}', ${iterables[key]})`;
       })
@@ -89,9 +91,9 @@ const linkToCode = link => {
     link.portFrom.node &&
     link.portTo.node
   ) {
-    let source = `my_${link.portFrom.node.name}`;
+    let source = `my_${link.portFrom.node.name.replace(".", "_")}`;
     let sourceAttribute = `${link.portFrom.name}`;
-    let destination = `my_${link.portTo.node.name}`;
+    let destination = `my_${link.portTo.node.name.replace(".", "_")}`;
     let destinationAttribute = `${link.portTo.name}`;
     return `analysisflow.connect(${source}, "${sourceAttribute}", ${destination}, "${destinationAttribute}")`;
   } else {
