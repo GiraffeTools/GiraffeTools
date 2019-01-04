@@ -3,7 +3,7 @@ import { exceptionNodes, exceptionCode } from "./nipypeStupidExceptions";
 const LANGUAGE = "Nipype";
 
 export const nodeToName = node => {
-  return `my_${node.name}`;
+  return `my_${node.name}`.replace(".", "_");
 };
 
 export const mapNodeFields = node => {
