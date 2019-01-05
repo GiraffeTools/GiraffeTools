@@ -43,7 +43,8 @@ class Code extends React.Component {
     super(props);
     this.state = {
       code: "",
-      current_props: []
+      computing: false,
+      current_props: {}
     };
     this.generateCode = this.generateCode.bind(this);
   }
@@ -54,7 +55,8 @@ class Code extends React.Component {
       prev_state.current_props.links !== nextProps.links
     ) {
       return {
-        code: "Recomputing...",
+        ...prev_state,
+        computing: true,
         current_props: nextProps
       };
     }
@@ -75,14 +77,14 @@ class Code extends React.Component {
   async generateCode() {
     const { language, nodes, links } = this.props;
     const code = await generateCodeDebounced(language, nodes, links);
-    this.setState({ code });
+    this.setState({ code, computing: false });
   }
 
   render() {
     const { language } = this.props;
-    let formatting = formattingDictionary[language] || "";
-
     const { code } = this.state;
+
+    const formatting = formattingDictionary[language] || "";
     return (
       <SyntaxHighlighter language={formatting} style={atomDark}>
         {code}
