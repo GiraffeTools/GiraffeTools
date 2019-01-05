@@ -24,6 +24,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-es2015": "^7.0.0-beta.53",
     "@babel/runtime": "^7.2.0",
+    "await-to-js": "^2.1.1",
     "axios": "^0.18.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",

@@ -44,16 +44,27 @@ export function loggedIn() {
   return store.getState().token !== null;
 }
 
-export function getCsrfToken() {
-  return fetch(`${API_HOST}/csrf`, {
-    credentials: "include"
-  })
-    .then(response => response.json())
-    .then(response => response.csrfToken)
-    .catch(error => {
-      throw "Cannot obtain CSRF token";
+let _csrfToken = null;
+export async function getCsrfToken() {
+  if (_csrfToken === null) {
+    const response = await fetch(`${API_HOST}/csrf`, {
+      credentials: "include"
     });
+    const data = await response.json();
+    _csrfToken = data.csrfToken;
+  }
+  return _csrfToken;
 }
+// export function getCsrfToken() {
+//   return fetch(`${API_HOST}/csrf`, {
+//     credentials: "include"
+//   })
+//     .then(response => response.json())
+//     .then(response => response.csrfToken)
+//     .catch(error => {
+//       throw "Cannot obtain CSRF token";
+//     });
+// }
 
 export function testRequest(method) {
   return getCsrfToken()

@@ -1,5 +1,6 @@
 import React from "react";
 import Radium from "radium";
+import to from "await-to-js";
 
 import LoginButton from "../../../giraffe/js/components/loginButton";
 import { savePorkFile } from "../utils/savePorkFile";
@@ -22,7 +23,7 @@ class SaveModal extends React.Component {
     onClose();
   }
 
-  onConfirm() {
+  async onConfirm() {
     const { onClose } = this.props;
     const { nodes, links, user } = this.props;
     const { commit_message } = this.state;
@@ -31,29 +32,22 @@ class SaveModal extends React.Component {
       commit_succes: false,
       commit_error: false
     });
-    savePorkFile(nodes, links, user, commit_message)
-      .then(response => {
-        if (response.ok && response.status == 200) {
-          this.setState({
-            commit_pending: false,
-            commit_succes: true,
-            commit_error: false
-          });
-        } else {
-          this.setState({
-            commit_pending: false,
-            commit_succes: false,
-            commit_error: true
-          });
-        }
-      })
-      .catch(error => {
-        this.setState({
-          commit_pending: false,
-          commit_succes: false,
-          commit_error: true
-        });
+    const { error, response } = await to(
+      savePorkFile(nodes, links, user, commit_message)
+    );
+    if (!error && response.ok) {
+      this.setState({
+        commit_pending: false,
+        commit_succes: response.ok,
+        commit_error: false
       });
+    } else {
+      this.setState({
+        commit_pending: false,
+        commit_succes: false,
+        commit_error: true
+      });
+    }
   }
 
   closeSucces() {

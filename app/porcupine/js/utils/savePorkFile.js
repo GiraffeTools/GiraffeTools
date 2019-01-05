@@ -7,7 +7,7 @@ import { API_HOST } from "../../../giraffe/js/config";
 import nipypeCode from "./codeGenerators/nipype";
 import dockerCode from "./codeGenerators/docker";
 
-export const savePorkFile = (nodes, links, user, commit_message) => {
+export async function savePorkFile(nodes, links, user, commit_message) {
   const commit_branch = user.branch || "master";
   let contents = {};
   const python_file = "GIRAFFE/code/workflow.py";
@@ -38,7 +38,7 @@ export const savePorkFile = (nodes, links, user, commit_message) => {
     .catch(error => {
       console.log(error);
     });
-};
+}
 
 const porkFile = (nodes, links) => {
   return {
