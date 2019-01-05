@@ -32,7 +32,7 @@ class SaveModal extends React.Component {
       commit_succes: false,
       commit_error: false
     });
-    const { error, response } = await to(
+    const [error, response] = await to(
       savePorkFile(nodes, links, user, commit_message)
     );
     if (!error && response.ok) {

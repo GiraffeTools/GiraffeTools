@@ -6,6 +6,7 @@ import { getCsrfToken } from "../../../giraffe/js/utils/auth";
 import { API_HOST } from "../../../giraffe/js/config";
 import nipypeCode from "./codeGenerators/nipype";
 import dockerCode from "./codeGenerators/docker";
+import to from "await-to-js";
 
 export async function savePorkFile(nodes, links, user, commit_message) {
   const commit_branch = user.branch || "master";
@@ -26,18 +27,16 @@ export async function savePorkFile(nodes, links, user, commit_message) {
     contents
   };
 
-  return getCsrfToken()
-    .then(token => {
-      return fetch(`${API_HOST}/push_to_github`, {
-        method: "POST",
-        headers: { "X-CSRFToken": token },
-        body: JSON.stringify(body),
-        credentials: "include"
-      });
+  const [error, response] = await to(
+    fetch(`${API_HOST}/push_to_github`, {
+      method: "POST",
+      headers: { "X-CSRFToken": await getCsrfToken() },
+      body: JSON.stringify(body),
+      credentials: "include"
     })
-    .catch(error => {
-      console.log(error);
-    });
+  );
+
+  return error || response;
 }
 
 const porkFile = (nodes, links) => {
