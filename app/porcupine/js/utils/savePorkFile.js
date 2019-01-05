@@ -10,14 +10,17 @@ import to from "await-to-js";
 
 export async function savePorkFile(nodes, links, user, commit_message) {
   const commit_branch = user.branch || "master";
-  let contents = {};
+
+  // #TODO hard-coded, for now
   const python_file = "GIRAFFE/code/workflow.py";
   const docker_file = "GIRAFFE/code/Dockerfile";
-  contents[user.pork_file] = JSON.stringify(porkFile(nodes, links), null, 2);
-  contents[python_file] = nipypeCode(nodes, links);
-  contents[docker_file] = dockerCode(nodes);
 
-  // contents[user.docker_file] = dockerkFile;
+  const contents = {
+    [user.pork_file]: JSON.stringify(porkFile(nodes, links), null, 2),
+    [python_file]: await nipypeCode(nodes, links),
+    [docker_file]: await dockerCode(nodes)
+  };
+
   const body = {
     filename: user.pork_file,
     user: user.user,

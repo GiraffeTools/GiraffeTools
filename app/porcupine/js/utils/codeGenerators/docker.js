@@ -1,15 +1,17 @@
-import afni from "./neurodocker/afni.txt";
-import ants from "./neurodocker/ants.txt";
-import freesurfer from "./neurodocker/freesurfer.txt";
-import fsl from "./neurodocker/fsl.txt";
-import mrtrix from "./neurodocker/mrtrix.txt";
-import Nipype from "./neurodocker/Nipype.txt";
-import postamble from "./neurodocker/postamble.txt";
-import preamble from "./neurodocker/preamble.txt";
+import to from "await-to-js";
 
 const LANGUAGE = "Docker";
 
-const nodeCode = nodes => {
+const codeMappings = {};
+async function toolboxCode(toolbox) {
+  if (!Object.keys(codeMappings).includes(toolbox)) {
+    const code = await fetch(`/static/assets/neurodocker/${toolbox}.txt`);
+    codeMappings[toolbox] = await code.text();
+  }
+  return codeMappings[toolbox];
+}
+
+async function nodeCode(nodes) {
   const languagesInEditor =
     nodes &&
     nodes.map(node => {
@@ -23,24 +25,34 @@ const nodeCode = nodes => {
       );
     });
 
-  const availableToolboxes = {
-    afni,
-    ants,
-    freesurfer,
-    fsl,
-    mrtrix,
-    Nipype
-  };
-
+  const availableToolboxes = [
+    "afni",
+    "ants",
+    "freesurfer",
+    "fsl",
+    "mrtrix",
+    "Nipype"
+  ];
   const toolboxes = [
     ...new Set(languagesInEditor.reduce((acc, val) => acc.concat(val), []))
   ]
     .map(language => language.replace(/\s/g, ""))
-    .filter(toolbox => Object.keys(availableToolboxes).includes(toolbox));
+    .filter(toolbox => availableToolboxes.includes(toolbox));
 
-  return toolboxes.map(toolbox => availableToolboxes[toolbox]);
-};
+  const code = await Promise.all(
+    toolboxes.map(toolbox => toolboxCode(toolbox))
+  );
+  return code.join("\r\n");
+}
 
-export default function dockerCode(nodes, links) {
-  return [preamble, nodeCode(nodes).join("\r\n"), postamble].join("\r\n");
+export default async function dockerCode(nodes, links) {
+  const [error, dockerComponents] = await to(
+    Promise.all([
+      toolboxCode("preamble"),
+      nodeCode(nodes),
+      toolboxCode("postamble")
+    ])
+  );
+
+  return dockerComponents.join("\r\n");
 }
