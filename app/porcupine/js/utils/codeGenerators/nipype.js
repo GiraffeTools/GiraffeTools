@@ -89,9 +89,9 @@ const linkToCode = link => {
     link.portFrom.node &&
     link.portTo.node
   ) {
-    let source = nodeToName(link.portFrom.node.name.replace(".", "_"));
+    let source = nodeToName(link.portFrom.node.name).replace(".", "_");
     let sourceAttribute = `${link.portFrom.name}`;
-    let destination = nodeToName(link.portTo.node.name.replace(".", "_"));
+    let destination = nodeToName(link.portTo.node.name).replace(".", "_");
     let destinationAttribute = `${link.portTo.name}`;
     return `analysisflow.connect(${source}, "${sourceAttribute}", ${destination}, "${destinationAttribute}")`;
   } else {
