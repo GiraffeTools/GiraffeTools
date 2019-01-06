@@ -3,6 +3,7 @@ import Radium from "radium";
 import { v4 } from "uuid";
 
 import PaneGroup from "./paneGroup";
+import SearchBar from "./searchBar";
 import styles from "../styles/sidebar";
 import { API_HOST } from "../../../giraffe/js/config";
 
@@ -40,6 +41,9 @@ class Sidebar extends React.Component {
             </a>
           </div>
           <div className="col-md-12">
+            <h5 style={[styles.sidebarHeading]}>SEARCH</h5>
+            <SearchBar />
+            <h5 style={[styles.sidebarHeading]}>NODES</h5>
             <div
               style={[styles.panelGroup]}
               role="tablist"
