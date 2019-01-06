@@ -4,8 +4,28 @@ import AwesomeDebouncePromise from "awesome-debounce-promise";
 
 import styles from "../styles/searchBar.js";
 
-const searchAPI = text => fetch("/search?text=" + encodeURIComponent(text));
-const searchAPIDebounced = AwesomeDebouncePromise(searchAPI, 500);
+function searchAPI(text, nodes) {
+  let matches = [];
+
+  const getMatches = nodes => {
+    nodes.categories &&
+      Object.keys(nodes.categories).map(category => {
+        getMatches(nodes.categories[category]);
+      });
+    nodes.nodes &&
+      Object.keys(nodes.nodes).map(node => {
+        if (node.includes(text)) matches.push(nodes.nodes[node]);
+      });
+  };
+  getMatches(nodes);
+  debugger;
+  return matches;
+}
+
+// const searchAPI = text => fetch("/search?text=" + encodeURIComponent(text));
+const searchAPIDebounced = AwesomeDebouncePromise(searchAPI, 500, {
+  key: () => "search"
+});
 
 class SearchBar extends React.Component {
   constructor(props) {
@@ -18,9 +38,10 @@ class SearchBar extends React.Component {
   }
 
   async handleTextChange(event) {
+    const { nodes } = this.props;
     const searchText = event.target.value;
     this.setState({ searchText, results: null });
-    const result = await searchAPIDebounced(searchText, { key: "search" });
+    const result = await searchAPIDebounced(searchText, nodes);
     this.setState({ result });
   }
 
@@ -38,7 +59,7 @@ class SearchBar extends React.Component {
         </form>
         {/*results && results.map(result => <SearchResult result={result} />)*/}
         {searchText.length ? (
-          <span>Sorry, the search function not implemented yet :(</span>
+          <span>Sorry, search function not implemented yet :(</span>
         ) : (
           ""
         )}

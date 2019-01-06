@@ -4,26 +4,77 @@ import { v4 } from "uuid";
 
 import PaneGroup from "./paneGroup";
 import SearchBar from "./searchBar";
+import AwesomeDebouncePromise from "awesome-debounce-promise";
 import styles from "../styles/sidebar";
 import { API_HOST } from "../../../giraffe/js/config";
+
+function searchAPI(text, nodes) {
+  const matches = {};
+  const getMatches = (nodes, matches) => {
+    if (nodes.categories) {
+      matches.categories = {};
+      Object.keys(nodes.categories).map(category => {
+        matches.categories[category] = {};
+        getMatches(nodes.categories[category], matches.categories[category]);
+        if (!Object.keys(matches.categories[category]).length) {
+          delete matches.categories[category];
+        }
+      });
+      if (!Object.keys(matches.categories).length) {
+        delete matches.categories;
+      }
+    }
+    nodes.nodes &&
+      Object.keys(nodes.nodes).map(node => {
+        if (node.includes(text)) {
+          if (!matches.nodes) matches.nodes = {};
+          matches.nodes[node] = nodes.nodes[node];
+        }
+      });
+    if (Object.keys(matches).length) {
+      matches.colour = nodes.colour;
+    }
+  };
+  getMatches(nodes, matches);
+  return matches;
+}
+
+// const searchAPI = text => fetch("/search?text=" + encodeURIComponent(text));
+const searchAPIDebounced = AwesomeDebouncePromise(searchAPI, 500, {
+  key: () => "search"
+});
 
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nodeElements: null
+      searchText: "",
+      searching: false,
+      allNodes: null,
+      matchedNodes: null
     };
+    this.handleTextChange = this.handleTextChange.bind(this);
+  }
+
+  async handleTextChange(event) {
+    const { allNodes } = this.state;
+    const searchText = event.target.value;
+    this.setState({ searchText, searching: true });
+    const matchedNodes = await searchAPIDebounced(searchText, allNodes);
+    this.setState({ matchedNodes, searching: false });
   }
 
   componentDidMount() {
     fetch(`${API_HOST}/nodes`)
       .then(response => response.json())
-      .then(nodeElements => this.setState({ nodeElements }));
+      .then(allNodes => this.setState({ allNodes }));
   }
 
   render() {
     const { showSidebar, user, openModal } = this.props;
-    const { nodeElements } = this.state;
+    const { allNodes, matchedNodes, searchText } = this.state;
+    const currentNodes = searchText.length ? matchedNodes : allNodes;
+
     return (
       <div>
         <div
@@ -41,21 +92,25 @@ class Sidebar extends React.Component {
             </a>
           </div>
           <div className="col-md-12">
-            <h5 style={[styles.sidebarHeading]}>SEARCH</h5>
-            <SearchBar />
+            {/* <h5 style={[styles.sidebarHeading]}>SEARCH</h5> */}
+            {/* <SearchBar nodes={allNodes}/> */}
             <h5 style={[styles.sidebarHeading]}>NODES</h5>
+            <form>
+              <input value={searchText} onChange={this.handleTextChange} />
+            </form>
             <div
               style={[styles.panelGroup]}
               role="tablist"
               aria-multiselectable="true"
             >
-              {nodeElements &&
-                Object.keys(nodeElements.categories).map(category => {
+              {currentNodes &&
+                currentNodes.categories &&
+                Object.keys(currentNodes.categories).map(category => {
                   return (
                     <PaneGroup
                       key={category}
                       category={category}
-                      nodes={nodeElements.categories[category]}
+                      nodes={currentNodes.categories[category]}
                     />
                   );
                 })}

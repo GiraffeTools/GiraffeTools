@@ -45,7 +45,7 @@ const boxTarget = {
         break;
       case ItemTypes.PANE_ELEMENT:
         const contentPosition = monitor.getSourceClientOffset();
-        const { addNode } = props;
+        const { addNode, updateNode } = props;
 
         const templateNode = item.category;
         const node = $.extend(true, {}, templateNode);
