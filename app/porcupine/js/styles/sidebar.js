@@ -56,8 +56,12 @@ const styles = {
   buttons: {
     textAlign: "center"
   },
+  searchInput: {
+    width: "80%",
+    marginRight: "0.4rem"
+  },
   githubButton: {
-    marginLeft: "0.2rem"
+    marginLeft: "0.4rem"
   }
 };
 

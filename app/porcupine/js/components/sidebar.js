@@ -1,10 +1,11 @@
 import React from "react";
 import Radium from "radium";
+import { ClipLoader } from "react-spinners";
+import AwesomeDebouncePromise from "awesome-debounce-promise";
 import { v4 } from "uuid";
 
 import PaneGroup from "./paneGroup";
 import SearchBar from "./searchBar";
-import AwesomeDebouncePromise from "awesome-debounce-promise";
 import styles from "../styles/sidebar";
 import { API_HOST } from "../../../giraffe/js/config";
 
@@ -72,7 +73,7 @@ class Sidebar extends React.Component {
 
   render() {
     const { showSidebar, user, openModal } = this.props;
-    const { allNodes, matchedNodes, searchText } = this.state;
+    const { allNodes, matchedNodes, searchText, searching } = this.state;
     const currentNodes = searchText.length ? matchedNodes : allNodes;
 
     return (
@@ -96,7 +97,17 @@ class Sidebar extends React.Component {
             {/* <SearchBar nodes={allNodes}/> */}
             <h5 style={[styles.sidebarHeading]}>NODES</h5>
             <form>
-              <input value={searchText} onChange={this.handleTextChange} />
+              <input
+                value={searchText}
+                onChange={this.handleTextChange}
+                style={[styles.searchInput]}
+              />
+              <ClipLoader
+                sizeUnit={"%"}
+                size={10}
+                color={"#123abc"}
+                loading={searching}
+              />
             </form>
             <div
               style={[styles.panelGroup]}
