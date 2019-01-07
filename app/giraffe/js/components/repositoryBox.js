@@ -16,56 +16,44 @@ class RepositoryBox extends React.Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { repository } = this.props;
     const apiBaseLink = `https://api.github.com/repos/${repository.full_name}`;
 
-    fetch(`${apiBaseLink}/git/refs/heads/master`)
-      .then(response => response.json())
-      .then(lastCommit => {
-        repoFirstCommit({
-          owner: repository.owner.login,
-          repo: repository.name,
-          sha: lastCommit.object.sha
-        }).then(firstCommit => {
-          fetch(
-            `${apiBaseLink}/compare/${lastCommit.object.sha}...${
-              firstCommit.sha
-            }`
-          )
-            .then(response => response.json())
-            .then(diff =>
-              this.setState({
-                numberOfCommits: diff.behind_by + 1
-              })
-            );
-        });
-      })
-      .catch();
-    fetch(`${apiBaseLink}/branches`)
-      .then(response => response.json())
-      .then(branches =>
-        this.setState({
-          numberOfBranches: branches.length
-        })
-      )
-      .catch();
-    fetch(`${apiBaseLink}/contributors`)
-      .then(response => response.json())
-      .then(contributors =>
-        this.setState({
-          numberOfContributors: contributors.length
-        })
-      )
-      .catch();
-    fetch(`${apiBaseLink}/releases`)
-      .then(response => response.json())
-      .then(releases =>
-        this.setState({
-          numberOfReleases: releases.length
-        })
-      )
-      .catch();
+    const getCommits = async () => {
+      const response = await fetch(`${apiBaseLink}/git/refs/heads/master`);
+      const lastCommit = await response.json();
+      const firstCommit = await repoFirstCommit({
+        owner: repository.owner.login,
+        repo: repository.name,
+        sha: lastCommit.object.sha
+      });
+      const days_ago = await fetch(
+        `${apiBaseLink}/compare/${lastCommit.object.sha}...${firstCommit.sha}`
+      );
+      const days_ago_json = await days_ago.json();
+      this.setState({ numberOfCommits: days_ago_json.behind_by + 1 });
+    };
+    const getBranches = async () => {
+      const branches = await (await fetch(`${apiBaseLink}/branches`)).json();
+      this.setState({ numberOfBranches: branches.length });
+    };
+    const getContributors = async () => {
+      const contributors = await (await fetch(
+        `${apiBaseLink}/contributors`
+      )).json();
+      this.setState({ numberOfContributors: contributors.length });
+    };
+    const getReleases = async () => {
+      const releases = await (await fetch(`${apiBaseLink}/releases`)).json();
+      this.setState({ numberOfReleases: releases.length });
+    };
+    Promise.all([
+      getCommits(),
+      getBranches(),
+      getContributors(),
+      getReleases()
+    ]);
   }
 
   render() {

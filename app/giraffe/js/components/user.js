@@ -20,34 +20,33 @@ class User extends React.Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { username } = this.props.match.params;
-
-    fetch(`https://api.github.com/users/${username}`)
-      .then(response => response.json())
-      .then(user => this.setState({ user }))
-      .catch();
-    fetch(`https://api.github.com/users/${username}/repos`)
-      .then(response => response.json())
-      .then(repositories => {
-        repositories.forEach(repository => {
-          // I want no error message when polling existence, which can't be turned off in regular fetch call
-          urlExists(
-            `https://raw.githubusercontent.com/${
-              repository.full_name
-            }/master/GIRAFFE.yml`,
-            exists => {
-              this.setState({
-                repositories: [
-                  ...this.state.repositories,
-                  { ...repository, isGiraffeProject: exists }
-                ]
-              });
-            }
-          );
+    const setUser = async () => {
+      const user = await fetch(`https://api.github.com/users/${username}`);
+      this.setState({ user: await user.json() });
+    };
+    const setRepos = async () => {
+      const repos = await fetch(
+        `https://api.github.com/users/${username}/repos`
+      );
+      const repoList = await repos.json();
+      return repoList.map(async repo => {
+        const file = await fetch(
+          `https://raw.githubusercontent.com/${
+            repo.full_name
+          }/master/GIRAFFE.yml`
+        );
+        this.setState({
+          repositories: [
+            ...this.state.repositories,
+            { ...repo, isGiraffeProject: file.ok }
+          ]
         });
-      })
-      .catch();
+      });
+    };
+
+    Promise.all([setUser(), setRepos()]);
   }
 
   render() {

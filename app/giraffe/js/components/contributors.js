@@ -15,20 +15,17 @@ class Contributors extends React.Component {
     this.selectContributors = this.selectContributors.bind(this);
   }
 
-  componentDidMount() {
-    fetch("https://api.github.com/repos/TimVanMourik/GiraffeTools/contributors")
-      .then(response => response.json())
-      .then(contributors =>
-        this.setState({
-          contributors,
-          selectContributors: shuffle(
-            Array.apply(null, { length: contributors.length }).map(
-              Number.call,
-              Number
-            )
-          ).slice(0, 9)
-        })
-      );
+  async componentDidMount() {
+    const contributors = await fetch(
+      "https://api.github.com/repos/TimVanMourik/GiraffeTools/contributors"
+    );
+    const json = await contributors.json();
+    this.setState({
+      contributors: json,
+      selectContributors: shuffle(
+        Array.apply(null, { length: json.length }).map(Number.call, Number)
+      ).slice(0, 9)
+    });
   }
 
   selectContributors(direction) {
@@ -66,11 +63,12 @@ class Contributors extends React.Component {
                 onClick={() => this.selectContributors("previous")}
               />
               <div style={[styles.contributorList]}>
-                {contributors
-                  .filter((item, index) => selectContributors.includes(index))
-                  .map(contributor => (
-                    <Contributor key={contributor.id} {...contributor} />
-                  ))}
+                {contributors &&
+                  contributors
+                    .filter((item, index) => selectContributors.includes(index))
+                    .map(contributor => (
+                      <Contributor key={contributor.id} {...contributor} />
+                    ))}
               </div>
               <img
                 style={[styles.contributorArrow]}

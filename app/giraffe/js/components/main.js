@@ -5,14 +5,10 @@ class Main extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
+  async componentWillMount() {
     const { updateAuth } = this.props;
-    fetch("/_github/logged_in/")
-      .then(response => response.json())
-      .then(user => updateAuth(user))
-      .catch(error => {
-        console.log({ error });
-      });
+    const response = await fetch("/_github/logged_in/");
+    updateAuth(await response.json());
   }
 
   render() {

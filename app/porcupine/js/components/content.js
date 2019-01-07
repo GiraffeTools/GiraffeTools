@@ -24,7 +24,7 @@ class Content extends React.Component {
   // };
   // }
 
-  componentWillMount() {
+  async componentWillMount() {
     const { username, repository, branchOrCommit } = this.props.match.params;
     const {
       setUser,
@@ -39,12 +39,9 @@ class Content extends React.Component {
     let isCommit = isGitHash(branchOrCommit);
     setCommit(isCommit && string);
     setBranch(!isCommit && string);
-    fetch("/_github/logged_in/")
-      .then(response => response.json())
-      .then(user => updateAuth(user))
-      .catch(error => {
-        console.log({ error });
-      });
+
+    const response = await fetch("/_github/logged_in/");
+    updateAuth(await response.json());
   }
 
   render() {

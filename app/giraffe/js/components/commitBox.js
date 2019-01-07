@@ -13,13 +13,12 @@ class CommitBox extends React.Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { full_name } = this.props.repository;
-
-    fetch(`https://api.github.com/repos/${full_name}/commits`)
-      .then(response => response.json())
-      .then(commits => this.setState({ commits }))
-      .catch();
+    const commits = await fetch(
+      `https://api.github.com/repos/${full_name}/commits`
+    );
+    this.setState({ commits: await commits.json() });
   }
 
   render() {

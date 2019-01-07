@@ -65,10 +65,9 @@ class Sidebar extends React.Component {
     this.setState({ matchedNodes, searching: false });
   }
 
-  componentDidMount() {
-    fetch(`${API_HOST}/nodes`)
-      .then(response => response.json())
-      .then(allNodes => this.setState({ allNodes }));
+  async componentDidMount() {
+    const nodes = await fetch(`${API_HOST}/nodes`);
+    this.setState({ allNodes: await nodes.json() });
   }
 
   render() {

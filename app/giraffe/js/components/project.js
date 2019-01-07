@@ -23,14 +23,14 @@ const Project = repository => (
         </div>
       </div>
       <img src="/static/img/separator_red.svg" />
-      <span>
+      <div>
         added{" "}
         {new Intl.DateTimeFormat("en-GB", {
           year: "numeric",
           month: "long",
           day: "2-digit"
         }).format(new Date(repository.created_at))}
-      </span>
+      </div>
     </div>
     <div className="col-6 text-right">
       {repository.isGiraffeProject ? (

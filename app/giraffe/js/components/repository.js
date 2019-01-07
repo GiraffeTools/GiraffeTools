@@ -17,9 +17,10 @@ class Repository extends React.Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { username, repository, branchOrCommit } = this.props.match.params;
 
+    // #TODO allow user to change branch/commit
     if (true) {
       this.setState({
         branch: "master"
@@ -29,10 +30,11 @@ class Repository extends React.Component {
         commit: ""
       });
     }
-    fetch(`https://api.github.com/repos/${username}/${repository}`)
-      .then(response => response.json())
-      .then(repository => this.setState({ repository }))
-      .catch();
+
+    const response = await fetch(
+      `https://api.github.com/repos/${username}/${repository}`
+    );
+    this.setState({ repository: await response.json() });
   }
 
   render() {

@@ -127,7 +127,7 @@ class Canvas extends React.PureComponent {
       });
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { setPorkFile } = this.props;
     const { user, repository, branch, commit } = this.props.user;
     if (!user || !repository || (!branch && !commit)) {
@@ -138,29 +138,29 @@ class Canvas extends React.PureComponent {
     const baseName = `https://raw.githubusercontent.com/${user}/${repository}/${branch ||
       commit}`;
     const configFile = `${baseName}/GIRAFFE.yml`;
-    fetch(configFile)
-      .then(response => response.ok && response.text())
-      .then(text => {
-        const configuration = loadYaml(text);
-        const configFile = configuration.tools.porcupine.file[0];
-        setPorkFile(configFile);
-        const porcupineFile = `${baseName}/${configFile}`;
 
-        fetch(porcupineFile)
-          .then(result => result.json())
-          .then(data => {
-            this.loadFromJson(data);
-            this.graphview.current.handleZoomToFit();
-            console.log("Porcupine Config file loaded from URL");
-          })
-          .catch(error => {
-            console.log("Cannot load Porcupine Config file");
-            this.setPercent(-1);
-          });
-      })
-      .catch(error => {
-        console.log("Cannot load config file");
-      });
+    const configuration = await fetch(configFile);
+    if (!configuration.ok) {
+      console.log("GiraffeTools configuration file cannot be loaded");
+      return;
+    }
+    const yamlData = loadYaml(await configuration.text());
+    const porkFile = yamlData.tools.porcupine.file[0];
+    setPorkFile(porkFile);
+
+    const porkData = await fetch(`${baseName}/${porkFile}`);
+    if (!porkData.ok) {
+      console.log("Pork file cannot be loaded");
+    }
+    const content = await porkData.json();
+    try {
+      this.loadFromJson(content);
+      this.graphview.current.handleZoomToFit();
+    } catch (error) {
+      console.log("Cannot load Porcupine Config file:");
+      console.log(error);
+      this.setPercent(-1);
+    }
   }
 
   setPercent(percent) {

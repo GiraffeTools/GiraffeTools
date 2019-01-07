@@ -16,10 +16,9 @@ class Faq extends React.Component {
     };
   }
 
-  componentDidMount() {
-    fetch(`${API_HOST}/faq_questions`)
-      .then(response => response.json())
-      .then(questions => this.setState({ questions }));
+  async componentDidMount() {
+    const response = await fetch(`${API_HOST}/faq_questions`);
+    this.setState({ questions: await response.json() });
   }
 
   render() {
