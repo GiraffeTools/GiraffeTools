@@ -60,7 +60,7 @@ const Project = repository => (
                 initRepository(
                   repository.owner.login,
                   repository.name,
-                  "branch"
+                  "master"
                 )
             })
           }
