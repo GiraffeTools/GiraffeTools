@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import Radium from "radium";
 
+import { initRepository } from "../utils/github";
 import styles from "../styles/project.js";
 
 const Project = repository => (
@@ -45,7 +46,9 @@ const Project = repository => (
           id="no-giraffe-project"
           data-toggle="tooltip"
           data-placement="top"
-          title="Not implemented yet!"
+          onClick={() =>
+            initRepository(repository.owner.login, repository.name, "branch")
+          }
           style={[styles.add]}
         >
           add

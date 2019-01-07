@@ -27,7 +27,7 @@ function searchAPI(text, nodes) {
     }
     nodes.nodes &&
       Object.keys(nodes.nodes).map(node => {
-        if (node.includes(text)) {
+        if (node.toLowerCase().includes(text)) {
           if (!matches.nodes) matches.nodes = {};
           matches.nodes[node] = nodes.nodes[node];
         }
@@ -59,7 +59,7 @@ class Sidebar extends React.Component {
 
   async handleTextChange(event) {
     const { allNodes } = this.state;
-    const searchText = event.target.value;
+    const searchText = event.target.value.toLowerCase();
     this.setState({ searchText, searching: true });
     const matchedNodes = await searchAPIDebounced(searchText, allNodes);
     this.setState({ matchedNodes, searching: false });

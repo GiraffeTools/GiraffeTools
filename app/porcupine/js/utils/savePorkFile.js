@@ -22,7 +22,6 @@ export async function savePorkFile(nodes, links, user, commit_message) {
   };
 
   const body = {
-    filename: user.pork_file,
     user: user.user,
     repository: user.repository,
     branch: user.branch || "master",
