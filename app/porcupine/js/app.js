@@ -5,11 +5,13 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Content from "./containers/content";
+import UnhappyBrowser from "../../giraffe/js/components/unhappyBrowser";
 
 class App extends React.Component {
   render() {
     return (
       <Fragment>
+        <UnhappyBrowser />
         <Route
           path="/porcupine/:username?/:repository?/:branchOrCommit?"
           component={Content}
