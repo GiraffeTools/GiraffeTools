@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 
 import ui from "./ui";
 import auth from "./auth";
+import modals from "../../../porcupine/js/reducers/modals";
 
 const config = {
   key: "giraffe",
@@ -12,7 +13,8 @@ const config = {
 
 const giraffeApp = persistCombineReducers(config, {
   ui,
-  auth
+  auth,
+  modals
 });
 
 export default giraffeApp;

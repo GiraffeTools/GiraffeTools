@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Radium from "radium";
+import Modals from "../../../porcupine/js/containers/modals";
 
 import { urlExists } from "../utils/utils";
 import styles from "../styles/user.js";
@@ -55,6 +56,7 @@ class User extends React.Component {
 
     return (
       <Fragment>
+        <Modals />
         <Banner title={bannerTitle} />
         {user ? (
           <div

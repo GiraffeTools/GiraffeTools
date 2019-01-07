@@ -52,16 +52,24 @@ def push_to_github(request):
 
     token = settings.GITHUB_API_TOKEN
     g = github.Github(token)
-    repo = g.get_repo(f"{user_name}/{repo_name}")
-    master_ref = repo.get_git_ref(f"heads/{branch}")
-    master_sha = master_ref.object.sha
-    base_tree = repo.get_git_tree(master_sha)
 
     element_list = list()
     for key, value in contents.items():
         file_code = "100644"
         element = github.InputGitTreeElement(key, file_code, "blob", value)
         element_list.append(element)
+
+    repo = g.get_repo(f"{user_name}/{repo_name}")
+    try:
+        master_ref = repo.get_git_ref(f"heads/{branch}")
+    except:  # Ignore PycodestyleBear (E722)
+        # with a bit of luck, the reason is that there is no first commit yet
+        # TODO: code this up more cleanly. The create_file solution is a hack
+        repo.create_file("README.md", "Initial commit", "")
+        master_ref = repo.get_git_ref(f"heads/{branch}")
+
+    master_sha = master_ref.object.sha
+    base_tree = repo.get_git_tree(master_sha)
 
     tree = repo.create_git_tree(element_list, base_tree)
     parent = repo.get_git_commit(master_sha)
