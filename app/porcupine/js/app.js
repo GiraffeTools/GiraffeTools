@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Content from "./containers/content";
-import UnhappyBrowser from "../../giraffe/js/components/unhappyBrowser";
+import UnhappyBrowser from "../../giraffe/js/containers/unhappyBrowser";
 
 class App extends React.Component {
   render() {

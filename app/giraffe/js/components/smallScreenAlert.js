@@ -8,7 +8,7 @@ const SmallScreenAlert = () => (
   <StyleRoot>
     <div
       className="alert alert-info alert-dismissible fade show"
-      style={[styles.smallScreen, alertStyles.alert]}
+      style={[alertStyles.alert, styles.smallScreen]}
       role="alert"
     >
       <button

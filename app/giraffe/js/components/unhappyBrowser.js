@@ -2,19 +2,18 @@ import React from "react";
 import Radium from "radium";
 import bowser from "bowser";
 
-// import chrome from './assets/chrome.jpg'
-// import warning from './assets/warning.jpg'
-
 let chrome = "";
 let warning = "";
 import alertStyles from "../styles/alerts";
 import styles from "../styles/unhappyBrowser";
 
 const minimumBrowsers = {
-  chrome: "40",
-  chromium: "40",
-  googlebot: "0",
-  firefox: "99999"
+  chrome: "42", // verified: 41 and below = problems
+  opera: "99999", // verified, cause unknown #TODO
+  firefox: "99999", // verified, cause unknown #TODO
+  safari: "12", // not verified #TODO
+  chromium: "42", // not verified #TODO
+  "internet explorer": "99999"
 };
 
 class UnhappyBrowser extends React.Component {
@@ -45,22 +44,33 @@ class UnhappyBrowser extends React.Component {
 
   render() {
     const { happy } = this.state;
-    return happy ? null : (
+    const { closed, toggleBrowserAlert } = this.props;
+
+    return happy || closed ? null : (
       <div
         className="alert alert-info alert-dismissible fade show"
-        style={[styles.unhappyBrowser, alertStyles.alert]}
+        style={[alertStyles.alert, styles.unhappyBrowser]}
         role="alert"
       >
+        <div className="row">
+          <span style={[styles.message]}>
+            We have detected that you are using an browser in which some
+            functionality might not work as expected. We advise to use the
+            latest version of Chrome.
+          </span>
+          <a href="http://www.google.com/chrome/" style={[styles.chrome]}>
+            <img src="/static/img/chrome.svg" alt="install or upgrade chrome" />
+          </a>
+        </div>
         <button
           type="button"
           className="close"
           data-dismiss="alert"
           aria-label="Close"
+          onClick={toggleBrowserAlert}
         >
           <span aria-hidden="true">&times;</span>
         </button>
-        We have detected that you are using an incompatible browser. This site
-        may not work as expected.
       </div>
     );
   }

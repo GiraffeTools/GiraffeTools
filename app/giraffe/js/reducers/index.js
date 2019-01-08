@@ -2,7 +2,7 @@ import { createReducer } from "redux-orm";
 import { persistCombineReducers } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import ui from "./ui";
+import alerts from "./alerts";
 import auth from "./auth";
 import modals from "../../../porcupine/js/reducers/modals";
 
@@ -12,7 +12,7 @@ const config = {
 };
 
 const giraffeApp = persistCombineReducers(config, {
-  ui,
+  alerts,
   auth,
   modals
 });

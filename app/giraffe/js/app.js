@@ -11,8 +11,8 @@ import Slack from "./components/slack";
 import Container from "./containers/container";
 import Github from "./components/github";
 import Gallery from "./components/gallery";
-import SmallScreenAlert from "./components/smallScreenAlert";
-import UnhappyBrowser from "./components/unhappyBrowser";
+import SmallScreenAlert from "./containers/smallScreenAlert";
+import UnhappyBrowser from "./containers/unhappyBrowser";
 
 class App extends React.Component {
   render() {
