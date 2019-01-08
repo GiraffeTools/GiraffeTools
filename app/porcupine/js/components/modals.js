@@ -28,21 +28,21 @@ class Modal extends React.Component {
       return (
         <div className="modal-dialog" style={[{ zIndex: (zIndex + 1) * 10 }]}>
           <div className="modal-content">
-            <h5 class="modal-title" id="exampleModalLabel">
+            <h5 className="modal-title" id="exampleModalLabel">
               Confirmation modal
             </h5>
-            <div class="modal-body">{text}</div>
-            <div class="modal-footer">
+            <div className="modal-body">{text}</div>
+            <div className="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 onClick={() => this.onConfirm()}
               >
                 Confirm
               </button>
               <button
                 type="button"
-                class="btn btn-primary"
+                className="btn btn-primary"
                 onClick={() => this.onClose()}
               >
                 Close

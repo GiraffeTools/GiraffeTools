@@ -3,7 +3,7 @@ import Radium from "radium";
 
 import Commit from "./commit";
 import { groupByDate } from "../utils/utils";
-import styles from "../styles/people.js";
+import styles from "../styles/commitBox.js";
 
 class CommitBox extends React.Component {
   constructor(props) {
@@ -66,4 +66,4 @@ class CommitBox extends React.Component {
   }
 }
 
-export default CommitBox;
+export default Radium(CommitBox);
