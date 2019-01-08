@@ -9,11 +9,11 @@ import styles from "../styles/unhappyBrowser";
 
 const minimumBrowsers = {
   chrome: "42", // verified: 41 and below = problems
-  opera: "99999", // verified, cause unknown #TODO
-  firefox: "99999", // verified, cause unknown #TODO
+  opera: "99999", // not verified #TODO
+  firefox: "50", // not verified #TODO
   safari: "12", // not verified #TODO
   chromium: "42", // not verified #TODO
-  "internet explorer": "99999"
+  "internet explorer": "99999" // not verified, but just don't
 };
 
 class UnhappyBrowser extends React.Component {
