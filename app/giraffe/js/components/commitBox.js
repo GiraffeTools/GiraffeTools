@@ -16,7 +16,7 @@ class CommitBox extends React.Component {
 
   async componentDidMount() {
     const { full_name } = this.props.repository;
-    const url = addTokenToQuery(
+    const url = await addTokenToQuery(
       new URL(`https://api.github.com/repos/${full_name}/commits`)
     );
     const commits = await fetch(url.href);

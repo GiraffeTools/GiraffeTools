@@ -17,7 +17,7 @@ class Contributors extends React.Component {
   }
 
   async componentDidMount() {
-    const url = addTokenToQuery(
+    const url = await addTokenToQuery(
       new URL(
         "https://api.github.com/repos/TimVanMourik/GiraffeTools/contributors"
       )

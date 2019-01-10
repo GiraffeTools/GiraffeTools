@@ -31,7 +31,7 @@ class Repository extends React.Component {
         commit: ""
       });
     }
-    const url = addTokenToQuery(
+    const url = await addTokenToQuery(
       new URL(`https://api.github.com/repos/${username}/${repository}`)
     );
     const response = await fetch(url.href);

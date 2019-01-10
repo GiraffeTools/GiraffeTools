@@ -2,12 +2,16 @@ import store from "../store";
 import { updateAuth } from "../actions";
 import { API_HOST, LOGIN } from "../config";
 
-export function addTokenToQuery(url) {
+export async function addTokenToQuery(url) {
   const { access_token } = store.getState().auth;
   if (access_token) {
     url.searchParams.append("access_token", access_token);
+  } else {
+    const response = await (await fetch("/_github/logged_in/")).json();
+    if (response.access_token) {
+      url.searchParams.append("access_token", response.access_token);
+    }
   }
-  console.log({ url, state: store.getState() });
   return url;
 }
 

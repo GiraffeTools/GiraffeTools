@@ -26,14 +26,14 @@ class User extends React.Component {
     const { access_token } = this.props;
 
     const setUser = async () => {
-      const url = addTokenToQuery(
+      const url = await addTokenToQuery(
         new URL(`https://api.github.com/users/${username}`)
       );
       const user = await fetch(url.href);
       this.setState({ user: await user.json() });
     };
     const setRepos = async () => {
-      const url = addTokenToQuery(
+      const url = await addTokenToQuery(
         new URL(`https://api.github.com/users/${username}/repos`)
       );
       const repos = await fetch(url.href);
@@ -41,7 +41,7 @@ class User extends React.Component {
       if (!repoList.length) return;
 
       return repoList.map(async repo => {
-        const url = addTokenToQuery(
+        const url = await addTokenToQuery(
           new URL(
             `https://raw.githubusercontent.com/${
               repo.full_name

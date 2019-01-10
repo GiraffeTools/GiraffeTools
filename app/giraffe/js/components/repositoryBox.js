@@ -22,7 +22,7 @@ class RepositoryBox extends React.Component {
     const apiBaseLink = `https://api.github.com/repos/${repository.full_name}`;
 
     const getCommits = async () => {
-      const url = addTokenToQuery(
+      const url = await addTokenToQuery(
         new URL(`${apiBaseLink}/git/refs/heads/master`)
       );
       const response = await fetch(url.href);
@@ -36,7 +36,7 @@ class RepositoryBox extends React.Component {
         repo: repository.name,
         sha: lastCommit.object.sha
       });
-      const days_ago_url = addTokenToQuery(
+      const days_ago_url = await addTokenToQuery(
         new URL(
           `${apiBaseLink}/compare/${lastCommit.object.sha}...${firstCommit.sha}`
         )
@@ -46,17 +46,17 @@ class RepositoryBox extends React.Component {
       this.setState({ numberOfCommits: days_ago_json.behind_by + 1 || 0 });
     };
     const getBranches = async () => {
-      const url = addTokenToQuery(new URL(`${apiBaseLink}/branches`));
+      const url = await addTokenToQuery(new URL(`${apiBaseLink}/branches`));
       const branches = await (await fetch(url.href)).json();
       this.setState({ numberOfBranches: branches.length || 0 });
     };
     const getContributors = async () => {
-      const url = addTokenToQuery(new URL(`${apiBaseLink}/contributors`));
+      const url = await addTokenToQuery(new URL(`${apiBaseLink}/contributors`));
       const contributors = await (await fetch(url.href)).json();
       this.setState({ numberOfContributors: contributors.length || 0 });
     };
     const getReleases = async () => {
-      const url = addTokenToQuery(new URL(`${apiBaseLink}/releases`));
+      const url = await addTokenToQuery(new URL(`${apiBaseLink}/releases`));
       const releases = await (await fetch(url.href)).json();
       this.setState({ numberOfReleases: releases.length || 0 });
     };
