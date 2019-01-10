@@ -27,7 +27,7 @@ class RepositoryBox extends React.Component {
       );
       const response = await fetch(url.href);
       const lastCommit = await response.json();
-      if (!lastCommit.length) {
+      if (!lastCommit) {
         this.setState({ numberOfCommits: 0 });
         return;
       }
