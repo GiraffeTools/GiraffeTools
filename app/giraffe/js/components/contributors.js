@@ -22,12 +22,15 @@ class Contributors extends React.Component {
         "https://api.github.com/repos/TimVanMourik/GiraffeTools/contributors"
       )
     );
-    const contributors = await fetch(url.href);
-    const json = await contributors.json();
+    const contributors = await (await fetch(url.href)).json();
+    if (!contributors.length) return;
     this.setState({
-      contributors: json,
+      contributors: contributors,
       selectContributors: shuffle(
-        Array.apply(null, { length: json.length }).map(Number.call, Number)
+        Array.apply(null, { length: contributors.length }).map(
+          Number.call,
+          Number
+        )
       ).slice(0, 9)
     });
   }
@@ -82,7 +85,7 @@ class Contributors extends React.Component {
             </div>
           )}
         </div>
-        <div className="col-6 justify-content-center d-flex">
+        <div className="col-6 justify-content-center d-flex row">
           <h3 style={[styles.gitcoinText]}>
             Most contributors have contributed to this Open Source project with
             Gitcoin. If you want to help grow this platform, you can donate or

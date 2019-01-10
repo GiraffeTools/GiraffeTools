@@ -7,6 +7,7 @@ export function addTokenToQuery(url) {
   if (access_token) {
     url.searchParams.append("access_token", access_token);
   }
+  console.log({ url, state: store.getState() });
   return url;
 }
 
