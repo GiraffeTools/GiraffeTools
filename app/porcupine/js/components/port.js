@@ -79,6 +79,8 @@ class Port extends React.Component {
           r={4}
           fill={type === "input" ? "#3498db" : "#e74c3c"}
           cursor="pointer"
+          strokeWidth="12"
+          stroke="transparent"
         />
         {linkUnderConstruction && (
           <PathLine
