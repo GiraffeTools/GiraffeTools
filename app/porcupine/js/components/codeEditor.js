@@ -1,5 +1,5 @@
 import React from "react";
-import Radium from "radium";
+import { StyleRoot } from "radium";
 
 import Code from "./code";
 import styles from "../styles/codeEditor";
@@ -19,7 +19,7 @@ const CodeEditor = props => {
   let currentTab = activeTab || "Nipype";
 
   return (
-    <div
+    <StyleRoot
       style={[
         styles.codeWindow,
         showCodeEditor && styles.codeWindow.closed,
@@ -74,8 +74,8 @@ const CodeEditor = props => {
           ))}
         </div>
       </div>
-    </div>
+    </StyleRoot>
   );
 };
 
-export default Radium(CodeEditor);
+export default CodeEditor;

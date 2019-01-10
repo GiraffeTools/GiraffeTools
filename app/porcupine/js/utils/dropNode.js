@@ -8,9 +8,7 @@ export const drop = (item, offset) => {
   // const zoom = instance.getZoom();
   const zoom = 1;
 
-  const templateNode = item.element_type;
-  const node = $.extend(true, {}, templateNode);
-
+  const node = item.element_type;
   const name = node.title.name;
   const code = node.title.code;
   node.parameters ? node.parameters : {};

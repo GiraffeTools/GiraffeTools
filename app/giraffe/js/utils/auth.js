@@ -1,6 +1,5 @@
 import axios from "axios";
 import _ from "lodash";
-import cookie from "react-cookies";
 
 import store from "../store";
 import { updateAuth } from "../actions";
@@ -54,31 +53,4 @@ export async function getCsrfToken() {
     _csrfToken = data.csrfToken;
   }
   return _csrfToken;
-}
-// export function getCsrfToken() {
-//   return fetch(`${API_HOST}/csrf`, {
-//     credentials: "include"
-//   })
-//     .then(response => response.json())
-//     .then(response => response.csrfToken)
-//     .catch(error => {
-//       throw "Cannot obtain CSRF token";
-//     });
-// }
-
-export function testRequest(method) {
-  return getCsrfToken()
-    .then(token => {
-      console.log({ token, method });
-      return fetch(`${API_HOST}/ping`, {
-        method: method,
-        headers: method === "POST" ? { "X-CSRFToken": token } : {},
-        credentials: "include"
-      })
-        .then(response => response.json())
-        .then(response => response.result);
-    })
-    .catch(error => {
-      throw "Ping error";
-    });
 }

@@ -7,7 +7,6 @@ import {
   DropTargetMonitor,
   DropTargetConnector
 } from "react-dnd";
-import $ from "jquery";
 import ProgressBar from "react-progress-bar-plus";
 import { load as loadYaml } from "yaml-js";
 import "react-progress-bar-plus/lib/progress-bar.css";
@@ -46,19 +45,16 @@ const boxTarget = {
       case ItemTypes.PANE_ELEMENT:
         const contentPosition = monitor.getSourceClientOffset();
         const { addNode, updateNode } = props;
-
         const templateNode = item.category;
-        const node = $.extend(true, {}, templateNode);
-
-        const name = node.title.name;
-        const code = node.title && node.title.code;
-        node.parameters =
-          node.ports &&
-          node.ports.map(parameter => {
+        const name = templateNode.title.name;
+        const code = templateNode.title && templateNode.title.code;
+        const parameters =
+          templateNode.ports &&
+          templateNode.ports.map(parameter => {
             // #TODO link to a proper default value
             return {
               ...parameter,
-              node: node.id,
+              node: templateNode.id,
               id: v4(),
               value: parameter.value || parameter.default || "",
               input: parameter.input ? v4() : null,
@@ -82,11 +78,11 @@ const boxTarget = {
             zoom,
           y: (contentPosition.y - transform.y) / zoom,
           width: name.length * 12,
-          colour: node.colour,
-          parameters: node.parameters,
-          web_url: node.title.web_url || "",
+          colour: templateNode.colour,
+          parameters: parameters,
+          web_url: templateNode.title.web_url || "",
           code: code || "",
-          category: node.category
+          category: templateNode.category
         };
 
         addNode(newNode);

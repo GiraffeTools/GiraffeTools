@@ -5,15 +5,21 @@ const styles = {
     position: "absolute",
     bottom: 0,
     height: "60%",
-    width: "60%",
+    width: "55%",
     marginLeft: "2rem",
     marginBottom: "0rem",
+    left: "20%",
     closed: {
-      transform: "translateY(90%)",
+      transform: "translateY(95%)",
       transition: "transform 0.1s"
     },
     withSidebar: {
-      left: " 20%"
+      "@media(max-width: 1200px)": {
+        left: "20%"
+      }
+    },
+    "@media(max-width: 1200px)": {
+      left: "0%"
     }
   },
   codeNav: {

@@ -1,5 +1,5 @@
 import React from "react";
-import Radium from "radium";
+import { StyleRoot } from "radium";
 import { ClipLoader } from "react-spinners";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
 import { v4 } from "uuid";
@@ -76,7 +76,7 @@ class Sidebar extends React.Component {
     const currentNodes = searchText.length ? matchedNodes : allNodes;
 
     return (
-      <div>
+      <StyleRoot>
         <div
           style={[styles.sidebar, showSidebar && styles.sidebar.active]}
           className="customScrollbar"
@@ -191,9 +191,9 @@ class Sidebar extends React.Component {
             }
           </div>
         </div>
-      </div>
+      </StyleRoot>
     );
   }
 }
 
-export default Radium(Sidebar);
+export default Sidebar;

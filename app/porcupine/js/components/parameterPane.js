@@ -31,7 +31,7 @@ class ParameterPane extends React.Component {
     return (
       <div
         style={[styles.parameters, selectedNode && styles.parameters.active]}
-        rules={styles.parameters.rules}
+        // rules={[styles.parameters.rules]}
         className="customScrollbar"
       >
         <div style={[styles.header]}>
