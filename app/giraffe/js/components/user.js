@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import Radium from "radium";
 import Modals from "../../../porcupine/js/containers/modals";
 
+import { addTokenToQuery } from "../utils/auth";
 import { urlExists } from "../utils/utils";
 import styles from "../styles/user.js";
 
@@ -22,21 +23,32 @@ class User extends React.Component {
 
   async componentDidMount() {
     const { username } = this.props.match.params;
+    const { access_token } = this.props;
+
     const setUser = async () => {
-      const user = await fetch(`https://api.github.com/users/${username}`);
+      const url = addTokenToQuery(
+        new URL(`https://api.github.com/users/${username}`)
+      );
+      const user = await fetch(url.href);
       this.setState({ user: await user.json() });
     };
     const setRepos = async () => {
-      const repos = await fetch(
-        `https://api.github.com/users/${username}/repos`
+      const url = addTokenToQuery(
+        new URL(`https://api.github.com/users/${username}/repos`)
       );
+      const repos = await fetch(url.href);
       const repoList = await repos.json();
+      if (!repoList.length) return;
+
       return repoList.map(async repo => {
-        const file = await fetch(
-          `https://raw.githubusercontent.com/${
-            repo.full_name
-          }/master/GIRAFFE.yml`
+        const url = addTokenToQuery(
+          new URL(
+            `https://raw.githubusercontent.com/${
+              repo.full_name
+            }/master/GIRAFFE.yml`
+          )
         );
+        const file = await fetch(url);
         this.setState({
           repositories: [
             ...this.state.repositories,
@@ -52,7 +64,6 @@ class User extends React.Component {
   render() {
     const { user, repositories } = this.state;
     const bannerTitle = user ? `Giraffe & ${user.login}` : "GiraffeTools";
-
     return (
       <Fragment>
         <Modals />

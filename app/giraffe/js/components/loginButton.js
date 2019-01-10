@@ -4,8 +4,6 @@ import Radium from "radium";
 import buttonStyles from "../styles/buttons";
 import styles from "../styles/loginButton";
 
-import { login } from "../utils/auth";
-
 const LoginButton = props => {
   const { user } = props;
   const styleOverwrite = props.styles;

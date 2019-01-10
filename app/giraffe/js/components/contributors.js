@@ -1,6 +1,7 @@
 import React from "react";
 import Radium from "radium";
 
+import { addTokenToQuery } from "../utils/auth";
 import { shuffle } from "../utils/utils";
 import Contributor from "./contributor";
 import styles from "../styles/contributors.js";
@@ -16,9 +17,12 @@ class Contributors extends React.Component {
   }
 
   async componentDidMount() {
-    const contributors = await fetch(
-      "https://api.github.com/repos/TimVanMourik/GiraffeTools/contributors"
+    const url = addTokenToQuery(
+      new URL(
+        "https://api.github.com/repos/TimVanMourik/GiraffeTools/contributors"
+      )
     );
+    const contributors = await fetch(url.href);
     const json = await contributors.json();
     this.setState({
       contributors: json,

@@ -5,6 +5,7 @@ import Banner from "./banner";
 import CommitBox from "./commitBox";
 import Footer from "./footer";
 import RepositoryBox from "./repositoryBox";
+import { addTokenToQuery } from "../utils/auth";
 import styles from "../styles/repository.js";
 
 class Repository extends React.Component {
@@ -30,10 +31,10 @@ class Repository extends React.Component {
         commit: ""
       });
     }
-
-    const response = await fetch(
-      `https://api.github.com/repos/${username}/${repository}`
+    const url = addTokenToQuery(
+      new URL(`https://api.github.com/repos/${username}/${repository}`)
     );
+    const response = await fetch(url.href);
     this.setState({ repository: await response.json() });
   }
 
