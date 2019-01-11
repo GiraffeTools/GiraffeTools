@@ -65,10 +65,9 @@ class Code extends React.Component {
 
   componentDidUpdate(prev_props, prev_state) {
     if (
-      this.props.nodes.length &&
-      this.props.links.length &&
-      prev_props.nodes !== this.props.nodes &&
-      prev_props.links !== this.props.links
+      (this.props.nodes.length || this.props.links.length) &&
+      (prev_props.nodes !== this.props.nodes ||
+        prev_props.links !== this.props.links)
     ) {
       this.generateCode();
     }

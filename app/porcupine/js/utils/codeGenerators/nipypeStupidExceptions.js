@@ -28,6 +28,9 @@ export const exceptionCode = node => {
 };
 
 export const codeForIdentityInterface = node => {
+  const codeArgument =
+    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
   let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
@@ -51,6 +54,9 @@ export const codeForIdentityInterface = node => {
 };
 
 export const codeForSelectFiles = node => {
+  const codeArgument =
+    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
   let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
@@ -77,6 +83,9 @@ export const codeForSelectFiles = node => {
 };
 
 export const codeForMySQLSink = node => {
+  const codeArgument =
+    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
   let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
@@ -100,6 +109,9 @@ export const codeForMySQLSink = node => {
 };
 
 export const codeForSQLiteSink = node => {
+  const codeArgument =
+    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
   let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
