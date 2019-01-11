@@ -17,7 +17,7 @@ class AddParameter extends React.Component {
   }
 
   addParameter() {
-    const { addParameterToNode, nodeId } = this.props;
+    const { addParameterToNode, updateNode, nodeId } = this.props;
     const { name, input, output } = this.state;
     const parameter = {
       id: v4(),
@@ -29,8 +29,8 @@ class AddParameter extends React.Component {
     };
     if (input) parameter["input"] = v4();
     if (output) parameter["output"] = v4();
-
     addParameterToNode(parameter, nodeId);
+    updateNode(nodeId);
   }
 
   handleInputChange(event) {
