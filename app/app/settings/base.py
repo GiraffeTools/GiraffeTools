@@ -143,7 +143,7 @@ MEDIA_URL = "/media/"
 GITHUB_API_BASE_URL = "https://api.github.com"
 GITHUB_AUTH_BASE_URL = "https://github.com/login/oauth/authorize"
 GITHUB_TOKEN_URL = "https://github.com/login/oauth/access_token"
-GITHUB_SCOPE = "read:user,user:email,read:org,repo"
+GITHUB_SCOPE = "read:user,user:email,read:org,public_repo"
 
 # Configure Django App for Heroku.
 import django_heroku
