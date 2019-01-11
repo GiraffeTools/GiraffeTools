@@ -50,9 +50,7 @@ def push_to_github(request):
             not is_github_token_valid(github_user["access_token"])):
         return HttpResponseForbidden()
 
-    token = settings.GITHUB_API_TOKEN
-    g = github.Github(token)
-
+    g = github.Github(github_user["access_token"])
     element_list = list()
     for key, value in contents.items():
         file_code = "100644"
