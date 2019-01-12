@@ -20,7 +20,23 @@ class Node extends Model {
       case ADD_NODE:
         // parameters are automatically saved in the Port reducer
         const props = Object.assign({}, payload, { parameters: undefined });
-        Node.create(payload);
+        let name = `my_${props.name && props.name.replace(".", "_")}`;
+        while (
+          Node.all()
+            .filter(node => node.name === name)
+            .toRefArray().length
+        ) {
+          const match = name.match(/_\d+$/);
+          if (match) {
+            const number =
+              parseInt(match["0"].substr(1, match["0"].length)) + 1;
+            name = name.substring(0, match.index) + "_" + number;
+          } else {
+            name += "_1";
+          }
+          debugger;
+        }
+        Node.create({ ...payload, name });
         break;
       case REMOVE_NODE:
         Node.withId(payload.id).delete();
@@ -56,6 +72,8 @@ class Node extends Model {
 }
 Node.modelName = "Node";
 Node.fields = {
+  name: attr(),
+  class: attr(),
   id: attr(),
   x: attr(),
   y: attr(),

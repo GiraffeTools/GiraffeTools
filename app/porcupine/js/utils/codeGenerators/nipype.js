@@ -2,10 +2,6 @@ import { exceptionNodes, exceptionCode } from "./nipypeStupidExceptions";
 
 const LANGUAGE = "Nipype";
 
-export const nodeToName = node => {
-  return `my_${node.name && node.name.replace(".", "_")}`;
-};
-
 export const mapNodeFields = node => {
   const iteratorFields = node.parameters
     .filter(parameter => {
@@ -19,7 +15,7 @@ export const mapNodeFields = node => {
 
 export const iterableCode = node => {
   let iterables = {};
-  let givenName = nodeToName(node);
+  let givenName = node.name;
   let code = "";
   node.parameters &&
     node.parameters
@@ -113,7 +109,7 @@ const itemToCode = node => {
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
   let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
-  let givenName = nodeToName(node);
+  let givenName = node.name;
   code += `${givenName} = pe.${nodeType}(interface = ${
     codeArgument.argument.name
   }, name='${givenName}'`;

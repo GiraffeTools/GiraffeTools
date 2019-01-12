@@ -18,7 +18,6 @@ function searchAPI(text, nodes) {
       });
   };
   getMatches(nodes);
-  debugger;
   return matches;
 }
 

@@ -23,7 +23,7 @@ const loadingVersion1 = (json, nodes, links, setPercent) => {
   json["nodes"].forEach(node => {
     // This block is only for obtaining the colour:
     let category = node["category"].splice(1);
-    let name = node.title.name;
+    let name = node.title.name || "";
     let currentNodes = nodeData;
     category.forEach(function(c) {
       currentNodes = currentNodes["categories"][c];
@@ -31,7 +31,7 @@ const loadingVersion1 = (json, nodes, links, setPercent) => {
 
     const newNode = {
       id: node.id || v4(),
-      name: node.title.name || "",
+      name: name,
       x: node["position"][0],
       y: node["position"][1],
       width: node.title.name.length * 12,

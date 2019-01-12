@@ -1,4 +1,4 @@
-import { iterableCode, mapNodeFields, nodeToName } from "./nipype";
+import { iterableCode, mapNodeFields } from "./nipype";
 
 const LANGUAGE = "Nipype";
 
@@ -41,7 +41,7 @@ export const codeForIdentityInterface = node => {
       .filter(parameter => parameter.input && parameter.output)
       .map(parameter => parameter.code);
 
-  let givenName = nodeToName(node);
+  let givenName = node.name;
   code += `(utility.IdentityInterface(fields=['${fieldNodes.join(
     ","
   )}']), name='${givenName}'`;
@@ -60,7 +60,7 @@ export const codeForSelectFiles = node => {
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
   let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
-  let givenName = nodeToName(node);
+  let givenName = node.name;
   code += `${givenName} = pe.${nodeType}`;
 
   const templateDictionary =
@@ -96,7 +96,7 @@ export const codeForMySQLSink = node => {
       .filter(parameter => parameter.input && parameter.output)
       .map(parameter => parameter.code);
 
-  let givenName = nodeToName(node);
+  let givenName = node.name;
   code += `(io.MySQLSink(fields=['${fieldNodes.join(
     ","
   )}']), name='${givenName}'`;
@@ -122,7 +122,7 @@ export const codeForSQLiteSink = node => {
       .filter(parameter => parameter.input && parameter.output)
       .map(parameter => parameter.code);
 
-  let givenName = nodeToName(node);
+  let givenName = node.name;
   code += `(utility.SQLiteSink(fields=['${fieldNodes.join(
     ","
   )}']), name='${givenName}'`;
@@ -164,7 +164,7 @@ export const codeForS3DataGrabber = node => {
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
   let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
-  let givenName = nodeToName(node);
+  let givenName = node.name;
   code += `${givenName} = pe.${nodeType}(io.S3DataGrabber(`;
   if (infields.length) code += `infields=["${infields.join(", ")}"]`;
   if (infields.length && outfields.length) code += ", ";
