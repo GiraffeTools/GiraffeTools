@@ -30,7 +30,7 @@ export const iterableCode = node => {
         }
       });
   if (Object.keys(iterables).length) {
-    code += `${nodeToName(node.name)}.iterables = [${Object.keys(iterables)
+    code += `${node.name}.iterables = [${Object.keys(iterables)
       .map(key => {
         return `('${key}', ${iterables[key]})`;
       })
@@ -85,9 +85,9 @@ const linkToCode = link => {
     link.portFrom.node &&
     link.portTo.node
   ) {
-    let source = nodeToName(link.portFrom.node).replace(".", "_");
+    let source = link.portFrom.node.name;
     let sourceAttribute = `${link.portFrom.name}`;
-    let destination = nodeToName(link.portTo.node).replace(".", "_");
+    let destination = link.portTo.node.name;
     let destinationAttribute = `${link.portTo.name}`;
     return `analysisflow.connect(${source}, "${sourceAttribute}", ${destination}, "${destinationAttribute}")`;
   } else {
