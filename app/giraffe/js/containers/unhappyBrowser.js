@@ -4,7 +4,7 @@ import UnhappyBrowser from "../components/unhappyBrowser";
 import { toggleBrowserAlert } from "../actions";
 
 const mapStateToProps = state => ({
-  closed: state.alerts.incompatibleBrowser
+  open: state.alerts.incompatibleBrowser
 });
 
 const mapDispatchToProps = dispatch => ({

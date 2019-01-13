@@ -10,7 +10,7 @@ import styles from "../styles/unhappyBrowser";
 const minimumBrowsers = {
   chrome: "42", // verified: 41 and below = problems
   opera: "99999", // not verified #TODO
-  firefox: "50", // not verified #TODO
+  firefox: "99999", // weird problems #TODO
   safari: "12", // not verified #TODO
   chromium: "42", // not verified #TODO
   "internet explorer": "99999" // not verified, but just don't
@@ -44,9 +44,9 @@ class UnhappyBrowser extends React.Component {
 
   render() {
     const { happy } = this.state;
-    const { closed, toggleBrowserAlert } = this.props;
+    const { open, toggleBrowserAlert } = this.props;
 
-    return happy || closed ? null : (
+    return happy || !open ? null : (
       <div
         className="alert alert-info alert-dismissible fade show"
         style={[alertStyles.alert, styles.unhappyBrowser]}
