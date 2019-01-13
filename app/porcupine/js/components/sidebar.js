@@ -7,6 +7,7 @@ import { v4 } from "uuid";
 import PaneGroup from "./paneGroup";
 import SearchBar from "./searchBar";
 import styles from "../styles/sidebar";
+import { savePorkFile } from "../utils/savePorkFile";
 import { API_HOST } from "../../../giraffe/js/config";
 
 function searchAPI(text, nodes) {
@@ -71,9 +72,10 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    const { showSidebar, user, openModal } = this.props;
+    const { showSidebar, project, openModal } = this.props;
     const { allNodes, matchedNodes, searchText, searching } = this.state;
     const currentNodes = searchText.length ? matchedNodes : allNodes;
+    const { nodes, links } = this.props;
 
     return (
       <StyleRoot>
@@ -126,16 +128,18 @@ class Sidebar extends React.Component {
                 })}
             </div>
             <h5 style={[styles.sidebarHeading]}>ACTIONS</h5>
-            {user.user &&
-              user.repository && (
+            {project.user &&
+              project.repository && (
                 <div style={[styles.buttons]}>
                   <a
                     className="github-button"
-                    href={`https://github.com/${user.user}/${user.repository}`}
+                    href={`https://github.com/${project.user}/${
+                      project.repository
+                    }`}
                     data-size="large"
                     data-show-count="true"
-                    aria-label={`Star ${user.user}/${
-                      user.repository
+                    aria-label={`Star ${project.user}/${
+                      project.repository
                     } on GitHub`}
                     style={[styles.githubButton]}
                   >
@@ -143,13 +147,13 @@ class Sidebar extends React.Component {
                   </a>{" "}
                   <a
                     className="github-button"
-                    href={`https://github.com/${user.user}/${
-                      user.repository
+                    href={`https://github.com/${project.user}/${
+                      project.repository
                     }/fork`}
                     data-size="large"
                     data-show-count="true"
-                    aria-label={`Fork ${user.user}/${
-                      user.repository
+                    aria-label={`Fork ${project.user}/${
+                      project.repository
                     } on GitHub`}
                     style={[styles.githubButton]}
                   >
@@ -157,12 +161,14 @@ class Sidebar extends React.Component {
                   </a>
                 </div>
               )}
-            {user &&
-              user.user && (
+            {project &&
+              project.user && (
                 <a
                   style={[styles.panelText]}
                   className="btn btn-block"
-                  href={`https://github.com/${user.user}/${user.repository}`}
+                  href={`https://github.com/${project.user}/${
+                    project.repository
+                  }`}
                   target="_blank"
                 >
                   <img
@@ -179,9 +185,10 @@ class Sidebar extends React.Component {
                 onClick={() =>
                   openModal({
                     id: v4(),
-                    type: "save_to_github",
-                    onClose: () => console.log("fire at closing event"),
-                    onConfirm: () => console.log("fire at confirming event")
+                    title: "Commit to GitHub",
+                    type: "push_to_github",
+                    onClose: () => {},
+                    onConfirm: () => savePorkFile(nodes, links, project)
                   })
                 }
               >

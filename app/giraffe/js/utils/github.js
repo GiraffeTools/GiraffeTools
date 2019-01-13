@@ -6,10 +6,11 @@ import { API_HOST } from "../config";
 
 export async function initRepository(user, repository, branch) {
   // #TODO make this an array instead of dict
-
-  // #TODO hard-coded, for now
+  debugger;
+  // #TODO file names are hard-coded, for now
   const giraffe_file = "GIRAFFE.yml";
   const pork_file = "GIRAFFE/porcupipeline.pork";
+
   const contents = {
     [giraffe_file]: await (await fetch(
       "/static/assets/giraffe/GIRAFFE.yml"
@@ -27,14 +28,5 @@ export async function initRepository(user, repository, branch) {
     contents
   };
 
-  const [error, response] = await to(
-    fetch(`${API_HOST}/push_to_github`, {
-      method: "POST",
-      headers: { "X-CSRFToken": await getCsrfToken() },
-      body: JSON.stringify(body),
-      credentials: "include"
-    })
-  );
-
-  return error || response;
+  return body;
 }

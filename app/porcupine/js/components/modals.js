@@ -1,10 +1,16 @@
 import React from "react";
 import Radium from "radium";
 
-import SaveModal from "../containers/saveModal";
+import GithubModal from "../containers/githubModal";
 import styles from "../styles/modals";
 
 class Modal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onClose = this.onClose.bind(this);
+    this.onConfirm = this.onConfirm.bind(this);
+  }
+
   onClose() {
     const { item, onClose } = this.props;
     if (item.onClose) {
@@ -51,40 +57,17 @@ class Modal extends React.Component {
           </div>
         </div>
       );
-    } else if (type === "custom") {
-      const { content } = this.props.item;
-
+    } else if (type === "push_to_github") {
+      const { onClose } = this;
+      const { item } = this.props;
       return (
         <div className="modal-dialog" style={[{ zIndex: (zIndex + 1) * 10 }]}>
-          <div className="modal-content">
-            <h5 className="modal-title" id="exampleModalLabel">
-              Confirmation modal
-            </h5>
-            <div className="modal-body">{content}</div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={() => this.onConfirm()}
-              >
-                Confirm
-              </button>
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={() => this.onClose()}
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      );
-    } else if (type === "save_to_github") {
-      const { onClose, item } = this.props;
-      return (
-        <div className="modal-dialog" style={[{ zIndex: (zIndex + 1) * 10 }]}>
-          <SaveModal onClose={() => onClose(item.id)} />
+          <GithubModal
+            title={item.title}
+            onClose={() => this.onClose(item.id)}
+            project={item.project}
+            githubAction={item.onConfirm}
+          />
         </div>
       );
     }

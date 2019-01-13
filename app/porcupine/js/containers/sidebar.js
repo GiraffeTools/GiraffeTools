@@ -3,10 +3,16 @@ import { connect } from "react-redux";
 import Sidebar from "../components/sidebar";
 
 import { openModal } from "../actions";
+import {
+  nodesWithParameters,
+  linksWithPortsAndNodes
+} from "../selectors/selectors";
 
 const mapStateToProps = state => ({
+  project: state.project,
   showSidebar: state.ui.showSidebar,
-  user: state.user
+  nodes: nodesWithParameters(state),
+  links: linksWithPortsAndNodes(state)
 });
 
 const mapDispatchToProps = dispatch => ({

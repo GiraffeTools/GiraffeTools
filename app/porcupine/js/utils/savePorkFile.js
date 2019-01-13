@@ -29,6 +29,12 @@ export async function savePorkFile(nodes, links, user, commit_message) {
     contents
   };
 
+  return body;
+}
+
+export async function pushToGithub(githubAction, commit_message) {
+  const body = await githubAction();
+  body.message = commit_message;
   const [error, response] = await to(
     fetch(`${API_HOST}/push_to_github`, {
       method: "POST",
@@ -37,7 +43,6 @@ export async function savePorkFile(nodes, links, user, commit_message) {
       credentials: "include"
     })
   );
-
   return error || response;
 }
 

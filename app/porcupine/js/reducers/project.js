@@ -15,7 +15,7 @@ const INITIAL_STATE = {
   pork_file: null
 };
 
-const user = (state = INITIAL_STATE, action) => {
+const project = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
   switch (type) {
     case SET_USER:
@@ -34,4 +34,4 @@ const user = (state = INITIAL_STATE, action) => {
   return state;
 };
 
-export default user;
+export default project;

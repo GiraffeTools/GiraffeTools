@@ -52,10 +52,14 @@ const Project = repository => (
           onClick={() =>
             repository.openModal({
               id: v4(),
-              type: "confirmation",
+              type: "push_to_github",
               text:
                 "Do you want to initialise this repository as a GiraffeTools project?",
-              onClose: () => console.log("fire at closing event"),
+              project: {
+                user: repository.owner.login,
+                repository: repository.name
+              },
+              onClose: () => {},
               onConfirm: () =>
                 initRepository(
                   repository.owner.login,

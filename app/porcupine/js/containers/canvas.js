@@ -17,7 +17,7 @@ import {
 
 const mapStateToProps = state => ({
   loadingPercent: state.ui.loadingPercent,
-  user: state.user,
+  project: state.project,
   selection: state.scene.selection,
   nodes: nodesWithParameters(state),
   links: linksWithPorts(state)

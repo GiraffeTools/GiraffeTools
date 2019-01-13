@@ -124,8 +124,8 @@ class Canvas extends React.PureComponent {
   }
 
   async componentDidMount() {
-    const { setPorkFile } = this.props;
-    const { user, repository, branch, commit } = this.props.user;
+    const { setPorkFile, project } = this.props;
+    const { user, repository, branch, commit } = project;
     if (!user || !repository || (!branch && !commit)) {
       console.log("No username, repository, or branch provided");
       return;
