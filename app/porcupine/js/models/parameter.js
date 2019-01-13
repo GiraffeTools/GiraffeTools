@@ -38,9 +38,13 @@ class Parameter extends Model {
         });
         break;
       case REMOVE_NODE:
-        Parameter.all()
-          .filter(parameter => parameter.node == payload.id)
-          .delete();
+        Parameter.filter(parameter => parameter.node == payload.id)
+          .toModelArray()
+          .forEach(parameter => {
+            parameter.input && parameter.input.delete();
+            parameter.output && parameter.output.delete();
+            parameter.delete();
+          });
         break;
       case ADD_PARAMETER_TO_NODE:
         const { parameter, nodeId } = payload;
