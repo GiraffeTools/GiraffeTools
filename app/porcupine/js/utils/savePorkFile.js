@@ -83,6 +83,7 @@ const nodesToSaveDict = nodes =>
       title: {
         code: node.code,
         name: node.name,
+        class: node.class,
         web_url: node.web_url
       }
     };

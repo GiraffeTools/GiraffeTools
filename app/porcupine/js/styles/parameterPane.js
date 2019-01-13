@@ -42,6 +42,15 @@ const styles = {
     wordWrap: "break-word",
     paddingTop: "20px"
   },
+  nameInput: {
+    width: "100%"
+  },
+  className: {
+    margin: "0px",
+    fontSize: "0.9em",
+    wordWrap: "break-word",
+    paddingTop: "20px"
+  },
   documentation: {
     fontSize: "14px",
     textTransform: "uppercase",

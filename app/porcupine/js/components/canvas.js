@@ -47,6 +47,7 @@ const boxTarget = {
         const { addNode, updateNode } = props;
         const templateNode = item.category;
         const name = templateNode.title.name;
+        const className = templateNode.title.class || name;
         const code = templateNode.title && templateNode.title.code;
         const parameters =
           templateNode.ports &&
@@ -69,7 +70,8 @@ const boxTarget = {
 
         const newNode = {
           id: v4(),
-          name: name,
+          name,
+          class: className,
           // #TODO fix positioning of dropped node, issue #73
           x:
             (contentPosition.x -
@@ -77,7 +79,6 @@ const boxTarget = {
               transform.x) /
             zoom,
           y: (contentPosition.y - transform.y) / zoom,
-          width: name.length * 12,
           colour: templateNode.colour,
           parameters: parameters,
           web_url: templateNode.title.web_url || "",

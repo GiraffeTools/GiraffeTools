@@ -13,6 +13,7 @@ import {
 class Node extends Model {
   static reducer(action, Node) {
     const { type, payload } = action;
+    const nameToWidth = name => name.length * 13;
     switch (type) {
       case CLEAR_DATABASE:
         Node.all().delete();
@@ -34,9 +35,9 @@ class Node extends Model {
           } else {
             name += "_1";
           }
-          debugger;
         }
-        Node.create({ ...payload, name });
+        const width = nameToWidth(name);
+        Node.create({ ...payload, name, width });
         break;
       case REMOVE_NODE:
         Node.withId(payload.id).delete();
@@ -46,7 +47,9 @@ class Node extends Model {
       // break;
       case UPDATE_NODE:
         const node = Node.withId(payload.nodeId);
-        node.update(payload.newValues);
+        const { newValues } = payload;
+        const myName = (newValues && newValues.name) || node.name;
+        node.update({ ...newValues, width: nameToWidth(myName) });
         let x = 0;
         let y = 21;
         node.parameters
