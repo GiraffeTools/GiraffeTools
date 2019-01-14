@@ -187,6 +187,7 @@ class Sidebar extends React.Component {
                     id: v4(),
                     title: "Commit to GitHub",
                     type: "push_to_github",
+                    project,
                     onClose: () => {},
                     onConfirm: () => savePorkFile(nodes, links, project)
                   })

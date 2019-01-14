@@ -46,8 +46,8 @@ const boxTarget = {
         const contentPosition = monitor.getSourceClientOffset();
         const { addNode, updateNode } = props;
         const templateNode = item.category;
-        const name = templateNode.title.name;
-        const className = templateNode.title.class || name;
+        const name = templateNode.title.name.replace(".", "_");
+        const className = templateNode.title.class || templateNode.title.name;
         const code = templateNode.title && templateNode.title.code;
         const parameters =
           templateNode.ports &&

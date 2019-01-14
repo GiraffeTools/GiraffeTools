@@ -83,7 +83,6 @@ class GithubModal extends React.Component {
       project &&
       project.user &&
       String(auth.github_handle).toLowerCase() == project.user.toLowerCase();
-    // console.log(auth);
 
     return (
       <div className="modal-content">

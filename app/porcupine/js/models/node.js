@@ -13,15 +13,30 @@ import {
 class Node extends Model {
   static reducer(action, Node) {
     const { type, payload } = action;
-    const nameToWidth = name => name.length * 13;
+
+    const nameToWidth = (name, parameters) => {
+      const nodeFontSize = 13;
+      const parameterFontSize = 10;
+      const nodeWidth = name.length * nodeFontSize;
+      const parameterWidth =
+        parameters &&
+        Math.max.apply(
+          null,
+          parameters
+            .filter(parameter => parameter.isVisible)
+            .map(parameter => parameter.name.length)
+        ) * parameterFontSize;
+      return Math.max(nodeWidth, parameterWidth);
+    };
+
     switch (type) {
       case CLEAR_DATABASE:
         Node.all().delete();
         break;
       case ADD_NODE:
-        // parameters are automatically saved in the Port reducer
+        // parameters are saved in the Port reducer
         const props = Object.assign({}, payload, { parameters: undefined });
-        let name = `my_${props.name && props.name.replace(".", "_")}`;
+        let name = props.name;
         while (
           Node.all()
             .filter(node => node.name === name)
@@ -36,20 +51,23 @@ class Node extends Model {
             name += "_1";
           }
         }
-        const width = nameToWidth(name);
+        const width = nameToWidth(name, payload.parameters);
         Node.create({ ...payload, name, width });
         break;
       case REMOVE_NODE:
         Node.withId(payload.id).delete();
         break;
-      // case REMOVE_PARAMETER_FROM_NODE:
-      // Node.withId(payload.nodeId).parameters.add(payload.port);
-      // break;
       case UPDATE_NODE:
         const node = Node.withId(payload.nodeId);
         const { newValues } = payload;
         const myName = (newValues && newValues.name) || node.name;
-        node.update({ ...newValues, width: nameToWidth(myName) });
+        node.update({
+          ...newValues,
+          width: nameToWidth(
+            myName,
+            node.parameters && node.parameters.toRefArray()
+          )
+        });
         let x = 0;
         let y = 21;
         node.parameters

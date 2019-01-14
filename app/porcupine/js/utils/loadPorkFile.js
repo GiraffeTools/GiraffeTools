@@ -30,7 +30,7 @@ const loadingVersion1 = (json, nodes, links, setPercent) => {
 
     const newNode = {
       id: node.id || v4(),
-      name: node.title.name || "",
+      name: node.title.name.replace(".", "_") || "",
       class: node.title.class || node.title.name,
       x: node["position"][0],
       y: node["position"][1],
