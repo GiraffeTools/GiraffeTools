@@ -1,11 +1,13 @@
 import React from "react";
 import Radium from "radium";
+import to from "await-to-js";
 
 import LoginButton from "../../../giraffe/js/components/loginButton";
-import { savePorkFile } from "../utils/savePorkFile";
-import styles from "../styles/saveModal";
+import GithubModalContent from "./githubModalContent";
+import { pushToGithub } from "../utils/savePorkFile";
+import styles from "../styles/githubModal";
 
-class SaveModal extends React.Component {
+class GithubModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,6 +16,8 @@ class SaveModal extends React.Component {
       commit_succes: false,
       commit_error: false
     };
+    this.onClose = this.onClose.bind(this);
+    this.onConfirm = this.onConfirm.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
@@ -22,38 +26,30 @@ class SaveModal extends React.Component {
     onClose();
   }
 
-  onConfirm() {
-    const { onClose } = this.props;
-    const { nodes, links, user } = this.props;
+  async onConfirm() {
+    const { githubAction } = this.props;
     const { commit_message } = this.state;
     this.setState({
       commit_pending: true,
       commit_succes: false,
       commit_error: false
     });
-    savePorkFile(nodes, links, user, commit_message)
-      .then(response => {
-        if (response.ok) {
-          this.setState({
-            commit_pending: false,
-            commit_succes: true,
-            commit_error: false
-          });
-        } else {
-          this.setState({
-            commit_pending: false,
-            commit_succes: false,
-            commit_error: true
-          });
-        }
-      })
-      .catch(error => {
-        this.setState({
-          commit_pending: false,
-          commit_succes: false,
-          commit_error: true
-        });
+    const [error, response] = await to(
+      pushToGithub(githubAction, commit_message)
+    );
+    if (!error && response.ok) {
+      this.setState({
+        commit_pending: false,
+        commit_succes: response.ok,
+        commit_error: false
       });
+    } else {
+      this.setState({
+        commit_pending: false,
+        commit_succes: false,
+        commit_error: true
+      });
+    }
   }
 
   closeSucces() {
@@ -78,61 +74,31 @@ class SaveModal extends React.Component {
   }
 
   render() {
-    const { user, auth } = this.props;
+    const { project, auth, title } = this.props;
     const { commit_succes, commit_error, commit_pending } = this.state;
     const loggedIn = auth && auth.access_token;
     const yourRepo =
       auth &&
       auth.github_handle &&
-      user &&
-      user.user &&
-      String(auth.github_handle).toLowerCase() == user.user.toLowerCase();
-    // console.log(auth);
+      project &&
+      project.user &&
+      String(auth.github_handle).toLowerCase() == project.user.toLowerCase();
 
     return (
       <div className="modal-content">
         <h5 className="modal-title" style={[styles.title]}>
-          Commit to GitHub
+          {title}
         </h5>
-        <div className="modal-body">
-          <form>
-            <div className="form-group">
-              <label className="col-form-label">GitHub Username:</label>
-              <input
-                type="text"
-                className="form-control"
-                name="github_user"
-                disabled="True"
-                value={user.user}
-              />
-            </div>
-            <div className="form-group">
-              <label className="col-form-label">Repository</label>
-              <input
-                type="text"
-                className="form-control"
-                name="github_repo"
-                disabled="True"
-                value={user.repository}
-              />
-            </div>
-            <div className="form-group">
-              <label className="col-form-label">Commit message</label>
-              <input
-                type="text"
-                className="form-control"
-                name="commit_message"
-                onChange={this.handleInputChange}
-              />
-            </div>
-          </form>
-        </div>
+        <GithubModalContent
+          project={project}
+          onChange={this.handleInputChange}
+        />
         <div className="modal-footer">
           <LoginButton user={auth} styles={[styles.loginButton]} />
           <button
             type="button"
             className="btn btn-secondary"
-            onClick={() => this.onConfirm()}
+            onClick={this.onConfirm}
             disabled={!loggedIn || !yourRepo}
             data-toggle="tooltip"
             data-placement="top"
@@ -147,7 +113,7 @@ class SaveModal extends React.Component {
           <button
             type="button"
             className="btn btn-primary"
-            onClick={() => this.onClose()}
+            onClick={this.onClose}
           >
             Close
           </button>
@@ -197,4 +163,4 @@ class SaveModal extends React.Component {
   }
 }
 
-export default Radium(SaveModal);
+export default Radium(GithubModal);

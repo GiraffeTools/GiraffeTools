@@ -1,8 +1,17 @@
 const styles = {
+  field: {
+    marginTop: "0.8rem",
+    marginBottom: "0.8rem"
+  },
+  label: {
+    marginBottom: "0.1rem",
+    marginTop: "0.3rem",
+    fontSize: "0.85em"
+  },
   actions: {
     display: "flex",
     justifyContent: "space-between",
-    marginTop: "10px",
+    marginTop: "0.2rem",
     alignItems: "center"
   },
   visibility: {

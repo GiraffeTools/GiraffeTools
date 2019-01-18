@@ -9,7 +9,7 @@ import headerStyles from "../styles/paneHeader";
 
 const PaneElements = ({ nodes, colour }) =>
   Object.keys(nodes).map(node => {
-    const name = nodes[node]["title"]["name"].toString();
+    const name = nodes[node].title.name.toString();
     nodes[node].colour = colour;
     return (
       <DraggablePaneElement key={name} category={nodes[node]} id={name}>

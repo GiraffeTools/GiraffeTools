@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 import Radium from "radium";
+import { v4 } from "uuid";
 
+import { initRepository } from "../utils/github";
 import styles from "../styles/project.js";
 
 const Project = repository => (
@@ -21,12 +23,14 @@ const Project = repository => (
         </div>
       </div>
       <img src="/static/img/separator_red.svg" />
-      added{" "}
-      {new Intl.DateTimeFormat("en-GB", {
-        year: "numeric",
-        month: "long",
-        day: "2-digit"
-      }).format(new Date(repository.created_at))}
+      <div>
+        added{" "}
+        {new Intl.DateTimeFormat("en-GB", {
+          year: "numeric",
+          month: "long",
+          day: "2-digit"
+        }).format(new Date(repository.created_at))}
+      </div>
     </div>
     <div className="col-6 text-right">
       {repository.isGiraffeProject ? (
@@ -45,7 +49,25 @@ const Project = repository => (
           id="no-giraffe-project"
           data-toggle="tooltip"
           data-placement="top"
-          title="Not implemented yet!"
+          onClick={() =>
+            repository.openModal({
+              id: v4(),
+              type: "push_to_github",
+              text:
+                "Do you want to initialise this repository as a GiraffeTools project?",
+              project: {
+                user: repository.owner.login,
+                repository: repository.name
+              },
+              onClose: () => {},
+              onConfirm: () =>
+                initRepository(
+                  repository.owner.login,
+                  repository.name,
+                  "master"
+                )
+            })
+          }
           style={[styles.add]}
         >
           add

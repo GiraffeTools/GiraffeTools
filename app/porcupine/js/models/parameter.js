@@ -5,7 +5,6 @@ import Port from "./port";
 import {
   ADD_NODE,
   REMOVE_NODE,
-  ADD_PARAMETER,
   ADD_PARAMETER_TO_NODE,
   REMOVE_PARAMETER,
   UPDATE_PARAMETER,
@@ -39,17 +38,29 @@ class Parameter extends Model {
         });
         break;
       case REMOVE_NODE:
-        Parameter.all()
-          .filter(parameter => parameter.node == payload.id)
-          .delete();
-        break;
-      case ADD_PARAMETER:
-        Parameter.create(payload);
+        Parameter.filter(parameter => parameter.node == payload.id)
+          .toModelArray()
+          .forEach(parameter => {
+            parameter.input && parameter.input.delete();
+            parameter.output && parameter.output.delete();
+            parameter.delete();
+          });
         break;
       case ADD_PARAMETER_TO_NODE:
-        const { id } = payload;
-        if (!Parameter.filter({ id }).exists()) {
-          Parameter.create(payload);
+        const { parameter, nodeId } = payload;
+
+        if (!Parameter.filter({ id: parameter.id }).exists()) {
+          Parameter.create({
+            node: nodeId,
+            id: parameter.id,
+            name: parameter.name,
+            input: parameter.input,
+            output: parameter.output,
+            isVisible: parameter.isVisible,
+            isIterable: parameter.isIterable,
+            isEnabled: parameter.isEditable,
+            value: parameter.value || "" // #TODO insert proper default value
+          });
         }
         break;
       case REMOVE_PARAMETER:

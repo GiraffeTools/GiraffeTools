@@ -1,13 +1,14 @@
 import React from "react";
 import { StyleRoot } from "radium";
 
+import alertStyles from "../styles/alerts";
 import styles from "../styles/smallScreenAlert";
 
 const SmallScreenAlert = () => (
   <StyleRoot>
     <div
       className="alert alert-info alert-dismissible fade show"
-      style={[styles.alertSmallScreen]}
+      style={[alertStyles.alert, styles.smallScreen]}
       role="alert"
     >
       <button

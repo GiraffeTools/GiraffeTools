@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Radium from "radium";
 
-import Project from "./project";
+import Project from "../containers/project";
 import styles from "../styles/projects.js";
 
 const Projects = ({ repositories }) => (

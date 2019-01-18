@@ -10,12 +10,12 @@ const Contributor = contributor => {
       className="col-4 justify-content-center d-flex"
       style={[styles.contributor]}
     >
-      <div className="card">
+      <div className="card" style={[styles.contributorCard]}>
         <img src={contributor.avatar_url} style={[styles.avatarImage]} />
         <div style={[styles.contributorTag]}>
           <a href={contributor.html_url} style={[styles.link]} target="_blank">
             {" "}
-            <b>@{contributor.login}</b>
+            <b style={[styles.username]}>@{contributor.login}</b>
           </a>
         </div>
       </div>

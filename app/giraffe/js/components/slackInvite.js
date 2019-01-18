@@ -1,5 +1,6 @@
 import React from "react";
 import Radium from "radium";
+import to from "await-to-js";
 
 import { getCsrfToken } from "../utils/auth";
 import { validateEmail } from "../utils/utils";
@@ -24,44 +25,29 @@ class SlackInvite extends React.Component {
     this.setState({ value: event.target.value });
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     const email = this.state.value;
     if (!validateEmail(email)) {
-      this.setState({
-        emailValid: false
-      });
+      this.setState({ emailValid: false });
       return;
     } else {
-      this.setState({
-        emailValid: true
-      });
+      this.setState({ emailValid: true });
     }
-    this.setState({
-      submitted: true
-    });
+    this.setState({ submitted: true });
     const body = JSON.stringify({ email });
 
-    getCsrfToken().then(token => {
-      return fetch(`${API_HOST}/send_slack_invite`, {
-        method: "POST",
-        headers: { "X-CSRFToken": token },
-        body,
-        credentials: "include"
-      })
-        .then(response => response.json())
-        .then(answer => {
-          debugger;
-          this.setState({
-            success: answer["ok"]
-          });
-        })
-        .catch(error => {
-          console.log(error);
-          console.log("Oops, something went wrong there");
-        });
+    const inviteResponse = await fetch(`${API_HOST}/send_slack_invite`, {
+      method: "POST",
+      headers: { "X-CSRFToken": await getCsrfToken() },
+      body,
+      credentials: "include"
     });
-
-    event.preventDefault();
+    const [error, answer] = await to(inviteResponse.json());
+    if (error) {
+      return false;
+    } else {
+      return answer.ok;
+    }
   }
 
   render() {

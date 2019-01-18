@@ -13,7 +13,7 @@ import { nodesWithParameters, linksWithPorts } from "../selectors/selectors";
 
 const mapStateToProps = state => ({
   showSidebar: state.ui.showSidebar,
-  user: state.user,
+  project: state.project,
   modals: state.modals
 });
 

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import Field from "../components/field";
-import { deleteParameter, updateParameter, repositionPorts } from "../actions";
+import { deleteParameter, updateParameter } from "../actions";
 import { selectedNode } from "../selectors/selectors";
 
 const mapStateToProps = state => ({
@@ -10,7 +10,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   removeParameter: id => dispatch(deleteParameter(id)),
-  repositionPorts: nodeId => dispatch(repositionPorts(nodeId)),
   updateParameter: (portId, newValues) =>
     dispatch(updateParameter(portId, newValues))
 });

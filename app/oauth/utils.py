@@ -87,14 +87,9 @@ def is_github_token_valid(oauth_token=None, last_validated=None):
 def revoke_token(oauth_token):
     '""Revoke the specified token.""'
     _params = build_auth_dict(oauth_token)
-    print(_params)
     _auth = (_params["client_id"], _params["client_secret"])
-    print(_auth)
     url = TOKEN_URL.format(**_params)
-    print(url)
     response = requests.delete(url, auth=_auth, headers=HEADERS)
-    print(response)
-    print(response.status_code)
     if response.status_code == 204:
         return True
     return False
@@ -127,7 +122,7 @@ def get_auth_url(redirect_uri="/"):
         str: The Github authentication URL.
 
     """
-    github_callback = reverse("github:github_callback")
+    github_callback = reverse("oauth:github_callback")
     redirect_params = {"redirect_uri": BASE_URI + redirect_uri}
     redirect_uri = urlencode(redirect_params, quote_via=quote_plus)
 

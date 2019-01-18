@@ -1,5 +1,5 @@
 import React from "react";
-import Radium from "radium";
+import { StyleRoot } from "radium";
 import * as d3 from "d3";
 
 import CustomDragLayer from "../draggables/customDragLayer";
@@ -222,29 +222,31 @@ class GraphView extends React.Component {
     }
 
     return (
-      <div style={[styles.viewWrapper]} ref={el => (this.viewWrapper = el)}>
-        <svg height="100%" width="100%">
-          {this.renderDefs()}
-          <g className="view" ref={el => (this.view = el)}>
-            <Background />
-            <g className="entities" ref={el => (this.entities = el)}>
-              <Nodes nodes={nodes} />
-              <Links links={links} />
-              <CustomDragLayer />
+      <StyleRoot>
+        <div style={[styles.viewWrapper]} ref={el => (this.viewWrapper = el)}>
+          <svg height="100%" width="100%">
+            {this.renderDefs()}
+            <g className="view" ref={el => (this.view = el)}>
+              <Background />
+              <g className="entities" ref={el => (this.entities = el)}>
+                <Nodes nodes={nodes} />
+                <Links links={links} />
+                <CustomDragLayer />
+              </g>
             </g>
-          </g>
-        </svg>
-        <GraphControls
-          minZoom={defaults.minZoom}
-          maxZoom={defaults.maxZoom}
-          zoomLevel={this.state.viewTransform.k}
-          zoomToFit={this.handleZoomToFit}
-          modifyZoom={this.modifyZoom}
-          deleteSelection={this.props.deleteSelection}
-        />
-      </div>
+          </svg>
+          <GraphControls
+            minZoom={defaults.minZoom}
+            maxZoom={defaults.maxZoom}
+            zoomLevel={this.state.viewTransform.k}
+            zoomToFit={this.handleZoomToFit}
+            modifyZoom={this.modifyZoom}
+            deleteSelection={this.props.deleteSelection}
+          />
+        </div>
+      </StyleRoot>
     );
   }
 }
 
-export default Radium(GraphView);
+export default GraphView;

@@ -11,6 +11,9 @@ const styles = {
   contributorPanel: {
     padding: "0rem 7%"
   },
+  contributorArrow: {
+    cursor: "pointer"
+  },
 
   contributorList: {
     marginTop: "4rem"
@@ -22,8 +25,7 @@ const styles = {
 
   ethQrCode: {
     width: "50%",
-    bottom: 0,
-    position: "absolute"
+    bottom: 0
   }
 };
 

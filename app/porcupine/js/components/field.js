@@ -12,7 +12,6 @@ class Field extends React.Component {
   changeParams(paramId, key, value) {
     const newValues = { ...this.props.port, [key]: value };
     this.props.updateParameter(paramId, newValues);
-    this.props.repositionPorts(this.props.selectedNode);
   }
 
   change(e) {
@@ -118,9 +117,9 @@ class Field extends React.Component {
     }
 
     return (
-      <div>
+      <div className="border-top" style={[styles.field]}>
         <div style={{ display: displayStyle }}>
-          <label htmlFor={id} style={{ fontSize: "0.85em" }}>
+          <label htmlFor={id} style={[styles.label]}>
             {name}
           </label>
           {inputElement}

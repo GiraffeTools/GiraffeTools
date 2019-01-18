@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 import Banner from "./banner";
 import Repository from "./repository";
-import User from "./user";
+import User from "../containers/user";
 import SlackBanner from "./slackBanner";
 
 class GitHub extends React.Component {

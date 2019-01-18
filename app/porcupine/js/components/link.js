@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { PathLine } from "react-svg-pathline";
 import * as d3 from "d3";
 
@@ -60,22 +60,33 @@ class Link extends React.Component {
     d += ` ${(startingPoint.x * 3) / 4 + (endPoint.x * 1) / 4} ${endPoint.y}`;
     // end point
     d += ` ${endPoint.x} ${endPoint.y}`;
-
     return (
-      <path
-        ref={svg => (this.svgRef = svg)}
-        d={d}
-        stroke="black"
-        strokeWidth="2"
-        fill="none"
-        r={10}
-        filter={
-          selectedLinks && selectedLinks.includes(id)
-            ? "url(#selection-glow)"
-            : ""
-        }
-        cursor={"pointer"}
-      />
+      <Fragment>
+        // This is for rendering...
+        <path
+          d={d}
+          stroke="black"
+          strokeWidth="2"
+          fill="none"
+          r={10}
+          filter={
+            selectedLinks && selectedLinks.includes(id)
+              ? "url(#selection-glow)"
+              : ""
+          }
+          cursor={"pointer"}
+        />
+        // ...and this is for clicking
+        <path
+          ref={svg => (this.svgRef = svg)}
+          d={d}
+          stroke="transparent"
+          strokeWidth="24"
+          fill="none"
+          r={10}
+          cursor={"pointer"}
+        />
+      </Fragment>
     );
   }
 }

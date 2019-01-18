@@ -30,7 +30,7 @@ urlpatterns = [
     url(r"^api/", include(api_urls)),
 
     # Github Integration
-    path("_github/", include("github.urls", namespace="github")),
+    path("_github/", include("oauth.urls", namespace="oauth")),
 
     # porcupine calls
     url(r"^porcupine/?", porcupine.views.porcupine, name="porcupine"),

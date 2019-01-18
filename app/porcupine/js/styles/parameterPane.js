@@ -3,31 +3,32 @@ import styleSheet from "../constants/styles";
 const styles = {
   parameters: {
     position: "absolute",
-    backgroundColor: "white",
     height: "100%",
     width: "20%",
+    backgroundColor: "white",
+    color: "black",
     minWidth: "250px",
     maxWidth: "400px",
-    color: "black",
     overflow: "auto",
     left: "100%",
     transition: "transform 0.1s",
     transform: "translateX(0%)",
     boxShadow: "-5px 0px 10px #F3F3F3",
+    zIndex: 10,
     active: {
       transform: "translateX(-100%)"
-    },
-    rules: {
-      "::-webkit-scrollbar-track": {
-        backgroundColor: "#F5F5F5"
-      },
-      "::-webkit-scrollbar": {
-        backgroundColor: "#F5F5F5"
-      },
-      "::-webkit-scrollbar-thumb": {
-        backgroundColor: "#cdcfd2"
-      }
     }
+    // rules: {
+    //   "::-webkit-scrollbar-track": {
+    //     backgroundColor: "#F5F5F5"
+    //   },
+    //   "::-webkit-scrollbar": {
+    //     backgroundColor: "#F5F5F5"
+    //   },
+    //   "::-webkit-scrollbar-thumb": {
+    //     backgroundColor: "#cdcfd2"
+    //   }
+    // }
   },
   header: {
     color: "black",
@@ -38,6 +39,15 @@ const styles = {
   name: {
     margin: "0px",
     fontSize: "1.2em",
+    wordWrap: "break-word",
+    paddingTop: "20px"
+  },
+  nameInput: {
+    width: "100%"
+  },
+  className: {
+    margin: "0px",
+    fontSize: "0.9em",
     wordWrap: "break-word",
     paddingTop: "20px"
   },

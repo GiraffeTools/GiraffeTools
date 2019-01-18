@@ -29,7 +29,7 @@ const styles = {
     fontSize: "40px",
     color: styleSheet.primaryColor,
 
-    webkitBorderRadius: "30px",
+    WebkitBorderRadius: "30px",
     border: `4px solid ${styleSheet.primaryColor}`,
     width: "60px",
     height: "60px"

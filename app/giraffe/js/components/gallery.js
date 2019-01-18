@@ -15,10 +15,9 @@ class Gallery extends React.Component {
     };
   }
 
-  componentDidMount() {
-    fetch(`${API_HOST}/example_repos`)
-      .then(response => response.json())
-      .then(examples => this.setState({ examples }));
+  async componentDidMount() {
+    const response = await fetch(`${API_HOST}/example_repos`);
+    this.setState({ examples: await response.json() });
   }
 
   render() {

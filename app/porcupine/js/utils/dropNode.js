@@ -1,5 +1,5 @@
 export const drop = (item, offset) => {
-  const { addNode, addPortToNode, repositionPorts } = this.props;
+  const { addNode, addPortToNode } = this.props;
 
   this.placeholder = false;
   const rec = document.getElementById("main").getBoundingClientRect();
@@ -8,9 +8,7 @@ export const drop = (item, offset) => {
   // const zoom = instance.getZoom();
   const zoom = 1;
 
-  const templateNode = item.element_type;
-  const node = $.extend(true, {}, templateNode);
-
+  const node = item.element_type;
   const name = node.title.name;
   const code = node.title.code;
   node.parameters ? node.parameters : {};
@@ -37,5 +35,5 @@ export const drop = (item, offset) => {
   };
 
   addNode(newNode);
-  repositionPorts(newNode);
+  updateNode(newNode.id);
 };

@@ -7,8 +7,9 @@ export function shuffle(o) {
   return o;
 }
 
-export function urlExists(url, callback) {
-  fetch(url).then(status => callback(status.ok));
+export async function urlExists(url, callback) {
+  const status = await fetch(url);
+  callback(status.ok);
 }
 
 export function groupByDate(commits) {

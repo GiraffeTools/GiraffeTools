@@ -17,10 +17,8 @@ export const nodesWithParameters = createSelector(
     return session.Node.all()
       .toRefArray()
       .map(node => {
-        const obj = Object.assign({}, node);
         const parameters = session.Node.withId(node.id).parameters;
-        obj.parameters = parameters && parameters.toRefArray();
-        return obj;
+        return {...node, parameters: (parameters && parameters.toRefArray())};
       });
   }
 );
@@ -38,23 +36,21 @@ export const selectedNode = createSelector(
       return null;
     }
 
-    const obj = Object.assign({}, node.ref);
-    //add parameters
-    obj.parameters = node.parameters.toRefArray().map(parameterRef => {
-      const parameter = orm.Parameter.withId(parameterRef.id);
-      //add links
+    const parameters = node.parameters && node.parameters
+      .toRefArray()
+      .map(parameterRef => {
+        const parameter = orm.Parameter.withId(parameterRef.id);
 
-      const inputLinks = parameter.input
-        ? parameter.input.inputLinks.toRefArray()
-        : [];
-      const outputLinks = parameter.output
-        ? parameter.output.outputLinks.toRefArray()
-        : [];
+        const inputLinks = parameter.input
+          ? parameter.input.inputLinks.toRefArray()
+          : [];
+        const outputLinks = parameter.output
+          ? parameter.output.outputLinks.toRefArray()
+          : [];
 
-      const obj = Object.assign({}, parameter.ref);
-      return { ...obj, outputLinks, inputLinks };
+        return { ...parameter.ref, outputLinks, inputLinks };
     });
-    return obj;
+    return {...node.ref, parameters};
   }
 );
 
@@ -73,12 +69,9 @@ export const linksWithPorts = createSelector(
     return session.Link.all()
       .toRefArray()
       .map(link => {
-        const obj = Object.assign({}, link);
-        let portFrom = obj.portFrom ? session.Port.withId(obj.portFrom) : null;
-        obj.portFrom = portFrom && portFrom.ref;
-        let portTo = obj.portTo ? session.Port.withId(obj.portTo) : null;
-        obj.portTo = portTo && portTo.ref;
-        return obj;
+        const portFrom = link.portFrom ? session.Port.withId(link.portFrom).ref : null;
+        const portTo = link.portTo ? session.Port.withId(link.portTo).ref : null;
+        return {...link, portFrom, portTo};
       });
   }
 );
@@ -91,31 +84,25 @@ export const linksWithPortsAndNodes = createSelector(
       .toRefArray()
       .map(link => {
         // TODO: check if all this Object.assign is strictly necessary
-        const newLink = Object.assign({}, link);
-        let portRef = session.Port.withId(newLink.portFrom);
-        if (portRef && portRef.ref) {
-          const newPort = portRef && Object.assign({}, portRef.ref);
-          newPort.name = portRef.outputParent && portRef.outputParent.name;
-          let nodeRef = session.Node.withId(newPort.node);
-          const newNode = nodeRef && Object.assign({}, nodeRef.ref);
-          newPort.node = newNode;
-          newLink.portFrom = newPort;
-        } else {
-          newLink.portFrom = null;
+        const outputPort = session.Port.withId(link.portFrom);
+        const nodeFrom = session.Node.withId(outputPort.node);
+        const portFrom = outputPort ? {
+          ...outputPort.ref,
+          name: outputPort.outputParent && outputPort.outputParent.name,
+          node: {...nodeFrom.ref},
         }
+        : null;
 
-        portRef = session.Port.withId(newLink.portTo);
-        if (portRef && portRef.ref) {
-          const newPort = portRef && Object.assign({}, portRef.ref);
-          newPort.name = portRef.inputParent && portRef.inputParent.name;
-          let nodeRef = session.Node.withId(newPort.node);
-          const newNode = nodeRef && Object.assign({}, nodeRef.ref);
-          newPort.node = newNode;
-          newLink.portTo = newPort;
-        } else {
-          newLink.portTo = null;
+        const inputPort = session.Port.withId(link.portTo);
+        const nodeTo = session.Node.withId(inputPort.node);
+        const portTo = inputPort ? {
+          ...inputPort.ref,
+          name: inputPort.inputParent && inputPort.inputParent.name,
+          node: {...nodeTo.ref},
         }
-        return newLink;
+        : null;
+
+        return {...link, portFrom, portTo};
       });
   }
 );

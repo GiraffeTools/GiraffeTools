@@ -10,7 +10,7 @@ from django.contrib.postgres.fields import JSONField
 from django.db import models
 from django.utils import timezone
 
-from github.utils import get_time
+from oauth.utils import get_time
 
 
 class GiraffeProject:

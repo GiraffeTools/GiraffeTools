@@ -1,6 +1,7 @@
 import React from "react";
 import Radium from "radium";
 
+import AddParameter from "../containers/addParameter";
 import Fields from "../components/fields";
 import styles from "../styles/parameterPane";
 
@@ -8,6 +9,12 @@ class ParameterPane extends React.Component {
   constructor(props) {
     super(props);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.changeName = this.changeName.bind(this);
+  }
+
+  changeName(event) {
+    const { selectedNode, updateNode } = this.props;
+    updateNode(selectedNode.id, { name: event.target.value });
   }
 
   handleKeyPress(event) {
@@ -30,11 +37,20 @@ class ParameterPane extends React.Component {
     return (
       <div
         style={[styles.parameters, selectedNode && styles.parameters.active]}
-        rules={styles.parameters.rules}
+        // rules={[styles.parameters.rules]}
         className="customScrollbar"
       >
         <div style={[styles.header]}>
-          <h4 style={[styles.name]}>{selectedNode ? selectedNode.name : ""}</h4>
+          <h4 style={[styles.name]}>
+            <input
+              style={[styles.nameInput]}
+              onChange={this.changeName}
+              value={selectedNode ? selectedNode.name : ""}
+            />
+          </h4>
+          <h6 style={[styles.className]}>
+            class: <i>{selectedNode ? selectedNode.class : ""}</i>
+          </h6>
           <div style={[styles.documentation]}>
             {selectedNode ? (
               <a href={selectedNode.web_url} target="_blank">
@@ -53,6 +69,7 @@ class ParameterPane extends React.Component {
           />
         </div>
         <div style={[styles.fields]}>
+          <AddParameter nodeId={selectedNode && selectedNode.id} />
           {selectedNode && selectedNode.parameters ? (
             <Fields parameters={selectedNode.parameters} />
           ) : (

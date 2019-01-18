@@ -17,6 +17,16 @@ class Link extends Model {
         Link.all().delete();
         break;
       case ADD_LINK:
+        if (
+          Link.all()
+            .filter(
+              link =>
+                payload.portFrom === link.portFrom &&
+                payload.portTo === link.portTo
+            )
+            .toRefArray().length
+        )
+          return;
         Link.create(payload);
         break;
       case REMOVE_LINK:

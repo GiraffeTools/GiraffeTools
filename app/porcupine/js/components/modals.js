@@ -1,10 +1,16 @@
 import React from "react";
 import Radium from "radium";
 
-import SaveModalContainer from "../containers/saveModalContainer";
+import GithubModal from "../containers/githubModal";
 import styles from "../styles/modals";
 
 class Modal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onClose = this.onClose.bind(this);
+    this.onConfirm = this.onConfirm.bind(this);
+  }
+
   onClose() {
     const { item, onClose } = this.props;
     if (item.onClose) {
@@ -28,39 +34,10 @@ class Modal extends React.Component {
       return (
         <div className="modal-dialog" style={[{ zIndex: (zIndex + 1) * 10 }]}>
           <div className="modal-content">
-            <h5 class="modal-title" id="exampleModalLabel">
-              Confirmation modal
-            </h5>
-            <div class="modal-body">{text}</div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                onClick={() => this.onConfirm()}
-              >
-                Confirm
-              </button>
-              <button
-                type="button"
-                class="btn btn-primary"
-                onClick={() => this.onClose()}
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      );
-    } else if (type === "custom") {
-      const { content } = this.props.item;
-
-      return (
-        <div className="modal-dialog" style={[{ zIndex: (zIndex + 1) * 10 }]}>
-          <div className="modal-content">
             <h5 className="modal-title" id="exampleModalLabel">
               Confirmation modal
             </h5>
-            <div className="modal-body">{content}</div>
+            <div className="modal-body">{text}</div>
             <div className="modal-footer">
               <button
                 type="button"
@@ -80,11 +57,17 @@ class Modal extends React.Component {
           </div>
         </div>
       );
-    } else if (type === "save_to_github") {
-      const { onClose, item } = this.props;
+    } else if (type === "push_to_github") {
+      const { onClose } = this;
+      const { item } = this.props;
       return (
         <div className="modal-dialog" style={[{ zIndex: (zIndex + 1) * 10 }]}>
-          <SaveModalContainer onClose={() => onClose(item.id)} />
+          <GithubModal
+            title={item.title}
+            onClose={() => this.onClose(item.id)}
+            project={item.project}
+            githubAction={item.onConfirm}
+          />
         </div>
       );
     }

@@ -3,7 +3,8 @@ import Radium from "radium";
 
 import Commit from "./commit";
 import { groupByDate } from "../utils/utils";
-import styles from "../styles/people.js";
+import styles from "../styles/commitBox.js";
+import { addTokenToQuery } from "../utils/auth";
 
 class CommitBox extends React.Component {
   constructor(props) {
@@ -13,20 +14,20 @@ class CommitBox extends React.Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { full_name } = this.props.repository;
-
-    fetch(`https://api.github.com/repos/${full_name}/commits`)
-      .then(response => response.json())
-      .then(commits => this.setState({ commits }))
-      .catch();
+    const url = await addTokenToQuery(
+      new URL(`https://api.github.com/repos/${full_name}/commits`)
+    );
+    const commits = await fetch(url.href);
+    this.setState({ commits: await commits.json() });
   }
 
   render() {
     const { commits } = this.state;
     const { full_name } = this.props.repository;
     const branch = "master";
-    const groupedCommits = commits && groupByDate(commits);
+    const groupedCommits = commits && commits.length && groupByDate(commits);
     const dates =
       groupedCommits &&
       Object.keys(groupedCommits).sort(function(a, b) {
@@ -62,9 +63,9 @@ class CommitBox extends React.Component {
         })}
       </div>
     ) : (
-      <div>No commits yet...</div>
+      <div>Cannot find any commits...</div>
     );
   }
 }
 
-export default CommitBox;
+export default Radium(CommitBox);

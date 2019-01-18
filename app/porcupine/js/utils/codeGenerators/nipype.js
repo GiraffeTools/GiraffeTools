@@ -1,15 +1,8 @@
-import React, { Fragment } from "react";
-import SyntaxHighlighter, {
-  registerLanguage
-} from "react-syntax-highlighter/light";
-import python from "react-syntax-highlighter/languages/hljs/python";
-import atomDark from "react-syntax-highlighter/styles/hljs/atom-one-dark";
-
-registerLanguage("python", python);
+import { exceptionNodes, exceptionCode } from "./nipypeStupidExceptions";
 
 const LANGUAGE = "Nipype";
 
-const mapNodeFields = node => {
+export const mapNodeFields = node => {
   const iteratorFields = node.parameters
     .filter(parameter => {
       return parameter.isIterable && parameter;
@@ -18,6 +11,32 @@ const mapNodeFields = node => {
       return parameter.name;
     });
   return iteratorFields;
+};
+
+export const iterableCode = node => {
+  let iterables = {};
+  let givenName = node.name;
+  let code = "";
+  node.parameters &&
+    node.parameters
+      .filter(parameter => parameter.value !== "" && parameter.input)
+      .forEach(parameter => {
+        if (parameter.isIterable) {
+          iterables[parameter.name] = parameter.value;
+        } else {
+          code += `${givenName}.inputs.${parameter.name} = ${
+            parameter.value
+          }\r\n`;
+        }
+      });
+  if (Object.keys(iterables).length) {
+    code += `${node.name}.iterables = [${Object.keys(iterables)
+      .map(key => {
+        return `('${key}', ${iterables[key]})`;
+      })
+      .join(",")}]\r\n`;
+  }
+  return code;
 };
 
 const writePreamble = nodes => {
@@ -66,9 +85,9 @@ const linkToCode = link => {
     link.portFrom.node &&
     link.portTo.node
   ) {
-    let source = `my_${link.portFrom.node.name}`;
+    let source = link.portFrom.node.name;
     let sourceAttribute = `${link.portFrom.name}`;
-    let destination = `my_${link.portTo.node.name}`;
+    let destination = link.portTo.node.name;
     let destinationAttribute = `${link.portTo.name}`;
     return `analysisflow.connect(${source}, "${sourceAttribute}", ${destination}, "${destinationAttribute}")`;
   } else {
@@ -83,37 +102,23 @@ const itemToCode = node => {
     return "";
   }
 
+  if (exceptionNodes.includes(codeArgument.argument.name)) {
+    return exceptionCode(node);
+  }
+
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
   let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
-  let givenName = `my_${node.name}`;
+  let givenName = node.name;
   code += `${givenName} = pe.${nodeType}(interface = ${
     codeArgument.argument.name
   }, name='${givenName}'`;
-  code += iteratorFields.length
-    ? `, iterfield = ['${iteratorFields.join(`', '`)}']`
-    : "";
-  code += `)\r\n`;
-  let iterables = {};
-  node.parameters &&
-    node.parameters
-      .filter(parameter => parameter.value !== "" && parameter.input)
-      .forEach(parameter => {
-        if (parameter.isIterable) {
-          iterables[parameter.name] = parameter.value;
-        } else {
-          code += `${givenName}.inputs.${parameter.name} = ${
-            parameter.value
-          }\r\n`;
-        }
-      });
-  if (Object.keys(iterables).length) {
-    code += `my_${node.name}.iterables = [${Object.keys(iterables)
-      .map(key => {
-        return `('${key}', ${iterables[key]})`;
-      })
-      .join(",")}]\r\n`;
+  if (!iteratorFields.length) {
+    code += `, iterfield = ['${iteratorFields.join(`', '`)}']`;
   }
+  code += `)\r\n`;
+  code += iterableCode(node);
+
   return code;
 };
 
@@ -127,7 +132,7 @@ analysisflow.run(plugin=plugin, plugin_args=plugin_args)
 `;
 };
 
-const NipypeCode = ({ nodes, links }) => {
+export default function nipypeCode(nodes, links) {
   const preamble = writePreamble(nodes);
   const nodeCode = writeNodes(nodes);
   const linkCode = writeLinks(links);
@@ -135,11 +140,5 @@ const NipypeCode = ({ nodes, links }) => {
   // const parametrs = writeParameters();
   const postAmble = writePostamble();
 
-  return (
-    <SyntaxHighlighter language="python" style={atomDark}>
-      {[preamble, nodeCode, linkCode, postAmble].join("\r\n")}
-    </SyntaxHighlighter>
-  );
-};
-
-export default NipypeCode;
+  return [preamble, nodeCode, linkCode, postAmble].join("\r\n");
+}

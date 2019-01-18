@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import ParameterPane from "../components/parameterPane";
-import { clickItem, deleteNode } from "../actions";
+import { clickItem, deleteNode, updateNode } from "../actions";
 import { selectedNode } from "../selectors/selectors";
 
 const mapStateToProps = state => ({
@@ -10,7 +10,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   deleteNode: nodeId => dispatch(deleteNode(nodeId)),
-  clickItem: (nodeId, type) => dispatch(clickItem(nodeId, type))
+  clickItem: (nodeId, type) => dispatch(clickItem(nodeId, type)),
+  updateNode: (nodeId, name) => dispatch(updateNode(nodeId, name))
 });
 
 const ParameterPaneContainer = connect(

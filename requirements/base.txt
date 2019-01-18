@@ -1,4 +1,4 @@
-Django==2.1.2
+Django==2.1.5
 django-bootstrap4
 django-compressor
 django-cors-headers
@@ -17,6 +17,7 @@ Pillow
 psycopg2-binary
 pycollada
 pydash
+pygithub
 PyYAML
 python-dateutil
 qrcode

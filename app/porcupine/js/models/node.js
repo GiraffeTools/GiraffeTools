@@ -6,32 +6,86 @@ import {
   REMOVE_NODE,
   UPDATE_NODE,
   ADD_PARAMETER_TO_NODE,
-  CLEAR_DATABASE
+  CLEAR_DATABASE,
+  REPOSITION_PORTS
 } from "../actions/actionTypes";
 
 class Node extends Model {
   static reducer(action, Node) {
     const { type, payload } = action;
+
+    const nameToWidth = (name, parameters) => {
+      const nodeFontSize = 13;
+      const parameterFontSize = 10;
+      const nodeWidth = name.length * nodeFontSize;
+      const parameterWidth =
+        parameters &&
+        Math.max.apply(
+          null,
+          parameters
+            .filter(parameter => parameter.isVisible)
+            .map(parameter => parameter.name.length)
+        ) * parameterFontSize;
+      return Math.max(nodeWidth, parameterWidth);
+    };
+
     switch (type) {
       case CLEAR_DATABASE:
         Node.all().delete();
         break;
       case ADD_NODE:
-        // parameters are automatically saved in the Port reducer
+        // parameters are saved in the Port reducer
         const props = Object.assign({}, payload, { parameters: undefined });
-        Node.create(payload);
+        let name = props.name;
+        while (
+          Node.all()
+            .filter(node => node.name === name)
+            .toRefArray().length
+        ) {
+          const match = name.match(/_\d+$/);
+          if (match) {
+            const number =
+              parseInt(match["0"].substr(1, match["0"].length)) + 1;
+            name = name.substring(0, match.index) + "_" + number;
+          } else {
+            name += "_1";
+          }
+        }
+        const width = nameToWidth(name, payload.parameters);
+        Node.create({ ...payload, name, width });
         break;
       case REMOVE_NODE:
         Node.withId(payload.id).delete();
         break;
-      case ADD_PARAMETER_TO_NODE:
-        Node.withId(payload.nodeId).parameters.add(payload.parameter);
-        break;
-      // case REMOVE_PARAMETER_FROM_NODE:
-      // Node.withId(payload.nodeId).parameters.add(payload.port);
-      // break;
       case UPDATE_NODE:
-        Node.withId(payload.nodeId).update(payload.newValues);
+        const node = Node.withId(payload.nodeId);
+        const { newValues } = payload;
+        const myName = (newValues && newValues.name) || node.name;
+        node.update({
+          ...newValues,
+          width: nameToWidth(
+            myName,
+            node.parameters && node.parameters.toRefArray()
+          )
+        });
+        let x = 0;
+        let y = 21;
+        node.parameters
+          .filter(parameter => parameter.isVisible)
+          .toModelArray()
+          .forEach(parameter => {
+            y += 24;
+            parameter.input &&
+              parameter.input.update({
+                x: node.x + x,
+                y: node.y + y
+              });
+            parameter.output &&
+              parameter.output.update({
+                x: node.x + x + node.width,
+                y: node.y + y
+              });
+          });
         break;
     }
     return undefined;
@@ -39,6 +93,8 @@ class Node extends Model {
 }
 Node.modelName = "Node";
 Node.fields = {
+  name: attr(),
+  class: attr(),
   id: attr(),
   x: attr(),
   y: attr(),

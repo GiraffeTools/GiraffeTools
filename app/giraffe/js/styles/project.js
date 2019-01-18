@@ -16,7 +16,7 @@ const styles = {
   },
 
   publicPrivate: {
-    webkitBorderRadius: "1px",
+    WebkitBorderRadius: "1px",
     padding: "0rem 0.5rem",
     borderWidth: "1px",
     borderStyle: "solid",

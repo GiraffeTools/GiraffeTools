@@ -12,7 +12,7 @@ const SlackBanner = () => (
           id="slack-logo"
           style={[styles.slackLogo]}
         />
-        <span style={[styles.slackText]}>Join the team Slack!</span>
+        <span style={[styles.slackText]}>Join the team on Slack!</span>
       </a>
     </div>
   </div>
