@@ -9,9 +9,8 @@
   src: url('/static/fonts/PT_Sans-Web-Regular.ttf')  format('truetype');
 }
 
-html,body,#app,.app,.row-offcanvas{
-  height:100%;
-  font-family: 'ProximaNova-Regular', sans-serif;
+html, body, #app, .app {
+  height: 100%;
 }
 
 body {
