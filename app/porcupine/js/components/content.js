@@ -11,6 +11,7 @@ import Canvas from "../containers/canvas";
 import ParameterPane from "../containers/parameterPane";
 import Sidebar from "../containers/sidebar";
 import Modals from "../containers/modals";
+import Menu from "../components/menu";
 import { isGitHash } from "../utils";
 import styles from "../styles/content";
 
@@ -57,6 +58,7 @@ class Content extends React.Component {
         <div style={[styles.main]}>
           <Canvas />
           <ParameterPane />
+          <Menu />
           <CodeEditor />
           <Modals />
         </div>
