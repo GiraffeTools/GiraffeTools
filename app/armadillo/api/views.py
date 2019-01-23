@@ -20,13 +20,13 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 
 from .utils import create_qr_from_text, put_qr_on_marker, color_func, fv_scalar_to_collada, gunzip_bytes_obj
 
-def qr(request, image=''):
-    qr_link = os.path.join(settings.BASE_URL, 'neurovault/'+ image)
-    marker_with_qr = put_qr_on_marker(qr_link, 'staticfiles/img/marker.png')
-    image = ContentFile(base64.b64decode(marker_with_qr), name='temp.jpg')
+def qr(request, image=""):
+    qr_link = os.path.join(settings.BASE_URL, "neurovault/"+ image)
+    marker_with_qr = put_qr_on_marker(qr_link, "staticfiles/img/marker.png")
+    image = ContentFile(base64.b64decode(marker_with_qr), name="temp.jpg")
     return HttpResponse(image, content_type="image/jpeg")
 
-def hemisphere(request, image='', hemisphere=''):
+def hemisphere(request, image="", hemisphere=""):
     # image=64604
     # hemisphere='left'
     # query neurovault image
@@ -54,12 +54,12 @@ def hemisphere(request, image='', hemisphere=''):
     else:
         hemi_short = "rh"
 
-    fs_base = os.path.join(settings.BASE_DIR, 'staticfiles/fs/')
+    fs_base = os.path.join(settings.BASE_DIR, "staticfiles/fs/")
     verts,faces = fsio.read_geometry(os.path.join(fs_base,"%s.pial" % hemi_short))
 
     bytestream = bytes(fv_scalar_to_collada(verts,faces,colors).getvalue())
     filename = f"{hemisphere}.dae"
     file  = ContentFile(bytestream, filename)
-    response = HttpResponse(file, content_type='application/xml')
-    response['Content-Disposition'] = 'attachment; filename=' + filename
+    response = HttpResponse(file, content_type="application/xml")
+    response["Content-Disposition"] = "attachment; filename=" + filename
     return response

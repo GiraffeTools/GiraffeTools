@@ -36,7 +36,7 @@ def put_qr_on_marker(text, marker_in):
     t_height = img.size[1]
     assert t_height == t_width == DEF_SIZE_MARKER, "marker size does not match ({0}, {0})".format(DEF_SIZE_MARKER)
 
-    new_im = Image.new('RGB', (t_width, t_height), "white")
+    new_im = Image.new("RGB", (t_width, t_height), "white")
 
     #hard-coded position:
     new_im.paste(img, (0, 0))
@@ -77,8 +77,8 @@ def fv_scalar_to_collada(verts,faces,scalars):
     mesh.effects.append(effect)
     mesh.materials.append(mat)
 
-    vert_src = collada.source.FloatSource("verts-array", verts, ('X', 'Y', 'Z'))
-    color_src = collada.source.FloatSource("colors-array", np.array(color), ('R', 'G', 'B'))
+    vert_src = collada.source.FloatSource("verts-array", verts, ("X", "Y", "Z"))
+    color_src = collada.source.FloatSource("colors-array", np.array(color), ("R", "G", "B"))
 
     geom = collada.geometry.Geometry(mesh, "geometry0", "fsave_test",\
       [vert_src,color_src])
@@ -86,8 +86,8 @@ def fv_scalar_to_collada(verts,faces,scalars):
     #creates list of inputs for collada DOM obj...so many decorators
     input_list = collada.source.InputList()
 
-    input_list.addInput(0, 'VERTEX', "#verts-array")
-    input_list.addInput(1, 'COLOR', "#colors-array")
+    input_list.addInput(0, "VERTEX", "#verts-array")
+    input_list.addInput(1, "COLOR", "#colors-array")
 
     #creates faces
     triset = geom.createTriangleSet(
@@ -116,7 +116,7 @@ def fv_scalar_to_collada(verts,faces,scalars):
 def gzip_str(string_):
     out = io.BytesIO()
 
-    with gzip.GzipFile(fileobj=out, mode='w') as fo:
+    with gzip.GzipFile(fileobj=out, mode="w") as fo:
         fo.write(string_.encode())
 
     bytes_obj = out.getvalue()
@@ -126,7 +126,7 @@ def gunzip_bytes_obj(bytes_obj):
     in_ = io.BytesIO()
     in_.write(bytes_obj)
     in_.seek(0)
-    with gzip.GzipFile(fileobj=in_, mode='rb') as fo:
+    with gzip.GzipFile(fileobj=in_, mode="rb") as fo:
         gunzipped_bytes_obj = fo.read()
 
     return gunzipped_bytes_obj.decode()
