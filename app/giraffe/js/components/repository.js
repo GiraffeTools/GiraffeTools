@@ -14,7 +14,8 @@ class Repository extends React.Component {
     this.state = {
       repository: null,
       branch: null,
-      commit: null
+      commit: null,
+      loading: true
     };
   }
 
@@ -35,15 +36,20 @@ class Repository extends React.Component {
       new URL(`https://api.github.com/repos/${username}/${repository}`)
     );
     const response = await fetch(url.href);
-    this.setState({ repository: await response.json() });
+    this.setState({
+      loading: true,
+      repository: await response.json()
+    });
   }
 
   render() {
-    const { repository, branch, commit } = this.state;
+    const { repository, branch, commit, loading } = this.state;
     const bannerTitle =
       repository && repository.name
         ? `${repository.name}`
-        : "Repository not found";
+        : loading
+          ? "..."
+          : "Repository not found";
 
     return (
       <Fragment>

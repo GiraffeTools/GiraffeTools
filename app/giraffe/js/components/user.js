@@ -22,19 +22,21 @@ class User extends React.Component {
   }
 
   async componentDidMount() {
+    const githubApiBase = "https://api.github.com";
     const { username } = this.props.match.params;
     const { access_token } = this.props;
 
     const setUser = async () => {
       const url = await addTokenToQuery(
-        new URL(`https://api.github.com/users/${username}`)
+        new URL(`${githubApiBase}/users/${username}`)
       );
       const user = await fetch(url.href);
       this.setState({ user: await user.json() });
     };
+    const giraffeConfigFile = "GIRAFFE.yml";
     const setRepos = async () => {
       const url = await addTokenToQuery(
-        new URL(`https://api.github.com/users/${username}/repos`)
+        new URL(`${githubApiBase}/users/${username}/repos`)
       );
       const repos = await fetch(url.href);
       const repoList = await repos.json();
@@ -43,9 +45,9 @@ class User extends React.Component {
       return repoList.map(async repo => {
         const url = await addTokenToQuery(
           new URL(
-            `https://raw.githubusercontent.com/${
+            `${githubApiBase}/repos/${
               repo.full_name
-            }/master/GIRAFFE.yml`
+            }/contents/${giraffeConfigFile}`
           )
         );
         const file = await fetch(url);

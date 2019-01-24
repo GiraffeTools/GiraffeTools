@@ -4,6 +4,7 @@ import { ClipLoader } from "react-spinners";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
 import { v4 } from "uuid";
 
+import GithubIcon from "./githubIcon";
 import PaneGroup from "./paneGroup";
 import SearchBar from "./searchBar";
 import styles from "../styles/sidebar";
@@ -131,34 +132,16 @@ class Sidebar extends React.Component {
             {project.user &&
               project.repository && (
                 <div style={[styles.buttons]}>
-                  <a
-                    className="github-button"
-                    href={`https://github.com/${project.user}/${
-                      project.repository
-                    }`}
-                    data-size="large"
-                    data-show-count="true"
-                    aria-label={`Star ${project.user}/${
-                      project.repository
-                    } on GitHub`}
-                    style={[styles.githubButton]}
-                  >
-                    Star
-                  </a>{" "}
-                  <a
-                    className="github-button"
-                    href={`https://github.com/${project.user}/${
-                      project.repository
-                    }/fork`}
-                    data-size="large"
-                    data-show-count="true"
-                    aria-label={`Fork ${project.user}/${
-                      project.repository
-                    } on GitHub`}
-                    style={[styles.githubButton]}
-                  >
-                    Fork
-                  </a>
+                  <GithubIcon
+                    type="fork"
+                    user={project.user}
+                    repo={project.repository}
+                  />
+                  <GithubIcon
+                    type="star"
+                    user={project.user}
+                    repo={project.repository}
+                  />
                 </div>
               )}
             {project &&

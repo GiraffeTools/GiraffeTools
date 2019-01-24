@@ -18,7 +18,7 @@ export const nodesWithParameters = createSelector(
       .toRefArray()
       .map(node => {
         const parameters = session.Node.withId(node.id).parameters;
-        return {...node, parameters: (parameters && parameters.toRefArray())};
+        return { ...node, parameters: parameters && parameters.toRefArray() };
       });
   }
 );
@@ -36,9 +36,9 @@ export const selectedNode = createSelector(
       return null;
     }
 
-    const parameters = node.parameters && node.parameters
-      .toRefArray()
-      .map(parameterRef => {
+    const parameters =
+      node.parameters &&
+      node.parameters.toRefArray().map(parameterRef => {
         const parameter = orm.Parameter.withId(parameterRef.id);
 
         const inputLinks = parameter.input
@@ -49,8 +49,8 @@ export const selectedNode = createSelector(
           : [];
 
         return { ...parameter.ref, outputLinks, inputLinks };
-    });
-    return {...node.ref, parameters};
+      });
+    return { ...node.ref, parameters };
   }
 );
 
@@ -69,9 +69,13 @@ export const linksWithPorts = createSelector(
     return session.Link.all()
       .toRefArray()
       .map(link => {
-        const portFrom = link.portFrom ? session.Port.withId(link.portFrom).ref : null;
-        const portTo = link.portTo ? session.Port.withId(link.portTo).ref : null;
-        return {...link, portFrom, portTo};
+        const portFrom = link.portFrom
+          ? session.Port.withId(link.portFrom).ref
+          : null;
+        const portTo = link.portTo
+          ? session.Port.withId(link.portTo).ref
+          : null;
+        return { ...link, portFrom, portTo };
       });
   }
 );
@@ -86,23 +90,25 @@ export const linksWithPortsAndNodes = createSelector(
         // TODO: check if all this Object.assign is strictly necessary
         const outputPort = session.Port.withId(link.portFrom);
         const nodeFrom = session.Node.withId(outputPort.node);
-        const portFrom = outputPort ? {
-          ...outputPort.ref,
-          name: outputPort.outputParent && outputPort.outputParent.name,
-          node: {...nodeFrom.ref},
-        }
-        : null;
+        const portFrom = outputPort
+          ? {
+              ...outputPort.ref,
+              name: outputPort.outputParent && outputPort.outputParent.name,
+              node: { ...nodeFrom.ref }
+            }
+          : null;
 
         const inputPort = session.Port.withId(link.portTo);
         const nodeTo = session.Node.withId(inputPort.node);
-        const portTo = inputPort ? {
-          ...inputPort.ref,
-          name: inputPort.inputParent && inputPort.inputParent.name,
-          node: {...nodeTo.ref},
-        }
-        : null;
+        const portTo = inputPort
+          ? {
+              ...inputPort.ref,
+              name: inputPort.inputParent && inputPort.inputParent.name,
+              node: { ...nodeTo.ref }
+            }
+          : null;
 
-        return {...link, portFrom, portTo};
+        return { ...link, portFrom, portTo };
       });
   }
 );
