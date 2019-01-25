@@ -31,7 +31,8 @@ async function nodeCode(nodes) {
     "freesurfer",
     "fsl",
     "mrtrix",
-    "Nipype"
+    "Nipype",
+    "spm"
   ];
   const toolboxes = [
     ...new Set(languagesInEditor.reduce((acc, val) => acc.concat(val), []))
