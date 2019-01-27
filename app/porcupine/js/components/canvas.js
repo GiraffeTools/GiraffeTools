@@ -13,8 +13,6 @@ import "react-progress-bar-plus/lib/progress-bar.css";
 
 import ItemTypes from "./itemTypes";
 import GraphView from "./graphView";
-import Links from "./links";
-import Nodes from "./nodes";
 import CustomDragLayer from "../draggables/customDragLayer";
 import { drop } from "../utils/dropNode";
 import { loadPorkFile } from "../utils/loadPorkFile";
@@ -51,19 +49,16 @@ const boxTarget = {
         const code = templateNode.title && templateNode.title.code;
         const parameters =
           templateNode.ports &&
-          templateNode.ports.map(parameter => {
-            // #TODO link to a proper default value
-            return {
-              ...parameter,
-              node: templateNode.id,
-              id: v4(),
-              value: parameter.value || parameter.default || "",
-              input: parameter.input ? v4() : null,
-              output: parameter.output ? v4() : null,
-              isVisible: parameter.visible,
-              isEditable: parameter.editable
-            };
-          });
+          templateNode.ports.map(parameter => ({
+            ...parameter,
+            id: v4(),
+            node: templateNode.id,
+            value: parameter.value || parameter.default || "",
+            input: parameter.input ? v4() : null,
+            output: parameter.output ? v4() : null,
+            isVisible: parameter.visible,
+            isEditable: parameter.editable
+          }));
 
         let transform = component.graphview.current.getViewTransform();
         const zoom = transform.k;
@@ -80,7 +75,7 @@ const boxTarget = {
             zoom,
           y: (contentPosition.y - transform.y) / zoom,
           colour: templateNode.colour,
-          parameters: parameters,
+          parameters,
           web_url: templateNode.title.web_url || "",
           code: code || "",
           category: templateNode.category

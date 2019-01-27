@@ -1,43 +1,147 @@
+import { v4 } from "uuid";
 import React from "react";
+import Radium from "radium";
 
-const Menu  = (props) => (
-  <div>
-    <nav className="menu">
-      <input type="checkbox" href="#" className="menu-open" name="menu-open" id="menu-open"/>
-      <label className="menu-open-button" htmlFor="menu-open">
-        <span className="hamburger hamburger-1"></span>
-        <span className="hamburger hamburger-2"></span>
-        <span className="hamburger hamburger-3"></span>
-      </label>
+import MenuGoo from "./menuGoo";
+import MenuSlider from "./menuSlider";
+import {
+  FaExpand,
+  FaTrashAlt,
+  FaCopy,
+  FaCut,
+  FaPaste,
+  FaSave,
+  FaRegFile
+} from "react-icons/fa";
+import styles from "../styles/menu";
 
-      <a href="#" className="menu-item"> <i className="fa fa-bar-chart"></i> </a>
-      <a href="#" className="menu-item"> <i className="fa fa-plus"></i> </a>
-      <a href="#" className="menu-item"> <i className="fa fa-heart"></i> </a>
-      <a href="#" className="menu-item"> <i className="fa fa-envelope"></i> </a>
-      <a href="#" className="menu-item"> <i className="fa fa-cog"></i> </a>
-      <a href="#" className="menu-item"> <i className="fa fa-ellipsis-h"></i> </a>
+class Menu extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.deleteSelection = this.deleteSelection.bind(this);
+    this.pasteNodes = this.pasteNodes.bind(this);
+  }
 
-    </nav>
+  deleteSelection() {
+    const { selection, deleteNode, deleteLink } = this.props;
+    selection &&
+      selection.nodes &&
+      selection.nodes.forEach(node => {
+        deleteNode(node);
+      });
+    selection &&
+      selection.links &&
+      selection.links.forEach(link => {
+        deleteLink(link);
+      });
+  }
 
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-      <defs>
-        <filter id="shadowed-goo">
+  pasteNodes() {
+    const { copiedNodes, addNode, updateNode } = this.props;
+    copiedNodes &&
+      copiedNodes.forEach(node => {
+        const nodeId = v4();
+        const newNode = {
+          ...node,
+          id: nodeId,
+          x: node.x + 20,
+          y: node.y + 20,
+          parameters: node.parameters.map(parameter => ({
+            ...parameter,
+            id: v4(),
+            input: parameter.input ? v4() : null,
+            output: parameter.output ? v4() : null,
+            node: nodeId
+          }))
+        };
+        addNode(newNode);
+        updateNode(newNode.id);
+      });
+  }
 
-            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-            <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
-            <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
-            <feOffset in="shadow" dx="1" dy="1" result="shadow" />
-            <feComposite in2="shadow" in="goo" result="goo" />
-            <feComposite in2="goo" in="SourceGraphic" result="mix" />
-        </filter>
-        <filter id="goo">
-            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
-            <feComposite in2="goo" in="SourceGraphic" result="mix" />
-        </filter>
-      </defs>
-    </svg>
-  </div>
-)
-export default Menu;
+  render() {
+    const {
+      copyItems,
+      copyNodes,
+      clearDatabase,
+      minZoom,
+      maxZoom,
+      modifyZoom,
+      pasteNodes,
+      selection,
+      zoomLevel,
+      zoomToFit
+    } = this.props;
+    return (
+      <div>
+        <nav style={[styles.nav]}>
+          <MenuSlider
+            minZoom={minZoom}
+            maxZoom={maxZoom}
+            modifyZoom={modifyZoom}
+            zoomLevel={zoomLevel}
+          />
+          <div className="menu" style={[styles.menu]}>
+            <input
+              type="checkbox"
+              href="#"
+              className="menu-open"
+              name="menu-open"
+              id="menu-open"
+            />
+            <label className="menu-open-button" htmlFor="menu-open">
+              <span className="hamburger hamburger-1" />
+              <span className="hamburger hamburger-2" />
+              <span className="hamburger hamburger-3" />
+            </label>
+
+            <a
+              style={[styles.menuItem]}
+              className="menu-item"
+              onClick={zoomToFit}
+            >
+              {" "}
+              <FaExpand />{" "}
+            </a>
+            <a
+              style={[styles.menuItem]}
+              className="menu-item"
+              onClick={this.deleteSelection}
+            >
+              {" "}
+              <FaTrashAlt />{" "}
+            </a>
+            <a
+              style={[styles.menuItem]}
+              className="menu-item"
+              onClick={() => copyItems(selection.nodes)}
+            >
+              {" "}
+              <FaCopy />{" "}
+            </a>
+            {/*<a style={[styles.menuItem]} className="menu-item" onClick={() => {}}> <FaCut /> </a>*/}
+            <a
+              style={[styles.menuItem]}
+              className="menu-item"
+              onClick={this.pasteNodes}
+            >
+              {" "}
+              <FaPaste />{" "}
+            </a>
+            <a
+              style={[styles.menuItem]}
+              className="menu-item"
+              onClick={clearDatabase}
+            >
+              {" "}
+              <FaRegFile />{" "}
+            </a>
+
+            <MenuGoo />
+          </div>
+        </nav>
+      </div>
+    );
+  }
+}
+export default Radium(Menu);

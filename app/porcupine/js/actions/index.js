@@ -15,6 +15,7 @@ import {
   SET_MOUSE_STATE,
   CLEAR_DATABASE,
   TOGGLE_CODEEDITOR,
+  COPY_NODES,
   SET_ACTIVE_TAB,
   SET_USER,
   SET_REPOSITORY,
@@ -121,6 +122,12 @@ export const clickItem = (id, item) => ({
   payload: {
     id,
     item
+  }
+});
+export const copyItems = nodeIds => ({
+  type: COPY_NODES,
+  payload: {
+    nodeIds
   }
 });
 // export const setMouseState = (props) => ({

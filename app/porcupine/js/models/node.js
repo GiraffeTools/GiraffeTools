@@ -35,8 +35,7 @@ class Node extends Model {
         break;
       case ADD_NODE:
         // parameters are saved in the Port reducer
-        const props = Object.assign({}, payload, { parameters: undefined });
-        let name = props.name;
+        let name = payload.name;
         while (
           Node.all()
             .filter(node => node.name === name)

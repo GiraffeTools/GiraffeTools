@@ -51,47 +51,35 @@ body {
 @import "./trig.scss";
 
 //vars
-$fg:#e91e63;
-$bg:#8bc34a;
+$fg:#F7A81C;
+$bg:#FFFAEF;
 $pi:3.14;
-
+$spacing:50px;
+$menu-items:5;
+$open-distance:75px;
+$size:$open-distance * 0.6;
 //config
-$menu-items:6+1;
-$open-distance:105px;
-$opening-angle:$pi*2;
+// $open-distance:75px;
+// $size:$open-distance * 0.6;
+// $opening-angle:$pi - .2;
 
-// body{
-//   background:$bg;
-//   color:white;
-//   text-align:center;
-// }
-// a{
-//   color:inherit;
-// }
-// h1, h2, h3, h4{
-//   margin:0;
-//   margin-bottom:10px;
-//   margin-top:10px;
-// }
-// h1{
-//   font-size:3em;
-// }
+
 %goo{
-  filter:url('#goo');
+  filter:url('#shadowed-goo');
   // debug
   // background:rgba(255,0,0,0.2);
 }
 %ball{
   background:$fg;
   border-radius:100%;
-  width:80px;
-  height:80px;
-  margin-left:-40px;
+  width:$size;
+  height:$size;
+  // margin-left:-40px;
   position:absolute;
-  top:20px;
-  color:white;
+  // top:20px;
+  color:white!important;
   text-align:center;
-  line-height:80px;
+  line-height:$size;
   transform:translate3d(0,0,0);
   transition:transform ease-out 200ms;
 }
@@ -102,7 +90,7 @@ $opening-angle:$pi*2;
   @extend %ball;
 }
 .hamburger{
-  $width:25px;
+  $width:20px;
   $height:3px;
   width:$width;
   height:$height;
@@ -138,29 +126,17 @@ $hamburger-spacing:8px;
 }
 .menu{
   @extend %goo;
-  $width:380px;
-  $height:250px;
-  position:absolute;
-  left:50%;
-  margin-left:-$width/2;
-  padding-top:20px;
-  padding-left:$width/2;
-  width:$width;
-  height:$height;
-  box-sizing:border-box;
-  font-size:20px;
-  text-align:left;
 }
 
 
 .menu-item{
   &:hover{
     background:white;
-    color:$fg;
+    color:$fg!important;
   }
   @for $i from 1 through $menu-items{
     &:nth-child(#{$i+2}){
-      transition-duration:180ms;
+      transition-duration:10ms+(60ms*($i));
     }
   }
 }
@@ -170,7 +146,7 @@ $hamburger-spacing:8px;
   z-index:2;
   transition-timing-function:cubic-bezier(0.175, 0.885, 0.320, 1.275);
   transition-duration:400ms;
-  transform:scale(1.1,1.1) translate3d(0,0,0);
+  // transform:scale(1.1,1.1) translate3d(0,0,0);
   cursor:pointer;
 }
 .menu-open-button:hover{
@@ -179,17 +155,18 @@ $hamburger-spacing:8px;
 .menu-open:checked+.menu-open-button{
   transition-timing-function:linear;
   transition-duration:200ms;
-  transform:scale(0.8,0.8) translate3d(0,0,0);
+  transform:scale(1.2,1.2) translate3d(0,0,0);
+  // transform:scale(0.8,0.8) translate3d(0,0,0);
 }
 
+
 .menu-open:checked~.menu-item{
-  transition-timing-function:cubic-bezier(0.935, 0.000, 0.340, 1.330);
+  transition-timing-function:cubic-bezier(0.165, 0.840, 0.440, 1.000);
   @for $i from 1 through $menu-items{
-    $angle:(($pi - $opening-angle)/2)+(($opening-angle/($menu-items - 1))*($i - 1));
 
     &:nth-child(#{$i+2}){
-      transition-duration:80ms+(100ms*$i);
-      transform:translate3d(cos($angle)*$open-distance,sin($angle)*$open-distance,0);
+      transition-duration:90ms+(100ms*$i);
+      transform:translate3d($spacing*$i,0,0);
     }
   }
 }
