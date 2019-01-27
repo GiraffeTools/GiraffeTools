@@ -3,16 +3,19 @@ import {
   ZOOM_OUT,
   HOVER_PORT,
   CLICK_ITEM,
+  COPY_NODES,
   REMOVE_NODE,
   SET_MOUSE_STATE
 } from "../actions/actionTypes";
+import { nodesWithParameters, linksWithPorts } from "../selectors/selectors";
 
 const INITIAL_STATE = {
   hoveredPort: null,
   selection: {
     links: null,
     nodes: null
-  }
+  },
+  copyNodes: null
 };
 
 export default function scene(state = INITIAL_STATE, action) {
@@ -27,6 +30,8 @@ export default function scene(state = INITIAL_STATE, action) {
         ...state,
         hoveredPort: { id: payload.portId, type: payload.type }
       };
+    case COPY_NODES:
+      return { ...state, copyNodes: payload.nodeIds };
     case REMOVE_NODE:
       return {
         ...state,

@@ -34,6 +34,7 @@ export const ZOOM_IN = "ZOOM_IN";
 export const ZOOM_OUT = "ZOOM_OUT";
 export const HOVER_PORT = "HOVER_PORT";
 export const CLICK_ITEM = "CLICK_ITEM";
+export const COPY_NODES = "COPY_NODES";
 
 ///// MODALS /////
 export const OPEN_MODAL = "OPEN_MODAL";

@@ -110,7 +110,6 @@ class Node extends React.Component {
         {hovered && <Tooltip parameters={parameters} />}
       </g>
     );
-    return content;
   }
 }
 

@@ -23,6 +23,20 @@ export const nodesWithParameters = createSelector(
   }
 );
 
+export const copiedNodes = createSelector(
+  orm,
+  state => state.orm,
+  state => state.scene.copyNodes,
+  (orm, copyNodes) => {
+    if (!copyNodes) return null;
+    const nodes = orm.Node.filter(node =>
+      copyNodes.includes(node.id)
+    ).toRefArray();
+    if (!nodes.length) return null;
+    return nodes;
+  }
+);
+
 export const selectedNode = createSelector(
   orm,
   state => state.orm,

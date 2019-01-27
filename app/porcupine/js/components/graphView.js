@@ -3,7 +3,7 @@ import { StyleRoot } from "radium";
 import * as d3 from "d3";
 
 import CustomDragLayer from "../draggables/customDragLayer";
-import GraphControls from "./graphControls";
+import Menu from "../containers/menu";
 import Links from "./links";
 import Nodes from "./nodes";
 import styles from "../styles/graphView";
@@ -31,11 +31,13 @@ const Background = () => (
 class GraphView extends React.Component {
   constructor(props) {
     super(props);
-    this.renderDefs = this.renderDefs.bind();
-
     this.state = {
       viewTransform: d3.zoomIdentity
     };
+    this.modifyZoom = this.modifyZoom.bind(this);
+    this.renderDefs = this.renderDefs.bind();
+    this.handleZoom = this.handleZoom.bind(this);
+    this.handleZoomToFit = this.handleZoomToFit.bind(this);
 
     this.zoom = d3
       .zoom()
@@ -55,20 +57,21 @@ class GraphView extends React.Component {
   }
 
   // Keeps 'zoom' contained
-  containZoom = () => {};
+  containZoom() {}
+
   // View 'zoom' handler
-  handleZoom = () => {
+  handleZoom() {
     this.setState({
       viewTransform: d3.event.transform
     });
-  };
+  }
 
-  getViewTransform = () => {
+  getViewTransform() {
     return this.state.viewTransform;
-  };
+  }
 
   // Zooms to contents of this.refs.entities
-  handleZoomToFit = () => {
+  handleZoomToFit() {
     const parent = d3.select(this.viewWrapper).node();
     const entities = d3.select(this.entities).node();
 
@@ -112,10 +115,10 @@ class GraphView extends React.Component {
     }
 
     this.setZoom(next.k, next.x, next.y, defaults.zoomDuration);
-  };
+  }
 
   // Updates current viewTransform with some delta
-  modifyZoom = (modK = 0, modX = 0, modY = 0, dur = 0) => {
+  modifyZoom(modK = 0, modX = 0, modY = 0, dur = 0) {
     const parent = d3.select(this.viewWrapper).node();
     const width = parent.clientWidth;
     const height = parent.clientHeight;
@@ -147,19 +150,19 @@ class GraphView extends React.Component {
     next.x += center[0] - l[0] + modX;
     next.y += center[1] - l[1] + modY;
     this.setZoom(next.k, next.x, next.y, dur);
-  };
+  }
 
   // Programmatically resets zoom
-  setZoom = (k = 1, x = 0, y = 0, dur = 0) => {
+  setZoom(k = 1, x = 0, y = 0, dur = 0) {
     var t = d3.zoomIdentity.translate(x, y).scale(k);
     d3.select(this.viewWrapper)
       .select("svg")
       .transition()
       .duration(dur)
       .call(this.zoom.transform, t);
-  };
+  }
 
-  handleWrapperKeydown = () => {
+  handleWrapperKeydown() {
     // Conditionally ignore keypress events on the window
     // if the Graph isn't focused
     switch (d3.event.key) {
@@ -174,7 +177,7 @@ class GraphView extends React.Component {
       default:
         break;
     }
-  };
+  }
 
   renderDefs() {
     return (
@@ -235,7 +238,7 @@ class GraphView extends React.Component {
               </g>
             </g>
           </svg>
-          <GraphControls
+          <Menu
             minZoom={defaults.minZoom}
             maxZoom={defaults.maxZoom}
             zoomLevel={this.state.viewTransform.k}
