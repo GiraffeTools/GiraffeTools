@@ -18,22 +18,7 @@ import styles from "../styles/menu";
 class Menu extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.deleteSelection = this.deleteSelection.bind(this);
     this.pasteNodes = this.pasteNodes.bind(this);
-  }
-
-  deleteSelection() {
-    const { selection, deleteNode, deleteLink } = this.props;
-    selection &&
-      selection.nodes &&
-      selection.nodes.forEach(node => {
-        deleteNode(node);
-      });
-    selection &&
-      selection.links &&
-      selection.links.forEach(link => {
-        deleteLink(link);
-      });
   }
 
   pasteNodes() {
@@ -64,10 +49,10 @@ class Menu extends React.PureComponent {
       copyItems,
       copyNodes,
       clearDatabase,
+      deleteSelection,
       minZoom,
       maxZoom,
       modifyZoom,
-      pasteNodes,
       selection,
       zoomLevel,
       zoomToFit
@@ -100,24 +85,21 @@ class Menu extends React.PureComponent {
               className="menu-item"
               onClick={zoomToFit}
             >
-              {" "}
-              <FaExpand />{" "}
+              <FaExpand />
             </a>
             <a
               style={[styles.menuItem]}
               className="menu-item"
-              onClick={this.deleteSelection}
+              onClick={deleteSelection}
             >
-              {" "}
-              <FaTrashAlt />{" "}
+              <FaTrashAlt />
             </a>
             <a
               style={[styles.menuItem]}
               className="menu-item"
               onClick={() => copyItems(selection.nodes)}
             >
-              {" "}
-              <FaCopy />{" "}
+              <FaCopy />
             </a>
             {/*<a style={[styles.menuItem]} className="menu-item" onClick={() => {}}> <FaCut /> </a>*/}
             <a
@@ -125,16 +107,14 @@ class Menu extends React.PureComponent {
               className="menu-item"
               onClick={this.pasteNodes}
             >
-              {" "}
-              <FaPaste />{" "}
+              <FaPaste />
             </a>
             <a
               style={[styles.menuItem]}
               className="menu-item"
               onClick={clearDatabase}
             >
-              {" "}
-              <FaRegFile />{" "}
+              <FaRegFile />
             </a>
 
             <MenuGoo />

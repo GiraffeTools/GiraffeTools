@@ -7,7 +7,6 @@ import {
   deleteNode,
   clearDatabase,
   copyItems,
-  pasteNodes,
   updateNode
 } from "../actions";
 import { copiedNodes } from "../selectors/selectors";
@@ -21,7 +20,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   addNode: node => dispatch(addNode(node)),
   copyItems: nodeIds => dispatch(copyItems(nodeIds)),
-  pasteNodes: nodeIds => dispatch(pasteNodes(nodeIds)),
   deleteNode: nodeId => dispatch(deleteNode(nodeId)),
   deleteLink: linkId => dispatch(deleteLink(linkId)),
   clearDatabase: () => dispatch(clearDatabase()),

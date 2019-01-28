@@ -8,28 +8,12 @@ import styles from "../styles/parameterPane";
 class ParameterPane extends React.Component {
   constructor(props) {
     super(props);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
     this.changeName = this.changeName.bind(this);
   }
 
   changeName(event) {
     const { selectedNode, updateNode } = this.props;
     updateNode(selectedNode.id, { name: event.target.value });
-  }
-
-  handleKeyPress(event) {
-    if (event.key == "Delete") {
-      console.log("implement delete (parameter pane)");
-      // deleteNode(this.props.selectedNode.id);
-    }
-  }
-
-  componentDidMount() {
-    document.addEventListener("keydown", this.handleKeyPress, false);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleKeyPress, false);
   }
 
   render() {

@@ -103,6 +103,20 @@ class Canvas extends React.PureComponent {
     this.deleteSelection = this.deleteSelection.bind(this);
     this.loadFromJson = this.loadFromJson.bind(this);
     this.setPercent = this.setPercent.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+  handleKeyPress(event) {
+    switch (event.key) {
+      case "Delete":
+        this.deleteSelection();
+        break;
+      case "Backspace":
+        this.deleteSelection();
+        break;
+      default:
+        break;
+    }
   }
 
   deleteSelection() {
@@ -120,6 +134,7 @@ class Canvas extends React.PureComponent {
   }
 
   async componentDidMount() {
+    document.addEventListener("keydown", this.handleKeyPress, false);
     const { setPorkFile, project } = this.props;
     const { user, repository, branch, commit } = project;
     if (!user || !repository || (!branch && !commit)) {
@@ -153,6 +168,10 @@ class Canvas extends React.PureComponent {
       console.log(error);
       this.setPercent(-1);
     }
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.handleKeyPress, false);
   }
 
   setPercent(percent) {

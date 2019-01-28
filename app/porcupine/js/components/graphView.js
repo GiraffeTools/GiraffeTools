@@ -47,7 +47,6 @@ class GraphView extends React.Component {
 
   componentDidMount() {
     d3.select(this.viewWrapper)
-      .on("keydown", this.handleWrapperKeydown)
       .on("touchstart", this.containZoom)
       .on("touchmove", this.containZoom);
     // .on("click", this.handleSvgClicked)
@@ -162,23 +161,6 @@ class GraphView extends React.Component {
       .call(this.zoom.transform, t);
   }
 
-  handleWrapperKeydown() {
-    // Conditionally ignore keypress events on the window
-    // if the Graph isn't focused
-    switch (d3.event.key) {
-      case "Delete":
-        console.log("Delete");
-        // this.handleDelete();
-        break;
-      case "Backspace":
-        console.log("Backspace");
-        // this.handleDelete();
-        break;
-      default:
-        break;
-    }
-  }
-
   renderDefs() {
     return (
       <defs>
@@ -216,7 +198,7 @@ class GraphView extends React.Component {
   }
 
   render() {
-    const { nodes, links } = this.props;
+    const { nodes, links, deleteSelection } = this.props;
     const view = d3.select(this.view);
     const viewNode = view.node();
     if (viewNode) {
@@ -244,7 +226,7 @@ class GraphView extends React.Component {
             zoomLevel={this.state.viewTransform.k}
             zoomToFit={this.handleZoomToFit}
             modifyZoom={this.modifyZoom}
-            deleteSelection={this.props.deleteSelection}
+            deleteSelection={deleteSelection}
           />
         </div>
       </StyleRoot>
