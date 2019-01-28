@@ -1,0 +1,24 @@
+{% extends 'shared/base.html' %}
+{% load sass_tags %}
+{% load static %}
+{% load render_bundle from webpack_loader %}
+
+{% block head %}
+  {{ block.super }}
+  <script src="{% static "js/aframe.min.js" %}" />
+  <script src="{% static "js/aframe-ar.js" %}" />
+
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <link href="{% sass_src "css/armadillo.scss" %}" rel="stylesheet" type="text/css" />
+{% endblock head %}
+
+{% block body %}
+  <div id="armadillo"></div>
+{% endblock body %}
+
+{% block scripts %}
+  {{ block.super }}
+  {% render_bundle 'armadillo' 'js' 'ARMADILLO' %}
+{% endblock scripts %}
+
+</html>

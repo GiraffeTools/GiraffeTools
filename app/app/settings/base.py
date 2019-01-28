@@ -12,6 +12,7 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     # 'django.contrib.admin',
     "giraffe.apps.GiraffeConfig",
+    "armadillo.apps.ArmadilloConfig",
     "porcupine.apps.PorcupineConfig",
     "oauth.apps.OAuthConfig",
     "livereload",

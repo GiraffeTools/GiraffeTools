@@ -41,7 +41,7 @@ enabled = False
 
 bears = PyLintBear
 
-pylint_cli_options = 
+pylint_cli_options =
 pylint_disable = missing-docstring, # Lots of functions don't need docstrings
                  locally-disabled, # Without this a pylint pragma is also
                                    # considered an issue
@@ -56,6 +56,6 @@ shellcheck_ignore = SC2046, SC2154
 
 [all.javascript]
 files = **.js
-ignore = node_modules/**, db.sqlite3, **/staticfiles/**, **/webpack-stats.json, **/webpack-stats-prod.json, **/webpack_bundles/**, **/.idea, code-coverage/**
+ignore = node_modules/**, db.sqlite3, **/staticfiles/**, **/webpack-stats.json, **/webpack-stats-prod.json, **/webpack_bundles/**, **/.idea, code-coverage/**, **/static/**
 bears = PrettierLintBear
 default_actions = **: ApplyPatchAction

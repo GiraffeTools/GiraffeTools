@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Nexa-Bold';
+  src: url('/static/fonts/Nexa-Bold.otf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'PT Sans', sans-serif;
+  src: url('/static/fonts/PT_Sans-Web-Regular.ttf')  format('truetype');
+}
+
+html, body {
+  height: 100%;
+}

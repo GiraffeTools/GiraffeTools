@@ -10,12 +10,17 @@ djangorestframework==3.7.3
 django-sass-processor
 django-settings-export
 gunicorn
+matplotlib
 libsass
+nibabel
+Pillow
 psycopg2-binary
+pycollada
 pydash
 pygithub
 PyYAML
 python-dateutil
+qrcode
 requests
 requests_oauthlib
 rollbar==0.13.17

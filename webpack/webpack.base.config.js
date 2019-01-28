@@ -6,6 +6,7 @@ const fs = require("fs");
 module.exports = {
   context: __dirname,
   entry: {
+    armadillo: path.resolve(__dirname, "../app/armadillo/js/index.js"),
     porcupine: path.resolve(__dirname, "../app/porcupine/js/index.js"),
     giraffe: path.resolve(__dirname, "../app/giraffe/js/index.js")
   },
