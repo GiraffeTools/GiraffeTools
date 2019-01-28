@@ -10,7 +10,7 @@ const config = {
 };
 
 const armadilloApp = persistCombineReducers(config, {
-  ui,
+  ui
 });
 
 export default armadilloApp;

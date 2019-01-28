@@ -4,7 +4,8 @@ from django.core.files.base import ContentFile
 from django.conf import settings
 from urllib.request import urlopen
 import urllib
-import urllib.request, json
+import urllib.request
+import json
 import base64
 import os
 from django.http import HttpResponse
@@ -20,11 +21,13 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 
 from .utils import create_qr_from_text, put_qr_on_marker, color_func, fv_scalar_to_collada, gunzip_bytes_obj
 
+
 def qr(request, image=""):
-    qr_link = os.path.join(settings.BASE_URL, "neurovault/"+ image)
+    qr_link = os.path.join(settings.BASE_URL, "neurovault/" + image)
     marker_with_qr = put_qr_on_marker(qr_link, "staticfiles/img/marker.png")
     image = ContentFile(base64.b64decode(marker_with_qr), name="temp.jpg")
     return HttpResponse(image, content_type="image/jpeg")
+
 
 def hemisphere(request, image="", hemisphere=""):
     # image=64604
@@ -46,7 +49,7 @@ def hemisphere(request, image="", hemisphere=""):
     giftiObject = giftiParser.img
     colors = giftiObject.darrays[0].data
 
-    if hemisphere not in ["left","right"]:
+    if hemisphere not in ["left", "right"]:
         print("Bad hemisphere input")
         exit(1)
     elif hemisphere == "left":
@@ -55,11 +58,12 @@ def hemisphere(request, image="", hemisphere=""):
         hemi_short = "rh"
 
     fs_base = os.path.join(settings.BASE_DIR, "staticfiles/fs/")
-    verts,faces = fsio.read_geometry(os.path.join(fs_base,"%s.pial" % hemi_short))
+    verts, faces = fsio.read_geometry(
+        os.path.join(fs_base, "%s.pial" % hemi_short))
 
-    bytestream = bytes(fv_scalar_to_collada(verts,faces,colors).getvalue())
+    bytestream = bytes(fv_scalar_to_collada(verts, faces, colors).getvalue())
     filename = f"{hemisphere}.dae"
-    file  = ContentFile(bytestream, filename)
+    file = ContentFile(bytestream, filename)
     response = HttpResponse(file, content_type="application/xml")
     response["Content-Disposition"] = "attachment; filename=" + filename
     return response

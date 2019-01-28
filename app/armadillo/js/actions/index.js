@@ -3,7 +3,7 @@ import {
   SET_REPOSITORY,
   SET_BRANCH,
   SET_COMMIT,
-  SET_ARMA_FILE,
+  SET_ARMA_FILE
 } from "./actionTypes";
 
 ///// SCENE /////

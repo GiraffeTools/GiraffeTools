@@ -45,7 +45,7 @@ urlpatterns = [
     # giraffe calls
     url(r"^$", giraffe.views.index, name="index"),
     # Make sure everything from the react router is used.
-    #TODO: This also makes every giraffe.tools/[rubbish] refer to the homepage.
+    # TODO: This also makes every giraffe.tools/[rubbish] refer to the homepage.
     #      instead, return 404
     url(r"^(?:.*)/?$", giraffe.views.index, name="index"),
 

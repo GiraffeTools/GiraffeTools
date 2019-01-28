@@ -1,15 +1,10 @@
 import { connect } from "react-redux";
 
 import Content from "../components/content";
-import {
-  setUser,
-  setRepository,
-  setBranch,
-  setCommit
-} from "../actions";
+import { setUser, setRepository, setBranch, setCommit } from "../actions";
 
 const mapStateToProps = state => ({
-  user: state.user,
+  user: state.user
 });
 
 const mapDispatchToProps = dispatch => ({

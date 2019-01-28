@@ -5,30 +5,27 @@ import Spinner from "./spinner";
 import Error from "./error";
 import styles from "../styles/markerWindow";
 
-
 class MarkerWindow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modelIsLoading: true,
       loadingError: false,
-      showMenu: true,
+      showMenu: true
     };
     this.toggleMenu = this.toggleMenu.bind(this);
   }
 
   componentDidMount() {
     setTimeout(
-      () => this.setState({
-        modelIsLoading: false,
-        loadingError: true
-      }),
+      () =>
+        this.setState({
+          modelIsLoading: false,
+          loadingError: true
+        }),
       5000
     );
-    setTimeout(
-      () => this.toggleMenu(),
-      3000
-    );
+    setTimeout(() => this.toggleMenu(), 3000);
   }
 
   toggleMenu() {
@@ -47,13 +44,12 @@ class MarkerWindow extends React.Component {
         <div
           style={[styles.markerWindow, !showMenu && styles.markerWindow.closed]}
         >
-          <div className="text-center"
-            style={[styles.header]}
-          >
-            <div
-              style={[styles.headerContent]}
-            >
-              <h2><span>AR</span>madillo</h2>
+          <div className="text-center" style={[styles.header]}>
+            <div style={[styles.headerContent]}>
+              <h2>
+                <span>AR</span>
+                madillo
+              </h2>
               Print this marker and hold this marker in front of your camera:
             </div>
             <p>
@@ -75,16 +71,15 @@ class MarkerWindow extends React.Component {
               </a>
             </p>
             <div>
-              <div>
-                Fork or star us on GitHub!
-              </div>
+              <div>Fork or star us on GitHub!</div>
               <a
                 className="github-button"
                 href="https://github.com/TimVanMourik/Armadillo"
                 data-icon="octicon-star"
                 data-size="large"
                 data-show-count="true"
-                aria-label="Star TimVanMourik/Armadillo on GitHub">
+                aria-label="Star TimVanMourik/Armadillo on GitHub"
+              >
                 Star
               </a>
               <a
@@ -93,30 +88,33 @@ class MarkerWindow extends React.Component {
                 data-icon="octicon-repo-forked"
                 data-size="large"
                 data-show-count="true"
-                aria-label="Fork TimVanMourik/Armadillo on GitHub">
+                aria-label="Fork TimVanMourik/Armadillo on GitHub"
+              >
                 Fork
               </a>
             </div>
           </div>
           <div
-            style={[styles.markerButton, !showMenu && styles.markerButton.closed]}
+            style={[
+              styles.markerButton,
+              !showMenu && styles.markerButton.closed
+            ]}
           >
             <button
               type="button"
               className="btn btn-primary btn-pill"
               style={[styles.closeMarkerButton]}
-              aria-label="Close" onClick={() => this.toggleMenu()}
+              aria-label="Close"
+              onClick={() => this.toggleMenu()}
             >
-              <i
-                className="fa fa-angle-left"
-                aria-hidden="true" />
+              <i className="fa fa-angle-left" aria-hidden="true" />
             </button>
           </div>
           <Spinner isLoading={modelIsLoading} />
           <Error error={!modelIsLoading && loadingError} />
         </div>
       </div>
-    )
+    );
   }
 }
 
