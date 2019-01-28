@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
 import Radium from "radium";
-import Modals from "../../../porcupine/js/containers/modals";
+import update from "immutability-helper";
 
+import Modals from "../../../porcupine/js/containers/modals";
 import { addTokenToQuery } from "../utils/auth";
 import { urlExists } from "../utils/utils";
 import styles from "../styles/user.js";
@@ -12,17 +13,60 @@ import ProfileBox from "./profileBox";
 import Projects from "./projects";
 import SlackBanner from "./slackBanner";
 
+const githubApiBase = "https://api.github.com";
+
 class User extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       user: null,
-      repositories: []
+      repositories: [],
+      hasMoreItems: true,
+      nextHref: 1
     };
+    this.loadMoreRepos = this.loadMoreRepos.bind(this);
+  }
+
+  async loadMoreRepos() {
+    const { username } = this.props.match.params;
+    const { nextHref } = this.state;
+
+    const url = await addTokenToQuery(
+      new URL(`${githubApiBase}/users/${username}/repos?page=${nextHref}`)
+    );
+    const repos = await fetch(url.href);
+    const repoList = await repos.json();
+    if (!repoList.length) {
+      this.setState({
+        hasMoreItems: false
+      });
+      return;
+    }
+    this.setState(prevState => ({
+      repositories: prevState.repositories.concat(repoList),
+      nextHref: this.state.nextHref + 1
+    }));
+
+    const giraffeConfigFile = "GIRAFFE.yml";
+    const setGiraffeProject = async (repo, index) => {
+      const url = await addTokenToQuery(
+        new URL(
+          `${githubApiBase}/repos/${
+            repo.full_name
+          }/contents/${giraffeConfigFile}`
+        )
+      );
+      const file = await fetch(url);
+      this.setState({
+        repositories: update(this.state.repositories, {
+          [index]: { isGiraffeProject: { $set: file.ok } }
+        })
+      });
+    };
+    Promise.all(repoList.map((repo, index) => setGiraffeProject(repo, index)));
   }
 
   async componentDidMount() {
-    const githubApiBase = "https://api.github.com";
     const { username } = this.props.match.params;
     const { access_token } = this.props;
 
@@ -33,39 +77,13 @@ class User extends React.Component {
       const user = await fetch(url.href);
       this.setState({ user: await user.json() });
     };
-    const giraffeConfigFile = "GIRAFFE.yml";
-    const setRepos = async () => {
-      const url = await addTokenToQuery(
-        new URL(`${githubApiBase}/users/${username}/repos`)
-      );
-      const repos = await fetch(url.href);
-      const repoList = await repos.json();
-      if (!repoList.length) return;
-
-      return repoList.map(async repo => {
-        const url = await addTokenToQuery(
-          new URL(
-            `${githubApiBase}/repos/${
-              repo.full_name
-            }/contents/${giraffeConfigFile}`
-          )
-        );
-        const file = await fetch(url);
-        this.setState({
-          repositories: [
-            ...this.state.repositories,
-            { ...repo, isGiraffeProject: file.ok }
-          ]
-        });
-      });
-    };
-
-    Promise.all([setUser(), setRepos()]);
+    Promise.all([setUser()]);
   }
 
   render() {
-    const { user, repositories } = this.state;
+    const { user, hasMoreItems, repositories } = this.state;
     const bannerTitle = user ? `Giraffe & ${user.login}` : "GiraffeTools";
+
     return (
       <Fragment>
         <Modals />
@@ -81,7 +99,11 @@ class User extends React.Component {
                 repositories.filter(e => e.isGiraffeProject).length
               }
             />
-            <Projects repositories={repositories} />
+            <Projects
+              repositories={repositories}
+              hasMore={hasMoreItems}
+              loadMore={this.loadMoreRepos}
+            />
           </div>
         ) : (
           <div>User not found</div>

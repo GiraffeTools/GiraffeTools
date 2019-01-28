@@ -6,7 +6,7 @@ import styles from "../styles/profileBox.js";
 
 const ProfileBox = ({ user, active_giraffe_projects }) => (
   <div className="col-4 text-center">
-    <div className="sticky-top">
+    <div className="sticky-top" style={[styles.sticky]}>
       <div style={[styles.whitespace]} />
       <div style={[styles.box]}>
         <img src={user.avatar_url} style={[styles.profilePic]} />

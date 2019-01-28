@@ -7,6 +7,9 @@ const styles = {
   whitespace: {
     paddingTop: "1rem"
   },
+  sticky: {
+    marginBottom: "1rem"
+  },
   box: {
     ...boxesStyles.giraffeBox
   },
