@@ -1,5 +1,6 @@
 import React from "react";
 import Radium from "radium";
+import { load as loadYaml } from "yaml-js";
 
 import MarkerWindow from "./markerWindow";
 import { isGitHash } from "../utils";
@@ -7,10 +8,12 @@ import { isGitHash } from "../utils";
 class Content extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      image_id: null
+    };
   }
 
-  componentWillMount() {
+  async componentWillMount() {
     const { username, repository, branchOrCommit } = this.props.match.params;
     const { setUser, setRepository, setBranch, setCommit } = this.props;
     setUser(username);
@@ -33,72 +36,88 @@ class Content extends React.Component {
         });
       }
     });
+
+    const baseName = `https://raw.githubusercontent.com/${username}/${repository}/${branchOrCommit}`;
+    const configFile = `${baseName}/GIRAFFE.yml`;
+
+    const configuration = await fetch(configFile);
+    if (!configuration.ok) {
+      console.log("GiraffeTools configuration file cannot be loaded");
+      return;
+    }
+    const yamlData = loadYaml(await configuration.text());
+    const armadilloFile = yamlData.tools.armadillo.neurovault[0];
+    this.setState({
+      image_id: armadilloFile
+    });
   }
 
   render() {
-    // const { image_id } = this.props;
-    const image_id = 31997;
+    const { image_id } = this.state;
+
     return (
       <div>
         <MarkerWindow image_id={image_id} />
-        <div id="camdiv">
-          <a-scene
-            class="scene"
-            embedded
-            arjs="trackingMethod: best; debugUIEnabled:false"
-          >
-            <a-assets>
-              <a-asset-item
-                id="rh-model"
-                src={`/api/armadillo/neurovault/${image_id}/models/right`}
-                crossOrigin="anonymous"
-              />
-              <a-asset-item
-                id="lh-model"
-                src={`/api/armadillo/neurovault/${image_id}/models/left`}
-                crossOrigin="anonymous"
-              />
-            </a-assets>
-            <a-marker
-              model-overrider
-              preset="custom"
-              type="pattern"
-              url="/static/img/patt/pattern-marker.patt"
-              arjs="markersAreaEnabled:true"
+        {image_id && (
+          <div id="camdiv">
+            <a-scene
+              class="scene"
+              embedded
+              arjs="trackingMethod: best; debugUIEnabled:false"
             >
-              <a-collada-model
-                src="#rh-model"
-                position="0 0 0"
-                scale="0.01 0.01 0.01"
-                rotation="0 180 0"
-              >
-                <a-animation
-                  attribute="rotation"
-                  to="0 180 360"
-                  dur="5000"
-                  easing="linear"
-                  repeat="indefinite"
+              <a-assets>
+                <a-asset-item
+                  id="rh-model"
+                  src={`/api/armadillo/neurovault/${image_id}/models/right`}
+                  crossOrigin="anonymous"
                 />
-              </a-collada-model>
-              <a-collada-model
-                src="#lh-model"
-                position="0 0 0"
-                scale="0.01 0.01 0.01"
-                rotation="0 180 0"
-                material="opacity: 0.5;"
-              >
-                <a-animation
-                  attribute="rotation"
-                  to="0 180 360"
-                  dur="5000"
-                  easing="linear"
-                  repeat="indefinite"
+                <a-asset-item
+                  id="lh-model"
+                  src={`/api/armadillo/neurovault/${image_id}/models/left`}
+                  crossOrigin="anonymous"
                 />
-              </a-collada-model>
-            </a-marker>
-            <a-entity camera />
-          </a-scene>
-        </div>
+              </a-assets>
+              <a-marker
+                model-overrider
+                preset="custom"
+                type="pattern"
+                url="/static/img/patt/pattern-marker.patt"
+                arjs="markersAreaEnabled:true"
+              >
+                <a-collada-model
+                  src="#rh-model"
+                  position="0 0 0"
+                  scale="0.01 0.01 0.01"
+                  rotation="0 180 0"
+                >
+                  <a-animation
+                    attribute="rotation"
+                    to="0 180 360"
+                    dur="5000"
+                    easing="linear"
+                    repeat="indefinite"
+                  />
+                </a-collada-model>
+                <a-collada-model
+                  src="#lh-model"
+                  position="0 0 0"
+                  scale="0.01 0.01 0.01"
+                  rotation="0 180 0"
+                  material="opacity: 0.5;"
+                >
+                  <a-animation
+                    attribute="rotation"
+                    to="0 180 360"
+                    dur="5000"
+                    easing="linear"
+                    repeat="indefinite"
+                  />
+                </a-collada-model>
+              </a-marker>
+              <a-entity camera />
+            </a-scene>
+          </div>
+        )}
       </div>
     );
   }

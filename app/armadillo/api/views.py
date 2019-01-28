@@ -1,5 +1,3 @@
-from django.db import models
-from django.contrib.postgres.fields import JSONField
 from django.core.files.base import ContentFile
 from django.conf import settings
 from urllib.request import urlopen
@@ -9,17 +7,11 @@ import json
 import base64
 import os
 from django.http import HttpResponse
-import nibabel as nib
 from nibabel.gifti.parse_gifti_fast import GiftiImageParser
 from nibabel.freesurfer import io as fsio
-from xml.dom.minidom import parse, parseString
-import numpy
-import io
-import zlib
 
-from django.core.files.uploadedfile import InMemoryUploadedFile
-
-from .utils import create_qr_from_text, put_qr_on_marker, color_func, fv_scalar_to_collada, gunzip_bytes_obj
+from .utils import create_qr_from_text, put_qr_on_marker, color_func, \
+    fv_scalar_to_collada, gunzip_bytes_obj
 
 
 def qr(request, image=""):
@@ -30,9 +22,6 @@ def qr(request, image=""):
 
 
 def hemisphere(request, image="", hemisphere=""):
-    # image=64604
-    # hemisphere='left'
-    # query neurovault image
     fileUrl = f"https://neurovault.org/api/images/{image}"
     try:
         with urllib.request.urlopen(fileUrl) as url:

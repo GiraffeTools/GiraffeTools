@@ -3,8 +3,6 @@ from PIL import Image
 import base64
 from io import BytesIO
 
-import os
-from django.conf import settings
 import collada
 import numpy as np
 import io
@@ -17,7 +15,7 @@ DEF_SIZE_MARKER = 512
 
 def create_qr_from_text(text):
     qr = qrcode.QRCode(
-     version=1,
+     version=1,  # Ignore PycodestyleBear (E121)
      error_correction=qrcode.constants.ERROR_CORRECT_L,
      box_size=2,
      border=2,
@@ -36,7 +34,7 @@ def put_qr_on_marker(text, marker_in):
 
     t_width = img.size[0]
     t_height = img.size[1]
-    assert t_height == t_width == DEF_SIZE_MARKER, "marker size does not match ({0}, {0})".format(
+    assert t_height == t_width == DEF_SIZE_MARKER, "marker size does not match ({0}, {0})".format(  # Ignore LineLengthBear
         DEF_SIZE_MARKER)
 
     new_im = Image.new("RGB", (t_width, t_height), "white")
@@ -59,7 +57,7 @@ def color_func(scalars):
 
     colors = np.zeros((scalars.shape[0], 3))
     colors[:, 1] += scalars
-    colors[:, 2] += (1-scalars)
+    colors[:, 2] += (1-scalars)  # Ignore PycodestyleBear (E226)
 
     return colors
 
@@ -76,6 +74,7 @@ def fv_scalar_to_collada(verts, faces, scalars):
     # add shading
     effect = collada.material.Effect("effect0",
                                      [],  # TEXTURES GO HERE
+                                     # Ignore LineLengthBear
                                      "phong", diffuse=(1, 1, 1), specular=(1, 1, 1),
                                      double_sided=True)
     mat = collada.material.Material("material0", "mymaterial", effect)
@@ -97,7 +96,7 @@ def fv_scalar_to_collada(verts, faces, scalars):
 
     # creates faces
     triset = geom.createTriangleSet(
-      np.concatenate([faces, faces], axis=1),
+      np.concatenate([faces, faces], axis=1),  # Ignore PycodestyleBear (E121)
       input_list, "materialref")
 
     triset.generateNormals()
