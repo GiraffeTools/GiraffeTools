@@ -16,7 +16,22 @@ const styles = {
   headerContent: {
     padding: "1rem 2rem",
     backgroundColor: "rgba(90, 97, 105, 0.06)",
-    borderBottom: "none"
+    borderBottom: "none",
+    borderRadius: "0.6rem"
+  },
+  headline: {
+    color: "#ec636a",
+    textAlign: "center",
+    marginTop: "5px",
+    marginBottom: "5px",
+    marginRight: "5px",
+    marginLeft: "5px"
+  },
+  headlineAR: {
+    fontWeight: 700
+  },
+  footer: {
+    paddingBottom: "1rem"
   },
   closeMarkerButton: {
     fontSize: "30px"

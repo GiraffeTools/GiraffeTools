@@ -1,6 +1,7 @@
 import React from "react";
 import Radium from "radium";
 
+import GithubIcon from "../../../porcupine/js/components/githubIcon";
 import Spinner from "./spinner";
 import Error from "./error";
 import styles from "../styles/markerWindow";
@@ -37,7 +38,7 @@ class MarkerWindow extends React.Component {
 
   render() {
     const { modelIsLoading, loadingError, showMenu } = this.state;
-    const { image_id } = this.props;
+    const { image_id, user, repository } = this.props;
 
     return (
       <div className="d-flex justify-content-center">
@@ -46,8 +47,8 @@ class MarkerWindow extends React.Component {
         >
           <div className="text-center" style={[styles.header]}>
             <div style={[styles.headerContent]}>
-              <h2>
-                <span>AR</span>
+              <h2 style={[styles.headline]}>
+                <span style={[styles.headlineAR]}>AR</span>
                 madillo
               </h2>
               Print this marker and hold this marker in front of your camera:
@@ -56,12 +57,10 @@ class MarkerWindow extends React.Component {
               <a href={`/api/neurovault/${image_id}/qr`} target="_blank">
                 <img
                   style={[styles.qrcode]}
-                  id="qrcode"
                   className="img-fluid"
                   src={`/api/armadillo/neurovault/${image_id}/qr`}
                 />
               </a>
-              <br />
               <a
                 href={`https://neurovault.org/images/${image_id}`}
                 target="_blank"
@@ -70,28 +69,10 @@ class MarkerWindow extends React.Component {
                 {`NeuroVault Image: ${image_id}`}
               </a>
             </p>
-            <div>
+            <div style={[styles.footer]}>
               <div>Fork or star us on GitHub!</div>
-              <a
-                className="github-button"
-                href="https://github.com/TimVanMourik/Armadillo"
-                data-icon="octicon-star"
-                data-size="large"
-                data-show-count="true"
-                aria-label="Star TimVanMourik/Armadillo on GitHub"
-              >
-                Star
-              </a>
-              <a
-                className="github-button"
-                href="https://github.com/TimVanMourik/Armadillo/fork"
-                data-icon="octicon-repo-forked"
-                data-size="large"
-                data-show-count="true"
-                aria-label="Fork TimVanMourik/Armadillo on GitHub"
-              >
-                Fork
-              </a>
+              <GithubIcon type="fork" user={user} repo={repository} />
+              <GithubIcon type="star" user={user} repo={repository} />
             </div>
           </div>
           <div

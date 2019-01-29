@@ -4,6 +4,7 @@ import { load as loadYaml } from "yaml-js";
 
 import MarkerWindow from "./markerWindow";
 import { isGitHash } from "../utils";
+import styles from "../styles/content";
 
 class Content extends React.Component {
   constructor(props) {
@@ -53,17 +54,22 @@ class Content extends React.Component {
   }
 
   render() {
+    const { username, repository } = this.props.match.params;
     const { image_id } = this.state;
 
     return (
       <div>
-        <MarkerWindow image_id={image_id} />
+        <MarkerWindow
+          image_id={image_id}
+          user={username}
+          repository={repository}
+        />
         {image_id && (
           <div id="camdiv">
             <a-scene
-              class="scene"
               embedded
               arjs="trackingMethod: best; debugUIEnabled:false"
+              style={[styles.scene]}
             >
               <a-assets>
                 <a-asset-item
