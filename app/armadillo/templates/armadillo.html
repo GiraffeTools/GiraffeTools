@@ -5,10 +5,10 @@
 
 {% block head %}
   {{ block.super }}
+  <!-- TODO:  aframe, ar, and armadillo pose a circular import problem. Yet to be resolved and occurs only in production mode -->
   <script src="{% static "js/aframe.min.js" %}" />
   <script src="{% static "js/aframe-ar.js" %}" />
 
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
   <link href="{% sass_src "css/armadillo.scss" %}" rel="stylesheet" type="text/css" />
 {% endblock head %}
 

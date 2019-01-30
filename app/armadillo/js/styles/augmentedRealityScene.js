@@ -1,5 +1,8 @@
 const styles = {
-  mainCanvas: {
+  scene: {
+    left: 0,
+    top: 0,
+    position: "absolute",
     height: "100%"
   }
 };

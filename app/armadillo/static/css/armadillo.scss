@@ -13,6 +13,13 @@ html, body {
   height: 100%;
 }
 
+#ar-scene{
+  left: 0;
+  top: 0;
+  position: "absolute";
+  height: "100%";
+}
+
 /* ------------ End of sidebar style ------------ */
 
 ::-webkit-scrollbar{

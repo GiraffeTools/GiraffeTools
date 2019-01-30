@@ -54,7 +54,10 @@ class MarkerWindow extends React.Component {
               Print this marker and hold this marker in front of your camera:
             </div>
             <p>
-              <a href={`/api/neurovault/${image_id}/qr`} target="_blank">
+              <a
+                href={`/api/armadillo/neurovault/${image_id}/qr`}
+                target="_blank"
+              >
                 <img
                   style={[styles.qrcode]}
                   className="img-fluid"
