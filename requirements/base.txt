@@ -9,6 +9,7 @@ django-webpack-loader
 djangorestframework==3.7.3
 django-sass-processor
 django-settings-export
+dj_database_url
 gunicorn
 matplotlib
 libsass

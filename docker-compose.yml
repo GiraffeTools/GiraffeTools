@@ -1,6 +1,18 @@
 version: '3'
 
 services:
+
+  db:
+    image: postgres:10.1-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - 5432   # database port
+    environment:
+      - POSTGRES_DB=giraffetools
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=giraffe
+
   web:
     environment:
       - CHOKIDAR_USEPOLLING=true # for hot reloading on Windows
@@ -13,6 +25,8 @@ services:
       - "8000:8000"   # application server
       - "3000:3000"   # webpack hot reload server
       - "35729:35729" # django live reload server
+    depends_on:
+      - db
 
   # coala is the 'linter', checking coding standard consistency
   # Before you commit, run 'docker-compose run coala' to automatically fix all
@@ -23,3 +37,6 @@ services:
     working_dir: /code
     volumes:
       - .:/code
+
+volumes:
+  postgres_data:

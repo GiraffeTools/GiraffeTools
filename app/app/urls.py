@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.conf.urls import include, url
 from django.urls import path
-# from django.contrib import admin
+from django.contrib import admin
 
 import giraffe.views
 import armadillo.views
@@ -26,6 +26,9 @@ from api.urls import api_urls
 app_name = "app"
 
 urlpatterns = [
+    # Admin calls
+    url(r"^admin/?", admin.site.urls),
+
     # api calls
     url(r"^api/", include(api_urls)),
 
@@ -50,9 +53,6 @@ urlpatterns = [
     url(r"^(?:.*)/?$", giraffe.views.index, name="index"),
 
 
-
-    # Admin
-    # url(r"^admin/?", admin.site.urls),
     # Slack
     # url(r"^slack/$", giraffe.views.slack, name="slack"),
     # url(r"^slack/thanks$", giraffe.views.slack_thanks, name="slack_thanks"),

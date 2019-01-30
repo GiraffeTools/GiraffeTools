@@ -60,3 +60,18 @@ WEBPACK_LOADER = {
 # port 3000 hosts front-end, port 8000 hosts back-end
 CORS_ORIGIN_WHITELIST = ["localhost:3000", "localhost:8000"]
 CSRF_TRUSTED_ORIGINS = ["localhost:3000", "localhost:8000"]
+
+# Database
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "postgres",
+        "USER": "postgres",
+        "PASSWORD": "giraffe",
+        # This should be the name of the docker database:
+        "HOST": "db",
+        "PORT": "5432",
+    }
+}
+
+# ALLOWED_HOSTS = ["*"]

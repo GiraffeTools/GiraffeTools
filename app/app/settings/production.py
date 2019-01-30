@@ -1,3 +1,5 @@
+import dj_database_url
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -53,3 +55,6 @@ WEBPACK_LOADER = {
 # domains in whitelist
 CORS_ORIGIN_WHITELIST = ["giraffe.tools"]
 CSRF_TRUSTED_ORIGINS = ["giraffe.tools"]
+
+DATABASES["default"] = dj_database_url.config(
+    conn_max_age=600, ssl_require=True)

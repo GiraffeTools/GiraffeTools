@@ -1,16 +1,14 @@
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(
     os.path.dirname(os.path.abspath(__file__))))
 
-# TODO: check if it is a smart move to allow all hosts
-ALLOWED_HOSTS = ["*"]
-
 # Application definition
 
 INSTALLED_APPS = [
-    # 'django.contrib.admin',
+    "django.contrib.admin",
     "giraffe.apps.GiraffeConfig",
     "armadillo.apps.ArmadilloConfig",
     "porcupine.apps.PorcupineConfig",
@@ -67,22 +65,6 @@ SETTINGS_EXPORT = [
 WSGI_APPLICATION = "app.wsgi.application"
 
 SITE_ID = 1
-
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'giraffe',
-        # 'USER': 'admin',
-        # 'PASSWORD': 'giraffe',
-        # 'HOST': 'localhost',
-        # 'PORT': '',
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
