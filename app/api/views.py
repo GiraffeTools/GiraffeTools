@@ -44,9 +44,10 @@ def get_user(request):
     if user and user.is_authenticated:
         try:
             user_profile = user.profile
-            profile["github_username"] = user_profile.handle
+            # profile["github_email"] = user_profile.handle
+            profile["github_name"] = user_profile.handle
             profile["github_handle"] = user_profile.handle
-            profile["access_token"] = get_github_user_token(user_profile.handle)
+            profile["access_token"] =  user.social_auth.filter(provider='github').latest('pk').access_token
         except Exception as e:
             logger.exception(e)
 
