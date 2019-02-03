@@ -67,7 +67,7 @@ def push_to_github(request):
         user = request.user
         user_profile = user.profile
         handle = user_profile.handle
-        access_token = get_github_user_token(handle)
+        access_token = user.social_auth.filter(provider='github').latest('pk').access_token
     except Exception as e:
         logger.exception(e)
         return HttpResponseForbidden()
