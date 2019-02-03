@@ -141,7 +141,7 @@ GITHUB_SCOPE = ["read:user", "user:email", "read:org", "public_repo"]
 LOGIN_URL = "login"
 LOGOUT_URL = "logout"
 LOGIN_REDIRECT_URL = ""
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = "/"
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = "https://giraffe.tools/_oauth/callback"
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = [
     "username", "first_name", "last_name", "email"]
