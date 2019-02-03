@@ -1,14 +1,18 @@
 import json
-import github
+import logging
+from github import Github, InputGitTreeElement
 from slackclient import SlackClient
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseForbidden, JsonResponse
 from django.http import HttpResponseForbidden
 from django.middleware.csrf import get_token
 
-from oauth.views import logged_in
-from oauth.utils import is_github_token_valid
+from oauth.utils import is_github_token_valid, get_github_user_token
+from app.utils import sync_profile
 
+from giraffe.utils import log_action
+
+logger = logging.getLogger(__name__)
 sc = SlackClient(settings.SLACK_API_TOKEN)
 
 
@@ -34,6 +38,20 @@ def nodes(request):
         nodes = json.load(f)
     return HttpResponse(json.dumps(nodes), content_type="application/json")
 
+def get_user(request):
+    user = request.user
+    profile = {}
+    if user and user.is_authenticated:
+        try:
+            user_profile = user.profile
+            profile["github_username"] = user_profile.handle
+            profile["github_handle"] = user_profile.handle
+            profile["access_token"] = get_github_user_token(user_profile.handle)
+        except Exception as e:
+            logger.exception(e)
+
+    return JsonResponse(profile)
+
 
 def push_to_github(request):
     body = json.loads(request.body)
@@ -44,17 +62,25 @@ def push_to_github(request):
     commit_message = body["message"]
     contents = body["contents"]
 
-    logged_in_user = logged_in(request)
-    github_user = json.loads(logged_in_user.content)
-    if (github_user["github_handle"] != user_name or
-            not is_github_token_valid(github_user["access_token"])):
+    try:
+        user = request.user
+        user_profile = user.profile
+        handle = user_profile.handle
+        access_token = get_github_user_token(handle)
+    except Exception as e:
+        logger.exception(e)
         return HttpResponseForbidden()
 
-    g = github.Github(github_user["access_token"])
+    github_user = json.loads(logged_in_user.content)
+    if (handle != user_name or
+            not is_github_token_valid(access_token)):
+        return HttpResponseForbidden()
+
+    g = Github(access_token)
     element_list = list()
     for key, value in contents.items():
         file_code = "100644"
-        element = github.InputGitTreeElement(key, file_code, "blob", value)
+        element = InputGitTreeElement(key, file_code, "blob", value)
         element_list.append(element)
 
     repo = g.get_repo(f"{user_name}/{repo_name}")
@@ -75,6 +101,7 @@ def push_to_github(request):
     master_ref.edit(commit.sha)
 
     if master_ref.object.sha == commit.sha:
+        log_action(request, "Commit")
         return HttpResponse(status=200, content_type="application/json")
     else:
         return HttpResponse(status=400, content_type="application/json")
@@ -94,4 +121,8 @@ def csrf(request):
 
 def ping(request):
     # With a POST request, this fails if the CSRFToken is not set
+    return JsonResponse({"result": "OK"})
+
+
+def test(request):
     return JsonResponse({"result": "OK"})

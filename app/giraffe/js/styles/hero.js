@@ -3,7 +3,7 @@ import styleSheet from "../constants/styles";
 const styles = {
   hero: {
     backgroundColor: styleSheet.primaryLightColor,
-    backgroundImage: `url('static/img/code_dark_hero_img.png')`,
+    backgroundImage: "url(/static/img/code_dark_hero_img.png)",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "right",
     backgroundSize: "contain",

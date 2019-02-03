@@ -65,13 +65,17 @@ CSRF_TRUSTED_ORIGINS = ["localhost:3000", "localhost:8000"]
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "postgres",
-        "USER": "postgres",
+        "NAME": "giraffetools",
+        "USER": "admin",
         "PASSWORD": "giraffe",
         # This should be the name of the docker database:
         "HOST": "db",
         "PORT": "5432",
     }
 }
+
+GEOIP_PATH = "/usr/share/GeoIP/"
+# GEOIP_CITY = GEOIP_PATH + "GeoLite2-City.mmdb"
+# GEOIP_COUNTRY = GEOIP_PATH + "GeoLite2-Country.mmdb"
 
 # ALLOWED_HOSTS = ["*"]

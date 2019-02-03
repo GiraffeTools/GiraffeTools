@@ -17,17 +17,18 @@ You should have received a copy of the GNU Affero General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 """
+import requests
 import logging
+import dateutil.parser
 from datetime import timedelta
 from urllib.parse import quote_plus, urlencode
+from rest_framework.reverse import reverse
 
 from django.conf import settings
 from django.utils import timezone
 
-import dateutil.parser
-import requests
+from github import Github, InputGitTreeElement
 
-from rest_framework.reverse import reverse
 
 logger = logging.getLogger(__name__)
 
@@ -43,10 +44,6 @@ JSON_HEADER = {
 TOKEN_URL = "{api_url}/applications/{client_id}/tokens/{oauth_token}"
 
 
-def get_time():
-    return localtime(timezone.now())
-
-
 def build_auth_dict(oauth_token):
     return {
         "api_url": settings.GITHUB_API_BASE_URL,
@@ -56,7 +53,27 @@ def build_auth_dict(oauth_token):
     }
 
 
+def github_connect(token=None):
+    github_client = None
+    if not token:
+        token = settings.GITHUB_API_TOKEN
+
+    try:
+        github_client = Github(
+            login_or_token=token,
+            client_id=settings.GITHUB_CLIENT_ID,
+            client_secret=settings.GITHUB_CLIENT_SECRET,
+        )
+
+    except BadCredentialsException as e:
+        logger.exception(e)
+    return github_client
+
+
+
 def is_github_token_valid(oauth_token=None, last_validated=None):
+    expire_time = timedelta(hours=1)
+
     # If no OAuth token was provided, no checks necessary.
     if not oauth_token:
         return False
@@ -71,7 +88,7 @@ def is_github_token_valid(oauth_token=None, last_validated=None):
 
     # Check whether or not the user's access token has been validated recently.
     if oauth_token and last_validated:
-        if (timezone.now() - last_validated) < timedelta(hours=1):
+        if (timezone.now() - last_validated) < expire_time:
             return True
 
     _params = build_auth_dict(oauth_token)
@@ -105,37 +122,6 @@ def reset_token(oauth_token):
     return ""
 
 
-def get_auth_url(redirect_uri="/"):
-    """
-    Build the Github authorization URL.
-
-    Args:
-        redirect_uri (str): The redirect URI to be used during authentication.
-
-    Attributes:
-        github_callback (str): The local path to the Github callback view.
-        redirect_params (dict): The redirect paramaters to URL encode.
-        params (dict): The URL parameters to encode.
-        auth_url (str): The URL encoded Github authentication parameters.
-
-    Returns:
-        str: The Github authentication URL.
-
-    """
-    github_callback = reverse("oauth:github_callback")
-    redirect_params = {"redirect_uri": BASE_URI + redirect_uri}
-    redirect_uri = urlencode(redirect_params, quote_via=quote_plus)
-
-    params = {
-        "client_id": settings.GITHUB_CLIENT_ID,
-        "scope": settings.GITHUB_SCOPE,
-        "redirect_uri": f"{BASE_URI}{github_callback}?{redirect_uri}"
-    }
-    auth_url = urlencode(params, quote_via=quote_plus)
-
-    return settings.GITHUB_AUTH_BASE_URL + f"?{auth_url}"
-
-
 def get_github_user_token(code, **kwargs):
     _params = {
         "code": code,
@@ -154,14 +140,6 @@ def get_github_user_token(code, **kwargs):
     return None
 
 
-def get_github_user_data(oauth_token):
-    headers = dict({"Authorization": f"token {oauth_token}"}, **JSON_HEADER)
-    response = requests.get("https://api.github.com/user", headers=headers)
-    if response.status_code == 200:
-        return response.json()
-    return {}
-
-
 def get_github_primary_email(oauth_token):
     headers = dict({"Authorization": f"token {oauth_token}"}, **JSON_HEADER)
     response = requests.get(
@@ -176,49 +154,14 @@ def get_github_primary_email(oauth_token):
     return ""
 
 
-def get_github_repos(oauth_token):
-    headers = dict({"Authorization": f"token {oauth_token}"}, **JSON_HEADER)
-    response = requests.get(
-        "https://api.github.com/user/repos", headers=headers)
-
-    if response.status_code == 200:
-        repos = response.json()
-        names = [r["full_name"] for r in repos]
-        return names
-
-    return ""
-
-
-def search(query):
-    params = (
-        ("q", query),
-        ("sort", "updated"),
-    )
-
-    response = requests.get("https://api.github.com/search/users",
-                            auth=_AUTH, headers=V3HEADERS, params=params)
-    return response.json()
-
-
-def get_user(user, sub_path=""):
-    user = user.replace("@", "")
-    url = f"https://api.github.com/users/{user}{sub_path}"
+def get_github_user(handle):
+    user = handle.replace('@', '')
+    url = f'https://api.github.com/users/{user}'
     response = requests.get(url, auth=_AUTH, headers=HEADERS)
 
-    return response.json()
+    try:
+        response_dict = response.json()
+    except JSONDecodeError:
+        response_dict = {}
 
-
-def repo_url(issue_url):
-    return "/".join(issue_url.split("/")[:-2])
-
-
-def org_name(issue_url):
-    return issue_url.split("/")[3]
-
-
-def repo_name(issue_url):
-    return issue_url.split("/")[4]
-
-
-def issue_number(issue_url):
-    return issue_url.split("/")[6]
+    return response_dict
