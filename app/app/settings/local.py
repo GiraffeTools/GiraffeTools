@@ -12,11 +12,11 @@ SECRET_KEY = "s9&vp1jq1yzr!1c_temg#v_)j-a)i5+@vbsekmi6pbjl4l1&u@"
 # https://github.com/gitcoinco/web#setup-github-oauth2-app-integration
 
 GA_ID = "UA-XXXXXXXXX-0"
-GITHUB_CLIENT_ID = "TODO"
-GITHUB_CLIENT_SECRET = "TODO"
-GITHUB_API_USER = "TODO"
-GITHUB_API_TOKEN = "TODO"
-GITHUB_APP_NAME = "TODO"
+GITHUB_CLIENT_ID = "SECRET"
+GITHUB_CLIENT_SECRET = "SECRET"
+GITHUB_API_USER = "SECRET"
+GITHUB_API_TOKEN = "SECRET"
+GITHUB_APP_NAME = "SECRET"
 
 # CodeFund
 CODEFUND = False

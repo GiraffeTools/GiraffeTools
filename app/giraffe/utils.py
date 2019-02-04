@@ -1,17 +1,11 @@
-import requests
 import logging
 
-from django.contrib.auth.models import User
 from django.contrib.gis.geoip2 import GeoIP2
-from django.db.models import Lookup
-from django.db.models.fields import Field
 from django.utils import timezone
-from django.conf import settings
 
-import geoip2.database
 from geoip2.errors import AddressNotFoundError
 
-from giraffe.models import Profile, UserAction
+from giraffe.models import UserAction
 
 
 logger = logging.getLogger(__name__)
@@ -59,7 +53,7 @@ def get_location_from_ip(ip_address):
             pass
     except Exception as e:
         logger.warning(
-            f"Encountered ({e}) while attempting to retrieve a user\'s geolocation")
+            f"Encountered ({e}) while attempting to retrieve a user\'s geolocation")  # Ignore LineLengthBear
     return city
 
 

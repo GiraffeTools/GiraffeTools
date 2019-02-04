@@ -2,6 +2,7 @@ from django.shortcuts import redirect
 from django.conf import settings
 from django.http import Http404
 
+
 def login(request):
     return redirect("social:begin", backend="github")
 

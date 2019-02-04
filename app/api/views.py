@@ -7,8 +7,7 @@ from django.http import HttpResponse, HttpResponseForbidden, JsonResponse
 from django.http import HttpResponseForbidden
 from django.middleware.csrf import get_token
 
-from oauth.utils import is_github_token_valid, get_github_user_token
-from app.utils import sync_profile
+from oauth.utils import is_github_token_valid
 
 from giraffe.utils import log_action
 
@@ -38,6 +37,7 @@ def nodes(request):
         nodes = json.load(f)
     return HttpResponse(json.dumps(nodes), content_type="application/json")
 
+
 def get_user(request):
     user = request.user
     profile = {}
@@ -47,7 +47,8 @@ def get_user(request):
             # profile["github_email"] = user_profile.handle
             profile["github_name"] = user_profile.handle
             profile["github_handle"] = user_profile.handle
-            profile["access_token"] =  user.social_auth.filter(provider='github').latest('pk').access_token
+            profile["access_token"] = user.social_auth.filter(
+                provider="github").latest("pk").access_token
         except Exception as e:
             logger.exception(e)
 
@@ -67,12 +68,12 @@ def push_to_github(request):
         user = request.user
         user_profile = user.profile
         handle = user_profile.handle
-        access_token = user.social_auth.filter(provider='github').latest('pk').access_token
+        access_token = user.social_auth.filter(
+            provider="github").latest("pk").access_token
     except Exception as e:
         logger.exception(e)
         return HttpResponseForbidden()
 
-    github_user = json.loads(logged_in_user.content)
     if (handle != user_name or
             not is_github_token_valid(access_token)):
         return HttpResponseForbidden()
@@ -87,7 +88,7 @@ def push_to_github(request):
     repo = g.get_repo(f"{user_name}/{repo_name}")
     try:
         master_ref = repo.get_git_ref(f"heads/{branch}")
-    except:  # Ignore PycodestyleBear (E722)
+    except Exception as e:
         # with a bit of luck, the reason is that there is no first commit yet
         # TODO: code this up more cleanly. The create_file solution is a hack
         repo.create_file("README.md", "Initial commit", "")
@@ -122,8 +123,4 @@ def csrf(request):
 
 def ping(request):
     # With a POST request, this fails if the CSRFToken is not set
-    return JsonResponse({"result": "OK"})
-
-
-def test(request):
     return JsonResponse({"result": "OK"})

@@ -21,13 +21,11 @@ import requests
 import logging
 import dateutil.parser
 from datetime import timedelta
-from urllib.parse import quote_plus, urlencode
-from rest_framework.reverse import reverse
 
 from django.conf import settings
 from django.utils import timezone
 
-from github import Github, InputGitTreeElement
+from github import Github
 
 
 logger = logging.getLogger(__name__)
@@ -68,7 +66,6 @@ def github_connect(token=None):
     except BadCredentialsException as e:
         logger.exception(e)
     return github_client
-
 
 
 def is_github_token_valid(oauth_token=None, last_validated=None):
@@ -155,8 +152,8 @@ def get_github_primary_email(oauth_token):
 
 
 def get_github_user(handle):
-    user = handle.replace('@', '')
-    url = f'https://api.github.com/users/{user}'
+    user = handle.replace("@", "")
+    url = f"https://api.github.com/users/{user}"
     response = requests.get(url, auth=_AUTH, headers=HEADERS)
 
     try:

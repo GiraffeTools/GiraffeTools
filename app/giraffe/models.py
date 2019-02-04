@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import JSONField
 from django.db import models
@@ -39,7 +38,7 @@ class Profile(SuperModel):
 
 class UserAction(SuperModel):
     ACTION_TYPES = [
-        ("Login",  "Login"),
+        ("Login", "Login"),
         ("Logout", "Logout"),
         ("Commit", "Commit"),
     ]
@@ -52,4 +51,5 @@ class UserAction(SuperModel):
     location_data = JSONField(default=dict)
 
     def __str__(self):
+        # Ignore LineLengthBear
         return "{} by {} at {}".format(self.action, self.profile, self.created_on)

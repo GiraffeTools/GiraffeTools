@@ -11,7 +11,6 @@ logger = logging.getLogger(__name__)
 def sync_profile(handle, user=None):
     handle = handle.strip().replace("@", "")
     data = get_github_user(handle)
-    email = ""
     is_error = "name" not in data.keys()
     if is_error:
         logger.warning("Failed to fetch github username",
@@ -22,7 +21,8 @@ def sync_profile(handle, user=None):
     if user and isinstance(user, User):
         defaults["user"] = user
         try:
-            # defaults['github_access_token'] = user.social_auth.filter(provider='github').latest('pk').access_token
+            # defaults['github_access_token'] = user.social_auth.filter(
+            # provider='github').latest('pk').access_token
             if user and user.email:
                 defaults["email"] = user.email
         except UserSocialAuth.DoesNotExist:
@@ -36,10 +36,5 @@ def sync_profile(handle, user=None):
     except Exception as e:
         logger.error(e)
         return None
-
-    if user and user.email:
-        email = user.email
-    elif profile and profile.email:
-        email = profile.email
 
     return profile
