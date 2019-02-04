@@ -12,7 +12,8 @@ class Content extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      image_id: null
+      image_id: null,
+      aframe_loaded: false
     };
   }
 
@@ -21,6 +22,14 @@ class Content extends React.Component {
     script.src = "/static/js/aframe-ar.js";
     script.async = false;
     document.head.appendChild(script);
+
+    const check_aframe = async () => {
+      if (window.AFRAME !== undefined) {
+        this.setState({ aframe_loaded: true });
+        clearInterval(this.interval);
+      }
+    };
+    this.interval = setInterval(check_aframe, 1000);
 
     const { username, repository, branchOrCommit } = this.props.match.params;
     const { setUser, setRepository, setBranch, setCommit } = this.props;
@@ -57,7 +66,11 @@ class Content extends React.Component {
           user={username}
           repository={repository}
         />
-        {image_id && <AugmentedRealityScene image_id={image_id} />}
+        {image_id && (
+          <div id="camdiv">
+            <AugmentedRealityScene image_id={image_id} />
+          </div>
+        )}
       </div>
     );
   }
