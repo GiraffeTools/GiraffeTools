@@ -1,14 +1,16 @@
 from django.shortcuts import redirect
-from django.conf import settings
 from django.http import Http404
+from django.contrib.auth import logout
 
 
 def login(request):
     return redirect("social:begin", backend="github")
 
 
-def logout(request):
-    return redirect(settings.LOGOUT_URL, backend="github")
+def logout_view(request):
+    logout(request)
+    # TODO make logout screen
+    return redirect("/")
 
 
 def callback(request):
