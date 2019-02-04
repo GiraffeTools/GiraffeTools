@@ -7,7 +7,7 @@ class Main extends React.Component {
 
   async componentWillMount() {
     const { updateAuth } = this.props;
-    const response = await fetch("/_github/logged_in/");
+    const response = await fetch("/api/get_user");
     updateAuth(await response.json());
   }
 

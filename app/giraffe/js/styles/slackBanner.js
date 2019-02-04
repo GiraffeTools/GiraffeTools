@@ -6,7 +6,7 @@ const styles = {
     height: "15rem",
     padding: "5rem 3rem 3rem 3rem",
     backgroundColor: styleSheet.primaryColor,
-    backgroundImage: `url(static/img/slack_section_background.jpg)`,
+    backgroundImage: "url(/static/img/slack_section_background.jpg)",
     backgroundPositionX: "center",
     backgroundRepeat: "no-repeat"
   },

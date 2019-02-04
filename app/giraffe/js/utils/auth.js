@@ -7,7 +7,7 @@ export async function addTokenToQuery(url) {
   if (access_token) {
     url.searchParams.append("access_token", access_token);
   } else {
-    const response = await (await fetch("/_github/logged_in/")).json();
+    const response = await (await fetch("/api/get_user")).json();
     if (response.access_token) {
       url.searchParams.append("access_token", response.access_token);
     }

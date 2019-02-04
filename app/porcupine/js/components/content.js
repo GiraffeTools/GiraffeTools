@@ -40,7 +40,7 @@ class Content extends React.Component {
     setCommit(isCommit && string);
     setBranch(!isCommit && string);
 
-    const response = await fetch("/_github/logged_in/");
+    const response = await fetch("/api/get_user");
     updateAuth(await response.json());
   }
 

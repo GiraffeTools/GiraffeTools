@@ -3,6 +3,7 @@ django-bootstrap4
 django-compressor
 django-cors-headers
 django-heroku
+django-ipware
 django-jquery
 django-livereload-server
 django-webpack-loader
@@ -10,6 +11,7 @@ djangorestframework==3.7.3
 django-sass-processor
 django-settings-export
 dj_database_url
+geoip2
 gunicorn
 matplotlib
 libsass
@@ -17,13 +19,12 @@ nibabel
 Pillow
 psycopg2-binary
 pycollada
-pydash
 pygithub
 PyYAML
 python-dateutil
 qrcode
 requests
 requests_oauthlib
-rollbar==0.13.17
 slackclient==1.2.1
+social-auth-app-django
 WhiteNoise

@@ -81,7 +81,7 @@ class Navigation extends React.Component {
                 href={
                   user && user.access_token
                     ? `/github/${user.github_handle}`
-                    : `/_github/auth/?redirect_uri=/`
+                    : `/_oauth/login/?redirect_uri=/`
                 }
               >
                 {user && user.access_token ? (
@@ -100,7 +100,7 @@ class Navigation extends React.Component {
             {user &&
               user.access_token && (
                 <li className="nav-item border-bottom">
-                  <a className="nav-link" href="/_github/logout/">
+                  <a className="nav-link" href="/_oauth/logout/">
                     <h3>Log out</h3>
                   </a>
                 </li>

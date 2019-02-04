@@ -20,6 +20,8 @@ GITHUB_CLIENT_SECRET = os.environ["GITHUB_CLIENT_SECRET"]
 GITHUB_API_USER = os.environ["GITHUB_API_USER"]
 GITHUB_API_TOKEN = os.environ["GITHUB_API_TOKEN"]
 GITHUB_APP_NAME = os.environ["GITHUB_APP_NAME"]
+SOCIAL_AUTH_GITHUB_KEY = GITHUB_CLIENT_ID
+SOCIAL_AUTH_GITHUB_SECRET = GITHUB_CLIENT_SECRET
 
 # CodeFund
 CODEFUND = False
@@ -58,3 +60,5 @@ CSRF_TRUSTED_ORIGINS = ["giraffe.tools"]
 
 DATABASES["default"] = dj_database_url.config(
     conn_max_age=600, ssl_require=True)
+
+GEOIP_PATH = os.environ["GEOIP_GEOLITE2_PATH"]

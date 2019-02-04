@@ -17,7 +17,7 @@ const LoginButton = props => {
       href={
         user && user.access_token
           ? `/github/${user.github_handle}`
-          : `/_github/auth/?redirect_uri=/`
+          : `/_oauth/login/`
       }
     >
       <img src="/static/img/gh-icon-white.svg" style={[styles.githubButton]} />

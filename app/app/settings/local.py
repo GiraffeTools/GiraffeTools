@@ -12,11 +12,11 @@ SECRET_KEY = "s9&vp1jq1yzr!1c_temg#v_)j-a)i5+@vbsekmi6pbjl4l1&u@"
 # https://github.com/gitcoinco/web#setup-github-oauth2-app-integration
 
 GA_ID = "UA-XXXXXXXXX-0"
-GITHUB_CLIENT_ID = "TODO"
-GITHUB_CLIENT_SECRET = "TODO"
-GITHUB_API_USER = "TODO"
-GITHUB_API_TOKEN = "TODO"
-GITHUB_APP_NAME = "TODO"
+GITHUB_CLIENT_ID = "SECRET"
+GITHUB_CLIENT_SECRET = "SECRET"
+GITHUB_API_USER = "SECRET"
+GITHUB_API_TOKEN = "SECRET"
+GITHUB_APP_NAME = "SECRET"
 
 # CodeFund
 CODEFUND = False
@@ -65,13 +65,17 @@ CSRF_TRUSTED_ORIGINS = ["localhost:3000", "localhost:8000"]
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "postgres",
-        "USER": "postgres",
+        "NAME": "giraffetools",
+        "USER": "admin",
         "PASSWORD": "giraffe",
         # This should be the name of the docker database:
         "HOST": "db",
         "PORT": "5432",
     }
 }
+
+GEOIP_PATH = "/usr/share/GeoIP/"
+# GEOIP_CITY = GEOIP_PATH + "GeoLite2-City.mmdb"
+# GEOIP_COUNTRY = GEOIP_PATH + "GeoLite2-Country.mmdb"
 
 # ALLOWED_HOSTS = ["*"]

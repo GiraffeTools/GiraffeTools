@@ -7,7 +7,7 @@ ignore = node_modules/**, **.min.js, **.min.css
 # check the line length because PEP8Bear sometimes isn't able to correct the
 # linelength.
 files = app/**/*.py
-ignore = **/__pycache__/*.py
+ignore = **/__pycache__/*.py, **/migrations/*
 
 bears = SpaceConsistencyBear, QuotesBear
 use_spaces = True
