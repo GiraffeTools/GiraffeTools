@@ -7,6 +7,7 @@ import MarkerWindow from "./markerWindow";
 import { isGitHash } from "../utils";
 import styles from "../styles/content";
 
+import "aframe";
 class Content extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +17,11 @@ class Content extends React.Component {
   }
 
   async componentWillMount() {
+    const script = document.createElement("script");
+    script.src = "/static/js/aframe-ar.js";
+    script.async = false;
+    document.head.appendChild(script);
+
     const { username, repository, branchOrCommit } = this.props.match.params;
     const { setUser, setRepository, setBranch, setCommit } = this.props;
     setUser(username);
@@ -42,7 +48,7 @@ class Content extends React.Component {
 
   render() {
     const { username, repository } = this.props.match.params;
-    const { image_id } = this.state;
+    const { image_id, aframe_loaded } = this.state;
 
     return (
       <div>
@@ -51,11 +57,7 @@ class Content extends React.Component {
           user={username}
           repository={repository}
         />
-        {image_id && (
-          <div id="camdiv">
-            <AugmentedRealityScene image_id={image_id} />
-          </div>
-        )}
+        {image_id && <AugmentedRealityScene image_id={image_id} />}
       </div>
     );
   }
