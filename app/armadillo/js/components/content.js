@@ -66,11 +66,12 @@ class Content extends React.Component {
           user={username}
           repository={repository}
         />
-        {image_id && aframe_loaded && (
-          <div id="camdiv">
-            <AugmentedRealityScene image_id={image_id} />
-          </div>
-        )}
+        {image_id &&
+          aframe_loaded && (
+            <div id="camdiv">
+              <AugmentedRealityScene image_id={image_id} />
+            </div>
+          )}
       </div>
     );
   }
