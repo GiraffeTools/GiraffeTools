@@ -26,6 +26,7 @@ class AugmentedRealityScene extends React.Component {
 
     return (
       <a-scene
+        inspector="https://cdn.jsdelivr.net/gh/aframevr/aframe-inspector@master/dist/aframe-inspector.min.js"
         embedded
         arjs="trackingMethod: best; debugUIEnabled:false"
         style={[styles.scene]}
