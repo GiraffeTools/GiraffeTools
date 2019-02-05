@@ -31,4 +31,4 @@ def save_profile(backend, user, response, request, *args, **kwargs):
             raise SuspiciousOperation("You cannot login")
 
         sync_profile(handle, user)
-        log_action(request, "Login")
+        log_action("Login", user, request)

@@ -103,7 +103,7 @@ def push_to_github(request):
     master_ref.edit(commit.sha)
 
     if master_ref.object.sha == commit.sha:
-        log_action(request, "Commit")
+        log_action("Commit", user, request)
         return HttpResponse(status=200, content_type="application/json")
     else:
         return HttpResponse(status=400, content_type="application/json")

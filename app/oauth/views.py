@@ -9,7 +9,7 @@ def login(request):
 
 
 def logout_view(request):
-    log_action(request, "Logout")
+    log_action("Logout", request.user, request)
     logout(request)
     # TODO make logout screen
     return redirect("/")

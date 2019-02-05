@@ -21,7 +21,7 @@ const Armadillo = () => (
         className="btn btn-lg"
         style={[styles.getStarted]}
         role="button"
-        href="https://armadillobrain.app"
+        href="/armadillo/TimVanMourik/GiraffePlayground/master"
       >
         Get started!
       </a>

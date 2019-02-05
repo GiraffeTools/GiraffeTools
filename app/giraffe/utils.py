@@ -11,19 +11,19 @@ from giraffe.models import UserAction
 logger = logging.getLogger(__name__)
 
 
-def log_action(request, action):
+def log_action(action, user, request):
     geolocation_data, ip_address = handle_location_request(request)
 
-    user_is_authenticated = request.user.is_authenticated
-    profile = request.user.profile if user_is_authenticated and hasattr(
-        request.user, "profile") else None
+    user_is_authenticated = user.is_authenticated
+    profile = user.profile if user_is_authenticated and hasattr(
+        user, "profile") else None
     if user_is_authenticated and profile and profile.pk:
 
         profile.last_visit = timezone.now()
         profile.save()
 
         UserAction.objects.create(
-            user=request.user,
+            user=user,
             profile=profile,
             action=action,
             location_data=geolocation_data,

@@ -36,7 +36,7 @@ const Porcupine = () => (
         className="btn btn-lg"
         style={[styles.getStarted]}
         role="button"
-        href="/porcupine"
+        href="/porcupine/TimVanMourik/GiraffePlayground/master"
         id="tool-button"
       >
         Get started!
