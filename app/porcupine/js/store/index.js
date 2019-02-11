@@ -17,6 +17,6 @@ if (module.hot) {
   });
 }
 
-persistStore(store, null, () => store.getState());
+// persistStore(store, null, () => store.getState());
 
 export default store;
