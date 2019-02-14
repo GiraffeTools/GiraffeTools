@@ -7,5 +7,5 @@
 
 # python tests
 cd app || exit
-coverage run ./manage.py test --noinput --settings=app.settings.local
+coverage run ./manage.py test --noinput --settings=app.settings
 bash <(curl -s https://codecov.io/bash) -cF python
