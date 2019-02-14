@@ -8,8 +8,8 @@ DEBUG = os.getenv("DEBUG", "True") == "True"
 default_secret_key = "s9&vp1jq1yzr!1c_temg#v_)j-a)i5+@vbsekmi6pbjl4l1&u@"
 SECRET_KEY = os.getenv("SECRET_KEY", default_secret_key)
 
-BASE_URL = "https://giraffe.tools" if not DEBUG else "http://localhost:8000"
-ALLOWED_HOSTS = [BASE_URL, "localhost", "127.0.0.1",
+BASE_URL = "https://giraffe.tools/" if not DEBUG else "http://localhost:8000/"
+ALLOWED_HOSTS = ["giraffe.tools", "localhost", "127.0.0.1",
                  os.getenv("ALLOWED_HOSTS", None)]
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
