@@ -2,6 +2,8 @@ FROM python:3
 LABEL maintainer="timvanmourik@gmail.com"
 
 ENV PYTHONUNBUFFERED 1
+RUN mkdir /code /code/requirements
+WORKDIR /code
 
 # GeoIP2 Data Files
 RUN mkdir -p /usr/share/GeoIP/ && \
@@ -18,9 +20,7 @@ RUN curl -sSLO https://deb.nodesource.com/setup_9.x && \
     rm setup_9.x && \
     npm -g install npm@6.7.0
 
-RUN mkdir /code
-RUN git clone https://github.com/TimVanMourik/GiraffeTools.git /code
-WORKDIR /code
-
 # Install Python dependencies
+COPY requirements.txt /code/
+COPY requirements/base.txt /code/requirements/
 RUN pip install -r requirements.txt

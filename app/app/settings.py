@@ -32,7 +32,21 @@ INSTALLED_APPS = [
     "corsheaders",
     "webpack_loader",
     "sass_processor",
+    "health_check",                             # required
+    "health_check.db",                          # stock Django health checkers
+    "health_check.cache",
+    "health_check.storage",
+    # 'health_check.contrib.celery',              # requires celery
+    # disk and memory utilization; requires psutil
+    "health_check.contrib.psutil",
+    # 'health_check.contrib.s3boto_storage',      # requires boto and S3BotoStorage backend  # Ignore LineLengthBear
+    # 'health_check.contrib.rabbitmq',            # requires RabbitMQ broker
 ]
+
+HEALTH_CHECK = {
+    "DISK_USAGE_MAX": 90,  # percent
+    "MEMORY_MIN": 100,    # in MB
+}
 
 AUTHENTICATION_BACKENDS = (
     "social_core.backends.github.GithubOAuth2",

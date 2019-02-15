@@ -5,6 +5,7 @@ django-cors-headers
 django-heroku
 django-ipware
 django-jquery
+django-health-check
 django-livereload-server
 django-webpack-loader
 djangorestframework==3.7.3
@@ -17,6 +18,7 @@ matplotlib
 libsass
 nibabel
 Pillow
+psutil
 psycopg2-binary
 pycollada
 pygithub

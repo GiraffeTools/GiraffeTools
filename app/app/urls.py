@@ -14,6 +14,9 @@ urlpatterns = [
     # Admin calls
     url(r"^admin/?", admin.site.urls),
 
+    # Health checks
+    url(r"^health/", include("health_check.urls")),
+
     # API calls
     url(r"^api/", include(api_urls)),
 
