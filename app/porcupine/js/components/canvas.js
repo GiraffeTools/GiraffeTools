@@ -107,12 +107,14 @@ class Canvas extends React.PureComponent {
   }
 
   handleKeyPress(event) {
+    // This also responds when a backspace is pressed while updating parameters.
+    // #TODO, make this conditional on the window being active
     switch (event.key) {
       case "Delete":
-        this.deleteSelection();
+        // this.deleteSelection();
         break;
       case "Backspace":
-        this.deleteSelection();
+        // this.deleteSelection();
         break;
       default:
         break;
