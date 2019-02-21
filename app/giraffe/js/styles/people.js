@@ -7,7 +7,6 @@ const styles = {
     backgroundColor: styleSheet.primaryLightColor,
     paddingBottom: "4rem",
     position: "relative",
-    zIndex: -5,
     marginTop: "5rem"
   },
 
@@ -21,8 +20,7 @@ const styles = {
     height: "100%",
     backgroundColor: styleSheet.primaryLightColor,
     transform: " skewY(-6deg)",
-    transformOrigin: "top left",
-    zIndex: -1
+    transformOrigin: "top left"
   },
   peopleHeading: {
     ...headingStyles.h2,
