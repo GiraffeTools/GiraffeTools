@@ -88,21 +88,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -267,21 +252,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -375,6 +345,21 @@
           "output": false,
           "visible": false,
           "editable": true,
+          "name": "in_mask",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "in_mask"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
           "name": "weighting",
           "code": [
             {
@@ -396,21 +381,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "out_file"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -450,21 +420,6 @@
           "output": true,
           "visible": true,
           "editable": false,
-          "name": "diff_file",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "diff_file"
-              }
-            }
-          ]
-        },
-        {
-          "input": false,
-          "output": true,
-          "visible": true,
-          "editable": false,
           "name": "class_fji",
           "code": [
             {
@@ -491,6 +446,35 @@
           ]
         }
       ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "algorithms",
+        "metrics",
+        "base"
+      ],
+      "title": {
+        "name": "metrics.NipyBaseInterface",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.algorithms.metrics.html#nipybaseinterface",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Inputs::",
+            "argument": {
+              "name": "metrics.NipyBaseInterface()",
+              "import": "import nipype.algorithms.metrics as metrics"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, algorithms, metrics"
+            }
+          }
+        ]
+      },
+      "ports": []
     },
     {
       "category": [
@@ -620,21 +604,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "weighting"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -864,21 +833,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -894,6 +848,35 @@
           ]
         }
       ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "algorithms",
+        "metrics",
+        "core"
+      ],
+      "title": {
+        "name": "metrics.SimpleInterface",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.algorithms.metrics.html#simpleinterface",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "An interface pattern that allows outputs to be set in a dictionary",
+            "argument": {
+              "name": "metrics.SimpleInterface()",
+              "import": "import nipype.algorithms.metrics as metrics"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, algorithms, metrics"
+            }
+          }
+        ]
+      },
+      "ports": []
     }
   ]
 }

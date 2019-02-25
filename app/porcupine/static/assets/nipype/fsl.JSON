@@ -12,7 +12,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.AR1Image()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -163,36 +163,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -221,7 +191,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **None**",
+            "comment": "Test the accuracy of an existing training dataset on a set of hand-labelled subjects.",
             "argument": {
               "name": "fsl.AccuracyTester()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -312,36 +282,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -370,7 +310,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.ApplyMask()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -521,36 +461,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -579,7 +489,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **applytopup**",
+            "comment": "Wraps the executable command ``applytopup``.",
             "argument": {
               "name": "fsl.ApplyTOPUP()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -775,36 +685,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -833,7 +713,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **applywarp**",
+            "comment": "Wraps the executable command ``applywarp``.",
             "argument": {
               "name": "fsl.ApplyWarp()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -1089,36 +969,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1147,7 +997,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **flirt**",
+            "comment": "Wraps the executable command ``flirt``.",
             "argument": {
               "name": "fsl.ApplyXFM()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -1913,36 +1763,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2001,7 +1821,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **avscale**",
+            "comment": "Wraps the executable command ``avscale``.",
             "argument": {
               "name": "fsl.AvScale()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -2087,36 +1907,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "environ"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -2285,7 +2075,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **b0calc**",
+            "comment": "Wraps the executable command ``b0calc``.",
             "argument": {
               "name": "fsl.B0Calc()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -2556,36 +2346,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2614,7 +2374,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **bedpostx**",
+            "comment": "Wraps the executable command ``bedpostx``.",
             "argument": {
               "name": "fsl.BEDPOSTX5()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -3080,16 +2840,270 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "mean_dsamples",
           "code": [
             {
               "language": "Nipype",
               "argument": {
-                "name": "terminal_output"
+                "name": "mean_dsamples"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "mean_fsamples",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mean_fsamples"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "mean_S0samples",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mean_S0samples"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "mean_phsamples",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mean_phsamples"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "mean_thsamples",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mean_thsamples"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "merged_thsamples",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "merged_thsamples"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "merged_phsamples",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "merged_phsamples"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "merged_fsamples",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "merged_fsamples"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "dyads",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "dyads"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "dyads_dispersion",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "dyads_dispersion"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "fsl",
+        "dti"
+      ],
+      "title": {
+        "name": "fsl.BEDPOSTX5",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.fsl/dti.html#bedpostx5",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Wraps the executable command ``bedpostx``.",
+            "argument": {
+              "name": "fsl.BEDPOSTX5()",
+              "import": "import nipype.interfaces.fsl as fsl"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, fsl"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "dwi",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "dwi"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "mask",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mask"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "bvecs",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bvecs"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "bvals",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bvals"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "n_fibres",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "n_fibres"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "out_dir",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_dir"
               }
             }
           ]
@@ -3099,12 +3113,357 @@
           "output": false,
           "visible": false,
           "editable": true,
-          "name": "ignore_exception",
+          "name": "logdir",
           "code": [
             {
               "language": "Nipype",
               "argument": {
-                "name": "ignore_exception"
+                "name": "logdir"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "model",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "model"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "fudge",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "fudge"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "n_jumps",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "n_jumps"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "burn_in",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "burn_in"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "sample_every",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "sample_every"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "gradnonlin",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "gradnonlin"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "grad_dev",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "grad_dev"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "use_gpu",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "use_gpu"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "burn_in_no_ard",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "burn_in_no_ard"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "update_proposal_every",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "update_proposal_every"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "seed",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "seed"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "no_ard",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "no_ard"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "all_ard",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "all_ard"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "no_spat",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "no_spat"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "non_linear",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "non_linear"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "cnlinear",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "cnlinear"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "rician",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "rician"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "f0_noard",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "f0_noard"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "f0_ard",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "f0_ard"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "force_dir",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "force_dir"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "output_type",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "output_type"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "args",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "args"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "environ",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "environ"
               }
             }
           ]
@@ -3273,7 +3632,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **bet**",
+            "comment": "Wraps the executable command ``bet``.",
             "argument": {
               "name": "fsl.BET()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -3619,36 +3978,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3827,7 +4156,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.BinaryMaths()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -4008,36 +4337,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4066,7 +4365,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.ChangeDataType()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -4202,36 +4501,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4260,7 +4529,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **None**",
+            "comment": "Classify ICA components using a specific training dataset (<thresh> is in the range 0-100, typically 5-20).",
             "argument": {
               "name": "fsl.Classifier()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -4366,36 +4635,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4424,7 +4663,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **None**",
+            "comment": "Extract features (for later training and/or classifying)",
             "argument": {
               "name": "fsl.Cleaner()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -4575,36 +4814,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4633,7 +4842,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **cluster**",
+            "comment": "Wraps the executable command ``cluster``.",
             "argument": {
               "name": "fsl.Cluster()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -5069,36 +5278,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5232,7 +5411,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslcomplex**",
+            "comment": "Wraps the executable command ``fslcomplex``.",
             "argument": {
               "name": "fsl.Complex()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -5578,36 +5757,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5696,7 +5845,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **contrast_mgr**",
+            "comment": "Wraps the executable command ``contrast_mgr``.",
             "argument": {
               "name": "fsl.ContrastMgr()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -5877,36 +6026,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -6025,7 +6144,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **convertwarp**",
+            "comment": "Wraps the executable command ``convertwarp``.",
             "argument": {
               "name": "fsl.ConvertWarp()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -6326,36 +6445,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -6384,7 +6473,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **convert_xfm**",
+            "comment": "Wraps the executable command ``convert_xfm``.",
             "argument": {
               "name": "fsl.ConvertXFM()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -6535,36 +6624,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -6593,7 +6652,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslcpgeom**",
+            "comment": "Wraps the executable command ``fslcpgeom``.",
             "argument": {
               "name": "fsl.CopyGeom()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -6699,36 +6758,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -6757,7 +6786,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **dtifit**",
+            "comment": "Wraps the executable command ``dtifit``.",
             "argument": {
               "name": "fsl.DTIFit()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -7058,36 +7087,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7251,6 +7250,21 @@
               }
             }
           ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "sse",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "sse"
+              }
+            }
+          ]
         }
       ]
     },
@@ -7266,7 +7280,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.DilateImage()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -7462,36 +7476,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7520,7 +7504,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **distancemap**",
+            "comment": "Wraps the executable command ``distancemap``.",
             "argument": {
               "name": "fsl.DistanceMap()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -7656,36 +7640,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7729,7 +7683,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **epidewarp.fsl**",
+            "comment": "Wraps the executable command ``epidewarp.fsl``.",
             "argument": {
               "name": "fsl.EPIDeWarp()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -7985,36 +7939,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -8088,7 +8012,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **eddy_openmp**",
+            "comment": "Wraps the executable command ``eddy_openmp``.",
             "argument": {
               "name": "fsl.Eddy()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -8513,6 +8437,36 @@
           "output": false,
           "visible": false,
           "editable": true,
+          "name": "cnr_maps",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "cnr_maps"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "residuals",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "residuals"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
           "name": "output_type",
           "code": [
             {
@@ -8549,36 +8503,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "environ"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -8687,6 +8611,36 @@
               }
             }
           ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "out_cnr_maps",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_cnr_maps"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "out_residuals",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_residuals"
+              }
+            }
+          ]
         }
       ]
     },
@@ -8702,7 +8656,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **eddy_correct**",
+            "comment": "Wraps the executable command ``eddy_correct``.",
             "argument": {
               "name": "fsl.EddyCorrect()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -8808,36 +8762,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -8861,12 +8785,356 @@
         "epi"
       ],
       "title": {
+        "name": "fsl.EddyQuad",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.fsl/epi.html#eddyquad",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Wraps the executable command ``eddy_quad``.",
+            "argument": {
+              "name": "fsl.EddyQuad()",
+              "import": "import nipype.interfaces.fsl as fsl"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, fsl"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "idx_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "idx_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "param_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "param_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "mask_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mask_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "bval_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bval_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "base_name",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "base_name"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "bvec_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bvec_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "output_dir",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "output_dir"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "field",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "field"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "slice_spec",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "slice_spec"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "verbose",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "verbose"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "output_type",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "output_type"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "args",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "args"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "environ",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "environ"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "qc_json",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "qc_json"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "qc_pdf",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "qc_pdf"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "avg_b_png",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "avg_b_png"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "avg_b0_pe_png",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "avg_b0_pe_png"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "cnr_png",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "cnr_png"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "vdm_png",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "vdm_png"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "residuals",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "residuals"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "clean_volumes",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "clean_volumes"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "fsl",
+        "epi"
+      ],
+      "title": {
         "name": "fsl.EpiReg",
         "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.fsl/epi.html#epireg",
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **epi_reg**",
+            "comment": "Wraps the executable command ``epi_reg``.",
             "argument": {
               "name": "fsl.EpiReg()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -9122,36 +9390,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -9336,6 +9574,21 @@
           "output": true,
           "visible": true,
           "editable": false,
+          "name": "seg",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "seg"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
           "name": "wmedge",
           "code": [
             {
@@ -9360,7 +9613,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.ErodeImage()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -9556,36 +9809,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -9614,7 +9837,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslroi**",
+            "comment": "Wraps the executable command ``fslroi``.",
             "argument": {
               "name": "fsl.ExtractROI()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -9840,36 +10063,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -9898,7 +10091,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fast**",
+            "comment": "Wraps the executable command ``fast``.",
             "argument": {
               "name": "fsl.FAST()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -10289,36 +10482,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -10452,7 +10615,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **feat**",
+            "comment": "Wraps the executable command ``feat``.",
             "argument": {
               "name": "fsl.FEAT()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -10528,36 +10691,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -10586,7 +10719,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **feat_model**",
+            "comment": "Wraps the executable command ``feat_model``.",
             "argument": {
               "name": "fsl.FEATModel()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -10672,36 +10805,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "environ"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -10856,21 +10959,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -10899,7 +10987,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **film_gls**",
+            "comment": "Wraps the executable command ``film_gls``.",
             "argument": {
               "name": "fsl.FILMGLS()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -11245,36 +11333,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -11483,7 +11541,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **run_first_all**",
+            "comment": "Wraps the executable command ``run_first_all``.",
             "argument": {
               "name": "fsl.FIRST()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -11679,36 +11737,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -11782,7 +11810,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **flameo**",
+            "comment": "Wraps the executable command ``flameo``.",
             "argument": {
               "name": "fsl.FLAMEO()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -12113,36 +12141,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -12336,7 +12334,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **flirt**",
+            "comment": "Wraps the executable command ``flirt``.",
             "argument": {
               "name": "fsl.FLIRT()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -13102,36 +13100,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -13190,7 +13158,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fnirt**",
+            "comment": "Wraps the executable command ``fnirt``.",
             "argument": {
               "name": "fsl.FNIRT()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -13866,36 +13834,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -14014,7 +13952,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fugue**",
+            "comment": "Wraps the executable command ``fugue``.",
             "argument": {
               "name": "fsl.FUGUE()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -14555,36 +14493,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -14658,7 +14566,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **None**",
+            "comment": "Extract features (for later training and/or classifying)",
             "argument": {
               "name": "fsl.FeatureExtractor()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -14719,36 +14627,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -14777,7 +14655,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fsl_regfilt**",
+            "comment": "Wraps the executable command ``fsl_regfilt``.",
             "argument": {
               "name": "fsl.FilterRegressor()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -14958,36 +14836,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -15016,7 +14864,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **find_the_biggest**",
+            "comment": "Wraps the executable command ``find_the_biggest``.",
             "argument": {
               "name": "fsl.FindTheBiggest()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -15107,36 +14955,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -15165,7 +14983,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fsl_glm**",
+            "comment": "Wraps the executable command ``fsl_glm``.",
             "argument": {
               "name": "fsl.GLM()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -15541,36 +15359,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -15764,7 +15552,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **ICA_AROMA.py**",
+            "comment": "Wraps the executable command ``ICA_AROMA.py``.",
             "argument": {
               "name": "fsl.ICA_AROMA()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -15814,6 +15602,21 @@
           "output": false,
           "visible": true,
           "editable": true,
+          "name": "out_dir",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_dir"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
           "name": "motion_parameters",
           "code": [
             {
@@ -15835,21 +15638,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "denoise_type"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "out_dir",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "out_dir"
               }
             }
           ]
@@ -15975,36 +15763,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -16063,7 +15821,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.ImageMaths()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -16104,6 +15862,21 @@
               "language": "Nipype",
               "argument": {
                 "name": "in_file2"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "mask_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mask_file"
               }
             }
           ]
@@ -16214,36 +15987,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -16272,7 +16015,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmeants**",
+            "comment": "Wraps the executable command ``fslmeants``.",
             "argument": {
               "name": "fsl.ImageMeants()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -16483,36 +16226,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -16541,7 +16254,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslstats**",
+            "comment": "Wraps the executable command ``fslstats``.",
             "argument": {
               "name": "fsl.ImageStats()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -16662,36 +16375,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -16720,7 +16403,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **invwarp**",
+            "comment": "Wraps the executable command ``invwarp``.",
             "argument": {
               "name": "fsl.InvWarp()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -16931,36 +16614,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -16989,7 +16642,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.IsotropicSmooth()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -17155,36 +16808,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -17239,21 +16862,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "num_copes"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -17423,21 +17031,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -17481,7 +17074,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mcflirt**",
+            "comment": "Wraps the executable command ``mcflirt``.",
             "argument": {
               "name": "fsl.MCFLIRT()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -17842,36 +17435,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -17990,7 +17553,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **melodic**",
+            "comment": "Wraps the executable command ``melodic``.",
             "argument": {
               "name": "fsl.MELODIC()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -18771,36 +18334,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -18844,7 +18377,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **make_dyadic_vectors**",
+            "comment": "Wraps the executable command ``make_dyadic_vectors``.",
             "argument": {
               "name": "fsl.MakeDyadicVectors()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -18980,36 +18513,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -19053,7 +18556,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.MaxnImage()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -19204,36 +18707,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -19262,7 +18735,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.MeanImage()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -19413,36 +18886,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -19471,7 +18914,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.MedianImage()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -19622,36 +19065,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -19680,7 +19093,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmerge**",
+            "comment": "Wraps the executable command ``fslmerge``.",
             "argument": {
               "name": "fsl.Merge()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -19801,36 +19214,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -19859,7 +19242,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.MinImage()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -20010,36 +19393,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -20068,7 +19421,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fsl_motion_outliers**",
+            "comment": "Wraps the executable command ``fsl_motion_outliers``.",
             "argument": {
               "name": "fsl.MotionOutliers()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -20264,36 +19617,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -20352,7 +19675,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.MultiImageMaths()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -20518,36 +19841,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -20637,21 +19930,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -20725,7 +20003,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **overlay**",
+            "comment": "Wraps the executable command ``overlay``.",
             "argument": {
               "name": "fsl.Overlay()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -20981,36 +20259,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -21039,7 +20287,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **prelude**",
+            "comment": "Wraps the executable command ``prelude``.",
             "argument": {
               "name": "fsl.PRELUDE()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -21340,36 +20588,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -21398,7 +20616,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.PercentileImage()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -21564,36 +20782,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -21622,7 +20810,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fsl_tsplot**",
+            "comment": "Wraps the executable command ``fsl_tsplot``.",
             "argument": {
               "name": "fsl.PlotMotionParams()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -21758,36 +20946,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -21816,7 +20974,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fsl_tsplot**",
+            "comment": "Wraps the executable command ``fsl_tsplot``.",
             "argument": {
               "name": "fsl.PlotTimeSeries()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -22102,36 +21260,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -22160,7 +21288,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslpspec**",
+            "comment": "Wraps the executable command ``fslpspec``.",
             "argument": {
               "name": "fsl.PowerSpectrum()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -22251,36 +21379,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -22309,7 +21407,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fsl_prepare_fieldmap**",
+            "comment": "Wraps the executable command ``fsl_prepare_fieldmap``.",
             "argument": {
               "name": "fsl.PrepareFieldmap()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -22460,36 +21558,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -22518,7 +21586,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **probtrackx**",
+            "comment": "Wraps the executable command ``probtrackx``.",
             "argument": {
               "name": "fsl.ProbTrackX()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -23119,36 +22187,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -23237,7 +22275,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **probtrackx2**",
+            "comment": "Wraps the executable command ``probtrackx2``.",
             "argument": {
               "name": "fsl.ProbTrackX2()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -24048,36 +23086,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -24241,7 +23249,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **proj_thresh**",
+            "comment": "Wraps the executable command ``proj_thresh``.",
             "argument": {
               "name": "fsl.ProjThresh()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -24332,36 +23340,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -24390,7 +23368,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **randomise**",
+            "comment": "Wraps the executable command ``randomise``.",
             "argument": {
               "name": "fsl.Randomise()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -24856,36 +23834,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -24989,7 +23937,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslreorient2std**",
+            "comment": "Wraps the executable command ``fslreorient2std``.",
             "argument": {
               "name": "fsl.Reorient2Std()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -25080,36 +24028,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -25138,7 +24056,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **robustfov**",
+            "comment": "Wraps the executable command ``robustfov``.",
             "argument": {
               "name": "fsl.RobustFOV()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -25259,36 +24177,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -25332,7 +24220,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mm --ld=logdir**",
+            "comment": "Wraps the executable command ``mm --ld=logdir``.",
             "argument": {
               "name": "fsl.SMM()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -25438,36 +24326,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -25526,7 +24384,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **susan**",
+            "comment": "Wraps the executable command ``susan``.",
             "argument": {
               "name": "fsl.SUSAN()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -25692,36 +24550,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -25750,7 +24578,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **sigloss**",
+            "comment": "Wraps the executable command ``sigloss``.",
             "argument": {
               "name": "fsl.SigLoss()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -25886,36 +24714,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -25936,6 +24734,125 @@
       "category": [
         "Nipype",
         "fsl",
+        "utils"
+      ],
+      "title": {
+        "name": "fsl.Slice",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.fsl/utils.html#slice",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Wraps the executable command ``fslslice``.",
+            "argument": {
+              "name": "fsl.Slice()",
+              "import": "import nipype.interfaces.fsl as fsl"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, fsl"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "in_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "in_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "out_base_name",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_base_name"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "output_type",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "output_type"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "args",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "args"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "environ",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "environ"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "out_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_files"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "fsl",
         "preprocess"
       ],
       "title": {
@@ -25944,7 +24861,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **slicetimer**",
+            "comment": "Wraps the executable command ``slicetimer``.",
             "argument": {
               "name": "fsl.SliceTimer()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -26140,36 +25057,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -26198,7 +25085,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **slicer**",
+            "comment": "Wraps the executable command ``slicer``.",
             "argument": {
               "name": "fsl.Slicer()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -26514,36 +25401,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -26572,7 +25429,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.Smooth()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -26693,36 +25550,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -26751,7 +25578,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **smoothest**",
+            "comment": "Wraps the executable command ``smoothest``.",
             "argument": {
               "name": "fsl.SmoothEstimate()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -26872,36 +25699,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -26960,7 +25757,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.SpatialFilter()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -27156,36 +25953,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -27214,7 +25981,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslsplit**",
+            "comment": "Wraps the executable command ``fslsplit``.",
             "argument": {
               "name": "fsl.Split()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -27320,36 +26087,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -27378,7 +26115,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslswapdim**",
+            "comment": "Wraps the executable command ``fslswapdim``.",
             "argument": {
               "name": "fsl.SwapDimensions()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -27484,36 +26221,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -27542,7 +26249,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **topup**",
+            "comment": "Wraps the executable command ``topup``.",
             "argument": {
               "name": "fsl.TOPUP()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -27993,36 +26700,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -28171,7 +26848,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.TemporalFilter()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -28337,36 +27014,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -28395,7 +27042,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.Threshold()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -28591,36 +27238,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -28649,7 +27266,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **tbss_skeleton**",
+            "comment": "Wraps the executable command ``tbss_skeleton``.",
             "argument": {
               "name": "fsl.TractSkeleton()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -28875,36 +27492,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -28948,7 +27535,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **None**",
+            "comment": "Train the classifier based on your own FEAT/MELODIC output directory.",
             "argument": {
               "name": "fsl.Training()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -29039,36 +27626,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -29128,21 +27685,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -29171,7 +27713,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fslmaths**",
+            "comment": "Wraps the executable command ``fslmaths``.",
             "argument": {
               "name": "fsl.UnaryMaths()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -29322,36 +27864,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -29380,7 +27892,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **vecreg**",
+            "comment": "Wraps the executable command ``vecreg``.",
             "argument": {
               "name": "fsl.VecReg()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -29591,36 +28103,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -29649,7 +28131,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **img2imgcoord**",
+            "comment": "Wraps the executable command ``img2imgcoord``.",
             "argument": {
               "name": "fsl.WarpPoints()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -29815,16 +28297,90 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "out_file",
           "code": [
             {
               "language": "Nipype",
               "argument": {
-                "name": "terminal_output"
+                "name": "out_file"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "fsl",
+        "utils"
+      ],
+      "title": {
+        "name": "fsl.WarpPointsFromStd",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.fsl/utils.html#warppointsfromstd",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Wraps the executable command ``std2imgcoord``.",
+            "argument": {
+              "name": "fsl.WarpPointsFromStd()",
+              "import": "import nipype.interfaces.fsl as fsl"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, fsl"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "img_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "img_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "std_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "std_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "in_coords",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "in_coords"
               }
             }
           ]
@@ -29834,12 +28390,87 @@
           "output": false,
           "visible": false,
           "editable": true,
-          "name": "ignore_exception",
+          "name": "xfm_file",
           "code": [
             {
               "language": "Nipype",
               "argument": {
-                "name": "ignore_exception"
+                "name": "xfm_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "warp_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "warp_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "coord_vox",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "coord_vox"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "coord_mm",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "coord_mm"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "args",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "args"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "environ",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "environ"
               }
             }
           ]
@@ -29873,7 +28504,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **img2stdcoord**",
+            "comment": "Wraps the executable command ``img2stdcoord``.",
             "argument": {
               "name": "fsl.WarpPointsToStd()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -30054,36 +28685,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -30112,7 +28713,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fnirtfileutils**",
+            "comment": "Wraps the executable command ``fnirtfileutils``.",
             "argument": {
               "name": "fsl.WarpUtils()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -30308,36 +28909,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -30381,7 +28952,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **xfibres**",
+            "comment": "Wraps the executable command ``xfibres``.",
             "argument": {
               "name": "fsl.XFibres5()",
               "import": "import nipype.interfaces.fsl as fsl"
@@ -30802,16 +29373,225 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "dyads",
           "code": [
             {
               "language": "Nipype",
               "argument": {
-                "name": "terminal_output"
+                "name": "dyads"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "fsamples",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "fsamples"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "mean_dsamples",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mean_dsamples"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "mean_fsamples",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mean_fsamples"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "mean_S0samples",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mean_S0samples"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "mean_tausamples",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mean_tausamples"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "phsamples",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "phsamples"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "thsamples",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "thsamples"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "fsl",
+        "dti"
+      ],
+      "title": {
+        "name": "fsl.XFibres5",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.fsl/dti.html#xfibres5",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Wraps the executable command ``xfibres``.",
+            "argument": {
+              "name": "fsl.XFibres5()",
+              "import": "import nipype.interfaces.fsl as fsl"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, fsl"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "dwi",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "dwi"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "mask",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mask"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "bvecs",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bvecs"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "bvals",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bvals"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "n_fibres",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "n_fibres"
               }
             }
           ]
@@ -30821,12 +29601,327 @@
           "output": false,
           "visible": false,
           "editable": true,
-          "name": "ignore_exception",
+          "name": "gradnonlin",
           "code": [
             {
               "language": "Nipype",
               "argument": {
-                "name": "ignore_exception"
+                "name": "gradnonlin"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "logdir",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "logdir"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "model",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "model"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "fudge",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "fudge"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "n_jumps",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "n_jumps"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "burn_in",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "burn_in"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "burn_in_no_ard",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "burn_in_no_ard"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "sample_every",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "sample_every"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "update_proposal_every",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "update_proposal_every"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "seed",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "seed"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "no_ard",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "no_ard"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "all_ard",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "all_ard"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "no_spat",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "no_spat"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "non_linear",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "non_linear"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "cnlinear",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "cnlinear"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "rician",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "rician"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "f0_noard",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "f0_noard"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "f0_ard",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "f0_ard"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "force_dir",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "force_dir"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "output_type",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "output_type"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "args",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "args"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "environ",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "environ"
               }
             }
           ]

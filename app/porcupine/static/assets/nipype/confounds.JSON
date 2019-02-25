@@ -242,12 +242,12 @@
           "output": false,
           "visible": false,
           "editable": true,
-          "name": "ignore_exception",
+          "name": "failure_mode",
           "code": [
             {
               "language": "Nipype",
               "argument": {
-                "name": "ignore_exception"
+                "name": "failure_mode"
               }
             }
           ]
@@ -526,12 +526,12 @@
           "output": false,
           "visible": false,
           "editable": true,
-          "name": "ignore_exception",
+          "name": "failure_mode",
           "code": [
             {
               "language": "Nipype",
               "argument": {
-                "name": "ignore_exception"
+                "name": "failure_mode"
               }
             }
           ]
@@ -786,21 +786,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "intensity_normalization"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -1135,21 +1120,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1234,21 +1204,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "in_file"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -1527,12 +1482,12 @@
           "output": false,
           "visible": false,
           "editable": true,
-          "name": "ignore_exception",
+          "name": "failure_mode",
           "code": [
             {
               "language": "Nipype",
               "argument": {
-                "name": "ignore_exception"
+                "name": "failure_mode"
               }
             }
           ]
@@ -1697,21 +1652,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "detrended_file"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]

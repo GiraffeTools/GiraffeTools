@@ -12,7 +12,6 @@ fi
 echo Running in ${MODE} mode
 
 export NODE_ENV=$MODE
-export DJANGO_SETTINGS_MODULE=app.settings
 if [ "$MODE" == "production" ]; then
   export DEBUG="False"
 else

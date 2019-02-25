@@ -283,21 +283,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -487,21 +472,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "concatenated_design"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]

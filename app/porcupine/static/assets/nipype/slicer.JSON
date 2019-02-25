@@ -13,7 +13,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **ACPCTransform **",
+            "comment": "Wraps the executable command ``ACPCTransform ``.",
             "argument": {
               "name": "slicer.ACPCTransform()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -119,36 +119,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -178,7 +148,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **AddScalarVolumes **",
+            "comment": "Wraps the executable command ``AddScalarVolumes ``.",
             "argument": {
               "name": "slicer.AddScalarVolumes()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -284,36 +254,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -343,7 +283,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **AffineRegistration **",
+            "comment": "Wraps the executable command ``AffineRegistration ``.",
             "argument": {
               "name": "slicer.AffineRegistration()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -554,36 +494,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -628,7 +538,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **BRAINSDemonWarp **",
+            "comment": "Wraps the executable command ``BRAINSDemonWarp ``.",
             "argument": {
               "name": "slicer.BRAINSDemonWarp()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -1274,36 +1184,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1363,7 +1243,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **BRAINSFit **",
+            "comment": "Wraps the executable command ``BRAINSFit ``.",
             "argument": {
               "name": "slicer.BRAINSFit()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -2324,36 +2204,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2473,7 +2323,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **BRAINSROIAuto **",
+            "comment": "Wraps the executable command ``BRAINSROIAuto ``.",
             "argument": {
               "name": "slicer.BRAINSROIAuto()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -2654,36 +2504,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2728,7 +2548,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **BRAINSResample **",
+            "comment": "Wraps the executable command ``BRAINSResample ``.",
             "argument": {
               "name": "slicer.BRAINSResample()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -2939,36 +2759,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2998,7 +2788,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **BSplineDeformableRegistration **",
+            "comment": "Wraps the executable command ``BSplineDeformableRegistration ``.",
             "argument": {
               "name": "slicer.BSplineDeformableRegistration()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -3239,36 +3029,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3328,7 +3088,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **BSplineToDeformationField **",
+            "comment": "Wraps the executable command ``BSplineToDeformationField ``.",
             "argument": {
               "name": "slicer.BSplineToDeformationField()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -3419,36 +3179,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3478,7 +3208,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **CastScalarVolume **",
+            "comment": "Wraps the executable command ``CastScalarVolume ``.",
             "argument": {
               "name": "slicer.CastScalarVolume()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -3569,36 +3299,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3628,7 +3328,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **CheckerBoardFilter **",
+            "comment": "Wraps the executable command ``CheckerBoardFilter ``.",
             "argument": {
               "name": "slicer.CheckerBoardFilter()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -3734,36 +3434,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3793,7 +3463,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **CurvatureAnisotropicDiffusion **",
+            "comment": "Wraps the executable command ``CurvatureAnisotropicDiffusion ``.",
             "argument": {
               "name": "slicer.CurvatureAnisotropicDiffusion()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -3914,36 +3584,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3973,7 +3613,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **DTIexport **",
+            "comment": "Wraps the executable command ``DTIexport ``.",
             "argument": {
               "name": "slicer.DTIexport()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -4049,36 +3689,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4108,7 +3718,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **DTIimport **",
+            "comment": "Wraps the executable command ``DTIimport ``.",
             "argument": {
               "name": "slicer.DTIimport()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -4199,36 +3809,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4258,7 +3838,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **DWIJointRicianLMMSEFilter **",
+            "comment": "Wraps the executable command ``DWIJointRicianLMMSEFilter ``.",
             "argument": {
               "name": "slicer.DWIJointRicianLMMSEFilter()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -4394,36 +3974,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4453,7 +4003,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **DWIRicianLMMSEFilter **",
+            "comment": "Wraps the executable command ``DWIRicianLMMSEFilter ``.",
             "argument": {
               "name": "slicer.DWIRicianLMMSEFilter()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -4679,36 +4229,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4738,7 +4258,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **DWIToDTIEstimation **",
+            "comment": "Wraps the executable command ``DWIToDTIEstimation ``.",
             "argument": {
               "name": "slicer.DWIToDTIEstimation()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -4874,36 +4394,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4949,7 +4439,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **DWIUnbiasedNonLocalMeansFilter **",
+            "comment": "Wraps the executable command ``DWIUnbiasedNonLocalMeansFilter ``.",
             "argument": {
               "name": "slicer.DWIUnbiasedNonLocalMeansFilter()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -5100,36 +4590,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5158,7 +4618,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **DicomToNrrdConverter **",
+            "comment": "Wraps the executable command ``DicomToNrrdConverter ``.",
             "argument": {
               "name": "slicer.DicomToNrrdConverter()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -5309,36 +4769,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5368,7 +4798,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **DiffusionTensorScalarMeasurements **",
+            "comment": "Wraps the executable command ``DiffusionTensorScalarMeasurements ``.",
             "argument": {
               "name": "slicer.DiffusionTensorScalarMeasurements()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -5459,36 +4889,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5518,7 +4918,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **DiffusionWeightedVolumeMasking **",
+            "comment": "Wraps the executable command ``DiffusionWeightedVolumeMasking ``.",
             "argument": {
               "name": "slicer.DiffusionWeightedVolumeMasking()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -5639,36 +5039,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5713,7 +5083,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **EMSegmentCommandLine **",
+            "comment": "Wraps the executable command ``EMSegmentCommandLine ``.",
             "argument": {
               "name": "slicer.EMSegmentCommandLine()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -6074,36 +5444,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -6162,7 +5502,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **EMSegmentTransformToNewFormat **",
+            "comment": "Wraps the executable command ``EMSegmentTransformToNewFormat ``.",
             "argument": {
               "name": "slicer.EMSegmentTransformToNewFormat()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -6253,36 +5593,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -6312,7 +5622,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **ExpertAutomatedRegistration **",
+            "comment": "Wraps the executable command ``ExpertAutomatedRegistration ``.",
             "argument": {
               "name": "slicer.ExpertAutomatedRegistration()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -6778,36 +6088,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -6852,7 +6132,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **ExtractSkeleton **",
+            "comment": "Wraps the executable command ``ExtractSkeleton ``.",
             "argument": {
               "name": "slicer.ExtractSkeleton()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -6988,36 +6268,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7047,7 +6297,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **FiducialRegistration **",
+            "comment": "Wraps the executable command ``FiducialRegistration ``.",
             "argument": {
               "name": "slicer.FiducialRegistration()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -7183,36 +6433,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7242,7 +6462,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **GaussianBlurImageFilter **",
+            "comment": "Wraps the executable command ``GaussianBlurImageFilter ``.",
             "argument": {
               "name": "slicer.GaussianBlurImageFilter()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -7333,36 +6553,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7392,7 +6582,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **GradientAnisotropicDiffusion **",
+            "comment": "Wraps the executable command ``GradientAnisotropicDiffusion ``.",
             "argument": {
               "name": "slicer.GradientAnisotropicDiffusion()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -7513,36 +6703,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7572,7 +6732,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **GrayscaleFillHoleImageFilter **",
+            "comment": "Wraps the executable command ``GrayscaleFillHoleImageFilter ``.",
             "argument": {
               "name": "slicer.GrayscaleFillHoleImageFilter()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -7648,36 +6808,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7707,7 +6837,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **GrayscaleGrindPeakImageFilter **",
+            "comment": "Wraps the executable command ``GrayscaleGrindPeakImageFilter ``.",
             "argument": {
               "name": "slicer.GrayscaleGrindPeakImageFilter()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -7783,36 +6913,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7841,7 +6941,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **GrayscaleModelMaker **",
+            "comment": "Wraps the executable command ``GrayscaleModelMaker ``.",
             "argument": {
               "name": "slicer.GrayscaleModelMaker()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -8007,36 +7107,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -8066,7 +7136,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **HistogramMatching **",
+            "comment": "Wraps the executable command ``HistogramMatching ``.",
             "argument": {
               "name": "slicer.HistogramMatching()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -8202,36 +7272,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -8261,7 +7301,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **ImageLabelCombine **",
+            "comment": "Wraps the executable command ``ImageLabelCombine ``.",
             "argument": {
               "name": "slicer.ImageLabelCombine()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -8367,36 +7407,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -8426,7 +7436,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **IntensityDifferenceMetric **",
+            "comment": "Wraps the executable command ``IntensityDifferenceMetric ``.",
             "argument": {
               "name": "slicer.IntensityDifferenceMetric()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -8577,36 +7587,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -8650,7 +7630,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **LabelMapSmoothing **",
+            "comment": "Wraps the executable command ``LabelMapSmoothing ``.",
             "argument": {
               "name": "slicer.LabelMapSmoothing()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -8786,36 +7766,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -8845,7 +7795,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **LinearRegistration **",
+            "comment": "Wraps the executable command ``LinearRegistration ``.",
             "argument": {
               "name": "slicer.LinearRegistration()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -9071,36 +8021,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -9145,7 +8065,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **MaskScalarVolume **",
+            "comment": "Wraps the executable command ``MaskScalarVolume ``.",
             "argument": {
               "name": "slicer.MaskScalarVolume()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -9266,36 +8186,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -9325,7 +8215,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **MedianImageFilter **",
+            "comment": "Wraps the executable command ``MedianImageFilter ``.",
             "argument": {
               "name": "slicer.MedianImageFilter()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -9416,36 +8306,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -9474,7 +8334,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **MergeModels **",
+            "comment": "Wraps the executable command ``MergeModels ``.",
             "argument": {
               "name": "slicer.MergeModels()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -9565,36 +8425,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -9623,7 +8453,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **ModelMaker **",
+            "comment": "Wraps the executable command ``ModelMaker ``.",
             "argument": {
               "name": "slicer.ModelMaker()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -9939,36 +8769,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -9997,7 +8797,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **ModelToLabelMap **",
+            "comment": "Wraps the executable command ``ModelToLabelMap ``.",
             "argument": {
               "name": "slicer.ModelToLabelMap()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -10103,36 +8903,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -10162,7 +8932,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **MultiResolutionAffineRegistration **",
+            "comment": "Wraps the executable command ``MultiResolutionAffineRegistration ``.",
             "argument": {
               "name": "slicer.MultiResolutionAffineRegistration()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -10373,36 +9143,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -10447,7 +9187,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **MultiplyScalarVolumes **",
+            "comment": "Wraps the executable command ``MultiplyScalarVolumes ``.",
             "argument": {
               "name": "slicer.MultiplyScalarVolumes()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -10553,36 +9293,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -10612,7 +9322,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **N4ITKBiasFieldCorrection **",
+            "comment": "Wraps the executable command ``N4ITKBiasFieldCorrection ``.",
             "argument": {
               "name": "slicer.N4ITKBiasFieldCorrection()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -10838,36 +9548,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -10911,7 +9591,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **OrientScalarVolume **",
+            "comment": "Wraps the executable command ``OrientScalarVolume ``.",
             "argument": {
               "name": "slicer.OrientScalarVolume()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -11002,36 +9682,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -11061,7 +9711,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **OtsuThresholdImageFilter **",
+            "comment": "Wraps the executable command ``OtsuThresholdImageFilter ``.",
             "argument": {
               "name": "slicer.OtsuThresholdImageFilter()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -11182,36 +9832,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -11241,7 +9861,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **OtsuThresholdSegmentation **",
+            "comment": "Wraps the executable command ``OtsuThresholdSegmentation ``.",
             "argument": {
               "name": "slicer.OtsuThresholdSegmentation()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -11377,36 +9997,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -11436,7 +10026,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **PETStandardUptakeValueComputation **",
+            "comment": "Wraps the executable command ``PETStandardUptakeValueComputation ``.",
             "argument": {
               "name": "slicer.PETStandardUptakeValueComputation()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -11632,36 +10222,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -11690,7 +10250,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **ProbeVolumeWithModel **",
+            "comment": "Wraps the executable command ``ProbeVolumeWithModel ``.",
             "argument": {
               "name": "slicer.ProbeVolumeWithModel()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -11781,36 +10341,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -11840,7 +10370,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **ResampleDTIVolume **",
+            "comment": "Wraps the executable command ``ResampleDTIVolume ``.",
             "argument": {
               "name": "slicer.ResampleDTIVolume()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -12276,36 +10806,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -12335,7 +10835,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **ResampleScalarVectorDWIVolume **",
+            "comment": "Wraps the executable command ``ResampleScalarVectorDWIVolume ``.",
             "argument": {
               "name": "slicer.ResampleScalarVectorDWIVolume()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -12741,36 +11241,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -12800,7 +11270,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **ResampleScalarVolume **",
+            "comment": "Wraps the executable command ``ResampleScalarVolume ``.",
             "argument": {
               "name": "slicer.ResampleScalarVolume()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -12906,36 +11376,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -12965,7 +11405,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **RigidRegistration **",
+            "comment": "Wraps the executable command ``RigidRegistration ``.",
             "argument": {
               "name": "slicer.RigidRegistration()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -13206,36 +11646,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -13280,7 +11690,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **RobustStatisticsSegmenter **",
+            "comment": "Wraps the executable command ``RobustStatisticsSegmenter ``.",
             "argument": {
               "name": "slicer.RobustStatisticsSegmenter()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -13446,36 +11856,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -13505,7 +11885,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **SimpleRegionGrowingSegmentation **",
+            "comment": "Wraps the executable command ``SimpleRegionGrowingSegmentation ``.",
             "argument": {
               "name": "slicer.SimpleRegionGrowingSegmentation()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -13686,36 +12066,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -13745,7 +12095,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **SubtractScalarVolumes **",
+            "comment": "Wraps the executable command ``SubtractScalarVolumes ``.",
             "argument": {
               "name": "slicer.SubtractScalarVolumes()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -13851,36 +12201,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -13910,7 +12230,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **ThresholdScalarVolume **",
+            "comment": "Wraps the executable command ``ThresholdScalarVolume ``.",
             "argument": {
               "name": "slicer.ThresholdScalarVolume()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -14061,36 +12381,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -14120,7 +12410,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **TractographyLabelMapSeeding **",
+            "comment": "Wraps the executable command ``TractographyLabelMapSeeding ``.",
             "argument": {
               "name": "slicer.TractographyLabelMapSeeding()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -14421,36 +12711,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -14495,7 +12755,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **VBRAINSDemonWarp **",
+            "comment": "Wraps the executable command ``VBRAINSDemonWarp ``.",
             "argument": {
               "name": "slicer.VBRAINSDemonWarp()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -15156,36 +13416,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -15245,7 +13475,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **VotingBinaryHoleFillingImageFilter **",
+            "comment": "Wraps the executable command ``VotingBinaryHoleFillingImageFilter ``.",
             "argument": {
               "name": "slicer.VotingBinaryHoleFillingImageFilter()",
               "import": "import nipype.interfaces.slicer as slicer"
@@ -15376,36 +13606,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "environ"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]

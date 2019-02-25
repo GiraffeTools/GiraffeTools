@@ -62,6 +62,21 @@
           "output": false,
           "visible": true,
           "editable": true,
+          "name": "bids_event_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bids_event_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
           "name": "functional_runs",
           "code": [
             {
@@ -122,6 +137,36 @@
           "output": false,
           "visible": false,
           "editable": true,
+          "name": "bids_condition_column",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bids_condition_column"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "bids_amplitude_column",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bids_amplitude_column"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
           "name": "realignment_parameters",
           "code": [
             {
@@ -158,21 +203,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "outlier_files"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -247,6 +277,21 @@
               "language": "Nipype",
               "argument": {
                 "name": "event_files"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "bids_event_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bids_event_file"
               }
             }
           ]
@@ -346,6 +391,36 @@
           "output": false,
           "visible": false,
           "editable": true,
+          "name": "bids_condition_column",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bids_condition_column"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "bids_amplitude_column",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bids_amplitude_column"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
           "name": "realignment_parameters",
           "code": [
             {
@@ -382,21 +457,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "outlier_files"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -486,6 +546,21 @@
               "language": "Nipype",
               "argument": {
                 "name": "event_files"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "bids_event_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bids_event_file"
               }
             }
           ]
@@ -660,6 +735,36 @@
           "output": false,
           "visible": false,
           "editable": true,
+          "name": "bids_condition_column",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bids_condition_column"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "bids_amplitude_column",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "bids_amplitude_column"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
           "name": "realignment_parameters",
           "code": [
             {
@@ -696,21 +801,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "outlier_files"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]

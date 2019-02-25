@@ -12,7 +12,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mne_watershed_bem**",
+            "comment": "Wraps the executable command ``mne_watershed_bem``.",
             "argument": {
               "name": "mne.WatershedBEM()",
               "import": "import nipype.interfaces.mne as mne"
@@ -128,36 +128,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "environ"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]

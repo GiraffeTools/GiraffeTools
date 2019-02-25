@@ -12,7 +12,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "",
+            "comment": "Inputs::",
             "argument": {
               "name": "spm.Analyze2nii()",
               "import": "import nipype.interfaces.spm as spm"
@@ -118,21 +118,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -218,21 +203,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "use_v8struct"
-              }
-            }
-          ]
-        },
-        {
-          "input": false,
-          "output": true,
-          "visible": true,
-          "editable": false,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -447,21 +417,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -621,21 +576,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "use_v8struct"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -815,21 +755,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "use_v8struct"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -1149,21 +1074,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1373,21 +1283,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1577,21 +1472,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "use_v8struct"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -1851,21 +1731,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2075,21 +1940,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2294,21 +2144,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "use_v8struct"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -2553,21 +2388,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2728,6 +2548,500 @@
               "language": "Nipype",
               "argument": {
                 "name": "SDbetas"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "spm",
+        "preprocess"
+      ],
+      "title": {
+        "name": "spm.FieldMap",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.spm/preprocess.html#fieldmap",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Use the fieldmap toolbox from spm to calculate the voxel displacement map (VDM).",
+            "argument": {
+              "name": "spm.FieldMap()",
+              "import": "import nipype.interfaces.spm as spm"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, spm"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "phase_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "phase_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "magnitude_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "magnitude_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "echo_times",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "echo_times"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "blip_direction",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "blip_direction"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "total_readout_time",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "total_readout_time"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "epi_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "epi_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "jobtype",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "jobtype"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "maskbrain",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "maskbrain"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "epifm",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "epifm"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "jacobian_modulation",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "jacobian_modulation"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "method",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "method"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "unwarp_fwhm",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "unwarp_fwhm"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "pad",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "pad"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ws",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ws"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "template",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "template"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "mask_fwhm",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mask_fwhm"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "nerode",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "nerode"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ndilate",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ndilate"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "thresh",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "thresh"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "reg",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "reg"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "matchvdm",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "matchvdm"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "sessname",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "sessname"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "writeunwarped",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "writeunwarped"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "anat_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "anat_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "matchanat",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "matchanat"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "matlab_cmd",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "matlab_cmd"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "paths",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "paths"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "mfile",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mfile"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "use_mcr",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "use_mcr"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "use_v8struct",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "use_v8struct"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "vdm",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "vdm"
               }
             }
           ]
@@ -3027,21 +3341,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "use_v8struct"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -3391,21 +3690,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3625,21 +3909,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "use_v8struct"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -4169,21 +4438,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4558,21 +4812,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4912,21 +5151,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "use_v8struct"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -5276,21 +5500,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5620,21 +5829,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5675,6 +5869,530 @@
               "language": "Nipype",
               "argument": {
                 "name": "realigned_files"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "realignment_parameters",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "realignment_parameters"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "spm",
+        "preprocess"
+      ],
+      "title": {
+        "name": "spm.RealignUnwarp",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.spm/preprocess.html#realignunwarp",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Use spm_uw_estimate for estimating within subject registration and unwarping",
+            "argument": {
+              "name": "spm.RealignUnwarp()",
+              "import": "import nipype.interfaces.spm as spm"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, spm"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "in_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "in_files"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "phase_map",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "phase_map"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "quality",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "quality"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "fwhm",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "fwhm"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "separation",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "separation"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "register_to_mean",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "register_to_mean"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "weight_img",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "weight_img"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "interp",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "interp"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "wrap",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "wrap"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "est_basis_func",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "est_basis_func"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "est_reg_order",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "est_reg_order"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "est_reg_factor",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "est_reg_factor"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "est_jacobian_deformations",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "est_jacobian_deformations"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "est_first_order_effects",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "est_first_order_effects"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "est_second_order_effects",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "est_second_order_effects"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "est_unwarp_fwhm",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "est_unwarp_fwhm"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "est_re_est_mov_par",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "est_re_est_mov_par"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "est_num_of_iterations",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "est_num_of_iterations"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "est_taylor_expansion_point",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "est_taylor_expansion_point"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "reslice_which",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "reslice_which"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "reslice_interp",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "reslice_interp"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "reslice_wrap",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "reslice_wrap"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "reslice_mask",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "reslice_mask"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "out_prefix",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_prefix"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "matlab_cmd",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "matlab_cmd"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "paths",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "paths"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "mfile",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mfile"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "use_mcr",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "use_mcr"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "use_v8struct",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "use_v8struct"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "mean_image",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mean_image"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "modified_in_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "modified_in_files"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "realigned_unwarped_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "realigned_unwarped_files"
               }
             }
           ]
@@ -5854,21 +6572,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "use_v8struct"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -6063,21 +6766,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "use_v8struct"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -6422,21 +7110,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "use_v8struct"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -6846,21 +7519,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7050,21 +7708,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "use_v8struct"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -7334,21 +7977,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "use_v8struct"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -7783,21 +8411,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "use_v8struct"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -8412,21 +9025,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "use_v8struct"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]

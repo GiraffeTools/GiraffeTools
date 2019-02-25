@@ -12,7 +12,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **analyzeheader**",
+            "comment": "Wraps the executable command ``analyzeheader``.",
             "argument": {
               "name": "camino.AnalyzeHeader()",
               "import": "import nipype.interfaces.camino as camino"
@@ -388,36 +388,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -446,7 +416,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **dteig**",
+            "comment": "Wraps the executable command ``dteig``.",
             "argument": {
               "name": "camino.ComputeEigensystem()",
               "import": "import nipype.interfaces.camino as camino"
@@ -582,36 +552,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -640,7 +580,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fa**",
+            "comment": "Wraps the executable command ``fa``.",
             "argument": {
               "name": "camino.ComputeFractionalAnisotropy()",
               "import": "import nipype.interfaces.camino as camino"
@@ -776,36 +716,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -834,7 +744,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **md**",
+            "comment": "Wraps the executable command ``md``.",
             "argument": {
               "name": "camino.ComputeMeanDiffusivity()",
               "import": "import nipype.interfaces.camino as camino"
@@ -970,36 +880,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1028,7 +908,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **trd**",
+            "comment": "Wraps the executable command ``trd``.",
             "argument": {
               "name": "camino.ComputeTensorTrace()",
               "import": "import nipype.interfaces.camino as camino"
@@ -1164,36 +1044,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1222,7 +1072,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **conmat**",
+            "comment": "Wraps the executable command ``conmat``.",
             "argument": {
               "name": "camino.Conmat()",
               "import": "import nipype.interfaces.camino as camino"
@@ -1373,36 +1223,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1446,7 +1266,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **dt2nii**",
+            "comment": "Wraps the executable command ``dt2nii``.",
             "argument": {
               "name": "camino.DT2NIfTI()",
               "import": "import nipype.interfaces.camino as camino"
@@ -1537,36 +1357,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1625,7 +1415,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **dtfit**",
+            "comment": "Wraps the executable command ``dtfit``.",
             "argument": {
               "name": "camino.DTIFit()",
               "import": "import nipype.interfaces.camino as camino"
@@ -1746,36 +1536,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1804,7 +1564,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **dtlutgen**",
+            "comment": "Wraps the executable command ``dtlutgen``.",
             "argument": {
               "name": "camino.DTLUTGen()",
               "import": "import nipype.interfaces.camino as camino"
@@ -2030,36 +1790,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2088,7 +1818,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **dtshape**",
+            "comment": "Wraps the executable command ``dtshape``.",
             "argument": {
               "name": "camino.DTMetric()",
               "import": "import nipype.interfaces.camino as camino"
@@ -2224,36 +1954,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2282,7 +1982,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **fsl2scheme**",
+            "comment": "Wraps the executable command ``fsl2scheme``.",
             "argument": {
               "name": "camino.FSL2Scheme()",
               "import": "import nipype.interfaces.camino as camino"
@@ -2493,36 +2193,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2551,7 +2221,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **image2voxel**",
+            "comment": "Wraps the executable command ``image2voxel``.",
             "argument": {
               "name": "camino.Image2Voxel()",
               "import": "import nipype.interfaces.camino as camino"
@@ -2642,36 +2312,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2700,7 +2340,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **imagestats**",
+            "comment": "Wraps the executable command ``imagestats``.",
             "argument": {
               "name": "camino.ImageStats()",
               "import": "import nipype.interfaces.camino as camino"
@@ -2806,36 +2446,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2864,7 +2474,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **linrecon**",
+            "comment": "Wraps the executable command ``linrecon``.",
             "argument": {
               "name": "camino.LinRecon()",
               "import": "import nipype.interfaces.camino as camino"
@@ -3015,36 +2625,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3073,7 +2653,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mesd**",
+            "comment": "Wraps the executable command ``mesd``.",
             "argument": {
               "name": "camino.MESD()",
               "import": "import nipype.interfaces.camino as camino"
@@ -3254,36 +2834,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3312,7 +2862,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **modelfit**",
+            "comment": "Wraps the executable command ``modelfit``.",
             "argument": {
               "name": "camino.ModelFit()",
               "import": "import nipype.interfaces.camino as camino"
@@ -3598,36 +3148,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3656,7 +3176,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **niftidt2camino**",
+            "comment": "Wraps the executable command ``niftidt2camino``.",
             "argument": {
               "name": "camino.NIfTIDT2Camino()",
               "import": "import nipype.interfaces.camino as camino"
@@ -3822,36 +3342,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3880,7 +3370,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **picopdfs**",
+            "comment": "Wraps the executable command ``picopdfs``.",
             "argument": {
               "name": "camino.PicoPDFs()",
               "import": "import nipype.interfaces.camino as camino"
@@ -4046,36 +3536,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4104,7 +3564,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **procstreamlines**",
+            "comment": "Wraps the executable command ``procstreamlines``.",
             "argument": {
               "name": "camino.ProcStreamlines()",
               "import": "import nipype.interfaces.camino as camino"
@@ -4630,36 +4090,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4703,7 +4133,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **qballmx**",
+            "comment": "Wraps the executable command ``qballmx``.",
             "argument": {
               "name": "camino.QBallMX()",
               "import": "import nipype.interfaces.camino as camino"
@@ -4854,36 +4284,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4912,7 +4312,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **sflutgen**",
+            "comment": "Wraps the executable command ``sflutgen``.",
             "argument": {
               "name": "camino.SFLUTGen()",
               "import": "import nipype.interfaces.camino as camino"
@@ -5093,36 +4493,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5166,7 +4536,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **sfpicocalibdata**",
+            "comment": "Wraps the executable command ``sfpicocalibdata``.",
             "argument": {
               "name": "camino.SFPICOCalibData()",
               "import": "import nipype.interfaces.camino as camino"
@@ -5422,36 +4792,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5495,7 +4835,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **sfpeaks**",
+            "comment": "Wraps the executable command ``sfpeaks``.",
             "argument": {
               "name": "camino.SFPeaks()",
               "import": "import nipype.interfaces.camino as camino"
@@ -5751,36 +5091,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5809,7 +5119,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **shredder**",
+            "comment": "Wraps the executable command ``shredder``.",
             "argument": {
               "name": "camino.Shredder()",
               "import": "import nipype.interfaces.camino as camino"
@@ -5930,36 +5240,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5988,7 +5268,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **track**",
+            "comment": "Wraps the executable command ``track``.",
             "argument": {
               "name": "camino.Track()",
               "import": "import nipype.interfaces.camino as camino"
@@ -6334,36 +5614,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -6392,7 +5642,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **track**",
+            "comment": "Wraps the executable command ``track``.",
             "argument": {
               "name": "camino.TrackBallStick()",
               "import": "import nipype.interfaces.camino as camino"
@@ -6738,36 +5988,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -6796,7 +6016,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **track**",
+            "comment": "Wraps the executable command ``track``.",
             "argument": {
               "name": "camino.TrackBayesDirac()",
               "import": "import nipype.interfaces.camino as camino"
@@ -7277,36 +6497,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7335,7 +6525,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **track**",
+            "comment": "Wraps the executable command ``track``.",
             "argument": {
               "name": "camino.TrackBedpostxDeter()",
               "import": "import nipype.interfaces.camino as camino"
@@ -7711,36 +6901,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7769,7 +6929,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **track**",
+            "comment": "Wraps the executable command ``track``.",
             "argument": {
               "name": "camino.TrackBedpostxProba()",
               "import": "import nipype.interfaces.camino as camino"
@@ -8160,36 +7320,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -8218,7 +7348,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **track**",
+            "comment": "Wraps the executable command ``track``.",
             "argument": {
               "name": "camino.TrackBootstrap()",
               "import": "import nipype.interfaces.camino as camino"
@@ -8639,36 +7769,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -8697,7 +7797,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **track**",
+            "comment": "Wraps the executable command ``track``.",
             "argument": {
               "name": "camino.TrackDT()",
               "import": "import nipype.interfaces.camino as camino"
@@ -9043,36 +8143,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -9101,7 +8171,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **track**",
+            "comment": "Wraps the executable command ``track``.",
             "argument": {
               "name": "camino.TrackPICo()",
               "import": "import nipype.interfaces.camino as camino"
@@ -9477,36 +8547,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -9535,7 +8575,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **tractshredder**",
+            "comment": "Wraps the executable command ``tractshredder``.",
             "argument": {
               "name": "camino.TractShredder()",
               "import": "import nipype.interfaces.camino as camino"
@@ -9656,36 +8696,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -9714,7 +8724,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **vtkstreamlines**",
+            "comment": "Wraps the executable command ``vtkstreamlines``.",
             "argument": {
               "name": "camino.VtkStreamlines()",
               "import": "import nipype.interfaces.camino as camino"
@@ -9905,36 +8915,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "environ"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]

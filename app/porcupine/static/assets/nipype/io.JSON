@@ -6,6 +6,109 @@
         "io"
       ],
       "title": {
+        "name": "io.BIDSDataGrabber",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#bidsdatagrabber",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "BIDS datagrabber module that wraps around pybids to allow arbitrary",
+            "argument": {
+              "name": "io.BIDSDataGrabber()",
+              "import": "import nipype.interfaces.io as io"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, io"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "base_dir",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "base_dir"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "index_derivatives",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "index_derivatives"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "output_query",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "output_query"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "raise_on_empty",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "raise_on_empty"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "extra_derivatives",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "extra_derivatives"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "io"
+      ],
+      "title": {
         "name": "io.DataFinder",
         "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.interfaces.io.html#datafinder",
         "code": [
@@ -115,21 +218,6 @@
               }
             }
           ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
         }
       ]
     },
@@ -224,12 +312,12 @@
           "output": false,
           "visible": false,
           "editable": true,
-          "name": "template_args",
+          "name": "drop_blank_outputs",
           "code": [
             {
               "language": "Nipype",
               "argument": {
-                "name": "template_args"
+                "name": "drop_blank_outputs"
               }
             }
           ]
@@ -239,12 +327,12 @@
           "output": false,
           "visible": false,
           "editable": true,
-          "name": "ignore_exception",
+          "name": "template_args",
           "code": [
             {
               "language": "Nipype",
               "argument": {
-                "name": "ignore_exception"
+                "name": "template_args"
               }
             }
           ]
@@ -458,21 +546,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -556,21 +629,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "hemi"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -1187,21 +1245,6 @@
               }
             }
           ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
         }
       ]
     },
@@ -1277,21 +1320,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1307,6 +1335,34 @@
           ]
         }
       ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "io",
+        "core"
+      ],
+      "title": {
+        "name": "io.LibraryBaseInterface",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.io/core.html#librarybaseinterface",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Inputs::",
+            "argument": {
+              "name": "io.LibraryBaseInterface()",
+              "import": "import nipype.interfaces.io as io"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, io"
+            }
+          }
+        ]
+      },
+      "ports": []
     },
     {
       "category": [
@@ -1420,21 +1476,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "password"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -1601,21 +1642,6 @@
               }
             }
           ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
         }
       ]
     },
@@ -1671,21 +1697,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "table_name"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -1873,12 +1884,12 @@
           "output": false,
           "visible": false,
           "editable": true,
-          "name": "template_args",
+          "name": "drop_blank_outputs",
           "code": [
             {
               "language": "Nipype",
               "argument": {
-                "name": "template_args"
+                "name": "drop_blank_outputs"
               }
             }
           ]
@@ -1888,12 +1899,12 @@
           "output": false,
           "visible": false,
           "editable": true,
-          "name": "ignore_exception",
+          "name": "template_args",
           "code": [
             {
               "language": "Nipype",
               "argument": {
-                "name": "ignore_exception"
+                "name": "template_args"
               }
             }
           ]
@@ -1982,21 +1993,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "force_lists"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -2208,21 +2204,6 @@
               }
             }
           ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
         }
       ]
     },
@@ -2353,21 +2334,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "cache_dir"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]

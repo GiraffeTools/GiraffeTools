@@ -12,7 +12,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **ANTS**",
+            "comment": "Wraps the executable command ``ANTS``.",
             "argument": {
               "name": "ants.ANTS()",
               "import": "import nipype.interfaces.ants as ants"
@@ -77,6 +77,36 @@
           "output": false,
           "visible": true,
           "editable": true,
+          "name": "metric_weight",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "metric_weight"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "radius",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "radius"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
           "name": "output_transform_prefix",
           "code": [
             {
@@ -113,36 +143,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "dimension"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "metric_weight",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "metric_weight"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "radius",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "radius"
               }
             }
           ]
@@ -403,36 +403,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -521,7 +491,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **antsAffineInitializer**",
+            "comment": "Wraps the executable command ``antsAffineInitializer``.",
             "argument": {
               "name": "ants.AffineInitializer()",
               "import": "import nipype.interfaces.ants as ants"
@@ -702,36 +672,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -760,7 +700,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **antsJointFusion**",
+            "comment": "Wraps the executable command ``antsJointFusion``.",
             "argument": {
               "name": "ants.AntsJointFusion()",
               "import": "import nipype.interfaces.ants as ants"
@@ -1121,36 +1061,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1224,7 +1134,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **antsApplyTransforms**",
+            "comment": "Wraps the executable command ``antsApplyTransforms``.",
             "argument": {
               "name": "ants.ApplyTransforms()",
               "import": "import nipype.interfaces.ants as ants"
@@ -1480,36 +1390,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1538,7 +1418,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **antsApplyTransformsToPoints**",
+            "comment": "Wraps the executable command ``antsApplyTransformsToPoints``.",
             "argument": {
               "name": "ants.ApplyTransformsToPoints()",
               "import": "import nipype.interfaces.ants as ants"
@@ -1674,36 +1554,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1732,7 +1582,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **Atropos**",
+            "comment": "Wraps the executable command ``Atropos``.",
             "argument": {
               "name": "ants.Atropos()",
               "import": "import nipype.interfaces.ants as ants"
@@ -2108,36 +1958,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2181,7 +2001,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **AverageAffineTransform**",
+            "comment": "Wraps the executable command ``AverageAffineTransform``.",
             "argument": {
               "name": "ants.AverageAffineTransform()",
               "import": "import nipype.interfaces.ants as ants"
@@ -2287,36 +2107,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2345,7 +2135,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **AverageImages**",
+            "comment": "Wraps the executable command ``AverageImages``.",
             "argument": {
               "name": "ants.AverageImages()",
               "import": "import nipype.interfaces.ants as ants"
@@ -2466,36 +2256,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2524,7 +2284,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **antsBrainExtraction.sh**",
+            "comment": "Wraps the executable command ``antsBrainExtraction.sh``.",
             "argument": {
               "name": "ants.BrainExtraction()",
               "import": "import nipype.interfaces.ants as ants"
@@ -2745,36 +2505,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "environ"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -3055,6 +2785,334 @@
       "category": [
         "Nipype",
         "ants",
+        "utils"
+      ],
+      "title": {
+        "name": "ants.ComposeMultiTransform",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.ants/utils.html#composemultitransform",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Wraps the executable command ``ComposeMultiTransform``.",
+            "argument": {
+              "name": "ants.ComposeMultiTransform()",
+              "import": "import nipype.interfaces.ants as ants"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, ants"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "transforms",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "transforms"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "dimension",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "dimension"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "output_transform",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "output_transform"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "reference_image",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "reference_image"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "num_threads",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "num_threads"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "args",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "args"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "environ",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "environ"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "output_transform",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "output_transform"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "ants",
+        "registration"
+      ],
+      "title": {
+        "name": "ants.CompositeTransformUtil",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.ants/registration.html#compositetransformutil",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Wraps the executable command ``CompositeTransformUtil``.",
+            "argument": {
+              "name": "ants.CompositeTransformUtil()",
+              "import": "import nipype.interfaces.ants as ants"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, ants"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "in_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "in_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "process",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "process"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "out_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "output_prefix",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "output_prefix"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "num_threads",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "num_threads"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "args",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "args"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "environ",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "environ"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "affine_transform",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "affine_transform"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "displacement_field",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "displacement_field"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "out_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_file"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "ants",
         "visualization"
       ],
       "title": {
@@ -3063,7 +3121,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **ConvertScalarImageToRGB**",
+            "comment": "Wraps the executable command ``ConvertScalarImageToRGB``.",
             "argument": {
               "name": "ants.ConvertScalarImageToRGB()",
               "import": "import nipype.interfaces.ants as ants"
@@ -3274,36 +3332,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3332,7 +3360,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **antsCorticalThickness.sh**",
+            "comment": "Wraps the executable command ``antsCorticalThickness.sh``.",
             "argument": {
               "name": "ants.CorticalThickness()",
               "import": "import nipype.interfaces.ants as ants"
@@ -3708,36 +3736,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3748,6 +3746,21 @@
               "language": "Nipype",
               "argument": {
                 "name": "BrainExtractionMask"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "ExtractedBrainN4",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ExtractedBrainN4"
               }
             }
           ]
@@ -3931,7 +3944,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **CreateJacobianDeterminantImage**",
+            "comment": "Wraps the executable command ``CreateJacobianDeterminantImage``.",
             "argument": {
               "name": "ants.CreateJacobianDeterminantImage()",
               "import": "import nipype.interfaces.ants as ants"
@@ -4067,36 +4080,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4125,7 +4108,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **CreateTiledMosaic**",
+            "comment": "Wraps the executable command ``CreateTiledMosaic``.",
             "argument": {
               "name": "ants.CreateTiledMosaic()",
               "import": "import nipype.interfaces.ants as ants"
@@ -4351,36 +4334,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4409,7 +4362,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **DenoiseImage**",
+            "comment": "Wraps the executable command ``DenoiseImage``.",
             "argument": {
               "name": "ants.DenoiseImage()",
               "import": "import nipype.interfaces.ants as ants"
@@ -4590,36 +4543,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4663,7 +4586,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **jointfusion**",
+            "comment": "Wraps the executable command ``jointfusion``.",
             "argument": {
               "name": "ants.JointFusion()",
               "import": "import nipype.interfaces.ants as ants"
@@ -4934,36 +4857,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4984,6 +4877,155 @@
       "category": [
         "Nipype",
         "ants",
+        "utils"
+      ],
+      "title": {
+        "name": "ants.LabelGeometry",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.ants/utils.html#labelgeometry",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Wraps the executable command ``LabelGeometryMeasures``.",
+            "argument": {
+              "name": "ants.LabelGeometry()",
+              "import": "import nipype.interfaces.ants as ants"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, ants"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "label_image",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "label_image"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "intensity_image",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "intensity_image"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "dimension",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "dimension"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "output_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "output_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "num_threads",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "num_threads"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "args",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "args"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "environ",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "environ"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "output_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "output_file"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "ants",
         "segmentation"
       ],
       "title": {
@@ -4992,7 +5034,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **LaplacianThickness**",
+            "comment": "Wraps the executable command ``LaplacianThickness``.",
             "argument": {
               "name": "ants.LaplacianThickness()",
               "import": "import nipype.interfaces.ants as ants"
@@ -5117,12 +5159,12 @@
           "output": false,
           "visible": false,
           "editable": true,
-          "name": "opt_tolerance",
+          "name": "tolerance",
           "code": [
             {
               "language": "Nipype",
               "argument": {
-                "name": "opt_tolerance"
+                "name": "tolerance"
               }
             }
           ]
@@ -5173,36 +5215,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5231,7 +5243,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **MeasureImageSimilarity**",
+            "comment": "Wraps the executable command ``MeasureImageSimilarity``.",
             "argument": {
               "name": "ants.MeasureImageSimilarity()",
               "import": "import nipype.interfaces.ants as ants"
@@ -5442,36 +5454,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5500,7 +5482,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **MultiplyImages**",
+            "comment": "Wraps the executable command ``MultiplyImages``.",
             "argument": {
               "name": "ants.MultiplyImages()",
               "import": "import nipype.interfaces.ants as ants"
@@ -5621,36 +5603,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5679,7 +5631,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **N4BiasFieldCorrection**",
+            "comment": "Wraps the executable command ``N4BiasFieldCorrection``.",
             "argument": {
               "name": "ants.N4BiasFieldCorrection()",
               "import": "import nipype.interfaces.ants as ants"
@@ -5935,36 +5887,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -6008,7 +5930,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **antsRegistration**",
+            "comment": "Wraps the executable command ``antsRegistration``.",
             "argument": {
               "name": "ants.Registration()",
               "import": "import nipype.interfaces.ants as ants"
@@ -6819,36 +6741,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -6982,6 +6874,320 @@
               }
             }
           ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "metric_value",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "metric_value"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "elapsed_time",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "elapsed_time"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "ants",
+        "registration"
+      ],
+      "title": {
+        "name": "ants.RegistrationSynQuick",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.ants/registration.html#registrationsynquick",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Wraps the executable command ``antsRegistrationSyNQuick.sh``.",
+            "argument": {
+              "name": "ants.RegistrationSynQuick()",
+              "import": "import nipype.interfaces.ants as ants"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, ants"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "fixed_image",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "fixed_image"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "moving_image",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "moving_image"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "dimension",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "dimension"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "output_prefix",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "output_prefix"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "num_threads",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "num_threads"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "transform_type",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "transform_type"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "use_histogram_matching",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "use_histogram_matching"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "histogram_bins",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "histogram_bins"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "spline_distance",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "spline_distance"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "precision_type",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "precision_type"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "args",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "args"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "environ",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "environ"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "warped_image",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "warped_image"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "inverse_warped_image",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "inverse_warped_image"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "out_matrix",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_matrix"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "forward_warp_field",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "forward_warp_field"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "inverse_warp_field",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "inverse_warp_field"
+              }
+            }
+          ]
         }
       ]
     },
@@ -6997,7 +7203,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **WarpImageMultiTransform**",
+            "comment": "Wraps the executable command ``WarpImageMultiTransform``.",
             "argument": {
               "name": "ants.WarpImageMultiTransform()",
               "import": "import nipype.interfaces.ants as ants"
@@ -7223,36 +7429,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7281,7 +7457,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **WarpTimeSeriesImageMultiTransform**",
+            "comment": "Wraps the executable command ``WarpTimeSeriesImageMultiTransform``.",
             "argument": {
               "name": "ants.WarpTimeSeriesImageMultiTransform()",
               "import": "import nipype.interfaces.ants as ants"
@@ -7487,36 +7663,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "environ"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]

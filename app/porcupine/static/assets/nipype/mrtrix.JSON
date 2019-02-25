@@ -12,7 +12,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **csdeconv**",
+            "comment": "Wraps the executable command ``csdeconv``.",
             "argument": {
               "name": "mrtrix.ConstrainedSphericalDeconvolution()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -253,36 +253,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -311,7 +281,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **dwi2SH**",
+            "comment": "Wraps the executable command ``dwi2SH``.",
             "argument": {
               "name": "mrtrix.DWI2SphericalHarmonicsImage()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -432,36 +402,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -490,7 +430,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **dwi2tensor**",
+            "comment": "Wraps the executable command ``dwi2tensor``.",
             "argument": {
               "name": "mrtrix.DWI2Tensor()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -641,36 +581,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -699,7 +609,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **streamtrack**",
+            "comment": "Wraps the executable command ``streamtrack``.",
             "argument": {
               "name": "mrtrix.DiffusionTensorStreamlineTrack()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -1120,36 +1030,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1178,7 +1058,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **dir2amp**",
+            "comment": "Wraps the executable command ``dir2amp``.",
             "argument": {
               "name": "mrtrix.Directions2Amplitude()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -1344,36 +1224,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1402,7 +1252,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **erode**",
+            "comment": "Wraps the executable command ``erode``.",
             "argument": {
               "name": "mrtrix.Erode()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -1538,36 +1388,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1596,7 +1416,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **estimate_response**",
+            "comment": "Wraps the executable command ``estimate_response``.",
             "argument": {
               "name": "mrtrix.EstimateResponseForSH()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -1757,36 +1577,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "environ"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -1954,7 +1744,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **filter_tracks**",
+            "comment": "Wraps the executable command ``filter_tracks``.",
             "argument": {
               "name": "mrtrix.FilterTracks()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -2165,36 +1955,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2223,7 +1983,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **find_SH_peaks**",
+            "comment": "Wraps the executable command ``find_SH_peaks``.",
             "argument": {
               "name": "mrtrix.FindShPeaks()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -2419,36 +2179,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2477,7 +2207,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **gendir**",
+            "comment": "Wraps the executable command ``gendir``.",
             "argument": {
               "name": "mrtrix.GenerateDirections()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -2628,36 +2358,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2686,7 +2386,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **gen_WM_mask**",
+            "comment": "Wraps the executable command ``gen_WM_mask``.",
             "argument": {
               "name": "mrtrix.GenerateWhiteMatterMask()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -2807,36 +2507,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2865,7 +2535,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mrconvert**",
+            "comment": "Wraps the executable command ``mrconvert``.",
             "argument": {
               "name": "mrtrix.MRConvert()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -3091,36 +2761,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3149,7 +2789,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mrmult**",
+            "comment": "Wraps the executable command ``mrmult``.",
             "argument": {
               "name": "mrtrix.MRMultiply()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -3250,36 +2890,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "environ"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -3432,7 +3042,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mrinfo**",
+            "comment": "Wraps the executable command ``mrinfo``.",
             "argument": {
               "name": "mrtrix.MRTrixInfo()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -3491,36 +3101,6 @@
               }
             }
           ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
         }
       ]
     },
@@ -3536,7 +3116,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mrview**",
+            "comment": "Wraps the executable command ``mrview``.",
             "argument": {
               "name": "mrtrix.MRTrixViewer()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -3625,36 +3205,6 @@
               }
             }
           ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
         }
       ]
     },
@@ -3670,7 +3220,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **median3D**",
+            "comment": "Wraps the executable command ``median3D``.",
             "argument": {
               "name": "mrtrix.MedianFilter3D()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -3776,36 +3326,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3834,7 +3354,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **streamtrack**",
+            "comment": "Wraps the executable command ``streamtrack``.",
             "argument": {
               "name": "mrtrix.ProbabilisticSphericallyDeconvolutedStreamlineTrack()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -4255,36 +3775,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4313,7 +3803,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **streamtrack**",
+            "comment": "Wraps the executable command ``streamtrack``.",
             "argument": {
               "name": "mrtrix.SphericallyDeconvolutedStreamlineTrack()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -4719,36 +4209,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4777,7 +4237,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **streamtrack**",
+            "comment": "Wraps the executable command ``streamtrack``.",
             "argument": {
               "name": "mrtrix.StreamlineTrack()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -5183,36 +4643,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5241,7 +4671,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **tensor2ADC**",
+            "comment": "Wraps the executable command ``tensor2ADC``.",
             "argument": {
               "name": "mrtrix.Tensor2ApparentDiffusion()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -5347,36 +4777,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5405,7 +4805,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **tensor2FA**",
+            "comment": "Wraps the executable command ``tensor2FA``.",
             "argument": {
               "name": "mrtrix.Tensor2FractionalAnisotropy()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -5511,36 +4911,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5569,7 +4939,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **tensor2vector**",
+            "comment": "Wraps the executable command ``tensor2vector``.",
             "argument": {
               "name": "mrtrix.Tensor2Vector()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -5675,36 +5045,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5733,7 +5073,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **threshold**",
+            "comment": "Wraps the executable command ``threshold``.",
             "argument": {
               "name": "mrtrix.Threshold()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -5899,36 +5239,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5957,7 +5267,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **tracks2prob**",
+            "comment": "Wraps the executable command ``tracks2prob``.",
             "argument": {
               "name": "mrtrix.Tracks2Prob()",
               "import": "import nipype.interfaces.mrtrix as mrtrix"
@@ -6118,36 +5428,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "environ"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]

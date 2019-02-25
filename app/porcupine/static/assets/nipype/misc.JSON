@@ -162,21 +162,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -334,6 +319,95 @@
         "misc"
       ],
       "title": {
+        "name": "misc.CalculateMedian",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.algorithms.misc.html#calculatemedian",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Computes an average of the median across one or more 4D Nifti timeseries",
+            "argument": {
+              "name": "misc.CalculateMedian()",
+              "import": "import nipype.algorithms.misc as misc"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, algorithms, misc"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "in_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "in_files"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "median_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "median_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "median_per_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "median_per_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "median_files",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "median_files"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "algorithms",
+        "misc"
+      ],
+      "title": {
         "name": "misc.CalculateNormalizedMoments",
         "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/nipype.algorithms.misc.html#calculatenormalizedmoments",
         "code": [
@@ -474,21 +548,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -588,21 +647,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "mask_volume"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -731,6 +775,21 @@
           "output": false,
           "visible": false,
           "editable": true,
+          "name": "in_mask",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "in_mask"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
           "name": "weighting",
           "code": [
             {
@@ -752,21 +811,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "out_file"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -797,21 +841,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "dice"
-              }
-            }
-          ]
-        },
-        {
-          "input": false,
-          "output": true,
-          "visible": true,
-          "editable": false,
-          "name": "diff_file",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "diff_file"
               }
             }
           ]
@@ -886,21 +915,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "in_file"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -1292,21 +1306,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1525,21 +1524,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "weighting"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -1769,21 +1753,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1853,21 +1822,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "threshold"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -2121,21 +2075,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "detrended_file"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]

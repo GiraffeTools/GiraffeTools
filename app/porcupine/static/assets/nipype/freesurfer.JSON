@@ -12,7 +12,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_add_xform_to_header**",
+            "comment": "Wraps the executable command ``mri_add_xform_to_header``.",
             "argument": {
               "name": "freesurfer.AddXFormToHeader()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -148,36 +148,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -206,7 +176,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_aparc2aseg**",
+            "comment": "Wraps the executable command ``mri_aparc2aseg``.",
             "argument": {
               "name": "freesurfer.Aparc2Aseg()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -567,36 +537,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -625,7 +565,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **apas2aseg**",
+            "comment": "Wraps the executable command ``apas2aseg``.",
             "argument": {
               "name": "freesurfer.Apas2Aseg()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -716,36 +656,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -774,7 +684,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_mask**",
+            "comment": "Wraps the executable command ``mri_mask``.",
             "argument": {
               "name": "freesurfer.ApplyMask()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -1000,36 +910,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1058,7 +938,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_vol2vol**",
+            "comment": "Wraps the executable command ``mri_vol2vol``.",
             "argument": {
               "name": "freesurfer.ApplyVolTransform()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -1153,6 +1033,36 @@
           "output": false,
           "visible": true,
           "editable": true,
+          "name": "lta_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "lta_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "lta_inv_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "lta_inv_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
           "name": "fsl_reg_file",
           "code": [
             {
@@ -1189,6 +1099,21 @@
               "language": "Nipype",
               "argument": {
                 "name": "reg_header"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "mni_152_reg",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "mni_152_reg"
               }
             }
           ]
@@ -1374,36 +1299,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -1432,7 +1327,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **bbregister**",
+            "comment": "Wraps the executable command ``bbregister``.",
             "argument": {
               "name": "freesurfer.BBRegister()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -1692,6 +1587,21 @@
           "output": false,
           "visible": false,
           "editable": true,
+          "name": "init_cost_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "init_cost_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
           "name": "subjects_dir",
           "code": [
             {
@@ -1728,36 +1638,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "environ"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
@@ -1827,6 +1707,21 @@
           "output": true,
           "visible": true,
           "editable": false,
+          "name": "init_cost_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "init_cost_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
           "name": "registered_file",
           "code": [
             {
@@ -1851,7 +1746,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_binarize**",
+            "comment": "Wraps the executable command ``mri_binarize``.",
             "argument": {
               "name": "freesurfer.Binarize()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -2302,36 +2197,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2375,7 +2240,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_ca_label**",
+            "comment": "Wraps the executable command ``mri_ca_label``.",
             "argument": {
               "name": "freesurfer.CALabel()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -2631,36 +2496,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2689,7 +2524,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_ca_normalize**",
+            "comment": "Wraps the executable command ``mri_ca_normalize``.",
             "argument": {
               "name": "freesurfer.CANormalize()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -2855,36 +2690,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -2928,7 +2733,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_ca_register**",
+            "comment": "Wraps the executable command ``mri_ca_register``.",
             "argument": {
               "name": "freesurfer.CARegister()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -3169,36 +2974,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3227,7 +3002,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **talairach_afd**",
+            "comment": "Wraps the executable command ``talairach_afd``.",
             "argument": {
               "name": "freesurfer.CheckTalairachAlignment()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -3333,36 +3108,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3391,7 +3136,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_concat**",
+            "comment": "Wraps the executable command ``mri_concat``.",
             "argument": {
               "name": "freesurfer.Concatenate()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -3707,36 +3452,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3765,7 +3480,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_concatenate_lta**",
+            "comment": "Wraps the executable command ``mri_concatenate_lta``.",
             "argument": {
               "name": "freesurfer.ConcatenateLTA()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -3830,6 +3545,111 @@
           "output": false,
           "visible": false,
           "editable": true,
+          "name": "invert_1",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "invert_1"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "invert_2",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "invert_2"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "invert_out",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "invert_out"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "out_type",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_type"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "tal_source_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "tal_source_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "tal_template_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "tal_template_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "subject",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "subject"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
           "name": "subjects_dir",
           "code": [
             {
@@ -3871,36 +3691,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -3929,7 +3719,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **pctsurfcon**",
+            "comment": "Wraps the executable command ``pctsurfcon``.",
             "argument": {
               "name": "freesurfer.Contrast()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -4125,36 +3915,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4213,7 +3973,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_curvature**",
+            "comment": "Wraps the executable command ``mris_curvature``.",
             "argument": {
               "name": "freesurfer.Curvature()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -4379,36 +4139,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4452,7 +4182,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_curvature_stats**",
+            "comment": "Wraps the executable command ``mris_curvature_stats``.",
             "argument": {
               "name": "freesurfer.CurvatureStats()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -4663,36 +4393,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -4721,7 +4421,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_convert**",
+            "comment": "Wraps the executable command ``mri_convert``.",
             "argument": {
               "name": "freesurfer.DICOMConvert()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -4915,36 +4615,6 @@
               }
             }
           ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
         }
       ]
     },
@@ -4960,7 +4630,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_em_register**",
+            "comment": "Wraps the executable command ``mri_em_register``.",
             "argument": {
               "name": "freesurfer.EMRegister()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -5141,36 +4811,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5199,7 +4839,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_edit_wm_with_aseg**",
+            "comment": "Wraps the executable command ``mri_edit_wm_with_aseg``.",
             "argument": {
               "name": "freesurfer.EditWMwithAseg()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -5335,36 +4975,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5393,7 +5003,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_euler_number**",
+            "comment": "Wraps the executable command ``mris_euler_number``.",
             "argument": {
               "name": "freesurfer.EulerNumber()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -5469,36 +5079,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5527,7 +5107,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_extract_main_component**",
+            "comment": "Wraps the executable command ``mris_extract_main_component``.",
             "argument": {
               "name": "freesurfer.ExtractMainComponent()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -5603,36 +5183,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5661,7 +5211,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_ms_fitparms**",
+            "comment": "Wraps the executable command ``mri_ms_fitparms``.",
             "argument": {
               "name": "freesurfer.FitMSParams()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -5812,36 +5362,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -5900,7 +5420,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_fix_topology**",
+            "comment": "Wraps the executable command ``mris_fix_topology``.",
             "argument": {
               "name": "freesurfer.FixTopology()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -6126,36 +5646,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -6184,7 +5674,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_fuse_segmentations**",
+            "comment": "Wraps the executable command ``mri_fuse_segmentations``.",
             "argument": {
               "name": "freesurfer.FuseSegmentations()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -6335,36 +5825,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -6393,7 +5853,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_glmfit**",
+            "comment": "Wraps the executable command ``mri_glmfit``.",
             "argument": {
               "name": "freesurfer.GLMFit()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -7264,36 +6724,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7562,7 +6992,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_jacobian**",
+            "comment": "Wraps the executable command ``mris_jacobian``.",
             "argument": {
               "name": "freesurfer.Jacobian()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -7668,36 +7098,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7726,7 +7126,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_label2annot**",
+            "comment": "Wraps the executable command ``mris_label2annot``.",
             "argument": {
               "name": "freesurfer.Label2Annot()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -7922,36 +7322,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -7980,7 +7350,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_label2label**",
+            "comment": "Wraps the executable command ``mri_label2label``.",
             "argument": {
               "name": "freesurfer.Label2Label()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -8206,36 +7576,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -8264,7 +7604,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_label2vol**",
+            "comment": "Wraps the executable command ``mri_label2vol``.",
             "argument": {
               "name": "freesurfer.Label2Vol()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -8610,36 +7950,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -8668,7 +7978,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_nu_correct.mni**",
+            "comment": "Wraps the executable command ``mri_nu_correct.mni``.",
             "argument": {
               "name": "freesurfer.MNIBiasCorrection()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -8879,36 +8189,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -8937,7 +8217,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mpr2mni305**",
+            "comment": "Wraps the executable command ``mpr2mni305``.",
             "argument": {
               "name": "freesurfer.MPRtoMNI305()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -9043,36 +8323,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -9116,7 +8366,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_convert**",
+            "comment": "Wraps the executable command ``mri_convert``.",
             "argument": {
               "name": "freesurfer.MRIConvert()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -10422,36 +9672,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -10472,6 +9692,560 @@
       "category": [
         "Nipype",
         "freesurfer",
+        "registration"
+      ],
+      "title": {
+        "name": "freesurfer.MRICoreg",
+        "web_url": "https://nipype.readthedocs.io/en/latest/interfaces/generated/interfaces.freesurfer/registration.html#mricoreg",
+        "code": [
+          {
+            "language": "Nipype",
+            "comment": "Wraps the executable command ``mri_coreg``.",
+            "argument": {
+              "name": "freesurfer.MRICoreg()",
+              "import": "import nipype.interfaces.freesurfer as freesurfer"
+            }
+          },
+          {
+            "language": "Docker",
+            "argument": {
+              "name": "Nipype, freesurfer"
+            }
+          }
+        ]
+      },
+      "ports": [
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "source_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "source_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "reference_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "reference_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": true,
+          "editable": true,
+          "name": "subject_id",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "subject_id"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "out_lta_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_lta_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "out_reg_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_reg_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "out_params_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_params_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "subjects_dir",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "subjects_dir"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "dof",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "dof"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "reference_mask",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "reference_mask"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "source_mask",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "source_mask"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "num_threads",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "num_threads"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "no_coord_dithering",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "no_coord_dithering"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "no_intensity_dithering",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "no_intensity_dithering"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "sep",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "sep"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "initial_translation",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "initial_translation"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "initial_rotation",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "initial_rotation"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "initial_scale",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "initial_scale"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "initial_shear",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "initial_shear"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "no_cras0",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "no_cras0"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "max_iters",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "max_iters"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ftol",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ftol"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "linmintol",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "linmintol"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "saturation_threshold",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "saturation_threshold"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "conform_reference",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "conform_reference"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "no_brute_force",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "no_brute_force"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "brute_force_limit",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "brute_force_limit"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "brute_force_samples",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "brute_force_samples"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "no_smooth",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "no_smooth"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "ref_fwhm",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "ref_fwhm"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "source_oob",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "source_oob"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "args",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "args"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "environ",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "environ"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "out_reg_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_reg_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "out_lta_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_lta_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "out_params_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "out_params_file"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "category": [
+        "Nipype",
+        "freesurfer",
         "utils"
       ],
       "title": {
@@ -10480,7 +10254,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_fill**",
+            "comment": "Wraps the executable command ``mri_fill``.",
             "argument": {
               "name": "freesurfer.MRIFill()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -10616,36 +10390,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -10689,7 +10433,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_mc**",
+            "comment": "Wraps the executable command ``mri_mc``.",
             "argument": {
               "name": "freesurfer.MRIMarchingCubes()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -10810,36 +10554,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -10868,7 +10582,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_pretess**",
+            "comment": "Wraps the executable command ``mri_pretess``.",
             "argument": {
               "name": "freesurfer.MRIPretess()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -11034,36 +10748,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -11092,7 +10776,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_preproc**",
+            "comment": "Wraps the executable command ``mris_preproc``.",
             "argument": {
               "name": "freesurfer.MRISPreproc()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -11423,36 +11107,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -11481,7 +11135,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_preproc**",
+            "comment": "Wraps the executable command ``mris_preproc``.",
             "argument": {
               "name": "freesurfer.MRISPreprocReconAll()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -11887,36 +11541,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -11945,7 +11569,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_tessellate**",
+            "comment": "Wraps the executable command ``mri_tessellate``.",
             "argument": {
               "name": "freesurfer.MRITessellate()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -12081,36 +11705,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -12139,7 +11733,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_ca_label**",
+            "comment": "Wraps the executable command ``mris_ca_label``.",
             "argument": {
               "name": "freesurfer.MRIsCALabel()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -12395,36 +11989,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -12453,7 +12017,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_calc**",
+            "comment": "Wraps the executable command ``mris_calc``.",
             "argument": {
               "name": "freesurfer.MRIsCalc()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -12604,36 +12168,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -12662,7 +12196,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_convert**",
+            "comment": "Wraps the executable command ``mris_convert``.",
             "argument": {
               "name": "freesurfer.MRIsCombine()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -12753,36 +12287,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -12811,7 +12315,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_convert**",
+            "comment": "Wraps the executable command ``mris_convert``.",
             "argument": {
               "name": "freesurfer.MRIsConvert()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -13172,36 +12676,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -13230,7 +12704,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_expand**",
+            "comment": "Wraps the executable command ``mris_expand``.",
             "argument": {
               "name": "freesurfer.MRIsExpand()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -13471,36 +12945,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -13529,7 +12973,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_inflate**",
+            "comment": "Wraps the executable command ``mris_inflate``.",
             "argument": {
               "name": "freesurfer.MRIsInflate()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -13650,36 +13094,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -13723,7 +13137,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_ms_LDA**",
+            "comment": "Wraps the executable command ``mri_ms_LDA``.",
             "argument": {
               "name": "freesurfer.MS_LDA()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -13919,36 +13333,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -13992,7 +13376,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **make_average_subject**",
+            "comment": "Wraps the executable command ``make_average_subject``.",
             "argument": {
               "name": "freesurfer.MakeAverageSubject()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -14083,36 +13467,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -14141,7 +13495,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_make_surfaces**",
+            "comment": "Wraps the executable command ``mris_make_surfaces``.",
             "argument": {
               "name": "freesurfer.MakeSurfaces()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -14502,36 +13856,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -14635,7 +13959,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_normalize**",
+            "comment": "Wraps the executable command ``mri_normalize``.",
             "argument": {
               "name": "freesurfer.Normalize()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -14786,36 +14110,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -14844,7 +14138,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_glmfit**",
+            "comment": "Wraps the executable command ``mri_glmfit``.",
             "argument": {
               "name": "freesurfer.OneSampleTTest()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -15715,36 +15009,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -16013,7 +15277,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mrisp_paint**",
+            "comment": "Wraps the executable command ``mrisp_paint``.",
             "argument": {
               "name": "freesurfer.Paint()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -16149,36 +15413,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -16207,7 +15441,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_anatomical_stats**",
+            "comment": "Wraps the executable command ``mris_anatomical_stats``.",
             "argument": {
               "name": "freesurfer.ParcellationStats()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -16613,36 +15847,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -16686,7 +15890,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_parse_sdcmdir**",
+            "comment": "Wraps the executable command ``mri_parse_sdcmdir``.",
             "argument": {
               "name": "freesurfer.ParseDICOMDir()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -16807,36 +16011,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -16865,7 +16039,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **recon-all**",
+            "comment": "Wraps the executable command ``recon-all``.",
             "argument": {
               "name": "freesurfer.ReconAll()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -16960,12 +16134,42 @@
           "output": false,
           "visible": false,
           "editable": true,
+          "name": "FLAIR_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "FLAIR_file"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
           "name": "use_T2",
           "code": [
             {
               "language": "Nipype",
               "argument": {
                 "name": "use_T2"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "use_FLAIR",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "use_FLAIR"
               }
             }
           ]
@@ -17571,36 +16775,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -18199,7 +17373,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_register**",
+            "comment": "Wraps the executable command ``mris_register``.",
             "argument": {
               "name": "freesurfer.Register()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -18350,36 +17524,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -18408,7 +17552,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **avi2talxfm**",
+            "comment": "Wraps the executable command ``avi2talxfm``.",
             "argument": {
               "name": "freesurfer.RegisterAVItoTalairach()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -18529,36 +17673,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -18602,7 +17716,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_relabel_hypointensities**",
+            "comment": "Wraps the executable command ``mri_relabel_hypointensities``.",
             "argument": {
               "name": "freesurfer.RelabelHypointensities()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -18738,36 +17852,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -18796,7 +17880,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_remove_intersection**",
+            "comment": "Wraps the executable command ``mris_remove_intersection``.",
             "argument": {
               "name": "freesurfer.RemoveIntersection()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -18887,36 +17971,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -18945,7 +17999,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_remove_neck**",
+            "comment": "Wraps the executable command ``mri_remove_neck``.",
             "argument": {
               "name": "freesurfer.RemoveNeck()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -19081,36 +18135,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -19139,7 +18163,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_convert**",
+            "comment": "Wraps the executable command ``mri_convert``.",
             "argument": {
               "name": "freesurfer.Resample()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -19245,36 +18269,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -19303,7 +18297,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_robust_register**",
+            "comment": "Wraps the executable command ``mri_robust_register``.",
             "argument": {
               "name": "freesurfer.RobustRegister()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -19799,36 +18793,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -19962,7 +18926,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_robust_template**",
+            "comment": "Wraps the executable command ``mri_robust_template``.",
             "argument": {
               "name": "freesurfer.RobustTemplate()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -20248,36 +19212,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -20336,7 +19270,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_vol2surf**",
+            "comment": "Wraps the executable command ``mri_vol2surf``.",
             "argument": {
               "name": "freesurfer.SampleToSurface()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -20922,36 +19856,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -21010,7 +19914,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_segstats**",
+            "comment": "Wraps the executable command ``mri_segstats``.",
             "argument": {
               "name": "freesurfer.SegStats()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -21671,36 +20575,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -21774,7 +20648,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_segstats**",
+            "comment": "Wraps the executable command ``mri_segstats``.",
             "argument": {
               "name": "freesurfer.SegStatsReconAll()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -22615,36 +21489,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -22718,7 +21562,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_cc**",
+            "comment": "Wraps the executable command ``mri_cc``.",
             "argument": {
               "name": "freesurfer.SegmentCC()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -22869,36 +21713,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -22942,7 +21756,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_segment**",
+            "comment": "Wraps the executable command ``mri_segment``.",
             "argument": {
               "name": "freesurfer.SegmentWM()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -23033,36 +21847,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -23091,7 +21875,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_volsmooth**",
+            "comment": "Wraps the executable command ``mris_volsmooth``.",
             "argument": {
               "name": "freesurfer.Smooth()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -23272,36 +22056,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -23330,7 +22084,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_smooth**",
+            "comment": "Wraps the executable command ``mris_smooth``.",
             "argument": {
               "name": "freesurfer.SmoothTessellation()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -23601,36 +22355,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -23659,7 +22383,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_sphere**",
+            "comment": "Wraps the executable command ``mris_sphere``.",
             "argument": {
               "name": "freesurfer.Sphere()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -23810,36 +22534,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -23868,7 +22562,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_spherical_average**",
+            "comment": "Wraps the executable command ``mris_spherical_average``.",
             "argument": {
               "name": "freesurfer.SphericalAverage()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -24079,36 +22773,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -24137,7 +22801,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_surf2vol**",
+            "comment": "Wraps the executable command ``mri_surf2vol``.",
             "argument": {
               "name": "freesurfer.Surface2VolTransform()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -24348,36 +23012,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -24421,7 +23055,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_surf2surf**",
+            "comment": "Wraps the executable command ``mri_surf2surf``.",
             "argument": {
               "name": "freesurfer.SurfaceSmooth()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -24602,36 +23236,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -24660,7 +23264,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **tksurfer**",
+            "comment": "Wraps the executable command ``tksurfer``.",
             "argument": {
               "name": "freesurfer.SurfaceSnapshots()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -25186,36 +23790,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -25244,7 +23818,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_surf2surf**",
+            "comment": "Wraps the executable command ``mri_surf2surf``.",
             "argument": {
               "name": "freesurfer.SurfaceTransform()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -25470,36 +24044,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -25528,7 +24072,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_synthesize**",
+            "comment": "Wraps the executable command ``mri_synthesize``.",
             "argument": {
               "name": "freesurfer.SynthesizeFLASH()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -25694,36 +24238,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -25752,7 +24266,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **talairach_avi**",
+            "comment": "Wraps the executable command ``talairach_avi``.",
             "argument": {
               "name": "freesurfer.TalairachAVI()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -25858,36 +24372,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -25946,7 +24430,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **tal_QC_AZS**",
+            "comment": "Wraps the executable command ``tal_QC_AZS``.",
             "argument": {
               "name": "freesurfer.TalairachQC()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -26022,36 +24506,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -26080,7 +24534,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **tkregister2**",
+            "comment": "Wraps the executable command ``tkregister2``.",
             "argument": {
               "name": "freesurfer.Tkregister2()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -26175,6 +24629,96 @@
           "output": false,
           "visible": false,
           "editable": true,
+          "name": "xfm",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "xfm"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "lta_in",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "lta_in"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "invert_lta_in",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "invert_lta_in"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "fsl_out",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "fsl_out"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "lta_out",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "lta_out"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
+          "name": "invert_lta_out",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "invert_lta_out"
+              }
+            }
+          ]
+        },
+        {
+          "input": true,
+          "output": false,
+          "visible": false,
+          "editable": true,
           "name": "subject_id",
           "code": [
             {
@@ -26250,36 +24794,6 @@
           "output": false,
           "visible": false,
           "editable": true,
-          "name": "xfm",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "xfm"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "fsl_out",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "fsl_out"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
           "name": "subjects_dir",
           "code": [
             {
@@ -26321,36 +24835,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -26379,6 +24863,21 @@
               }
             }
           ]
+        },
+        {
+          "input": false,
+          "output": true,
+          "visible": true,
+          "editable": false,
+          "name": "lta_file",
+          "code": [
+            {
+              "language": "Nipype",
+              "argument": {
+                "name": "lta_file"
+              }
+            }
+          ]
         }
       ]
     },
@@ -26394,7 +24893,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **unpacksdcmdir**",
+            "comment": "Wraps the executable command ``unpacksdcmdir``.",
             "argument": {
               "name": "freesurfer.UnpackSDICOMDir()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -26618,36 +25117,6 @@
               }
             }
           ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
         }
       ]
     },
@@ -26663,7 +25132,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mris_volmask**",
+            "comment": "Wraps the executable command ``mris_volmask``.",
             "argument": {
               "name": "freesurfer.VolumeMask()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -26919,36 +25388,6 @@
           ]
         },
         {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
-              }
-            }
-          ]
-        },
-        {
           "input": false,
           "output": true,
           "visible": true,
@@ -27007,7 +25446,7 @@
         "code": [
           {
             "language": "Nipype",
-            "comment": "Wraps command **mri_watershed**",
+            "comment": "Wraps the executable command ``mri_watershed``.",
             "argument": {
               "name": "freesurfer.WatershedSkullStrip()",
               "import": "import nipype.interfaces.freesurfer as freesurfer"
@@ -27138,36 +25577,6 @@
               "language": "Nipype",
               "argument": {
                 "name": "environ"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "terminal_output",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "terminal_output"
-              }
-            }
-          ]
-        },
-        {
-          "input": true,
-          "output": false,
-          "visible": false,
-          "editable": true,
-          "name": "ignore_exception",
-          "code": [
-            {
-              "language": "Nipype",
-              "argument": {
-                "name": "ignore_exception"
               }
             }
           ]
