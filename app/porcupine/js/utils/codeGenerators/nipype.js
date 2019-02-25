@@ -113,7 +113,7 @@ const itemToCode = node => {
   code += `${givenName} = pe.${nodeType}(interface = ${
     codeArgument.argument.name
   }, name='${givenName}'`;
-  if (!iteratorFields.length) {
+  if (iteratorFields.length) {
     code += `, iterfield = ['${iteratorFields.join(`', '`)}']`;
   }
   code += `)\r\n`;

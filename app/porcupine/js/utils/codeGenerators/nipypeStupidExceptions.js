@@ -75,7 +75,7 @@ export const codeForSelectFiles = node => {
   if (!iteratorFields.length) {
     code += ")\r\n";
   } else {
-    `, iterfield = ['${iteratorFields.join("\", \"")}'])\n`;
+    `, iterfield = ['${iteratorFields.join('", "')}'])\n`;
   }
   code += `)\r\n`;
   code += iterableCode(node);
@@ -166,14 +166,14 @@ export const codeForS3DataGrabber = node => {
   let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
   let givenName = node.name;
   code += `${givenName} = pe.${nodeType}(io.S3DataGrabber(`;
-  if (infields.length) code += `infields=["${infields.join("\", \"")}"]`;
+  if (infields.length) code += `infields=["${infields.join('", "')}"]`;
   if (infields.length && outfields.length) code += ", ";
-  if (outfields.length) code += `outfields=["${outfields.join("\", \"")}"]`;
+  if (outfields.length) code += `outfields=["${outfields.join('", "')}"]`;
   code += `), name = '${givenName}'`;
   if (!iteratorFields.length) {
     code += ")\r\n";
   } else {
-    `, iterfield = ['${iteratorFields.join("\", \"")}'])\n`;
+    `, iterfield = ['${iteratorFields.join('", "')}'])\n`;
   }
 
   code += iterableCode(node);
