@@ -11,15 +11,15 @@ ENV PATH=/usr/local/miniconda/bin:$PATH \
 
 # Installing precomputed python packages
 RUN conda install -y mkl=2017.0.1 mkl-service &&  \
-    conda install -y numpy=1.16.1 \
-                     scipy=1.2.1 \
-                     scikit-learn=0.20.2 \
-                     matplotlib=3.0.2 \
-                     pandas=0.24.1 \
-                     libxml2=2.9.4 \
-                     libxslt=1.1.29\
-                     traits=5.0.0 \
-                     boto=2.49.0
+    conda install -y numpy \
+                     scipy \
+                     scikit-learn \
+                     matplotlib \
+                     pandas \
+                     libxml2 \
+                     libxslt \
+                     traits \
+                     boto
 
 RUN chmod +x /usr/local/miniconda/bin/* && conda clean --all -y
 RUN echo 'export PATH=/usr/local/miniconda/bin:$PATH' >> /etc/profile
