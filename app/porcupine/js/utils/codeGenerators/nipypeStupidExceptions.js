@@ -33,20 +33,22 @@ export const codeForIdentityInterface = node => {
 
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
-  let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
+  // let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
+  let nodeType = "Node"; // #TODO condition on baing iterable
 
   const fieldNodes =
     node.parameters &&
     node.parameters
       .filter(parameter => parameter.input && parameter.output)
-      .map(parameter => parameter.code);
+      .map(parameter => parameter.name);
 
   let givenName = node.name;
-  code += `(utility.IdentityInterface(fields=['${fieldNodes.join(
-    ","
-  )}']), name='${givenName}'`;
-  if (!iteratorFields.length) {
-    code += `, iterfield = ['${iteratorFields.join(`', '`)}']`;
+  code += `${givenName} = pe.${nodeType}`;
+  code += `(utility.IdentityInterface(fields=["${fieldNodes.join(
+    '", "'
+  )}"]), name='${givenName}'`;
+  if (iteratorFields.length) {
+    code += `, iterfield = ['${iteratorFields.join("','")}']`;
   }
   code += `)\r\n`;
   code += iterableCode(node);
@@ -94,7 +96,7 @@ export const codeForMySQLSink = node => {
     node.parameters &&
     node.parameters
       .filter(parameter => parameter.input && parameter.output)
-      .map(parameter => parameter.code);
+      .map(parameter => parameter.name);
 
   let givenName = node.name;
   code += `(io.MySQLSink(fields=['${fieldNodes.join(
@@ -120,7 +122,7 @@ export const codeForSQLiteSink = node => {
     node.parameters &&
     node.parameters
       .filter(parameter => parameter.input && parameter.output)
-      .map(parameter => parameter.code);
+      .map(parameter => parameter.name);
 
   let givenName = node.name;
   code += `(utility.SQLiteSink(fields=['${fieldNodes.join(
