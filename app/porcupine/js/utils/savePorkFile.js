@@ -14,7 +14,7 @@ export async function savePorkFile(nodes, links, user, commit_message) {
   // #TODO hard-coded, for now
   const python_file = "GIRAFFE/code/workflow.py";
   const docker_file = "GIRAFFE/code/Dockerfile";
-  const docker_compose_file = "GIRAFFE/code/docker-compose";
+  const docker_compose_file = "GIRAFFE/code/docker-compose.yml";
   const empty_file_temp = "GIRAFFE/code/temp/.empty";
   const empty_file_output = "GIRAFFE/code/output/.empty";
 
@@ -22,11 +22,13 @@ export async function savePorkFile(nodes, links, user, commit_message) {
     [user.pork_file]: JSON.stringify(porkFile(nodes, links), null, 2),
     [python_file]: await nipypeCode(nodes, links),
     [docker_file]: await dockerCode(nodes),
-    [docker_compose_file]: await fetch(
+    [docker_compose_file]: await (await fetch(
       "/static/assets/misc/docker-compose.yml"
-    ),
-    [empty_file_temp]: await fetch("/static/assets/misc/.empty"),
-    [empty_file_output]: await fetch("/static/assets/misc/.empty")
+    )).text(),
+    [empty_file_temp]: await (await fetch("/static/assets/misc/.empty")).text(),
+    [empty_file_output]: await (await fetch(
+      "/static/assets/misc/.empty"
+    )).text()
   };
 
   const body = {
