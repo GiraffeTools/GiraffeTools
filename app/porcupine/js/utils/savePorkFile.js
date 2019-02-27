@@ -25,9 +25,11 @@ export async function savePorkFile(nodes, links, user, commit_message) {
     [docker_compose_file]: await (await fetch(
       "/static/assets/misc/docker-compose.yml"
     )).text(),
-    [empty_file_temp]: await (await fetch("/static/assets/misc/.empty")).text(),
+    [empty_file_temp]: await (await fetch(
+      "/static/assets/misc/empty.txt"
+    )).text(),
     [empty_file_output]: await (await fetch(
-      "/static/assets/misc/.empty"
+      "/static/assets/misc/empty.txt"
     )).text()
   };
 
