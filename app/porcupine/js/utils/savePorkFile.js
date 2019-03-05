@@ -89,6 +89,7 @@ const nodesToSaveDict = nodes =>
       iterator: parameter.isIterable || false
     }));
     return {
+      toolbox: node.toolbox,
       category: node.category,
       ports: ports,
       position: [node.x, node.y],

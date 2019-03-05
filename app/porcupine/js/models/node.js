@@ -92,9 +92,14 @@ class Node extends Model {
 }
 Node.modelName = "Node";
 Node.fields = {
-  name: attr(),
-  class: attr(),
   id: attr(),
+  // human readable name
+  name: attr(),
+  // function name
+  class: attr(),
+  // toolbox
+  toolbox: attr(),
+
   x: attr(),
   y: attr(),
   width: attr(),

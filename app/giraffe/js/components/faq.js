@@ -27,12 +27,14 @@ class Faq extends React.Component {
     return (
       <Fragment>
         <Banner title="FAQs" />
-        <ul style={[styles.faqQuestionList]}>
-          {questions &&
-            questions.map(question => (
-              <Question key={question.id} {...question} />
-            ))}
-        </ul>
+        <div className="container">
+          <ul style={[styles.faqQuestionList]}>
+            {questions &&
+              questions.map(question => (
+                <Question key={question.id} {...question} />
+              ))}
+          </ul>
+        </div>
         <TryOut />
         <Footer />
       </Fragment>

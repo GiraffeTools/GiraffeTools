@@ -27,15 +27,25 @@ async function loadingVersion1(json, setPercent) {
   json.nodes.forEach(node => {
     // This block is only for obtaining the colour:
 
+    let category;
+    let toolbox;
+    if (node.toolbox || node.category[0] !== "Nipype") {
+      category = node.category;
+      toolbox = node.toolbox || "Nipype";
+    } else {
+      toolbox = node.category[0];
+      category = node.category.splice(1);
+    }
+
     let currentNodes = nodeData.toolboxes.filter(
-      toolbox => toolbox.name == node.category[0]
+      currentToolbox => currentToolbox.name == toolbox
     )[0];
-    let category = node.category.splice(1);
     category.forEach(function(c) {
       currentNodes = currentNodes.categories[c];
     });
 
     const newNode = {
+      toolbox,
       id: node.id || v4(),
       name: node.title.name.replace(".", "_") || "",
       class: node.title.class || node.title.name,
@@ -46,6 +56,7 @@ async function loadingVersion1(json, setPercent) {
       code: node.title.code,
       category: category
     };
+
     newNode.parameters = node.ports.map(parameter => ({
       node: newNode.id,
       id: isUUID(parameter.id) ? parameter.id : v4(),
