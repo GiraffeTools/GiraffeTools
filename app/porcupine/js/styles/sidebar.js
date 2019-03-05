@@ -26,7 +26,6 @@ const styles = {
   panelGroup: {
     paddingLeft: "8px",
     paddingRight: "8px",
-    margin: "5px 0px 5px 0px",
     fontWeight: "bold"
   },
   logoSidebar: {

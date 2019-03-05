@@ -74,7 +74,14 @@ insertColours(sortedNodes, 0.0, 1.0);
 
 fs.writeFile(
   porcupinePath,
-  JSON.stringify(sortedNodes.categories.Nipype),
+  JSON.stringify({
+    toolboxes: [
+      {
+        ...sortedNodes.categories.Nipype,
+        name: "Nipype"
+      }
+    ]
+  }),
   "utf8",
   function(err) {
     if (err) {

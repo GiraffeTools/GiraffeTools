@@ -10,6 +10,7 @@ import {
 import ProgressBar from "react-progress-bar-plus";
 import { load as loadYaml } from "yaml-js";
 import "react-progress-bar-plus/lib/progress-bar.css";
+import to from "await-to-js";
 
 import ItemTypes from "./itemTypes";
 import GraphView from "./graphView";
@@ -163,7 +164,7 @@ class Canvas extends React.PureComponent {
     }
     const content = await porkData.json();
     try {
-      this.loadFromJson(content);
+      await this.loadFromJson(content);
       this.graphview.current.handleZoomToFit();
     } catch (error) {
       console.log("Cannot load Porcupine Config file:");
@@ -189,22 +190,21 @@ class Canvas extends React.PureComponent {
     }
   }
 
-  loadFromJson(json) {
+  async loadFromJson(json) {
     const { addNode, addLink, clearDatabase, updateNode } = this.props;
     this.setPercent(10); // Loading started!
     clearDatabase();
 
-    //pass by reference and fill them in the load functions
-    let nodes = [];
-    let links = [];
-    try {
-      loadPorkFile(json, nodes, links, this.setPercent);
-    } catch (err) {
+    const [error, response] = await to(loadPorkFile(json, this.setPercent));
+    if (error) {
       console.log(
         "Error reading Porcupine Config file! Either data is missing or format is incorrect"
       );
+      return;
+    } else {
       this.setPercent(-1);
     }
+    const { nodes, links } = response;
     try {
       let i = 0;
       nodes.forEach(node => {
@@ -223,6 +223,7 @@ class Canvas extends React.PureComponent {
         "Error while adding Link or Node to Canvas, Check Porcupine Config file "
       );
       console.log(error);
+      return;
     }
     this.setPercent(-1);
   }

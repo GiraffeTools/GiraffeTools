@@ -15,6 +15,7 @@ import {
   SET_MOUSE_STATE,
   CLEAR_DATABASE,
   TOGGLE_CODEEDITOR,
+  SET_SEARCH_TEXT,
   COPY_NODES,
   SET_ACTIVE_TAB,
   SET_USER,
@@ -23,7 +24,8 @@ import {
   SET_COMMIT,
   SET_PORK_FILE,
   OPEN_MODAL,
-  CLOSE_MODAL
+  CLOSE_MODAL,
+  TOGGLE_TOOLBOX
 } from "./actionTypes";
 import { UPDATE_AUTH } from "../../../giraffe/js/actions/actionTypes";
 
@@ -37,6 +39,7 @@ export const updateLoadingPercent = percent => ({
   percent
 });
 
+///// UI /////
 export const toggleSidebar = () => ({
   type: TOGGLE_SIDEBAR
 });
@@ -47,6 +50,18 @@ export const setActiveTab = tab => ({
   type: SET_ACTIVE_TAB,
   payload: {
     tab
+  }
+});
+export const setSearchText = text => ({
+  type: SET_SEARCH_TEXT,
+  payload: {
+    text
+  }
+});
+export const toggleToolbox = toolbox => ({
+  type: TOGGLE_TOOLBOX,
+  payload: {
+    toolbox
   }
 });
 
