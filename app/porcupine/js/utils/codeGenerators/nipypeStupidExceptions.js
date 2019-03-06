@@ -7,7 +7,8 @@ export const exceptionNodes = [
   "io.SelectFiles()",
   "io.MySQLSink()",
   "io.SQLiteSink()",
-  "io.S3DataGrabber()"
+  "io.S3DataGrabber()",
+  "io.DataGrabber()"
 ];
 
 export const exceptionCode = node => {
@@ -24,6 +25,8 @@ export const exceptionCode = node => {
     return codeForSQLiteSink(node);
   if (codeArgument.argument.name === "io.S3DataGrabber()")
     return codeForS3DataGrabber(node);
+  if (codeArgument.argument.name === "io.DataGrabber()")
+    return codeForDataGrabber(node);
   return "";
 };
 
@@ -168,6 +171,48 @@ export const codeForS3DataGrabber = node => {
   let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
   let givenName = node.name;
   code += `${givenName} = pe.${nodeType}(io.S3DataGrabber(`;
+  if (infields.length) code += `infields=["${infields.join('", "')}"]`;
+  if (infields.length && outfields.length) code += ", ";
+  if (outfields.length) code += `outfields=["${outfields.join('", "')}"]`;
+  code += `), name = '${givenName}'`;
+  if (!iteratorFields.length) {
+    code += ")\r\n";
+  } else {
+    `, iterfield = ['${iteratorFields.join('", "')}'])\n`;
+  }
+
+  code += iterableCode(node);
+  return code;
+};
+
+export const codeForDataGrabber = node => {
+  const standardPorts = [
+    "sort_filelist",
+    "template",
+    "base_directory",
+    "raise_on_empty",
+    "drop_blank_outputs",
+    "template_args"
+  ];
+
+  const infields = node.parameters
+    .filter(p => p.input)
+    .filter(p => !standardPorts.includes(p.name))
+    .map(p => p.name);
+
+  const outfields = node.parameters
+    .filter(p => p.output)
+    .filter(p => !standardPorts.includes(p.name))
+    .map(p => p.name);
+
+  const codeArgument =
+    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+
+  let code = `#${codeArgument.comment}\r\n`;
+  let iteratorFields = mapNodeFields(node);
+  let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
+  let givenName = node.name;
+  code += `${givenName} = pe.${nodeType}(io.DataGrabber(`;
   if (infields.length) code += `infields=["${infields.join('", "')}"]`;
   if (infields.length && outfields.length) code += ", ";
   if (outfields.length) code += `outfields=["${outfields.join('", "')}"]`;
