@@ -2,7 +2,7 @@ import os
 import dj_database_url
 
 
-# string comparison because environment vraiable is string
+# string comparison because environment variable is string
 DEBUG = os.getenv("DEBUG", "True") == "True"
 
 default_secret_key = "s9&vp1jq1yzr!1c_temg#v_)j-a)i5+@vbsekmi6pbjl4l1&u@"
@@ -239,3 +239,56 @@ CORS_ORIGIN_WHITELIST = ["localhost:3000",
                          "localhost:8000"] if DEBUG else ["giraffe.tools"]
 CSRF_TRUSTED_ORIGINS = ["localhost:3000",
                         "localhost:8000"] if DEBUG else ["giraffe.tools"]
+
+if DEBUG or os.getenv("LOGGING", "False") == "True":
+    LOGGING = {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "filters": {
+            "require_debug_false": {
+                "()": "django.utils.log.RequireDebugFalse",
+            },
+            "require_debug_true": {
+                "()": "django.utils.log.RequireDebugTrue",
+            },
+        },
+        "formatters": {
+            "django.server": {
+                "()": "django.utils.log.ServerFormatter",
+                "format": "[%(server_time)s] %(message)s",
+            }
+        },
+        "handlers": {
+            "console": {
+                "level": "INFO",
+                "filters": ["require_debug_true"],
+                "class": "logging.StreamHandler",
+            },
+            "console_debug_false": {
+                "level": "ERROR",
+                "filters": ["require_debug_false"],
+                "class": "logging.StreamHandler",
+            },
+            "django.server": {
+                "level": "INFO",
+                "class": "logging.StreamHandler",
+                "formatter": "django.server",
+            },
+            "mail_admins": {
+                "level": "ERROR",
+                "filters": ["require_debug_false"],
+                "class": "django.utils.log.AdminEmailHandler"
+            }
+        },
+        "loggers": {
+            "django": {
+                "handlers": ["console", "console_debug_false", "mail_admins"],
+                "level": "INFO",
+            },
+            "django.server": {
+                "handlers": ["django.server"],
+                "level": "INFO",
+                "propagate": False,
+            }
+        }
+    }
