@@ -40,20 +40,25 @@ async function loadingVersion1(json, setPercent) {
     let currentNodes = nodeData.toolboxes.filter(
       currentToolbox => currentToolbox.name == toolbox
     )[0];
-    category.forEach(function(c) {
-      currentNodes = currentNodes.categories[c];
+    category.forEach(c => {
+      currentNodes = currentNodes.categories.filter(node => node.name == c)[0];
     });
-
     const newNode = {
       toolbox,
       id: node.id || v4(),
-      name: node.title.name.replace(".", "_") || "",
-      class: node.title.class || node.title.name,
+      name:
+        (node.title && node.title.name.replace(".", "_")) ||
+        (node.name && node.name.replace(".", "_")) ||
+        "",
+      class:
+        (node.title && (node.title.class || node.title.name)) ||
+        node.class ||
+        node.name,
       x: node.position[0],
       y: node.position[1],
       colour: (currentNodes && currentNodes.colour) || "#BBB",
-      web_url: node.title.web_url || "",
-      code: node.title.code,
+      web_url: (node.title && node.title.web_url) || node.web_url || "",
+      code: (node.title && node.title.code) || node.code,
       category: category
     };
 

@@ -33,7 +33,7 @@ def example_repos(request):
 
 def nodes(request):
 
-    with open("staticfiles/assets/nipype.json") as f:
+    with open("staticfiles/assets/toolboxes.json") as f:
         nodes = json.load(f)
     return HttpResponse(json.dumps(nodes), content_type="application/json")
 

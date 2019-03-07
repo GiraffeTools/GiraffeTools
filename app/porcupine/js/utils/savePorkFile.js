@@ -1,5 +1,4 @@
 import { v4 } from "uuid";
-import nodeData from "../../static/assets/nipype.json";
 import { load as loadYaml } from "yaml-js";
 import { isUUID } from "../utils";
 import { getCsrfToken } from "../../../giraffe/js/utils/auth";
@@ -90,14 +89,12 @@ const nodesToSaveDict = nodes =>
     }));
     return {
       toolbox: node.toolbox,
+      name: node.name,
+      class: node.class,
       category: node.category,
       ports: ports,
       position: [node.x, node.y],
-      title: {
-        code: node.code,
-        name: node.name,
-        class: node.class,
-        web_url: node.web_url
-      }
+      code: node.code,
+      web_url: node.web_url
     };
   });

@@ -14,7 +14,7 @@ const boxSource = {
   // 	const dropResult = monitor.getDropResult();
   //
   // 	if (dropResult) {
-  // 		alert(`You dropped ${item.category.title.name} into ${dropResult.name}!`);
+  // 		alert(`You dropped ${item.category.name} into ${dropResult.name}!`);
   // 	}
   // },
 };

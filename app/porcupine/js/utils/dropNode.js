@@ -9,8 +9,8 @@ export const drop = (item, offset) => {
   const zoom = 1;
 
   const node = item.element_type;
-  const name = node.title.name;
-  const code = node.title.code;
+  const name = node.name;
+  const code = node.code;
   node.parameters ? node.parameters : {};
   node.parameters = node.parameters.map(port => {
     // #TODO link to a proper default value
@@ -30,7 +30,7 @@ export const drop = (item, offset) => {
     width: name.length * 12,
     colour: node.colour,
     parameters: node.parameters,
-    web_url: node.title.web_url || "",
+    web_url: node.web_url || "",
     code: code || ""
   };
 

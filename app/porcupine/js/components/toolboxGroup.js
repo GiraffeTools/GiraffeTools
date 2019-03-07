@@ -18,11 +18,13 @@ const ToolboxGroup = ({ toolbox, toggleToolbox, show }) => (
       {show &&
         toolbox &&
         toolbox.categories &&
-        Object.keys(toolbox.categories).map(category => (
+        toolbox.categories.map(category => (
           <PaneGroup
-            key={category}
-            category={category}
-            nodes={toolbox.categories[category]}
+            key={category.name}
+            name={category.name}
+            subcategories={category.categories}
+            nodes={category.nodes}
+            colour={category.colour}
           />
         ))}
     </div>

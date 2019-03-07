@@ -45,9 +45,9 @@ const boxTarget = {
         const contentPosition = monitor.getSourceClientOffset();
         const { addNode, updateNode } = props;
         const templateNode = item.category;
-        const name = templateNode.title.name.replace(".", "_");
-        const className = templateNode.title.class || templateNode.title.name;
-        const code = templateNode.title && templateNode.title.code;
+        const name = templateNode.name.replace(".", "_");
+        const className = templateNode.name;
+        const code = templateNode.code;
         const parameters =
           templateNode.ports &&
           templateNode.ports.map(parameter => ({
@@ -77,7 +77,7 @@ const boxTarget = {
           y: (contentPosition.y - transform.y) / zoom,
           colour: templateNode.colour,
           parameters,
-          web_url: templateNode.title.web_url || "",
+          web_url: templateNode.web_url || "",
           code: code || "",
           category: templateNode.category
         };

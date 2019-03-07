@@ -1,22 +1,11 @@
 import React from "react";
 import Radium from "radium";
 
-import NestedPaneGroup from "./nestedPaneGroup";
 import PaneHeader from "./paneHeader";
 import DraggablePaneElement from "../draggables/draggablePaneElement";
 import styles from "../styles/paneGroup";
 import headerStyles from "../styles/paneHeader";
-
-const PaneElements = ({ nodes, colour }) =>
-  Object.keys(nodes).map(node => {
-    const name = nodes[node].title.name.toString();
-    nodes[node].colour = colour;
-    return (
-      <DraggablePaneElement key={name} category={nodes[node]} id={name}>
-        {name}
-      </DraggablePaneElement>
-    );
-  });
+import NestedPaneGroup from "./nestedPaneGroup";
 
 class PaneGroup extends React.Component {
   constructor(props) {
@@ -32,7 +21,7 @@ class PaneGroup extends React.Component {
   }
 
   render() {
-    const { nodes, category } = this.props;
+    const { nodes, subcategories, colour, name } = this.props;
     const { active } = this.state;
 
     return (
@@ -42,12 +31,12 @@ class PaneGroup extends React.Component {
             className="badge" //bootstrap badge class
             style={[
               headerStyles.sidebarBadge,
-              { backgroundColor: nodes.colour }
+              { backgroundColor: colour || "#BBB" }
             ]}
           >
             {" "}
           </span>
-          {category}
+          {name}
           <span style={[headerStyles.sidebarDropdown]}>{">"}</span>
         </div>
         <div
@@ -58,13 +47,18 @@ class PaneGroup extends React.Component {
         >
           <div aria-multiselectable="true">
             {active &&
-              nodes.categories && (
-                <NestedPaneGroup categories={nodes.categories} />
-              )}
+              subcategories && <NestedPaneGroup categories={subcategories} />}
             {active &&
-              nodes.nodes && (
-                <PaneElements nodes={nodes.nodes} colour={nodes.colour} />
-              )}
+              nodes &&
+              nodes.map(node => {
+                const { name } = node;
+                node.colour = colour;
+                return (
+                  <DraggablePaneElement key={name} category={node} id={name}>
+                    {name}
+                  </DraggablePaneElement>
+                );
+              })}
           </div>
         </div>
       </div>
