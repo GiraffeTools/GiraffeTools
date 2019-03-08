@@ -7,33 +7,36 @@ import styles from "../styles/searchBar.js";
 
 function searchAPI(text, toolboxes) {
   const found = toolboxes.map(toolbox => {
-    const matches = {};
-    const getMatches = (nodes, matches) => {
-      if (nodes.categories) {
-        matches.categories = {};
-        Object.keys(nodes.categories).map(category => {
-          matches.categories[category] = {};
-          getMatches(nodes.categories[category], matches.categories[category]);
-          if (!Object.keys(matches.categories[category]).length) {
-            delete matches.categories[category];
+    const getMatches = category => {
+      const matches = {
+        colour: category.colour,
+        name: category.name
+      };
+      const categories = [];
+      if (category.categories) {
+        category.categories.map(subcategory => {
+          const match = getMatches(subcategory);
+          if (match.categories || match.nodes) {
+            categories.push(match);
           }
         });
-        if (!Object.keys(matches.categories).length) {
-          delete matches.categories;
-        }
       }
-      nodes.nodes &&
-        Object.keys(nodes.nodes).map(node => {
-          if (node.toLowerCase().includes(text)) {
-            if (!matches.nodes) matches.nodes = {};
-            matches.nodes[node] = nodes.nodes[node];
+
+      const nodes = [];
+      category.nodes &&
+        category.nodes.map(node => {
+          if (node.name.toLowerCase().includes(text)) {
+            nodes.push(node);
           }
         });
-      if (Object.keys(matches).length) {
-        matches.colour = nodes.colour;
-      }
+
+      if (categories.length) matches.categories = categories;
+      if (nodes.length) matches.nodes = nodes;
+
+      return matches;
     };
-    getMatches(toolbox, matches);
+
+    const matches = getMatches(toolbox);
     return { ...matches, name: toolbox.name };
   });
   return found;

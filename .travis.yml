@@ -7,12 +7,7 @@ services:
 env:
   # Rather than specifying different environment variables, this specifies
   # different environments as a whole
-  - PYTHONPATH="$TRAVIS_BUILD_DIR/app/"
-  - POSTGRES_DB="travis_ci"
-  - POSTGRES_HOST="localhost"
-  - POSTGRES_PORT=""
-  - POSTGRES_USER="postgres"
-  - POSTGRES_PASSWORD=""
+  - PYTHONPATH=$TRAVIS_BUILD_DIR/app/ POSTGRES_DB=travis_ci POSTGRES_HOST=localhost POSTGRES_PORT="" POSTGRES_USER=postgres POSTGRES_PASSWORD=""
 before_install:
   # chnge to 'test' soon
   # - export MODE=test
