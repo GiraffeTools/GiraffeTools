@@ -5,41 +5,38 @@ import { ClipLoader } from "react-spinners";
 
 import styles from "../styles/searchBar.js";
 
-function searchAPI(text, toolboxes) {
-  const found = toolboxes.map(toolbox => {
-    const getMatches = category => {
-      const matches = {
-        colour: category.colour,
-        name: category.name
-      };
-      const categories = [];
-      if (category.categories) {
-        category.categories.map(subcategory => {
-          const match = getMatches(subcategory);
-          if (match.categories || match.nodes) {
-            categories.push(match);
-          }
-        });
+const getMatches = category => {
+  const matches = {
+    colour: category.colour,
+    name: category.name
+  };
+  const categories = [];
+  if (category.categories) {
+    category.categories.map(subcategory => {
+      const match = getMatches(subcategory);
+      if (match.categories || match.nodes) {
+        categories.push(match);
       }
+    });
+  }
+  if (categories.length) matches.categories = categories;
 
-      const nodes = [];
-      category.nodes &&
-        category.nodes.map(node => {
-          if (node.name.toLowerCase().includes(text)) {
-            nodes.push(node);
-          }
-        });
+  const nodes = [];
+  category.nodes &&
+    category.nodes.map(node => {
+      if (node.name.toLowerCase().includes(text)) {
+        nodes.push(node);
+      }
+    });
+  if (nodes.length) matches.nodes = nodes;
+  return matches;
+};
 
-      if (categories.length) matches.categories = categories;
-      if (nodes.length) matches.nodes = nodes;
-
-      return matches;
-    };
-
-    const matches = getMatches(toolbox);
-    return { ...matches, name: toolbox.name };
-  });
-  return found;
+function searchAPI(text, toolboxes) {
+  return toolboxes.map(toolbox => ({
+    ...getMatches(toolbox),
+    name: toolbox.name
+  }));
 }
 
 // const searchAPI = text => fetch("/search?text=" + encodeURIComponent(text));
