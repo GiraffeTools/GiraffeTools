@@ -64,7 +64,8 @@ export const codeForSelectFiles = node => {
 
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
-  let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
+  // let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
+  let nodeType = "Node"; // #TODO condition on baing iterable
   let givenName = node.name;
   code += `${givenName} = pe.${nodeType}`;
 

@@ -4,12 +4,8 @@ const LANGUAGE = "Nipype";
 
 export const mapNodeFields = node => {
   const iteratorFields = node.parameters
-    .filter(parameter => {
-      return parameter.isIterable && parameter;
-    })
-    .map(parameter => {
-      return parameter.name;
-    });
+    .filter(parameter => parameter.isIterable)
+    .map(parameter => parameter.name);
   return iteratorFields;
 };
 
