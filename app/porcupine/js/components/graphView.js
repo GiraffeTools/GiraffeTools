@@ -3,7 +3,8 @@ import { StyleRoot } from "radium";
 import * as d3 from "d3";
 
 import CustomDragLayer from "../draggables/customDragLayer";
-import Menu from "../containers/menu";
+import ZoomMenu from "./menuSlider";
+import Toolbar from "../containers/toolbar";
 import Links from "./links";
 import Nodes from "./nodes";
 import styles from "../styles/graphView";
@@ -209,6 +210,10 @@ class GraphView extends React.Component {
     return (
       <StyleRoot>
         <div style={[styles.viewWrapper]} ref={el => (this.viewWrapper = el)}>
+          <Toolbar
+            zoomToFit={this.handleZoomToFit}
+            deleteSelection={deleteSelection}
+          />
           <svg height="100%" width="100%">
             {this.renderDefs()}
             <g className="view" ref={el => (this.view = el)}>
@@ -220,13 +225,11 @@ class GraphView extends React.Component {
               </g>
             </g>
           </svg>
-          <Menu
+          <ZoomMenu
             minZoom={defaults.minZoom}
             maxZoom={defaults.maxZoom}
             zoomLevel={this.state.viewTransform.k}
-            zoomToFit={this.handleZoomToFit}
             modifyZoom={this.modifyZoom}
-            deleteSelection={deleteSelection}
           />
         </div>
       </StyleRoot>
