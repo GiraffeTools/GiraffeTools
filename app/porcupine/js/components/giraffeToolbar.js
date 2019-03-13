@@ -3,18 +3,19 @@ import Radium from "radium";
 import Toolbar from "./toolbar";
 import { v4 } from "uuid";
 
-import {
-  FaExpand,
-  FaTrashAlt,
-  FaCopy,
-  FaCut,
-  FaPaste,
-  FaSave,
-  FaRegFolderOpen,
-  FaUndo,
-  FaRedo,
-  FaRegFile
-} from "react-icons/fa";
+import styles from "../styles/toolbarItem"
+// import {
+//   FaExpand,
+//   FaTrashAlt,
+//   FaCopy,
+//   FaCut,
+//   FaPaste,
+//   FaSave,
+//   FaRegFolderOpen,
+//   FaUndo,
+//   FaRedo,
+//   FaRegFile
+// } from "react-icons/fa";
 class GiraffeToolbar extends React.Component {
   constructor(props) {
     super(props);
@@ -59,85 +60,77 @@ class GiraffeToolbar extends React.Component {
         text: "File",
         items: [
           {
-            text: (
-              <span>
-                {" "}
-                <FaRegFile /> New{" "}
-              </span>
-            ),
+            text: <span> <i className="far fa-file" />New</span>,
             callback: clearDatabase
           },
-          {
-            text: (
-              <span>
-                {" "}
-                <FaRegFolderOpen /> Open{" "}
-              </span>
-            )
-            // callback: this.open
-          }
+          // {
+          //   text: (
+          //     <span>
+          //       <FaRegFolderOpen /> Open
+          //     </span>
+          //   )
+          //   // callback: this.open
+          // }
         ]
       },
       {
         text: "Edit",
         items: [
+      //     {
+      //       text: (
+      //         <span>
+      //           <FaUndo /> Undo
+      //         </span>
+      //       )
+      //       // callback: this.undo
+      //     },
+      //     {
+      //       text: (
+      //         <span>
+      //           <FaRedo /> Redo
+      //         </span>
+      //       )
+      //       // callback: this.redo
+      //     },
           {
-            text: (
-              <span>
-                {" "}
-                <FaUndo /> Undo{" "}
-              </span>
-            )
-            // callback: this.undo
-          },
-          {
-            text: (
-              <span>
-                {" "}
-                <FaRedo /> Redo{" "}
-              </span>
-            )
-            // callback: this.redo
-          },
-          {
-            text: (
-              <span>
-                {" "}
-                <FaTrashAlt /> Delete{" "}
-              </span>
-            ),
-            callback: deleteSelection
-          },
-          {
-            text: (
-              <span>
-                {" "}
-                <FaCopy /> Copy{" "}
-              </span>
-            ),
+            text: <span><i className="far fa-copy" styles={[]}/>Copy</span>,
+            // text: (
+            //   <span>
+            //     <FaCopy /> Copy
+            //   </span>
+            // )
             callback: () => copyItems(selection.nodes)
           },
           {
-            text: (
-              <span>
-                {" "}
-                <FaPaste /> Paste{" "}
-              </span>
-            ),
+            text: <span><i className="fas fa-paste"/>Paste</span>,
+            // text: (
+            //   <span>
+            //     <FaPaste /> Paste
+            //   </span>
+            // )
             callback: this.pasteNodes
-          }
+          },
+          {
+            text: <span><i className="far fa-trash-alt"/>Delete</span>,
+            // text: (
+            //   <span>
+            //     <FaTrashAlt /> Delete
+            //   </span>
+            // )
+            callback: deleteSelection
+          },
         ]
       },
       {
         text: "View",
         items: [
           {
-            text: (
-              <span>
-                {" "}
-                <FaExpand /> Zoom to fit{" "}
-              </span>
-            ),
+            text: <span><i className="fas fa-expand"/>Zoom to fit</span>,
+            // text: (
+            //   <span>
+            //     <FaExpand />
+            //   </span>
+            // ),
             callback: zoomToFit
           }
         ]

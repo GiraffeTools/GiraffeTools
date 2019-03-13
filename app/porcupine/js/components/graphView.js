@@ -4,9 +4,9 @@ import * as d3 from "d3";
 
 import CustomDragLayer from "../draggables/customDragLayer";
 import ZoomMenu from "./menuSlider";
-import Toolbar from "../containers/toolbar";
 import Links from "./links";
 import Nodes from "./nodes";
+import Toolbar from "../containers/toolbar";
 import styles from "../styles/graphView";
 
 const defaults = {
@@ -229,6 +229,7 @@ class GraphView extends React.Component {
             minZoom={defaults.minZoom}
             maxZoom={defaults.maxZoom}
             zoomLevel={this.state.viewTransform.k}
+            zoomToFit={this.handleZoomToFit}
             modifyZoom={this.modifyZoom}
           />
         </div>

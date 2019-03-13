@@ -223,16 +223,12 @@ $hamburger-spacing:8px;
     color:var(--text-hover);
     text-decoration: none;
     font-weight: 200;
-}
-/* Change the link color to #111 (black) on hover */
-.minimalist-toolbar> ul> li a:hover {
     background-color: #111;
-    cursor:default;
+    cursor:pointer;
     clear:both
 }
 
 .minimalist-toolbar-brand{
-    font-family: "HelveticaNeue", "Helvetica Neue";
     color:var(--text-hover);
     font-weight: 100;
     background: transparent;
@@ -248,7 +244,6 @@ $hamburger-spacing:8px;
 
 .minimalist-toolbar> ul> li .brand a:hover{
   background: transparent;
-
 }
 
 .minimalist-toolbar-brand .logo{
