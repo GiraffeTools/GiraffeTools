@@ -4,9 +4,11 @@ const styles = {
     border: "solid 1px lightgray",
     padding: "6px",
     borderRadius: "2px",
-    marginRight: "1rem",
-    marginTop: "20px",
-    position: "relative"
+    position: "absolute",
+    alignItems: "center",
+    display: "flex",
+    left: "40%",
+    top: "5%"
   },
   zoomToFit: {
     backgroundColor: "white",

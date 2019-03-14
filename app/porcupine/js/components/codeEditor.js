@@ -22,15 +22,16 @@ const CodeEditor = props => {
     <StyleRoot
       style={[
         styles.codeWindow,
-        showCodeEditor && styles.codeWindow.closed,
+        !showCodeEditor && styles.codeWindow.closed,
         showSidebar && styles.codeWindow.withSidebar
       ]}
     >
       <div>
         <div
           style={[styles.codeButton]}
+          // #TODO replace this with react-icons/fa
           className={
-            "fas " + (showCodeEditor ? "fa-angle-up" : "fa-angle-down")
+            "fas " + (showCodeEditor ? "fa-angle-down" : "fa-angle-up")
           }
           onClick={() => toggleCodeEditor()}
         />
