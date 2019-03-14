@@ -78,10 +78,8 @@ export const codeForSelectFiles = node => {
       .map(parameter => `'${parameter.name}':${parameter.value}`);
 
   code += `(io.SelectFiles(templates={${templateDictionary.join()}}), name='${givenName}'`;
-  if (!iteratorFields.length) {
-    code += ")\r\n";
-  } else {
-    code += `, iterfield = ['${iteratorFields.join('", "')}'])`;
+  if (iteratorFields.length) {
+    code += `, iterfield = ['${iteratorFields.join('", "')}']`;
   }
   code += `)\r\n`;
   code += iterableCode(node);
