@@ -28,6 +28,11 @@ const styles = {
       background: root.mainColor,
       color: root.textHover
     }
+  },
+  icon: {
+    height: "1em",
+    width: "1em",
+    margin: "0rem 0.5rem 0rem 0.1rem"
   }
 };
 export default styles;

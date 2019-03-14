@@ -3,7 +3,7 @@ import Radium from "radium";
 import Toolbar from "./toolbar";
 import { v4 } from "uuid";
 
-import styles from "../styles/toolbarItem"
+import styles from "../styles/toolbarItem";
 // import {
 //   FaExpand,
 //   FaTrashAlt,
@@ -11,7 +11,7 @@ import styles from "../styles/toolbarItem"
 //   FaCut,
 //   FaPaste,
 //   FaSave,
-//   FaRegFolderOpen,
+// FaRegFile,
 //   FaUndo,
 //   FaRedo,
 //   FaRegFile
@@ -60,13 +60,19 @@ class GiraffeToolbar extends React.Component {
         text: "File",
         items: [
           {
-            text: <span> <i className="far fa-file" />New</span>,
+            text: (
+              <span>
+                {" "}
+                <i className="far fa-file" style={styles.icon} />
+                New
+              </span>
+            ),
             callback: clearDatabase
-          },
+          }
           // {
           //   text: (
           //     <span>
-          //       <FaRegFolderOpen /> Open
+          //       <FaRegFile /> Open
           //     </span>
           //   )
           //   // callback: this.open
@@ -76,24 +82,29 @@ class GiraffeToolbar extends React.Component {
       {
         text: "Edit",
         items: [
-      //     {
-      //       text: (
-      //         <span>
-      //           <FaUndo /> Undo
-      //         </span>
-      //       )
-      //       // callback: this.undo
-      //     },
-      //     {
-      //       text: (
-      //         <span>
-      //           <FaRedo /> Redo
-      //         </span>
-      //       )
-      //       // callback: this.redo
-      //     },
+          //     {
+          //       text: (
+          //         <span>
+          //           <FaUndo /> Undo
+          //         </span>
+          //       )
+          //       // callback: this.undo
+          //     },
+          //     {
+          //       text: (
+          //         <span>
+          //           <FaRedo /> Redo
+          //         </span>
+          //       )
+          //       // callback: this.redo
+          //     },
           {
-            text: <span><i className="far fa-copy" styles={[]}/>Copy</span>,
+            text: (
+              <span>
+                <i className="far fa-copy" style={styles.icon} />
+                Copy
+              </span>
+            ),
             // text: (
             //   <span>
             //     <FaCopy /> Copy
@@ -102,7 +113,12 @@ class GiraffeToolbar extends React.Component {
             callback: () => copyItems(selection.nodes)
           },
           {
-            text: <span><i className="fas fa-paste"/>Paste</span>,
+            text: (
+              <span>
+                <i className="fas fa-paste" style={styles.icon} />
+                Paste
+              </span>
+            ),
             // text: (
             //   <span>
             //     <FaPaste /> Paste
@@ -111,21 +127,31 @@ class GiraffeToolbar extends React.Component {
             callback: this.pasteNodes
           },
           {
-            text: <span><i className="far fa-trash-alt"/>Delete</span>,
+            text: (
+              <span>
+                <i className="far fa-trash-alt" style={styles.icon} />
+                Delete
+              </span>
+            ),
             // text: (
             //   <span>
             //     <FaTrashAlt /> Delete
             //   </span>
             // )
             callback: deleteSelection
-          },
+          }
         ]
       },
       {
         text: "View",
         items: [
           {
-            text: <span><i className="fas fa-expand"/>Zoom to fit</span>,
+            text: (
+              <span>
+                <i className="fas fa-expand" style={styles.icon} />
+                Zoom to fit
+              </span>
+            ),
             // text: (
             //   <span>
             //     <FaExpand />

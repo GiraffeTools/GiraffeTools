@@ -8,7 +8,7 @@ const styles = {
     alignItems: "center",
     display: "flex",
     left: "40%",
-    top: "5%",
+    top: "5%"
   },
   zoomToFit: {
     backgroundColor: "white",

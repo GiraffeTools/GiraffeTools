@@ -37,7 +37,7 @@ export const codeForIdentityInterface = node => {
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
   // let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
-  let nodeType = "Node"; // #TODO condition on baing iterable
+  let nodeType = "Node"; // #TODO condition on being iterable
 
   const fieldNodes =
     node.parameters &&
@@ -64,7 +64,8 @@ export const codeForSelectFiles = node => {
 
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
-  let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
+  // let nodeType = iteratorFields.length ? "MapNode" : "Node"; // #TODO condition on baing iterable
+  let nodeType = "Node"; // #TODO condition on being iterable
   let givenName = node.name;
   code += `${givenName} = pe.${nodeType}`;
 
@@ -80,7 +81,7 @@ export const codeForSelectFiles = node => {
   if (!iteratorFields.length) {
     code += ")\r\n";
   } else {
-    `, iterfield = ['${iteratorFields.join('", "')}'])\n`;
+    code += `, iterfield = ['${iteratorFields.join('", "')}'])`;
   }
   code += `)\r\n`;
   code += iterableCode(node);
