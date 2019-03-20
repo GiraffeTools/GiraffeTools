@@ -7,7 +7,6 @@ env:
     #environment variables for postgresql
     - PGHOST=localhost
     - PGPORT=5433
-    - PGDATABASE=travis_ci
     - PGUSER=postgres
     - PGPASSWORD=giraffe
     #environment variables for application
