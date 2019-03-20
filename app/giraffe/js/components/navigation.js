@@ -53,8 +53,10 @@ class Navigation extends React.Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link"
-                href="https://giraffetools.github.io/Documentation">
+              <a
+                className="nav-link"
+                href="https://giraffetools.github.io/Documentation"
+              >
                 <h3>Documentation</h3>
               </a>
             </li>

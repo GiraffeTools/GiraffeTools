@@ -4,37 +4,36 @@ python:
   - 3.6
 env:
   global:
-    #environment variables for postgresql
+    # environment variables for postgresql
     - PGHOST=localhost
     - PGPORT=5433
     - PGUSER=postgres
     - PGPASSWORD=giraffe
-    #environment variables for application
+    # environment variables for application
     - POSTGRES_HOST=localhost
     - POSTGRES_PORT=5433
     - POSTGRES_DB=travis_ci
     - POSTGRES_USER=postgres
     - POSTGRES_PASSWORD=giraffe
-    #app settings
+    # app settings
     - PYTHONPATH=$TRAVIS_BUILD_DIR/app/
     #TODO change MODE to 'test'
     - MODE=development
   matrix:
-    #indicate different builds here
+    # indicate different builds here
 before_install:
+  # make sure postgres is initialised
   - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
   - sudo service postgresql restart
   - sleep 1
-  # - export MODE=test
-  - export MODE=development
-  - mv .env.sample .env
-  - source ./bin/init-environment.bash
 install:
+  - source ./bin/init-environment.bash
   - pip install -r requirements/test.txt
   - npm install
 before_script:
   - psql -c 'create database travis_ci;' -U postgres --no-password
   - bash ./bin/init-node.bash
+  - bash ./bin/compile_sass.bash
   - bash ./bin/init-django.bash
 script:
   - bash ./bin/run-tests.bash

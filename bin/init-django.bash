@@ -1,9 +1,10 @@
 #!/bin/bash
 
-cd app || exit
 if [ "$MODE" = "production" ]; then
-  python manage.py compilescss
+  bash ./compile_sass.bash
 fi
+
+cd app || exit
 python manage.py migrate
 python manage.py collectstatic --noinput -i other
 cd .. || exit
