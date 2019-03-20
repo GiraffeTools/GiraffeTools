@@ -1,7 +1,7 @@
 sudo: false
 language: python
 python:
-  - "3.6"
+  - 3.7
 env:
   global:
     #environment variables for postgresql
@@ -16,12 +16,16 @@ env:
     - POSTGRES_DB=travis_ci
     - POSTGRES_USER=postgres
     - POSTGRES_PASSWORD=giraffe
-    #python dir
+    #app settings
     - PYTHONPATH=$TRAVIS_BUILD_DIR/app/
+    #TODO change MODE to 'test'
+    - MODE=development
   matrix:
     #indicate different builds here
 before_install:
-  # chnge to 'test' soon
+  - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
+  - sudo service postgresql restart
+  - sleep 1
   # - export MODE=test
   - export MODE=development
   - mv .env.sample .env
