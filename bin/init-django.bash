@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$MODE" = "production" ]; then
-  bash ./compile_sass.bash
+  bash ./bin/compile_sass.bash
 fi
 
 cd app || exit
