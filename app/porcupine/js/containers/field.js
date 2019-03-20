@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import Field from "../components/field";
+import Field from "../components/parameters/field";
 import { deleteParameter, updateParameter } from "../actions";
 import { selectedNode } from "../selectors/selectors";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import PaneElement from "../components/paneElement";
+import PaneElement from "../components/sidebar/paneElement";
 
 const styles = {
   // transform: 'rotate(-2deg)',

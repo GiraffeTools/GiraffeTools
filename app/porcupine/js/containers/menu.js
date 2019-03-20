@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import Menu from "../components/menu";
+import Menu from "../components/canvas/menu";
 import {
   addNode,
   deleteLink,

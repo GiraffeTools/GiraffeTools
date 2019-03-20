@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import Toolbar from "../components/giraffeToolbar";
+import Toolbar from "../components/toolbar/giraffeToolbar";
 import {
   addNode,
   deleteLink,

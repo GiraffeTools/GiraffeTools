@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import Port from "../components/port";
+import Port from "../components/canvas/port";
 import { addLink, hoverPort, startLink, updateParameter } from "../actions";
 
 const mapStateToProps = state => ({

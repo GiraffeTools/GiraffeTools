@@ -1,7 +1,7 @@
 import React from "react";
 import Radium from "radium";
 
-import GithubIcon from "../../../porcupine/js/components/githubIcon";
+import GithubIcon from "../../../porcupine/js/components/sidebar/githubIcon";
 import Spinner from "./spinner";
 import Error from "./error";
 import styles from "../styles/markerWindow";

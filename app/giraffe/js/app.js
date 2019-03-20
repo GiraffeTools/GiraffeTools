@@ -5,12 +5,12 @@ import { hot } from "react-hot-loader";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import Faq from "./components/faq";
-import LandingPage from "./components/landingPage";
-import Slack from "./components/slack";
+import Faq from "./pages/faq";
+import LandingPage from "./pages/landingPage";
+import Slack from "./pages/slack";
 import Container from "./containers/container";
-import Github from "./components/github";
-import Gallery from "./components/gallery";
+import Github from "./pages/github";
+import Gallery from "./pages/gallery";
 import SmallScreenAlert from "./containers/smallScreenAlert";
 import UnhappyBrowser from "./containers/unhappyBrowser";
 

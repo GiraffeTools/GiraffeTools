@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import AddParameter from "../components/addParameter";
+import AddParameter from "../components/parameters/addParameter";
 import { addParameterToNode, updateNode } from "../actions";
 
 const mapStateToProps = state => ({});

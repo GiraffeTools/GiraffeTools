@@ -47,22 +47,20 @@ class Navigation extends React.Component {
                 <h3>Porcupine</h3>
               </a>
             </li>
-            <li className="nav-item">
+            <li className="nav-item border-bottom">
               <a className="nav-link" href="https://armadillobrain.app">
                 <h3>ARmadillo</h3>
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/slack">
-                <h3>Join Slack</h3>
+              <a className="nav-link"
+                href="https://giraffetools.github.io/Documentation">
+                <h3>Documentation</h3>
               </a>
             </li>
-            <li className="nav-item border-bottom">
-              <a
-                className="nav-link"
-                href="/github/TimVanMourik/SomeGiraffeExample"
-              >
-                <h3>Example project</h3>
+            <li className="nav-item">
+              <a className="nav-link" href="/faq">
+                <h3>FAQ</h3>
               </a>
             </li>
             <li className="nav-item">
@@ -71,8 +69,11 @@ class Navigation extends React.Component {
               </a>
             </li>
             <li className="nav-item border-bottom">
-              <a className="nav-link" href="/faq">
-                <h3>FAQ</h3>
+              <a
+                className="nav-link"
+                href="/github/TimVanMourik/SomeGiraffeExample"
+              >
+                <h3>Example project</h3>
               </a>
             </li>
             <li className="nav-item">

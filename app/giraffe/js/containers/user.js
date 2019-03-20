@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import User from "../components/user";
+import User from "../pages/user";
 
 const mapStateToProps = state => ({
   access_token: state.auth.access_token

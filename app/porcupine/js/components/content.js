@@ -5,7 +5,7 @@ import { DragDropContext } from "react-dnd";
 import MultiBackend from "react-dnd-multi-backend";
 import HTML5toTouch from "react-dnd-multi-backend/lib/HTML5toTouch";
 
-import { default as ItemPreview } from "../components/itemPreview";
+import { default as ItemPreview } from "./canvas/itemPreview";
 import CodeEditor from "../containers/codeEditor";
 import Canvas from "../containers/canvas";
 import ParameterPane from "../containers/parameterPane";

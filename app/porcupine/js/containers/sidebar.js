@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/sidebar/sidebar";
 
 import { openModal, toggleToolbox } from "../actions";
 import {

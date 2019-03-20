@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import CodeEditor from "../components/codeEditor";
+import CodeEditor from "../components/codeEditor/codeEditor";
 import { toggleCodeEditor, setActiveTab } from "../actions";
 import {
   nodesWithParameters,

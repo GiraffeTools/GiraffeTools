@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import Link from "../components/link";
+import Link from "../components/canvas/link";
 import { clickItem, deleteLink } from "../actions";
 
 const mapStateToProps = state => ({

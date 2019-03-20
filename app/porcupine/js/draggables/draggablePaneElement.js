@@ -2,8 +2,8 @@ import React from "react";
 import { DragSource, ConnectDragSource, ConnectDragPreview } from "react-dnd";
 import { getEmptyImage } from "react-dnd-html5-backend";
 
-import ItemTypes from "../components/itemTypes";
-import PaneElement from "../components/paneElement";
+import ItemTypes from "./itemTypes";
+import PaneElement from "../components/sidebar/paneElement";
 
 const boxSource = {
   beginDrag(props) {

@@ -1,0 +1,64 @@
+import React, { Fragment } from "react";
+import Radium from "radium";
+
+import Banner from "../components/banner";
+import Footer from "../components/footer";
+import GalleryElement from "../components/galleryElement";
+import styles from "../styles/gallery.js";
+import { API_HOST } from "../config";
+
+class Gallery extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      examples: null
+    };
+  }
+
+  async componentDidMount() {
+    const response = await fetch(`${API_HOST}/example_repos`);
+    this.setState({ examples: await response.json() });
+  }
+
+  render() {
+    const { examples } = this.state;
+
+    return (
+      <Fragment>
+        <Banner title="Gallery" />
+        <div className="text-center">
+          Here you find a collection of best practices We''d love to include
+          more examples, so if you feel like contributing to our bank, check our
+          instructions to contribute to our example gallery.
+          <br />
+          <a
+            type="button btn-primary"
+            className="btn"
+            style={[styles.contribute]}
+          >
+            Contribute
+          </a>
+          <div className="row" style={[styles.galleryBox]}>
+            {examples &&
+              examples.map(example => (
+                <GalleryElement key={example.id} example={example} />
+              ))}
+          </div>
+        </div>
+        <svg width="100%" height="3">
+          <line
+            x1="0"
+            y1="0"
+            x2="100%"
+            y2="0"
+            stroke="#F7A81C"
+            strokeWidth="4px"
+          />
+        </svg>
+        <Footer />
+      </Fragment>
+    );
+  }
+}
+
+export default Radium(Gallery);

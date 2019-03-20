@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import Node from "../components/node";
+import Node from "../components/canvas/node";
 import { clickItem, updateNode } from "../actions";
 
 const mapStateToProps = state => ({

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import GithubModal from "../components/githubModal";
+import GithubModal from "../components/modals/githubModal";
 import { closeModal } from "../actions";
 
 const mapStateToProps = state => ({

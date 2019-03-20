@@ -1,6 +1,6 @@
 import React from "react";
 import { DragLayer, XYCoord } from "react-dnd";
-import ItemTypes from "../components/itemTypes";
+import ItemTypes from "./itemTypes";
 import PaneElementDragPreview from "./paneElementDragPreview";
 // import snapToGrid from './snapToGrid'
 

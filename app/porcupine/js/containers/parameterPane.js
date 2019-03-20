@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import ParameterPane from "../components/parameterPane";
+import ParameterPane from "../components/parameters/parameterPane";
 import { clickItem, deleteNode, updateNode } from "../actions";
 import { selectedNode } from "../selectors/selectors";
 

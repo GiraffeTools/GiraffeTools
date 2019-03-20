@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import Canvas from "../components/canvas";
+import Canvas from "../components/canvas/canvas";
 
 import { nodesWithParameters, linksWithPorts } from "../selectors/selectors";
 import {
