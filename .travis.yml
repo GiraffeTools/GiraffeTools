@@ -5,6 +5,8 @@ python:
 env:
   global:
     - PGPORT=5433
+    - PGHOST=localhost
+    - PGDATABASE=travis_ci
     - POSTGRES_PORT=5433
     - POSTGRES_DB=travis_ci
     - POSTGRES_HOST=localhost
