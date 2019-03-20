@@ -3,9 +3,16 @@ language: python
 python:
   - "3.6"
 env:
-  - PYTHONPATH=$TRAVIS_BUILD_DIR/app/
   global:
     - PGPORT=5433
+    - POSTGRES_PORT=5433
+    - POSTGRES_DB=travis_ci
+    - POSTGRES_HOST=localhost
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=""
+    - PYTHONPATH=$TRAVIS_BUILD_DIR/app/
+  matrix:
+    #indicate different builds here
 before_install:
   # chnge to 'test' soon
   # - export MODE=test
