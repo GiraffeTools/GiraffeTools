@@ -4,14 +4,19 @@ python:
   - "3.6"
 env:
   global:
-    - PGPORT=5433
+    #environment variables for postgresql
     - PGHOST=localhost
+    - PGPORT=5433
     - PGDATABASE=travis_ci
+    - PGUSER=postgres
+    - PGPASSWORD=giraffe
+    #environment variables for application
+    - POSTGRES_HOST=localhost
     - POSTGRES_PORT=5433
     - POSTGRES_DB=travis_ci
-    - POSTGRES_HOST=localhost
     - POSTGRES_USER=postgres
-    - POSTGRES_PASSWORD=""
+    - POSTGRES_PASSWORD=giraffe
+    #python dir
     - PYTHONPATH=$TRAVIS_BUILD_DIR/app/
   matrix:
     #indicate different builds here
