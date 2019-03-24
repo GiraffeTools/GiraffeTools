@@ -1,0 +1,36 @@
+codecov:
+  notify:
+    require_ci_to_pass: yes
+
+coverage:
+  precision: 2
+  round: down
+  range: "0...100"
+
+  status:
+    project: yes
+    patch: yes
+    changes: no
+
+parsers:
+  gcov:
+    branch_detection:
+      conditional: yes
+      loop: yes
+      method: no
+      macro: no
+
+comment:
+  layout: "header, diff"
+  behavior: default
+  require_changes: no
+
+script:
+  # run my javascript tests
+  - npm test
+  # upload my javascript reports
+  - bash <(curl -s https://codecov.io/bash) -cF javascript
+  # run my python tests
+  - cd app || exit; coverage run ./manage.py test --noinput
+  # upload my python reports
+  - bash <(curl -s https://codecov.io/bash) -cF python

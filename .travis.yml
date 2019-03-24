@@ -38,7 +38,7 @@ before_script:
   - bash ./bin/init-django.bash
 script:
   - bash ./bin/run-tests.bash
-  - npm run coala
+  - docker-compose run --rm coala
 addons:
   postgresql: "10"
   apt:
