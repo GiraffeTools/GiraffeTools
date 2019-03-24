@@ -6,36 +6,34 @@ import { ClipLoader } from "react-spinners";
 import styles from "../../styles/searchBar.js";
 
 function searchAPI(text, toolboxes) {
-  const found = toolboxes.map(toolbox => {
-    const getMatches = category => {
-      const matches = {
-        colour: category.colour,
-        name: category.name
-      };
-      const categories = [];
-      if (category.categories) {
-        category.categories.map(subcategory => {
-          const match = getMatches(subcategory);
-          if (match.categories || match.nodes) {
-            categories.push(match);
-          }
-        });
-      }
 
-      const nodes = [];
-      category.nodes &&
-        category.nodes.map(node => {
-          if (node.name.toLowerCase().includes(text)) {
-            nodes.push(node);
-          }
-        });
-
-      if (categories.length) matches.categories = categories;
-      if (nodes.length) matches.nodes = nodes;
-
-      return matches;
+  const getMatches = category => {
+    const matches = {
+      colour: category.colour,
+      name: category.name
     };
+    const categories = [];
+    if (category.categories) {
+      category.categories.map(subcategory => {
+        const match = getMatches(subcategory);
+        if (match.categories || match.nodes) {
+          categories.push(match);
+        }
+      });
+    }
+    const nodes = [];
+    category.nodes &&
+      category.nodes.map(node => {
+        if (node.name.toLowerCase().includes(text)) {
+          nodes.push(node);
+        }
+      });
+    if (categories.length) matches.categories = categories;
+    if (nodes.length) matches.nodes = nodes;
+    return matches;
+  };
 
+  const found = toolboxes.map(toolbox => {
     const matches = getMatches(toolbox);
     return { ...matches, name: toolbox.name };
   });
@@ -63,12 +61,9 @@ class SearchBar extends React.Component {
     const searchText = event.target.value.toLowerCase();
     this.setState({ searchText, searching: true });
     setSearchText(searchText);
-    const matchedNodes = await searchAPIDebounced(
-      searchText,
-      toolboxes.toolboxes
-    );
+    const matchedNodes = await searchAPIDebounced(searchText, toolboxes);
     this.setState({ searching: false });
-    setSearchResults({ toolboxes: matchedNodes });
+    setSearchResults(matchedNodes);
   }
 
   componentWillUnmount() {

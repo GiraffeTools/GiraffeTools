@@ -14,16 +14,17 @@ class Sidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allNodes: null,
       matchedNodes: null,
       searchText: ""
     };
   }
 
   async componentDidMount() {
-    const nodes = await fetch(`${API_HOST}/nodes`);
-    this.setState({ allNodes: await nodes.json() });
+    const { addToolboxNodes } = this.props;
+    const nodes = await (await fetch(`${API_HOST}/nodes`)).json();
+    addToolboxNodes(nodes.toolboxes);
   }
+
   componentWillUnmount() {
     this.setState = () => {};
   }
@@ -35,10 +36,10 @@ class Sidebar extends React.Component {
       openModal,
       toggleToolbox,
       showToolboxes,
-      searchText
+      searchText,
     } = this.props;
-    const { allNodes, matchedNodes, searching } = this.state;
-    const { nodes, links } = this.props;
+    const { matchedNodes, searching } = this.state;
+    const { nodes, links, allNodes } = this.props;
     const currentNodes =
       searchText && searchText.length ? matchedNodes : allNodes;
     return (
@@ -71,9 +72,7 @@ class Sidebar extends React.Component {
               role="tablist"
               aria-multiselectable="true"
             >
-              {currentNodes &&
-                currentNodes.toolboxes &&
-                currentNodes.toolboxes.map(toolbox => (
+              {currentNodes && currentNodes.map(toolbox => (
                   <ToolboxGroup
                     key={toolbox.name}
                     show={showToolboxes && showToolboxes.includes(toolbox.name)}

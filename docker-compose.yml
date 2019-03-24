@@ -5,7 +5,9 @@ services:
   db:
     image: postgres:10.1-alpine
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./database:/var/lib/postgresql/data
+      # if ever we want to initialise the database
+      # - ./demo.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       #TODO only works without quotes here, not sure why
       - 5432   # database port
@@ -13,7 +15,7 @@ services:
       - POSTGRES_DB=giraffetools
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=giraffe
-
+      - PGDATA=/tmp
   web:
     environment:
       - CHOKIDAR_USEPOLLING=true # for hot reloading on Windows
@@ -33,11 +35,8 @@ services:
   # Before you commit, run 'docker-compose run coala' to automatically fix all
   # stylistic inconsistencies! :)
   coala:
-    image: nemaniarjun/coala-docker-updated
+    image: coala/base
     command: coala
     working_dir: /code
     volumes:
       - .:/code
-
-volumes:
-  postgres_data:

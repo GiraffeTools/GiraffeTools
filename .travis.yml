@@ -31,6 +31,7 @@ install:
   - pip install -r requirements/test.txt
   - npm install
 before_script:
+  # Only works without password if PGPASSWORD is set
   - psql -c 'create database travis_ci;' -U postgres --no-password
   - bash ./bin/init-node.bash
   - bash ./bin/compile_sass.bash

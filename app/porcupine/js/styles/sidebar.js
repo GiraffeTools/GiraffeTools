@@ -10,7 +10,7 @@ const styles = {
     overflowY: "auto",
     backgroundColor: styleSheet.primaryLightColor,
     zIndex: 20,
-    boxShadow: "5px 0px 10px #F3F3F3",
+    // boxShadow: "5px 0px 10px #F3F3F3",
     transition: "transform 0.1s ease-in-out",
     "@media(max-width: 1200px)": {
       width: "240px",

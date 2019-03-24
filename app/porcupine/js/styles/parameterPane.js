@@ -13,7 +13,7 @@ const styles = {
     left: "100%",
     transition: "transform 0.1s",
     transform: "translateX(0%)",
-    boxShadow: "-5px 0px 10px #F3F3F3",
+    // boxShadow: "-5px 0px 10px #F3F3F3",
     zIndex: 10,
     active: {
       transform: "translateX(-100%)"

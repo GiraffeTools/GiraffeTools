@@ -138,7 +138,7 @@ class Canvas extends React.PureComponent {
 
   async componentDidMount() {
     document.addEventListener("keydown", this.handleKeyPress, false);
-    const { setPorkFile, project } = this.props;
+    const { setPorkFile, project, addToolboxNodes } = this.props;
     const { user, repository, branch, commit } = project;
     if (!user || !repository || (!branch && !commit)) {
       console.log("No username, repository, or branch provided");
@@ -156,21 +156,31 @@ class Canvas extends React.PureComponent {
     }
     const yamlData = loadYaml(await configuration.text());
     const porkFile = yamlData.tools.porcupine.file[0];
-    setPorkFile(porkFile);
 
-    const porkData = await fetch(`${baseName}/${porkFile}`);
-    if (!porkData.ok) {
-      console.log("Pork file cannot be loaded");
+    const { setPercent, loadFromJson, graphview } = this;
+    async function loadContent(porkfile) {
+      setPorkFile(porkFile);
+      const porkData = await fetch(`${baseName}/${porkFile}`);
+      if (!porkData.ok) {
+        console.log("Pork file cannot be loaded");
+      }
+      const content = await porkData.json();
+      try {
+        await loadFromJson(content);
+        graphview.current.handleZoomToFit();
+      } catch (error) {
+        console.log("Cannot load Porcupine Config file:");
+        console.log(error);
+        setPercent(-1);
+      }
     }
-    const content = await porkData.json();
-    try {
-      await this.loadFromJson(content);
-      this.graphview.current.handleZoomToFit();
-    } catch (error) {
-      console.log("Cannot load Porcupine Config file:");
-      console.log(error);
-      this.setPercent(-1);
+    const nodeFile = yamlData.tools.porcupine.nodes[0];
+    async function loadCustomNodes(nodeFile) {
+      const nodes = await (await fetch(`${baseName}/${nodeFile}`)).json();
+      addToolboxNodes(nodes.toolboxes);
     }
+
+    Promise.all([loadContent(porkFile), loadCustomNodes(nodeFile)]);
   }
 
   componentWillUnmount() {

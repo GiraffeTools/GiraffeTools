@@ -25,7 +25,8 @@ import {
   SET_PORK_FILE,
   OPEN_MODAL,
   CLOSE_MODAL,
-  TOGGLE_TOOLBOX
+  TOGGLE_TOOLBOX,
+  ADD_TOOLBOX_NODES,
 } from "./actionTypes";
 import { UPDATE_AUTH } from "../../../giraffe/js/actions/actionTypes";
 
@@ -90,6 +91,12 @@ export const addParameterToNode = (parameter, nodeId) => ({
     nodeId
   }
 });
+export const addToolboxNodes = toolboxes => ({
+  type: ADD_TOOLBOX_NODES,
+  payload: {
+    toolboxes
+  }
+})
 
 ///// LINKS /////
 export const addLink = props => ({

@@ -6,6 +6,7 @@ import { nodesWithParameters, linksWithPorts } from "../selectors/selectors";
 import {
   addNode,
   addLink,
+  addToolboxNodes,
   clearDatabase,
   updateNode,
   clickItem,
@@ -32,6 +33,7 @@ const mapDispatchToProps = dispatch => ({
   clickItem: () => dispatch(clickItem()),
   updateLoadingPercent: percent => dispatch(updateLoadingPercent(percent)),
   updateNode: (nodeId, offset) => dispatch(updateNode(nodeId, offset)),
+  addToolboxNodes: toolbox => dispatch(addToolboxNodes(toolbox)),
   clearDatabase: () => dispatch(clearDatabase())
 });
 

@@ -23,6 +23,7 @@ export const SET_ACTIVE_TAB = "SET_ACTIVE_TAB";
 export const UPDATE_LOADING_PERCENT = "UPDATE_LOADING_PERCENT";
 export const SET_SEARCH_TEXT = "SET_SEARCH_TEXT";
 export const TOGGLE_TOOLBOX = "TOGGLE_TOOLBOX";
+export const ADD_TOOLBOX_NODES = "ADD_TOOLBOX_NODES";
 
 ///// USER /////
 export const SET_USER = "SET_USER";

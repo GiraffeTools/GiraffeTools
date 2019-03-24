@@ -105,6 +105,7 @@ webpack-stats.json
 webpack-stats-prod.json
 webpack_bundles/
 .idea
+database/
 
 code-coverage/
 # coala orig files

@@ -4,7 +4,8 @@ import {
   SET_ACTIVE_TAB,
   UPDATE_LOADING_PERCENT,
   SET_SEARCH_TEXT,
-  TOGGLE_TOOLBOX
+  TOGGLE_TOOLBOX,
+  ADD_TOOLBOX_NODES,
 } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
@@ -12,6 +13,7 @@ const INITIAL_STATE = {
   showToolboxes: ["Nipype"],
   searchText: "",
   showCodeEditor: false,
+  toolboxes: [],
   activeTab: "Nipype",
   loadingPercent: -1
 };
@@ -36,6 +38,8 @@ const ui = (state = INITIAL_STATE, action) => {
         const showToolboxes = [toolbox].concat(state.showToolboxes);
         return { ...state, showToolboxes };
       }
+    case ADD_TOOLBOX_NODES:
+      return { ...state, toolboxes: [...payload.toolboxes, ...state.toolboxes] };
     case SET_ACTIVE_TAB:
       return { ...state, activeTab: payload.tab };
     case SET_SEARCH_TEXT:
