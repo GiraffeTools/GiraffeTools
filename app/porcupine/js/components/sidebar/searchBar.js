@@ -6,7 +6,6 @@ import { ClipLoader } from "react-spinners";
 import styles from "../../styles/searchBar.js";
 
 function searchAPI(text, toolboxes) {
-
   const getMatches = category => {
     const matches = {
       colour: category.colour,

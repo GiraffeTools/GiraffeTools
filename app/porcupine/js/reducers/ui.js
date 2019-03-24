@@ -5,7 +5,7 @@ import {
   UPDATE_LOADING_PERCENT,
   SET_SEARCH_TEXT,
   TOGGLE_TOOLBOX,
-  ADD_TOOLBOX_NODES,
+  ADD_TOOLBOX_NODES
 } from "../actions/actionTypes";
 
 const INITIAL_STATE = {
@@ -39,7 +39,10 @@ const ui = (state = INITIAL_STATE, action) => {
         return { ...state, showToolboxes };
       }
     case ADD_TOOLBOX_NODES:
-      return { ...state, toolboxes: [...payload.toolboxes, ...state.toolboxes] };
+      return {
+        ...state,
+        toolboxes: [...payload.toolboxes, ...state.toolboxes]
+      };
     case SET_ACTIVE_TAB:
       return { ...state, activeTab: payload.tab };
     case SET_SEARCH_TEXT:

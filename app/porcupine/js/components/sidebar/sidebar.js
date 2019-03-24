@@ -36,7 +36,7 @@ class Sidebar extends React.Component {
       openModal,
       toggleToolbox,
       showToolboxes,
-      searchText,
+      searchText
     } = this.props;
     const { matchedNodes, searching } = this.state;
     const { nodes, links, allNodes } = this.props;
@@ -72,7 +72,8 @@ class Sidebar extends React.Component {
               role="tablist"
               aria-multiselectable="true"
             >
-              {currentNodes && currentNodes.map(toolbox => (
+              {currentNodes &&
+                currentNodes.map(toolbox => (
                   <ToolboxGroup
                     key={toolbox.name}
                     show={showToolboxes && showToolboxes.includes(toolbox.name)}

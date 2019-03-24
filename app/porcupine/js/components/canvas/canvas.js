@@ -154,13 +154,15 @@ class Canvas extends React.PureComponent {
       console.log("GiraffeTools configuration file cannot be loaded");
       return;
     }
-    const yamlData = loadYaml(await configuration.text());
-    const porkFile = yamlData.tools.porcupine.file[0];
 
     const { setPercent, loadFromJson, graphview } = this;
-    async function loadContent(porkfile) {
-      setPorkFile(porkFile);
-      const porkData = await fetch(`${baseName}/${porkFile}`);
+    async function loadContent(porkfiles) {
+      if (!porkfiles || !porkfiles.length) return;
+
+      // currently, tkae first
+      const file = porkfiles[0];
+      setPorkFile(file);
+      const porkData = await fetch(`${baseName}/${file}`);
       if (!porkData.ok) {
         console.log("Pork file cannot be loaded");
       }
@@ -174,13 +176,17 @@ class Canvas extends React.PureComponent {
         setPercent(-1);
       }
     }
-    const nodeFile = yamlData.tools.porcupine.nodes[0];
-    async function loadCustomNodes(nodeFile) {
-      const nodes = await (await fetch(`${baseName}/${nodeFile}`)).json();
+    async function loadCustomNodes(nodeFiles) {
+      if (!nodeFiles || !nodeFiles.length) return;
+      const nodes = await (await fetch(`${baseName}/${nodeFiles[0]}`)).json();
       addToolboxNodes(nodes.toolboxes);
     }
 
-    Promise.all([loadContent(porkFile), loadCustomNodes(nodeFile)]);
+    const yamlData = loadYaml(await configuration.text());
+    if (!yamlData || !yamlData.tools || !yamlData.tools.porcupine) return;
+
+    const { file, files, nodes } = yamlData.tools.porcupine;
+    Promise.all([loadContent(file || files), loadCustomNodes(nodes)]);
   }
 
   componentWillUnmount() {

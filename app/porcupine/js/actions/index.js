@@ -26,7 +26,7 @@ import {
   OPEN_MODAL,
   CLOSE_MODAL,
   TOGGLE_TOOLBOX,
-  ADD_TOOLBOX_NODES,
+  ADD_TOOLBOX_NODES
 } from "./actionTypes";
 import { UPDATE_AUTH } from "../../../giraffe/js/actions/actionTypes";
 
@@ -96,7 +96,7 @@ export const addToolboxNodes = toolboxes => ({
   payload: {
     toolboxes
   }
-})
+});
 
 ///// LINKS /////
 export const addLink = props => ({

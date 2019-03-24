@@ -2,11 +2,7 @@ import { connect } from "react-redux";
 
 import Sidebar from "../components/sidebar/sidebar";
 
-import {
-  openModal,
-  toggleToolbox,
-  addToolboxNodes,
-} from "../actions";
+import { openModal, toggleToolbox, addToolboxNodes } from "../actions";
 import {
   nodesWithParameters,
   linksWithPortsAndNodes

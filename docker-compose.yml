@@ -35,7 +35,8 @@ services:
   # Before you commit, run 'docker-compose run coala' to automatically fix all
   # stylistic inconsistencies! :)
   coala:
-    image: coala/base
+    image: nemaniarjun/coala-docker-updated
+    # image: coala/base
     command: coala
     working_dir: /code
     volumes:

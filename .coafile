@@ -20,16 +20,13 @@ default_actions = **: ApplyPatchAction
 bears = PEP8Bear, PycodestyleBear
 pycodestyle_ignore = E501, E402
 
-# default_actions = PEP8Bear: ApplyPatchAction
-default_actions = **: ApplyPatchAction
+default_actions = PEP8Bear: ApplyPatchAction
 
 [all.python.flakes]
 # Do not set default_action to ApplyPatchAction as it may lead to some
 # required imports being removed that might result in coala behaving weirdly.
 
-# default_actions = *: ShowPatchAction
-# Doing that nonetheless, yolo!
-default_actions = **: ApplyPatchAction
+default_actions = *: ShowPatchAction
 
 bears = PyUnusedCodeBear
 language = Python
@@ -60,4 +57,5 @@ shellcheck_ignore = SC2046, SC2154
 [all.javascript]
 files = **.js
 ignore = node_modules/**, db.sqlite3, **/staticfiles/**, **/webpack-stats.json, **/webpack-stats-prod.json, **/webpack_bundles/**, **/.idea, code-coverage/**, **/static/**
+bears = PrettierLintBear
 default_actions = **: ApplyPatchAction
