@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import { PathLine } from "react-svg-pathline";
 import * as d3 from "d3";
 
 class Link extends React.Component {

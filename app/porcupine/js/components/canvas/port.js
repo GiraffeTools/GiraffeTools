@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import * as d3 from "d3";
 import { v4 } from "uuid";
-import { PathLine } from "react-svg-pathline";
 
 class Port extends React.Component {
   constructor(props) {
@@ -70,6 +69,18 @@ class Port extends React.Component {
     const { x, y, width } = this.props;
     const { linkUnderConstruction } = this.state;
 
+    let d = "M";
+    if (linkUnderConstruction) {
+      // starting point
+      d += `${x} ${y}`;
+      // control points
+      d += ` C`;
+      d += ` ${(x * 1) / 4 + (linkUnderConstruction.x * 3) / 4} ${y}`;
+      d += ` ${(x * 3) / 4 + (linkUnderConstruction.x * 1) / 4} ${linkUnderConstruction.y + 5}`;
+      // end point
+      d += ` ${linkUnderConstruction.x} ${linkUnderConstruction.y + 5}`;
+    }
+
     return (
       <Fragment>
         <circle
@@ -82,18 +93,14 @@ class Port extends React.Component {
           strokeWidth="12"
           stroke="transparent"
         />
-        {linkUnderConstruction && (
-          <PathLine
-            points={[
-              { x, y },
-              { x: linkUnderConstruction.x, y: linkUnderConstruction.y }
-            ]}
-            stroke="black"
-            strokeWidth="2"
-            fill="none"
-            r={10}
-          />
-        )}
+        {linkUnderConstruction && <path
+          d={d}
+          stroke="black"
+          strokeWidth="2"
+          fill="none"
+          fill="none"
+          r={10}
+        />}
       </Fragment>
     );
   }

@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import * as d3 from "d3";
 import { v4 } from "uuid";
-import { PathLine } from "react-svg-pathline";
 
 import Port from "../../containers/port";
 

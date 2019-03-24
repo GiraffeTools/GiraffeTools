@@ -31,7 +31,6 @@
     "await-to-js": "^2.1.1",
     "awesome-debounce-promise": "^1.0.0",
     "axios": "^0.18.0",
-    "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "bootstrap": "^4.1.1",
     "bowser": "^1.7.3",
@@ -63,7 +62,6 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-spinners": "^0.5.1",
-    "react-svg-pathline": "^0.5.0",
     "react-syntax-highlighter": "^10.1.2",
     "react-tooltip": "^3.8.4",
     "react-typing-animation": "^1.4.0",
@@ -84,6 +82,8 @@
     "yaml-js": "^0.2.3"
   },
   "devDependencies": {
+    "babel-jest": "^23.6.0",
+    "babel-plugin-dynamic-import-node": "^2.2.0",
     "codecov": "^3.0.2",
     "deepfreeze": "^2.0.0",
     "enzyme": "^3.3.0",
@@ -99,23 +99,12 @@
     "test": "jest",
     "development": "webpack --mode=development --config ./webpack/webpack.dev.config.js --progress --colors",
     "watch": "webpack --mode=development --config ./webpack/webpack.watch.config.js --progress --colors",
-    "production": "webpack --mode=production --config ./webpack/webpack.prod.config.js --progress --colors",
-    "coala": "docker-compose run --rm coala"
+    "production": "webpack --mode=production --config ./webpack/webpack.prod.config.js --progress --colors"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/timvanmourik/GiraffeTools.git"
   },
   "author": "Tim van Mourik",
-  "license": "GPL-3.0",
-  "jest": {
-    "setupFiles": [
-      "./app/porcupine/js/setupJest.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "coverageDirectory": "./code-coverage/",
-    "collectCoverage": true
-  }
+  "license": "GPL-3.0"
 }

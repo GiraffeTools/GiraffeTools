@@ -9,7 +9,7 @@ import {
 } from "react-dnd";
 import ProgressBar from "react-progress-bar-plus";
 import { load as loadYaml } from "yaml-js";
-import "react-progress-bar-plus/lib/progress-bar.css";
+// import "react-progress-bar-plus/lib/progress-bar.css";
 import to from "await-to-js";
 
 import ItemTypes from "../../draggables/itemTypes";

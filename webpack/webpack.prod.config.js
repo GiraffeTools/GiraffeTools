@@ -9,9 +9,7 @@ config.plugins = config.plugins.concat([
 
   // removes a lot of debugging code in React
   new webpack.DefinePlugin({
-    "process.env": {
-      NODE_ENV: JSON.stringify("production")
-    }
+    "process.env": { NODE_ENV: JSON.stringify("production") }
   }),
 
   // keeps hashes consistent between compilations
