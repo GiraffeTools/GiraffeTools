@@ -2,8 +2,8 @@ module.exports = api => {
   api.cache(false);
 
   const presets = [
-    ['@babel/preset-env', { targets: { node: 'current' } } ],
-    "@babel/preset-react",
+    ["@babel/preset-env", { targets: { node: "current" } }],
+    "@babel/preset-react"
   ];
 
   const plugins = [
@@ -17,7 +17,7 @@ module.exports = api => {
     "@babel/plugin-proposal-throw-expressions",
 
     "@babel/plugin-syntax-dynamic-import",
-    "@babel/plugin-syntax-import-meta",
+    "@babel/plugin-syntax-import-meta"
   ];
 
   return {

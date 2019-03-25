@@ -17,16 +17,11 @@ You should have received a copy of the GNU Affero General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 """
-from datetime import timedelta
-from urllib.parse import quote_plus, urlencode
 
 from django.conf import settings
 from django.test import TestCase
 from django.test.utils import override_settings
-from django.urls import reverse
-from django.utils import timezone
 
-import responses
 from oauth.utils import (
     BASE_URI, HEADERS, JSON_HEADER, TOKEN_URL, build_auth_dict, get_auth_url,
     get_github_primary_email, get_github_user_data, get_github_user_token,

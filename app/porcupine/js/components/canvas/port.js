@@ -76,7 +76,8 @@ class Port extends React.Component {
       // control points
       d += ` C`;
       d += ` ${(x * 1) / 4 + (linkUnderConstruction.x * 3) / 4} ${y}`;
-      d += ` ${(x * 3) / 4 + (linkUnderConstruction.x * 1) / 4} ${linkUnderConstruction.y + 5}`;
+      d += ` ${(x * 3) / 4 +
+        (linkUnderConstruction.x * 1) / 4} ${linkUnderConstruction.y + 5}`;
       // end point
       d += ` ${linkUnderConstruction.x} ${linkUnderConstruction.y + 5}`;
     }
@@ -93,14 +94,16 @@ class Port extends React.Component {
           strokeWidth="12"
           stroke="transparent"
         />
-        {linkUnderConstruction && <path
-          d={d}
-          stroke="black"
-          strokeWidth="2"
-          fill="none"
-          fill="none"
-          r={10}
-        />}
+        {linkUnderConstruction && (
+          <path
+            d={d}
+            stroke="black"
+            strokeWidth="2"
+            fill="none"
+            fill="none"
+            r={10}
+          />
+        )}
       </Fragment>
     );
   }
