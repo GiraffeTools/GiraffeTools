@@ -9,18 +9,22 @@
   src: url('/static/fonts/PT_Sans-Web-Regular.ttf')  format('truetype');
 }
 
-html, body, #app, .app {
+html {
   height: 100%;
+  width: 100%;
 }
 
 body {
   padding: 0;
   margin: 0;
   overflow: hidden;
+  height: 100%;
+  width: 100%;
 }
 
 #porcupine{
   height: 100%;
+  width: 100%;
 }
 
 .code-pane{

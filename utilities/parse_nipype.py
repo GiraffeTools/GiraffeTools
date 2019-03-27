@@ -50,7 +50,7 @@ def insert_colours(sorted_nodes, colour_index, colour_spacing):
 
 
 interface_modules = ['utility', 'io', 'ants', 'fsl', 'afni', 'spm',
-                    'freesurfer', 'camino', 'mrtrix', 'mne', 'slicer']
+                    'freesurfer', 'camino', 'mrtrix', 'mne', 'slicer', 'dipy']
 interface_modules = ['interfaces.' + m for m in interface_modules]
 
 algorithm_modules = ['confounds', 'icc', 'mesh', 'metrics', 'misc', 'modelgen',

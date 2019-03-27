@@ -9,14 +9,14 @@ const styles = {
     color: "black",
     minWidth: "250px",
     maxWidth: "400px",
-    overflow: "auto",
-    left: "100%",
+    // overflow: "auto",
+    right: 0,
     transition: "transform 0.1s",
-    transform: "translateX(0%)",
+    transform: "translateX(100%)",
     // boxShadow: "-5px 0px 10px #F3F3F3",
     zIndex: 10,
     active: {
-      transform: "translateX(-100%)"
+      transform: "translateX(0%)"
     }
     // rules: {
     //   "::-webkit-scrollbar-track": {
