@@ -95,6 +95,7 @@ const nodesToSaveDict = nodes =>
       ports: ports,
       position: [node.x, node.y],
       code: node.code,
-      web_url: node.web_url
+      web_url: node.web_url,
+      colour: node.colour
     };
   });

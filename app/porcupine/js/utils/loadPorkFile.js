@@ -40,9 +40,13 @@ async function loadingVersion1(json, setPercent) {
     let currentNodes = nodeData.toolboxes.filter(
       currentToolbox => currentToolbox.name == toolbox
     )[0];
-    category.forEach(c => {
-      currentNodes = currentNodes.categories.filter(node => node.name == c)[0];
-    });
+    try {
+      category.forEach(c => {
+        currentNodes = currentNodes.categories.filter(
+          node => node.name == c
+        )[0];
+      });
+    } catch (e) {}
     const newNode = {
       toolbox,
       id: node.id || v4(),
@@ -56,7 +60,7 @@ async function loadingVersion1(json, setPercent) {
         node.name,
       x: node.position[0],
       y: node.position[1],
-      colour: (currentNodes && currentNodes.colour) || "#BBB",
+      colour: node.colour || (currentNodes && currentNodes.colour) || "#BBB",
       web_url: (node.title && node.title.web_url) || node.web_url || "",
       code: (node.title && node.title.code) || node.code,
       category: category
@@ -77,7 +81,6 @@ async function loadingVersion1(json, setPercent) {
     nodes.push(newNode);
     setPercent(10 + (20 * nodes.length) / json.nodes.length);
   });
-
   // load links
   json.links.forEach(link => {
     const newLink = {

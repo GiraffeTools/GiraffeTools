@@ -45,7 +45,6 @@ async function nodeCode(nodes) {
   const code = await Promise.all(
     toolboxes.map(toolbox => toolboxCode(toolbox))
   );
-  debugger;
   if (languagesInEditor.includes(undefined)) {
     const warning =
       "# Warning: not all nodes specified a required Docker section. This Dockerfile may be incomplete.\r\n\r\n";
