@@ -1,13 +1,16 @@
-Website: https://giraffe.tools
-# Giraffe Tools
-
 [![Build Status](https://travis-ci.org/TimVanMourik/GiraffeTools.svg?branch=master)](https://travis-ci.org/TimVanMourik/GiraffeTools)
 [![codecov](https://codecov.io/gh/TimVanMourik/GiraffeTools/branch/master/graph/badge.svg)](https://codecov.io/gh/TimVanMourik/GiraffeTools)
+
+Website: https://giraffe.tools
+# Giraffe Tools <img src="app/giraffe/static/img/giraffetools_logo.png" width="50">
+
 
 ### GiraffeTools
 Tools for **G**raphical **I**nterface for **R**eproducible **A**nalysis o**F** work**F**low **E**xperiments
 
-This is a web application with a set of tools to build a data analysis pipeline graphically and save the code straight to GitHub. Initially, this will focus on neuroscientific data analysis and be a web version of [Porcupine](https://timvanmourik.github.io/Porcupine), a visual workflow editor of which you can read it in the [paper here](https://doi.org/10.1371/journal.pcbi.1006064).
+GiraffeTools is a web application for interactive graphical data analysis pipeline construction. The workflow is loaded from and saved to GitHub.
+
+Currently, GiraffeTools focusses on neuroscientific data analysis and it supercedes the initial stand-alone application [Porcupine](https://timvanmourik.github.io/Porcupine), published [here](https://doi.org/10.1371/journal.pcbi.1006064).
 
 ## Intended usage
 GiraffeTools reads information straight from an analysis repository, just to:
@@ -24,15 +27,6 @@ Currently, GiraffeTools features:
   * From this workflow representation, make code for execution this workflow
 * Visualisation of the data that flows through pipeline
   * We have a working prototype of Augmented Reality brain visualisation [here](http://armadillo-brain.herokuapp.com), ARmadillo
-
-Near future tools:
-* Code execution integration, via, e.g., Amazon
-
-Horizon tools:
-* Analysis preregistration
-* [DOI](https://www.doi.org) (persistent identifiers) for analysis workflow
-* Analysis presentations along the lines of reaveal.js
-* [Your input here!]
 
 ## Development
 * This website can locally be deployed with [Docker](https://www.docker.com). You can run this web application locally by installing and running Docker and docker-compose, and simply typing `docker-compose up web` in the terminal/command prompt.
