@@ -9,7 +9,7 @@ const styles = {
     color: "black",
     minWidth: "250px",
     maxWidth: "400px",
-    // overflow: "auto",
+    overflow: "auto",
     right: 0,
     transition: "transform 0.1s",
     transform: "translateX(100%)",
