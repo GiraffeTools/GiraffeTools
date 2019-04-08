@@ -54,12 +54,6 @@ class ParameterPane extends React.Component {
         </div>
         <div style={[styles.fields]}>
           <AddParameter nodeId={selectedNode && selectedNode.id} />
-          {selectedNode && selectedNode.parameters ? (
-            <Fields parameters={selectedNode.parameters} />
-          ) : (
-            ""
-          )}
-          <br />
           <button
             style={[styles.delete]}
             className="btn btn-block"
@@ -69,6 +63,11 @@ class ParameterPane extends React.Component {
           >
             DELETE NODE
           </button>
+          {selectedNode && selectedNode.parameters ? (
+            <Fields parameters={selectedNode.parameters} />
+          ) : (
+            ""
+          )}
         </div>
       </div>
     );
