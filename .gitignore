@@ -110,3 +110,4 @@ database/
 code-coverage/
 # coala orig files
 *.orig
+coala/

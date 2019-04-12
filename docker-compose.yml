@@ -41,3 +41,4 @@ services:
     working_dir: /code
     volumes:
       - .:/code
+      - ./coala:/cache
