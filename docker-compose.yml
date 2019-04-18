@@ -2,10 +2,13 @@ version: '3'
 
 services:
 
-  db:
-    image: postgres:10.1-alpine
+  database:
+    build: ./database
     volumes:
-      - ./database:/var/lib/postgresql/data
+      # This saves the database to a persistent volume:
+      - postgres:/var/lib/postgresql/data
+      # You could also save it locally to the `database` directory...
+      # - ./database:/var/lib/postgresql/data
       # if ever we want to initialise the database
       # - ./demo.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
@@ -16,20 +19,40 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=giraffe
       - PGDATA=/tmp
+
   web:
     environment:
       - CHOKIDAR_USEPOLLING=true # for hot reloading on Windows
-    build: .
+      - POSTGRES_HOST=database
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=giraffetools
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=giraffe
+    build: ./backend
     image: timvanmourik/giraffe-tools
     volumes:
-      - .:/code
-    command: bash ./bin/docker-command.bash
+      - ./backend:/code
+      - webpack_bundles:/webpack
+    command: ./bin/docker-command.bash
     ports:
       - "8000:8000"   # application server
-      - "3000:3000"   # webpack hot reload server
-      - "35729:35729" # django live reload server
     depends_on:
-      - db
+      - database
+      - frontend
+
+  frontend:
+    build: ./react
+    volumes:
+      - ./react:/react
+      - webpack_bundles:/bundles
+    ports:
+      - 3000    # database port
+      - 35729   # django live reload server
+    command: ./bin/docker-command.bash
+
+
+  worker:
+    build: ./worker
 
   # coala is the 'linter', checking coding standard consistency
   # Before you commit, run 'docker-compose run coala' to automatically fix all
@@ -42,3 +65,7 @@ services:
     volumes:
       - .:/code
       - ./coala:/cache
+
+volumes:
+  postgres:
+  webpack_bundles:

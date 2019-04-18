@@ -1,0 +1,87 @@
+@font-face {
+  font-family: 'Nexa-Bold';
+  src: url('/static/fonts/Nexa-Bold.otf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'PT Sans', sans-serif;
+  src: url('/static/fonts/PT_Sans-Web-Regular.ttf')  format('truetype');
+}
+
+.container-fluid {
+  padding: 0px;
+}
+
+$primary-color: #F7A81C;
+$primary-light-secondary-color: #FFFAEF;
+$primary-light-color: #FDEFD6;
+
+$secondary-color: #F25226;
+$tertiary-color: #FAE0A3;
+
+$h1-color: #000000;
+$h2-color: #000000;
+$h2-color-secondary: $secondary-color;
+$h3-color: #000000;
+$h4-color: #4A4A4A;
+
+// h1 : h2 : h3 : h4
+// 90 : 40 : 30 : 17 : 17
+
+// Banner text
+h1 {
+  font-family: 'Nexa-Bold';
+  font-weight: bold;
+  font-size: 40px;
+}
+// Big red text
+h2 {
+  font-family: 'Nexa-Bold';
+  font-size: 2.5rem;
+  color: $secondary-color;
+}
+// Sextion titles
+h3 {
+  font-family: 'Nexa-Bold';
+  font-size: 1.6rem;
+  color: $h3-color;
+}
+// Box titles
+h4 {
+  font-family: 'Nexa-Bold';
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+// Within box titles
+h5{
+  font-family: 'Nexa-Bold';
+  font-size: 22px;
+  font-weight: bold;
+}
+// Next to icon text
+h6{
+  font-family: 'Nexa-Bold';
+  color: $secondary-color;
+  font-size: 32px;
+  font-weight: bold;
+}
+// Browsers can't handle more than 6 headlines
+.h7{
+  font-family: 'Nexa-Bold';
+  color: white;
+  font-size: 32px;
+}
+
+div {
+  font-family: 'PT Sans', sans-serif;
+}
+
+#typewriter-text{
+  div{
+    font-family: 'Nexa-Bold';
+    font-size: 5rem;
+    font-weight: bold;
+    color: black;
+  }
+}

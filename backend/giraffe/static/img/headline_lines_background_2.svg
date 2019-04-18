@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="593px" height="141px" viewBox="0 0 593 141" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>line BG</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.8">
+        <g id="Landing-Page-" transform="translate(-673.000000, -5632.000000)" fill-rule="nonzero">
+            <g id="WHY" transform="translate(240.000000, 5632.000000)">
+                <g id="line-BG" transform="translate(729.500000, 70.500000) scale(-1, -1) translate(-729.500000, -70.500000) translate(433.000000, 0.000000)">
+                    <path d="M49.7965116,21.5 L185.203488,117.5" id="Line-3" stroke="#F7A81C" stroke-linecap="square"></path>
+                    <path d="M257.791667,5.5 L370.208333,135.5" id="Line-4" stroke="#F7A81C" stroke-linecap="square"></path>
+                    <path d="M591.214286,6.5 L548.785714,117.5" id="Line-4-Copy" stroke="#F7A81C" stroke-linecap="square"></path>
+                    <path d="M583.203947,6.5 L463.796053,69.5" id="Line-4-Copy-2" stroke="#F7A81C" stroke-linecap="square"></path>
+                    <path d="M546.207207,118.5 L371.792793,137.5" id="Line-4-Copy-3" stroke="#F7A81C" stroke-linecap="square"></path>
+                    <path d="M545.209239,118.5 L255.790761,5.5" id="Line-4-Copy-9" stroke="#F7A81C" stroke-linecap="square"></path>
+                    <path d="M260.386621,7.5 L181.179221,115.5" id="Line-4-Copy-5" stroke="#F7A81C" stroke-linecap="square"></path>
+                    <path d="M52.7923077,24.5 L463.207692,69.5" id="Line-4-Copy-6" stroke="#F7A81C" stroke-linecap="square"></path>
+                    <path d="M177.792308,116.5 L588.207692,3.5" id="Line-4-Copy-7" stroke="#F7A81C" stroke-linecap="square"></path>
+                    <path d="M3.79192547,119.5 L257.208075,7.5" id="Line-4-Copy-8" stroke="#F7A81C" stroke-linecap="square"></path>
+                    <circle id="Oval-5" fill="#F7A81C" cx="371" cy="136" r="5"></circle>
+                    <circle id="Oval-5-Copy-4" fill="#F7A81C" cx="182" cy="116" r="5"></circle>
+                    <circle id="Oval-5-Copy-5" fill="#F7A81C" cx="52" cy="24" r="5"></circle>
+                    <circle id="Oval-5-Copy-7" fill="#F7A81C" cx="5" cy="118" r="5"></circle>
+                    <circle id="Oval-5-Copy" fill="#F7A81C" cx="258" cy="6" r="5"></circle>
+                    <circle id="Oval-5-Copy-6" fill="#F7A81C" cx="548" cy="118" r="5"></circle>
+                    <circle id="Oval-5-Copy-2" fill="#F7A81C" cx="464" cy="71" r="5"></circle>
+                    <circle id="Oval-5-Copy-3" fill="#F7A81C" cx="588" cy="5" r="5"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

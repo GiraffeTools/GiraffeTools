@@ -1,0 +1,8 @@
+#--------------------------------
+# Add custom analysis file as CMD
+#--------------------------------
+RUN mkdir /code
+WORKDIR /code
+
+COPY ./workflow.py /code/workflow.py
+CMD ["python", "/code/workflow.py"]

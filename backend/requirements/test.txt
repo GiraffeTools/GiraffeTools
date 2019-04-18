@@ -1,0 +1,6 @@
+-r base.txt
+django-coverage-plugin
+pytest
+pytest-cov
+pytest-django
+responses
