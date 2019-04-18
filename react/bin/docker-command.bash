@@ -13,5 +13,5 @@ npm run $MODE
 
 # watch changes and live reload them on changes:
 if [ "$MODE" == "watch" ]; then
-  node ./webpack/webpack.watch.server.js &
+  node ./webpack/webpack.watch.server.js
 fi

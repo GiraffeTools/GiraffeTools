@@ -22,7 +22,7 @@ fi
 # remove old webpack bundles
 bundles=./bundles
 if [ -d $bundles ] && ! [ -z "$(ls -A $bundles)" ]; then
-  for bundle in $bundles/*.js; do
+  for bundle in $bundles/*; do
     rm $bundle
   done
 fi

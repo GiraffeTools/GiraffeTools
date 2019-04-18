@@ -36,6 +36,7 @@ services:
     command: ./bin/docker-command.bash
     ports:
       - "8000:8000"   # application server
+      - "35729:35729"   # django live reload server
     depends_on:
       - database
       - frontend
@@ -46,8 +47,7 @@ services:
       - ./react:/react
       - webpack_bundles:/bundles
     ports:
-      - 3000    # database port
-      - 35729   # django live reload server
+      - "3000:3000"    # database port
     command: ./bin/docker-command.bash
 
 

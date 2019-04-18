@@ -4,7 +4,6 @@ export const drop = (item, offset) => {
   this.placeholder = false;
   const rec = document.getElementById("main").getBoundingClientRect();
   // #TODO to be updated as part of #73:
-  // const canvas = document.getElementById('jsplumbContainer');
   // const zoom = instance.getZoom();
   const zoom = 1;
 

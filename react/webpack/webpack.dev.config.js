@@ -8,7 +8,7 @@ var config = require("./webpack.base.config.js");
 
 // Add HotModuleReplacementPlugin and BundleTracker plugins
 config.plugins = config.plugins.concat([
-  new BundleTracker({ filename: "/bundles/webpack-stats.json" })
+  new BundleTracker({ filename: "../bundles/webpack-stats.json" })
 ]);
 
 module.exports = config;
