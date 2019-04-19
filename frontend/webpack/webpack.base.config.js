@@ -15,11 +15,11 @@ module.exports = {
     path: path.resolve(__dirname, "/bundles"),
     filename: "[name]-[hash].js"
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    }
-  },
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all'
+  //   }
+  // },
   performance: {
     hints: process.env.NODE_ENV === "production" ? "warning" : false
   },

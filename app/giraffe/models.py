@@ -23,7 +23,8 @@ class SuperModel(models.Model):
 
 
 class Profile(SuperModel):
-    user = models.OneToOneField( User, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.OneToOneField(
+        User, on_delete=models.SET_NULL, null=True, blank=True)
     handle = models.CharField(max_length=255, db_index=True)
     email = models.CharField(max_length=255, blank=True, db_index=True)
 
@@ -37,7 +38,8 @@ class Profile(SuperModel):
 
 class Project(SuperModel):
     name = models.CharField(max_length=255, db_index=True)
-    user = models.ForeignKey(User, related_name='projects', on_delete=models.CASCADE,null=True,help_text=('The projects of a user.'))
+    user = models.ForeignKey(User, related_name="projects", on_delete=models.CASCADE,
+                             null=True, help_text=("The projects of a user."))
 
     @property
     def github_url(self):

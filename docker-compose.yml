@@ -42,17 +42,19 @@ services:
       - frontend
 
   frontend:
-    build: ./react
+    environment:
+      - CHOKIDAR_USEPOLLING=true # for hot reloading on Windows
+    build: ./frontend
     volumes:
-      - ./react:/react
+      - ./frontend:/react
       - webpack_bundles:/bundles
     ports:
       - "3000:3000"    # database port
     command: ./bin/docker-command.bash
 
 
-  worker:
-    build: ./worker
+  # worker:
+    # build: ./worker
 
   # coala is the 'linter', checking coding standard consistency
   # Before you commit, run 'docker-compose run coala' to automatically fix all
