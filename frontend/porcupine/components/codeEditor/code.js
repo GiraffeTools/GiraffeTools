@@ -6,8 +6,8 @@ import python from "react-syntax-highlighter/dist/esm/languages/hljs/python";
 import dockerfile from "react-syntax-highlighter/dist/esm/languages/hljs/dockerfile";
 import atomDark from "react-syntax-highlighter/dist/esm/styles/hljs/atom-one-dark";
 
-SyntaxHighlighter.registerLanguage("python", python);
-SyntaxHighlighter.registerLanguage("dockerfile", dockerfile);
+// SyntaxHighlighter.registerLanguage("python", python);
+// SyntaxHighlighter.registerLanguage("dockerfile", dockerfile);
 
 import nipypeCode from "../../utils/codeGenerators/nipype";
 import dockerCode from "../../utils/codeGenerators/docker";
@@ -79,7 +79,6 @@ class Code extends React.Component {
   }
 
   render() {
-    console.log(SyntaxHighlighter);
     const { language } = this.props;
     const { code } = this.state;
 

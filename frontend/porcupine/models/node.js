@@ -51,7 +51,7 @@ class Node extends Model {
           }
         }
         const width = nameToWidth(name, payload.parameters);
-        Node.create({ ...payload, name, width });
+        Node.create({ ...payload, name, width, input: null, output: null });
         break;
       case REMOVE_NODE:
         Node.withId(payload.id).delete();
@@ -75,12 +75,12 @@ class Node extends Model {
           .forEach(parameter => {
             y += 24;
             parameter.input &&
-              parameter.input.update({
+              parameter.inputModel.update({
                 x: node.x + x,
                 y: node.y + y
               });
             parameter.output &&
-              parameter.output.update({
+              parameter.outputModel.update({
                 x: node.x + x + node.width,
                 y: node.y + y
               });
