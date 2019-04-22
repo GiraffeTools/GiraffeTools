@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-if [ "$MODE" = "production" ]; then
-  bash ./bin/compile_sass.bash
+if [ ! $DEBUG ]; then
+  python manage.py compilescss
 fi
 
 python manage.py migrate

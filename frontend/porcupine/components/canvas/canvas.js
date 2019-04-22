@@ -94,9 +94,6 @@ const boxTarget = {
   }
 };
 
-@DropTarget([ItemTypes.NODE, ItemTypes.PANE_ELEMENT], boxTarget, connect => ({
-  connectDropTarget: connect.dropTarget()
-}))
 class Canvas extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -271,4 +268,10 @@ class Canvas extends React.PureComponent {
     );
   }
 }
-export default Canvas;
+export default DropTarget(
+  [ItemTypes.NODE, ItemTypes.PANE_ELEMENT],
+  boxTarget,
+  connect => ({
+    connectDropTarget: connect.dropTarget()
+  })
+)(Canvas);

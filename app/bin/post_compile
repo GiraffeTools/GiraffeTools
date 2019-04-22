@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# this is a file that is automatically run by heroku after compilation
-bash ./bin/init-django.bash

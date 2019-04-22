@@ -1,16 +1,22 @@
 import os
+import environ
 import dj_database_url
 
+root = environ.Path(__file__) - 2
+env = environ.Env(DEBUG=(bool, False),)
+env.read_env(str(root.path(".env")))  # reading .env file
 
-# string comparison because environment variable is string
-DEBUG = os.getenv("DEBUG", "True") == "True"
+SITE_ROOT = root()
+
+DEBUG = env.bool("DEBUG", default=True)
 
 default_secret_key = "s9&vp1jq1yzr!1c_temg#v_)j-a)i5+@vbsekmi6pbjl4l1&u@"
-SECRET_KEY = os.getenv("SECRET_KEY", default_secret_key)
+SECRET_KEY = env.str("SECRET_KEY", default=default_secret_key)
+
 
 BASE_URL = "https://giraffe.tools/" if not DEBUG else "http://localhost:8000/"
 ALLOWED_HOSTS = ["www.giraffe.tools", "giraffe.tools", "localhost", "127.0.0.1",
-                 os.getenv("ALLOWED_HOSTS", None)]
+                 os.getenv("ALLOWED_HOSTS", None), "*"]
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -90,7 +96,9 @@ TEMPLATES = [
 ]
 
 DATABASES = {}
-if os.getenv("HEROKU", "False") == "True":
+
+HEROKU = env.bool("HEROKU", default=False)
+if HEROKU:
     DATABASES["default"] = dj_database_url.config(
         conn_max_age=600, ssl_require=True)
 else:
@@ -144,11 +152,19 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
+
+public_root = root.path("public/")
+
+MEDIA_ROOT = public_root("media")
+MEDIA_URL = "media/"
+STATIC_ROOT = public_root("static")
+STATIC_URL = "static/"
+
 # to be copied to:
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
 
 # to refer to:
-STATIC_URL = "/static/"
+# STATIC_URL = "/static/"
 
 # files to include:
 STATICFILES_DIRS = (
@@ -162,19 +178,19 @@ STATICFILES_FINDERS = [
     "sass_processor.finders.CssFinder",
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-MEDIA_URL = "/media/"
+# MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+# MEDIA_URL = "/media/"
 
 ADMINS = [("admin", os.getenv("ADMIN_EMAIL"))]
 GA_ID = os.getenv("GA_ID", "UA-XXXXXXXXX-0")
 
 
 # Github
-GITHUB_CLIENT_ID = os.getenv("GITHUB_CLIENT_ID", "SECRET")
-GITHUB_CLIENT_SECRET = os.getenv("GITHUB_CLIENT_SECRET", "SECRET")
-GITHUB_API_USER = os.getenv("GITHUB_API_USER", "SECRET")
-GITHUB_API_TOKEN = os.getenv("GITHUB_API_TOKEN", "SECRET")
-GITHUB_APP_NAME = os.getenv("GITHUB_APP_NAME", "SECRET")
+GITHUB_CLIENT_ID = env.str("GITHUB_CLIENT_ID", default="SECRET")
+GITHUB_CLIENT_SECRET = env.str("GITHUB_CLIENT_SECRET", default="SECRET")
+GITHUB_API_USER = env.str("GITHUB_API_USER", default="SECRET")
+GITHUB_API_TOKEN = env.str("GITHUB_API_TOKEN", default="SECRET")
+GITHUB_APP_NAME = env.str("GITHUB_APP_NAME", default="SECRET")
 SOCIAL_AUTH_GITHUB_KEY = GITHUB_CLIENT_ID
 SOCIAL_AUTH_GITHUB_SECRET = GITHUB_CLIENT_SECRET
 GITHUB_API_BASE_URL = "https://api.github.com"
@@ -209,10 +225,10 @@ SOCIAL_AUTH_PIPELINE = (
 # Slack
 # generate legacy token here
 # https://api.slack.com/custom-integrations/legacy-tokens
-SLACK_API_TOKEN = os.getenv("SLACK_API_TOKEN", "")
+SLACK_API_TOKEN = env.str("SLACK_API_TOKEN", default="")
 
 # localisation, potential replacement for Google Analytics
-GEOIP_PATH = os.getenv("GEOIP_GEOLITE2_PATH", "/usr/share/GeoIP/")
+GEOIP_PATH = env.str("GEOIP_PATH", default="/usr/share/GeoIP/")
 # GEOIP_CITY = GEOIP_PATH + "GeoLite2-City.mmdb"
 # GEOIP_COUNTRY = GEOIP_PATH + "GeoLite2-Country.mmdb"
 
@@ -220,7 +236,7 @@ GEOIP_PATH = os.getenv("GEOIP_GEOLITE2_PATH", "/usr/share/GeoIP/")
 # Ignore LineLengthBear
 webpack_config = {
     "CACHE": not DEBUG,
-    "STATS_FILE": "/webpack/webpack-stats.json" if DEBUG else "/webpack/webpack-stats-prod.json",
+    "STATS_FILE": "/webpack/webpack-stats.json",
     "POLL_INTERVAL": 0.1,  # unused in prodcution mode
     "TIMEOUT": None,
     "IGNORE": [".+\.hot-update.js", ".+\.map"]
@@ -238,7 +254,8 @@ CORS_ORIGIN_WHITELIST = ["localhost:3000",
 CSRF_TRUSTED_ORIGINS = ["localhost:3000",
                         "localhost:8000"] if DEBUG else ["giraffe.tools"]
 
-if DEBUG or os.getenv("LOGGING", "False") == "True":
+# if DEBUG or os.getenv("LOGGING", "False") == "True":
+if True:
     LOGGING = {
         "version": 1,
         "disable_existing_loggers": False,
@@ -290,3 +307,23 @@ if DEBUG or os.getenv("LOGGING", "False") == "True":
             }
         }
     }
+
+
+# CACHE_URL=memcache://127.0.0.1:11211,127.0.0.1:11212,127.0.0.1:11213
+# REDIS_URL=rediscache://127.0.0.1:6379/1?client_class=django_redis.client.DefaultClient&password=redis-un-githubbed-password
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+        "LOCATION": [
+            "127.0.0.1:11211", "127.0.0.1:11212", "127.0.0.1:11213",
+        ]
+    },
+    "redis": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "PASSWORD": "redis-githubbed-password",
+        }
+    }
+}

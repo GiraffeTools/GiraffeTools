@@ -1,8 +1,35 @@
 version: '3'
 
 services:
+  # nginx:
+  #   build: ./nginx
+  #   ports:
+  #     - "8000:8000"
+  #   volumes:
+  #     - ./public:/www/public/
+  #   depends_on:
+  #     - web
+  #   volumes:
+  #     - ./nginx/config:/etc/nginx/conf.d
+  #     - ./backend/public/static:/public/static
+  #   # healthcheck:
+  #   #   test: ["CMD", "curl", "-f", "http://0.0.0.0:8000"]
+  #   #   interval: 30s
+  #   #   timeout: 10s
+  #   #   retries: 3
+
+  redis:
+    restart: unless-stopped
+    image: redis:4.0-alpine
+    volumes:
+      - redis:/data
+    ports:
+      - "6379:6379"
 
   database:
+    env_file:
+      - ./database/.env.sample
+    restart: unless-stopped
     build: ./database
     volumes:
       # This saves the database to a persistent volume:
@@ -14,20 +41,12 @@ services:
     ports:
       #TODO only works without quotes here, not sure why
       - 5432   # database port
-    environment:
-      - POSTGRES_DB=giraffetools
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=giraffe
-      - PGDATA=/tmp
 
   web:
+    env_file:
+      - ./backend/.env.sample
     environment:
       - CHOKIDAR_USEPOLLING=true # for hot reloading on Windows
-      - POSTGRES_HOST=database
-      - POSTGRES_PORT=5432
-      - POSTGRES_DB=giraffetools
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=giraffe
     build: ./backend
     image: timvanmourik/giraffe-tools
     volumes:
@@ -35,13 +54,17 @@ services:
       - webpack_bundles:/webpack
     command: ./bin/docker-command.bash
     ports:
-      - "8000:8000"   # application server
+      - "8000:8000"
       - "35729:35729"   # django live reload server
+    # expose:
+      # - "8000"
     depends_on:
       - database
       - frontend
 
   frontend:
+    env_file:
+      - ./frontend/.env.sample
     environment:
       - CHOKIDAR_USEPOLLING=true # for hot reloading on Windows
     build: ./frontend
@@ -49,7 +72,7 @@ services:
       - ./frontend:/react
       - webpack_bundles:/bundles
     ports:
-      - "3000:3000"    # database port
+      - "3000:3000"
     command: ./bin/docker-command.bash
 
 
@@ -71,3 +94,4 @@ services:
 volumes:
   postgres:
   webpack_bundles:
+  redis:

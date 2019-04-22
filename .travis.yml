@@ -18,7 +18,8 @@ env:
     # app settings
     - PYTHONPATH=$TRAVIS_BUILD_DIR/app/
     #TODO change MODE to 'test'
-    - MODE=development
+    - MODE=test
+    - NODE_ENV=test
   matrix:
     # indicate different builds here
 before_install:
@@ -27,9 +28,10 @@ before_install:
   - sudo service postgresql restart
   - sleep 1
 install:
-  - source ./bin/init-environment.bash
-  - pip install -r requirements/test.txt
-  - npm install
+  - source ./backend/bin/init-environment.bash
+  - source ./frontend/bin/init-environment.bash
+  - pip install -r ./backend/requirements/test.txt
+  - cd frontend || exit; npm install
 before_script:
   # Only works without password if PGPASSWORD is set
   - psql -c 'create database travis_ci;' -U postgres --no-password

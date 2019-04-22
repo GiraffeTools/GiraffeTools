@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd app || exit
+cd backend || exit
 gunicorn app.wsgi

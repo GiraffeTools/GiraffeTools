@@ -1,7 +1,9 @@
 Django==2.1.7
 django-bootstrap4
+django-cacheops==4.0.7
 django-compressor
 django-cors-headers
+django-environ
 django-heroku
 django-ipware
 django-jquery
@@ -9,6 +11,7 @@ django-health-check
 django-livereload-server
 django-webpack-loader
 djangorestframework==3.7.3
+django-redis==4.10.0
 django-sass-processor
 django-settings-export
 dj_database_url
@@ -21,6 +24,7 @@ Pillow
 psutil
 psycopg2-binary
 pycollada
+python-memcached
 pygithub
 PyYAML
 python-dateutil

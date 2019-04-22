@@ -33,11 +33,6 @@ const getStyles = props => {
   };
 };
 
-@DragSource(ItemTypes.PANE_ELEMENT, boxSource, (connect, monitor) => ({
-  connectDragSource: connect.dragSource()
-  // connectDragPreview: connect.dragPreview(),
-  // isDragging: monitor.isDragging(),
-}))
 class PaneElementDragLayer extends React.PureComponent {
   componentDidMount() {
     const { connectDragPreview } = this.props;
@@ -66,4 +61,12 @@ class PaneElementDragLayer extends React.PureComponent {
   }
 }
 
-export default PaneElementDragLayer;
+export default DragSource(
+  ItemTypes.PANE_ELEMENT,
+  boxSource,
+  (connect, monitor) => ({
+    connectDragSource: connect.dragSource()
+  // connectDragPreview: connect.dragPreview(),
+  // isDragging: monitor.isDragging(),
+  })
+)(PaneElementDragLayer)

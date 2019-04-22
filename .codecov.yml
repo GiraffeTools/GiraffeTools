@@ -27,10 +27,10 @@ comment:
 
 script:
   # run my javascript tests
-  - npm test
+  - cd frontend || exit; npm test
   # upload my javascript reports
   - bash <(curl -s https://codecov.io/bash) -cF javascript
   # run my python tests
-  - cd app || exit; coverage run ./manage.py test --noinput
+  - cd backend || exit; coverage run ./manage.py test --noinput
   # upload my python reports
   - bash <(curl -s https://codecov.io/bash) -cF python

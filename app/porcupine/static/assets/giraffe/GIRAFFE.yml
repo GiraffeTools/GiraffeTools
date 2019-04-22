@@ -1,6 +1,0 @@
-# list of tools
-tools:
-  porcupine:
-    files:
-      - GIRAFFE/porcupipeline.pork
-    nodes:

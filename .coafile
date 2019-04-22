@@ -6,7 +6,7 @@ ignore = node_modules/**, **.min.js, **.min.css
 # will be executed sequentially; also we need the LineLengthBear to double
 # check the line length because PEP8Bear sometimes isn't able to correct the
 # linelength.
-files = app/**/*.py
+files = backend/**/*.py
 ignore = **/__pycache__/*.py, **/migrations/*
 
 bears = SpaceConsistencyBear, QuotesBear
@@ -58,7 +58,7 @@ shellcheck_ignore = SC2046, SC2154
 
 
 [all.javascript]
-files = **.js
-ignore = node_modules/**, db.sqlite3, **/staticfiles/**, **/webpack-stats.json, **/webpack-stats-prod.json, **/webpack_bundles/**, **/.idea, code-coverage/**, **/static/**
+files = frontend/**/*.js
+ignore = **/node_modules/**, db.sqlite3, **/staticfiles/**, **/webpack-stats.json, **/webpack-stats-prod.json, **/webpack_bundles/**, **/.idea, code-coverage/**, **/static/**
 bears = PrettierLintBear
 default_actions = **: ApplyPatchAction
