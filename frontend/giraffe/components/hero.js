@@ -23,16 +23,16 @@ const Hero = () => (
           >
             <div style={[styles.open]}>Open</div>
             <Typing loop={true} className="float-left">
-              Science
+              {`Science`}
               <Typing.Delay ms={4000} />
               <Typing.Backspace count={7} />
-              Software
+              {`Software`}
               <Typing.Delay ms={4000} />
               <Typing.Backspace count={8} />
-              Code
+              {`Code`}
               <Typing.Delay ms={4000} />
               <Typing.Backspace count={4} />
-              Analysis
+              {`Analysis`}
               <Typing.Delay ms={4000} />
               <Typing.Backspace count={8} />
             </Typing>
