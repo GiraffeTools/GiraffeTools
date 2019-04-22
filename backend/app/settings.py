@@ -229,9 +229,11 @@ GEOIP_PATH = env.str("GEOIP_PATH", default="/usr/share/GeoIP/")
 # GEOIP_COUNTRY = GEOIP_PATH + "GeoLite2-Country.mmdb"
 
 
-# Ignore LineLengthBear
+# Ignore LneLengthBear
+WEBPACK_FOLDER = env.str("WEBPACK_FOLDER", default="/webpack/")
 webpack_config = {
     "CACHE": not DEBUG,
+    "BUNDLE_DIR_NAME": WEBPACK_FOLDER,  # must end with slash
     "STATS_FILE": "/webpack/webpack-stats.json",
     "POLL_INTERVAL": 0.1,  # unused in prodcution mode
     "TIMEOUT": None,
