@@ -1,0 +1,89 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: django
+  labels:
+    app: django
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django-container
+  template:
+    metadata:
+      labels:
+        app: django-container
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+        - name: django-web
+          image: timvanmourik/giraffe-tools-kube:latest
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 8000
+          env:
+            - name: MODE
+              value: production
+
+            - name: ALLOWED_HOSTS
+              value: 131.174.49.104
+              #value: DJANGO_SERVICE_SERVICE_HOST
+            - name: GEOIP_GEOLITE2_PATH
+              value: /usr/share/GeoIP/
+            - name: HEROKU
+              value: "False"
+            - name: GA_ID
+              value: "UA-000000000-0"
+
+            - name: POSTGRES_HOST
+              value: postgres-service
+            - name: POSTGRES_DB
+              value: giraffetools
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: password
+
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: django-secrets
+                  key: secretKey
+            - name: GITHUB_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: github-secrets
+                  key: githubApiToken
+            - name: GITHUB_API_USER
+              valueFrom:
+                secretKeyRef:
+                  name: github-secrets
+                  key: githubApiUser
+            - name: GITHUB_APP_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: github-secrets
+                  key: githubAppName
+            - name: GITHUB_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: github-secrets
+                  key: githubClientId
+            - name: GITHUB_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: github-secrets
+                  key: githubClientSecret
+            - name: SLACK_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: django-secrets
+                  key: slackApiToken

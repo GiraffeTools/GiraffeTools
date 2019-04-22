@@ -98,6 +98,7 @@ class Canvas extends React.PureComponent {
   constructor(props) {
     super(props);
     this.graphview = React.createRef();
+    this.load = this.load.bind(this);
     this.deleteSelection = this.deleteSelection.bind(this);
     this.loadFromJson = this.loadFromJson.bind(this);
     this.setPercent = this.setPercent.bind(this);
@@ -133,8 +134,11 @@ class Canvas extends React.PureComponent {
       });
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     document.addEventListener("keydown", this.handleKeyPress, false);
+  }
+
+  async load() {
     const { setPorkFile, project, addToolboxNodes } = this.props;
     const { user, repository, branch, commit } = project;
     if (!user || !repository || (!branch && !commit)) {

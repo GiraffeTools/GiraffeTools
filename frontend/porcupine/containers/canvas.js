@@ -39,7 +39,9 @@ const mapDispatchToProps = dispatch => ({
 
 const CanvasContainer = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
+  null,
+  { forwardRef: true }
 )(Canvas);
 
 export default CanvasContainer;

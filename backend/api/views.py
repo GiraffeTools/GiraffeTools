@@ -1,5 +1,6 @@
 import json
 import logging
+import os
 from github import Github, InputGitTreeElement
 from slackclient import SlackClient
 from django.conf import settings
@@ -16,24 +17,24 @@ sc = SlackClient(settings.SLACK_API_TOKEN)
 
 
 def faq_questions(request):
-    # with open(static("misc/faq_questions.json")) as f:
-    with open("staticfiles/misc/faq_questions.json") as f:
+    url = os.path.join(settings.STATIC_ROOT, "misc/faq_questions.json")
+    with open(url) as f:
         questions = json.load(f)
 
     return HttpResponse(json.dumps(questions), content_type="application/json")
 
 
 def example_repos(request):
-    # with open(static("misc/examples.json")) as f:
-    with open("staticfiles/misc/examples.json") as f:
+    url = os.path.join(settings.STATIC_ROOT, "misc/examples.json")
+    with open(url) as f:
         questions = json.load(f)
 
     return HttpResponse(json.dumps(questions), content_type="application/json")
 
 
 def nodes(request):
-
-    with open("staticfiles/assets/toolboxes.json") as f:
+    url = os.path.join(settings.STATIC_ROOT, "assets/toolboxes.json")
+    with open(url) as f:
         nodes = json.load(f)
     return HttpResponse(json.dumps(nodes), content_type="application/json")
 

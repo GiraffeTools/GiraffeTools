@@ -156,15 +156,11 @@ USE_TZ = True
 public_root = root.path("public/")
 
 MEDIA_ROOT = public_root("media")
-MEDIA_URL = "media/"
+MEDIA_URL = "/media/"
+# internal reference:
 STATIC_ROOT = public_root("static")
-STATIC_URL = "static/"
-
-# to be copied to:
-# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
-
-# to refer to:
-# STATIC_URL = "/static/"
+# external reference
+STATIC_URL = "/static/"
 
 # files to include:
 STATICFILES_DIRS = (

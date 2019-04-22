@@ -15,15 +15,12 @@ import { isGitHash } from "../utils";
 import styles from "../styles/content";
 
 class Content extends React.Component {
-  // constructor(props) {
-  // super(props);
-  // this.state = {
-  // snapToGridAfterDrop: false,
-  // snapToGridWhileDragging: false
-  // };
-  // }
+  constructor(props) {
+    super(props);
+    this.canvas = React.createRef();
+  }
 
-  async componentWillMount() {
+  async componentDidMount() {
     const { username, repository, branchOrCommit } = this.props.match.params;
     const {
       setUser,
@@ -41,6 +38,7 @@ class Content extends React.Component {
 
     const response = await fetch("/api/get_user");
     updateAuth(await response.json());
+    this.canvas.decoratedRef.current.load()
   }
 
   render() {
@@ -54,7 +52,9 @@ class Content extends React.Component {
           <label style={[showSidebar ? styles.close2 : styles.open2]} />
         </a>
         <div style={[styles.main]}>
-          <Canvas />
+          <Canvas
+            ref={canvas => (this.canvas = canvas)}
+          />
           <ParameterPane />
           <CodeEditor />
           <Modals />

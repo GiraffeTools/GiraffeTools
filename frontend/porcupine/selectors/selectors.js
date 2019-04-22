@@ -55,10 +55,10 @@ export const selectedNode = createSelector(
       node.parameters.toRefArray().map(parameterRef => {
         const parameter = orm.Parameter.withId(parameterRef.id);
 
-        const inputLinks = parameter.input
+        const inputLinks = parameter.input && parameter.input.inputLinks
           ? parameter.input.inputLinks.toRefArray()
           : [];
-        const outputLinks = parameter.output
+        const outputLinks = parameter.output && parameter.output.outputLinks
           ? parameter.output.outputLinks.toRefArray()
           : [];
 
