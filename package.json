@@ -1,5 +1,12 @@
 {
+  "name": "GiraffeTools",
+  "version": "1.0.0",
+  "engines": {
+    "node": "9.8.0",
+    "npm": "6.7.0"
+  },
   "scripts": {
-     "postinstall": "cd frontend && npm install --only=dev"
-   }
+    "heroku-prebuild": "cd frontend && npm install --only=dev",
+    "heroku-postbuild": "cd frontend && npm install"
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "giraffe",
+  "name": "GiraffeTools",
   "version": "1.0.0",
   "engines": {
     "node": "9.8.0",
@@ -95,7 +95,6 @@
     "webpack-dev-server": "<=3.1.14"
   },
   "scripts": {
-    "heroku-prebuild": "npm install --only=dev",
     "postinstall": "webpack --mode=production --config ./webpack/webpack.prod.config.js",
     "test": "jest",
     "development": "webpack --mode=development --config ./webpack/webpack.dev.config.js --progress --colors",
