@@ -1,5 +1,5 @@
 {
   "scripts": {
-     "postinstall": "cd frontend && npm install --only=dev"
+     "postinstall": "cd frontend && npm install --only=prod && npm install --only=dev"
    }
 }
