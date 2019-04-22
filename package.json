@@ -6,7 +6,7 @@
     "npm": "6.7.0"
   },
   "scripts": {
-    "heroku-prebuild": "cd frontend && npm install --only=dev",
-    "heroku-postbuild": "cd frontend && npm install"
+    "preinstall": "cd frontend && npm install --only=dev && npm install",
+    "postinstall": "cd frontend && webpack --mode=production --config ./webpack/webpack.prod.config.js"
   }
 }
