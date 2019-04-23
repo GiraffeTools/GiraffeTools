@@ -1,13 +1,9 @@
-var path = require("path");
-var webpack = require("webpack");
-var BundleTracker = require("webpack-bundle-tracker");
+const path = require("path");
+const webpack = require("webpack");
+const BundleTracker = require("webpack-bundle-tracker");
 
-var config = require("./webpack.base.config.js");
-if(process.env.WEBPACK_FOLDER_NODE) {
-  var outputPath = process.env.WEBPACK_FOLDER_NODE || path.resolve(__dirname, process.env.WEBPACK_FOLDER_NODE);
-} else {
-  var outputPath = "/bundles";
-}
+const config = require("./webpack.base.config.js");
+const outputPath = process.env.WEBPACK_FOLDER_NODE ? path.resolve(__dirname, process.env.WEBPACK_FOLDER_NODE) : "/bundles";
 
 config.mode = "development";
 // Use webpack dev server

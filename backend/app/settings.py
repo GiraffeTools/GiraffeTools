@@ -233,8 +233,8 @@ GEOIP_PATH = env.str("GEOIP_PATH", default="/usr/share/GeoIP/")
 WEBPACK_FOLDER = env.str("WEBPACK_FOLDER", default="/webpack/")
 webpack_config = {
     "CACHE": not DEBUG,
-    "BUNDLE_DIR_NAME": WEBPACK_FOLDER,  # must end with slash
-    "STATS_FILE": "/webpack/webpack-stats.json",
+    "BUNDLE_DIR_NAME": "webpack_bundles/",  # must end with slash
+    "STATS_FILE": os.path.join(WEBPACK_FOLDER, "webpack-stats.json"),
     "POLL_INTERVAL": 0.1,  # unused in prodcution mode
     "TIMEOUT": None,
     "IGNORE": [".+\.hot-update.js", ".+\.map"]
