@@ -26,11 +26,13 @@ comment:
   require_changes: no
 
 script:
-  # run my javascript tests
-  - cd frontend || exit; npm test
-  # upload my javascript reports
-  - bash <(curl -s https://codecov.io/bash) -cF javascript
   # run my python tests
   - cd backend || exit; coverage run ./manage.py test --noinput
   # upload my python reports
   - bash <(curl -s https://codecov.io/bash) -cF python
+  - cd .. || exit
+  # run my javascript tests
+  - cd frontend || exit; npm test
+  # upload my javascript reports
+  - bash <(curl -s https://codecov.io/bash) -cF javascript
+  - cd .. || exit

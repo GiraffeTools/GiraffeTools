@@ -18,7 +18,7 @@ env:
     # app settings
     - PYTHONPATH=$TRAVIS_BUILD_DIR/app/
     #TODO change MODE to 'test'
-    - MODE=test
+    - DEBUG=False
     - NODE_ENV=test
   matrix:
     # indicate different builds here
@@ -28,16 +28,12 @@ before_install:
   - sudo service postgresql restart
   - sleep 1
 install:
-  - source ./backend/bin/init-environment.bash
-  - source ./frontend/bin/init-environment.bash
   - pip install -r ./backend/requirements/test.txt
-  - cd frontend || exit; npm install
+  - npm install --only=development
 before_script:
   # Only works without password if PGPASSWORD is set
   - psql -c 'create database travis_ci;' -U postgres --no-password
-  - bash ./bin/init-node.bash
-  - bash ./bin/compile_sass.bash
-  - bash ./bin/init-django.bash
+  - bash ./bin/init-tests.bash
 script:
   - bash ./bin/run-tests.bash
   - docker-compose run --rm coala
