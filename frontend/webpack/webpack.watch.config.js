@@ -3,6 +3,11 @@ var webpack = require("webpack");
 var BundleTracker = require("webpack-bundle-tracker");
 
 var config = require("./webpack.base.config.js");
+if(process.env.WEBPACK_FOLDER_NODE) {
+  var outputPath = process.env.WEBPACK_FOLDER_NODE || path.resolve(__dirname, process.env.WEBPACK_FOLDER_NODE);
+} else {
+  var outputPath = "/bundles";
+}
 
 config.mode = "development";
 // Use webpack dev server
@@ -31,7 +36,7 @@ config.output.publicPath = "http://localhost:3000/bundles/";
 config.plugins = config.plugins.concat([
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
-  new BundleTracker({ filename: "../bundles/webpack-stats.json" }),
+  new BundleTracker({ path: outputPath, filename: "webpack-stats.json" })
 ]);
 
 config.watchOptions = {
