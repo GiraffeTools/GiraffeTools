@@ -31,8 +31,8 @@ before_install:
   - sleep 1
 install:
   - pip install -r ./backend/requirements/test.txt
-  - npm install --only=development
-  - npm run production
+  - npm run heroku-prebuild
+  - npm run heroku-postbuild
 before_script:
   # Only works without password if PGPASSWORD is set
   - psql -c 'create database travis_ci;' -U postgres --no-password
