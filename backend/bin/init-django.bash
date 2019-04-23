@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if [ ! $DEBUG ]; then
+if [ $DEBUG != "True" ]; then
   python manage.py compilescss
 fi
 
