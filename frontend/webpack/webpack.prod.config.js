@@ -1,11 +1,12 @@
-var path = require("path");
-var webpack = require("webpack");
-var BundleTracker = require("webpack-bundle-tracker");
+const path = require("path");
+const webpack = require("webpack");
+const BundleTracker = require("webpack-bundle-tracker");
 
-var config = require("./webpack.base.config.js");
+const config = require("./webpack.base.config.js");
+const outputPath = process.env.WEBPACK_FOLDER_NODE || "/bundles";
 
 config.plugins = config.plugins.concat([
-  new BundleTracker({ filename: "../bundles/webpack-stats.json" }),
+  new BundleTracker({ path: outputPath, filename: "webpack-stats.json" }),
 
   // removes a lot of debugging code in React
   new webpack.DefinePlugin({
@@ -13,7 +14,7 @@ config.plugins = config.plugins.concat([
   }),
 
   // keeps hashes consistent between compilations
-  new webpack.optimize.OccurrenceOrderPlugin()
+  new webpack.optimize.OccurrenceOrderPlugin(),
 ]);
 
 module.exports = config;

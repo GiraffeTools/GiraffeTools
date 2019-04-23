@@ -1,7 +1,8 @@
 const path = require("path");
 const webpack = require("webpack");
 const BundleTracker = require("webpack-bundle-tracker");
-const fs = require("fs");
+
+const outputPath = process.env.WEBPACK_FOLDER_NODE || "/bundles";
 
 module.exports = {
   context: __dirname,
@@ -10,9 +11,8 @@ module.exports = {
     porcupine: path.resolve(__dirname, "../porcupine/index.js"),
     giraffe: path.resolve(__dirname, "../giraffe/index.js")
   },
-
   output: {
-    path: path.resolve(__dirname, "/bundles"),
+    path: outputPath,
     filename: "[name]-[hash].js"
   },
   // optimization: {
@@ -34,7 +34,6 @@ module.exports = {
       Popper: ["popper.js", "default"]
     })
   ],
-
   module: {
     rules: [
       {

@@ -31,7 +31,7 @@ config.output.publicPath = "http://localhost:3000/bundles/";
 config.plugins = config.plugins.concat([
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoEmitOnErrorsPlugin(),
-  new BundleTracker({ filename: "../bundles/webpack-stats.json" })
+  new BundleTracker({ filename: "../bundles/webpack-stats.json" }),
 ]);
 
 config.watchOptions = {
