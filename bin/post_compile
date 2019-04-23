@@ -1,4 +1,5 @@
 #!/bin/bash
 
 # this is a file that is automatically run by heroku after compilation
-bash ./backend/bin/init-django.bash
+cd ./backend || exit
+bash ./bin/init-django.bash
