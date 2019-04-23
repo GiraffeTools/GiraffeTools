@@ -230,7 +230,7 @@ GEOIP_PATH = env.str("GEOIP_PATH", default="/usr/share/GeoIP/")
 
 
 # Ignore LneLengthBear
-WEBPACK_FOLDER = env.str("WEBPACK_FOLDER", default="/webpack/")
+WEBPACK_FOLDER = env.str("WEBPACK_FOLDER_DJANGO", default="/webpack/")
 webpack_config = {
     "CACHE": not DEBUG,
     "BUNDLE_DIR_NAME": "webpack_bundles/",  # must end with slash
