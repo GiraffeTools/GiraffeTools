@@ -4,7 +4,9 @@ const BundleTracker = require("webpack-bundle-tracker");
 
 const config = require("./webpack.base.config.js");
 
-const outputPath = process.env.WEBPACK_FOLDER_NODE ? path.resolve(__dirname, process.env.WEBPACK_FOLDER_NODE) : "/bundles";
+const outputPath = process.env.WEBPACK_FOLDER_NODE
+  ? path.resolve(__dirname, process.env.WEBPACK_FOLDER_NODE)
+  : "/bundles";
 
 config.plugins = config.plugins.concat([
   new BundleTracker({ path: outputPath, filename: "webpack-stats.json" }),
@@ -15,7 +17,7 @@ config.plugins = config.plugins.concat([
   }),
 
   // keeps hashes consistent between compilations
-  new webpack.optimize.OccurrenceOrderPlugin(),
+  new webpack.optimize.OccurrenceOrderPlugin()
 ]);
 
 module.exports = config;

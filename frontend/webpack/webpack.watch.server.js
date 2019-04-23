@@ -11,11 +11,10 @@ new WebpackDevServer(webpack(config), {
   historyApiFallback: true,
   disableHostCheck: true,
   headers: { "Access-Control-Allow-Origin": "*" }
-})
-  .listen(port, host, function(err, result) {
-    if (err) {
-      console.log(err);
-    }
+}).listen(port, host, function(err, result) {
+  if (err) {
+    console.log(err);
+  }
 
-    console.log(`Listening at ${host}:${port}`);
-  });
+  console.log(`Listening at ${host}:${port}`);
+});

@@ -2,7 +2,7 @@ import os
 import socket
 import time
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
@@ -20,9 +20,9 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.SUCCESS(
                     "Successfully reached database"))
                 return
-            except:
+            except:  # Ignore PycodestyleBear (E722)
                 self.stdout.write(self.style.WARNING(
-                    "Can't detect the postgres server. Trying again in a second"))
+                    "Can't detect the postgres server. Trying again in a second"))  # Ignore LineLengthBear
                 time.sleep(1)
 
         # crash:

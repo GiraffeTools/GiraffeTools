@@ -2,7 +2,9 @@ const path = require("path");
 const webpack = require("webpack");
 const BundleTracker = require("webpack-bundle-tracker");
 
-const outputPath = process.env.WEBPACK_FOLDER_NODE ? path.resolve(__dirname, process.env.WEBPACK_FOLDER_NODE) : "/bundles";
+const outputPath = process.env.WEBPACK_FOLDER_NODE
+  ? path.resolve(__dirname, process.env.WEBPACK_FOLDER_NODE)
+  : "/bundles";
 
 module.exports = {
   context: __dirname,

@@ -66,7 +66,7 @@ export default DragSource(
   boxSource,
   (connect, monitor) => ({
     connectDragSource: connect.dragSource()
-  // connectDragPreview: connect.dragPreview(),
-  // isDragging: monitor.isDragging(),
+    // connectDragPreview: connect.dragPreview(),
+    // isDragging: monitor.isDragging(),
   })
-)(PaneElementDragLayer)
+)(PaneElementDragLayer);

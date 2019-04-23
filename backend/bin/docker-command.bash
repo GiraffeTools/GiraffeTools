@@ -19,7 +19,7 @@ python manage.py pingdatabase
 bash ./bin/init-django.bash
 
 # watch changes and live reload them on changes:
-if [ $DEBUG == "True"]; then
+if [ $DEBUG == "True" ]; then
   python manage.py livereload --host 0.0.0.0 --port 35729 &
 fi
 

@@ -19,8 +19,8 @@ module.exports = api => {
     // Required for async-await
     "@babel/transform-runtime",
     // Required for react-dnd:
-    ["@babel/plugin-proposal-class-properties", { "loose": true }],
-    ["@babel/plugin-proposal-decorators", { legacy: true }],
+    ["@babel/plugin-proposal-class-properties", { loose: true }],
+    ["@babel/plugin-proposal-decorators", { legacy: true }]
   ];
 
   return {

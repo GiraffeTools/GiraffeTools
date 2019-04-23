@@ -38,7 +38,7 @@ class Profile(SuperModel):
 
 class Project(SuperModel):
     name = models.CharField(max_length=255, db_index=True)
-    user = models.ForeignKey(User, related_name="projects", on_delete=models.CASCADE,
+    user = models.ForeignKey(User, related_name="projects", on_delete=models.CASCADE,  # Ignore LineLengthBear
                              null=True, help_text=("The projects of a user."))
 
     @property

@@ -1,5 +1,5 @@
 import React from "react";
-import SyntaxHighlighter from 'react-syntax-highlighter';
+import SyntaxHighlighter from "react-syntax-highlighter";
 
 import AwesomeDebouncePromise from "awesome-debounce-promise";
 import python from "react-syntax-highlighter/dist/esm/languages/hljs/python";

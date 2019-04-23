@@ -38,7 +38,7 @@ class Content extends React.Component {
 
     const response = await fetch("/api/get_user");
     updateAuth(await response.json());
-    this.canvas.decoratedRef.current.load()
+    this.canvas.decoratedRef.current.load();
   }
 
   render() {
@@ -52,9 +52,7 @@ class Content extends React.Component {
           <label style={[showSidebar ? styles.close2 : styles.open2]} />
         </a>
         <div style={[styles.main]}>
-          <Canvas
-            ref={canvas => (this.canvas = canvas)}
-          />
+          <Canvas ref={canvas => (this.canvas = canvas)} />
           <ParameterPane />
           <CodeEditor />
           <Modals />
@@ -63,6 +61,5 @@ class Content extends React.Component {
     );
   }
 }
-
 
 export default DragDropContext(MultiBackend(HTML5toTouch))(Content);
