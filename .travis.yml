@@ -20,6 +20,8 @@ env:
     #TODO change MODE to 'test'
     - DEBUG=False
     - NODE_ENV=test
+    - WEBPACK_FOLDER_DJANGO=./assets/webpack_bundles
+    - WEBPACK_FOLDER_NODE=../../backend/assets/webpack_bundles
   matrix:
     # indicate different builds here
 before_install:
