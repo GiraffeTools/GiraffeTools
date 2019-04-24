@@ -2,8 +2,8 @@
   "name": "GiraffeTools",
   "version": "1.0.0",
   "engines": {
-    "node": "9.8.0",
-    "npm": "6.7.0"
+    "node": "9.11.2",
+    "npm": "5.6.0"
   },
   "description": "Graphical Interface for Reproducible Analysis For workFlow Experiments",
   "dependencies": {
@@ -26,7 +26,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.4.3",
     "@emotion/core": "^10.0.10",
-    "aframe": "<=0.8.0",
+    "aframe": "0.8.0",
     "aframe-react": "^4.4.0",
     "await-to-js": "^2.1.1",
     "awesome-debounce-promise": "^1.0.0",
