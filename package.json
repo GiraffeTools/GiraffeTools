@@ -97,8 +97,9 @@
     "webpack-dev-server": "<=3.1.14"
   },
   "scripts": {
+    "test": "cd frontend && jest",
     "heroku-prebuild": "npm install --only=dev",
-    "heroku-postbuild": "cd frontend && webpack --mode=production --config ./webpack/webpack.prod.config.js --progress --colors"
+    "heroku-postbuild": "cd frontend && webpack --mode=production --config ./webpack/webpack.prod.config.js"
   },
   "repository": {
     "type": "git",

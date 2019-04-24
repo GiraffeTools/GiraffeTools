@@ -10,7 +10,5 @@ bash <(curl -s https://codecov.io/bash) -cF python
 cd .. || exit
 
 # javascript tests
-cd frontend || exit
 npm test
 bash <(curl -s https://codecov.io/bash) -cF javascript
-cd .. || exit
