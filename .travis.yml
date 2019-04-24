@@ -30,7 +30,7 @@ before_install:
   - sudo service postgresql restart
   - sleep 1
 install:
-  - ./.heroku/run.sh
+  - bash .heroku/run.sh
   - pip install -r ./backend/requirements/test.txt
   - npm run heroku-prebuild
   - npm install
