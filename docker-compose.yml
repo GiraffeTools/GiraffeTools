@@ -31,8 +31,6 @@ services:
     ports:
       - "8000:8000"
       - "35729:35729"   # django live reload server
-    # expose:
-      # - "8000"
     depends_on:
       - database
       - frontend

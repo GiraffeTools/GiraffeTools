@@ -1,5 +1,0 @@
-{
-  "test": "cd frontend && jest",
-  "heroku-prebuild": "./bin/build-on-heroku.bash",
-  "heroku-postbuild": "cd frontend && webpack --mode=production --config ./webpack/webpack.prod.config.js"
-}

@@ -31,15 +31,16 @@ before_install:
   - sleep 1
 install:
   - pip install -r ./backend/requirements/test.txt
+  - node ./heroku/heroku-copy-files.js
   - npm run heroku-prebuild
-  - npm install 
+  - npm install
   - npm run heroku-postbuild
 before_script:
   # Only works without password if PGPASSWORD is set
   - psql -c 'create database travis_ci;' -U postgres --no-password
-  - bash ./bin/init-tests.bash
+  - bash ./test/init-tests.bash
 script:
-  - bash ./bin/run-tests.bash
+  - bash ./test/run-tests.bash
   - docker-compose run --rm coala
 addons:
   postgresql: "10"

@@ -1,1 +1,1 @@
-web: bash ./bin/deploy-on-heroku.bash
+web: bash ./heroku/deploy-on-heroku.bash
