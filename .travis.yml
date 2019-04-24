@@ -39,7 +39,6 @@ before_script:
   # Only works without password if PGPASSWORD is set
   - psql -c 'create database travis_ci;' -U postgres --no-password
   - bash ./bin/post_compile
-  - bash ./test/init-tests.bash
 script:
   - bash ./test/run-tests.bash
   - docker-compose run --rm coala
