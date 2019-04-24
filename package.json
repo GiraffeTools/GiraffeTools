@@ -99,10 +99,6 @@
   "scripts": {
     "heroku-prebuild": "npm install --only=dev",
     "heroku-postbuild": "cd frontend && webpack --mode=production --config ./webpack/webpack.prod.config.js --progress --colors",
-    "test": "jest",
-    "development": "webpack --mode=development --config ./webpack/webpack.dev.config.js --progress --colors",
-    "watch": "webpack --mode=development --config ./webpack/webpack.watch.config.js --progress --colors",
-    "production": "webpack --mode=production --config ./webpack/webpack.prod.config.js --progress --colors"
   },
   "repository": {
     "type": "git",
