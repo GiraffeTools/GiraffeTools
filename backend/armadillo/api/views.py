@@ -7,6 +7,7 @@ import json
 import base64
 import os
 from django.http import HttpResponse
+from django.conf import settings
 from nibabel.gifti.parse_gifti_fast import GiftiImageParser
 from nibabel.freesurfer import io as fsio
 
@@ -16,7 +17,10 @@ from .utils import create_qr_from_text, put_qr_on_marker, color_func, \
 
 def qr(request, image=""):
     qr_link = os.path.join(settings.BASE_URL, "neurovault/" + image)
-    marker_with_qr = put_qr_on_marker(qr_link, "staticfiles/img/marker.png")
+    marker_with_qr = put_qr_on_marker(
+        qr_link, os.path.join(settings.STATIC_ROOT, "img/marker.png"))
+
+    # Ignore PycodestyleBear (E303)  # Ignore LineLengthBear
     image = ContentFile(base64.b64decode(marker_with_qr), name="temp.jpg")
     return HttpResponse(image, content_type="image/jpeg")
 
@@ -43,7 +47,7 @@ def hemisphere(request, image="", hemisphere=""):
     else:
         hemi_short = "rh"
 
-    fs_base = os.path.join(settings.BASE_DIR, "staticfiles/fs/")
+    fs_base = os.path.join(settings.STATIC_ROOT, "fs/")
     verts, faces = fsio.read_geometry(
         os.path.join(fs_base, "%s.pial" % hemi_short))
 
