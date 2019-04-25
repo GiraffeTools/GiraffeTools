@@ -4,7 +4,6 @@ import { render } from "react-dom";
 import { hot } from "react-hot-loader";
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import "bootstrap/dist/js/bootstrap";
 
 import store from "./store";
 import App from "./app";

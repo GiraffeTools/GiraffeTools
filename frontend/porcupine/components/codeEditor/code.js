@@ -1,13 +1,13 @@
 import React from "react";
-import SyntaxHighlighter from "react-syntax-highlighter";
+import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 
 import AwesomeDebouncePromise from "awesome-debounce-promise";
 import python from "react-syntax-highlighter/dist/esm/languages/hljs/python";
 import dockerfile from "react-syntax-highlighter/dist/esm/languages/hljs/dockerfile";
 import atomDark from "react-syntax-highlighter/dist/esm/styles/hljs/atom-one-dark";
 
-// SyntaxHighlighter.registerLanguage("python", python);
-// SyntaxHighlighter.registerLanguage("dockerfile", dockerfile);
+SyntaxHighlighter.registerLanguage("python", python);
+SyntaxHighlighter.registerLanguage("dockerfile", dockerfile);
 
 import nipypeCode from "../../utils/codeGenerators/nipype";
 import dockerCode from "../../utils/codeGenerators/docker";

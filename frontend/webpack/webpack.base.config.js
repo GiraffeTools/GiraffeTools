@@ -17,25 +17,18 @@ module.exports = {
     path: outputPath,
     filename: "[name]-[hash].js"
   },
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all'
-  //   }
-  // },
+  optimization: {
+    splitChunks: {
+      // chunks: 'all'
+    }
+  },
   performance: {
     hints: process.env.NODE_ENV === "production" ? "warning" : false
   },
   stats: {
     children: false
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery",
-      Popper: ["popper.js", "default"]
-    })
-  ],
+  plugins: [],
   module: {
     rules: [
       {
