@@ -26,7 +26,7 @@ if [ "$NODE_ENV" == "production" ]; then
 else
   npm install --only=development
 fi
-# npm update
+npm update
 npm run $NODE_ENV
 
 # watch changes and live reload them on changes:

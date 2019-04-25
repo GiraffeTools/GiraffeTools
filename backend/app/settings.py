@@ -38,11 +38,11 @@ INSTALLED_APPS = [
     "corsheaders",
     "webpack_loader",
     "sass_processor",
-    "health_check",                             # required
-    "health_check.db",                          # stock Django health checkers
+    "health_check",
+    "health_check.db",
     "health_check.cache",
     "health_check.storage",
-    # 'health_check.contrib.celery',              # requires celery
+    # 'health_check.contrib.celery',
     # disk and memory utilization; requires psutil
     "health_check.contrib.psutil",
     # 'health_check.contrib.s3boto_storage',      # requires boto and S3BotoStorage backend  # Ignore LineLengthBear
@@ -306,23 +306,22 @@ if True:
         }
     }
 
+# REDIS
+redis_url = "redis://{host}:{port}/1".format(
+    host=env.str("REDIS_HOST", "redis"),
+    port=env.str("REDIS_PORT", "6379")
+)
+REDIS_URL = env.str("REDIS_URL", default=redis_url)
 
-# CACHE_URL=memcache://127.0.0.1:11211,127.0.0.1:11212,127.0.0.1:11213
-# REDIS_URL=rediscache://127.0.0.1:6379/1?client_class=django_redis.client.DefaultClient&password=redis-un-githubbed-password  # Ignore LineLengthBear
-# # Ignore LineLengthBear
+
+# CACHE
 CACHES = {
     "default": {
-        "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
-        "LOCATION": [
-            "127.0.0.1:11211", "127.0.0.1:11212", "127.0.0.1:11213",
-        ]
-    },
-    "redis": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "127.0.0.1:6379/1",
+        "LOCATION": REDIS_URL,
         "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            "PASSWORD": "redis-githubbed-password",
-        }
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
+        "KEY_PREFIX": "example"
     }
 }

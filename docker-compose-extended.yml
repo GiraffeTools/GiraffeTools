@@ -1,17 +1,17 @@
 version: '3'
 
 services:
-  nginx:
-    build: ./nginx
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./public:/www/public/
-    depends_on:
-      - web
-    volumes:
-      - ./nginx/config:/etc/nginx/conf.d
-      - ./backend/public/static:/public/static
+  # nginx:
+  #   build: ./nginx
+  #   ports:
+  #     - "8000:8000"
+  #   volumes:
+  #     - ./public:/www/public/
+  #   depends_on:
+  #     - web
+  #   volumes:
+  #     - ./nginx/config:/etc/nginx/conf.d
+  #     - ./backend/public/static:/public/static
     # healthcheck:
     #   test: ["CMD", "curl", "-f", "http://0.0.0.0:8000"]
     #   interval: 30s
@@ -19,7 +19,7 @@ services:
     #   retries: 3
 
   redis:
-    restart: unless-stopped
+    # restart: unless-stopped
     image: redis:4.0-alpine
     volumes:
       - redis:/data
@@ -76,14 +76,14 @@ services:
     command: ./bin/docker-command.bash
 
 
-  worker:
-    build: ./worker
-
-  rabbitmq:
-    build: ./rabbitmq
-
-  celery:
-    build: ./celery
+  # worker:
+  #   build: ./worker
+  #
+  # rabbitmq:
+  #   build: ./rabbitmq
+  #
+  # celery:
+  #   build: ./celery
 
 
   # coala is the 'linter', checking coding standard consistency

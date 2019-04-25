@@ -48,6 +48,14 @@ services:
       - "3000:3000"
     command: ./bin/docker-command.bash
 
+  redis:
+    # restart: unless-stopped
+    image: redis:4.0-alpine
+    volumes:
+      - redis:/data
+    ports:
+      - "6379:6379"
+
   coala:
     image: nemaniarjun/coala-docker-updated
     # image: coala/base
@@ -60,3 +68,4 @@ services:
 volumes:
   postgres:
   webpack_bundles:
+  redis:
