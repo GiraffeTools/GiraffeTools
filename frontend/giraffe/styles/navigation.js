@@ -15,12 +15,11 @@ const styles = {
     OTransition: "transform 0.3s ease",
     transition: "transform 0.3s ease",
 
-    padding: "0.5rem 0.5rem 0rem 2rem",
     backgroundColor: styleSheet.primaryLightColor,
     boxShadow: "0px 0px 5rem black",
     width: "22rem",
     // .in {
-    transform: "translateX(110%) translateY(-110%)",
+    // transform: "translateX(110%) translateY(-110%)",
     // }
     out: {
       transform: "translateX(0%) translateY(0%)"
@@ -41,13 +40,14 @@ const styles = {
     paddingLeft: "0rem"
   },
   navTriangle: {
-    position: "absolute",
+    position: "fixed",
     right: 0,
     width: "12rem",
     float: "right",
     pointerEvents: "auto",
     clipPath: "polygon(100% 0, 0 0, 100% 100%)",
-    cursor: "pointer"
+    cursor: "pointer",
+    zIndex: 1
   },
   loginTextNav: {
     color: "black",

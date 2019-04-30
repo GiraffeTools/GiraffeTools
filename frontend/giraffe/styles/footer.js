@@ -1,16 +1,20 @@
 const styles = {
   footer: {
-    fontSize: "0.8rem",
-    paddingLeft: "6rem"
+    paddingTop: "1rem",
   },
-
+  copyright: {
+    marginBottom: 0
+  },
+  logoContainer: {
+    textAlign: "right",
+    padding: 0,
+  },
   footerText: {
-    margin: "2rem"
+    fontSize: "0.8rem",
+    paddingTop: "2rem",
   },
-
   footerLogo: {
     transform: "scaleX(-1)",
-    marginTop: "1rem",
     height: "7rem"
   }
 };

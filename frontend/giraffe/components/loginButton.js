@@ -7,6 +7,7 @@ import styles from "../styles/loginButton";
 const LoginButton = props => {
   const { user } = props;
   const styleOverwrite = props.styles;
+  const logoColor = props.logoColor || "white";
   return (
     <a
       type="button btn-primary btn-lg "
@@ -20,7 +21,10 @@ const LoginButton = props => {
           : `/_oauth/login/`
       }
     >
-      <img src="/static/img/gh-icon-white.svg" style={[styles.githubButton]} />
+      <img
+        src={`/static/img/gh-icon-${logoColor}.svg` }
+        style={[styles.githubButton]}
+      />
       <span>
         {" "}
         {user && user.access_token

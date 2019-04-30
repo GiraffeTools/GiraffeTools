@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 import Radium from "radium";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 import styles from "../styles/navigation.js";
 
@@ -24,104 +26,21 @@ class Navigation extends React.Component {
     const { showNavigation } = this.state;
     const { user } = this.props;
 
+    const triangle = (
+      <img src="/static/img/nav_triangle.svg" style={[styles.navTriangle]} />
+    );
+
     return (
-      <div
-        className="fixed-top"
-        style={[styles.navTop, showNavigation && styles.navTop.out]}
+      <Nav
+        // className="flex-column float-right"
+        // style={{...styles.navigation, ...(showNavigation && styles.navigation.out)}}
+        style={styles.navigation}
+        fixed="top"
+        sticky="top"
+        onToggle={this.toggleNavigation}
       >
-        <div
-          className="nav flex-column float-right"
-          style={[styles.navigation, showNavigation && styles.navigation.out]}
-        >
-          <div className="d-flex" style={[styles.brandBox]}>
-            <a className="navbar-brand" href="/" style={[styles.giraffeBrand]}>
-              <img
-                src="/static/img/giraffetools_logo.png"
-                style={[styles.giraffeBrandLogo]}
-              />
-            </a>
-          </div>
-          <ul style={[styles.navList]}>
-            <li className="nav-item">
-              <a className="nav-link" href="/porcupine">
-                <h3>Porcupine</h3>
-              </a>
-            </li>
-            <li className="nav-item border-bottom">
-              <a className="nav-link" href="https://armadillobrain.app">
-                <h3>ARmadillo</h3>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                href="https://giraffetools.github.io/Documentation"
-              >
-                <h3>Documentation</h3>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/faq">
-                <h3>FAQ</h3>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/slack">
-                <h3>Slack</h3>
-              </a>
-            </li>
-            <li className="nav-item border-bottom">
-              <a
-                className="nav-link"
-                href="/github/TimVanMourik/SomeGiraffeExample"
-              >
-                <h3>Example project</h3>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                href={
-                  user && user.access_token
-                    ? `/github/${user.github_handle}`
-                    : `/_oauth/login/?redirect_uri=/`
-                }
-              >
-                {user && user.access_token ? (
-                  <h3>My projects</h3>
-                ) : (
-                  <span style={[styles.loginTextNav]}>
-                    <img
-                      src="/static/img/gh-icon.png"
-                      style={[styles.githubButton]}
-                    />
-                    Login with GitHub
-                  </span>
-                )}
-              </a>
-            </li>
-            {user &&
-              user.access_token && (
-                <li className="nav-item border-bottom">
-                  <a className="nav-link" href="/_oauth/logout/">
-                    <h3>Log out</h3>
-                  </a>
-                </li>
-              )}
-          </ul>
-        </div>
-        <a
-          role="button"
-          onClick={() => {
-            this.toggleNavigation();
-          }}
-        >
-          <img
-            src="/static/img/nav_triangle.svg"
-            style={[styles.navTriangle]}
-          />
-        </a>
-      </div>
+        {triangle}
+      </Nav>
     );
   }
 }

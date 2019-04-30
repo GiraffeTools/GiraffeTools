@@ -12,28 +12,20 @@ import Thanks from "../components/thanks";
 import Tools from "../components/tools";
 import WhyGiraffe from "../components/whyGiraffe";
 
-class LandingPage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <Fragment>
-        <Hero />
-        <Tools />
-        <ExplainerVideo />
-        <Roadmap />
-        <WhyGiraffe />
-        <People />
-        <Contributors />
-        <Thanks />
-        <Contact />
-        <SlackBanner />
-        <Footer />
-      </Fragment>
-    );
-  }
-}
+const LandingPage = () => (
+  <Fragment>
+    <Hero />
+    <Tools />
+    <ExplainerVideo />
+    <Roadmap />
+    <WhyGiraffe />
+    <People />
+    <Contributors />
+    <Thanks />
+    <Contact />
+    <SlackBanner />
+    <Footer />
+  </Fragment>
+);
 
 export default LandingPage;

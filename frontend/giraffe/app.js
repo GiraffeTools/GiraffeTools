@@ -8,18 +8,20 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Faq from "./pages/faq";
 import LandingPage from "./pages/landingPage";
 import Slack from "./pages/slack";
-import Container from "./containers/container";
+import AppContainer from "./containers/container";
 import Github from "./pages/github";
 import Gallery from "./pages/gallery";
 import SmallScreenAlert from "./containers/smallScreenAlert";
 import UnhappyBrowser from "./containers/unhappyBrowser";
+import Navigation from "./containers/navigation";
 
 class App extends React.Component {
   render() {
     return (
-      <Container>
+      <AppContainer>
         <UnhappyBrowser />
         <SmallScreenAlert />
+        <Navigation />
         <Switch>
           <Route path="/faq" component={Faq} />
           <Route path="/slack" component={Slack} />
@@ -27,7 +29,7 @@ class App extends React.Component {
           <Route path="/github" component={Github} />
           <Route path="/" component={LandingPage} />
         </Switch>
-      </Container>
+      </AppContainer>
     );
   }
 }
