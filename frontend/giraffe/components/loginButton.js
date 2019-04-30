@@ -22,7 +22,7 @@ const LoginButton = props => {
       }
     >
       <img
-        src={`/static/img/gh-icon-${logoColor}.svg` }
+        src={`/static/img/gh-icon-${logoColor}.svg`}
         style={[styles.githubButton]}
       />
       <span>

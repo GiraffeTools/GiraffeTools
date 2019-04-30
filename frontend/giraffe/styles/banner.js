@@ -17,7 +17,7 @@ const styles = {
     fontSize: "4rem",
     position: "absolute",
     top: "50%",
-    transform: "translateX(50%) translateY(-50%)",
+    transform: "translateY(-50%)",
     left: "30%"
   },
   titleRow: {

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import Navigation from "../components/navigation";
+import NavMenu from "../components/navMenu";
 
 const mapStateToProps = state => ({
   user: state.auth
@@ -8,9 +8,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({});
 
-const NavigationContainer = connect(
+const NavMenuContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Navigation);
+)(NavMenu);
 
-export default NavigationContainer;
+export default NavMenuContainer;

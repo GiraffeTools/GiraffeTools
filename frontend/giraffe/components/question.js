@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import Radium from "radium";
-import Button from 'react-bootstrap/Button'
-import Collapse from 'react-bootstrap/Collapse'
+import Button from "react-bootstrap/Button";
+import Collapse from "react-bootstrap/Collapse";
 
 import styles from "../styles/question.js";
 
@@ -27,21 +27,11 @@ class Question extends React.Component {
           aria-expanded={open}
           style={styles.header}
         >
-          <img
-            style={[styles.chevron]}
-            src="/static/img/chevron_right.svg"
-          />
-          <span>
-            {q}
-          </span>
+          <img style={[styles.chevron]} src="/static/img/chevron_right.svg" />
+          <span>{q}</span>
         </h3>
-        <Collapse
-          in={this.state.open}
-        >
-          <p
-            id="collapse-answer"
-            style={[styles.answer]}
-          >
+        <Collapse in={this.state.open}>
+          <p id="collapse-answer" style={[styles.answer]}>
             {a}
           </p>
         </Collapse>
@@ -49,6 +39,6 @@ class Question extends React.Component {
       </Fragment>
     );
   }
-};
+}
 
 export default Radium(Question);

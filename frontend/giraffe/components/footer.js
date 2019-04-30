@@ -7,24 +7,16 @@ import Col from "react-bootstrap/Col";
 import styles from "../styles/footer";
 
 const Footer = () => (
-  <Container
-    fluid={true}
-    style={styles.footer}
-  >
+  <Container fluid={true} style={styles.footer}>
     <Row>
-      <Col
-        sm={{span:3, offset: 1}}
-        style={styles.footerText}
-      >
+      <Col sm={{ span: 3, offset: 1 }} style={styles.footerText}>
         <p style={[styles.copyright]}>
           <b>&copy; 2018 Tim van Mourik</b>
         </p>
         <p style={[styles.copyright]}>Imprint | Privacy</p>
         <p style={[styles.copyright]}>Designed by Fuchsfabrik</p>
       </Col>
-      <Col sm={{ span: 3, offset: 5 }}
-        style={styles.logoContainer}
-      >
+      <Col sm={{ span: 3, offset: 5 }} style={styles.logoContainer}>
         <img
           src="/static/img/giraffetools_logo_notext.png"
           style={styles.footerLogo}

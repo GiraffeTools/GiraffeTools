@@ -9,7 +9,7 @@ const SmallScreenAlert = () => (
   <Alert
     variant="info"
     dismissible={true}
-    style={{...alertStyles.alert, ...styles.smallScreen}}
+    style={{ ...alertStyles.alert, ...styles.smallScreen }}
   >
     Welcome! This website has not been optimised for small screens so things
     might look a bit quirky!

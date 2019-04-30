@@ -13,7 +13,7 @@ import Github from "./pages/github";
 import Gallery from "./pages/gallery";
 import SmallScreenAlert from "./containers/smallScreenAlert";
 import UnhappyBrowser from "./containers/unhappyBrowser";
-import Navigation from "./containers/navigation";
+import Navigation from "./components/navigation";
 
 class App extends React.Component {
   render() {

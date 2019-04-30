@@ -17,12 +17,12 @@ const styles = {
   },
   githubLogin: {
     alignItems: "center",
-    display: "flex",
+    display: "flex"
   },
   loginButton: {
     borderRadius: 0.2,
-    backgroundColor: "#EEE",
-    color: "black",
+    backgroundColor: "#EFEFEF",
+    color: "black"
   }
 };
 

@@ -1,5 +1,4 @@
 Django==2.1.7
-django-bootstrap4
 django-cacheops==4.0.7
 django-compressor
 django-cors-headers
