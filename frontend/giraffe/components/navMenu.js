@@ -9,18 +9,13 @@ const NavMenu = props => {
 
   return (
     <Fragment>
-      <Navbar.Brand
-        href="/"
-        style={styles.giraffeBrand}
-      >
+      <Navbar.Brand href="/" style={styles.giraffeBrand}>
         <img
           src="/static/img/giraffetools_logo.png"
           style={[styles.giraffeBrandLogo]}
         />
       </Navbar.Brand>
-      <ul
-        style={[styles.navList]}
-      >
+      <ul style={[styles.navList]}>
         <Nav.Item>
           <Nav.Link href="/porcupine">
             <h3>Porcupine</h3>
@@ -62,9 +57,7 @@ const NavMenu = props => {
             {user && user.access_token ? (
               <h3>My projects</h3>
             ) : (
-              <span
-                style={[styles.loginTextNav]}
-              >
+              <span style={[styles.loginTextNav]}>
                 <img
                   src="/static/img/gh-icon.png"
                   style={[styles.githubButton]}

@@ -1,5 +1,6 @@
 import React from "react";
 import Radium from "radium";
+import Container from "react-bootstrap/Container";
 import to from "await-to-js";
 
 import { getCsrfToken } from "../utils/auth";
@@ -54,8 +55,8 @@ class SlackInvite extends React.Component {
     const { success, emailValid, submitted } = this.state;
 
     return (
-      <div className="container text-center" style={[styles.slackInfo]}>
-        <p>
+      <Container style={styles.slackInfo}>
+        <p style={[styles.join]}>
           Would you like to join the GiraffeTools Slack? Fill in your email
           address here, and you'll receive an invitation link in your inbox!
         </p>
@@ -124,7 +125,7 @@ class SlackInvite extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     );
   }
 }

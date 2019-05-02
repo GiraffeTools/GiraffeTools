@@ -15,10 +15,10 @@ const styles = {
     OTransition: "transform 0.3s ease",
     transition: "transform 0.3s ease",
     open: {
-      transform: "translateX(0%) translateY(0%)",
+      transform: "translateX(0%) translateY(0%)"
     },
     closed: {
-      transform: "translateX(110%) translateY(-110%)",
+      transform: "translateX(110%) translateY(-110%)"
     }
   },
   navTriangle: {
@@ -29,7 +29,7 @@ const styles = {
     pointerEvents: "auto",
     clipPath: "polygon(100% 0, 0 0, 100% 100%)",
     cursor: "pointer",
-    zIndex: 2,
+    zIndex: 2
   },
   giraffeBrand: {
     width: "50%"

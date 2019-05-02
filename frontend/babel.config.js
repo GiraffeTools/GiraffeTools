@@ -20,7 +20,8 @@ module.exports = api => {
     "@babel/plugin-proposal-export-namespace-from",
     "@babel/plugin-proposal-function-sent",
     "@babel/plugin-proposal-throw-expressions",
-
+    // Required for hot reloading
+    "react-hot-loader/babel",
     // Required for async-await
     "@babel/transform-runtime",
     // Required for react-dnd:

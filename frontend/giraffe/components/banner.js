@@ -1,8 +1,6 @@
 import React from "react";
 import Radium from "radium";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import { MDBContainer } from "mdbreact";
 
 import styles from "../styles/banner.js";
 

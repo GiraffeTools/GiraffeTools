@@ -2,14 +2,12 @@ import React, { Fragment } from "react";
 import Radium from "radium";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Dropdown from 'react-bootstrap/Dropdown'
+import Dropdown from "react-bootstrap/Dropdown";
 import Container from "react-bootstrap/Container";
-import Collapse from 'react-bootstrap/Collapse'
+import Collapse from "react-bootstrap/Collapse";
 
 import NavMenu from "../containers/navMenu";
 import styles from "../styles/navigation.js";
-
-
 
 class CustomToggle extends React.Component {
   constructor(props, context) {
@@ -54,9 +52,12 @@ class Navigation extends React.Component {
         />
 
         <Container
-          style={{...styles.navMenu, ...styles.navMenu[open ? "open" : "closed"]}}
+          style={{
+            ...styles.navMenu,
+            ...styles.navMenu[open ? "open" : "closed"]
+          }}
         >
-          <NavMenu/>
+          <NavMenu />
         </Container>
       </Container>
     );

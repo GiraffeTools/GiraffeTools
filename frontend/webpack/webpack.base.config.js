@@ -28,6 +28,12 @@ module.exports = {
   stats: {
     children: false
   },
+
+  resolve: {
+    alias: {
+      "react-dom": "@hot-loader/react-dom"
+    }
+  },
   plugins: [],
   module: {
     rules: [

@@ -26,6 +26,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.4.4",
     "@emotion/core": "^10.0.10",
+    "@hot-loader/react-dom": "^16.8.6",
     "aframe": "0.8.0",
     "aframe-react": "^4.4.0",
     "await-to-js": "^2.1.1",
@@ -71,6 +72,7 @@
     "yaml-js": "^0.2.3"
   },
   "devDependencies": {
+    "acorn": "^6.1.1",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-jest": "^23.6.0",
@@ -85,10 +87,10 @@
     "jest-enzyme": "^7.0.2",
     "redux-devtools": "^3.5.0",
     "redux-devtools-extension": "^2.13.8",
-    "webpack": "<=4.28.0",
+    "webpack": "^4.30.0",
     "webpack-bundle-tracker": "^0.4.2-beta",
-    "webpack-cli": "<=3.1.2",
-    "webpack-dev-server": "<=3.1.14"
+    "webpack-cli": "^3.3.1",
+    "webpack-dev-server": "^3.3.1"
   },
   "scripts": {
     "test": "cd frontend && jest",

@@ -6,6 +6,7 @@ const styles = {
     backgroundColor: styleSheet.primaryColor,
     color: "white",
     textAlign: "center",
+    borderColor: "none",
     large: {
       borderRadius: "2px"
     },
@@ -15,7 +16,8 @@ const styles = {
       borderRadius: "2px"
     },
     ":hover": {
-      textDecoration: "none"
+      textDecoration: "none",
+      borderColor: "grey"
     }
   },
 

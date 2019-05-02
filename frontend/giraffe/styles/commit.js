@@ -13,7 +13,7 @@ const styles = {
     padding: "0.5rem",
     width: "8rem",
     marginRight: "0.7rem",
-    "@media(max-width: 1200px)": {
+    "@media(maxWidth: 1200px)": {
       display: "none"
     }
   },
@@ -22,7 +22,8 @@ const styles = {
     marginTop: "1rem",
     paddingBottom: "1rem",
     marginLeft: "0rem",
-    marginRight: "0rem"
+    marginRight: "0rem",
+    borderBottom: "1px solid #dee2e6"
   },
 
   githubButton: {

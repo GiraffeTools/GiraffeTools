@@ -7,28 +7,32 @@ const outputPath = process.env.WEBPACK_FOLDER_NODE
   ? path.resolve(__dirname, process.env.WEBPACK_FOLDER_NODE)
   : "/bundles";
 
+const host = "localhost";
+const port = 3000;
+const publicPath = `http://${host}:${port}`;
+
 config.mode = "development";
 // Use webpack dev server
 config.entry = {
   armadillo: [
-    "webpack-dev-server/client?http://localhost:3000",
+    `webpack-dev-server/client?${publicPath}`,
     "webpack/hot/only-dev-server",
     path.resolve(__dirname, "../armadillo/index.js")
   ],
   porcupine: [
-    "webpack-dev-server/client?http://localhost:3000",
+    `webpack-dev-server/client?${publicPath}`,
     "webpack/hot/only-dev-server",
     path.resolve(__dirname, "../porcupine/index.js")
   ],
   giraffe: [
-    "webpack-dev-server/client?http://localhost:3000",
+    `webpack-dev-server/client?${publicPath}`,
     "webpack/hot/only-dev-server",
     path.resolve(__dirname, "../giraffe/index.js")
   ]
 };
 
 // override django's STATIC_URL for webpack bundles
-config.output.publicPath = "http://localhost:3000/bundles/";
+config.output.publicPath = `${publicPath}/bundles/`;
 
 // Add HotModuleReplacementPlugin and BundleTracker plugins
 config.plugins = config.plugins.concat([
@@ -42,5 +46,10 @@ config.watchOptions = {
   poll: 1000,
   ignored: /node_modules/
 };
+
+// config.devServer = {
+//   host,
+//   port
+// }
 
 module.exports = config;

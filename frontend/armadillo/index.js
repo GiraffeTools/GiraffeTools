@@ -7,7 +7,7 @@ import store from "./store";
 import App from "./app";
 
 render(
-  <Provider className="app" store={store}>
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
