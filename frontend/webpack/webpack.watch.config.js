@@ -9,7 +9,8 @@ const outputPath = process.env.WEBPACK_FOLDER_NODE
 
 const host = "localhost";
 const port = 3000;
-const publicPath = `http://${host}:${port}`;
+const public = `${host}:${port}`;
+const publicPath = `http://${public}`;
 
 config.mode = "development";
 // Use webpack dev server
@@ -47,9 +48,11 @@ config.watchOptions = {
   ignored: /node_modules/
 };
 
-// config.devServer = {
-//   host,
-//   port
-// }
+config.devServer = {
+  host,
+  port,
+  public,
+  publicPath
+};
 
 module.exports = config;

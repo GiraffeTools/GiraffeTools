@@ -6,15 +6,15 @@ const host = "0.0.0.0";
 const port = 3000;
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
+  public: config.devServer.public,
   hot: true,
   inline: true,
   historyApiFallback: true,
   disableHostCheck: true,
   headers: { "Access-Control-Allow-Origin": "*" }
-}).listen(port, host, function(err, result) {
+}).listen(port, host, (err, result) => {
   if (err) {
     console.log(err);
   }
-
   console.log(`Listening at ${host}:${port}`);
 });

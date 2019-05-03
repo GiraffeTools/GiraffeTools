@@ -5,7 +5,8 @@ import headingStyles from "./headings";
 
 const styles = {
   toolText: {
-    paddingTop: "5rem"
+    paddingTop: "5rem",
+    textAlign: "left"
   },
   armadillo: {
     ...headingStyles.h3

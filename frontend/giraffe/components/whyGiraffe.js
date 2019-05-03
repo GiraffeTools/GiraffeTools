@@ -1,5 +1,6 @@
 import React from "react";
 import Radium from "radium";
+import Container from "react-bootstrap/Container";
 
 import styles from "../styles/whyGiraffe.js";
 
@@ -57,7 +58,7 @@ const WhyGiraffe = () => {
   ];
 
   return (
-    <div className="container-fluid" style={[styles.whyGiraffe]}>
+    <Container fluid={true} style={styles.whyGiraffe}>
       <h2 style={[styles.whyGiraffeHeading]}>WHY GIRAFFE</h2>
       <div className="position-relative">
         <div id="justify-content-center" style={[styles.whyGiraffeBox]}>
@@ -78,7 +79,7 @@ const WhyGiraffe = () => {
         </div>
         <img src="/static/img/giraffe-lines.svg" style={[styles.peopleLines]} />
       </div>
-    </div>
+    </Container>
   );
 };
 

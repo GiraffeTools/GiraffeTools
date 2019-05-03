@@ -1,10 +1,11 @@
 import React from "react";
 import Radium from "radium";
+import Container from "react-bootstrap/Container";
 
 import styles from "../styles/thanks.js";
 
 const Thanks = () => (
-  <div className="container-fluid" style={[styles.thanks]}>
+  <Container fluid={true} style={styles.thanks}>
     <h3>With lots of thanks to:</h3>
     <img
       src="/static/img/donders_logo.svg"
@@ -21,7 +22,7 @@ const Thanks = () => (
       className="thanks-logo"
       style={[styles.thanksLogo]}
     />
-  </div>
+  </Container>
 );
 
 export default Radium(Thanks);
