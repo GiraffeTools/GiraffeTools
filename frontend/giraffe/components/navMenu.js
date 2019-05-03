@@ -18,32 +18,32 @@ const NavMenu = props => {
       <ul style={[styles.navList]}>
         <Nav.Item>
           <Nav.Link href="/porcupine">
-            <h3>Porcupine</h3>
+            <h3 style={[styles.navItem]} key={0}>Porcupine</h3>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="border-bottom">
           <Nav.Link href="https://armadillobrain.app">
-            <h3>ARmadillo</h3>
+            <h3 style={[styles.navItem]} key={1}>ARmadillo</h3>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link href="https://giraffetools.github.io/Documentation">
-            <h3>Documentation</h3>
+            <h3 style={[styles.navItem]} key={2}>Documentation</h3>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link href="/faq">
-            <h3>FAQ</h3>
+            <h3 style={[styles.navItem]} key={3}>FAQ</h3>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link href="/slack">
-            <h3>Slack</h3>
+            <h3 style={[styles.navItem]} key={4}>Slack</h3>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="border-bottom">
           <Nav.Link href="/github/TimVanMourik/SomeGiraffeExample">
-            <h3>Example project</h3>
+            <h3 style={[styles.navItem]} key={5}>Example project</h3>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
@@ -55,15 +55,15 @@ const NavMenu = props => {
             }
           >
             {user && user.access_token ? (
-              <h3>My projects</h3>
+              <h3 style={[styles.navItem]} key={6}>My projects</h3>
             ) : (
-              <span style={[styles.loginTextNav]}>
+              <h3 style={[styles.navItem, styles.loginTextNav]} key={7}>
                 <img
                   src="/static/img/gh-icon.png"
                   style={[styles.githubButton]}
                 />
                 Login with GitHub
-              </span>
+              </h3>
             )}
           </Nav.Link>
         </Nav.Item>
@@ -71,7 +71,7 @@ const NavMenu = props => {
           user.access_token && (
             <Nav.Item className="border-bottom">
               <Nav.Link href="/_oauth/logout/">
-                <h3>Log out</h3>
+                <h3 style={[styles.navItem]} key={8}>Log out</h3>
               </Nav.Link>
             </Nav.Item>
           )}

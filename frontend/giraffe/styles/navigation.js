@@ -42,10 +42,10 @@ const styles = {
     margin: "2rem 0rem",
     paddingLeft: "0rem"
   },
-  loginTextNav: {
-    color: "black",
-    fontFamily: "Nexa-Bold",
-    fontSize: "1.6rem"
+  navItem: {
+    ":hover": {
+      textShadow: "0px 0px 1rem " +  styleSheet.primaryColor,
+    }
   },
   githubButton: {
     ...buttonStyles.githubButton

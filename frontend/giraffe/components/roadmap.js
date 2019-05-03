@@ -25,10 +25,10 @@ const StyledEvent = Radium(Event);
 
 const Roadmap = () => {
   const events = [
-    { year: 2015, description: "Started the project" },
-    { year: 2017, description: "Great achievement" },
-    { year: 2018, description: "current status is lit!" },
-    { year: 2019, description: "wait for big news" },
+    { year: 2015, description: "Started Porcupine development" },
+    { year: 2017, description: "Stand-alone Porcupine finished" },
+    { year: 2018, description: "Web version GiraffeTools started" },
+    { year: 2019, description: "GiraffeTools launched" },
     { year: 2020, description: "we are on the moon" }
   ];
 
