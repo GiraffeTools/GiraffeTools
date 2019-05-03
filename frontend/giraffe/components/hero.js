@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleRoot } from "radium";
 import Typing from "react-typing-animation";
+import Row from "react-bootstrap/Row";
 
 import Navigation from "../components/navigation";
 import LoginButton from "../containers/loginButton";
@@ -16,10 +17,9 @@ const Hero = () => (
           style={[styles.heroLogo]}
         />
         <div>
-          <div
-            className="row"
+          <Row
             id="typewriter-text"
-            style={[styles.typewriterText]}
+            style={styles.typewriterText}
           >
             <div style={[styles.open]}>Open</div>
             <Typing loop={true} className="float-left">
@@ -40,7 +40,7 @@ const Hero = () => (
               src="/static/img/headline_dot.svg"
               style={[styles.headlineDot]}
             />
-          </div>
+          </Row>
         </div>
         <div style={[styles.heroSubtitle]}>
           Giraffe Tools are applications that help you to analyse all kinds of

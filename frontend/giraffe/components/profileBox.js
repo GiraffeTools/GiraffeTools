@@ -1,5 +1,6 @@
 import React from "react";
 import Radium from "radium";
+import Container from "react-bootstrap/Container";
 import pluralize from "pluralize";
 
 import styles from "../styles/profileBox.js";
@@ -12,12 +13,9 @@ const ProfileBox = ({ user, active_giraffe_projects }) => (
         <img src={user.avatar_url} style={[styles.profilePic]} />
         <h3 style={[styles.username]}>{user.login}</h3>
         <img src="/static/img/separator_grey.svg" style={[styles.separator]} />
-        <div
-          className="container text-center"
-          style={[styles.activeProjectCounter]}
-        >
+        <Container style={styles.activeProjectCounter} >
           {active_giraffe_projects}
-        </div>
+        </Container>
         <div style={[styles.activeGiraffeText]}>
           active GiraffeTools {pluralize("project", active_giraffe_projects)}
         </div>

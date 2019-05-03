@@ -1,7 +1,7 @@
 const styles = {
   smallScreen: {
     display: "none",
-    "@media(maxWidth: 1200px)": {
+    "@media(max-width: 1200px)": {
       display: "unset"
     }
   }

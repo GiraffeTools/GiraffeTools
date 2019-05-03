@@ -7,6 +7,7 @@ const styles = {
     color: "white",
     textAlign: "center",
     borderColor: "none",
+    borderWidth: 0,
     large: {
       borderRadius: "2px"
     },
@@ -17,7 +18,8 @@ const styles = {
     },
     ":hover": {
       textDecoration: "none",
-      borderColor: "grey"
+      borderColor: "grey",
+      color: "black",
     }
   },
 

@@ -30,6 +30,7 @@ const styles = {
 
   activeProjectCounter: {
     fontSize: "40px",
+    textAlign: "center",
     color: styleSheet.primaryColor,
 
     WebkitBorderRadius: "30px",

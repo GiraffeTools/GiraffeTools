@@ -8,7 +8,9 @@ const styles = {
 
   joinUs: {
     top: "50%",
-    transform: "translateY(-50%)"
+    transform: "translateY(-50%)",
+    position: "absolute",
+    textAlign: "center"
   },
 
   mailTag: {

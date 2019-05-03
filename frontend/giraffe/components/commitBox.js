@@ -49,7 +49,7 @@ class CommitBox extends React.Component {
                     ? "Yesterday"
                     : `${date}`}
               </h6>
-              <ul className="commit-day border" style={[styles.commitDay]}>
+              <ul style={[styles.commitDay]}>
                 {groupedCommits[date].map(({ commit }) => (
                   <Commit
                     key={commit.sha}

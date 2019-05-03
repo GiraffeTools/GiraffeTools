@@ -6,7 +6,9 @@ const styles = {
     float: "left",
     border: "none",
     padding: "2% 2%",
-    background: "none"
+    background: "none",
+    display: "flex",
+    justifyContent: "center"
   },
   username: {
     whiteSpace: "nowrap"

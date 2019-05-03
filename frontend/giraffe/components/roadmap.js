@@ -1,10 +1,12 @@
 import React, { Fragment } from "react";
 import Radium from "radium";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 
 import styles from "../styles/roadmap.js";
 
 const Event = event => (
-  <div className="col-sm">
+  <Col>
     <div>{event.year}</div>
     <svg width="60" height="60">
       <circle
@@ -17,7 +19,7 @@ const Event = event => (
       />
     </svg>
     <h3 style={[styles.roadmapText]}>{event.description}</h3>
-  </div>
+  </Col>
 );
 const StyledEvent = Radium(Event);
 
@@ -31,7 +33,10 @@ const Roadmap = () => {
   ];
 
   return (
-    <div className="container-fluid" style={[styles.roadmap]}>
+    <Container
+      fluid={true}
+      style={styles.roadmap}
+    >
       <h3 style={[styles.roadmapText, styles.andMore]}>&amp; more to come</h3>
       <svg height="10px" width="100%">
         <line
@@ -43,12 +48,12 @@ const Roadmap = () => {
           strokeWidth="12px"
         />
       </svg>
-      <div className="d-flex" style={[styles.roadmapElements]}>
+      <div style={styles.roadmapElements}>
         {events.map(event => (
           <StyledEvent key={event.year} {...event} />
         ))}
       </div>
-    </div>
+    </Container>
   );
 };
 

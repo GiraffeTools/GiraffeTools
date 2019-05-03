@@ -7,7 +7,8 @@ const styles = {
     backgroundColor: styleSheet.primaryLightColor,
     paddingBottom: "4rem",
     position: "relative",
-    marginTop: "5rem"
+    marginTop: "5rem",
+    textAlign: "center"
   },
 
   peopleBackground: {

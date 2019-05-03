@@ -1,5 +1,6 @@
 import React from "react";
 import Radium from "radium";
+import Col from "react-bootstrap/Col";
 
 import { addTokenToQuery } from "../utils/auth";
 import { shuffle } from "../utils/utils";
@@ -59,7 +60,7 @@ class Contributors extends React.Component {
     const { contributors, selectContributors } = this.state;
 
     return (
-      <div className="d-flex" style={[styles.contributors]}>
+      <div style={[styles.contributors]}>
         <div className="col-6 border-right">
           <h3>&amp; all the brave contributors</h3>
           {contributors && (

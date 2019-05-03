@@ -1,11 +1,12 @@
 import React from "react";
 import Radium from "radium";
+import Col from "react-bootstrap/Col";
 
 import styles from "../styles/slackBanner.js";
 
 const SlackBanner = () => (
-  <div className="d-flex justify-content-center" style={[styles.slack]}>
-    <div className="col">
+  <div style={[styles.slack]}>
+    <Col>
       <a href="/slack" style={[styles.slackLink]}>
         <img
           src="/static/img/slack_logo.svg"
@@ -14,7 +15,7 @@ const SlackBanner = () => (
         />
         <span style={[styles.slackText]}>Join the team on Slack!</span>
       </a>
-    </div>
+    </Col>
   </div>
 );
 

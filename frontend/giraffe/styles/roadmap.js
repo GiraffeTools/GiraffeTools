@@ -17,7 +17,8 @@ const styles = {
   },
 
   roadmapElements: {
-    marginTop: "-67px"
+    marginTop: "-67px",
+    display: "flex"
   }
 };
 

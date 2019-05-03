@@ -18,7 +18,8 @@ const styles = {
   },
   heroText: {
     paddingTop: "2rem",
-    marginLeft: "6rem"
+    marginLeft: "6rem",
+    position: "relative"
   },
   heroLogo: {
     width: "11%",

@@ -1,10 +1,15 @@
 import React from "react";
 import Radium from "radium";
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
 
 import styles from "../styles/people.js";
 
 const People = () => (
-  <div className="container-fluid text-center" style={[styles.people]}>
+  <Container
+    fluid={true}
+    style={styles.people}
+    >
     <div style={[styles.peopleBackground]} />
     <h2 style={[styles.peopleHeading]}>THE PEOPLE</h2>
     <div
@@ -55,7 +60,7 @@ const People = () => (
         </a>
       </div>
     </div>
-  </div>
+  </Container>
 );
 
 export default Radium(People);

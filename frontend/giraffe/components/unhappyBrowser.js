@@ -1,5 +1,7 @@
 import React from "react";
 import Radium from "radium";
+import Row from "react-bootstrap/Row";
+import Alert from 'react-bootstrap/Alert'
 import bowser from "bowser";
 
 let chrome = "";
@@ -47,31 +49,27 @@ class UnhappyBrowser extends React.Component {
     const { open, toggleBrowserAlert } = this.props;
 
     return happy || !open ? null : (
-      <div
-        className="alert alert-info alert-dismissible fade show"
-        style={[alertStyles.alert, styles.unhappyBrowser]}
-        role="alert"
+      <Alert
+        dismissible={true}
+        variant="primary"
+        onClose={toggleBrowserAlert}
       >
-        <div className="row">
-          <span style={[styles.message]}>
+        <Alert.Heading>Use a different browser for an optimal experience</Alert.Heading>
+        <p>
             We have detected that you are using an browser in which some
             functionality might not work as expected. We advise to use the
             latest version of Chrome.
-          </span>
           <a href="http://www.google.com/chrome/" style={[styles.chrome]}>
             <img src="/static/img/chrome.svg" alt="install or upgrade chrome" />
           </a>
+        </p>
+        <hr />
+        <div className="d-flex justify-content-end">
+          <Button onClick={handleHide} variant="outline-success">
+            &times;
+          </Button>
         </div>
-        <button
-          type="button"
-          className="close"
-          data-dismiss="alert"
-          aria-label="Close"
-          onClick={toggleBrowserAlert}
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+      </Alert>
     );
   }
 }

@@ -5,7 +5,8 @@ const styles = {
     paddingTop: "4rem",
     paddingBottom: "4rem",
     textAlign: "center",
-    backgroundColor: styleSheet.primaryLightSecondaryColor
+    backgroundColor: styleSheet.primaryLightSecondaryColor,
+    display: "flex"
   },
 
   contributorPanel: {

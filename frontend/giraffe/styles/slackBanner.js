@@ -8,7 +8,9 @@ const styles = {
     backgroundColor: styleSheet.primaryColor,
     backgroundImage: "url(/static/img/slack_section_background.jpg)",
     backgroundPositionX: "center",
-    backgroundRepeat: "no-repeat"
+    backgroundRepeat: "no-repeat",
+    display: "flex",
+    justifyContent: "center"
   },
   slackLink: {
     color: "white",
