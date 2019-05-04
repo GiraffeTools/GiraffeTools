@@ -9,10 +9,7 @@ const Contact = () => (
     className="d-flex justify-content-begin position-relative"
     style={[styles.contact]}
   >
-    <Col
-      sm={5}
-      style={styles.joinUs}
-    >
+    <Col sm={5} style={styles.joinUs}>
       <h4 style={[styles.joinHeading]}>Want to join us?</h4>
     </Col>
     <div style={[styles.iconTitleText, styles.githubTag]}>

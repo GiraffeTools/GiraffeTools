@@ -33,10 +33,7 @@ const Roadmap = () => {
   ];
 
   return (
-    <Container
-      fluid={true}
-      style={styles.roadmap}
-    >
+    <Container fluid={true} style={styles.roadmap}>
       <h3 style={[styles.roadmapText, styles.andMore]}>&amp; more to come</h3>
       <svg height="10px" width="100%">
         <line

@@ -6,10 +6,7 @@ import Col from "react-bootstrap/Col";
 import styles from "../styles/people.js";
 
 const People = () => (
-  <Container
-    fluid={true}
-    style={styles.people}
-    >
+  <Container fluid={true} style={styles.people}>
     <div style={[styles.peopleBackground]} />
     <h2 style={[styles.peopleHeading]}>THE PEOPLE</h2>
     <div

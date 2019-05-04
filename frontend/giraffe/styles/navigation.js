@@ -44,7 +44,7 @@ const styles = {
   },
   navItem: {
     ":hover": {
-      textShadow: "0px 0px 1rem " +  styleSheet.primaryColor,
+      textShadow: "0px 0px 1rem " + styleSheet.primaryColor
     }
   },
   githubButton: {

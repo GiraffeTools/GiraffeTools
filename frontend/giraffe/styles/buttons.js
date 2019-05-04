@@ -19,7 +19,7 @@ const styles = {
     ":hover": {
       textDecoration: "none",
       borderColor: "grey",
-      color: "black",
+      color: "black"
     }
   },
 

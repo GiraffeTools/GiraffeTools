@@ -13,7 +13,7 @@ const ProfileBox = ({ user, active_giraffe_projects }) => (
         <img src={user.avatar_url} style={[styles.profilePic]} />
         <h3 style={[styles.username]}>{user.login}</h3>
         <img src="/static/img/separator_grey.svg" style={[styles.separator]} />
-        <Container style={styles.activeProjectCounter} >
+        <Container style={styles.activeProjectCounter}>
           {active_giraffe_projects}
         </Container>
         <div style={[styles.activeGiraffeText]}>

@@ -17,10 +17,7 @@ const Hero = () => (
           style={[styles.heroLogo]}
         />
         <div>
-          <Row
-            id="typewriter-text"
-            style={styles.typewriterText}
-          >
+          <Row id="typewriter-text" style={styles.typewriterText}>
             <div style={[styles.open]}>Open</div>
             <Typing loop={true} className="float-left">
               {`Science`}

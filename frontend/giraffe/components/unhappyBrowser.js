@@ -1,7 +1,7 @@
 import React from "react";
 import Radium from "radium";
 import Row from "react-bootstrap/Row";
-import Alert from 'react-bootstrap/Alert'
+import Alert from "react-bootstrap/Alert";
 import bowser from "bowser";
 
 let chrome = "";
@@ -49,16 +49,14 @@ class UnhappyBrowser extends React.Component {
     const { open, toggleBrowserAlert } = this.props;
 
     return happy || !open ? null : (
-      <Alert
-        dismissible={true}
-        variant="primary"
-        onClose={toggleBrowserAlert}
-      >
-        <Alert.Heading>Use a different browser for an optimal experience</Alert.Heading>
+      <Alert dismissible={true} variant="primary" onClose={toggleBrowserAlert}>
+        <Alert.Heading>
+          Use a different browser for an optimal experience
+        </Alert.Heading>
         <p>
-            We have detected that you are using an browser in which some
-            functionality might not work as expected. We advise to use the
-            latest version of Chrome.
+          We have detected that you are using an browser in which some
+          functionality might not work as expected. We advise to use the latest
+          version of Chrome.
           <a href="http://www.google.com/chrome/" style={[styles.chrome]}>
             <img src="/static/img/chrome.svg" alt="install or upgrade chrome" />
           </a>
