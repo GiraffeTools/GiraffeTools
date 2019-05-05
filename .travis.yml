@@ -33,7 +33,6 @@ install:
   - pip install -r ./backend/requirements/test.txt
   - bash .heroku/run.sh
   - npm run heroku-prebuild
-  - npm install
   - npm run heroku-postbuild
 before_script:
   # Only works without password if PGPASSWORD is set

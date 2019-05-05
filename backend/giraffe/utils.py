@@ -5,13 +5,13 @@ from django.utils import timezone
 
 from geoip2.errors import AddressNotFoundError
 
-from giraffe.models import UserAction
+from giraffe.models import UserAction, Project
 
 
 logger = logging.getLogger(__name__)
 
 
-def log_action(action, user, request):
+def log_user_action(action, user, request):
     geolocation_data, ip_address = handle_location_request(request)
 
     user_is_authenticated = user.is_authenticated
@@ -29,6 +29,14 @@ def log_action(action, user, request):
             location_data=geolocation_data,
             ip_address=ip_address,
         )
+
+
+def log_project(repo_name, user_name, user):
+    Project.objects.update_or_create(
+        repo_name=repo_name,
+        user_name=user_name,
+        user=user,
+    )
 
 
 def get_ip(request):

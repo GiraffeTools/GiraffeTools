@@ -10,7 +10,7 @@ from django.middleware.csrf import get_token
 
 from oauth.utils import is_github_token_valid
 
-from giraffe.utils import log_action
+from giraffe.utils import log_user_action, log_project
 
 logger = logging.getLogger(__name__)
 sc = SlackClient(settings.SLACK_API_TOKEN)
@@ -104,7 +104,9 @@ def push_to_github(request):
     master_ref.edit(commit.sha)
 
     if master_ref.object.sha == commit.sha:
-        log_action("Commit", user, request)
+        log_user_action("Commit", user, request)
+        log_project(repo_name, user_name, user)
+
         return HttpResponse(status=200, content_type="application/json")
     else:
         return HttpResponse(status=400, content_type="application/json")

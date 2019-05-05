@@ -37,16 +37,17 @@ class Profile(SuperModel):
 
 
 class Project(SuperModel):
-    name = models.CharField(max_length=255, db_index=True)
+    repo_name = models.CharField(max_length=255, db_index=True, default="")
+    user_name = models.CharField(max_length=255, db_index=True, default="")
     user = models.ForeignKey(User, related_name="projects", on_delete=models.CASCADE,  # Ignore LineLengthBear
                              null=True, help_text=("The projects of a user."))
 
     @property
     def github_url(self):
-        return f"https://github.com/{user.handle}/{self.name}"
+        return f"https://github.com/{self.user_name}/{self.repo_name}"
 
     def __str__(self):
-        return self.name
+        return self.github_url
 
 
 class UserAction(SuperModel):

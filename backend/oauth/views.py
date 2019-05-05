@@ -1,7 +1,7 @@
 from django.shortcuts import redirect
 from django.contrib.auth import logout
 
-from giraffe.utils import log_action
+from giraffe.utils import log_user_action
 
 
 def login(request):
@@ -9,7 +9,7 @@ def login(request):
 
 
 def logout_view(request):
-    log_action("Logout", request.user, request)
+    log_user_action("Logout", request.user, request)
     logout(request)
     # TODO make logout screen
     return redirect("/")

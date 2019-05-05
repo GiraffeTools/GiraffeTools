@@ -20,7 +20,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 from django.core.exceptions import SuspiciousOperation
 
 from app.utils import sync_profile
-from giraffe.utils import log_action
+from giraffe.utils import log_user_action
 
 
 def save_profile(backend, user, response, request, *args, **kwargs):
@@ -31,4 +31,4 @@ def save_profile(backend, user, response, request, *args, **kwargs):
             raise SuspiciousOperation("You cannot login")
 
         sync_profile(handle, user)
-        log_action("Login", user, request)
+        log_user_action("Login", user, request)
