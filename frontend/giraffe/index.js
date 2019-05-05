@@ -7,6 +7,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import store from "./store";
 import App from "./app";
 
+require('./scss/giraffe.scss')
+
 render(
   <Provider store={store}>
     <BrowserRouter>

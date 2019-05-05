@@ -6,6 +6,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import store from "./store";
 import App from "./app";
 
+require('./scss/armadillo.scss')
+
 render(
   <Provider store={store}>
     <BrowserRouter>

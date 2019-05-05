@@ -6,11 +6,6 @@ if [ -z "$DEBUG" ]; then
   export DEBUG=True
 fi
 
-STATIC_FILES_FOLDER=./public/static
-if [ -d $STATIC_FILES_FOLDER ]; then
-  rm -r $STATIC_FILES_FOLDER;
-fi
-
 echo Running Django with DEBUG mode set to ${DEBUG}
 
 python manage.py pingdatabase

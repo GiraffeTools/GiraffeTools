@@ -1,12 +1,6 @@
 {% extends 'shared/base.html' %}
-{% load sass_tags %}
 {% load static %}
 {% load render_bundle from webpack_loader %}
-
-{% block head %}
-  {{ block.super }}
-  <link href="{% sass_src "css/porcupine.scss" %}" rel="stylesheet" type="text/css" />
-{% endblock head %}
 
 {% block body %}
   <div id="porcupine" />

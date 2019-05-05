@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     "social_django",
     "corsheaders",
     "webpack_loader",
-    "sass_processor",
     "health_check",
     "health_check.db",
     "health_check.cache",
@@ -167,12 +166,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "assets"),
 )
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-STATICFILES_FINDERS = [
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    "sass_processor.finders.CssFinder",
-]
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # MEDIA_URL = "/media/"
