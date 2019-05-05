@@ -6,7 +6,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import store from "./store";
 import App from "./app";
 
-require('./scss/porcupine.scss')
+require("./scss/porcupine.scss");
 
 render(
   <Provider store={store}>
