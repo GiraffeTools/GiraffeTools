@@ -96,7 +96,7 @@
   },
   "scripts": {
     "test": "cd frontend && jest",
-    "heroku-prebuild": "npm install --only=dev",
+    "heroku-prebuild": "npm i",
     "heroku-postbuild": "cd frontend && webpack --mode=production --config ./webpack/webpack.prod.config.js",
     "development": "webpack --mode=development --config ./webpack/webpack.dev.config.js --progress --colors",
     "watch": "webpack --mode=development --config ./webpack/webpack.watch.config.js --progress --colors",
