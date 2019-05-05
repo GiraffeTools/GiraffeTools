@@ -2,6 +2,11 @@
 {% load static %}
 {% load render_bundle from webpack_loader %}
 
+{% block head %}
+  {{ block.super }}
+  {% render_bundle 'armadillo' 'css' 'ARMADILLO' %}
+{% endblock head %}
+
 {% block body %}
   <div id="armadillo" />
 {% endblock body %}

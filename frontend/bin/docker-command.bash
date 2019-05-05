@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Hello there!
-# If you want to use your own environment settings, please copy:
-#   .env.sample --> .env
-
 set -e
 
 # if NODE_ENV is not specified, use watch

@@ -2,6 +2,11 @@
 {% load static %}
 {% load render_bundle from webpack_loader %}
 
+{% block head %}
+  {{ block.super }}
+  {% render_bundle "giraffe" "css" "GIRAFFE" %}
+{% endblock head %}
+
 {% block body %}
   <div id="giraffe" />
 {% endblock body %}

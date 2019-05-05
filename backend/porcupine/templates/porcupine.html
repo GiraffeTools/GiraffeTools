@@ -2,6 +2,11 @@
 {% load static %}
 {% load render_bundle from webpack_loader %}
 
+{% block head %}
+  {{ block.super }}
+  {% render_bundle 'porcupine' 'css' 'PORCUPINE' %}
+{% endblock head %}
+
 {% block body %}
   <div id="porcupine" />
 {% endblock body %}
