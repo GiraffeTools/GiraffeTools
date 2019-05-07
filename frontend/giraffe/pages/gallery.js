@@ -29,9 +29,7 @@ class Gallery extends React.Component {
     return (
       <Fragment>
         <Banner title="Gallery" />
-        <div
-          style={[styles.intro]}
-        >
+        <div style={[styles.intro]}>
           <p>
             Here you find a collection of best practices We'd love to include
             more examples, so if you feel like contributing to our bank, check
@@ -47,9 +45,7 @@ class Gallery extends React.Component {
             Contribute
           </Button>
         </div>
-        <Container
-          style={[styles.cardContainer]}
-        >
+        <Container style={[styles.cardContainer]}>
           <CardDeck>
             {examples &&
               examples.map(example => (
@@ -57,9 +53,7 @@ class Gallery extends React.Component {
               ))}
           </CardDeck>
         </Container>
-        <hr
-          style={[styles.hr]}
-        />
+        <hr style={[styles.hr]} />
         <Footer />
       </Fragment>
     );

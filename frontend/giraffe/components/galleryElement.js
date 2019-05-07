@@ -8,29 +8,16 @@ import styles from "../styles/galleryElement";
 import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
 
 const GalleryElement = ({ example }) => (
-  <Col
-    sm={4}
-    style={styles.cardContainer}
-  >
-    <Card
-      style={styles.card}
-    >
+  <Col sm={4} style={styles.cardContainer}>
+    <Card style={styles.card}>
       <Card.Img variant="top" src="/static/img/armadillo_card.jpg" />
-      <Card.Body
-        style={styles.cardBody}
-      >
-        <Card.Title
-          style={styles.cardTitle}
-        >
-          {example.title}
-        </Card.Title>
+      <Card.Body style={styles.cardBody}>
+        <Card.Title style={styles.cardTitle}>{example.title}</Card.Title>
         <SeparatorWithOpenCircle
           color="secondary"
           styleOverwrite={[styles.separator]}
         />
-        <Card.Text>
-          {example.description}
-        </Card.Text>
+        <Card.Text>{example.description}</Card.Text>
       </Card.Body>
       <Button
         variant="light"

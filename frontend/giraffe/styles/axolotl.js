@@ -47,7 +47,7 @@ const styles = {
     width: "120%",
     left: "-75%",
     top: "70%",
-    zIndex: -1,
+    zIndex: -1
   }
 };
 

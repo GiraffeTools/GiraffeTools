@@ -8,11 +8,11 @@ const styles = {
     marginTop: "3rem",
     marginBottom: "3rem",
     marginLeft: "20%",
-    marginRight: "20%",
+    marginRight: "20%"
   },
   cardContainer: {
     width: "80%",
-    marginBottom: "3rem",
+    marginBottom: "3rem"
   },
   contribute: {
     ...buttonStyles.giraffeButton,

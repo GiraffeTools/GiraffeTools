@@ -3,24 +3,24 @@ import buttonStyles from "./buttons";
 
 const styles = {
   cardContainer: {
-    marginBottom: "2rem",
+    marginBottom: "2rem"
   },
   card: {
     height: "100%",
-    backgroundColor: styleSheet.primaryLightColor,
+    backgroundColor: styleSheet.primaryLightColor
   },
   cardTitle: {
-    fontFamily: 'Nexa-Bold',
+    fontFamily: "Nexa-Bold",
     fontSize: "1.6rem",
-    color: styleSheet.h3Color,
+    color: styleSheet.h3Color
   },
   separator: {
     width: "33%",
     marginBottom: "1rem",
-    marginTop: "1rem",
+    marginTop: "1rem"
   },
   cardBody: {
-    backgroundColor: styleSheet.primaryLightColor,
+    backgroundColor: styleSheet.primaryLightColor
   },
   cardImage: {
     width: "100%"
@@ -32,8 +32,8 @@ const styles = {
     marginRight: "20%",
     marginLeft: "20%",
     marginBottom: "10%",
-    fontSize: "1.2rem",
-  },
+    fontSize: "1.2rem"
+  }
 };
 
 export default styles;

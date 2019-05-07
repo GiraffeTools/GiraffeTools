@@ -91,13 +91,13 @@ const NavMenu = props => {
               </Nav.Link>
             </Nav.Item>
           )}
-          <Nav.Item>
-            <Nav.Link href="/slack">
-              <h3 style={[styles.navItem]} key={4}>
-                Join us on Slack!
-              </h3>
-            </Nav.Link>
-          </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="/slack">
+            <h3 style={[styles.navItem]} key={4}>
+              Join us on Slack!
+            </h3>
+          </Nav.Link>
+        </Nav.Item>
       </ul>
     </Fragment>
   );

@@ -19,11 +19,7 @@ const Axolotl = () => (
         {"xolotl e"}
         <b>X</b>
         {"ecutes "}
-        <b>O</b>
-        {" "}
-        <b>LOT</b>
-        {" "}
-        <b>L</b>
+        <b>O</b> <b>LOT</b> <b>L</b>
         <p>
           Axolotl is the work-in-progress execution platform of GiraffeTools
           workflows
