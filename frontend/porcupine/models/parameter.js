@@ -41,8 +41,8 @@ class Parameter extends Model {
         Parameter.filter(parameter => parameter.node == payload.id)
           .toModelArray()
           .forEach(parameter => {
-            parameter.input && parameter.input.delete();
-            parameter.output && parameter.output.delete();
+            parameter.input && parameter.inputModel.delete();
+            parameter.output && parameter.outputModel.delete();
             parameter.delete();
           });
         break;
