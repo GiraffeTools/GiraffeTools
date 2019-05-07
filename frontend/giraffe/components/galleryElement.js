@@ -1,20 +1,47 @@
 import React, { Fragment } from "react";
 import Radium from "radium";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 
-import styles from "../styles/people.js";
+import styles from "../styles/galleryElement";
+import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
 
 const GalleryElement = ({ example }) => (
-  <Col sm={5} style={styles.exampleCard}>
-    <img src="/static/img/armadillo_card.jpg" style={[styles.cardImage]} />
-    <h3>{example.title}</h3>
-    <img src="/static/img/separator_red.svg" />
-    <br />
-    {example.description}
-    <br />
-    <a type="button btn-primary" className="btn">
-      Discover
-    </a>
+  <Col
+    sm={4}
+    style={styles.cardContainer}
+  >
+    <Card
+      style={styles.card}
+    >
+      <Card.Img variant="top" src="/static/img/armadillo_card.jpg" />
+      <Card.Body
+        style={styles.cardBody}
+      >
+        <Card.Title
+          style={styles.cardTitle}
+        >
+          {example.title}
+        </Card.Title>
+        <SeparatorWithOpenCircle
+          color="secondary"
+          styleOverwrite={[styles.separator]}
+        />
+        <Card.Text>
+          {example.description}
+        </Card.Text>
+      </Card.Body>
+      <Button
+        variant="light"
+        data-toggle="tooltip"
+        data-placement="top"
+        // href={}
+        style={styles.discover}
+      >
+        Discover
+      </Button>
+    </Card>
   </Col>
 );
 

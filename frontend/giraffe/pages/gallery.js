@@ -1,5 +1,8 @@
 import React, { Fragment } from "react";
 import Radium from "radium";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import CardDeck from "react-bootstrap/CardDeck";
 
 import Banner from "../components/banner";
 import Footer from "../components/footer";
@@ -26,35 +29,37 @@ class Gallery extends React.Component {
     return (
       <Fragment>
         <Banner title="Gallery" />
-        <div className="text-center">
-          Here you find a collection of best practices We''d love to include
-          more examples, so if you feel like contributing to our bank, check our
-          instructions to contribute to our example gallery.
-          <br />
-          <a
-            type="button btn-primary"
-            className="btn"
-            style={[styles.contribute]}
+        <div
+          style={[styles.intro]}
+        >
+          <p>
+            Here you find a collection of best practices We'd love to include
+            more examples, so if you feel like contributing to our bank, check
+            our instructions to contribute to our example gallery.
+          </p>
+          <Button
+            variant="light"
+            data-toggle="tooltip"
+            data-placement="top"
+            // href={}
+            style={styles.contribute}
           >
             Contribute
-          </a>
-          <div className="row" style={[styles.galleryBox]}>
+          </Button>
+        </div>
+        <Container
+          style={[styles.cardContainer]}
+        >
+          <CardDeck>
             {examples &&
               examples.map(example => (
                 <GalleryElement key={example.id} example={example} />
               ))}
-          </div>
-        </div>
-        <svg width="100%" height="3">
-          <line
-            x1="0"
-            y1="0"
-            x2="100%"
-            y2="0"
-            stroke="#F7A81C"
-            strokeWidth="4px"
-          />
-        </svg>
+          </CardDeck>
+        </Container>
+        <hr
+          style={[styles.hr]}
+        />
         <Footer />
       </Fragment>
     );

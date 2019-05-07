@@ -2,7 +2,7 @@ import headingStyles from "./headings";
 
 const styles = {
   tools: {
-    marginBottom: "11rem"
+    marginBottom: "0rem"
   },
   ourTools: {
     margin: "4rem",

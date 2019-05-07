@@ -8,7 +8,7 @@ if [ -z "$NODE_ENV" ]; then
 fi
 
 # remove old webpack bundles
-bundles=./bundles
+bundles=../bundles
 if [ -d $bundles ] && ! [ -z "$(ls -A $bundles)" ]; then
   for bundle in $bundles/*; do
     rm $bundle

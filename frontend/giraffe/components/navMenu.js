@@ -45,15 +45,15 @@ const NavMenu = props => {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="/slack">
-            <h3 style={[styles.navItem]} key={4}>
-              Slack
+          <Nav.Link href="/gallery">
+            <h3 style={[styles.navItem]} key={5}>
+              Gallery
             </h3>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="border-bottom">
           <Nav.Link href="/github/TimVanMourik/SomeGiraffeExample">
-            <h3 style={[styles.navItem]} key={5}>
+            <h3 style={[styles.navItem]} key={6}>
               Example project
             </h3>
           </Nav.Link>
@@ -67,11 +67,11 @@ const NavMenu = props => {
             }
           >
             {user && user.access_token ? (
-              <h3 style={[styles.navItem]} key={6}>
+              <h3 style={[styles.navItem]} key={7}>
                 My projects
               </h3>
             ) : (
-              <h3 style={[styles.navItem, styles.loginTextNav]} key={7}>
+              <h3 style={[styles.navItem, styles.loginTextNav]} key={8}>
                 <img
                   src="/static/img/gh-icon.png"
                   style={[styles.githubButton]}
@@ -85,12 +85,19 @@ const NavMenu = props => {
           user.access_token && (
             <Nav.Item className="border-bottom">
               <Nav.Link href="/_oauth/logout/">
-                <h3 style={[styles.navItem]} key={8}>
+                <h3 style={[styles.navItem]} key={9}>
                   Log out
                 </h3>
               </Nav.Link>
             </Nav.Item>
           )}
+          <Nav.Item>
+            <Nav.Link href="/slack">
+              <h3 style={[styles.navItem]} key={4}>
+                Join us on Slack!
+              </h3>
+            </Nav.Link>
+          </Nav.Item>
       </ul>
     </Fragment>
   );

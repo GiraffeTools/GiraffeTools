@@ -1,21 +1,21 @@
 [
   {
     "id": 1,
-    "title": "Simple example",
-    "description": "lorem ipsum is such a nice text don't you think? I really have a great time writing this here, it is fun and entertaining, you are allowerd to put in your darkest thoughts.",
-    "repo_link": "test"
+    "title": "OpenFmriAnalysis",
+    "description": "Tim van Mourik's layer specific fMRI analysis toolbox with an example pipeline.",
+    "repo_link": "https://giraffe.tools/github/TimVanMourik/OpenFmriAnalysis"
   },
   {
     "id": 2,
-    "title": "Iterable example",
-    "description": "lorem ipsum is such a nice text don't you think? I really have a great time writing this here, it is fun and entertaining, you are allowerd to put in your darkest thoughts.",
-    "repo_link": "test"
+    "title": "CoastalCodingGiraffe",
+    "description": "An example that we hacked together at Coastal Coding 2019, Miami.",
+    "repo_link": "https://giraffe.tools/github/TimVanMourik/CoastalCodingGiraffe"
   },
   {
     "id": 3,
     "title": "Mapnode example",
-    "description": "lorem ipsum is such a nice text don't you think? I really have a great time writing this here, it is fun and entertaining, you are allowerd to put in your darkest thoughts.",
-    "repo_link": "test"
+    "description": "An Example that we hacked together at a Donders FMRI Analysis Meeting (FAM).",
+    "repo_link": "https://giraffe.tools/github/TimVanMourik/FamTutorial"
   },
   {
     "id": 4,
@@ -25,9 +25,9 @@
   },
   {
     "id": 5,
-    "title": "Iterable example",
-    "description": "lorem ipsum is such a nice text don't you think? I really have a great time writing this here, it is fun and entertaining, you are allowerd to put in your darkest thoughts.",
-    "repo_link": "test"
+    "title": "Keras2GiraffeTools",
+    "description": "A test to connect the Keras Machine learning platform to GiraffeTools.",
+    "repo_link": "https://giraffe.tools/github/TimVanMourik/Keras2GiraffeTools"
   },
   {
     "id": 6,
