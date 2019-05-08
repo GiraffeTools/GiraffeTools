@@ -1,7 +1,9 @@
 import React from "react";
 import Radium from "radium";
 
+import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
 import styles from "../styles/axolotl.js";
+import componentStyles from "../styles/components.js";
 
 const Axolotl = () => (
   <div className="d-flex justify-content-begin">
@@ -13,7 +15,11 @@ const Axolotl = () => (
     </div>
     <div className="col-4 text-left" style={[styles.toolText]}>
       <h3 style={[styles.porcupine]}>Axolotl</h3>
-      <img src="/static/img/separator_red.svg" style={[styles.separator]} />
+      <SeparatorWithOpenCircle
+        color="secondary"
+        thickness={"1px"}
+        styleOverwrite={[styles.componentStyles]}
+      />
       <div style={[styles.innerToolText]}>
         <b>A</b>
         {"xolotl e"}

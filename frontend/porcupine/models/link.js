@@ -36,6 +36,7 @@ class Link extends Model {
         Link.all()
           .toModelArray()
           .forEach(link => {
+            // #TODO check if this is safe because REMOVE_NODE deletes nodeModel
             if (link.portFromModel.outputParent.nodeModel.id == payload.id) {
               link.delete();
             }
@@ -43,6 +44,7 @@ class Link extends Model {
         Link.all()
           .toModelArray()
           .forEach(link => {
+            // #TODO check if this is safe because REMOVE_NODE deletes nodeModel
             if (link.portToModel.inputParent.nodeModel.id == payload.id) {
               link.delete();
             }

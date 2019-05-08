@@ -3,9 +3,11 @@ import Radium from "radium";
 import Container from "react-bootstrap/Container";
 import to from "await-to-js";
 
+import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
 import { getCsrfToken } from "../utils/auth";
 import { validateEmail } from "../utils/utils";
 import styles from "../styles/slackInvite.js";
+import componentStyles from "../styles/components.js";
 import { API_HOST } from "../config";
 
 class SlackInvite extends React.Component {
@@ -60,7 +62,11 @@ class SlackInvite extends React.Component {
           Would you like to join the GiraffeTools Slack? Fill in your email
           address here, and you'll receive an invitation link in your inbox!
         </p>
-        <img src="/static/img/separator_red.svg" style={[styles.separator]} />
+        <SeparatorWithOpenCircle
+          color="secondary"
+          thickness={"1px"}
+          styleOverwrite={[styles.componentStyles]}
+        />
         <div>
           <label>
             <h3>Email:</h3>

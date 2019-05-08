@@ -23,7 +23,7 @@ const GalleryElement = ({ example }) => (
         variant="light"
         data-toggle="tooltip"
         data-placement="top"
-        // href={}
+        href={example.repo_link}
         style={styles.discover}
       >
         Discover

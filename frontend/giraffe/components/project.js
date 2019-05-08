@@ -2,8 +2,10 @@ import React, { Fragment } from "react";
 import Radium from "radium";
 import { v4 } from "uuid";
 
+import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
 import { initRepository } from "../utils/github";
 import styles from "../styles/project.js";
+import componentStyles from "../styles/components.js";
 
 const Project = repository => (
   <div
@@ -22,7 +24,11 @@ const Project = repository => (
           {repository.private ? "Private" : "Public"}
         </div>
       </div>
-      <img src="/static/img/separator_red.svg" />
+      <SeparatorWithOpenCircle
+        color="secondary"
+        thickness={"1px"}
+        styleOverwrite={[styles.componentStyles]}
+      />
       <div>
         added{" "}
         {new Intl.DateTimeFormat("en-GB", {

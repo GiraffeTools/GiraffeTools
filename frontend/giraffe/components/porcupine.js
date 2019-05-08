@@ -1,6 +1,8 @@
 import React from "react";
 import Radium from "radium";
 
+import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
+import componentStyles from "../styles/components.js";
 import styles from "../styles/porcupine.js";
 
 const Porcupine = () => (
@@ -18,7 +20,11 @@ const Porcupine = () => (
     </div>
     <div className="col-4 text-left" style={[styles.toolText]}>
       <h3 style={[styles.porcupine]}>Porcupine</h3>
-      <img src="/static/img/separator_red.svg" style={[styles.separator]} />
+      <SeparatorWithOpenCircle
+        color="secondary"
+        thickness={"1px"}
+        styleOverwrite={[styles.componentStyles]}
+      />
       <div style={[styles.innerToolText]}>
         <b>POR</b>
         {"cupine "}

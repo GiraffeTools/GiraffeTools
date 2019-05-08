@@ -75,7 +75,7 @@ const boxTarget = {
               transform.x) /
             zoom,
           y: (contentPosition.y - transform.y) / zoom,
-          colour: templateNode.colour,
+          colour: templateNode.colour || "#BBB",
           parameters,
           web_url: templateNode.web_url || "",
           code: code || "",

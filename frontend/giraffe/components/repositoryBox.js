@@ -3,8 +3,10 @@ import Radium from "radium";
 import pluralize from "pluralize";
 import repoFirstCommit from "repo-first-commit";
 
+import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
 import { addTokenToQuery } from "../utils/auth";
 import styles from "../styles/repositoryBox.js";
+import componentStyles from "../styles/components.js";
 
 class RepositoryBox extends React.Component {
   constructor(props) {
@@ -85,9 +87,10 @@ class RepositoryBox extends React.Component {
           <div style={[styles.projectBox]}>
             <h4 style={[styles.about]}>About the project</h4>
             <div style={[styles.repoBoxContent]}>
-              <img
-                src="/static/img/separator_grey.svg"
-                style={[styles.separator]}
+              <SeparatorWithOpenCircle
+                color="#4A4A4A"
+                thickness={"1px"}
+                styleOverwrite={{ ...styles.componentStyles }}
               />
               <p className="text-left">
                 <img
@@ -117,10 +120,10 @@ class RepositoryBox extends React.Component {
                 {`${numberOfReleases} ` +
                   pluralize("releases", numberOfReleases)}
               </p>
-
-              <img
-                src="/static/img/separator_grey.svg"
-                style={[styles.separator]}
+              <SeparatorWithOpenCircle
+                color="#4A4A4A"
+                thickness={"1px"}
+                styleOverwrite={{ ...styles.componentStyles }}
               />
             </div>
             <p>

@@ -11,22 +11,9 @@ const styles = {
     }
   },
   separator: {
-    paddingTop: "1rem",
-    paddingBottom: "1rem",
     marginTop: "1rem",
     marginBottom: "1rem"
   }
-  // separatorRed: {
-  //   width: '60%',
-  //   paddingTop: '2rem',
-  //   paddingBottom: '2rem',
-  // },
-  //
-  // separatorGrey: {
-  //   width: '100%',
-  //   marginTop: '1rem',
-  //   marginBottom: '1rem',
-  // }
 };
 
 export default styles;

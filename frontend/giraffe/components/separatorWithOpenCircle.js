@@ -4,8 +4,9 @@ import Radium from "radium";
 import styleSheet from "../constants/styles";
 import styles from "../styles/separatorWithOpenCircle";
 
-const SeparatorWithOpenCircle = ({ color, styleOverwrite }) => {
+const SeparatorWithOpenCircle = ({ color, thickness, styleOverwrite }) => {
   let separatorColor = "black";
+  let separatorThickness = thickness || "1px";
   switch (color) {
     case "primary":
       separatorColor = styleSheet.primaryColor;
@@ -23,14 +24,25 @@ const SeparatorWithOpenCircle = ({ color, styleOverwrite }) => {
       style={[
         styles.separator,
         styleOverwrite,
-        { backgroundColor: separatorColor }
+        {
+          backgroundColor: separatorColor,
+          height: separatorThickness
+        }
       ]}
     >
       <div
-        style={[styles.circle, styles.left, { borderColor: separatorColor }]}
+        style={[
+          styles.circle,
+          styles.left,
+          { borderColor: separatorColor, borderWidth: separatorThickness }
+        ]}
       />
       <div
-        style={[styles.circle, styles.right, { borderColor: separatorColor }]}
+        style={[
+          styles.circle,
+          styles.right,
+          { borderColor: separatorColor, borderWidth: separatorThickness }
+        ]}
       />
     </div>
   );

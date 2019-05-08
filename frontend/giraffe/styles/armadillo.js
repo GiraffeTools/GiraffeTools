@@ -11,10 +11,6 @@ const styles = {
   armadillo: {
     ...headingStyles.h3
   },
-  separator: {
-    ...componentStyles.separator,
-    width: "60%"
-  },
   innerToolText: {
     fontSize: "1.1rem",
     marginBottom: "1rem",
@@ -33,7 +29,6 @@ const styles = {
     width: "90%",
     float: "right"
   },
-
   diagLines1: {
     position: "absolute",
     width: "100%",
@@ -41,7 +36,6 @@ const styles = {
     top: "-32%",
     zIndex: "-1"
   },
-
   diagLines2: {
     position: "absolute",
     width: "120%",

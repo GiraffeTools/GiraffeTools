@@ -1,6 +1,5 @@
 import { Model, many, fk, attr } from "redux-orm";
 
-import Port from "./port";
 import {
   ADD_NODE,
   REMOVE_NODE,
@@ -54,7 +53,18 @@ class Node extends Model {
         Node.create({ ...payload, name, width, input: null, output: null });
         break;
       case REMOVE_NODE:
-        Node.withId(payload.id).delete();
+        const node_to_remove = Node.withId(payload.id);
+        const languages = node_to_remove.languages.toModelArray();
+        languages.forEach(language => {
+          language.update({
+            nodes: language.nodes
+              .toModelArray()
+              .filter(node => node.id !== payload.id)
+              .map(node => node.id)
+          });
+          if (!language.nodes.toModelArray().length) language.delete();
+        });
+        node_to_remove.delete();
         break;
       case UPDATE_NODE:
         const node = Node.withId(payload.nodeId);

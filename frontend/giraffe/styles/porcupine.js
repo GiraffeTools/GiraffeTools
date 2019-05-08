@@ -32,10 +32,10 @@ const styles = {
     ...headingStyles.h3
   },
   separator: {
-    ...componentStyles.separator,
+    marginTop: "1rem",
+    marginBottom: "1rem",
     width: "60%"
   },
-
   innerToolText: {
     fontSize: "1.1rem",
     marginBottom: "1rem",

@@ -12,10 +12,10 @@ const CodeEditor = props => {
     toggleCodeEditor,
     nodes,
     links,
+    languages,
     activeTab
   } = props;
 
-  const languages = ["Nipype", "Docker", "MATLAB"];
   let currentTab = activeTab || "Nipype";
 
   return (

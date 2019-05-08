@@ -1,6 +1,5 @@
 import { Model, many, fk, attr } from "redux-orm";
 
-import Link from "./link";
 import {
   ADD_NODE,
   REMOVE_NODE,
@@ -10,17 +9,11 @@ import {
 } from "../actions/actionTypes";
 
 class Port extends Model {
-  static reducer(action, Port, session) {
+  static reducer(action, Port) {
     const { type, payload } = action;
     switch (type) {
       case CLEAR_DATABASE:
-        try {
-          session.Port.all()
-            .toRefArray()
-            .forEach(item => Port.withId(item.id).delete());
-        } catch (err) {
-          console.log("There were probably duplicate Ports in the database");
-        }
+        Port.all().delete();
         break;
       case ADD_NODE:
         const parameters = payload.parameters;

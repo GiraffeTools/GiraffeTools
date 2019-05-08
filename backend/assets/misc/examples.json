@@ -13,15 +13,15 @@
   },
   {
     "id": 3,
-    "title": "Mapnode example",
+    "title": "FAM Tutorial",
     "description": "An Example that we hacked together at a Donders FMRI Analysis Meeting (FAM).",
     "repo_link": "https://giraffe.tools/github/TimVanMourik/FamTutorial"
   },
   {
     "id": 4,
-    "title": "Simple example",
-    "description": "lorem ipsum is such a nice text don't you think? I really have a great time writing this here, it is fun and entertaining, you are allowerd to put in your darkest thoughts.",
-    "repo_link": "test"
+    "title": "Simple Nipype example",
+    "description": "A simple end-to-end Nipype pipeline example.",
+    "repo_link": "https://giraffe.tools/github/TimVanMourik/SomeGiraffeExample"
   },
   {
     "id": 5,

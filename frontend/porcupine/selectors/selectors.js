@@ -10,15 +10,28 @@ export const nodes = createSelector(
   }
 );
 
+export const languageNames = createSelector(
+  orm,
+  state => state.orm,
+  session => {
+    return session.Language.all()
+      .toModelArray()
+      .map(language => language.name);
+  }
+);
+
 export const nodesWithParameters = createSelector(
   orm,
   state => state.orm,
   session => {
     return session.Node.all()
-      .toRefArray()
+      .toModelArray()
       .map(node => {
         const parameters = session.Node.withId(node.id).parameters;
-        return { ...node, parameters: parameters && parameters.toRefArray() };
+        return {
+          ...node.ref,
+          parameters: parameters && parameters.toRefArray()
+        };
       });
   }
 );
@@ -52,7 +65,7 @@ export const selectedNode = createSelector(
 
     const parameters =
       node.parameters &&
-      node.parameters.toRefArray().map(parameterRef => {
+      node.parameters.toModelArray().map(parameterRef => {
         const parameter = orm.Parameter.withId(parameterRef.id);
 
         const inputLinks =

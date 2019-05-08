@@ -1,6 +1,5 @@
 import { Model, many, fk, attr, oneToOne } from "redux-orm";
 
-import Link from "./link";
 import Port from "./port";
 import {
   ADD_NODE,
@@ -13,13 +12,11 @@ import {
 } from "../actions/actionTypes";
 
 class Parameter extends Model {
-  static reducer(action, Parameter, session) {
+  static reducer(action, Parameter) {
     const { type, payload } = action;
     switch (type) {
       case CLEAR_DATABASE:
-        session.Parameter.all()
-          .toRefArray()
-          .forEach(item => Parameter.withId(item.id).delete());
+        Parameter.all().delete();
         break;
       case ADD_NODE:
         const parameters = payload.parameters;

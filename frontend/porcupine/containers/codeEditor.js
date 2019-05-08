@@ -4,7 +4,8 @@ import CodeEditor from "../components/codeEditor/codeEditor";
 import { toggleCodeEditor, setActiveTab } from "../actions";
 import {
   nodesWithParameters,
-  linksWithPortsAndNodes
+  linksWithPortsAndNodes,
+  languageNames
 } from "../selectors/selectors";
 
 const mapStateToProps = state => ({
@@ -12,6 +13,7 @@ const mapStateToProps = state => ({
   activeTab: state.ui.activeTab,
   nodes: nodesWithParameters(state),
   links: linksWithPortsAndNodes(state),
+  languages: languageNames(state),
   showSidebar: state.ui.showSidebar
 });
 

@@ -2,13 +2,19 @@ import React from "react";
 import Radium from "radium";
 import Col from "react-bootstrap/Col";
 
+import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
 import styles from "../styles/armadillo.js";
+import componentStyles from "../styles/components.js";
 
 const Armadillo = () => (
   <div className="d-flex justify-content-end">
     <Col sm={4} style={styles.toolText}>
       <h3 style={[styles.armadillo]}>Armadillo</h3>
-      <img src="/static/img/separator_red.svg" style={[styles.separator]} />
+      <SeparatorWithOpenCircle
+        color="secondary"
+        thickness={"1px"}
+        styleOverwrite={[styles.componentStyles]}
+      />
       <div style={[styles.innerToolText]}>
         <b>A</b>
         ugmented <b>R</b>
