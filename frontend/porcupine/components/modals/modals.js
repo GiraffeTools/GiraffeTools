@@ -32,7 +32,7 @@ class Modal extends React.Component {
     if (type === "confirmation") {
       const { text } = this.props.item;
       return (
-        <div className="modal-dialog" style={[{ zIndex: (zIndex + 1) * 10 }]}>
+        <div className="modal-dialog" style={{ zIndex: (zIndex + 1) * 10 }}>
           <div className="modal-content">
             <h5 className="modal-title" id="exampleModalLabel">
               Confirmation modal
@@ -61,7 +61,7 @@ class Modal extends React.Component {
       const { onClose } = this;
       const { item } = this.props;
       return (
-        <div className="modal-dialog" style={[{ zIndex: (zIndex + 1) * 10 }]}>
+        <div className="modal-dialog" style={{ zIndex: (zIndex + 1) * 10 }}>
           <GithubModal
             title={item.title}
             onClose={() => this.onClose(item.id)}
