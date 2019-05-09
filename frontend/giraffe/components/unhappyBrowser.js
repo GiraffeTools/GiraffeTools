@@ -2,6 +2,7 @@ import React from "react";
 import Radium from "radium";
 import Row from "react-bootstrap/Row";
 import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
 import bowser from "bowser";
 
 let chrome = "";
@@ -63,7 +64,7 @@ class UnhappyBrowser extends React.Component {
         </p>
         <hr />
         <div className="d-flex justify-content-end">
-          <Button onClick={handleHide} variant="outline-success">
+          <Button onClick={toggleBrowserAlert} variant="outline-success">
             &times;
           </Button>
         </div>
