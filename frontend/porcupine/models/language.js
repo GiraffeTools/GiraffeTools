@@ -12,25 +12,26 @@ class Language extends Model {
         break;
       case ADD_NODE:
         const node_languages =
-          payload.code && payload.code.map(c => c.language);
-        node_languages.forEach(node_language => {
-          const language = Language.all()
-            .filter(language => language.name === node_language)
-            .toModelArray()[0];
-          if (language) {
-            language.update({
-              nodes: language.nodes
-                .toModelArray()
-                .map(node => node.id)
-                .concat(payload.id)
-            });
-          } else {
-            Language.create({
-              name: node_language,
-              nodes: [payload.id]
-            });
-          }
-        });
+          Array.isArray(payload.code) && payload.code.map(c => c.language);
+        node_languages &&
+          node_languages.forEach(node_language => {
+            const language = Language.all()
+              .filter(language => language.name === node_language)
+              .toModelArray()[0];
+            if (language) {
+              language.update({
+                nodes: language.nodes
+                  .toModelArray()
+                  .map(node => node.id)
+                  .concat(payload.id)
+              });
+            } else {
+              Language.create({
+                name: node_language,
+                nodes: [payload.id]
+              });
+            }
+          });
         break;
     }
     return undefined;
