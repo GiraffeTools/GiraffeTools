@@ -13,7 +13,7 @@ const Armadillo = () => (
       <SeparatorWithOpenCircle
         color="secondary"
         thickness={"1px"}
-        styleOverwrite={[styles.componentStyles]}
+        styleOverwrite={{ ...styles.componentStyles, width: "60%" }}
       />
       <div style={[styles.innerToolText]}>
         <b>A</b>

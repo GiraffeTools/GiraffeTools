@@ -27,7 +27,7 @@ const Project = repository => (
       <SeparatorWithOpenCircle
         color="secondary"
         thickness={"1px"}
-        styleOverwrite={[styles.componentStyles]}
+        styleOverwrite={styles.componentStyles}
       />
       <div>
         added{" "}

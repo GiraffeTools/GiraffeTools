@@ -90,7 +90,7 @@ class RepositoryBox extends React.Component {
               <SeparatorWithOpenCircle
                 color="#4A4A4A"
                 thickness={"1px"}
-                styleOverwrite={{ ...styles.componentStyles }}
+                styleOverwrite={styles.componentStyles}
               />
               <p className="text-left">
                 <img
@@ -123,7 +123,7 @@ class RepositoryBox extends React.Component {
               <SeparatorWithOpenCircle
                 color="#4A4A4A"
                 thickness={"1px"}
-                styleOverwrite={{ ...styles.componentStyles }}
+                styleOverwrite={styles.componentStyles}
               />
             </div>
             <p>

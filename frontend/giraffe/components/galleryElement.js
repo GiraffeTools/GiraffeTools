@@ -15,7 +15,7 @@ const GalleryElement = ({ example }) => (
         <Card.Title style={styles.cardTitle}>{example.title}</Card.Title>
         <SeparatorWithOpenCircle
           color="secondary"
-          styleOverwrite={[styles.separator]}
+          styleOverwrite={styles.separator}
         />
         <Card.Text>{example.description}</Card.Text>
       </Card.Body>

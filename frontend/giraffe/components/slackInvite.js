@@ -65,7 +65,7 @@ class SlackInvite extends React.Component {
         <SeparatorWithOpenCircle
           color="secondary"
           thickness={"1px"}
-          styleOverwrite={[styles.componentStyles]}
+          styleOverwrite={styles.componentStyles}
         />
         <div>
           <label>
