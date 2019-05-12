@@ -19,7 +19,7 @@ def axolotl(request):
         for i in ret.items:
             print("%s\t%s\t%s" %
                   (i.status.pod_ip, i.metadata.namespace, i.metadata.name))
-    except error:
+    except Exception as e:
         print("Kubernetes not set up")
 
     return render(request, "axolotl.html")
