@@ -11,6 +11,7 @@ module.exports = {
   context: __dirname,
   entry: {
     armadillo: path.resolve(__dirname, "../armadillo/index.js"),
+    axolotl: path.resolve(__dirname, "../axolotl/index.js"),
     porcupine: path.resolve(__dirname, "../porcupine/index.js"),
     giraffe: path.resolve(__dirname, "../giraffe/index.js")
   },

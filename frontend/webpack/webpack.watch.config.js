@@ -20,6 +20,11 @@ config.entry = {
     "webpack/hot/only-dev-server",
     path.resolve(__dirname, "../armadillo/index.js")
   ],
+  axolotl: [
+    `webpack-dev-server/client?${publicPath}`,
+    "webpack/hot/only-dev-server",
+    path.resolve(__dirname, "../axolotl/index.js")
+  ],
   porcupine: [
     `webpack-dev-server/client?${publicPath}`,
     "webpack/hot/only-dev-server",

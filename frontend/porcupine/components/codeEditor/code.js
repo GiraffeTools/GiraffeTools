@@ -11,6 +11,7 @@ SyntaxHighlighter.registerLanguage("dockerfile", dockerfile);
 
 import nipypeCode from "../../utils/codeGenerators/nipype";
 import dockerCode from "../../utils/codeGenerators/docker";
+import kerasCode from "../../utils/codeGenerators/keras";
 import unknownCode from "../../utils/codeGenerators/unknown";
 
 const formattingDictionary = {
@@ -25,6 +26,9 @@ function recomputeCode(language, nodes, links) {
       break;
     case "Docker":
       return dockerCode(nodes, links);
+      break;
+    case "Keras":
+      return kerasCode(nodes, links);
       break;
     default:
       return unknownCode(nodes, links);

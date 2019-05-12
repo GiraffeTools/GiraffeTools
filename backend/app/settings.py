@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "giraffe.apps.GiraffeConfig",
     "armadillo.apps.ArmadilloConfig",
+    "axolotl.apps.AxolotlConfig",
     "porcupine.apps.PorcupineConfig",
     "oauth.apps.OAuthConfig",
     "livereload",
@@ -236,14 +237,15 @@ webpack_config = {
 WEBPACK_LOADER = {
     "GIRAFFE": webpack_config,
     "ARMADILLO": webpack_config,
+    "AXOLOTL": webpack_config,
     "PORCUPINE": webpack_config,
 }
 
 # port 3000 hosts front-end, port 8000 hosts back-end
-CORS_ORIGIN_WHITELIST = ["localhost:3000",
-                         "localhost:8000"] if DEBUG else ["giraffe.tools"]
-CSRF_TRUSTED_ORIGINS = ["localhost:3000",
-                        "localhost:8000"] if DEBUG else ["giraffe.tools"]
+CORS_ORIGIN_WHITELIST = ["http://localhost:3000",
+                         "http://localhost:8000"] if DEBUG else ["https://giraffe.tools"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000",
+                        "http://localhost:8000"] if DEBUG else ["https://giraffe.tools"]
 
 # if DEBUG or os.getenv("LOGGING", "False") == "True":
 if True:

@@ -4,6 +4,7 @@ from django.contrib import admin
 
 import giraffe.views
 import armadillo.views
+import axolotl.views
 import porcupine.views
 from api.urls import api_urls
 
@@ -28,6 +29,9 @@ urlpatterns = [
 
     # armadillo calls
     url(r"^armadillo/?", armadillo.views.armadillo, name="armadillo"),
+
+    # armadillo calls
+    url(r"^axolotl/?", axolotl.views.axolotl, name="axolotl"),
 
     # giraffe calls
     url(r"^", giraffe.views.giraffe, name="giraffe"),

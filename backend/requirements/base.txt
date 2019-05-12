@@ -15,6 +15,7 @@ django-settings-export
 dj_database_url
 geoip2
 gunicorn
+kubernetes
 matplotlib
 libsass
 nibabel
@@ -31,4 +32,6 @@ requests
 requests_oauthlib
 slackclient==1.2.1
 social-auth-app-django
+tornado
+traitlets
 WhiteNoise

@@ -1,0 +1,17 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% load render_bundle from webpack_loader %}
+
+{% block head %}
+  {{ block.super }}
+  {% render_bundle 'axolotl' 'css' 'AXOLOTL' %}
+{% endblock head %}
+
+{% block body %}
+  <div id="axolotl" />
+{% endblock body %}
+
+{% block scripts %}
+  {{ block.super }}
+  {% render_bundle 'axolotl' 'js' 'AXOLOTL' %}
+{% endblock scripts %}

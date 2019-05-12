@@ -111,3 +111,7 @@ code-coverage/
 # coala orig files
 *.orig
 coala/
+
+
+**/creds/google_creds.json
+**/config/kube_config.yml
