@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import Radium from "radium";
 import PaneGroup from "./paneGroup";
+import DraggablePaneElement from "../../draggables/draggablePaneElement";
 
 import styles from "../../styles/toolboxGroup";
 
@@ -27,6 +28,18 @@ const ToolboxGroup = ({ toolbox, toggleToolbox, show }) => (
             colour={category.colour}
           />
         ))}
+      {show &&
+        toolbox &&
+        toolbox.nodes &&
+        toolbox.nodes.map(node => {
+          const { name } = node;
+          node.colour = toolbox.colour || "#BBB";
+          return (
+            <DraggablePaneElement key={name} category={node} id={name}>
+              {name}
+            </DraggablePaneElement>
+          );
+        })}
     </div>
   </div>
 );

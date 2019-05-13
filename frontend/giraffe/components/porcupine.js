@@ -8,6 +8,7 @@ import styles from "../styles/porcupine.js";
 const Porcupine = () => (
   <div className="d-flex justify-content-begin">
     <div className="col-6" style={[styles.collage]}>
+      {/*<PrettyLines />*/}
       <div className="float-left" style={[styles.giraffeLines]}>
         <img src="/static/img/giraffe-line-dots.svg" style={[styles.lines1]} />
         <img src="/static/img/giraffe-lines.svg" style={[styles.lines2]} />

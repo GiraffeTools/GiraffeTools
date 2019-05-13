@@ -1,5 +1,6 @@
 import React from "react";
 import Radium from "radium";
+import Badge from "react-bootstrap/Badge";
 
 import PaneHeader from "./paneHeader";
 import DraggablePaneElement from "../../draggables/draggablePaneElement";
@@ -27,15 +28,14 @@ class PaneGroup extends React.Component {
     return (
       <div style={[styles.panel]}>
         <div style={[headerStyles.panelHeading]} onClick={this.toggleActive}>
-          <span
-            className="badge" //bootstrap badge class
-            style={[
-              headerStyles.sidebarBadge,
-              { backgroundColor: colour || "#BBB" }
-            ]}
+          <Badge
+            style={{
+              ...headerStyles.sidebarBadge,
+              backgroundColor: colour || "#BBB"
+            }}
           >
             {" "}
-          </span>
+          </Badge>
           {name}
           <span style={[headerStyles.sidebarDropdown]}>{">"}</span>
         </div>

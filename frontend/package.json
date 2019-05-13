@@ -36,7 +36,6 @@
     "d3": "^5.9.2",
     "es6-spread": "^0.2.2",
     "immutability-helper": "^3.0.0",
-    "mdbreact": "^4.13.0",
     "pluralize": "^7.0.0",
     "radium": "^0.25.1",
     "react": "^16.8.6",

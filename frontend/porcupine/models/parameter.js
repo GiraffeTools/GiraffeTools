@@ -20,19 +20,20 @@ class Parameter extends Model {
         break;
       case ADD_NODE:
         const parameters = payload.parameters;
-        parameters.forEach(parameter => {
-          Parameter.create({
-            node: payload.id,
-            id: parameter.id,
-            name: parameter.name,
-            input: parameter.input,
-            output: parameter.output,
-            isVisible: parameter.isVisible,
-            isIterable: parameter.isIterable,
-            isEnabled: parameter.isEditable,
-            value: parameter.value || "" // #TODO insert proper default value
+        parameters &&
+          parameters.forEach(parameter => {
+            Parameter.create({
+              node: payload.id,
+              id: parameter.id,
+              name: parameter.name,
+              input: parameter.input,
+              output: parameter.output,
+              isVisible: parameter.isVisible,
+              isIterable: parameter.isIterable,
+              isEnabled: parameter.isEditable,
+              value: parameter.value || "" // #TODO insert proper default value
+            });
           });
-        });
         break;
       case REMOVE_NODE:
         Parameter.filter(parameter => parameter.node == payload.id)

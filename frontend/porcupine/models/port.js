@@ -17,22 +17,23 @@ class Port extends Model {
         break;
       case ADD_NODE:
         const parameters = payload.parameters;
-        parameters.forEach(parameter => {
-          parameter.input &&
-            Port.create({
-              type: "input",
-              node: payload.id,
-              isVisible: parameter.isVisible,
-              id: parameter.input
-            });
-          parameter.output &&
-            Port.create({
-              type: "output",
-              node: payload.id,
-              isVisible: parameter.isVisible,
-              id: parameter.output
-            });
-        });
+        parameters &&
+          parameters.forEach(parameter => {
+            parameter.input &&
+              Port.create({
+                type: "input",
+                node: payload.id,
+                isVisible: parameter.isVisible,
+                id: parameter.input
+              });
+            parameter.output &&
+              Port.create({
+                type: "output",
+                node: payload.id,
+                isVisible: parameter.isVisible,
+                id: parameter.output
+              });
+          });
         break;
       case ADD_PARAMETER_TO_NODE:
         const { parameter, nodeId } = payload;
