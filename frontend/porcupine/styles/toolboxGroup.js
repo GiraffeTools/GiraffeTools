@@ -1,6 +1,9 @@
 import styleSheet from "../constants/styles";
 
 const styles = {
+  toolboxBox: {
+    padding: "0.2rem"
+  },
   toolboxHeader: {
     color: "#9ea2a9",
     textAlign: "center"

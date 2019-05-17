@@ -2,12 +2,13 @@ import styleSheet from "../constants/styles";
 
 const styles = {
   sidebar: {
+    display: "flex",
+    flexDirection: "column",
     position: "fixed",
     top: "0px",
     left: "0px",
     bottom: "0px",
     width: "20%",
-    overflowY: "auto",
     backgroundColor: styleSheet.primaryLightColor,
     zIndex: 20,
     // boxShadow: "5px 0px 10px #F3F3F3",
@@ -23,10 +24,22 @@ const styles = {
       }
     }
   },
+  search: {
+    paddingLeft: "0.5rem"
+  },
+  nodes: {
+    paddingLeft: "0.5rem"
+  },
+  nodeBox: {
+    paddingLeft: "0.5rem",
+    overflowY: "auto"
+  },
   panelGroup: {
-    paddingLeft: "8px",
     paddingRight: "8px",
     fontWeight: "bold"
+  },
+  actionsPanel: {
+    paddingLeft: "0.5rem"
   },
   logoSidebar: {
     textAlign: "center",
@@ -67,6 +80,28 @@ const styles = {
   },
   githubButton: {
     marginLeft: "0.4rem"
+  },
+
+  header: {
+    position: "absolute",
+    top: "0px",
+    left: "0px",
+    height: "50px",
+    overflow: "hidden"
+  },
+  content: {
+    position: "absolute",
+    top: "50px",
+    bottom: "50px",
+    left: "0px",
+    overflow: "auto"
+  },
+  footer: {
+    position: "absolute",
+    bottom: "0px",
+    height: "50px",
+    left: "0px",
+    overflow: "hidden"
   }
 };
 

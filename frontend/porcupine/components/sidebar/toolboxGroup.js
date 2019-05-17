@@ -6,7 +6,7 @@ import DraggablePaneElement from "../../draggables/draggablePaneElement";
 import styles from "../../styles/toolboxGroup";
 
 const ToolboxGroup = ({ toolbox, toggleToolbox, show }) => (
-  <div>
+  <div style={[styles.toolboxBox]}>
     <h6 style={[styles.toolboxHeader]}>
       <span>{toolbox.name.toUpperCase()}</span>
       <img
