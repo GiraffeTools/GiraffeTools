@@ -38,9 +38,9 @@ const styles = {
   },
   diagLines2: {
     position: "absolute",
-    width: "120%",
-    left: "-75%",
-    top: "70%",
+    width: "100%",
+    left: "-50%",
+    top: "60%",
     zIndex: -1,
     transform: "scaleX(-1)"
   }

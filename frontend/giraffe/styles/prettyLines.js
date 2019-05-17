@@ -1,34 +1,20 @@
 const styles = {
-  giraffeLines: {
-    width: "26%",
-    position: "absolute",
-    left: "17.3%"
-    // transform: "rotate(90deg)"
-  },
-  separator: {
-    width: 0,
-    height: "100px",
-    borderRightWidth: "3px",
-    borderRightStyle: "solid"
+  lines: {
+    width: "30%"
   },
   circle: {
     content: "",
-    borderWidth: "0.2rem",
     borderStyle: "solid",
     borderRadius: "50%",
-    width: "1rem",
-    height: "1rem",
-    marginTop: "-0.4rem",
-    float: "left",
-    marginLeft: "-1rem"
+    borderWidth: "0.2rem",
+    padding: "20%",
+    float: "left"
   },
-  left: {
-    float: "left",
-    marginLeft: "-10px"
-  },
-  right: {
-    float: "right",
-    marginRight: "-10px"
+  line: {
+    height: "15rem",
+    borderLeftStyle: "solid",
+    marginLeft: "25%",
+    marginTop: "50%"
   }
 };
 export default styles;

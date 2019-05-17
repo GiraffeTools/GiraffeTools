@@ -14,7 +14,7 @@ const Tools = () => (
     </Col>
     <Porcupine />
     <Armadillo />
-    <Axolotl />
+    {/*<Axolotl />*/}
   </div>
 );
 

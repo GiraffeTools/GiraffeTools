@@ -1,6 +1,7 @@
 import React from "react";
 import Radium from "radium";
 
+import PrettyLines from "./prettyLines";
 import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
 import componentStyles from "../styles/components.js";
 import styles from "../styles/porcupine.js";
@@ -8,11 +9,8 @@ import styles from "../styles/porcupine.js";
 const Porcupine = () => (
   <div className="d-flex justify-content-begin">
     <div className="col-6" style={[styles.collage]}>
-      {/*<PrettyLines />*/}
       <div className="float-left" style={[styles.giraffeLines]}>
-        <img src="/static/img/giraffe-line-dots.svg" style={[styles.lines1]} />
-        <img src="/static/img/giraffe-lines.svg" style={[styles.lines2]} />
-        <img src="/static/img/giraffe-lines.svg" style={[styles.lines3]} />
+        <PrettyLines />
       </div>
       <img
         src="/static/img/rec_porcupine_collage.png"

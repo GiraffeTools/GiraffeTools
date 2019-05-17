@@ -6,7 +6,7 @@ import headingStyles from "./headings";
 const styles = {
   giraffeLines: {
     left: "8%",
-    width: "26%",
+    width: "20%",
     position: "absolute",
     bottom: "95.8%"
   },

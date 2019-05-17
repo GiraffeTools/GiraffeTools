@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Radium from "radium";
 
 import styleSheet from "../constants/styles";
@@ -9,52 +9,31 @@ const PrettyLine = ({ color }) => {
   let separatorThickness = "2px";
 
   return (
-    <div
-      style={{
-        ...styles.separator,
-        backgroundColor: separatorColor
-        // height: separatorThickness
-      }}
-    >
+    <div className="float-left" style={styles.lines}>
       <div
         style={{
           ...styles.circle,
-          borderRightColor: separatorColor,
-          borderWidth: separatorThickness
+          borderColor: separatorColor
+          // borderWidth: separatorThickness
+        }}
+      />
+      <div
+        style={{
+          ...styles.line,
+          borderLeftColor: separatorColor
+          // borderWidth: separatorThickness
         }}
       />
     </div>
   );
 };
 
-const Line = ({ color }) => {
-  let separatorColor = color || "black";
-  let separatorThickness = "2px";
-
-  return (
-    <div
-      style={{
-        ...styles.separator,
-        backgroundColor: separatorColor,
-        height: separatorThickness
-      }}
-    />
-  );
-};
-
 const PrettyLines = () => (
-  <div style={[styles.giraffeLines]}>
-    <div style={{ height: "100%" }}>
-      <PrettyLine color={styleSheet.secondaryColor} />
-      <PrettyLine color={styleSheet.primaryColor} />
-      <PrettyLine color={styleSheet.secondaryColor} />
-    </div>
-    <div>
-      <Line color={styleSheet.secondaryColor} />
-      <Line color={styleSheet.primaryColor} />
-      <Line color={styleSheet.secondaryColor} />
-    </div>
-  </div>
+  <Fragment>
+    <PrettyLine color={styleSheet.secondaryColor} />
+    <PrettyLine color={styleSheet.primaryColor} />
+    <PrettyLine color={styleSheet.secondaryColor} />
+  </Fragment>
 );
 
 export default Radium(PrettyLines);
