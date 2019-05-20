@@ -28,18 +28,21 @@ const styles = {
     paddingLeft: "0.5rem"
   },
   nodes: {
-    paddingLeft: "0.5rem"
+    paddingLeft: "0.5rem",
+    boxShadow: "-10px 10px 10px 0px rgba(0,0,0,0.1)"
   },
   nodeBox: {
     paddingLeft: "0.5rem",
     overflowY: "auto"
   },
   panelGroup: {
-    paddingRight: "8px",
+    paddingRight: "0.5rem",
+    paddingTop: "20px",
     fontWeight: "bold"
   },
   actionsPanel: {
-    paddingLeft: "0.5rem"
+    paddingLeft: "0.5rem",
+    boxShadow: "-20px -2px 20px 0px rgba(0,0,0,0.2)"
   },
   logoSidebar: {
     textAlign: "center",

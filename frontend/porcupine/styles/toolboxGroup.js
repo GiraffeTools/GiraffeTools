@@ -5,9 +5,12 @@ const styles = {
     padding: "0.2rem"
   },
   toolboxHeader: {
-    color: "#9ea2a9",
-    textAlign: "center"
+    color: styleSheet.secondaryColor,
+    fontWeight: "bold",
+    textAlign: "center",
+    cursor: "pointer"
   },
+  toolboxName: {},
   expand: {
     height: "0.8rem",
     marginLeft: "0.4rem",

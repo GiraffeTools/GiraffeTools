@@ -78,7 +78,6 @@ class Sidebar extends React.Component {
                   key={toolbox.name}
                   show={showToolboxes && showToolboxes.includes(toolbox.name)}
                   toolbox={toolbox}
-                  toggleToolbox={toggleToolbox}
                 />
               ))}
           </div>
