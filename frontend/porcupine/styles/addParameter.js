@@ -2,7 +2,8 @@ const styles = {
   addPortForm: {
     border: "1px solid #dc3545",
     borderRadius: "5px",
-    padding: "1rem"
+    padding: "1rem",
+    backgroundColor: "rgb(255,192,203,0.2)"
   },
   ioGroup: {},
   boxGroup: {},

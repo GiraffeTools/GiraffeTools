@@ -66,7 +66,7 @@ for index, class_name in enumerate(all_modules):
     module_name = module.__name__
 
     node_list = [getattr(module, n) for n in dir(module) if n[0].isupper() or n[0].isdigit()]
-    node_list = filter_nodes(node_list)
+    node_list = set(filter_nodes(node_list))
     nodes = [node2json(node, module=class_name) for node in node_list]
     [add_to_dictionary(node, dictionary, deepcopy(node['category'])) for node in nodes]
 

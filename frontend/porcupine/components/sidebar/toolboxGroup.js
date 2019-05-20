@@ -7,7 +7,7 @@ import Collapse from "react-bootstrap/Collapse";
 import styles from "../../styles/toolboxGroup";
 
 const ToolboxGroup = ({ toolbox }) => {
-  const [open, toggleToolbox] = useState(false);
+  const [open, toggleToolbox] = useState(true);
 
   const paneGroups =
     toolbox &&

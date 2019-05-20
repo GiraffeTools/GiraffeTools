@@ -1,69 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import Radium from "radium";
 import Badge from "react-bootstrap/Badge";
+import Collapse from "react-bootstrap/Collapse";
 
-import PaneHeader from "./paneHeader";
 import DraggablePaneElement from "../../draggables/draggablePaneElement";
 import styles from "../../styles/paneGroup";
-import headerStyles from "../../styles/paneHeader";
 import NestedPaneGroup from "./nestedPaneGroup";
 
-class PaneGroup extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: false
-    };
-    this.toggleActive = this.toggleActive.bind(this);
-  }
+const PaneGroup = props => {
+  const [open, toggleToolbox] = useState(false);
+  const { nodes, subcategories, colour, name } = props;
 
-  toggleActive() {
-    this.setState({ active: !this.state.active });
-  }
-
-  render() {
-    const { nodes, subcategories, colour, name } = this.props;
-    const { active } = this.state;
-
-    return (
-      <div style={[styles.panel]}>
-        <div style={[headerStyles.panelHeading]} onClick={this.toggleActive}>
-          <Badge
-            style={{
-              ...headerStyles.sidebarBadge,
-              backgroundColor: colour || "#BBB"
-            }}
-          >
-            {" "}
-          </Badge>
+  const nodeGroups = subcategories && (
+    <NestedPaneGroup categories={subcategories} />
+  );
+  const nodeElements =
+    nodes &&
+    nodes.map(node => {
+      const { name } = node;
+      node.colour = colour || "#BBB";
+      return (
+        <DraggablePaneElement key={name} category={node} id={name}>
           {name}
-          <span style={[headerStyles.sidebarDropdown]}>{">"}</span>
-        </div>
-        <div
-          style={[
-            styles.panelCollapse,
-            active && styles.panelCollapse.collapse
-          ]}
-        >
-          <div aria-multiselectable="true">
-            {active &&
-              subcategories && <NestedPaneGroup categories={subcategories} />}
-            {active &&
-              nodes &&
-              nodes.map(node => {
-                const { name } = node;
-                node.colour = colour;
-                return (
-                  <DraggablePaneElement key={name} category={node} id={name}>
-                    {name}
-                  </DraggablePaneElement>
-                );
-              })}
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+        </DraggablePaneElement>
+      );
+    });
 
-export default Radium(PaneGroup);
+  return (
+    <div style={styles.panel}>
+      <div
+        style={styles.panelHeading}
+        onClick={() => toggleToolbox(!open)}
+        aria-controls="collapse-menu"
+        aria-expanded={open}
+      >
+        <Badge
+          style={{ ...styles.sidebarBadge, backgroundColor: colour || "#BBB" }}
+        >
+          {" "}
+        </Badge>
+        {name}
+        <span style={styles.sidebarDropdown}>{">"}</span>
+      </div>
+      <Collapse in={open} style={styles.panelCollapse}>
+        <div id="collapse-menu">
+          {nodeGroups}
+          {nodes &&
+            nodes.map(node => {
+              const { name } = node;
+              node.colour = colour || "#BBB";
+              return (
+                <DraggablePaneElement key={name} category={node} id={name}>
+                  {name}
+                </DraggablePaneElement>
+              );
+            })}
+        </div>
+      </Collapse>
+    </div>
+  );
+};
+
+export default PaneGroup;
