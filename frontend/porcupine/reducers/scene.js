@@ -1,6 +1,7 @@
 import {
   ZOOM_IN,
   ZOOM_OUT,
+  ADD_NODE,
   HOVER_PORT,
   CLICK_ITEM,
   COPY_NODES,
@@ -25,6 +26,8 @@ export default function scene(state = INITIAL_STATE, action) {
       return state;
     case ZOOM_OUT:
       return state;
+    case ADD_NODE:
+      return { ...state, selection: { nodes: [payload.id], links: null } };
     case HOVER_PORT:
       return {
         ...state,
