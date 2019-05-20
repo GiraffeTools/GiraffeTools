@@ -12,11 +12,14 @@ SyntaxHighlighter.registerLanguage("dockerfile", dockerfile);
 import nipypeCode from "../../utils/codeGenerators/nipype";
 import dockerCode from "../../utils/codeGenerators/docker";
 import kerasCode from "../../utils/codeGenerators/keras";
+import fieldtripCode from "../../utils/codeGenerators/fieldtrip";
 import unknownCode from "../../utils/codeGenerators/unknown";
 
 const formattingDictionary = {
   Nipype: "python",
-  Docker: "dockerfile"
+  Docker: "dockerfile",
+  Fieldtrip: "matlab",
+  Keras: "python"
 };
 
 function recomputeCode(language, nodes, links) {
@@ -27,8 +30,11 @@ function recomputeCode(language, nodes, links) {
     case "Docker":
       return dockerCode(nodes, links);
       break;
-    case "Keras":
+    case "Fieldtrip":
       return kerasCode(nodes, links);
+      break;
+    case "Keras":
+      return fieldtripCode(nodes, links);
       break;
     default:
       return unknownCode(nodes, links);
