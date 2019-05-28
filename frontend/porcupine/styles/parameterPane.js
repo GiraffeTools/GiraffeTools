@@ -2,7 +2,7 @@ import styleSheet from "../constants/styles";
 
 const styles = {
   parameters: {
-    position: "absolute",
+    position: "fixed",
     height: "100%",
     width: "20%",
     backgroundColor: "white",
