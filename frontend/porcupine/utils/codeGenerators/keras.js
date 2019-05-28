@@ -53,8 +53,14 @@ const itemToCode = node => {
   }
 
   let code = ``;
-  if (codeArgument.comment) `#${codeArgument.comment}\r\n`;
-  code += `model.add(${codeArgument.argument.name}())`;
+  code += `model.add(${codeArgument.argument.name}(`;
+  if (codeArgument.argument.positional_arguments) {
+    code += "0";
+    for (var i = 1; i < codeArgument.argument.positional_arguments; ++i) {
+      code += ", 0";
+    }
+  }
+  code += `))`;
 
   return code;
 };
