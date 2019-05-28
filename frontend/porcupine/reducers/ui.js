@@ -10,11 +10,11 @@ import {
 
 const INITIAL_STATE = {
   showSidebar: false,
-  showToolboxes: ["Nipype"],
+  showToolboxes: [],
   searchText: "",
   showCodeEditor: false,
   toolboxes: [],
-  activeTab: "Nipype",
+  activeTab: undefined,
   loadingPercent: -1
 };
 

@@ -31,10 +31,10 @@ function recomputeCode(language, nodes, links) {
       return dockerCode(nodes, links);
       break;
     case "Fieldtrip":
-      return kerasCode(nodes, links);
+      return fieldtripCode(nodes, links);
       break;
     case "Keras":
-      return fieldtripCode(nodes, links);
+      return kerasCode(nodes, links);
       break;
     default:
       return unknownCode(nodes, links);

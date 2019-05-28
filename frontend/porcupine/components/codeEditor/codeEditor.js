@@ -15,8 +15,7 @@ const CodeEditor = props => {
     languages,
     activeTab
   } = props;
-
-  let currentTab = activeTab || "Nipype";
+  let currentTab = activeTab || languages[0];
 
   return (
     <StyleRoot
