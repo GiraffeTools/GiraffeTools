@@ -4,7 +4,8 @@ const styles = {
     cursor: "pointer",
     border: "none",
     backgroundColor: "transparent",
-    boxShadow: "none"
+    boxShadow: "none",
+    fontFamily: "Nexa-Bold"
   },
   panelLink: {
     display: "flex",
@@ -18,7 +19,6 @@ const styles = {
   sidebarBadge: {
     padding: "10px",
     borderRadius: "3px",
-    // margin: "2px 10px -5px 0px",
     marginRight: "0.4rem",
     marginBottom: "-0.4rem"
   },

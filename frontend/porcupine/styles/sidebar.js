@@ -56,13 +56,13 @@ const styles = {
     padding: "7px 0px 7px 0px"
   },
   sidebarHeading: {
-    fontFamily: "ProximaNova-Bold, sans-serif",
+    fontFamily: "PT Sans, serif",
     color: "#9ea2a9",
     margin: "0px",
     padding: "10px 0px 10px 0px"
   },
   panelText: {
-    fontFamily: "ProximaNova-Bold, sans-serif",
+    fontFamily: "Nexa-Bold",
     paddingLeft: "0px",
     fontWeight: "bold",
     textAlign: "left",
@@ -70,7 +70,7 @@ const styles = {
     marginRight: "0.4rem"
   },
   panelIcon: {
-    width: "10%",
+    width: "7%",
     fontSize: "1.4rem",
     marginRight: "0.4rem"
   },

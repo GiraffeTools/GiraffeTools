@@ -84,6 +84,7 @@ const boxTarget = {
 
         addNode(newNode);
         updateNode(newNode.id);
+
         break;
       default:
         return null;
@@ -139,7 +140,7 @@ class Canvas extends React.PureComponent {
   }
 
   async load() {
-    const { setPorkFile, project, addToolboxNodes } = this.props;
+    const { setPorkFile, project, addToolboxNodes, clickItem } = this.props;
     const { user, repository, branch, commit } = project;
     if (!user || !repository || (!branch && !commit)) {
       console.log("No username, repository, or branch provided");
@@ -170,6 +171,7 @@ class Canvas extends React.PureComponent {
       const content = await porkData.json();
       try {
         await loadFromJson(content);
+        clickItem(null);
         graphview.current.handleZoomToFit();
       } catch (error) {
         console.log("Cannot load Porcupine Config file:");

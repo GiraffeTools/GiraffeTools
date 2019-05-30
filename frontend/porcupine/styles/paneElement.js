@@ -4,7 +4,7 @@ const styles = {
   paneElement: {
     textAlign: "left",
     color: "#848a92",
-    fontWeight: "bold"
+    fontFamily: "Nexa-Bold"
   }
 };
 
