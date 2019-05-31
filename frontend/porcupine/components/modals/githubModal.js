@@ -28,7 +28,7 @@ class GithubModal extends React.Component {
   }
 
   async onConfirm() {
-    const { githubAction, project, auth } = this.props;
+    const { githubAction, project, auth, nodes, links } = this.props;
     const { commit_message, github_repo } = this.state;
     this.setState({
       commit_pending: true,
@@ -36,16 +36,20 @@ class GithubModal extends React.Component {
       commit_error: false
     });
 
-    const { user, repository } = project;
-    const githubProject = {
+    const { user, repository, pork_file } = project;
+    const commit = {
       ...project,
+      commit_message,
       repository: repository || github_repo,
       user: user || (auth && auth.github_handle)
     };
-
-    debugger;
+    const content = {
+      pork_file,
+      nodes,
+      links
+    };
     const [error, response] = await to(
-      pushToGithub(githubAction, githubProject, commit_message)
+      pushToGithub(commit, await githubAction(content))
     );
     if (!error && response.ok) {
       this.setState({
@@ -109,7 +113,7 @@ class GithubModal extends React.Component {
           <button
             type="button"
             className="btn btn-secondary"
-            onClick={this.onConfirm}
+            onClick={() => this.onConfirm()}
             // disabled={!loggedIn}
             // disabled={!loggedIn || !yourRepo}
             data-toggle="tooltip"

@@ -7,9 +7,7 @@ import nipypeCode from "./codeGenerators/nipype";
 import dockerCode from "./codeGenerators/docker";
 import to from "await-to-js";
 
-export async function savePorkFile(nodes, links, user, commit_message) {
-  const commit_branch = user.branch || "master";
-
+export async function savePorkFile(content, commit) {
   // #TODO hard-coded, for now
   const python_file = "GIRAFFE/code/workflow.py";
   const docker_file = "GIRAFFE/code/Dockerfile";
@@ -17,8 +15,9 @@ export async function savePorkFile(nodes, links, user, commit_message) {
   const empty_file_temp = "GIRAFFE/code/temp/.empty";
   const empty_file_output = "GIRAFFE/code/output/.empty";
 
+  const { pork_file, nodes, links } = content;
   const contents = {
-    [user.pork_file]: JSON.stringify(porkFile(nodes, links), null, 2),
+    [pork_file]: JSON.stringify(porkFile(nodes, links), null, 2),
     [python_file]: await nipypeCode(nodes, links),
     [docker_file]: await dockerCode(nodes),
     [docker_compose_file]: await (await fetch(
@@ -32,20 +31,18 @@ export async function savePorkFile(nodes, links, user, commit_message) {
     )).text()
   };
 
+  return contents;
+}
+
+export async function pushToGithub(commit, contents) {
   const body = {
-    user: user.user,
-    repository: user.repository,
-    branch: user.branch || "master",
-    message: commit_message,
+    user: commit.user,
+    repository: commit.repository,
+    branch: commit.branch || "master",
+    message: commit.commit_message,
     contents
   };
 
-  return body;
-}
-
-export async function pushToGithub(githubAction, commit_message) {
-  const body = await githubAction();
-  body.message = commit_message;
   const [error, response] = await to(
     fetch(`${API_HOST}/push_to_github`, {
       method: "POST",

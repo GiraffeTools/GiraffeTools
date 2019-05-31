@@ -38,7 +38,7 @@ class Sidebar extends React.Component {
       searchText
     } = this.props;
     const { matchedNodes } = this.state;
-    const { nodes, links, allNodes } = this.props;
+    const { allNodes } = this.props;
     const currentNodes =
       searchText && searchText.length ? matchedNodes : allNodes;
     return (
@@ -122,7 +122,7 @@ class Sidebar extends React.Component {
                   title: "Commit to GitHub",
                   type: "push_to_github",
                   onClose: () => {},
-                  onConfirm: () => savePorkFile(nodes, links)
+                  onConfirm: (content, commit) => savePorkFile(content, commit)
                 })
               }
             >
