@@ -58,6 +58,7 @@ def get_user(request):
 
 def push_to_github(request):
     body = json.loads(request.body)
+    print(body)
 
     user_name = body["user"]
     repo_name = body["repository"]
@@ -86,7 +87,15 @@ def push_to_github(request):
         element = InputGitTreeElement(key, file_code, "blob", value)
         element_list.append(element)
 
-    repo = g.get_repo(f"{user_name}/{repo_name}")
+    repo = None
+    try:
+        repo = g.get_repo(f"{user_name}/{repo_name}")
+    except Exception as e:
+        # repo does not exist:
+        user = g.get_user()
+        if user.login == user_name:
+            repo = user.create_repo(f"{user_name}/{repo_name}")
+
     try:
         master_ref = repo.get_git_ref(f"heads/{branch}")
     except Exception as e:

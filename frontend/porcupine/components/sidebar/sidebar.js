@@ -7,7 +7,7 @@ import GithubIcon from "./githubIcon";
 import ToolboxGroup from "./toolboxGroup";
 import SearchBar from "../../containers/searchBar";
 import styles from "../../styles/sidebar";
-import { savePorkFile } from "../../utils/savePorkFile";
+import { savePorkFile, initPorkFile } from "../../utils/savePorkFile";
 import { API_HOST } from "../../../giraffe/config";
 
 class Sidebar extends React.Component {
@@ -122,7 +122,9 @@ class Sidebar extends React.Component {
                   title: "Commit to GitHub",
                   type: "push_to_github",
                   onClose: () => {},
-                  onConfirm: (content, commit) => savePorkFile(content, commit)
+                  onConfirm: project.user && project.repository ? 
+                    (content) => savePorkFile(content) :
+                    (content) => initPorkFile(content)
                 })
               }
             >
