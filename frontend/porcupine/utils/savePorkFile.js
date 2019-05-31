@@ -67,7 +67,6 @@ export async function initPorkFile(content) {
 }
 
 export async function pushToGithub(commit, contents) {
-  debugger
   const body = {
     user: commit.user,
     repository: commit.repository,

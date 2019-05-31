@@ -122,9 +122,10 @@ class Sidebar extends React.Component {
                   title: "Commit to GitHub",
                   type: "push_to_github",
                   onClose: () => {},
-                  onConfirm: project.user && project.repository ? 
-                    (content) => savePorkFile(content) :
-                    (content) => initPorkFile(content)
+                  onConfirm:
+                    project.user && project.repository
+                      ? content => savePorkFile(content)
+                      : content => initPorkFile(content)
                 })
               }
             >

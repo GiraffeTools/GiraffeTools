@@ -92,9 +92,9 @@ def push_to_github(request):
         repo = g.get_repo(f"{user_name}/{repo_name}")
     except Exception as e:
         # repo does not exist:
-        user = g.get_user()
-        if user.login == user_name:
-            repo = user.create_repo(f"{user_name}/{repo_name}")
+        github_user = g.get_user()
+        if github_user.login == user_name:
+            repo = github_user.create_repo(repo_name)
 
     try:
         master_ref = repo.get_git_ref(f"heads/{branch}")
