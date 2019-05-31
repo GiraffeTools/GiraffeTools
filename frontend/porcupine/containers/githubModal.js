@@ -4,7 +4,8 @@ import GithubModal from "../components/modals/githubModal";
 import { closeModal } from "../actions";
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  project: state.project
 });
 
 const mapDispatchToProps = dispatch => ({

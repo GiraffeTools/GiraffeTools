@@ -63,6 +63,7 @@
     "redux-logger": "^3.0.6",
     "redux-orm": "^0.13.3",
     "redux-persist": "^5.10.0",
+    "redux-thunk": "^2.3.0",
     "repo-first-commit": "^1.0.0",
     "uglifyjs-webpack-plugin": "^2.1.3",
     "uuid": "^3.3.2",

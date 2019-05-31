@@ -2,11 +2,13 @@ import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { createLogger } from "redux-logger";
 import { persistStore } from "redux-persist";
+// import thunk from 'redux-thunk';
 
 import porcupineApp from "../reducers";
 
 const store = createStore(
   porcupineApp,
+  // composeWithDevTools(applyMiddleware(thunk))
   composeWithDevTools(applyMiddleware(/*createLogger()*/))
 );
 

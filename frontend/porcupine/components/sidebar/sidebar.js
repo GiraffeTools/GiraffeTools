@@ -34,11 +34,10 @@ class Sidebar extends React.Component {
       showSidebar,
       project,
       openModal,
-      toggleToolbox,
       showToolboxes,
       searchText
     } = this.props;
-    const { matchedNodes, searching } = this.state;
+    const { matchedNodes } = this.state;
     const { nodes, links, allNodes } = this.props;
     const currentNodes =
       searchText && searchText.length ? matchedNodes : allNodes;
@@ -122,9 +121,8 @@ class Sidebar extends React.Component {
                   id: v4(),
                   title: "Commit to GitHub",
                   type: "push_to_github",
-                  project,
                   onClose: () => {},
-                  onConfirm: () => savePorkFile(nodes, links, project)
+                  onConfirm: () => savePorkFile(nodes, links)
                 })
               }
             >

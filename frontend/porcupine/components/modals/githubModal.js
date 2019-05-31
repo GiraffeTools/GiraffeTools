@@ -14,7 +14,8 @@ class GithubModal extends React.Component {
       commit_message: null,
       commit_pending: false,
       commit_succes: false,
-      commit_error: false
+      commit_error: false,
+      github_repo: null
     };
     this.onClose = this.onClose.bind(this);
     this.onConfirm = this.onConfirm.bind(this);
@@ -27,15 +28,24 @@ class GithubModal extends React.Component {
   }
 
   async onConfirm() {
-    const { githubAction } = this.props;
-    const { commit_message } = this.state;
+    const { githubAction, project, auth } = this.props;
+    const { commit_message, github_repo } = this.state;
     this.setState({
       commit_pending: true,
       commit_succes: false,
       commit_error: false
     });
+
+    const { user, repository } = project;
+    const githubProject = {
+      ...project,
+      repository: repository || github_repo,
+      user: user || (auth && auth.github_handle)
+    };
+
+    debugger;
     const [error, response] = await to(
-      pushToGithub(githubAction, commit_message)
+      pushToGithub(githubAction, githubProject, commit_message)
     );
     if (!error && response.ok) {
       this.setState({
@@ -90,7 +100,8 @@ class GithubModal extends React.Component {
           {title}
         </h5>
         <GithubModalContent
-          project={project}
+          repository={project && project.repository}
+          user={(project && project.user) || (auth && auth.github_handle)}
           onChange={this.handleInputChange}
         />
         <div className="modal-footer">
@@ -99,12 +110,13 @@ class GithubModal extends React.Component {
             type="button"
             className="btn btn-secondary"
             onClick={this.onConfirm}
-            disabled={!loggedIn || !yourRepo}
+            // disabled={!loggedIn}
+            // disabled={!loggedIn || !yourRepo}
             data-toggle="tooltip"
             data-placement="top"
             title={
               (!loggedIn && "You're not logged in...") ||
-              (!yourRepo && "This is not your repository...") ||
+              // (!yourRepo && "This is not your repository...") ||
               "Push to GitHub!"
             }
           >
