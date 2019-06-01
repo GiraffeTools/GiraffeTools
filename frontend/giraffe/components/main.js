@@ -1,19 +1,13 @@
 import React, { Fragment } from "react";
+import Async from "react-async";
 
-class Main extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  async componentWillMount() {
-    const { updateAuth } = this.props;
-    const response = await fetch("/api/get_user");
-    updateAuth(await response.json());
-  }
-
-  render() {
-    return <Fragment>{this.props.children}</Fragment>;
-  }
+async function auth(updateAuth) {
+  const response = await fetch("/api/get_user");
+  updateAuth(await response.json());
 }
+
+const Main = props => (
+  <Async promiseFn={() => auth(props.updateAuth)}>{props.children}</Async>
+);
 
 export default Main;
