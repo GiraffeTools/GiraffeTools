@@ -5,7 +5,7 @@ import { v4 } from "uuid";
 
 import GithubIcon from "./githubIcon";
 import ToolboxGroup from "./toolboxGroup";
-import SearchBar from "../../containers/searchBar";
+import SearchBar from "./searchBar";
 import styles from "../../styles/sidebar";
 import { savePorkFile, initPorkFile } from "../../utils/savePorkFile";
 import { API_HOST } from "../../../giraffe/config";
@@ -13,6 +13,7 @@ import { API_HOST } from "../../../giraffe/config";
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
+    this.searchBar = React.createRef();
     this.state = {
       matchedNodes: null,
       searchText: ""
@@ -31,16 +32,20 @@ class Sidebar extends React.Component {
 
   render() {
     const {
+      allNodes,
       showSidebar,
       project,
       openModal,
-      showToolboxes,
-      searchText
+      showToolboxes
     } = this.props;
     const { matchedNodes } = this.state;
-    const { allNodes } = this.props;
-    const currentNodes =
-      searchText && searchText.length ? matchedNodes : allNodes;
+
+    const searching =
+      this.searchBar.current &&
+      this.searchBar.current.state.searchText &&
+      this.searchBar.current.state.searchText.length;
+
+    const currentNodes = searching ? matchedNodes : allNodes;
     return (
       <div style={[styles.sidebar, showSidebar && styles.sidebar.active]}>
         <div style={[styles.logoSidebar]}>
@@ -56,6 +61,7 @@ class Sidebar extends React.Component {
         <div style={[styles.search]}>
           <h5 style={[styles.sidebarHeading]}>SEARCH</h5>
           <SearchBar
+            ref={this.searchBar}
             toolboxes={allNodes}
             setSearchResults={results =>
               this.setState({ matchedNodes: results })

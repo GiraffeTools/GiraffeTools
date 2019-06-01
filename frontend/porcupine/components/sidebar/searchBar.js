@@ -56,10 +56,9 @@ class SearchBar extends React.Component {
   }
 
   async handleTextChange(event) {
-    const { setSearchResults, setSearchText, toolboxes } = this.props;
+    const { setSearchResults, toolboxes } = this.props;
     const searchText = event.target.value.toLowerCase();
     this.setState({ searchText, searching: true });
-    setSearchText(searchText);
     const matchedNodes = await searchAPIDebounced(searchText, toolboxes);
     this.setState({ searching: false });
     setSearchResults(matchedNodes);

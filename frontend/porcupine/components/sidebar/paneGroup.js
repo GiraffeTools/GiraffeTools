@@ -7,9 +7,8 @@ import DraggablePaneElement from "../../draggables/draggablePaneElement";
 import styles from "../../styles/paneGroup";
 import NestedPaneGroup from "./nestedPaneGroup";
 
-const PaneGroup = props => {
+const PaneGroup = ({ nodes, subcategories, colour, name }) => {
   const [open, toggleToolbox] = useState(false);
-  const { nodes, subcategories, colour, name } = props;
 
   const nodeGroups = subcategories && (
     <NestedPaneGroup categories={subcategories} />
