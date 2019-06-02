@@ -36,8 +36,9 @@ const styles = {
     WebkitBorderRadius: "30px",
     border: `4px solid ${styleSheet.primaryColor}`,
     width: "60px",
-    height: "60px"
+    height: "60px",
     // font-weight: bold;
+    padding: 0
   },
 
   activeGiraffeText: {

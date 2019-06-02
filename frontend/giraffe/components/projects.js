@@ -42,10 +42,9 @@ async function loadRepositories(
   });
   const newRepos = await Promise.all(newList);
   setRepositories(oldRepos => {
-    debugger;
-    const newRepos = oldRepos.concat(newRepos);
-    setActiveProjects(newRepos);
-    return newRepos;
+    const repos = oldRepos.concat(newRepos);
+    setActiveProjects(repos.filter(repo => repo.isGiraffeProject).length);
+    return repos;
   });
 }
 
