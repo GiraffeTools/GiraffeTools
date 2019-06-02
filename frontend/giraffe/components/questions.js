@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from "react";
 import Radium from "radium";
 import Container from "react-bootstrap/Container";
-import Collapse from "react-bootstrap/Collapse";
 import Question from "../components/question";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";

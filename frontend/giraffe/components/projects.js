@@ -1,34 +1,90 @@
-import React, { Fragment } from "react";
-import Radium from "radium";
+import React, { useState } from "react";
 import InfiniteScroll from "react-infinite-scroller";
 
 import Project from "../containers/project";
-import styles from "../styles/projects.js";
+import { addTokenToQuery } from "../utils/auth";
 
-const Projects = ({ repositories, hasMore, loadMore }) => {
+import styles from "../styles/projects.js";
+import { GITHUB_BASE_API } from "../config";
+
+async function loadRepositories(
+  username,
+  page,
+  setRepositories,
+  setHasMore,
+  setActiveProjects
+) {
+  const url = await addTokenToQuery(
+    new URL(`${GITHUB_BASE_API}/users/${username}/repos?page=${page}`)
+  );
+  const repos = await fetch(url.href);
+  const repoList = await repos.json();
+  if (!repoList.length) {
+    setHasMore(false);
+    return;
+  }
+
+  const giraffeConfigFile = "GIRAFFE.yml";
+  async function isGiraffeProject(repoName) {
+    const url = await addTokenToQuery(
+      new URL(
+        `${GITHUB_BASE_API}/repos/${repoName}/contents/${giraffeConfigFile}`
+      )
+    );
+    const file = await fetch(url);
+    return file.ok;
+  }
+  const newList = repoList.map(async repo => {
+    return {
+      ...repo,
+      isGiraffeProject: await isGiraffeProject(repo.full_name)
+    };
+  });
+  const newRepos = await Promise.all(newList);
+  setRepositories(oldRepos => {
+    debugger;
+    const newRepos = oldRepos.concat(newRepos);
+    setActiveProjects(newRepos);
+    return newRepos;
+  });
+}
+
+const Projects = ({ username, setActiveProjects }) => {
+  const [repositories, setRepositories] = useState([]);
+  const [hasMore, setHasMore] = useState(true);
+
   const repositorySection = repositories.length ? (
     repositories.map(repository => (
       <Project key={repository.id} {...repository} />
     ))
   ) : (
-    // (repositories.sort(function(a, b) {return b.isGiraffeProject - a.isGiraffeProject;})
     <div>This user does not have any GitHub projects.</div>
+  );
+
+  const loader = (
+    <div className="loader" key={0}>
+      Loading ...
+    </div>
   );
 
   return (
     <div className="col-8 text-center">
       <div className="d-flex justify-content-center">
-        <h4 style={[styles.projects]}>Projects</h4>
+        <h4 style={styles.projects}>Projects</h4>
       </div>
       <InfiniteScroll
         pageStart={0}
-        loadMore={loadMore}
+        loadMore={page => {
+          loadRepositories(
+            username,
+            page,
+            setRepositories,
+            setHasMore,
+            setActiveProjects
+          );
+        }}
         hasMore={hasMore}
-        loader={
-          <div className="loader" key={0}>
-            Loading ...
-          </div>
-        }
+        loader={loader}
       >
         {repositorySection}
       </InfiniteScroll>
@@ -36,4 +92,4 @@ const Projects = ({ repositories, hasMore, loadMore }) => {
   );
 };
 
-export default Radium(Projects);
+export default Projects;

@@ -69,7 +69,7 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    const { results, searchText, searching } = this.state;
+    const { searchText, searching } = this.state;
 
     return (
       <Fragment>

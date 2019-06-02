@@ -57,5 +57,4 @@ const ToolboxGroup = ({ toolbox }) => {
   );
 };
 
-// export default Radium(ToolboxGroup);
 export default ToolboxGroup;

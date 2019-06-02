@@ -1,11 +1,9 @@
-import { v4 } from "uuid";
 import React from "react";
 import { StyleRoot } from "radium";
 import { DragDropContext } from "react-dnd";
 import MultiBackend from "react-dnd-multi-backend";
 import HTML5toTouch from "react-dnd-multi-backend/lib/HTML5toTouch";
 
-import { default as ItemPreview } from "./canvas/itemPreview";
 import CodeEditor from "../containers/codeEditor";
 import Canvas from "../containers/canvas";
 import ParameterPane from "../containers/parameterPane";
@@ -38,6 +36,7 @@ class Content extends React.Component {
 
     const response = await fetch("/api/get_user");
     updateAuth(await response.json());
+    // #TODO write a comment about what this line does:
     this.canvas.decoratedRef.current.load();
   }
 

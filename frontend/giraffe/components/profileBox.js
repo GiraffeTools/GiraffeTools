@@ -1,43 +1,61 @@
 import React from "react";
-import Radium from "radium";
 import Container from "react-bootstrap/Container";
 import pluralize from "pluralize";
+import { useAsync } from "react-async";
 
 import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
 import styles from "../styles/profileBox.js";
-import componentStyles from "../styles/components.js";
+import { addTokenToQuery } from "../utils/auth";
+import { GITHUB_BASE_API } from "../config";
 
-const ProfileBox = ({ user, active_giraffe_projects }) => (
-  <div className="col-4 text-center">
-    <div className="sticky-top" style={[styles.sticky]}>
-      <div style={[styles.whitespace]} />
-      <div style={[styles.box]}>
-        <img src={user.avatar_url} style={[styles.profilePic]} />
-        <h3 style={[styles.username]}>{user.login}</h3>
-        <SeparatorWithOpenCircle
-          color="#4A4A4A"
-          thickness={"1px"}
-          styleOverwrite={{ ...styles.componentStyles }}
-        />
-        <Container style={styles.activeProjectCounter}>
-          {active_giraffe_projects}
-        </Container>
-        <div style={[styles.activeGiraffeText]}>
-          active GiraffeTools {pluralize("project", active_giraffe_projects)}
+async function loadUser({ username }) {
+  const url = await addTokenToQuery(
+    new URL(`${GITHUB_BASE_API}/users/${username}`)
+  );
+  return fetch(url.href).then(response => response.json());
+}
+
+const ProfileBox = ({ username, activeProjects }) => {
+  const { data, error, isLoading } = useAsync(loadUser, { username });
+  const user = isLoading
+    ? "Loading..."
+    : error
+      ? "User not found"
+      : data.userName;
+  const avatar_url =
+    isLoading || error ? "/static/img/giraffetools_logo.png" : data.avatar_url;
+  const loggedIn = isLoading || error ? false : data.loggedIn;
+  return (
+    <div className="col-4 text-center">
+      <div className="sticky-top" style={styles.sticky}>
+        <div style={styles.whitespace} />
+        <div style={styles.box}>
+          <img src={avatar_url} style={styles.profilePic} />
+          <h3 style={styles.username}>{user}</h3>
+          <SeparatorWithOpenCircle
+            color="#4A4A4A"
+            thickness={"1px"}
+            styleOverwrite={{ ...styles.componentStyles }}
+          />
+          <Container style={styles.activeProjectCounter}>
+            {activeProjects}
+          </Container>
+          <div style={styles.activeGiraffeText}>
+            active GiraffeTools {pluralize("project", activeProjects)}
+          </div>
+          <SeparatorWithOpenCircle
+            color="#4A4A4A"
+            thickness={"1px"}
+            styleOverwrite={{ ...styles.componentStyles }}
+          />
+          {loggedIn && (
+            <button type="button" className="btn">
+              Logout
+            </button>
+          )}
         </div>
-        <SeparatorWithOpenCircle
-          color="#4A4A4A"
-          thickness={"1px"}
-          styleOverwrite={{ ...styles.componentStyles }}
-        />
-        {user.loggedIn && (
-          <button type="button" className="btn">
-            Logout
-          </button>
-        )}
       </div>
     </div>
-  </div>
-);
-
-export default Radium(ProfileBox);
+  );
+};
+export default ProfileBox;

@@ -11,7 +11,7 @@ const Footer = () => (
     <Row>
       <Col sm={{ span: 3, offset: 1 }} style={styles.footerText}>
         <p style={[styles.copyright]}>
-          <b>&copy; 2018 Tim van Mourik</b>
+          <b>&copy; 2019 Tim van Mourik</b>
         </p>
         <p style={[styles.copyright]}>Imprint | Privacy</p>
         <p style={[styles.copyright]}>Designed by Fuchsfabrik</p>

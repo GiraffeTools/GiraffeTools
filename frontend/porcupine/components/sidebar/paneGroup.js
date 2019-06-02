@@ -1,11 +1,20 @@
 import React, { useState } from "react";
-import Radium from "radium";
 import Badge from "react-bootstrap/Badge";
 import Collapse from "react-bootstrap/Collapse";
 
 import DraggablePaneElement from "../../draggables/draggablePaneElement";
 import styles from "../../styles/paneGroup";
-import NestedPaneGroup from "./nestedPaneGroup";
+
+const NestedPaneGroup = ({ categories }) =>
+  categories.map(category => (
+    <PaneGroup
+      key={category.name}
+      name={category.name}
+      subcategories={category.categories}
+      nodes={category.nodes}
+      colour={category.colour}
+    />
+  ));
 
 const PaneGroup = ({ nodes, subcategories, colour, name }) => {
   const [open, toggleToolbox] = useState(false);

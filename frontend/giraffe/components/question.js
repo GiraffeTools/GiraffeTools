@@ -1,6 +1,4 @@
 import React, { Fragment, useState } from "react";
-import Radium from "radium";
-import Button from "react-bootstrap/Button";
 import Collapse from "react-bootstrap/Collapse";
 
 import styles from "../styles/question.js";
@@ -31,4 +29,3 @@ const Question = props => {
 };
 
 export default Question;
-// export default Radium(Question);
