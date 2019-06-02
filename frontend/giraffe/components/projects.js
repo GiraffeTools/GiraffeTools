@@ -53,9 +53,11 @@ const Projects = ({ username, setActiveProjects }) => {
   const [hasMore, setHasMore] = useState(true);
 
   const repositorySection = repositories.length ? (
-    repositories.map(repository => (
-      <Project key={repository.id} {...repository} />
-    ))
+    repositories
+      .sort(function(a, b) {
+        return a.name.localeCompare(b.name);
+      })
+      .map(repository => <Project key={repository.id} {...repository} />)
   ) : (
     <div>This user does not have any GitHub projects.</div>
   );
