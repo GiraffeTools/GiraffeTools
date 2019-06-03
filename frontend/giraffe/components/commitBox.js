@@ -1,18 +1,22 @@
-import React, { Fragment } from "react";
-import Radium from "radium";
-import Async from "react-async";
+import React, { useState } from "react";
+import InfiniteScroll from "react-infinite-scroller";
 
 import Commit from "./commit";
 import { groupByDate } from "../utils/utils";
 import styles from "../styles/commitBox.js";
 import { addTokenToQuery } from "../utils/auth";
+import { GITHUB_BASE_API } from "../config";
 
-async function loadCommits(props) {
-  const { full_name } = props;
+async function loadCommits(username, page, setCommits, setHasMore) {
   const url = await addTokenToQuery(
-    new URL(`https://api.github.com/repos/${full_name}/commits`)
+    new URL(`${GITHUB_BASE_API}/repos/${username}/commits?page=${page}`)
   );
-  return fetch(url.href).then(res => res.json());
+  const newCommits = await (await fetch(url.href)).json();
+  if (!newCommits.length) {
+    setHasMore(false);
+    return;
+  }
+  setCommits(commits => commits.concat(newCommits));
 }
 
 const sortDateFunction = (a, b) => {
@@ -37,35 +41,46 @@ const CommitSection = ({ date, commits, full_name }) => {
 
 const CommitBox = props => {
   const { full_name } = props.repository;
-  return (
-    <Async promiseFn={loadCommits} full_name={full_name}>
-      <Async.Loading>Loading...</Async.Loading>
-      <Async.Fulfilled>
-        {commits => {
-          const groupedCommits = commits.length && groupByDate(commits);
-          const dates =
-            groupedCommits &&
-            Object.keys(groupedCommits).sort(sortDateFunction);
 
-          return (
-            <div>
-              {dates.map((date, index) => (
-                <CommitSection
-                  key={index}
-                  date={date}
-                  commits={groupedCommits[date]}
-                  full_name={full_name}
-                />
-              ))}
-            </div>
-          );
-        }}
-      </Async.Fulfilled>
-      <Async.Rejected>
-        {error => <div>Cannot find any commits...</div>}
-      </Async.Rejected>
-    </Async>
+  const [commits, setCommits] = useState([]);
+  const [hasMore, setHasMore] = useState(true);
+
+  const groupedCommits = commits.length && groupByDate(commits);
+  const dates =
+    groupedCommits && Object.keys(groupedCommits).sort(sortDateFunction);
+  const commitSection = dates ? (
+    <div>
+      {dates.map((date, index) => (
+        <CommitSection
+          key={index}
+          date={date}
+          commits={groupedCommits[date]}
+          full_name={full_name}
+        />
+      ))}
+    </div>
+  ) : (
+    <div>Cannot find any commits...</div>
+  );
+
+  const loader = (
+    <div className="loader" key={0}>
+      Loading ...
+    </div>
+  );
+
+  return (
+    <InfiniteScroll
+      pageStart={0}
+      loadMore={page => {
+        loadCommits(full_name, page, setCommits, setHasMore);
+      }}
+      hasMore={hasMore}
+      loader={loader}
+    >
+      {commitSection}
+    </InfiniteScroll>
   );
 };
 
-export default Radium(CommitBox);
+export default CommitBox;
