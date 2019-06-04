@@ -6,8 +6,10 @@ const styles = {
     width: "90%"
   },
   chrome: {
-    width: "5%",
     margin: "0 2.5%"
+  },
+  logo: {
+    width: "2rem"
   }
 };
 export default styles;

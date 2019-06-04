@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Radium from "radium";
-import Row from "react-bootstrap/Row";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
-import bowser from "bowser";
+import {
+  browserName,
+  browserVersion,
+  fullBrowserVersion,
+  isChrome,
+  inspect
+} from "react-device-detect";
 
 let chrome = "";
 let warning = "";
@@ -19,58 +24,37 @@ const minimumBrowsers = {
   "internet explorer": "99999" // not verified, but just don't
 };
 
-class UnhappyBrowser extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      happy: true,
-      visible: true
-    };
-    this.onClose = this.onClose.bind(this);
-  }
+const UnhappyBrowser = () => {
+  const [open, setVisible] = useState(true);
+  //this is a bug in react-device-detect,  fullBrowserVersion should be browserVersion
+  const happy = isChrome && parseInt(fullBrowserVersion) > 42;
 
-  componentDidMount() {
-    // in case we'd like to pass on the browser info directly:
-    const { ua } = this.props;
-    this.setState({
-      happy: bowser.check(
-        minimumBrowsers,
-        true,
-        ua || window.navigator.userAgent
-      )
-    });
-  }
-
-  onClose() {
-    this.setState({ visible: false });
-  }
-
-  render() {
-    const { happy } = this.state;
-    const { open, toggleBrowserAlert } = this.props;
-
-    return happy || !open ? null : (
-      <Alert dismissible={true} variant="primary" onClose={toggleBrowserAlert}>
-        <Alert.Heading>
-          Use a different browser for an optimal experience
-        </Alert.Heading>
-        <p>
+  return !happy && open ? (
+    <Alert dismissible={true} variant="primary" style={alertStyles.alert}>
+      <Alert.Heading>
+        Use a different browser for an optimal experience
+      </Alert.Heading>
+      <p>
+        <span>
           We have detected that you are using an browser in which some
           functionality might not work as expected. We advise to use the latest
           version of Chrome.
-          <a href="http://www.google.com/chrome/" style={[styles.chrome]}>
-            <img src="/static/img/chrome.svg" alt="install or upgrade chrome" />
-          </a>
-        </p>
-        <hr />
-        <div className="d-flex justify-content-end">
-          <Button onClick={toggleBrowserAlert} variant="outline-success">
-            &times;
-          </Button>
-        </div>
-      </Alert>
-    );
-  }
-}
+        </span>
+        <a href="http://www.google.com/chrome/" style={styles.chrome}>
+          <img
+            src="/static/img/chrome.svg"
+            alt="install or upgrade chrome"
+            style={styles.logo}
+          />
+        </a>
+      </p>
+      <div className="d-flex justify-content-end">
+        <Button onClick={() => setVisible(false)} variant="outline-primary">
+          &times;
+        </Button>
+      </div>
+    </Alert>
+  ) : null;
+};
 
-export default Radium(UnhappyBrowser);
+export default UnhappyBrowser;
