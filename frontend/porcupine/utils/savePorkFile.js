@@ -44,7 +44,7 @@ export async function initPorkFile(content) {
   const empty_file_temp = "GIRAFFE/code/temp/.empty";
   const empty_file_output = "GIRAFFE/code/output/.empty";
 
-  const { nodes, links } = content;
+  const { pork_file, nodes, links } = content;
   const contents = {
     [giraffe_file]: await (await fetch(
       "/static/assets/giraffe/GIRAFFE.yml"
