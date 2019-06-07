@@ -12,18 +12,15 @@ async function toolboxCode(toolbox) {
 }
 
 async function nodeCode(nodes) {
-  const languagesInEditor =
+  const dockerCodes =
     nodes &&
-    nodes.map(node => {
-      const codeArgument =
-        node.code && node.code.filter(a => a.language === LANGUAGE)[0];
-      return (
-        codeArgument &&
-        codeArgument.argument &&
-        codeArgument.argument.name &&
-        codeArgument.argument.name.split(",")
-      );
-    });
+    nodes.map(
+      node => node.code && node.code.filter(a => a.language === LANGUAGE)[0]
+    );
+
+  const languagesInEditor = dockerCodes.map(
+    code => code.argument && code.argument.name && code.argument.name.split(",")
+  );
 
   const availableToolboxes = [
     "afni",
@@ -45,13 +42,18 @@ async function nodeCode(nodes) {
   const code = await Promise.all(
     toolboxes.map(toolbox => toolboxCode(toolbox))
   );
-  if (languagesInEditor.includes(undefined)) {
-    const warning =
-      "# Warning: not all nodes specified a required Docker section. This Dockerfile may be incomplete.\r\n\r\n";
-    return warning.concat(code.join("\r\n"));
-  } else {
-    return code.join("\r\n");
-  }
+
+  const customSnippets = dockerCodes.map(
+    code => code.argument && code.argument.snippet
+  );
+
+  const snippetCode = await Promise.all(
+    [...new Set(customSnippets)].map(async snippet =>
+      (await fetch(snippet)).text()
+    )
+  );
+
+  return code.concat(snippetCode).join("\r\n");
 }
 
 export default async function dockerCode(nodes, links) {
