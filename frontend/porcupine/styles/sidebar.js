@@ -56,7 +56,7 @@ const styles = {
     padding: "7px 0px 7px 0px"
   },
   sidebarHeading: {
-    fontFamily: "PT Sans, serif",
+    fontFamily: "Nexa-Light",
     color: "#9ea2a9",
     margin: "0px",
     padding: "10px 0px 10px 0px"
