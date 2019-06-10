@@ -1,6 +1,5 @@
 import { v4 } from "uuid";
 import React from "react";
-import Radium from "radium";
 import {
   DropTarget,
   ConnectDropTarget,
@@ -252,12 +251,7 @@ class Canvas extends React.PureComponent {
     return (
       connectDropTarget &&
       connectDropTarget(
-        <div
-          // because of the DropTarget, this is not a radium class at the moment
-          // There are no []s around styles.canvas.
-          // #TODO see if can be done cleanly
-          style={styles.canvas}
-        >
+        <div style={styles.canvas}>
           <ProgressBar
             percent={loadingPercent}
             onTop={true}

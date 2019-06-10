@@ -26,9 +26,7 @@ module.exports = api => {
     "@babel/transform-runtime",
     // Required for react-dnd:
     ["@babel/plugin-proposal-class-properties", { loose: true }],
-    ["@babel/plugin-proposal-decorators", { legacy: true }],
-    // required for react-spinners
-    "emotion"
+    ["@babel/plugin-proposal-decorators", { legacy: true }]
   ];
 
   return {

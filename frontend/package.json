@@ -56,7 +56,7 @@
     "react-request": "^3.1.2",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-spinners": "^0.5.4",
+    "react-spinners-kit": "^1.9.0",
     "react-syntax-highlighter": "^10.3.0",
     "react-tooltip": "^3.10.0",
     "react-typing-animation": "<=1.4.0",
