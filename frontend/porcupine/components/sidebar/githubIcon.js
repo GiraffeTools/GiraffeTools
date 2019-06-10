@@ -1,4 +1,5 @@
 import React from "react";
+import Radium from "radium";
 import Async from "react-async";
 
 import styles from "../../styles/githubIcon";
@@ -29,7 +30,7 @@ const GithubIcon = ({ user, repo, type }) => {
       break;
   }
   return (
-    <div className="large" style={styles.button}>
+    <div className="large" style={[styles.button]}>
       <a
         href={`https://github.com/${user}/${repo}/${
           type == "fork" ? "fork" : ""
@@ -37,12 +38,12 @@ const GithubIcon = ({ user, repo, type }) => {
         target="_blank"
         // className="btn"
         aria-label={`${type} ${user}/${repo} on GitHub`}
-        style={styles.githubButton}
+        style={[styles.githubButton]}
       >
         <img
           // className="octicon octicon-star"
           src={`/static/img/gh-${type}-icon.svg`}
-          style={styles.octicon}
+          style={[styles.octicon]}
         />
         <span>{capitaliseFirstLetter(type)}</span>
       </a>
@@ -50,10 +51,10 @@ const GithubIcon = ({ user, repo, type }) => {
         href={`https://github.com/${user}/${repo}/${link}`}
         target="_blank"
         className="social-count"
-        style={styles.socialCount}
+        style={[styles.socialCount]}
       >
-        <b style={styles.b} />
-        <i style={styles.i} />
+        <b style={[styles.b]} />
+        <i style={[styles.i]} />
         <span>
           <Async promiseFn={loadGithubData} user={user} repo={repo}>
             <Async.Loading>-</Async.Loading>
@@ -66,4 +67,4 @@ const GithubIcon = ({ user, repo, type }) => {
   );
 };
 
-export default GithubIcon;
+export default Radium(GithubIcon);

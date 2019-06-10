@@ -43,13 +43,7 @@ const ToolboxGroup = ({ toolbox }) => {
         aria-expanded={open}
       >
         <span style={styles.toolboxName}>{toolbox.name.toUpperCase()}</span>
-        <img
-          style={{
-            ...styles.expand,
-            ...styles.expand[open ? "open" : "closed"]
-          }}
-          src="/static/img/arrow-right.svg"
-        />
+        <img style={{ ...styles.expand }} src="/static/img/arrow-right.svg" />
       </h6>
       {
         <Collapse id="collapse-group" in={open}>

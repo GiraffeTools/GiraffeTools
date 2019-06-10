@@ -1,10 +1,9 @@
 import React, { Fragment } from "react";
 import Radium from "radium";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
-import ClipLoader from "react-spinners/ClipLoader";
+import { ClipLoader } from "react-spinners";
 
-import styles from "../../styles/searchBar";
-import docStyles from "../../constants/styles";
+import styles from "../../styles/searchBar.js";
 
 function searchAPI(text, toolboxes) {
   const getMatches = category => {
@@ -81,8 +80,9 @@ class SearchBar extends React.Component {
             style={[styles.searchInput]}
           />
           <ClipLoader
-            size={20}
-            color={docStyles.secondaryColor}
+            sizeUnit={"%"}
+            size={10}
+            color={"#123abc"}
             loading={searching}
           />
         </form>

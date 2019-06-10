@@ -14,12 +14,10 @@ const styles = {
   expand: {
     height: "0.8rem",
     marginLeft: "0.4rem",
+    transform: "rotate(-90deg)",
     transition: "transform 0.3s",
     cursor: "pointer",
-    closed: {
-      transform: "rotate(-90deg)"
-    },
-    open: {
+    close: {
       transform: "rotate(90deg)"
     }
   }

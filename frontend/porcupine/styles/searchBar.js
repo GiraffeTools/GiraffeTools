@@ -1,6 +1,2 @@
-const styles = {
-  searchInput: {
-    marginRight: "0.2rem"
-  }
-};
+const styles = {};
 export default styles;

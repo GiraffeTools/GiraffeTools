@@ -1,4 +1,5 @@
 import React from "react";
+import Radium from "radium";
 import styles from "../../styles/menuSlider";
 
 const steps = 100; // Slider steps
@@ -49,4 +50,4 @@ class MenuSlider extends React.PureComponent {
     );
   }
 }
-export default MenuSlider;
+export default Radium(MenuSlider);
