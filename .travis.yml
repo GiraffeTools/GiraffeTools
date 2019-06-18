@@ -1,5 +1,6 @@
 sudo: false
 language: python
+dist: trusty #to be updated to dist:xenial
 python:
   - 3.6
 env:
