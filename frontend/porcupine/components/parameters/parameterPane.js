@@ -5,6 +5,8 @@ import AddParameter from "../../containers/addParameter";
 import Fields from "./fields";
 import styles from "../../styles/parameterPane";
 
+require("../../scss/scrollbar.scss");
+
 class ParameterPane extends React.Component {
   constructor(props) {
     super(props);

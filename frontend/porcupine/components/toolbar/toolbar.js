@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import ToolbarItem from "./toolbarItem";
 import styles from "../../styles/toolbar";
 
+require("../../scss/toolbar.scss");
+
 class Toolbar extends Component {
   constructor(props) {
     super(props);

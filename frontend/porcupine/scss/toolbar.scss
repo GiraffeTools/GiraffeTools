@@ -1,0 +1,118 @@
+
+:root {
+    --main-color: #000;
+    --main-color-high:#222;
+    --text-color:#cccccc;
+    --text-hover: #fff;
+  }
+
+.minimalist-toolbar{
+    overflow-y: visible;
+    position: absolute;
+    top:0px;
+    z-index: 1;
+    left:0px;
+    max-height: 30px;
+    min-height: 12px;
+    background:var(--main-color);
+    width:100%;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+
+.minimalist-toolbar> ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    background-color: var(--main-color);
+    font-size: 12pt;
+    white-space: nowrap;
+}
+
+.minimalist-toolbar> ul> li {
+    float: left;
+    color: var(--text-color);
+}
+
+.minimalist-toolbar> ul> li:hover{
+    color:var(--text-hover)
+}
+
+.minimalist-toolbar> ul> li a{
+    display: block;
+    color: var(--text-color);
+    text-align: center;
+    padding: 5px 10px;
+    text-decoration: none;
+    text-align: left;
+}
+
+.minimalist-toolbar> ul> li a:hover{
+    color:var(--text-hover);
+    text-decoration: none;
+    font-weight: 200;
+    background-color: #111;
+    cursor:pointer;
+    clear:both
+}
+
+.minimalist-toolbar-brand{
+    color:var(--text-hover);
+    font-weight: 100;
+    background: transparent;
+}
+
+.minimalist-toolbar-brand:hover{
+    background: transparent;
+    font-weight: 400;
+}
+.minimalist-toolbar> ul> li .brand a{
+    padding-left: 5px;
+}
+
+.minimalist-toolbar> ul> li .brand a:hover{
+  background: transparent;
+}
+
+.minimalist-toolbar-brand .logo{
+    width: 18px;
+    margin-right: 5px;
+    margin-left:10px;
+    padding:auto;
+    vertical-align: middle;
+    height: 100%;
+}
+
+/*dropdown*/
+.minimalist-toolbar .dropdown {
+    position: relative;
+    display: inline-block;
+    color: var(--text-color);
+    overflow: visible;
+}
+
+.minimalist-toolbar .dropdown:hover, .minimalist-toolbar .dropdown-content:hover{
+    background: var(--main-color);
+    color: var(--text-hover);
+}
+
+.minimalist-toolbar .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #000;
+    min-width: 200px;
+    width: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+.minimalist-toolbar .dropdown:hover .dropdown-content {
+    display:inline-block;
+    white-space: nowrap;
+    color: var(--text-color);
+}
+
+.minimalist-toolbar .dropdown-content a:hover{
+    color:var(--text-hover);
+}

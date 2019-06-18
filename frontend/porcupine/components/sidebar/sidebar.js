@@ -10,6 +10,8 @@ import styles from "../../styles/sidebar";
 import { savePorkFile, initPorkFile } from "../../utils/savePorkFile";
 import { API_HOST } from "../../../giraffe/config";
 
+require("../../scss/scrollbar.scss");
+
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
