@@ -9,6 +9,7 @@ import {
   isChrome,
   inspect
 } from "react-device-detect";
+import { useCookies } from "react-cookie";
 
 let chrome = "";
 let warning = "";
@@ -25,12 +26,14 @@ const minimumBrowsers = {
 };
 
 const UnhappyBrowser = () => {
-  const [open, setVisible] = useState(true);
+  const [cookies, setCookie] = useCookies(["browser"]);
   //this is a bug in react-device-detect,  fullBrowserVersion should be browserVersion
   const happy = isChrome && parseInt(fullBrowserVersion) > 42;
 
-  return !happy && open ? (
-    <Alert dismissible={true} variant="primary" style={alertStyles.alert}>
+  if (happy || cookies.browser === "closed") return null;
+
+  return (
+    <Alert dismissible={false} variant="primary" style={alertStyles.alert}>
       <Alert.Heading>
         Use a different browser for an optimal experience
       </Alert.Heading>
@@ -48,13 +51,16 @@ const UnhappyBrowser = () => {
           />
         </a>
       </p>
-      <div className="d-flex justify-content-end">
-        <Button onClick={() => setVisible(false)} variant="outline-primary">
-          &times;
+      <div className="d-flex justify-content-center">
+        <Button
+          onClick={() => setCookie("browser", "closed")}
+          variant="outline-primary"
+        >
+          Close
         </Button>
       </div>
     </Alert>
-  ) : null;
+  );
 };
 
 export default UnhappyBrowser;

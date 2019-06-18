@@ -2,21 +2,19 @@ import React, { useState } from "react";
 import { StyleRoot } from "radium";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
+import { useCookies } from "react-cookie";
 
 import alertStyles from "../styles/alerts";
 import styles from "../styles/smallScreenAlert";
 
 const SmallScreenAlert = () => {
-  const [show, handleHide] = useState(true);
+  const [cookies, setCookie] = useCookies(["smallScreen"]);
+  if (cookies.smallScreen === "closed") return null;
+
   return (
     <StyleRoot>
       <div style={[alertStyles.alert, styles.smallScreen]}>
-        <Alert
-          show={show}
-          dismissible={false}
-          variant="primary"
-          closeLabel="test"
-        >
+        <Alert dismissible={false} variant="primary" closeLabel="test">
           <Alert.Heading>
             You're viewing this page on a small screen
           </Alert.Heading>
@@ -25,8 +23,11 @@ const SmallScreenAlert = () => {
             things might look a bit quirky!
           </p>
           <hr />
-          <div className="d-flex justify-content-end">
-            <Button onClick={() => handleHide(false)} variant="outline-primary">
+          <div className="d-flex justify-content-center">
+            <Button
+              onClick={() => setCookie("smallScreen", "closed")}
+              variant="outline-primary"
+            >
               Close
             </Button>
           </div>
