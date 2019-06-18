@@ -43,9 +43,9 @@ async function nodeCode(nodes) {
     toolboxes.map(toolbox => toolboxCode(toolbox))
   );
 
-  const customSnippets = dockerCodes.map(
-    code => code.argument && code.argument.snippet
-  );
+  const customSnippets = dockerCodes
+    .map(code => code.argument && code.argument.snippet)
+    .filter(s => s != null);
 
   const snippetCode = await Promise.all(
     [...new Set(customSnippets)].map(async snippet =>
