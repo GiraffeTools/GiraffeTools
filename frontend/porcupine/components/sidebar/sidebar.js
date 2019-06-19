@@ -80,9 +80,9 @@ class Sidebar extends React.Component {
             aria-multiselectable="true"
           >
             {currentNodes &&
-              currentNodes.map(toolbox => (
+              currentNodes.map((toolbox, index) => (
                 <ToolboxGroup
-                  key={toolbox.name}
+                  key={index}
                   show={showToolboxes && showToolboxes.includes(toolbox.name)}
                   toolbox={toolbox}
                 />
