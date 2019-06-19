@@ -1,22 +1,41 @@
 version: '3'
 
 services:
-  # nginx:
-  #   build: ./nginx
-  #   ports:
-  #     - "8000:8000"
-  #   volumes:
-  #     - ./public:/www/public/
-  #   depends_on:
-  #     - web
-  #   volumes:
-  #     - ./nginx/config:/etc/nginx/conf.d
-  #     - ./backend/public/static:/public/static
+  nginx:
+    build: ./nginx
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./public:/www/public/
+    depends_on:
+      - backend
+    volumes:
+      - ./nginx/config:/etc/nginx/conf.d
+      - ./backend:/code
     # healthcheck:
     #   test: ["CMD", "curl", "-f", "http://0.0.0.0:8000"]
     #   interval: 30s
     #   timeout: 10s
     #   retries: 3
+
+  backend:
+    env_file:
+      - ./backend/.env.sample
+    environment:
+      - CHOKIDAR_USEPOLLING=true # for hot reloading on Windows
+    build: ./backend
+    image: timvanmourik/giraffe-tools
+    volumes:
+      - ./backend:/code
+      - webpack_bundles:/webpack
+    command: ./bin/docker-command.bash
+    ports:
+      - "35729:35729"   # django live reload server
+    expose:
+      - "8000"
+    depends_on:
+      - database
+      - frontend
 
   redis:
     # restart: unless-stopped
@@ -42,26 +61,6 @@ services:
       #TODO only works without quotes here, not sure why
       - 5432   # database port
 
-  web:
-    env_file:
-      - ./backend/.env.sample
-    environment:
-      - CHOKIDAR_USEPOLLING=true # for hot reloading on Windows
-    build: ./backend
-    image: timvanmourik/giraffe-tools
-    volumes:
-      - ./backend:/code
-      - webpack_bundles:/webpack
-    command: ./bin/docker-command.bash
-    ports:
-      - "8000:8000"
-      - "35729:35729"   # django live reload server
-    # expose:
-      # - "8000"
-    depends_on:
-      - database
-      - frontend
-
   frontend:
     env_file:
       - ./frontend/.env.sample
@@ -84,19 +83,6 @@ services:
   #
   # celery:
   #   build: ./celery
-
-
-  # coala is the 'linter', checking coding standard consistency
-  # Before you commit, run 'docker-compose run coala' to automatically fix all
-  # stylistic inconsistencies! :)
-  coala:
-    image: nemaniarjun/coala-docker-updated
-    # image: coala/base
-    command: coala
-    working_dir: /code
-    volumes:
-      - .:/code
-      - ./coala:/cache
 
 volumes:
   postgres:
