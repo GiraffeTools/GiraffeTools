@@ -4,11 +4,8 @@ import componentStyles from "./components";
 import headingStyles from "./headings";
 
 const styles = {
-  whitespace: {
-    paddingTop: "1rem"
-  },
   sticky: {
-    marginBottom: "1rem"
+    paddingTop: "0.5rem"
   },
   box: {
     ...boxesStyles.giraffeBox

@@ -28,7 +28,6 @@ const ProfileBox = ({ username, activeProjects }) => {
   return (
     <div className="col-4 text-center">
       <div className="sticky-top" style={styles.sticky}>
-        <div style={styles.whitespace} />
         <div style={styles.box}>
           <img src={avatar_url} style={styles.profilePic} />
           <h3 style={styles.username}>{user}</h3>

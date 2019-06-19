@@ -4,6 +4,7 @@ import styleSheet from "../constants/styles";
 const styles = {
   banner: {
     height: "22rem",
+    marginBottom: "1rem",
     backgroundImage: "url(/static/img/header_subpage_background.jpg)",
     backgroundColor: styleSheet.primaryLightColor,
     backgroundSize: "cover",
