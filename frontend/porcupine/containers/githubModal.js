@@ -9,7 +9,6 @@ import {
 
 const mapStateToProps = state => ({
   auth: state.auth,
-  project: state.project,
   nodes: nodesWithParameters(state),
   links: linksWithPortsAndNodes(state)
 });

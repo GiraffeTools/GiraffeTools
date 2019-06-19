@@ -57,7 +57,9 @@ const Projects = ({ username, setActiveProjects }) => {
       .sort(function(a, b) {
         return a.name.localeCompare(b.name);
       })
-      .map(repository => <Project key={repository.id} {...repository} />)
+      .map(repository => (
+        <Project key={repository.id} repository={repository} />
+      ))
   ) : (
     <div>This user does not have any GitHub projects.</div>
   );

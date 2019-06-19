@@ -51,7 +51,7 @@ class Sidebar extends React.Component {
     return (
       <div style={[styles.sidebar, showSidebar && styles.sidebar.active]}>
         <div style={[styles.logoSidebar]}>
-          <a href="/">
+          <a href={`/github/${project.user}/${project.repository}`}>
             <img
               style={[styles.logo]}
               src={"/static/img/giraffetools_logo_notext.png"}
@@ -129,6 +129,7 @@ class Sidebar extends React.Component {
                   id: v4(),
                   title: "Commit to GitHub",
                   type: "push_to_github",
+                  project,
                   onClose: () => {},
                   onConfirm:
                     project.user && project.repository

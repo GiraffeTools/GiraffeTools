@@ -66,6 +66,21 @@ export async function initPorkFile(content) {
   return contents;
 }
 
+export async function initGiraffeProject() {
+  // #TODO hard-coded, for now
+  const giraffe_file = "GIRAFFE.yml";
+  const pork_file = "GIRAFFE/porcupipeline.pork";
+
+  const contents = {
+    [giraffe_file]: await (await fetch(
+      "/static/assets/giraffe/GIRAFFE.yml"
+    )).text(),
+    [pork_file]: JSON.stringify(porkFile(), null, 2)
+  };
+
+  return contents;
+}
+
 export async function pushToGithub(commit, contents) {
   const body = {
     user: commit.user,
@@ -88,8 +103,8 @@ export async function pushToGithub(commit, contents) {
 
 const porkFile = (nodes, links) => {
   return {
-    links: linksToSaveDict(links),
-    nodes: nodesToSaveDict(nodes),
+    links: links && linksToSaveDict(links),
+    nodes: nodes && nodesToSaveDict(nodes),
     version: "v1"
   };
 };

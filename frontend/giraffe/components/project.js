@@ -3,11 +3,11 @@ import Radium from "radium";
 import { v4 } from "uuid";
 
 import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
-import { initRepository } from "../utils/github";
+import { initGiraffeProject } from "../../porcupine/utils/savePorkFile";
 import styles from "../styles/project.js";
 import componentStyles from "../styles/components.js";
 
-const Project = repository => (
+const Project = ({ repository, openModal }) => (
   <div
     className="d-flex"
     style={[
@@ -56,22 +56,17 @@ const Project = repository => (
           data-toggle="tooltip"
           data-placement="top"
           onClick={() =>
-            repository.openModal({
+            openModal({
               id: v4(),
-              type: "push_to_github",
-              text:
+              title:
                 "Do you want to initialise this repository as a GiraffeTools project?",
+              type: "push_to_github",
               project: {
                 user: repository.owner.login,
                 repository: repository.name
               },
               onClose: () => {},
-              onConfirm: () =>
-                initRepository(
-                  repository.owner.login,
-                  repository.name,
-                  "master"
-                )
+              onConfirm: () => initGiraffeProject()
             })
           }
           style={[styles.add]}

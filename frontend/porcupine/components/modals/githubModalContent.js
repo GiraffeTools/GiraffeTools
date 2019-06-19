@@ -1,5 +1,7 @@
 import React from "react";
 
+require("../../scss/modals.scss");
+
 const GithubModalContent = ({ repository, user, onChange }) => (
   <div className="modal-body">
     <form>
@@ -23,11 +25,13 @@ const GithubModalContent = ({ repository, user, onChange }) => (
           onChange={onChange}
           disabled={repository ? "True" : ""}
           defaultValue={repository ? repository : ""}
+          placeholder="New repository name"
         />
       </div>
       <div className="form-group">
         <label className="col-form-label">Commit message</label>
         <input
+          placeholder="Summary required"
           type="text"
           className="form-control"
           name="commit_message"

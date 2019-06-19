@@ -1,9 +1,11 @@
 import buttonStyles from "./buttons";
+import styleSheet from "../constants/styles";
 
 const styles = {
   banner: {
     height: "22rem",
-    backgroundImage: `url('/static/img/header_subpage_background.jpg')`,
+    backgroundImage: "url(/static/img/header_subpage_background.jpg)",
+    backgroundColor: styleSheet.primaryLightColor,
     backgroundSize: "cover",
     padding: "0rem 0rem",
     position: "relative"
