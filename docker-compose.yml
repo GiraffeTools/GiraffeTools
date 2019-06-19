@@ -34,6 +34,7 @@ services:
     depends_on:
       - database
       - frontend
+      - redis
 
   frontend:
     env_file:
