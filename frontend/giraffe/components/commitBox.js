@@ -7,10 +7,19 @@ import styles from "../styles/commitBox.js";
 import { addTokenToQuery } from "../utils/auth";
 import { GITHUB_BASE_API } from "../config";
 
-async function loadCommits(username, page, setCommits, setHasMore) {
+async function loadCommits(
+  full_name,
+  branchOrCommit,
+  page,
+  setCommits,
+  setHasMore
+) {
   const url = await addTokenToQuery(
-    new URL(`${GITHUB_BASE_API}/repos/${username}/commits?page=${page}`)
+    new URL(
+      `${GITHUB_BASE_API}/repos/${full_name}/commits?page=${page}?sha=${branchOrCommit}`
+    )
   );
+  debugger;
   const newCommits = await (await fetch(url.href)).json();
   if (!newCommits.length) {
     setHasMore(false);
@@ -40,7 +49,8 @@ const CommitSection = ({ date, commits, full_name }) => {
 };
 
 const CommitBox = props => {
-  const { full_name } = props.repository;
+  const { branchOrCommit, repository } = props;
+  const { full_name } = repository;
 
   const [commits, setCommits] = useState([]);
   const [hasMore, setHasMore] = useState(true);
@@ -73,7 +83,7 @@ const CommitBox = props => {
     <InfiniteScroll
       pageStart={0}
       loadMore={page => {
-        loadCommits(full_name, page, setCommits, setHasMore);
+        loadCommits(full_name, branchOrCommit, page, setCommits, setHasMore);
       }}
       hasMore={hasMore}
       loader={loader}

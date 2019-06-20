@@ -24,7 +24,7 @@ function searchAPI(text, toolboxes) {
     const nodes = [];
     category.nodes &&
       category.nodes.map(node => {
-        if (node.name.toLowerCase().includes(text)) {
+        if (node.name && node.name.toLowerCase().includes(text)) {
           nodes.push(node);
         }
       });

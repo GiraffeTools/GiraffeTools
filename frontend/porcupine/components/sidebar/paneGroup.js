@@ -6,9 +6,9 @@ import DraggablePaneElement from "../../draggables/draggablePaneElement";
 import styles from "../../styles/paneGroup";
 
 const NestedPaneGroup = ({ categories }) =>
-  categories.map(category => (
+  categories.map((category, index) => (
     <PaneGroup
-      key={category.name}
+      key={`${category.name}-${index}`}
       name={category.name}
       subcategories={category.categories}
       nodes={category.nodes}
@@ -24,11 +24,15 @@ const PaneGroup = ({ nodes, subcategories, colour, name }) => {
   );
   const nodeElements =
     nodes &&
-    nodes.map(node => {
+    nodes.map((node, index) => {
       const { name } = node;
       node.colour = colour || "#BBB";
       return (
-        <DraggablePaneElement key={name} category={node} id={name}>
+        <DraggablePaneElement
+          key={`${name}-${index}`}
+          category={node}
+          id={name}
+        >
           {name}
         </DraggablePaneElement>
       );
@@ -54,11 +58,15 @@ const PaneGroup = ({ nodes, subcategories, colour, name }) => {
         <div id="collapse-menu">
           {nodeGroups}
           {nodes &&
-            nodes.map(node => {
+            nodes.map((node, index) => {
               const { name } = node;
               node.colour = colour || "#BBB";
               return (
-                <DraggablePaneElement key={name} category={node} id={name}>
+                <DraggablePaneElement
+                  key={`${name}-${index}`}
+                  category={node}
+                  id={name}
+                >
                   {name}
                 </DraggablePaneElement>
               );

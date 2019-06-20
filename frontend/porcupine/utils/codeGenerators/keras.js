@@ -20,17 +20,7 @@ np.random.seed(123)  # for reproducibility
     });
 
   const preprocess = `
-(X_train, y_train), (X_test, y_test) = mnist.load_data()
-
-X_train = X_train.reshape(X_train.shape[0], 1, 28, 28)
-X_test = X_test.reshape(X_test.shape[0], 1, 28, 28)
-X_train = X_train.astype('float32')
-X_test = X_test.astype('float32')
-X_train /= 255
-X_test /= 255
-
-Y_train = np_utils.to_categorical(y_train, 10)
-Y_test = np_utils.to_categorical(y_test, 10)
+# load your own data here...
 
 model = Sequential()
 `;
@@ -52,24 +42,35 @@ const itemToCode = node => {
     return "";
   }
 
-  let code = ``;
+  let code = "";
+  const { parameters } = node;
   code += `model.add(${codeArgument.argument.name}(`;
-  if (codeArgument.argument.positional_arguments) {
-    code += "0";
-    for (var i = 1; i < codeArgument.argument.positional_arguments; ++i) {
-      code += ", 0";
-    }
-  }
-  code += `))`;
+
+  const argumentString =
+    parameters &&
+    parameters
+      .filter(
+        parameter =>
+          parameter.name !== undefined &&
+          parameter.value !== undefined &&
+          parameter.value !== ""
+      )
+      .map(parameter => `\r\n\t${parameter.name}=${parameter.value}`)
+      .join(",");
+  code += argumentString;
+  code += `)\r\n)`;
 
   return code;
 };
 
 const writePostamble = () => {
   let code = "\r\n";
+  code += `# compile model, for example: \r\n`;
   code += `model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])\r\n`;
-  code += `model.fit(X_train, Y_train, batch_size=32, nb_epoch=10, verbose=1)\r\n`;
-  code += `score = model.evaluate(X_test, Y_test, verbose=0)\r\n`;
+  code += `# fit your model here: \r\n`;
+  code += `model.fit(..., ..., batch_size=..., nb_epoch=..., verbose=1)\r\n`;
+  code += `# test your model: \r\n`;
+  code += `score = model.evaluate(..., ..., verbose=0)\r\n`;
   return code;
 };
 

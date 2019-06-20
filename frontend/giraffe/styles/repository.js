@@ -5,7 +5,9 @@ const styles = {
     ...headingStyles.h4,
     margin: "2rem"
   },
-
+  repository: {
+    display: "flex"
+  },
   branchText: {
     borderColor: `${styleSheet.primaryColor}`,
     borderWidth: "3px",

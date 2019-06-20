@@ -29,8 +29,8 @@ class Content extends React.Component {
     } = this.props;
     setUser(username);
     setRepository(repository);
-    let string = branchOrCommit || "master";
-    let isCommit = isGitHash(branchOrCommit);
+    const string = branchOrCommit || "master";
+    const isCommit = isGitHash(branchOrCommit);
     setCommit(isCommit && string);
     setBranch(!isCommit && string);
 

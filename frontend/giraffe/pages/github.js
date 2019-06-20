@@ -9,7 +9,7 @@ const GitHub = props => {
   return (
     <Switch>
       <Route
-        path={match.url + "/:username/:repository"}
+        path={match.url + "/:username/:repository/:branchOrCommit?"}
         component={Repository}
       />
       <Route path={match.url + "/:username"} component={User} />
