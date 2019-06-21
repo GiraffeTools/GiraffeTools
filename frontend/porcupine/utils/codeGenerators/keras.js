@@ -35,6 +35,11 @@ const writeNodes = nodes => {
   return code && code.join("\r\n");
 };
 
+const argFromParam = parameter => {
+  const code = parameter.code && parameter.code.filter(a => a.language === LANGUAGE);
+  return code.length && code[0].argument
+};
+
 const itemToCode = node => {
   const codeArgument =
     node.code && node.code.filter(a => a.language === LANGUAGE)[0];
@@ -46,18 +51,42 @@ const itemToCode = node => {
   const { parameters } = node;
   code += `model.add(${codeArgument.argument.name}(`;
 
-  const argumentString =
-    parameters &&
-    parameters
-      .filter(
-        parameter =>
-          parameter.name !== undefined &&
-          parameter.value !== undefined &&
-          parameter.value !== ""
-      )
-      .map(parameter => `\r\n\t${parameter.name}=${parameter.value}`)
-      .join(",");
-  code += argumentString;
+  let args, kwargs;
+
+
+  args = parameters && parameters
+    // filter the positional arguments
+    .filter(parameter => {
+      const argument = argFromParam(parameter);
+      return (typeof(argument.arg) === "number" && parameter.name !== undefined)
+    })
+    // sort them by position, just to be sure
+    .sort((a, b) => argFromParam(a).arg < argFromParam(b).arg)
+    // fill in the values
+    .map(parameter => `\r\n\t${parameter.value || "#mandatory argument"}`)
+    // join them up, comma separated
+    .join(",");
+
+  kwargs = parameters && parameters
+    // filter the keyword arguments
+    .filter(parameter => {
+      const argument = argFromParam(parameter);
+      return (argument.kwarg &&
+              parameter.name !== undefined &&
+              parameter.value !== undefined &&
+              parameter.value !== "")
+    })
+    // fill in the values
+    .map(parameter => {
+      const argument = argFromParam(parameter);
+      return `\r\n\t${parameter.name}=${parameter.value}`
+    })
+    // join them up, comma separated
+    .join(",");
+
+  // if both args and kwargs are defined, they need to be separated by a comma
+  const comma = (args !== "" && kwargs !== "") ? "," : ""
+  code += args + comma + kwargs;
   code += `)\r\n)`;
 
   return code;

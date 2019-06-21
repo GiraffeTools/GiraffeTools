@@ -31,6 +31,7 @@ class Parameter extends Model {
               isVisible: parameter.isVisible,
               isIterable: parameter.isIterable,
               isEnabled: parameter.isEditable,
+              code: parameter.code,
               value: parameter.value || "" // #TODO insert proper default value
             });
           });
@@ -78,6 +79,7 @@ Parameter.fields = {
   isVisible: attr(),
   isEnabled: attr(),
   isIterable: attr(),
+  code: attr(),
   node: fk({
     to: "Node",
     as: "nodeModel",

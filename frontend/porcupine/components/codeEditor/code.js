@@ -72,6 +72,10 @@ class Code extends React.Component {
     return null;
   }
 
+  componentDidMount() {
+    this.generateCode()
+  }
+
   componentDidUpdate(prev_props, prev_state) {
     if (
       (this.props.nodes.length || this.props.links.length) &&
