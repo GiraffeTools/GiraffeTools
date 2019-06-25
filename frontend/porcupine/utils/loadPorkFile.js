@@ -72,6 +72,7 @@ async function loadingVersion1(json, setPercent) {
       newNode.parameters = node.ports.map(parameter => ({
         node: newNode.id,
         id: isUUID(parameter.id) ? parameter.id : v4(),
+        code: parameter.code,
         name: parameter.name,
         input: parameter.input ? parameter.inputPort : null,
         output: parameter.output ? parameter.outputPort : null,

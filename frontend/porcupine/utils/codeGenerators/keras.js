@@ -103,7 +103,11 @@ const itemToCode = (node, nextNodeName) => {
       // filter the positional arguments
       .filter(parameter => {
         const argument = argFromParam(parameter);
-        return typeof argument.arg === "number" && parameter.name !== undefined;
+        return (
+          argument &&
+          typeof argument.arg === "number" &&
+          parameter.name !== undefined
+        );
       })
       // sort them by position, just to be sure
       .sort((a, b) => argFromParam(a).arg < argFromParam(b).arg)
@@ -122,6 +126,7 @@ const itemToCode = (node, nextNodeName) => {
       .filter(parameter => {
         const argument = argFromParam(parameter);
         return (
+          argument &&
           argument.kwarg &&
           parameter.name !== undefined &&
           parameter.value !== undefined &&
@@ -177,7 +182,6 @@ const writePostamble = (nodes, links) => {
   }
   const last_node = child;
 
-  debugger;
   const createModel = `
     # Creating model
     _model = tf.keras.models.Model(
