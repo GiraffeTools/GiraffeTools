@@ -15,6 +15,7 @@ import ItemTypes from "../../draggables/itemTypes";
 import CustomDragLayer from "../../draggables/customDragLayer";
 import GraphView from "./graphView";
 import { drop } from "../../utils/dropNode";
+import { camelToSnake } from "../../utils";
 import { loadPorkFile } from "../../utils/loadPorkFile";
 import styles from "../../styles/canvas";
 
@@ -44,7 +45,7 @@ const boxTarget = {
         const contentPosition = monitor.getSourceClientOffset();
         const { addNode, updateNode } = props;
         const templateNode = item.category;
-        const name = templateNode.name.replace(".", "_");
+        const name = camelToSnake(templateNode.name);
         const className = templateNode.name;
         const code = templateNode.code;
         const parameters =

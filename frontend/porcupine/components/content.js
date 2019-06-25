@@ -1,9 +1,7 @@
 import React from "react";
 import { StyleRoot } from "radium";
-import { DragDropContext } from "react-dnd";
-import MultiBackend from "react-dnd-multi-backend";
-import HTML5toTouch from "react-dnd-multi-backend/lib/HTML5toTouch";
 
+import withDragDropContext from "./withDragDropContext";
 import CodeEditor from "../containers/codeEditor";
 import Canvas from "../containers/canvas";
 import ParameterPane from "../containers/parameterPane";
@@ -61,4 +59,4 @@ class Content extends React.Component {
   }
 }
 
-export default DragDropContext(MultiBackend(HTML5toTouch))(Content);
+export default withDragDropContext(Content);

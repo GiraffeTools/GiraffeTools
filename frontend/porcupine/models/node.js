@@ -50,7 +50,7 @@ class Node extends Model {
           }
         }
         const width = nameToWidth(name, payload.parameters);
-        Node.create({ ...payload, name, width, input: null, output: null });
+        Node.create({ ...payload, name, width });
         break;
       case REMOVE_NODE:
         const node_to_remove = Node.withId(payload.id);

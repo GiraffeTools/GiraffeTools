@@ -27,3 +27,11 @@ export function getCookie(name) {
 
   return decodeURIComponent(xsrfCookies[0].split("=")[1]);
 }
+
+export function camelToSnake(s) {
+  return s
+    .replace(/\.?([A-Z]+)/g, function(x, y) {
+      return "_" + y.toLowerCase();
+    })
+    .replace(/^_/, "");
+}

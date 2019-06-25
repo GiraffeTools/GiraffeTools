@@ -73,7 +73,7 @@ class Code extends React.Component {
   }
 
   componentDidMount() {
-    this.generateCode()
+    this.generateCode();
   }
 
   componentDidUpdate(prev_props, prev_state) {
