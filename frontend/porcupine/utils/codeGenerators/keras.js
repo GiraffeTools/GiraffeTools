@@ -9,12 +9,11 @@ Warning, here be dragons.
 
   const moduleImports = `
 import tensorflow as tf`;
-
   const imports =
     nodes &&
     nodes.map(node => {
       const codeArgument =
-        node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+        node.code && node.code.find(a => a.language === LANGUAGE);
       return (
         codeArgument &&
         codeArgument.argument &&
@@ -41,18 +40,18 @@ def NeuralNet(
 
 const writeNodes = (nodes, links) => {
   const inputs = links.map(link => link.portTo.id);
-  const first_node = nodes.filter(node => {
-    const input = node.parameters.filter(
+  const first_node = nodes.find(node => {
+    const input = node.parameters.find(
       parameter => parameter.input && parameter.name === ""
-    )[0];
+    );
     // if the input port is not connected, it's the first
     return input && !inputs.includes(input.input);
-  })[0];
+  });
 
   if (!first_node) return null;
 
   const getChild = nodeId => {
-    const link = links.filter(link => link.portFrom.node.id === nodeId)[0];
+    const link = links.find(link => link.portFrom.node.id === nodeId);
     return link && link.portTo.node.id;
   };
   const nodeSequence = [first_node.id];
@@ -62,14 +61,12 @@ const writeNodes = (nodes, links) => {
     child = getChild(child);
   }
 
-  const nodeList = nodeSequence.map(
-    id => nodes.filter(node => node.id === id)[0]
-  );
+  const nodeList = nodeSequence.map(id => nodes.find(node => node.id === id));
   const code =
     nodeList.length &&
     nodeList
       .map((node, index) => {
-        const nextNodeName = nodeList[index].name;
+        const nextNodeName = nodeList[index + 1] && nodeList[index + 1].name;
         return itemToCode(node, nextNodeName);
       })
       .filter(code => code !== null);
@@ -78,13 +75,17 @@ const writeNodes = (nodes, links) => {
 
 const argFromParam = parameter => {
   const code =
-    parameter.code && parameter.code.filter(a => a.language === LANGUAGE);
-  return code.length && code[0].argument;
+    parameter.code &&
+    parameter.code.length &&
+    parameter.code.find(a => a.language === LANGUAGE);
+  return code && code.argument;
 };
 
 const itemToCode = (node, nextNodeName) => {
   const codeArgument =
-    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+    node.code &&
+    node.code.length &&
+    node.code.find(a => a.language === LANGUAGE);
   if (!codeArgument) {
     return null;
   }
@@ -107,7 +108,10 @@ const itemToCode = (node, nextNodeName) => {
       // sort them by position, just to be sure
       .sort((a, b) => argFromParam(a).arg < argFromParam(b).arg)
       // fill in the values
-      .map(parameter => `\r\n      ${parameter.value || "#mandatory argument"}`)
+      .map(
+        parameter => `
+      ${parameter.value || "#mandatory argument"}`
+      )
       // join them up, comma separated
       .join(",");
 
@@ -127,12 +131,14 @@ const itemToCode = (node, nextNodeName) => {
       // fill in the values
       .map(parameter => {
         const argument = argFromParam(parameter);
-        return `\r\n      ${parameter.name}=${parameter.value}`;
+        return `
+      ${parameter.name}=${parameter.value}`;
       })
       // join them up, comma separated
       .join(",");
 
-  const name = `,\r\n      name='${nodeName}'`;
+  const name = `,
+      name='${nodeName}'`;
 
   // if both args and kwargs are defined, they need to be separated by a comma
   const comma = kwargs !== "" && kwargs !== "" ? "," : "";
@@ -147,15 +153,36 @@ const itemToCode = (node, nextNodeName) => {
   return code;
 };
 
-const writePostamble = () => {
-  const first_node = "";
-  const last_node = "";
+const writePostamble = (nodes, links) => {
+  const inputs = links.map(link => link.portTo.id);
+  const first_node = nodes.find(node => {
+    const input = node.parameters.find(
+      parameter => parameter.input && parameter.name === ""
+    );
+    // if the input port is not connected, it's the first
+    return input && !inputs.includes(input.input);
+  });
 
+  if (!first_node) return null;
+
+  const getChild = nodeId => {
+    const link = links.find(link => link.portFrom.node.id === nodeId);
+    return link && link.portTo.node.id;
+  };
+  const nodeSequence = [first_node.id];
+  let child = getChild(first_node.id);
+  while (child && !nodeSequence.includes(child)) {
+    nodeSequence.push(child);
+    child = getChild(child);
+  }
+  const last_node = child;
+
+  debugger;
   const createModel = `
     # Creating model
     _model = tf.keras.models.Model(
-      inputs  = [${first_node}],
-      outputs = [${last_node}]
+      inputs  = [${first_node.name}],
+      outputs = [${nodes.find(node => node.id == nodeSequence.slice(-1)).name}]
     )
 `;
   const compileModel = `
@@ -177,10 +204,6 @@ const writePostamble = () => {
 export default function kerasCode(nodes, links) {
   const preamble = writePreamble(nodes);
   const nodeCode = writeNodes(nodes, links);
-  // #TODO Make parameter editor and write out
-  // const parametrs = writeParameters();
-  const postAmble = writePostamble();
-
-  // return [preamble, nodeCode, linkCode, postAmble].join("\r\n");
+  const postAmble = writePostamble(nodes, links);
   return [preamble, nodeCode, postAmble].join("\r\n");
 }
