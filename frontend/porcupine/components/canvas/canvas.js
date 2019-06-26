@@ -1,5 +1,6 @@
 import { v4 } from "uuid";
 import React from "react";
+import Helmet from "react-helmet";
 import {
   DropTarget,
   ConnectDropTarget,
@@ -140,7 +141,13 @@ class Canvas extends React.PureComponent {
   }
 
   async load() {
-    const { setPorkFile, project, addToolboxNodes, clickItem } = this.props;
+    const {
+      setPorkFile,
+      project,
+      addToolboxNodes,
+      addGrammar,
+      clickItem
+    } = this.props;
     const { user, repository, branch, commit } = project;
     if (!user || !repository || (!branch && !commit)) {
       console.log("No username, repository, or branch provided");
@@ -161,7 +168,7 @@ class Canvas extends React.PureComponent {
     async function loadContent(porkfiles) {
       if (!porkfiles || !porkfiles.length) return;
 
-      // currently, tkae first
+      // currently, take first
       const file = porkfiles[0];
       setPorkFile(file);
       const porkData = await fetch(`${baseName}/${file}`);
@@ -179,17 +186,40 @@ class Canvas extends React.PureComponent {
         setPercent(-1);
       }
     }
-    async function loadCustomNodes(nodeFiles) {
+    const loadCustomNodes = nodeFiles => {
       if (!nodeFiles || !nodeFiles.length) return;
-      const nodes = await (await fetch(`${baseName}/${nodeFiles[0]}`)).json();
-      addToolboxNodes(nodes.toolboxes);
-    }
+      nodeFiles.forEach(async nodeFile => {
+        // does file start with http(s)?
+        const url = /^(f|ht)tps?:\/\//i.test(nodeFile)
+          ? nodeFile
+          : `${baseName}/${nodeFile}`;
+        const nodes = await (await fetch(url)).json();
+        addToolboxNodes(nodes.toolboxes);
+      });
+    };
+
+    const loadGrammars = grammars => {
+      if (!grammars || !grammars.length) return;
+      grammars.forEach(async grammar => {
+        const { script, language } = grammar;
+        // does file start with http(s)?
+        const url = /^(f|ht)tps?:\/\//i.test(script)
+          ? script
+          : `${baseName}/${script}`;
+
+        addGrammar({ ...grammar, script: url });
+      });
+    };
 
     const yamlData = loadYaml(await configuration.text());
     if (!yamlData || !yamlData.tools || !yamlData.tools.porcupine) return;
 
-    const { file, files, nodes } = yamlData.tools.porcupine;
-    Promise.all([loadContent(file || files), loadCustomNodes(nodes)]);
+    const { file, files, nodes, grammars } = yamlData.tools.porcupine;
+    Promise.all([
+      loadContent(file || files),
+      loadCustomNodes(nodes),
+      loadGrammars(grammars)
+    ]);
   }
 
   componentWillUnmount() {

@@ -15,11 +15,11 @@ async function loadCommits(
   setHasMore
 ) {
   const url = await addTokenToQuery(
-    new URL(
-      `${GITHUB_BASE_API}/repos/${full_name}/commits?page=${page}?sha=${branchOrCommit}`
-    )
+    new URL(`${GITHUB_BASE_API}/repos/${full_name}/commits`)
   );
-  debugger;
+  url.searchParams.append("page", page);
+  if (branchOrCommit) url.searchParams.append("sha", branchOrCommit);
+
   const newCommits = await (await fetch(url.href)).json();
   if (!newCommits.length) {
     setHasMore(false);
@@ -40,8 +40,8 @@ const CommitSection = ({ date, commits, full_name }) => {
     <div>
       <h6>{days_ago < 1 ? "Today" : days_ago < 2 ? "Yesterday" : `${date}`}</h6>
       <ul style={styles.commitDay}>
-        {commits.map(({ commit }) => (
-          <Commit key={commit.sha} commit={commit} full_name={full_name} />
+        {commits.map(({ commit }, index) => (
+          <Commit key={index} commit={commit} full_name={full_name} />
         ))}
       </ul>
     </div>

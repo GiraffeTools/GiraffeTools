@@ -19,6 +19,7 @@ const formattingDictionary = {
   Nipype: "python",
   Docker: "dockerfile",
   Fieldtrip: "matlab",
+  TvM: "matlab",
   Keras: "python"
 };
 

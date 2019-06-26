@@ -14,7 +14,6 @@ import {
   CLICK_ITEM,
   SET_MOUSE_STATE,
   CLEAR_DATABASE,
-  TOGGLE_CODEEDITOR,
   SET_SEARCH_TEXT,
   COPY_NODES,
   SET_ACTIVE_TAB,
@@ -26,7 +25,8 @@ import {
   OPEN_MODAL,
   CLOSE_MODAL,
   TOGGLE_TOOLBOX,
-  ADD_TOOLBOX_NODES
+  ADD_TOOLBOX_NODES,
+  ADD_GRAMMAR
 } from "./actionTypes";
 import { UPDATE_AUTH } from "../../giraffe/actions/actionTypes";
 
@@ -206,5 +206,13 @@ export const closeModal = id => ({
   type: CLOSE_MODAL,
   payload: {
     id
+  }
+});
+
+///// GRAMMARS /////
+export const addGrammar = grammar => ({
+  type: ADD_GRAMMAR,
+  payload: {
+    grammar
   }
 });

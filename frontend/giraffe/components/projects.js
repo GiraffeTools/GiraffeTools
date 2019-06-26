@@ -15,8 +15,10 @@ async function loadRepositories(
   setActiveProjects
 ) {
   const url = await addTokenToQuery(
-    new URL(`${GITHUB_BASE_API}/users/${username}/repos?page=${page}`)
+    new URL(`${GITHUB_BASE_API}/users/${username}/repos`)
   );
+  url.searchParams.append("page", page);
+
   const repos = await fetch(url.href);
   const repoList = await repos.json();
   if (!repoList.length) {

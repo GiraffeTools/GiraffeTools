@@ -9,12 +9,12 @@ import {
 } from "../selectors/selectors";
 
 const mapStateToProps = state => ({
-  showCodeEditor: state.ui.showCodeEditor,
   activeTab: state.ui.activeTab,
   nodes: nodesWithParameters(state),
   links: linksWithPortsAndNodes(state),
   languages: languageNames(state),
-  showSidebar: state.ui.showSidebar
+  showSidebar: state.ui.showSidebar,
+  grammars: state.grammars.grammars
 });
 
 const mapDispatchToProps = dispatch => ({

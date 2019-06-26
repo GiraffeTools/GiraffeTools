@@ -13,7 +13,7 @@ export const exceptionNodes = [
 
 export const exceptionCode = node => {
   const codeArgument =
-    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+    node.code && node.code.find(a => a.language === LANGUAGE);
 
   if (codeArgument.argument.name === "utility.IdentityInterface()")
     return codeForIdentityInterface(node);
@@ -32,7 +32,7 @@ export const exceptionCode = node => {
 
 export const codeForIdentityInterface = node => {
   const codeArgument =
-    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+    node.code && node.code.find(a => a.language === LANGUAGE);
 
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
@@ -60,7 +60,7 @@ export const codeForIdentityInterface = node => {
 
 export const codeForSelectFiles = node => {
   const codeArgument =
-    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+    node.code && node.code.find(a => a.language === LANGUAGE);
 
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
@@ -88,7 +88,7 @@ export const codeForSelectFiles = node => {
 
 export const codeForMySQLSink = node => {
   const codeArgument =
-    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+    node.code && node.code.find(a => a.language === LANGUAGE);
 
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
@@ -114,7 +114,7 @@ export const codeForMySQLSink = node => {
 
 export const codeForSQLiteSink = node => {
   const codeArgument =
-    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+    node.code && node.code.find(a => a.language === LANGUAGE);
 
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
@@ -163,7 +163,7 @@ export const codeForS3DataGrabber = node => {
     .map(p => p.name);
 
   const codeArgument =
-    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+    node.code && node.code.find(a => a.language === LANGUAGE);
 
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);
@@ -205,7 +205,7 @@ export const codeForDataGrabber = node => {
     .map(p => p.name);
 
   const codeArgument =
-    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+    node.code && node.code.find(a => a.language === LANGUAGE);
 
   let code = `#${codeArgument.comment}\r\n`;
   let iteratorFields = mapNodeFields(node);

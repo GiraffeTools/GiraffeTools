@@ -6,6 +6,7 @@ import { nodesWithParameters, linksWithPorts } from "../selectors/selectors";
 import {
   addNode,
   addLink,
+  addGrammar,
   addToolboxNodes,
   clearDatabase,
   updateNode,
@@ -25,6 +26,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  addGrammar: grammar => dispatch(addGrammar(grammar)),
   addNode: node => dispatch(addNode(node)),
   addLink: link => dispatch(addLink(link)),
   deleteNode: nodeId => dispatch(deleteNode(nodeId)),

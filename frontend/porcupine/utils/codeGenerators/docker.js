@@ -15,7 +15,7 @@ async function nodeCode(nodes) {
   const dockerCodes =
     nodes &&
     nodes.map(
-      node => node.code && node.code.filter(a => a.language === LANGUAGE)[0]
+      node => node.code && node.code.find(a => a.language === LANGUAGE)
     );
 
   const languagesInEditor = dockerCodes.map(

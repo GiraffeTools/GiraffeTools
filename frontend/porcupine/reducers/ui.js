@@ -12,7 +12,6 @@ const INITIAL_STATE = {
   showSidebar: false,
   showToolboxes: [],
   searchText: "",
-  showCodeEditor: false,
   toolboxes: [],
   activeTab: undefined,
   loadingPercent: -1
@@ -23,8 +22,6 @@ const ui = (state = INITIAL_STATE, action) => {
   switch (type) {
     case TOGGLE_SIDEBAR:
       return { ...state, showSidebar: !state.showSidebar };
-    case TOGGLE_CODEEDITOR:
-      return { ...state, showCodeEditor: !state.showCodeEditor };
     case TOGGLE_TOOLBOX:
       const { toolbox } = payload;
       if (!state.showToolboxes) {

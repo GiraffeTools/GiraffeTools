@@ -18,7 +18,6 @@ export const REMOVE_LINK = "REMOVE_LINK";
 
 ///// UI /////
 export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
-export const TOGGLE_CODEEDITOR = "TOGGLE_CODEEDITOR";
 export const SET_ACTIVE_TAB = "SET_ACTIVE_TAB";
 export const UPDATE_LOADING_PERCENT = "UPDATE_LOADING_PERCENT";
 export const SET_SEARCH_TEXT = "SET_SEARCH_TEXT";
@@ -42,3 +41,6 @@ export const COPY_NODES = "COPY_NODES";
 ///// MODALS /////
 export const OPEN_MODAL = "OPEN_MODAL";
 export const CLOSE_MODAL = "CLOSE_MODAL";
+
+///// GRAMMARS /////
+export const ADD_GRAMMAR = "ADD_GRAMMAR";

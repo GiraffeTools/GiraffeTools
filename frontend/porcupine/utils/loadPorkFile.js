@@ -40,14 +40,12 @@ async function loadingVersion1(json, setPercent) {
         category = node.category.splice(1);
       }
 
-      let currentNodes = toolboxData.toolboxes.filter(
+      let currentNodes = toolboxData.toolboxes.find(
         currentToolbox => currentToolbox.name == toolbox
-      )[0];
+      );
       try {
         category.forEach(c => {
-          currentNodes = currentNodes.categories.filter(
-            node => node.name == c
-          )[0];
+          currentNodes = currentNodes.categories.find(node => node.name == c);
         });
       } catch (e) {}
       const newNode = {

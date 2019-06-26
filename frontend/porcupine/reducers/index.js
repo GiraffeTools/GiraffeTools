@@ -7,6 +7,7 @@ import auth from "../../giraffe/reducers/auth";
 import alerts from "../../giraffe/reducers/alerts";
 import modals from "./modals";
 import ui from "./ui";
+import grammars from "./grammars";
 import project from "./project";
 import scene from "./scene";
 
@@ -20,6 +21,7 @@ const porcupineApp = persistCombineReducers(config, {
   scene,
   ui,
   alerts,
+  grammars,
   modals,
   project,
   auth

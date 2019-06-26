@@ -4,7 +4,7 @@ const CFG = "configuration";
 
 const nodeToCode = node => {
   const codeArgument =
-    node.code && node.code.filter(a => a.language === LANGUAGE)[0];
+    node.code && node.code.find(a => a.language === LANGUAGE);
   if (!codeArgument) {
     return "";
   }
