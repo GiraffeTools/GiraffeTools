@@ -11,5 +11,9 @@
 #
 # echo $JSON_STRING > package.json
 
+# Initialise submodule to deploy
+git submodule -q update --init --recursive
+
+# Copy package.json to root for heroku
 cp ./frontend/package.json ./package.json
 cp ./frontend/package-lock.json ./package-lock.json
