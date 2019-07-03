@@ -3,16 +3,13 @@ import Async from "react-async";
 
 import styles from "../../styles/githubIcon";
 import { addTokenToQuery } from "../../../giraffe/utils/auth";
+import { capitaliseFirstLetter } from "../../utils";
 
 async function loadGithubData({ user, repo }) {
   const url = await addTokenToQuery(
     new URL(`https://api.github.com/repos/${user}/${repo}`)
   );
   return fetch(url.href).then(response => response.json());
-}
-
-function capitaliseFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 const GithubIcon = ({ user, repo, type }) => {
