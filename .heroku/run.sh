@@ -12,7 +12,11 @@
 # echo $JSON_STRING > package.json
 
 # Initialise submodule to deploy
-git submodule -q update --init --recursive
+git init .
+git remote add origin https://github.com/GiraffeTools/GiraffeTools.git
+git fetch origin
+git checkout master
+git submodule update --init --recursive
 
 # Copy package.json to root for heroku
 cp ./frontend/package.json ./package.json
