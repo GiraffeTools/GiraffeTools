@@ -4,7 +4,7 @@ module.exports = api => {
   const presets = ["@babel/react", "@babel/env"];
 
   const plugins = [
-    // Required for ?
+    // Required for 'dynamic-imports'
     "@babel/plugin-syntax-dynamic-import",
     // imports meta-data from scripts, required for ?
     "@babel/plugin-syntax-import-meta",

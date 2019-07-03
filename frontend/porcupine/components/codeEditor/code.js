@@ -1,46 +1,35 @@
 import React from "react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
-
-import AwesomeDebouncePromise from "awesome-debounce-promise";
-import python from "react-syntax-highlighter/dist/esm/languages/hljs/python";
-import dockerfile from "react-syntax-highlighter/dist/esm/languages/hljs/dockerfile";
 import atomDark from "react-syntax-highlighter/dist/esm/styles/hljs/atom-one-dark";
+import AwesomeDebouncePromise from "awesome-debounce-promise";
+import dynamicImports from "dynamic-imports";
 
+import python from "react-syntax-highlighter/dist/esm/languages/hljs/python";
+import matlab from "react-syntax-highlighter/dist/esm/languages/hljs/python";
+import dockerfile from "react-syntax-highlighter/dist/esm/languages/hljs/dockerfile";
 SyntaxHighlighter.registerLanguage("python", python);
 SyntaxHighlighter.registerLanguage("dockerfile", dockerfile);
+SyntaxHighlighter.registerLanguage("matlab", matlab);
 
-import nipypeCode from "../../utils/codeGenerators/nipype";
-import dockerCode from "../../utils/codeGenerators/docker";
-import kerasCode from "../../utils/codeGenerators/keras";
-import fieldtripCode from "../../utils/codeGenerators/fieldtrip";
-import unknownCode from "../../utils/codeGenerators/unknown";
+const unknownCode = "Nothing to see here, move along!";
 
-const formattingDictionary = {
-  Nipype: "python",
-  Docker: "dockerfile",
-  Fieldtrip: "matlab",
-  TvM: "matlab",
-  Keras: "python"
-};
-
-function recomputeCode(language, nodes, links) {
-  switch (language) {
-    case "Nipype":
-      return nipypeCode(nodes, links);
-      break;
-    case "Docker":
-      return dockerCode(nodes, links);
-      break;
-    case "Fieldtrip":
-      return fieldtripCode(nodes, links);
-      break;
-    case "Keras":
-      return kerasCode(nodes, links);
-      break;
-    default:
-      return unknownCode(nodes, links);
-      break;
+async function recomputeCode(generator, nodes, links) {
+  if (generator) {
+    let code;
+    try {
+      code = await generator(nodes, links);
+    } catch (error) {
+      console.error("There was an error in your code generator: ", error);
+      return unknownCode;
+    }
+    if (typeof code !== "string") {
+      debugger;
+      console.error("The created code is not a string");
+      return unknownCode;
+    }
+    return code;
   }
+  return unknownCode;
 }
 
 const interval = 1000; //ms
@@ -54,9 +43,14 @@ class Code extends React.Component {
     this.state = {
       code: "",
       computing: false,
-      current_props: {}
+      current_props: {},
+      generator: () => {}
     };
     this.generateCode = this.generateCode.bind(this);
+  }
+
+  componentDidMount() {
+    this.generateCode();
   }
 
   static getDerivedStateFromProps(nextProps, prev_state) {
@@ -73,10 +67,6 @@ class Code extends React.Component {
     return null;
   }
 
-  componentDidMount() {
-    this.generateCode();
-  }
-
   componentDidUpdate(prev_props, prev_state) {
     if (
       (this.props.nodes.length || this.props.links.length) &&
@@ -88,18 +78,22 @@ class Code extends React.Component {
   }
 
   async generateCode() {
-    const { language, nodes, links } = this.props;
-    const code = await generateCodeDebounced(language, nodes, links);
+    const { grammar, nodes, links } = this.props;
+    const code = await generateCodeDebounced(
+      grammar && grammar.generator,
+      nodes,
+      links
+    );
     this.setState({ code, computing: false });
   }
 
   render() {
-    const { language } = this.props;
     const { code } = this.state;
+    const { grammar } = this.props;
+    const format = grammar && grammar.format;
 
-    const formatting = formattingDictionary[language] || "";
     return (
-      <SyntaxHighlighter language={formatting} style={atomDark}>
+      <SyntaxHighlighter language={format} style={atomDark}>
         {code}
       </SyntaxHighlighter>
     );

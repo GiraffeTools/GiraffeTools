@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { StyleRoot } from "radium";
-import Helmet from "react-helmet";
 
 import Code from "./code";
 import styles from "../../styles/codeEditor";
@@ -11,15 +10,9 @@ class CodeEditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      open: false,
+      grammars: []
     };
-  }
-
-  handleScriptInject({ scriptTags }) {
-    if (scriptTags) {
-      const scriptTag = scriptTags[0];
-      scriptTag.onload = this.handleOnLoad;
-    }
   }
 
   render() {
@@ -35,24 +28,6 @@ class CodeEditor extends React.Component {
     const { open } = this.state;
     let currentTab = activeTab || languages[0];
 
-    const grammarScipts = grammars.map((grammar, index) => (
-      <Helmet
-        key={index}
-        script={[{ src: grammar.script }]}
-        type="text/javascript"
-        headers={{
-          "Access-Control-Allow-Credentials": true,
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET",
-          "Access-Control-Allow-Headers": "text/javascript"
-        }}
-        // Helmet doesn't support `onload` in script objects so we have to hack in our own
-        onChangeClientState={(newState, addedTags) =>
-          this.handleScriptInject(addedTags)
-        }
-      />
-    ));
-
     return (
       <StyleRoot
         style={[
@@ -61,7 +36,6 @@ class CodeEditor extends React.Component {
           open && styles.codeWindow.withSidebar
         ]}
       >
-        {/*grammarScipts*/}
         <div>
           <div
             style={[styles.codeButton]}
@@ -86,7 +60,7 @@ class CodeEditor extends React.Component {
                   aria-selected="true"
                   onClick={() => setActiveTab(language)}
                 >
-                  {`${language}`}
+                  {language}
                 </a>
               ))}
             </div>
@@ -104,7 +78,11 @@ class CodeEditor extends React.Component {
                 role="tabpanel"
                 aria-labelledby={`nav-${language}-tab`}
               >
-                <Code language={`${language}`} nodes={nodes} links={links} />
+                <Code
+                  grammar={grammars.find(g => g.language == language)}
+                  nodes={nodes}
+                  links={links}
+                />
               </div>
             ))}
           </div>

@@ -1,6 +1,5 @@
 import { v4 } from "uuid";
 import React from "react";
-import Helmet from "react-helmet";
 import {
   DropTarget,
   ConnectDropTarget,
@@ -9,7 +8,6 @@ import {
 } from "react-dnd";
 import ProgressBar from "react-progress-bar-plus";
 import { load as loadYaml } from "yaml-js";
-// import "react-progress-bar-plus/lib/progress-bar.css";
 import to from "await-to-js";
 
 import ItemTypes from "../../draggables/itemTypes";
@@ -18,6 +16,8 @@ import GraphView from "./graphView";
 import { drop } from "../../utils/dropNode";
 import { camelToSnake } from "../../utils";
 import { loadPorkFile } from "../../utils/loadPorkFile";
+import defaultGenerators from "../../utils/codeGenerators";
+import scriptToGenerator from "../../utils/dynamicImport";
 import styles from "../../styles/canvas";
 
 const boxTarget = {
@@ -136,10 +136,16 @@ class Canvas extends React.PureComponent {
       });
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const { addGrammar } = this.props;
+    const generators = defaultGenerators().map(generator =>
+      addGrammar({ ...generator })
+    );
+    Promise.all(generators);
     document.addEventListener("keydown", this.handleKeyPress, false);
   }
 
+  // this is called via ref from content
   async load() {
     const {
       setPorkFile,
@@ -200,14 +206,18 @@ class Canvas extends React.PureComponent {
 
     const loadGrammars = grammars => {
       if (!grammars || !grammars.length) return;
+
       grammars.forEach(async grammar => {
-        const { script, language } = grammar;
+        const { script, language, format } = grammar;
         // does file start with http(s)?
         const url = /^(f|ht)tps?:\/\//i.test(script)
           ? script
           : `${baseName}/${script}`;
-
-        addGrammar({ ...grammar, script: url });
+        addGrammar({
+          language,
+          format,
+          generator: await scriptToGenerator(url, grammar.language)
+        });
       });
     };
 

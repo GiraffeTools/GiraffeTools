@@ -8,9 +8,7 @@ import {
 } from "../selectors/selectors";
 
 const mapStateToProps = state => ({
-  auth: state.auth,
-  nodes: nodesWithParameters(state),
-  links: linksWithPortsAndNodes(state)
+  auth: state.auth
 });
 
 const mapDispatchToProps = dispatch => ({

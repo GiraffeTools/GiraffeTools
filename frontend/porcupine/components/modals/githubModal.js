@@ -28,7 +28,7 @@ class GithubModal extends React.Component {
   }
 
   async onConfirm() {
-    const { githubAction, project, auth, nodes, links } = this.props;
+    const { githubAction, project, auth } = this.props;
     const { commit_message, github_repo } = this.state;
     this.setState({
       commit_pending: true,
@@ -44,9 +44,7 @@ class GithubModal extends React.Component {
       user: user || (auth && auth.github_handle)
     };
     const content = {
-      pork_file,
-      nodes,
-      links
+      pork_file
     };
     const [error, response] = await to(
       pushToGithub(commit, await githubAction(content))
