@@ -1,0 +1,3 @@
+[submodule "frontend/porcupine/utils/CodeGenerators"]
+	path = frontend/porcupine/utils/CodeGenerators
+	url = https://github.com/GiraffeTools/CodeGenerators.git
