@@ -7,8 +7,8 @@ import {
   writeFiles as dockerSave
 } from "./CodeGenerators/generators/docker/docker";
 import {
-  writeCode as kerasCode
-  // writeFiles as kerasSave
+  writeCode as kerasCode,
+  writeFiles as kerasSave
 } from "./CodeGenerators/generators/keras/keras";
 import {
   writeCode as unknownCode
@@ -32,8 +32,8 @@ export default function defaultGenerators() {
   generators.push({
     language: "Keras",
     format: "python",
-    generator: kerasCode
-    // save: kerasSave
+    generator: kerasCode,
+    save: kerasSave
   });
   generators.push({
     language: "Unknown",
