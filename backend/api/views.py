@@ -58,7 +58,6 @@ def get_user(request):
 
 def push_to_github(request):
     body = json.loads(request.body)
-    print(body)
 
     user_name = body["user"]
     repo_name = body["repository"]
