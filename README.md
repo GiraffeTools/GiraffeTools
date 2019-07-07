@@ -41,7 +41,7 @@ Example: https://giraffe.tools/github/TimVanMourik/SomeGiraffeExample/master
 ## Development
 Download this repository *with submodules*, such that the code from linked repositories are included:
 ```
-git clone https://github.com/GiraffeTools/GiraffeTools -recursive
+git clone https://github.com/GiraffeTools/GiraffeTools --recursive
 ```
 or
 ```

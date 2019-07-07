@@ -16,11 +16,5 @@ if [ -d $bundles ] && ! [ -z "$(ls -A $bundles)" ]; then
 fi
 
 echo Running webpack in ${NODE_ENV} mode
-
 npm install
 npm run $NODE_ENV
-
-# watch changes and live reload them on changes:
-if [ "$NODE_ENV" == "watch" ]; then
-  node ./webpack/webpack.watch.server.js
-else

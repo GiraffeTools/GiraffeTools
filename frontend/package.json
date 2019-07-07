@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "engines": {
     "node": "12.6.0",
-    "npm": "6.11.0"
+    "npm": "6.9.0"
   },
   "description": "Graphical Interface for Reproducible Analysis For workFlow Experiments",
   "dependencies": {
@@ -102,7 +102,7 @@
     "heroku-prebuild": "npm i",
     "heroku-postbuild": "cd frontend && webpack --mode=production --config ./webpack/webpack.prod.config.js",
     "development": "webpack --mode=development --config ./webpack/webpack.dev.config.js --progress --colors",
-    "watch": "webpack --mode=development --config ./webpack/webpack.watch.config.js --progress --colors",
+    "watch": "node ./webpack/webpack.watch.server.js",
     "production": "webpack --mode=production --config ./webpack/webpack.prod.config.js --progress --colors"
   },
   "repository": {
