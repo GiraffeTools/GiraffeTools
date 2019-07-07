@@ -1,6 +1,5 @@
 import {
   TOGGLE_SIDEBAR,
-  TOGGLE_CODEEDITOR,
   SET_ACTIVE_TAB,
   UPDATE_LOADING_PERCENT,
   SET_SEARCH_TEXT,
@@ -49,7 +48,6 @@ const ui = (state = INITIAL_STATE, action) => {
     default:
       return state;
   }
-  return state;
 };
 
 export default ui;

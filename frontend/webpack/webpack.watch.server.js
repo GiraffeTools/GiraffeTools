@@ -9,9 +9,13 @@ new WebpackDevServer(webpack(config), {
   public: config.devServer.public,
   hot: true,
   inline: true,
-  historyApiFallback: true,
   disableHostCheck: true,
-  headers: { "Access-Control-Allow-Origin": "*" }
+  headers: { "Access-Control-Allow-Origin": "*" },
+  watchOptions: {
+    ignored: /node_modules/,
+    aggregateTimeout: 300,
+    poll: 1000
+  }
 }).listen(port, host, (err, result) => {
   if (err) {
     console.log(err);

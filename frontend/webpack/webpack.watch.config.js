@@ -47,12 +47,6 @@ config.plugins = config.plugins.concat([
   new BundleTracker({ path: outputPath, filename: "webpack-stats.json" })
 ]);
 
-config.watchOptions = {
-  aggregateTimeout: 300,
-  poll: 1000,
-  ignored: /node_modules/
-};
-
 config.devServer = {
   host,
   port,

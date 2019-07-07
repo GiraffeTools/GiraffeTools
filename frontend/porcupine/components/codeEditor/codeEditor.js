@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleRoot } from "radium";
 
 import Code from "./code";
@@ -17,7 +17,6 @@ class CodeEditor extends React.Component {
 
   render() {
     const {
-      showSidebar,
       setActiveTab,
       nodes,
       links,

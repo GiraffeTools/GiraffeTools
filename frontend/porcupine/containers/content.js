@@ -9,7 +9,6 @@ import {
   setCommit,
   updateAuth
 } from "../actions";
-import { nodesWithParameters, linksWithPorts } from "../selectors/selectors";
 
 const mapStateToProps = state => ({
   showSidebar: state.ui.showSidebar,

@@ -1,7 +1,6 @@
-import { Model, many, fk, attr } from "redux-orm";
-import Node from "./node";
+import { Model, many, attr } from "redux-orm";
 
-import { ADD_NODE, REMOVE_NODE, CLEAR_DATABASE } from "../actions/actionTypes";
+import { ADD_NODE, CLEAR_DATABASE } from "../actions/actionTypes";
 
 class Language extends Model {
   static reducer(action, Language, session) {

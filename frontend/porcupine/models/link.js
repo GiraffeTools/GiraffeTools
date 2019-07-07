@@ -1,5 +1,4 @@
 import { Model, attr, fk } from "redux-orm";
-import Port from "./port";
 
 import {
   ADD_LINK,

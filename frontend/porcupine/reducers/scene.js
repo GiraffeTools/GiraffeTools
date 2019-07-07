@@ -8,7 +8,6 @@ import {
   REMOVE_NODE,
   SET_MOUSE_STATE
 } from "../actions/actionTypes";
-import { nodesWithParameters, linksWithPorts } from "../selectors/selectors";
 
 const INITIAL_STATE = {
   hoveredPort: null,
@@ -68,5 +67,4 @@ export default function scene(state = INITIAL_STATE, action) {
     default:
       return state;
   }
-  return state;
 }
