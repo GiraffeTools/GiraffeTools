@@ -17,15 +17,10 @@ fi
 
 echo Running webpack in ${NODE_ENV} mode
 
-if [ "$NODE_ENV" == "production" ]; then
-  npm install --only=production
-else
-  npm install --only=development
-fi
-npm update
+npm install
 npm run $NODE_ENV
 
 # watch changes and live reload them on changes:
 if [ "$NODE_ENV" == "watch" ]; then
   node ./webpack/webpack.watch.server.js
-fi
+else

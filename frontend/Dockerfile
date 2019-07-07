@@ -1,2 +1,2 @@
-FROM node:9
+FROM node:12
 WORKDIR /react
