@@ -1,19 +1,16 @@
 import { v4 } from "uuid";
 import { API_HOST } from "../../giraffe/config";
-import { load as loadYaml } from "yaml-js";
 import { isUUID } from "../utils";
 
 export async function loadPorkFile(json, nodes, links, setPercent) {
   switch (json.version) {
     case "1":
       return await loadingVersion1(json, nodes, links, setPercent);
-      break;
     case "2":
       // leaving room for future implementations
       break;
     default:
       return await loadingVersion1(json, nodes, links, setPercent);
-      break;
   }
 }
 
@@ -72,6 +69,7 @@ async function loadingVersion1(json, setPercent) {
         id: isUUID(parameter.id) ? parameter.id : v4(),
         code: parameter.code,
         name: parameter.name,
+        type: parameter.type,
         input: parameter.input ? parameter.inputPort : null,
         output: parameter.output ? parameter.outputPort : null,
         isVisible: parameter.visible || false,

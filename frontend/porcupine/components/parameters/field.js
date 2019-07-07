@@ -33,89 +33,92 @@ class Field extends React.Component {
       name,
       isVisible,
       isIterable,
+      type,
       value,
       data,
       isEnabled,
       removeParameter,
-      selectedNode
     } = this.props;
 
-    const type = data && data.type ? data.type : "text";
+    // const type = data && data.type ? data.type : "text";
     let inputElement;
 
-    if (type === "text") {
-      inputElement = (
-        <input
-          type="text"
-          disabled={!isEnabled}
-          value={value}
-          className="form-control"
-          id={id}
-          onChange={this.change}
-        />
-      );
-    } else if (type === "number") {
-      inputElement = (
-        <input
-          type="number"
-          value={value}
-          disabled={!isEnabled}
-          className="form-control"
-          id={id}
-          onChange={this.change}
-        />
-      );
-    } else if (type === "float") {
-      inputElement = (
-        <input
-          type="number"
-          step="0.01"
-          disabled={!isEnabled}
-          value={value}
-          className="form-control"
-          id={id}
-          onChange={this.change}
-        />
-      );
-    } else if (type === "select") {
-      const options = [];
-      data.options.forEach(i => {
-        options.push(
-          <option key={i} value={i}>
-            {i}
-          </option>
-        );
-      });
-      inputElement = (
-        <select
-          value={value}
-          id={id}
-          disabled={!isEnabled}
-          className="form-control"
-          onChange={this.change}
-        >
-          {options}
-        </select>
-      );
-    } else if (type === "boolean") {
-      inputElement = (
-        <div style={[styles.checkbox]}>
+    switch(type) {
+      case 'string':
+        inputElement = (
           <input
-            type="checkbox"
+            type="text"
             disabled={!isEnabled}
-            checked={value}
+            value={value}
+            className="form-control"
             id={id}
             onChange={this.change}
           />
-          <label style={[styles.checkboxLabel]} htmlFor={id} />
-        </div>
-      );
+        );
+        break;
+      case 'numeric':
+        inputElement = (
+          <input
+            type="number"
+            step="0.01"
+            disabled={!isEnabled}
+            value={value}
+            className="form-control"
+            id={id}
+            onChange={this.change}
+          />
+        );
+        break;
+        case 'boolean':
+          inputElement = (
+              <input
+                type="checkbox"
+                disabled={!isEnabled}
+                checked={value}
+                id={id}
+                onChange={this.change}
+              />
+          );
+          break;
+        case 'select':
+          const options = [];
+          data.options.forEach(i => {
+            options.push(
+              <option key={i} value={i}>
+                {i}
+              </option>
+            );
+          });
+          inputElement = (
+            <select
+              value={value}
+              id={id}
+              disabled={!isEnabled}
+              className="form-control"
+              onChange={this.change}
+            >
+              {options}
+            </select>
+          );
+          break;
+        default:
+          inputElement = (
+            <input
+              type="text"
+              disabled={!isEnabled}
+              value={value}
+              className="form-control"
+              id={id}
+              onChange={this.change}
+            />
+          );
+          break;
     }
+
     let displayStyle = "inherit";
     if (inputElement.props.className == "paramsCheckbox") {
       displayStyle = "flex";
     }
-
     return (
       <div className="border-top" style={[styles.field]}>
         <div style={{ display: displayStyle }}>

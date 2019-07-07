@@ -24,6 +24,7 @@ class Parameter extends Model {
               node: payload.id,
               id: parameter.id,
               name: parameter.name,
+              type: parameter.type,
               input: parameter.input,
               output: parameter.output,
               isVisible: parameter.isVisible,
@@ -45,12 +46,13 @@ class Parameter extends Model {
         break;
       case ADD_PARAMETER_TO_NODE:
         const { parameter, nodeId } = payload;
-
+        
         if (!Parameter.filter({ id: parameter.id }).exists()) {
           Parameter.create({
             node: nodeId,
             id: parameter.id,
             name: parameter.name,
+            type: parameter.type,
             input: parameter.input,
             output: parameter.output,
             isVisible: parameter.isVisible,

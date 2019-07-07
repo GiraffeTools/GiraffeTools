@@ -112,6 +112,7 @@ const nodesToSaveDict = nodes =>
       id: parameter.id,
       input: parameter.input ? true : false,
       inputPort: parameter.input || false,
+      type: parameter.type || undefined,
       name: parameter.name,
       output: parameter.output ? true : false,
       outputPort: parameter.output || false,

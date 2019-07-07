@@ -1,19 +1,12 @@
 import { v4 } from "uuid";
 import React from "react";
-import {
-  DropTarget,
-  ConnectDropTarget,
-  DropTargetMonitor,
-  DropTargetConnector
-} from "react-dnd";
+import { DropTarget } from "react-dnd";
 import ProgressBar from "react-progress-bar-plus";
 import { load as loadYaml } from "yaml-js";
 import to from "await-to-js";
 
 import ItemTypes from "../../draggables/itemTypes";
-import CustomDragLayer from "../../draggables/customDragLayer";
 import GraphView from "./graphView";
-import { drop } from "../../utils/dropNode";
 import { camelToSnake } from "../../utils";
 import { loadPorkFile } from "../../utils/loadPorkFile";
 import defaultGenerators from "../../utils/codeGenerators";
@@ -58,6 +51,7 @@ const boxTarget = {
             value: parameter.value || parameter.default || "",
             input: parameter.input ? v4() : null,
             output: parameter.output ? v4() : null,
+            type: parameter.type,
             isVisible: parameter.visible,
             isEditable: parameter.editable
           }));
