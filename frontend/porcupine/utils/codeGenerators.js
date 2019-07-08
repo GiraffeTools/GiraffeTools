@@ -7,9 +7,9 @@ import {
   writeFiles as dockerSave
 } from "./CodeGenerators/generators/docker/docker";
 import {
-  writeCode as tensorflowCode,
-  writeFiles as tensorflowSave
-} from "./CodeGenerators/generators/tensorflow/tensorflow";
+  writeCode as kerasCode,
+  writeFiles as kerasflowSave
+} from "./CodeGenerators/generators/keras/keras";
 import {
   writeCode as unknownCode
   // writeFiles as unknownSave
@@ -30,10 +30,10 @@ export default function defaultGenerators() {
     save: dockerSave
   });
   generators.push({
-    language: "Tensorflow",
+    language: "Keras",
     format: "python",
-    generator: tensorflowCode,
-    save: tensorflowSave
+    generator: kerasCode,
+    save: kerasflowSave
   });
   generators.push({
     language: "Unknown",

@@ -40,6 +40,7 @@ class Field extends React.Component {
       selectedNode
     } = this.props;
 
+    if (!name) return null;
     const type = data && data.type ? data.type : "text";
     let inputElement;
 
