@@ -112,7 +112,7 @@ class GithubModal extends React.Component {
             type="button"
             className="btn btn-secondary"
             onClick={() => this.onConfirm()}
-            // disabled={!loggedIn}
+            disabled={!loggedIn}
             // disabled={!loggedIn || !yourRepo}
             data-toggle="tooltip"
             data-placement="top"

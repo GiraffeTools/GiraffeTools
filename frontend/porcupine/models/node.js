@@ -1,12 +1,10 @@
-import { Model, many, fk, attr } from "redux-orm";
+import { Model, attr } from "redux-orm";
 
 import {
   ADD_NODE,
   REMOVE_NODE,
   UPDATE_NODE,
-  ADD_PARAMETER_TO_NODE,
-  CLEAR_DATABASE,
-  REPOSITION_PORTS
+  CLEAR_DATABASE
 } from "../actions/actionTypes";
 
 class Node extends Model {

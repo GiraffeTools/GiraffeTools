@@ -1,13 +1,11 @@
-import { Model, many, fk, attr, oneToOne } from "redux-orm";
+import { Model, fk, attr, oneToOne } from "redux-orm";
 
-import Port from "./port";
 import {
   ADD_NODE,
   REMOVE_NODE,
   ADD_PARAMETER_TO_NODE,
   REMOVE_PARAMETER,
   UPDATE_PARAMETER,
-  ADD_LINK,
   CLEAR_DATABASE
 } from "../actions/actionTypes";
 
@@ -80,6 +78,7 @@ Parameter.fields = {
   isEnabled: attr(),
   isIterable: attr(),
   code: attr(),
+  type: attr(),
   node: fk({
     to: "Node",
     as: "nodeModel",

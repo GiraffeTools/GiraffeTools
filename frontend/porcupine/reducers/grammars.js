@@ -12,7 +12,6 @@ const grammars = (state = INITIAL_STATE, action) => {
     default:
       return state;
   }
-  return state;
 };
 
 export default grammars;

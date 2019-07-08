@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import styles from "../../styles/toolbarItem";
-
 class ToolbarItem extends Component {
   render() {
     if (this.props.item) {

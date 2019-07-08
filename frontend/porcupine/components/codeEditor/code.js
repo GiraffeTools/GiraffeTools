@@ -2,7 +2,6 @@ import React from "react";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import atomDark from "react-syntax-highlighter/dist/esm/styles/hljs/atom-one-dark";
 import AwesomeDebouncePromise from "awesome-debounce-promise";
-import dynamicImports from "dynamic-imports";
 
 import python from "react-syntax-highlighter/dist/esm/languages/hljs/python";
 import matlab from "react-syntax-highlighter/dist/esm/languages/hljs/python";

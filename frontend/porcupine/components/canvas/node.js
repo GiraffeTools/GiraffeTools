@@ -1,7 +1,6 @@
 import React from "react";
 import * as d3 from "d3";
 
-import ItemTypes from "../../draggables/itemTypes";
 import Parameter from "./parameter";
 import Tooltip from "./tooltip";
 

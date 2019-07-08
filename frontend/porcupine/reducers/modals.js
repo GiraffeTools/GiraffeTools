@@ -17,7 +17,6 @@ const modals = (state = INITIAL_STATE, action) => {
     default:
       return state;
   }
-  return state;
 };
 
 export default modals;

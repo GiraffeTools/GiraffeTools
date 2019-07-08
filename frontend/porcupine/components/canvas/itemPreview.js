@@ -1,6 +1,5 @@
 import React from "react";
 import { DragLayer } from "react-dnd";
-import Radium from "radium";
 
 import styles from "../../styles/sidebar";
 
