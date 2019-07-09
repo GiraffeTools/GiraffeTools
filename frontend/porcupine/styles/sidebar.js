@@ -24,6 +24,12 @@ const styles = {
       }
     }
   },
+  gear: {
+    width: "1.5rem",
+    marginLeft: "0.2rem",
+    marginBottom: "0.2rem",
+    cursor: "pointer"
+  },
   search: {
     paddingLeft: "0.5rem"
   },

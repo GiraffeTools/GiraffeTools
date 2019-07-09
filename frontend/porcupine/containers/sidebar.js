@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 
 import Sidebar from "../components/sidebar/sidebar";
 
-import { openModal, toggleToolbox, addToolboxNodes } from "../actions";
+import { openModal, addToolboxNodes } from "../actions";
 
 const mapStateToProps = state => ({
   project: state.project,
@@ -14,7 +14,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   addToolboxNodes: toolbox => dispatch(addToolboxNodes(toolbox)),
-  toggleToolbox: toolbox => dispatch(toggleToolbox(toolbox)),
   openModal: props => dispatch(openModal(props))
 });
 
