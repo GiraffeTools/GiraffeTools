@@ -10,7 +10,10 @@ const modals = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
   switch (type) {
     case OPEN_MODAL:
-      return { ...state, modals: state.modals.concat({...payload.item, id: v4()}) };
+      return {
+        ...state,
+        modals: state.modals.concat({ ...payload.item, id: v4() })
+      };
     case CLOSE_MODAL:
       return {
         ...state,

@@ -1,19 +1,15 @@
 import { v4 } from "uuid";
-import { API_HOST } from "../../giraffe/config";
-import { load as loadYaml } from "yaml-js";
 import { isUUID } from "../utils";
 
 export async function loadPorkFile(json, nodes, links, setPercent) {
   switch (json.version) {
     case "1":
       return await loadingVersion1(json, nodes, links, setPercent);
-      break;
     case "2":
       // leaving room for future implementations
       break;
     default:
       return await loadingVersion1(json, nodes, links, setPercent);
-      break;
   }
 }
 
@@ -21,8 +17,6 @@ async function loadingVersion1(json, setPercent) {
   const { nodes, links } = json;
   const nodeData = [];
   const linkData = [];
-
-  const toolboxData = await (await fetch(`${API_HOST}/nodes`)).json();
 
   // load nodes
   setPercent(20);
@@ -40,14 +34,6 @@ async function loadingVersion1(json, setPercent) {
         category = node.category.splice(1);
       }
 
-      let currentNodes = toolboxData.toolboxes.find(
-        currentToolbox => currentToolbox.name == toolbox
-      );
-      try {
-        category.forEach(c => {
-          currentNodes = currentNodes.categories.find(node => node.name == c);
-        });
-      } catch (e) {}
       const newNode = {
         toolbox,
         id: node.id || v4(),
@@ -61,7 +47,7 @@ async function loadingVersion1(json, setPercent) {
           node.name,
         x: node.position[0],
         y: node.position[1],
-        colour: node.colour || (currentNodes && currentNodes.colour) || "#BBB",
+        colour: node.colour || "#BBB",
         web_url: (node.title && node.title.web_url) || node.web_url || "",
         code: (node.title && node.title.code) || node.code,
         category: category

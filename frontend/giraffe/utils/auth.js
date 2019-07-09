@@ -7,16 +7,11 @@ export async function addTokenToQuery(url) {
   if (access_token) {
     url.searchParams.append("access_token", access_token);
   } else {
-    url.searchParams.append(
-      "access_token",
-      "9e65e6338fced8a426dabc4b3595cb1273788e44"
-    );
-    // const response = await (await fetch("/api/get_user")).json();
-    // if (response.access_token) {
-    //   url.searchParams.append("access_token", response.access_token);
-    // }
+    const response = await (await fetch("/api/get_user")).json();
+    if (response.access_token) {
+      url.searchParams.append("access_token", response.access_token);
+    }
   }
-
   return url;
 }
 

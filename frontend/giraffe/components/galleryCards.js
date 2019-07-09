@@ -3,10 +3,10 @@ import Async from "react-async";
 import CardDeck from "react-bootstrap/CardDeck";
 
 import GalleryElement from "../components/galleryElement";
-import { API_HOST } from "../config";
 
-const loadExamples = () =>
-  fetch(`${API_HOST}/example_repos`).then(response => response.json());
+async function loadExamples() {
+  return await (await fetch("/static/misc/examples.json")).json();
+}
 
 const GalleryCards = () => (
   <Async promiseFn={loadExamples}>

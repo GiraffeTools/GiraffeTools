@@ -1,7 +1,11 @@
 const styles = {
   modal: {
     display: "block",
-    pointerEvents: "none"
+    backgroundColor: "rgba(0, 0, 0, 0.3)",
+    pointerEvents: "none",
+    show: {
+      pointerEvents: "auto"
+    }
   }
 };
 

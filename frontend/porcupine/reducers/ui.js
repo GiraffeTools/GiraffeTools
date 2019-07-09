@@ -38,7 +38,10 @@ const ui = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         toolboxes: [...payload.toolboxes, ...state.toolboxes],
-        showToolboxes: [...payload.toolboxes.map(t => t.name), ...state.showToolboxes],
+        showToolboxes: [
+          ...payload.toolboxes.map(t => t.name),
+          ...state.showToolboxes
+        ]
       };
     case SET_ACTIVE_TAB:
       return { ...state, activeTab: payload.tab };

@@ -43,6 +43,7 @@ class Content extends React.Component {
     const { showSidebar, toggleSidebar } = this.props;
     return (
       <StyleRoot>
+        <Modals />
         <Sidebar />
         <a style={[styles.sidebarButton, styles.close]} onClick={toggleSidebar}>
           <label style={[showSidebar ? styles.close1 : styles.open1]} />
@@ -52,7 +53,6 @@ class Content extends React.Component {
           <Canvas ref={canvas => (this.canvas = canvas)} />
           <ParameterPane />
           <CodeEditor />
-          <Modals />
         </div>
       </StyleRoot>
     );

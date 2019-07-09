@@ -58,7 +58,7 @@ class Modal extends React.Component {
               </div>
             </div>
           </div>
-        )
+        );
         break;
       case "push_to_github":
         const { onClose } = this;
@@ -75,9 +75,7 @@ class Modal extends React.Component {
       case "toggle_toolboxes":
         return (
           <div className="modal-dialog" style={{ zIndex: (zIndex + 1) * 10 }}>
-            <ToolboxModal
-              onClose={() => this.onClose(item.id)}
-            />
+            <ToolboxModal onClose={() => this.onClose(item.id)} />
           </div>
         );
       default:
@@ -89,10 +87,11 @@ class Modal extends React.Component {
 class Modals extends React.Component {
   render() {
     const { modals, closeModal } = this.props;
+    const show = modals.length != 0;
     return (
       <div
-        className={"modal fade" + (modals.length != 0 ? " show" : "")}
-        style={[styles.modal]}
+        className={"modal fade" + (show ? " show" : "")}
+        style={[styles.modal, show && styles.modal.show]}
       >
         {modals.map((item, i) => (
           <Modal

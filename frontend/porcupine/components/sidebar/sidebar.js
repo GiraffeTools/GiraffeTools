@@ -1,15 +1,13 @@
 import React from "react";
-import Radium, { StyleRoot } from "radium";
-import AwesomeDebouncePromise from "awesome-debounce-promise";
+import Radium from "radium";
 
 import GithubIcon from "./githubIcon";
 import ToolboxGroup from "./toolboxGroup";
 import SearchBar from "./searchBar";
 import styles from "../../styles/sidebar";
 import { savePorkFile, initPorkFile } from "../../utils/savePorkFile";
-import { API_HOST } from "../../../giraffe/config";
 
-require("../../scss/scrollbar.scss");
+import "../../scss/scrollbar.scss";
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -23,8 +21,14 @@ class Sidebar extends React.Component {
 
   async componentDidMount() {
     const { addToolboxNodes } = this.props;
-    const nodes = await (await fetch(`${API_HOST}/nodes`)).json();
-    addToolboxNodes(nodes.toolboxes);
+    const nodes = [
+      "/static/Libraries/nipype/nipype_nodes.json"
+      // "/static/Libraries/keras/keras_nodes.json"
+    ];
+    const toolboxes = nodes.map(async url => await (await fetch(url)).json());
+    Promise.all(
+      toolboxes.map(async nodes => addToolboxNodes((await nodes)["toolboxes"]))
+    );
   }
 
   componentWillUnmount() {
@@ -79,7 +83,7 @@ class Sidebar extends React.Component {
                   title: "Toolboxes",
                   type: "toggle_toolboxes",
                   onClose: () => {},
-                  onConfirm:  () => {},
+                  onConfirm: () => {}
                 })
               }
             >
@@ -95,13 +99,10 @@ class Sidebar extends React.Component {
           >
             {currentNodes &&
               currentNodes.map((toolbox, index) => {
-                if(!showToolboxes || !showToolboxes.includes(toolbox.name)) return null
-                return (
-                <ToolboxGroup
-                  key={index}
-                  toolbox={toolbox}
-                />
-              )})}
+                if (!showToolboxes || !showToolboxes.includes(toolbox.name))
+                  return null;
+                return <ToolboxGroup key={index} toolbox={toolbox} />;
+              })}
           </div>
         </div>
         <div style={[styles.actionsPanel]}>
