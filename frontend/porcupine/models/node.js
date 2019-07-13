@@ -105,16 +105,12 @@ Node.fields = {
   name: attr(),
   // function name
   class: attr(),
-  // toolbox
-  toolbox: attr(),
-
   x: attr(),
   y: attr(),
   width: attr(),
   colour: attr(),
   web_url: attr(),
-  code: attr(),
-  category: attr()
+  code: attr()
 };
 
 export default Node;

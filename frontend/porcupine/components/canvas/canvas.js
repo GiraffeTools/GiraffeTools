@@ -79,8 +79,7 @@ const boxTarget = {
           colour: templateNode.colour || "#BBB",
           parameters,
           web_url: templateNode.web_url || "",
-          code: code || "",
-          category: templateNode.category
+          code: code || ""
         };
 
         addNode(newNode);

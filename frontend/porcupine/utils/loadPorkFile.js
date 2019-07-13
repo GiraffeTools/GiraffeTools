@@ -22,20 +22,7 @@ async function loadingVersion1(json, setPercent) {
   setPercent(20);
   nodes &&
     nodes.forEach(node => {
-      // This block is only for obtaining the colour:
-
-      let category;
-      let toolbox;
-      if (node.toolbox || node.category[0] !== "Nipype") {
-        category = node.category;
-        toolbox = node.toolbox || "Nipype";
-      } else {
-        toolbox = node.category[0];
-        category = node.category.splice(1);
-      }
-
       const newNode = {
-        toolbox,
         id: node.id || v4(),
         name:
           (node.title && node.title.name.replace(".", "_")) ||
@@ -49,8 +36,7 @@ async function loadingVersion1(json, setPercent) {
         y: node.position[1],
         colour: node.colour || "#BBB",
         web_url: (node.title && node.title.web_url) || node.web_url || "",
-        code: (node.title && node.title.code) || node.code,
-        category: category
+        code: (node.title && node.title.code) || node.code
       };
 
       newNode.parameters = node.ports.map(parameter => ({
