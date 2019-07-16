@@ -1,11 +1,12 @@
 const styles = {
   field: {
-    marginTop: "0.8rem",
-    marginBottom: "0.8rem"
+    marginTop: "0rem",
+    marginBottom: "0.8rem",
+    borderTop: "2px solid lightpink"
   },
   label: {
-    marginBottom: "0.1rem",
-    marginTop: "0.3rem",
+    marginBottom: "0rem",
+    marginTop: "0.8rem",
     fontSize: "0.85em"
   },
   actions: {

@@ -16,6 +16,10 @@ export const ADD_LINK = "ADD_LINK";
 export const START_LINK = "START_LINK";
 export const REMOVE_LINK = "REMOVE_LINK";
 
+///// STICKYS /////
+export const ADD_STICKY = "ADD_STICKY";
+export const REMOVE_STICKY = "REMOVE_STICKY";
+
 ///// UI /////
 export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";
 export const SET_ACTIVE_TAB = "SET_ACTIVE_TAB";

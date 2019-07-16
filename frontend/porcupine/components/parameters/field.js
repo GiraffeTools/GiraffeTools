@@ -15,15 +15,20 @@ class Field extends React.Component {
   }
 
   change(e) {
-    const dataType =
-      this.props.data && this.props.data.type ? this.props.data.type : "text";
-    const portId = this.props.id;
-    if (dataType === "boolean") {
-      this.changeParams(portId, "value", e.target.checked);
-    } else if (dataType === "number") {
-      this.changeParams(portId, "value", Number(e.target.value));
-    } else {
-      this.changeParams(portId, "value", e.target.value);
+    const { type, id } = this.props;
+    switch (type) {
+      case "boolean":
+        this.changeParams(id, "value", e.target.checked);
+        break;
+      case "number":
+        this.changeParams(id, "value", Number(e.target.value));
+        break;
+      case "string":
+        this.changeParams(id, "value", e.target.value);
+        break;
+      default:
+        this.changeParams(id, "value", e.target.value);
+        break;
     }
   }
 
@@ -37,15 +42,14 @@ class Field extends React.Component {
       value,
       data,
       isEnabled,
-      removeParameter,
+      removeParameter
     } = this.props;
 
     if (!name) return null;
-    const type = data && data.type ? data.type : "text";
     let inputElement;
 
-    switch(type) {
-      case 'string':
+    switch (type) {
+      case "string":
         inputElement = (
           <input
             type="text"
@@ -57,7 +61,7 @@ class Field extends React.Component {
           />
         );
         break;
-      case 'numeric':
+      case "numeric":
         inputElement = (
           <input
             type="number"
@@ -70,50 +74,51 @@ class Field extends React.Component {
           />
         );
         break;
-        case 'boolean':
-          inputElement = (
-              <input
-                type="checkbox"
-                disabled={!isEnabled}
-                checked={value}
-                id={id}
-                onChange={this.change}
-              />
+      case "boolean":
+        inputElement = (
+          <input
+            type="checkbox"
+            className="form-control"
+            disabled={!isEnabled}
+            checked={value}
+            id={id}
+            onChange={this.change}
+          />
+        );
+        break;
+      case "select":
+        const options = [];
+        data.options.forEach(i => {
+          options.push(
+            <option key={i} value={i}>
+              {i}
+            </option>
           );
-          break;
-        case 'select':
-          const options = [];
-          data.options.forEach(i => {
-            options.push(
-              <option key={i} value={i}>
-                {i}
-              </option>
-            );
-          });
-          inputElement = (
-            <select
-              value={value}
-              id={id}
-              disabled={!isEnabled}
-              className="form-control"
-              onChange={this.change}
-            >
-              {options}
-            </select>
-          );
-          break;
-        default:
-          inputElement = (
-            <input
-              type="text"
-              disabled={!isEnabled}
-              value={value}
-              className="form-control"
-              id={id}
-              onChange={this.change}
-            />
-          );
-          break;
+        });
+        inputElement = (
+          <select
+            value={value}
+            id={id}
+            disabled={!isEnabled}
+            className="form-control"
+            onChange={this.change}
+          >
+            {options}
+          </select>
+        );
+        break;
+      default:
+        inputElement = (
+          <input
+            type="text"
+            disabled={!isEnabled}
+            value={value}
+            className="form-control"
+            id={id}
+            onChange={this.change}
+          />
+        );
+        break;
     }
 
     let displayStyle = "inherit";
@@ -121,7 +126,7 @@ class Field extends React.Component {
       displayStyle = "flex";
     }
     return (
-      <div className="border-top" style={[styles.field]}>
+      <div style={[styles.field]}>
         <div style={{ display: displayStyle }}>
           <label htmlFor={id} style={[styles.label]}>
             {name}

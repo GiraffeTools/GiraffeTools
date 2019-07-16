@@ -46,7 +46,7 @@ class Parameter extends Model {
         break;
       case ADD_PARAMETER_TO_NODE:
         const { parameter, nodeId } = payload;
-        
+
         if (!Parameter.filter({ id: parameter.id }).exists()) {
           Parameter.create({
             node: nodeId,
