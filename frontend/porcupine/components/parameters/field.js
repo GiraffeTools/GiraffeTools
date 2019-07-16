@@ -40,7 +40,8 @@ class Field extends React.Component {
       removeParameter,
     } = this.props;
 
-    // const type = data && data.type ? data.type : "text";
+    if (!name) return null;
+    const type = data && data.type ? data.type : "text";
     let inputElement;
 
     switch(type) {

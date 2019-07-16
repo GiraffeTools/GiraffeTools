@@ -1,9 +1,0 @@
-version: '3'
-
-services:
-
-  workflow:
-    build: .
-    volumes:
-      - .:/code
-    command: python /code/parse_nipype.py

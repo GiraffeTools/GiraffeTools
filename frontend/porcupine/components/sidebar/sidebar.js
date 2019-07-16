@@ -1,16 +1,13 @@
 import React from "react";
-import Radium, { StyleRoot } from "radium";
-import AwesomeDebouncePromise from "awesome-debounce-promise";
-import { v4 } from "uuid";
+import Radium from "radium";
 
 import GithubIcon from "./githubIcon";
 import ToolboxGroup from "./toolboxGroup";
 import SearchBar from "./searchBar";
 import styles from "../../styles/sidebar";
 import { savePorkFile, initPorkFile } from "../../utils/savePorkFile";
-import { API_HOST } from "../../../giraffe/config";
 
-require("../../scss/scrollbar.scss");
+import "../../scss/scrollbar.scss";
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -24,8 +21,14 @@ class Sidebar extends React.Component {
 
   async componentDidMount() {
     const { addToolboxNodes } = this.props;
-    const nodes = await (await fetch(`${API_HOST}/nodes`)).json();
-    addToolboxNodes(nodes.toolboxes);
+    const nodes = [
+      "/static/Libraries/nipype/nipype_nodes.json"
+      // "/static/Libraries/keras/keras_nodes.json"
+    ];
+    const toolboxes = nodes.map(async url => await (await fetch(url)).json());
+    Promise.all(
+      toolboxes.map(async nodes => addToolboxNodes((await nodes)["toolboxes"]))
+    );
   }
 
   componentWillUnmount() {
@@ -46,8 +49,9 @@ class Sidebar extends React.Component {
       this.searchBar.current &&
       this.searchBar.current.state.searchText &&
       this.searchBar.current.state.searchText.length;
-
     const currentNodes = searching ? matchedNodes : allNodes;
+    const toolboxes = allNodes.map(toolbox => toolbox.name);
+
     return (
       <div style={[styles.sidebar, showSidebar && styles.sidebar.active]}>
         <div style={[styles.logoSidebar]}>
@@ -71,7 +75,21 @@ class Sidebar extends React.Component {
           />
         </div>
         <div style={[styles.nodes]}>
-          <h5 style={[styles.sidebarHeading]}>NODES</h5>
+          <h5 style={[styles.sidebarHeading]}>
+            TOOLBOXES
+            <a
+              onClick={() =>
+                openModal({
+                  title: "Toolboxes",
+                  type: "toggle_toolboxes",
+                  onClose: () => {},
+                  onConfirm: () => {}
+                })
+              }
+            >
+              <img style={[styles.gear]} src="/static/img/gear.svg" />
+            </a>
+          </h5>
         </div>
         <div style={[styles.nodeBox]} className="customScrollbar">
           <div
@@ -80,13 +98,11 @@ class Sidebar extends React.Component {
             aria-multiselectable="true"
           >
             {currentNodes &&
-              currentNodes.map((toolbox, index) => (
-                <ToolboxGroup
-                  key={index}
-                  show={showToolboxes && showToolboxes.includes(toolbox.name)}
-                  toolbox={toolbox}
-                />
-              ))}
+              currentNodes.map((toolbox, index) => {
+                if (!showToolboxes || !showToolboxes.includes(toolbox.name))
+                  return null;
+                return <ToolboxGroup key={index} toolbox={toolbox} />;
+              })}
           </div>
         </div>
         <div style={[styles.actionsPanel]}>
@@ -126,7 +142,6 @@ class Sidebar extends React.Component {
               className="btn btn-block text-left"
               onClick={() =>
                 openModal({
-                  id: v4(),
                   title: "Commit to GitHub",
                   type: "push_to_github",
                   project,

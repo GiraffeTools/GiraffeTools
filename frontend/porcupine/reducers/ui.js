@@ -37,7 +37,11 @@ const ui = (state = INITIAL_STATE, action) => {
     case ADD_TOOLBOX_NODES:
       return {
         ...state,
-        toolboxes: [...payload.toolboxes, ...state.toolboxes]
+        toolboxes: [...payload.toolboxes, ...state.toolboxes],
+        showToolboxes: [
+          ...payload.toolboxes.map(t => t.name),
+          ...state.showToolboxes
+        ]
       };
     case SET_ACTIVE_TAB:
       return { ...state, activeTab: payload.tab };

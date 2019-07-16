@@ -1,6 +1,5 @@
 import json
 import logging
-import os
 from github import Github, InputGitTreeElement
 from slackclient import SlackClient
 from django.conf import settings
@@ -14,29 +13,6 @@ from giraffe.utils import log_user_action, log_project
 
 logger = logging.getLogger(__name__)
 sc = SlackClient(settings.SLACK_API_TOKEN)
-
-
-def faq_questions(request):
-    url = os.path.join(settings.STATIC_ROOT, "misc/faq_questions.json")
-    with open(url) as f:
-        questions = json.load(f)
-
-    return HttpResponse(json.dumps(questions), content_type="application/json")
-
-
-def example_repos(request):
-    url = os.path.join(settings.STATIC_ROOT, "misc/examples.json")
-    with open(url) as f:
-        questions = json.load(f)
-
-    return HttpResponse(json.dumps(questions), content_type="application/json")
-
-
-def nodes(request):
-    url = os.path.join(settings.STATIC_ROOT, "assets/toolboxes.json")
-    with open(url) as f:
-        nodes = json.load(f)
-    return HttpResponse(json.dumps(nodes), content_type="application/json")
 
 
 def get_user(request):

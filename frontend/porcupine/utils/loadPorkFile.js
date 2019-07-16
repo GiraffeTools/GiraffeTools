@@ -1,5 +1,4 @@
 import { v4 } from "uuid";
-import { API_HOST } from "../../giraffe/config";
 import { isUUID } from "../utils";
 
 export async function loadPorkFile(json, nodes, links, setPercent) {
@@ -19,34 +18,11 @@ async function loadingVersion1(json, setPercent) {
   const nodeData = [];
   const linkData = [];
 
-  const toolboxData = await (await fetch(`${API_HOST}/nodes`)).json();
-
   // load nodes
   setPercent(20);
   nodes &&
     nodes.forEach(node => {
-      // This block is only for obtaining the colour:
-
-      let category;
-      let toolbox;
-      if (node.toolbox || node.category[0] !== "Nipype") {
-        category = node.category;
-        toolbox = node.toolbox || "Nipype";
-      } else {
-        toolbox = node.category[0];
-        category = node.category.splice(1);
-      }
-
-      let currentNodes = toolboxData.toolboxes.find(
-        currentToolbox => currentToolbox.name == toolbox
-      );
-      try {
-        category.forEach(c => {
-          currentNodes = currentNodes.categories.find(node => node.name == c);
-        });
-      } catch (e) {}
       const newNode = {
-        toolbox,
         id: node.id || v4(),
         name:
           (node.title && node.title.name.replace(".", "_")) ||
@@ -58,10 +34,9 @@ async function loadingVersion1(json, setPercent) {
           node.name,
         x: node.position[0],
         y: node.position[1],
-        colour: node.colour || (currentNodes && currentNodes.colour) || "#BBB",
+        colour: node.colour || "#BBB",
         web_url: (node.title && node.title.web_url) || node.web_url || "",
-        code: (node.title && node.title.code) || node.code,
-        category: category
+        code: (node.title && node.title.code) || node.code
       };
 
       newNode.parameters = node.ports.map(parameter => ({

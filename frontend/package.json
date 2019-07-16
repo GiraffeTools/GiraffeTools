@@ -60,6 +60,7 @@
     "react-router-dom": "^5.0.1",
     "react-spinners": "^0.5.4",
     "react-syntax-highlighter": "^10.3.5",
+    "react-toggle": "^4.0.2",
     "react-tooltip": "^3.10.0",
     "react-typing-animation": "<=1.4.0",
     "redux": "^4.0.1",

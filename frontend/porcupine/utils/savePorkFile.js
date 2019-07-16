@@ -121,10 +121,8 @@ const nodesToSaveDict = nodes =>
       iterator: parameter.isIterable || false
     }));
     return {
-      toolbox: node.toolbox,
       name: node.name,
       class: node.class,
-      category: node.category,
       ports: ports,
       position: [node.x, node.y],
       code: node.code,

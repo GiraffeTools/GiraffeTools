@@ -9,8 +9,9 @@ import Async from "react-async";
 
 import styles from "../styles/questions.js";
 
-const loadQuestions = () =>
-  fetch(`${API_HOST}/faq_questions`).then(response => response.json());
+async function loadQuestions() {
+  return await (await fetch("/static/misc/faq_questions.json")).json();
+}
 
 const Questions = () => (
   <Async promiseFn={loadQuestions}>
