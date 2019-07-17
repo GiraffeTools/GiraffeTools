@@ -48,7 +48,7 @@ const ui = (state = INITIAL_STATE, action) => {
     case SET_SEARCH_TEXT:
       return { ...state, searchText: payload.text };
     case UPDATE_LOADING_PERCENT:
-      return { ...state, loadingPercent: action.percent };
+      return { ...state, loadingPercent: payload.percent };
     default:
       return state;
   }

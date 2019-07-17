@@ -23,7 +23,6 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true # for hot reloading on Windows
     build: ./backend
-    image: timvanmourik/giraffe-tools
     volumes:
       - ./backend:/code
       - webpack_bundles:/webpack

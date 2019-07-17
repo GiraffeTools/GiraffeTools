@@ -1,13 +1,13 @@
 import { v4 } from "uuid";
 import React from "react";
 import { DropTarget } from "react-dnd";
-import ProgressBar from "react-progress-bar-plus";
 import { load as loadYaml } from "yaml-js";
 import to from "await-to-js";
 
 import ItemTypes from "../../draggables/itemTypes";
 import GraphView from "./graphView";
 import { camelToSnake } from "../../utils";
+import GiraffeLoader from "./giraffeLoader";
 import { loadPorkFile } from "../../utils/loadPorkFile";
 import defaultGenerators from "../../utils/codeGenerators";
 import scriptToGenerator from "../../utils/dynamicImport";
@@ -96,7 +96,6 @@ class Canvas extends React.PureComponent {
     this.load = this.load.bind(this);
     this.deleteSelection = this.deleteSelection.bind(this);
     this.loadFromJson = this.loadFromJson.bind(this);
-    this.setPercent = this.setPercent.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
@@ -145,7 +144,8 @@ class Canvas extends React.PureComponent {
       project,
       addToolboxNodes,
       addGrammar,
-      clickItem
+      clickItem,
+      updateLoadingPercent
     } = this.props;
     const { user, repository, branch, commit } = project;
     if (!user || !repository || (!branch && !commit)) {
@@ -163,7 +163,7 @@ class Canvas extends React.PureComponent {
       return;
     }
 
-    const { setPercent, loadFromJson, graphview } = this;
+    const { loadFromJson, graphview } = this;
     async function loadContent(porkfiles) {
       if (!porkfiles || !porkfiles.length) return;
 
@@ -182,7 +182,7 @@ class Canvas extends React.PureComponent {
       } catch (error) {
         console.log("Cannot load Porcupine Config file:");
         console.log(error);
-        setPercent(-1);
+        updateLoadingPercent(-1);
       }
     }
     const loadCustomNodes = nodeFiles => {
@@ -229,76 +229,65 @@ class Canvas extends React.PureComponent {
     document.removeEventListener("keydown", this.handleKeyPress, false);
   }
 
-  setPercent(percent) {
-    const { updateLoadingPercent } = this.props;
-    if (percent >= 100) {
-      updateLoadingPercent(99.9);
-      // Always leave percent at -1
-      this.timeout = setTimeout(() => {
-        updateLoadingPercent(-1);
-      }, 4000);
-    } else {
-      updateLoadingPercent(percent);
-    }
-  }
-
   async loadFromJson(json) {
-    const { addNode, addLink, clearDatabase, updateNode } = this.props;
-    this.setPercent(10); // Loading started!
+    const {
+      addNode,
+      addLink,
+      clearDatabase,
+      updateNode,
+      updateLoadingPercent
+    } = this.props;
+    updateLoadingPercent(10); // Loading started!
     clearDatabase();
 
-    const [error, response] = await to(loadPorkFile(json, this.setPercent));
+    const [error, response] = await to(
+      loadPorkFile(json, updateLoadingPercent)
+    );
     if (error) {
       console.log(
         "Error reading Porcupine Config file! Either data is missing or format is incorrect"
       );
       return;
-    } else {
-      this.setPercent(-1);
     }
+    updateLoadingPercent(50); // Loading finished!
+
     const { nodes, links } = response;
     try {
       let i = 0;
       nodes.forEach(node => {
         addNode(node);
         updateNode(node.id);
-        this.setPercent(50 + (30 * i++) / nodes.length);
+        updateLoadingPercent(50 + (30 * i++) / nodes.length);
       });
+      updateLoadingPercent(80); // Nodes loaded!
       i = 0;
       links.forEach(link => {
         addLink(link);
-        this.setPercent(80 + (20 * i++) / links.length);
+        updateLoadingPercent(80 + (20 * i++) / links.length);
       });
     } catch (error) {
-      this.setPercent(-1);
+      updateLoadingPercent(-1);
       console.log(
-        "Error while adding Link or Node to Canvas, Check Porcupine Config file "
+        "Error while adding Link or Node to Canvas, Check Porcupine Config file."
       );
       console.log(error);
       return;
     }
-    this.setPercent(-1);
+    updateLoadingPercent(-1);
   }
 
   render() {
     const { connectDropTarget, nodes, links, loadingPercent } = this.props;
-    return (
-      connectDropTarget &&
-      connectDropTarget(
-        <div style={styles.canvas}>
-          <ProgressBar
-            percent={loadingPercent}
-            onTop={true}
-            spinner={"right"}
-          />
-          <GraphView
-            ref={this.graphview}
-            nodes={nodes}
-            links={links}
-            deleteSelection={this.deleteSelection}
-          />
-        </div>
-      )
+    return connectDropTarget(
+      <div style={styles.canvas}>
+        <GiraffeLoader percent={loadingPercent} />
+        <GraphView
+          ref={this.graphview}
+          nodes={nodes}
+          links={links}
+          deleteSelection={this.deleteSelection}
+        />
+      </div>
     );
   }
 }

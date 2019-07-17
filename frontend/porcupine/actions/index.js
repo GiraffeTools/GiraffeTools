@@ -37,7 +37,9 @@ export const clearDatabase = () => ({
 ///// LOADING BAR /////
 export const updateLoadingPercent = percent => ({
   type: UPDATE_LOADING_PERCENT,
-  percent
+  payload: {
+    percent
+  }
 });
 
 ///// UI /////

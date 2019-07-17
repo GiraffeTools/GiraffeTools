@@ -1,15 +1,15 @@
 import { v4 } from "uuid";
 import { isUUID } from "../utils";
 
-export async function loadPorkFile(json, nodes, links, setPercent) {
+export async function loadPorkFile(json, setPercent) {
   switch (json.version) {
     case "1":
-      return await loadingVersion1(json, nodes, links, setPercent);
+      return await loadingVersion1(json, setPercent);
     case "2":
       // leaving room for future implementations
       break;
     default:
-      return await loadingVersion1(json, nodes, links, setPercent);
+      return await loadingVersion1(json, setPercent);
   }
 }
 
@@ -54,7 +54,7 @@ async function loadingVersion1(json, setPercent) {
       }));
 
       nodeData.push(newNode);
-      setPercent(10 + (20 * nodeData.length) / nodes.length);
+      // setPercent(10 + (20 * nodeData.length) / nodes.length);
     });
   // load links
   links &&
@@ -65,7 +65,7 @@ async function loadingVersion1(json, setPercent) {
         portTo: link.to
       };
       linkData.push(newLink);
-      setPercent(30 + (20 * linkData.length) / links.length);
+      // setPercent(30 + (20 * linkData.length) / links.length);
     });
   return { nodes: nodeData, links: linkData };
 }
