@@ -8,7 +8,6 @@ import numpy as np
 import io
 import gzip
 import matplotlib.cm as cm
-import numpy as np
 
 DEF_SIZE_MARKER = 512
 

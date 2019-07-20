@@ -4,7 +4,6 @@ from github import Github, InputGitTreeElement
 from slackclient import SlackClient
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseForbidden, JsonResponse
-from django.http import HttpResponseForbidden
 from django.middleware.csrf import get_token
 
 from oauth.utils import is_github_token_valid

@@ -22,6 +22,9 @@ class Command(BaseCommand):
                 return
             except:  # Ignore PycodestyleBear (E722)
                 self.stdout.write(self.style.WARNING(
+                "No luck after %d seconds" % second))  # Ignore LineLengthBear
+            
+                self.stdout.write(self.style.WARNING(
                     "Can't detect the postgres server. Trying again in a second"))  # Ignore LineLengthBear
                 time.sleep(1)
 

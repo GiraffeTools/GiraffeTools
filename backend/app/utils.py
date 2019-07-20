@@ -29,7 +29,7 @@ def sync_profile(handle, user=None):
             pass
 
     try:
-        profile, created = Profile.objects.update_or_create(
+        profile = Profile.objects.update_or_create(
             handle=handle, defaults=defaults)
         profile.save()
 
