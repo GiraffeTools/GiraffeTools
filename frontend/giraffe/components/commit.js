@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {StyleRoot} from 'radium';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -7,8 +7,8 @@ import pluralize from 'pluralize';
 
 import styles from '../styles/commit';
 
-const Commit = ({commit, full_name}) => {
-  const days_ago = Math.floor(
+const Commit = ({commit, fullName}) => {
+  const daysAgo = Math.floor(
       (Date.now() - new Date(commit.commit.author.date)) / 1000 / 3600 / 24
   );
   const maxLength = 28;
@@ -23,7 +23,7 @@ const Commit = ({commit, full_name}) => {
         <Col sm={6} style={{textAlign: 'left'}}>
           <h5>{message}</h5>
           <b>@{commit.commit.author.login}</b>
-          {` committed ${days_ago} ` + pluralize('day', days_ago) + ' ago'}
+          {` committed ${daysAgo} ` + pluralize('day', daysAgo) + ' ago'}
         </Col>
         <Col sm={6} style={{textAlign: 'right'}}>
           <Button
@@ -39,7 +39,7 @@ const Commit = ({commit, full_name}) => {
             variant="light"
             data-toggle="tooltip"
             data-placement="top"
-            href={`/porcupine/${full_name}/${commit.sha}`}
+            href={`/porcupine/${fullName}/${commit.sha}`}
             style={styles.openButton}
           >
             open

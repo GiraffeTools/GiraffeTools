@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 
 import SeparatorWithOpenCircle from './separatorWithOpenCircle';
 import styles from '../styles/people.js';
-import componentStyles from '../styles/components.js';
 
 const People = () => (
   <Container fluid={true} style={styles.people}>
@@ -30,16 +29,21 @@ const People = () => (
           thickness={'1px'}
           styleOverwrite={styles.componentStyles}
         />
-        And I automatically create the code for your analysis pipeline. Get
-        started immediately by checking out the example files! It''s so super
-        duper easy.
+        {`And I automatically create the code for your analysis pipeline. Get
+        started immediately by checking out the example files! It's so super
+        duper easy.`}
         <br />
-        <a href="https://github.com/TimVanMourik" target="_blank">
+        <a
+          href="https://github.com/TimVanMourik"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img src="/static/img/github_icon.svg" style={[styles.icon]} />
         </a>
         <a
           href="https://nl.linkedin.com/in/tim-van-mourik-616249a1"
           target="_blank"
+          rel="noopener noreferrer"
           style={[styles.icon]}
         >
           <img src="/static/img/linkedin_icon.svg" style={[styles.icon]} />
@@ -47,6 +51,7 @@ const People = () => (
         <a
           href="mailto:timvanmourik@gmail.com"
           target="_blank"
+          rel="noopener noreferrer"
           style={[styles.icon]}
         >
           <img src="/static/img/mail_icon.svg" style={[styles.icon]} />
@@ -54,6 +59,7 @@ const People = () => (
         <a
           href="https://www.timvanmourik.com"
           target="_blank"
+          rel="noopener noreferrer"
           style={[styles.icon]}
         >
           <img src="/static/img/web_icon.svg" style={[styles.icon]} />

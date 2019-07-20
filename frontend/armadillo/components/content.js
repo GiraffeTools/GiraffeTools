@@ -22,13 +22,13 @@ class Content extends React.Component {
     script.async = false;
     document.head.appendChild(script);
 
-    const check_aframe = async () => {
+    const checkAFrame = async () => {
       if (window.AFRAME !== undefined) {
         this.setState({aframeLoaded: true});
         clearInterval(this.interval);
       }
     };
-    this.interval = setInterval(check_aframe, 1000);
+    this.interval = setInterval(checkAFrame, 1000);
 
     const {username, repository, branchOrCommit} = this.props.match.params;
     const {setUser, setRepository, setBranch, setCommit} = this.props;

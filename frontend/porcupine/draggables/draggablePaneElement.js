@@ -1,5 +1,5 @@
 import React from 'react';
-import {DragSource, ConnectDragSource, ConnectDragPreview} from 'react-dnd';
+import {DragSource} from 'react-dnd';
 import {getEmptyImage} from 'react-dnd-html5-backend';
 
 import ItemTypes from './itemTypes';
@@ -20,8 +20,9 @@ const boxSource = {
 };
 
 const getStyles = (props) => {
-  const {left, top, isDragging} = props;
-  const transform = `translate3d(${left}px, ${top}px, 0)`;
+  // const {left, top, isDragging} = props;
+  const {isDragging} = props;
+  // const transform = `translate3d(${left}px, ${top}px, 0)`;
 
   return {
     // transform,
@@ -37,11 +38,12 @@ class PaneElementDragLayer extends React.PureComponent {
   componentDidMount() {
     const {connectDragPreview} = this.props;
     if (connectDragPreview) {
-      // 	Use empty image as a drag preview so browsers don't draw it
-      // 	and we can draw whatever we want on the custom drag layer instead.
+      	// Use empty image as a drag preview so browsers don't draw it
+      	// and we can draw whatever we want on the custom drag layer instead.
       connectDragPreview(getEmptyImage(), {
         // 		IE fallback: specify that we'd rather screenshot the node
-        // 		when it already knows it's being dragged so we can hide it with CSS.
+        // 		when it already knows it's being dragged so we can hide it
+        //    with CSS.
         captureDraggingState: true,
       });
     }

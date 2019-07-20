@@ -32,7 +32,9 @@ export async function savePorkFile(content) {
 
   const {porkFilename} = content;
   const contents = {
-    [porkFilename]: JSON.stringify(porkFile(nodes, links, allStickies), null, 2),
+    [porkFilename]: JSON.stringify(
+        porkFile(nodes, links, allStickies), null, 2
+    ),
     ...fileContent,
   };
   debugger;
@@ -74,7 +76,7 @@ export async function pushToGithub(commit, contents) {
     user: commit.user,
     repository: commit.repository,
     branch: commit.branch || 'master',
-    message: commit.commit_message,
+    message: commit.commitMessage,
     contents,
   };
 

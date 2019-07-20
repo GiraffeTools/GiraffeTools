@@ -22,8 +22,8 @@ const PaneGroup = ({nodes, subcategories, colour, name}) => {
   const nodeGroups = subcategories && (
     <NestedPaneGroup categories={subcategories} />
   );
-  const nodeElements =
-    nodes &&
+  
+  const nodeElements = nodes &&
     nodes.map((node, index) => {
       const {name} = node;
       node.colour = colour || '#BBB';
@@ -36,7 +36,7 @@ const PaneGroup = ({nodes, subcategories, colour, name}) => {
           {name}
         </DraggablePaneElement>
       );
-    });
+    })
 
   return (
     <div style={styles.panel}>
@@ -57,20 +57,7 @@ const PaneGroup = ({nodes, subcategories, colour, name}) => {
       <Collapse in={open} style={styles.panelCollapse}>
         <div id="collapse-menu">
           {nodeGroups}
-          {nodes &&
-            nodes.map((node, index) => {
-              const {name} = node;
-              node.colour = colour || '#BBB';
-              return (
-                <DraggablePaneElement
-                  key={`${name}-${index}`}
-                  category={node}
-                  id={name}
-                >
-                  {name}
-                </DraggablePaneElement>
-              );
-            })}
+          {nodeElements}
         </div>
       </Collapse>
     </div>

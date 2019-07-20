@@ -61,7 +61,6 @@ class Modal extends React.Component {
         );
         break;
       case 'push_to_github':
-        const {onClose} = this;
         return (
           <div className="modal-dialog" style={{zIndex: (zIndex + 1) * 10}}>
             <GithubModal

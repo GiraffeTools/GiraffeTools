@@ -1,5 +1,5 @@
 import React from 'react';
-import {DragLayer, XYCoord} from 'react-dnd';
+import {DragLayer} from 'react-dnd';
 import ItemTypes from './itemTypes';
 import PaneElementDragPreview from './paneElementDragPreview';
 // import snapToGrid from './snapToGrid'
@@ -42,8 +42,8 @@ const CustomDragLayer = (props) => {
   const {item, itemType, isDragging} = props;
   function renderItem() {
     switch (itemType) {
-      case ItemTypes.NODE:
-        return <NodeDragPreview {...item} />;
+      // case ItemTypes.NODE:
+        // return <NodeDragPreview {...item} />;
       case ItemTypes.PANE_ELEMENT:
         return <PaneElementDragPreview {...item} />;
       default:

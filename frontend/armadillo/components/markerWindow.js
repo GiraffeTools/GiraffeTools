@@ -57,6 +57,7 @@ class MarkerWindow extends React.Component {
               <a
                 href={`/api/armadillo/neurovault/${imageId}/qr`}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <img
                   style={[styles.qrcode]}
@@ -67,6 +68,7 @@ class MarkerWindow extends React.Component {
               <a
                 href={`https://neurovault.org/images/${imageId}`}
                 target="_blank"
+                rel="noopener noreferrer"
                 style={[styles.neurovaultLabel]}
               >
                 {`NeuroVault Image: ${imageId}`}

@@ -14,6 +14,11 @@ parserOptions:
   sourceType: module
 plugins:
   - react
+settings:
+  react:
+    pragma: "React"
+    version: detect
 rules:
   require-jsdoc: 0
   react/prop-types: 0
+  new-cap: 0

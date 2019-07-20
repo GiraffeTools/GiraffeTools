@@ -5,8 +5,6 @@ import Banner from '../../giraffe/components/banner';
 import Footer from '../../giraffe/components/footer';
 import WorkInProgress from '../components/workInProgress';
 
-import styles from '../styles/content';
-
 class Content extends React.Component {
   constructor(props) {
     super(props);

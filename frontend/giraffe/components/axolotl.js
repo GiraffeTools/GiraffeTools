@@ -3,7 +3,6 @@ import Radium from 'radium';
 
 import SeparatorWithOpenCircle from './separatorWithOpenCircle';
 import styles from '../styles/axolotl.js';
-import componentStyles from '../styles/components.js';
 
 const Axolotl = () => (
   <div className="d-flex justify-content-begin">

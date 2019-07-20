@@ -35,13 +35,13 @@ const sortDateFunction = (a, b) => {
 };
 
 const CommitSection = ({date, commits, full_name}) => {
-  const days_ago = (Date.now() - new Date(date)) / 1000 / 3600 / 24;
+  const daysAgo = (Date.now() - new Date(date)) / 1000 / 3600 / 24;
   return (
     <div>
-      <h6>{days_ago < 1 ? 'Today' : days_ago < 2 ? 'Yesterday' : `${date}`}</h6>
+      <h6>{daysAgo < 1 ? 'Today' : daysAgo < 2 ? 'Yesterday' : `${date}`}</h6>
       <ul style={styles.commitDay}>
         {commits.map(({commit}, index) => (
-          <Commit key={index} commit={commit} full_name={full_name} />
+          <Commit key={index} commit={commit} fullName={full_name} />
         ))}
       </ul>
     </div>
