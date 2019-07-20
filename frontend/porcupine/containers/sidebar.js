@@ -13,8 +13,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addToolboxNodes: toolbox => dispatch(addToolboxNodes(toolbox)),
-  openModal: props => dispatch(openModal(props))
+  addToolboxNodes: (toolbox) => dispatch(addToolboxNodes(toolbox)),
+  openModal: (props) => dispatch(openModal(props))
 });
 
 const SidebarContainer = connect(

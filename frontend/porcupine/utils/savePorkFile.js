@@ -104,7 +104,8 @@ const stickiesToSaveDict = allStickies =>
   allStickies.map(sticky => ({
     id: sticky.id,
     title: sticky.title,
-    content: sticky.content
+    content: sticky.content,
+    position: [sticky.x, sticky.y]
   }));
 
 const linksToSaveDict = links =>

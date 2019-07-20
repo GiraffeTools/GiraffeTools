@@ -70,10 +70,13 @@ async function loadingVersion1(json, setPercent) {
     });
   stickies &&
     stickies.forEach(sticky => {
+      const { id, position, title, content } = sticky;
       const newSticky = {
-        id: sticky.id || v4(),
-        title: sticky.title,
-        content: sticky.content
+        id: id || v4(),
+        title,
+        content,
+        x: position && position[0],
+        y: position && position[1]
       };
       stickyData.push(newSticky);
       // setPercent(30 + (20 * linkData.length) / links.length);

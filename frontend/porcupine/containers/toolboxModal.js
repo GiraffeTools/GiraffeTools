@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  toggleToolbox: toolbox => dispatch(toggleToolbox(toolbox))
+  toggleToolbox: (toolbox) => dispatch(toggleToolbox(toolbox))
 });
 
 const ToolboxModalContainer = connect(

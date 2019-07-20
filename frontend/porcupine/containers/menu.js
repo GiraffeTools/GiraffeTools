@@ -18,10 +18,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addNode: node => dispatch(addNode(node)),
-  copyItems: nodeIds => dispatch(copyItems(nodeIds)),
-  deleteNode: nodeId => dispatch(deleteNode(nodeId)),
-  deleteLink: linkId => dispatch(deleteLink(linkId)),
+  addNode: (node) => dispatch(addNode(node)),
+  copyItems: (nodeIds) => dispatch(copyItems(nodeIds)),
+  deleteNode: (nodeId) => dispatch(deleteNode(nodeId)),
+  deleteLink: (linkId) => dispatch(deleteLink(linkId)),
   clearDatabase: () => dispatch(clearDatabase()),
   updateNode: (nodeId, offset) => dispatch(updateNode(nodeId, offset))
 });

@@ -10,8 +10,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   hoverPort: (portId, type) => dispatch(hoverPort(portId, type)),
-  addLink: props => dispatch(addLink(props)),
-  startLink: portId => dispatch(startLink(portId)),
+  addLink: (props) => dispatch(addLink(props)),
+  startLink: (portId) => dispatch(startLink(portId)),
   setPortRefs: (portId, inputPortRef, outputPortRef) =>
     dispatch(updateParameter(portId, { inputPortRef, outputPortRef }))
 });

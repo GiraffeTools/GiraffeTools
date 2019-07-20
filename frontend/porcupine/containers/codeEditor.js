@@ -19,7 +19,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   toggleCodeEditor: () => dispatch(toggleCodeEditor()),
-  setActiveTab: tab => dispatch(setActiveTab(tab))
+  setActiveTab: (tab) => dispatch(setActiveTab(tab))
 });
 
 const CodeEditorContainer = connect(

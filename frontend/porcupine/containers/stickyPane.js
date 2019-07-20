@@ -6,7 +6,7 @@ import { updateSticky, deleteSticky } from "../actions";
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
-  deleteSticky: id => dispatch(deleteSticky(id)),
+  deleteSticky: (id) => dispatch(deleteSticky(id)),
   updateSticky: (id, name) => dispatch(updateSticky(id, name))
 });
 

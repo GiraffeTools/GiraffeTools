@@ -32,17 +32,17 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addGrammar: grammar => dispatch(addGrammar(grammar)),
-  addLink: link => dispatch(addLink(link)),
-  addNode: node => dispatch(addNode(node)),
-  addSticky: sticky => dispatch(addSticky(sticky)),
-  deleteNode: nodeId => dispatch(deleteNode(nodeId)),
-  deleteLink: linkId => dispatch(deleteLink(linkId)),
-  setPorkFile: porkfile => dispatch(setPorkFile(porkfile)),
+  addGrammar: (grammar) => dispatch(addGrammar(grammar)),
+  addLink: (link) => dispatch(addLink(link)),
+  addNode: (node) => dispatch(addNode(node)),
+  addSticky: (sticky) => dispatch(addSticky(sticky)),
+  deleteNode: (nodeId) => dispatch(deleteNode(nodeId)),
+  deleteLink: (linkId) => dispatch(deleteLink(linkId)),
+  setPorkFile: (porkfile) => dispatch(setPorkFile(porkfile)),
   clickItem: () => dispatch(clickItem()),
-  updateLoadingPercent: percent => dispatch(updateLoadingPercent(percent)),
+  updateLoadingPercent: (percent) => dispatch(updateLoadingPercent(percent)),
   updateNode: (nodeId, offset) => dispatch(updateNode(nodeId, offset)),
-  addToolboxNodes: toolbox => dispatch(addToolboxNodes(toolbox)),
+  addToolboxNodes: (toolbox) => dispatch(addToolboxNodes(toolbox)),
   clearDatabase: () => dispatch(clearDatabase())
 });
 

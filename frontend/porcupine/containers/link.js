@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   clickItem: (linkId, type) => dispatch(clickItem(linkId, type)),
-  deleteLink: linkId => dispatch(deleteLink(linkId))
+  deleteLink: (linkId) => dispatch(deleteLink(linkId))
 });
 
 const LinkContainer = connect(

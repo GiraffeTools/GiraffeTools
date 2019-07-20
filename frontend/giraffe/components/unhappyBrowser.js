@@ -27,7 +27,7 @@ const minimumBrowsers = {
 
 const UnhappyBrowser = () => {
   const [cookies, setCookie] = useCookies(["browser"]);
-  const happy = isChrome && parseInt(browserVersion) > 42;
+  const happy = isChrome && parseInt(browserVersion, 10) > 42;
   if (happy || cookies.browser === "closed") return null;
 
   return (

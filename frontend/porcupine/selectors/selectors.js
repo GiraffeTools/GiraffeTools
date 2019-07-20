@@ -58,37 +58,6 @@ export const copiedNodes = createSelector(
   }
 );
 
-export const selection = createSelector(
-  orm,
-  state => state.orm,
-  state => state.scene.selection,
-  (orm, selection) => {
-    if (!selection) {
-      return null;
-    }
-    const { links, nodes, stickies } = selection;
-    // exctly one selected item:
-    if (
-      (nodes && nodes.length) +
-        (links && links.length) +
-        (stickies && stickies.length) ==
-      1
-    ) {
-      if (nodes && nodes.length == 1) {
-        const node = orm.Node.withId(nodes[0]);
-        return { type: "node", ...selectedNode(orm, node) };
-      } else if (links && links.length == 1) {
-        const link = orm.Link.withId(links[0]);
-        return { type: "link", ...selectedLink(orm, link) };
-      } else if (stickies && stickies.length == 1) {
-        const sticky = orm.Sticky.withId(stickies[0]);
-        return { type: "sticky", ...selectedSticky(orm, sticky) };
-      }
-    }
-    return null;
-  }
-);
-
 export const selectedNode = (orm, node) => {
   if (!node) {
     return null;
@@ -122,6 +91,37 @@ export const selectedSticky = (orm, sticky) => {
   }
   return { ...sticky.ref };
 };
+
+export const selection = createSelector(
+  orm,
+  state => state.orm,
+  state => state.scene.selection,
+  (orm, selection) => {
+    if (!selection) {
+      return null;
+    }
+    const { links, nodes, stickies } = selection;
+    // exctly one selected item:
+    if (
+      (nodes && nodes.length) +
+        (links && links.length) +
+        (stickies && stickies.length) ==
+      1
+    ) {
+      if (nodes && nodes.length == 1) {
+        const node = orm.Node.withId(nodes[0]);
+        return { type: "node", ...selectedNode(orm, node) };
+      } else if (links && links.length == 1) {
+        const link = orm.Link.withId(links[0]);
+        return { type: "link", ...selectedLink(orm, link) };
+      } else if (stickies && stickies.length == 1) {
+        const sticky = orm.Sticky.withId(stickies[0]);
+        return { type: "sticky", ...selectedSticky(orm, sticky) };
+      }
+    }
+    return null;
+  }
+);
 
 export const links = createSelector(
   orm,

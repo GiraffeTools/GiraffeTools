@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeParameter: id => dispatch(deleteParameter(id)),
+  removeParameter: (id) => dispatch(deleteParameter(id)),
   updateParameter: (portId, newValues) =>
     dispatch(updateParameter(portId, newValues))
 });

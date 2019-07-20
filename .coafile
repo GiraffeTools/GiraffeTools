@@ -55,10 +55,3 @@ bears = ShellCheckBear
 files = **.bash
 shell = bash
 shellcheck_ignore = SC2046, SC2154
-
-
-[all.javascript]
-files = frontend/**/*.js
-ignore = **/node_modules/**, db.sqlite3, **/staticfiles/**, **/webpack-stats.json, **/webpack-stats-prod.json, **/webpack_bundles/**, **/.idea, code-coverage/**, **/static/**
-bears = PrettierLintBear
-default_actions = **: ApplyPatchAction

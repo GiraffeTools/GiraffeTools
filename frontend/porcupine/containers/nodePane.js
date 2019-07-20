@@ -6,7 +6,7 @@ import { deleteNode, updateNode } from "../actions";
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
-  deleteNode: id => dispatch(deleteNode(id)),
+  deleteNode: (id) => dispatch(deleteNode(id)),
   updateNode: (id, name) => dispatch(updateNode(id, name))
 });
 

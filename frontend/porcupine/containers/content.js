@@ -18,11 +18,11 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   toggleSidebar: () => dispatch(toggleSidebar()),
-  setUser: user => dispatch(setUser(user)),
-  setRepository: repository => dispatch(setRepository(repository)),
-  setBranch: branch => dispatch(setBranch(branch)),
-  setCommit: commit => dispatch(setCommit(commit)),
-  updateAuth: user => dispatch(updateAuth(user))
+  setUser: (user) => dispatch(setUser(user)),
+  setRepository: (repository) => dispatch(setRepository(repository)),
+  setBranch: (branch) => dispatch(setBranch(branch)),
+  setCommit: (commit) => dispatch(setCommit(commit)),
+  updateAuth: (user) => dispatch(updateAuth(user))
 });
 
 const ContentContainer = connect(

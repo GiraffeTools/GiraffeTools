@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  closeModal: id => dispatch(closeModal(id))
+  closeModal: (id) => dispatch(closeModal(id))
 });
 
 const ModalsContainer = connect(
