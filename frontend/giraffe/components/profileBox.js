@@ -22,14 +22,14 @@ const ProfileBox = ({username, activeProjects}) => {
     : error
       ? 'User not found'
       : data.userName;
-  const avatar_url =
+  const avatarUrl =
     isLoading || error ? '/static/img/giraffetools_logo.png' : data.avatar_url;
   const loggedIn = isLoading || error ? false : data.loggedIn;
   return (
     <div className="col-4 text-center">
       <div className="sticky-top" style={styles.sticky}>
         <div style={styles.box}>
-          <img src={avatar_url} style={styles.profilePic} />
+          <img src={avatarUrl} style={styles.profilePic} />
           <h3 style={styles.username}>{user}</h3>
           <SeparatorWithOpenCircle
             color="#4A4A4A"

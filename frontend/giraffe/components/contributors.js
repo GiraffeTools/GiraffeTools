@@ -1,6 +1,5 @@
 import React from 'react';
 import Radium from 'radium';
-import Col from 'react-bootstrap/Col';
 
 import {addTokenToQuery} from '../utils/auth';
 import {shuffle} from '../utils/utils';

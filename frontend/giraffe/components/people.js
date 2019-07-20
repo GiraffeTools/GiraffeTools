@@ -1,7 +1,6 @@
 import React from 'react';
 import Radium from 'radium';
 import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
 
 import SeparatorWithOpenCircle from './separatorWithOpenCircle';
 import styles from '../styles/people.js';

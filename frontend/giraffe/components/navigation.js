@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react';
+import React, {useState} from 'react';
 import Container from 'react-bootstrap/Container';
 
 import NavMenu from '../containers/navMenu';

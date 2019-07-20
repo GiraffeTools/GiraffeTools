@@ -12,7 +12,7 @@ const INITIAL_STATE = {
   repository: null,
   branch: null,
   commit: null,
-  pork_file: null,
+  porkFile: null,
 };
 
 const project = (state = INITIAL_STATE, action) => {
@@ -27,7 +27,7 @@ const project = (state = INITIAL_STATE, action) => {
     case SET_COMMIT:
       return {...state, commit: payload.commit};
     case SET_PORK_FILE:
-      return {...state, pork_file: payload.pork_file};
+      return {...state, porkFile: payload.porkFile};
     default:
       return state;
   }

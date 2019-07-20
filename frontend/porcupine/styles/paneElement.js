@@ -1,5 +1,3 @@
-import styleSheet from '../constants/styles';
-
 const styles = {
   paneElement: {
     textAlign: 'left',

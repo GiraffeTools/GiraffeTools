@@ -1,6 +1,4 @@
 import buttonStyles from './buttons';
-import styleSheet from '../constants/styles';
-import componentStyles from './components';
 import headingStyles from './headings';
 
 const styles = {

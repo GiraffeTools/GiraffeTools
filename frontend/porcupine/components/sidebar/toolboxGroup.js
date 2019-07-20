@@ -1,5 +1,4 @@
-import React, {Fragment, useState} from 'react';
-import Radium from 'radium';
+import React, {useState} from 'react';
 import PaneGroup from './paneGroup';
 import DraggablePaneElement from '../../draggables/draggablePaneElement';
 import Collapse from 'react-bootstrap/Collapse';

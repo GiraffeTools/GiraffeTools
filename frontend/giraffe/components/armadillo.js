@@ -4,7 +4,6 @@ import Col from 'react-bootstrap/Col';
 
 import SeparatorWithOpenCircle from './separatorWithOpenCircle';
 import styles from '../styles/armadillo.js';
-import componentStyles from '../styles/components.js';
 
 const Armadillo = () => (
   <div className="d-flex justify-content-end">

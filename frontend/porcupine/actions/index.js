@@ -12,7 +12,6 @@ import {
   UPDATE_LOADING_PERCENT,
   HOVER_PORT,
   CLICK_ITEM,
-  SET_MOUSE_STATE,
   CLEAR_DATABASE,
   SET_SEARCH_TEXT,
   COPY_NODES,
@@ -176,10 +175,6 @@ export const copyItems = (nodeIds) => ({
     nodeIds,
   },
 });
-// export const setMouseState = (props) => ({
-//   type: SET_MOUSE_STATE,
-//   payload: props,
-// });
 
 // /// SCENE /////
 export const updateAuth = (user) => ({
@@ -212,10 +207,10 @@ export const setCommit = (commit) => ({
     commit,
   },
 });
-export const setPorkFile = (pork_file) => ({
+export const setPorkFile = (porkFile) => ({
   type: SET_PORK_FILE,
   payload: {
-    pork_file,
+    porkFile,
   },
 });
 

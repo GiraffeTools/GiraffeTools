@@ -1,5 +1,4 @@
 import React from 'react';
-import Radium from 'radium';
 import Container from 'react-bootstrap/Container';
 import to from 'await-to-js';
 
@@ -7,7 +6,6 @@ import SeparatorWithOpenCircle from './separatorWithOpenCircle';
 import {getCsrfToken} from '../utils/auth';
 import {validateEmail} from '../utils/utils';
 import styles from '../styles/slackInvite.js';
-import componentStyles from '../styles/components.js';
 import {API_HOST} from '../config';
 
 class SlackInvite extends React.Component {

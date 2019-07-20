@@ -1,5 +1,3 @@
-import styleSheet from '../constants/styles';
-
 const styles = {
   header: {
     cursor: 'pointer',

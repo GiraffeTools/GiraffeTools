@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import Radium from 'radium';
 import {v4} from 'uuid';
 

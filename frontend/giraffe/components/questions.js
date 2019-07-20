@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react';
+import React from 'react';
 import Radium from 'radium';
 import Container from 'react-bootstrap/Container';
 import Question from '../components/question';

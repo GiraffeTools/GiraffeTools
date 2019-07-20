@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import Async from 'react-async';
 
 async function auth(updateAuth) {

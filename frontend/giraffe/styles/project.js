@@ -1,5 +1,4 @@
 import styleSheet from '../constants/styles';
-import componentStyles from './components';
 import boxesStyles from './boxes';
 import buttonStyles from './buttons';
 

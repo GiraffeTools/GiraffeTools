@@ -1,6 +1,5 @@
 import store from '../store';
-import {updateAuth} from '../actions';
-import {API_HOST, LOGIN} from '../config';
+import {API_HOST} from '../config';
 
 export async function addTokenToQuery(url) {
   const {access_token} = store.getState().auth;

@@ -5,15 +5,14 @@ import {load as loadYaml} from 'yaml-js';
 import AugmentedRealityScene from './augmentedRealityScene';
 import MarkerWindow from './markerWindow';
 import {isGitHash} from '../utils';
-import styles from '../styles/content';
 
 import 'aframe';
 class Content extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      image_id: null,
-      aframe_loaded: false,
+      imageId: null,
+      aframeLoaded: false,
     };
   }
 
@@ -25,7 +24,7 @@ class Content extends React.Component {
 
     const check_aframe = async () => {
       if (window.AFRAME !== undefined) {
-        this.setState({aframe_loaded: true});
+        this.setState({aframeLoaded: true});
         clearInterval(this.interval);
       }
     };
@@ -51,25 +50,25 @@ class Content extends React.Component {
     const yamlData = loadYaml(await configuration.text());
     const armadilloFile = yamlData.tools.armadillo.neurovault[0];
     this.setState({
-      image_id: armadilloFile,
+      imageId: armadilloFile,
     });
   }
 
   render() {
     const {username, repository} = this.props.match.params;
-    const {image_id, aframe_loaded} = this.state;
+    const {imageId, aframeLoaded} = this.state;
 
     return (
       <div>
         <MarkerWindow
-          image_id={image_id}
+          imageId={imageId}
           user={username}
           repository={repository}
         />
-        {image_id &&
-          aframe_loaded && (
+        {imageId &&
+          aframeLoaded && (
           <div id="camdiv">
-            <AugmentedRealityScene image_id={image_id} />
+            <AugmentedRealityScene imageId={imageId} />
           </div>
         )}
       </div>

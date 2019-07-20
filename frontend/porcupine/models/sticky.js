@@ -1,4 +1,4 @@
-import {Model, many, attr} from 'redux-orm';
+import {Model, attr} from 'redux-orm';
 
 import {
   ADD_STICKY,

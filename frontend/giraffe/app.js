@@ -1,8 +1,6 @@
 import {hot} from 'react-hot-loader/root';
-import React, {Fragment} from 'react';
-import {render} from 'react-dom';
-import {Provider} from 'react-redux';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import React from 'react';
+import {Route, Switch} from 'react-router-dom';
 
 import Faq from './pages/faq';
 import LandingPage from './pages/landingPage';

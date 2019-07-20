@@ -38,7 +38,7 @@ class MarkerWindow extends React.Component {
 
   render() {
     const {modelIsLoading, loadingError, showMenu} = this.state;
-    const {image_id, user, repository} = this.props;
+    const {imageId, user, repository} = this.props;
 
     return (
       <div className="d-flex justify-content-center">
@@ -55,21 +55,21 @@ class MarkerWindow extends React.Component {
             </div>
             <p>
               <a
-                href={`/api/armadillo/neurovault/${image_id}/qr`}
+                href={`/api/armadillo/neurovault/${imageId}/qr`}
                 target="_blank"
               >
                 <img
                   style={[styles.qrcode]}
                   className="img-fluid"
-                  src={`/api/armadillo/neurovault/${image_id}/qr`}
+                  src={`/api/armadillo/neurovault/${imageId}/qr`}
                 />
               </a>
               <a
-                href={`https://neurovault.org/images/${image_id}`}
+                href={`https://neurovault.org/images/${imageId}`}
                 target="_blank"
                 style={[styles.neurovaultLabel]}
               >
-                {`NeuroVault Image: ${image_id}`}
+                {`NeuroVault Image: ${imageId}`}
               </a>
             </p>
             <div style={[styles.footer]}>

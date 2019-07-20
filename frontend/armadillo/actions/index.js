@@ -31,9 +31,9 @@ export const setCommit = (commit) => ({
     commit,
   },
 });
-export const setArmaFile = (arma_file) => ({
+export const setArmaFile = (armaFile) => ({
   type: SET_ARMA_FILE,
   payload: {
-    arma_file,
+    armaFile,
   },
 });

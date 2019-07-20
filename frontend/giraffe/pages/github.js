@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 
 import Repository from './repository';

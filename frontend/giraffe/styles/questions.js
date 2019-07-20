@@ -1,5 +1,3 @@
-import styleSheet from '../constants/styles';
-
 const styles = {
   container: {
     marginTop: '3rem',

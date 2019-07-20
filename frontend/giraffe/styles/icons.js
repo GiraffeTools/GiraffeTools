@@ -1,5 +1,3 @@
-import styleSheet from '../constants/styles';
-
 const styles = {
   github: {
     width: '1.25rem',

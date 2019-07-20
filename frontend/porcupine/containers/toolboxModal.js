@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 
 import ToolboxModal from '../components/modals/toolboxModal';
-import {closeModal, toggleToolbox} from '../actions';
+import {toggleToolbox} from '../actions';
 
 const mapStateToProps = (state) => ({
   toolboxes: state.ui.toolboxes,

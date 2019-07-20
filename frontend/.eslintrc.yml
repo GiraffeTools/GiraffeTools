@@ -3,6 +3,7 @@ env:
   es6: true
 extends:
   - google
+  - plugin:react/recommended
 globals:
   Atomics: readonly
   SharedArrayBuffer: readonly
@@ -13,4 +14,6 @@ parserOptions:
   sourceType: module
 plugins:
   - react
-rules: {}
+rules:
+  require-jsdoc: 0
+  react/prop-types: 0

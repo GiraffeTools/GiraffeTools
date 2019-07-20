@@ -1,6 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
-const BundleTracker = require('webpack-bundle-tracker');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const outputPath = process.env.WEBPACK_FOLDER_NODE

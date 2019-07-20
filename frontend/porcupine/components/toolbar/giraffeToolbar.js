@@ -54,13 +54,10 @@ class GiraffeToolbar extends React.Component {
   render() {
     const {
       copyItems,
-      copyNodes,
       clearDatabase,
       deleteSelection,
-      modifyZoom,
       selection,
       zoomToFit,
-      addSticky,
     } = this.props;
 
     const menu = [

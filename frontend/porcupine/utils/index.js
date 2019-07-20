@@ -2,7 +2,8 @@ export function isUUID(str) {
   const match =
     typeof str === 'string' &&
     str.match(
-        /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/
+        // eslint-disable-next-line
+      /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/
     );
   return match != null && str == match[0];
 }

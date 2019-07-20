@@ -10,12 +10,12 @@ class Language extends Model {
         Language.all().delete();
         break;
       case ADD_NODE:
-        const node_languages =
+        const nodeLanguages =
           Array.isArray(payload.code) && payload.code.map((c) => c.language);
-        node_languages &&
-          node_languages.forEach((node_language) => {
+        nodeLanguages &&
+          nodeLanguages.forEach((nodeLanguage) => {
             const language = Language.all()
-                .filter((language) => language.name === node_language)
+                .filter((language) => language.name === nodeLanguage)
                 .toModelArray()[0];
             if (language) {
               language.update({
@@ -26,7 +26,7 @@ class Language extends Model {
               });
             } else {
               Language.create({
-                name: node_language,
+                name: nodeLanguage,
                 nodes: [payload.id],
               });
             }

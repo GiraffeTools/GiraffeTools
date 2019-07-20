@@ -1,6 +1,4 @@
-import {v4} from 'uuid';
-import {load as loadYaml} from 'yaml-js';
-import {isUUID} from '../utils';
+import {} from '../utils';
 import {getCsrfToken} from '../../giraffe/utils/auth';
 import {API_HOST} from '../../giraffe/config';
 import to from 'await-to-js';
@@ -32,9 +30,9 @@ export async function savePorkFile(content) {
     Object.keys(files).forEach((name) => (fileContent[name] = files[name]))
   );
 
-  const {pork_file} = content;
+  const {porkFilename} = content;
   const contents = {
-    [pork_file]: JSON.stringify(porkFile(nodes, links, allStickies), null, 2),
+    [porkFilename]: JSON.stringify(porkFile(nodes, links, allStickies), null, 2),
     ...fileContent,
   };
   debugger;
@@ -42,12 +40,12 @@ export async function savePorkFile(content) {
 }
 
 export async function initPorkFile(content) {
-  const giraffe_file = 'GIRAFFE.yml';
-  content.pork_file = 'GIRAFFE/porcupipeline.pork';
+  const giraffeFilename = 'GIRAFFE.yml';
+  content.porkFilename = 'GIRAFFE/porcupipeline.pork';
 
   const saveContent = await savePorkFile(content);
   const contents = {
-    [giraffe_file]: await (await fetch(
+    [giraffeFilename]: await (await fetch(
         '/static/assets/giraffe/GIRAFFE.yml'
     )).text(),
     ...saveContent,
@@ -58,14 +56,14 @@ export async function initPorkFile(content) {
 
 export async function initGiraffeProject() {
   // #TODO hard-coded, for now
-  const giraffe_file = 'GIRAFFE.yml';
-  const pork_file = 'GIRAFFE/porcupipeline.pork';
+  const giraffeFilename = 'GIRAFFE.yml';
+  const porkFilename = 'GIRAFFE/porcupipeline.pork';
 
   const contents = {
-    [giraffe_file]: await (await fetch(
+    [giraffeFilename]: await (await fetch(
         '/static/assets/giraffe/GIRAFFE.yml'
     )).text(),
-    [pork_file]: JSON.stringify(porkFile(), null, 2),
+    [porkFilename]: JSON.stringify(porkFile(), null, 2),
   };
 
   return contents;

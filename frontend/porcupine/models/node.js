@@ -51,8 +51,8 @@ class Node extends Model {
         Node.create({...payload, name, width});
         break;
       case REMOVE_NODE:
-        const node_to_remove = Node.withId(payload.id);
-        const languages = node_to_remove.languages.toModelArray();
+        const nodeToRemove = Node.withId(payload.id);
+        const languages = nodeToRemove.languages.toModelArray();
         languages.forEach((language) => {
           language.update({
             nodes: language.nodes
@@ -62,7 +62,7 @@ class Node extends Model {
           });
           if (!language.nodes.toModelArray().length) language.delete();
         });
-        node_to_remove.delete();
+        nodeToRemove.delete();
         break;
       case UPDATE_NODE:
         const node = Node.withId(payload.nodeId);

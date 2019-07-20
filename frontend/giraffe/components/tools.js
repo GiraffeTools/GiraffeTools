@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 
 import Porcupine from './porcupine';
 import Armadillo from './armadillo';
-import Axolotl from './axolotl';
+// import Axolotl from './axolotl';
 import styles from '../styles/tools';
 
 const Tools = () => (

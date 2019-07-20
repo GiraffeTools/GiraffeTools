@@ -22,7 +22,7 @@ class AugmentedRealityScene extends React.Component {
   }
 
   render() {
-    const {image_id} = this.props;
+    const {imageId} = this.props;
 
     return (
       <a-scene
@@ -34,12 +34,12 @@ class AugmentedRealityScene extends React.Component {
         <a-assets>
           <a-asset-item
             id="rh-model"
-            src={`/api/armadillo/neurovault/${image_id}/models/right`}
+            src={`/api/armadillo/neurovault/${imageId}/models/right`}
             crossOrigin="anonymous"
           />
           <a-asset-item
             id="lh-model"
-            src={`/api/armadillo/neurovault/${image_id}/models/left`}
+            src={`/api/armadillo/neurovault/${imageId}/models/left`}
             crossOrigin="anonymous"
           />
         </a-assets>
