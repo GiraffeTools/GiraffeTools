@@ -6,6 +6,7 @@ import CustomDragLayer from "../../draggables/customDragLayer";
 import ZoomMenu from "./menuSlider";
 import Links from "./links";
 import Nodes from "./nodes";
+import Stickies from "./stickies";
 import Toolbar from "../../containers/toolbar";
 import styles from "../../styles/graphView";
 
@@ -194,12 +195,50 @@ class GraphView extends React.Component {
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
+
+        <linearGradient id="linearGradient4752">
+          <stop id="stop4754" offset="0" stopColor="#fed661" stopOpacity={1} />
+          <stop id="stop4756" offset="1" stopColor="#edc63d" stopOpacity={1} />
+        </linearGradient>
+
+        <linearGradient id="linearGradient4701">
+          <stop stopColor="#fed661" stopOpacity={1} offset="0" id="stop4703" />
+          <stop stopColor="#fed12f" stopOpacity={1} offset="1" id="stop4705" />
+        </linearGradient>
+
+        <linearGradient
+          xlinkHref="#linearGradient4701"
+          id="linearGradient4763"
+          gradientUnits="userSpaceOnUse"
+          x1="318.57144"
+          y1="42.17857"
+          x2="294.28571"
+          y2="437.89285"
+        />
+        <linearGradient
+          xlinkHref="#linearGradient4752"
+          id="linearGradient4765"
+          gradientUnits="userSpaceOnUse"
+          x1="187.14285"
+          y1="465.03571"
+          x2="151.27034"
+          y2="308.62051"
+        />
+        <linearGradient
+          xlinkHref="#linearGradient4701"
+          id="linearGradient4767"
+          gradientUnits="userSpaceOnUse"
+          x1="344.97217"
+          y1="418.97968"
+          x2="515.17273"
+          y2="418.97968"
+        />
       </defs>
     );
   }
 
   render() {
-    const { nodes, links, deleteSelection } = this.props;
+    const { nodes, links, stickies, deleteSelection } = this.props;
     const view = d3.select(this.view);
     const viewNode = view.node();
     if (viewNode) {
@@ -219,6 +258,7 @@ class GraphView extends React.Component {
             <g className="view" ref={el => (this.view = el)}>
               <Background />
               <g className="entities" ref={el => (this.entities = el)}>
+                <Stickies stickies={stickies} />
                 <Nodes nodes={nodes} />
                 <Links links={links} />
                 <CustomDragLayer />

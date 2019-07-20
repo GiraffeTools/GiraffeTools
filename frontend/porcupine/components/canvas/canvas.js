@@ -233,6 +233,7 @@ class Canvas extends React.PureComponent {
     const {
       addNode,
       addLink,
+      addSticky,
       clearDatabase,
       updateNode,
       updateLoadingPercent
@@ -251,7 +252,7 @@ class Canvas extends React.PureComponent {
     }
     updateLoadingPercent(50); // Loading finished!
 
-    const { nodes, links } = response;
+    const { nodes, links, stickies } = response;
     try {
       let i = 0;
       nodes.forEach(node => {
@@ -263,7 +264,11 @@ class Canvas extends React.PureComponent {
       i = 0;
       links.forEach(link => {
         addLink(link);
-        updateLoadingPercent(80 + (20 * i++) / links.length);
+        updateLoadingPercent(80 + (10 * i++) / links.length);
+      });
+      stickies.forEach(sticky => {
+        addSticky(sticky);
+        updateLoadingPercent(90 + (10 * i++) / links.length);
       });
     } catch (error) {
       updateLoadingPercent(-1);
@@ -277,7 +282,13 @@ class Canvas extends React.PureComponent {
   }
 
   render() {
-    const { connectDropTarget, nodes, links, loadingPercent } = this.props;
+    const {
+      nodes,
+      links,
+      stickies,
+      connectDropTarget,
+      loadingPercent
+    } = this.props;
     return connectDropTarget(
       <div style={styles.canvas}>
         <GiraffeLoader percent={loadingPercent} />
@@ -285,6 +296,7 @@ class Canvas extends React.PureComponent {
           ref={this.graphview}
           nodes={nodes}
           links={links}
+          stickies={stickies}
           deleteSelection={this.deleteSelection}
         />
       </div>

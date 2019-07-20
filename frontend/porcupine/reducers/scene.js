@@ -5,16 +5,20 @@ import {
   HOVER_PORT,
   CLICK_ITEM,
   COPY_NODES,
+  SET_MOUSE_STATE,
+  REMOVE_LINK,
   REMOVE_NODE,
-  SET_MOUSE_STATE
+  REMOVE_STICKY
 } from "../actions/actionTypes";
 
+const EMPTY_SELECTION = {
+  links: null,
+  nodes: null,
+  stickies: null
+};
 const INITIAL_STATE = {
   hoveredPort: null,
-  selection: {
-    links: null,
-    nodes: null
-  },
+  selection: EMPTY_SELECTION,
   copyNodes: null
 };
 
@@ -26,7 +30,10 @@ export default function scene(state = INITIAL_STATE, action) {
     case ZOOM_OUT:
       return state;
     case ADD_NODE:
-      return { ...state, selection: { nodes: [payload.id], links: null } };
+      return {
+        ...state,
+        selection: { nodes: [payload.id], links: null, stickies: null }
+      };
     case HOVER_PORT:
       return {
         ...state,
@@ -34,16 +41,24 @@ export default function scene(state = INITIAL_STATE, action) {
       };
     case COPY_NODES:
       return { ...state, copyNodes: payload.nodeIds };
+    case REMOVE_LINK:
     case REMOVE_NODE:
+    case REMOVE_STICKY:
       return {
         ...state,
-        selection: {
-          links: state.selection.links,
-          nodes: null
-        }
+        selection: EMPTY_SELECTION
       };
     case CLICK_ITEM:
       const selection = {
+        stickies:
+          payload.item === "sticky" &&
+          !(
+            state.selection.stickies &&
+            state.selection.stickies.includes(payload.id) &&
+            state.selection.stickies.length == 1
+          )
+            ? [payload.id]
+            : null,
         nodes:
           payload.item === "node" &&
           !(

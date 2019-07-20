@@ -9,7 +9,8 @@ import store from "../store";
 import {
   nodesWithParameters,
   linksWithPortsAndNodes,
-  languageNames
+  languageNames,
+  stickies
 } from "../selectors/selectors";
 
 export async function savePorkFile(content) {
@@ -18,6 +19,7 @@ export async function savePorkFile(content) {
 
   const nodes = nodesWithParameters(state);
   const links = linksWithPortsAndNodes(state);
+  const allStickies = stickies(state);
   const languages = languageNames(state);
 
   const saveFiles = await Promise.all(
@@ -32,10 +34,10 @@ export async function savePorkFile(content) {
 
   const { pork_file } = content;
   const contents = {
-    [pork_file]: JSON.stringify(porkFile(nodes, links), null, 2),
+    [pork_file]: JSON.stringify(porkFile(nodes, links, allStickies), null, 2),
     ...fileContent
   };
-
+  debugger;
   return contents;
 }
 
@@ -89,16 +91,25 @@ export async function pushToGithub(commit, contents) {
   return error || response;
 }
 
-const porkFile = (nodes, links) => {
+const porkFile = (nodes, links, allStickies) => {
   return {
     links: links && linksToSaveDict(links),
     nodes: nodes && nodesToSaveDict(nodes),
+    stickies: stickies && stickiesToSaveDict(allStickies),
     version: "v1"
   };
 };
 
+const stickiesToSaveDict = allStickies =>
+  allStickies.map(sticky => ({
+    id: sticky.id,
+    title: sticky.title,
+    content: sticky.content
+  }));
+
 const linksToSaveDict = links =>
   links.map(link => ({
+    id: link.id,
     from: link.portFrom.id,
     to: link.portTo.id
   }));
@@ -121,6 +132,7 @@ const nodesToSaveDict = nodes =>
       iterator: parameter.isIterable || false
     }));
     return {
+      id: node.id,
       name: node.name,
       class: node.class,
       ports: ports,

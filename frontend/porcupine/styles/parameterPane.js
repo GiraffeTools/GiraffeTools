@@ -11,10 +11,12 @@ const styles = {
     maxWidth: "400px",
     overflow: "auto",
     right: 0,
-    transition: "transform 0.1s",
-    transform: "translateX(100%)",
+    transition: "transform 0.2s",
     // boxShadow: "-5px 0px 10px #F3F3F3",
     zIndex: 10,
+    inactive: {
+      transform: "translateX(100%)"
+    },
     active: {
       transform: "translateX(0%)"
     }

@@ -14,9 +14,10 @@ export async function loadPorkFile(json, setPercent) {
 }
 
 async function loadingVersion1(json, setPercent) {
-  const { nodes, links } = json;
+  const { nodes, links, stickies } = json;
   const nodeData = [];
   const linkData = [];
+  const stickyData = [];
 
   // load nodes
   setPercent(20);
@@ -60,12 +61,22 @@ async function loadingVersion1(json, setPercent) {
   links &&
     links.forEach(link => {
       const newLink = {
-        id: v4(),
+        id: link.id || v4(),
         portFrom: link.from,
         portTo: link.to
       };
       linkData.push(newLink);
       // setPercent(30 + (20 * linkData.length) / links.length);
     });
-  return { nodes: nodeData, links: linkData };
+  stickies &&
+    stickies.forEach(sticky => {
+      const newSticky = {
+        id: sticky.id || v4(),
+        title: sticky.title,
+        content: sticky.content
+      };
+      stickyData.push(newSticky);
+      // setPercent(30 + (20 * linkData.length) / links.length);
+    });
+  return { nodes: nodeData, links: linkData, stickies: stickyData };
 }

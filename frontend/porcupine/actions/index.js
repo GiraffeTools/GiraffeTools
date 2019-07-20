@@ -26,7 +26,10 @@ import {
   CLOSE_MODAL,
   TOGGLE_TOOLBOX,
   ADD_TOOLBOX_NODES,
-  ADD_GRAMMAR
+  ADD_GRAMMAR,
+  ADD_STICKY,
+  UPDATE_STICKY,
+  REMOVE_STICKY
 } from "./actionTypes";
 import { UPDATE_AUTH } from "../../giraffe/actions/actionTypes";
 
@@ -65,6 +68,25 @@ export const toggleToolbox = toolbox => ({
   type: TOGGLE_TOOLBOX,
   payload: {
     toolbox
+  }
+});
+
+///// STICKY /////
+export const addSticky = props => ({
+  type: ADD_STICKY,
+  payload: props
+});
+export const updateSticky = (id, newValues) => ({
+  type: UPDATE_STICKY,
+  payload: {
+    id,
+    newValues
+  }
+});
+export const deleteSticky = id => ({
+  type: REMOVE_STICKY,
+  payload: {
+    id
   }
 });
 

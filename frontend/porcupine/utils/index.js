@@ -39,3 +39,8 @@ export function camelToSnake(s) {
 export function capitaliseFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+export function truncateString(string, maxLength) {
+  if (string.length > maxLength) return string.substring(0, maxLength) + "...";
+  else return string;
+}

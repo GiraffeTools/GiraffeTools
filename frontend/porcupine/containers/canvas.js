@@ -2,10 +2,15 @@ import { connect } from "react-redux";
 
 import Canvas from "../components/canvas/canvas";
 
-import { nodesWithParameters, linksWithPorts } from "../selectors/selectors";
+import {
+  nodesWithParameters,
+  linksWithPorts,
+  stickies
+} from "../selectors/selectors";
 import {
   addNode,
   addLink,
+  addSticky,
   addGrammar,
   addToolboxNodes,
   clearDatabase,
@@ -22,13 +27,15 @@ const mapStateToProps = state => ({
   project: state.project,
   selection: state.scene.selection,
   nodes: nodesWithParameters(state),
-  links: linksWithPorts(state)
+  links: linksWithPorts(state),
+  stickies: stickies(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   addGrammar: grammar => dispatch(addGrammar(grammar)),
-  addNode: node => dispatch(addNode(node)),
   addLink: link => dispatch(addLink(link)),
+  addNode: node => dispatch(addNode(node)),
+  addSticky: sticky => dispatch(addSticky(sticky)),
   deleteNode: nodeId => dispatch(deleteNode(nodeId)),
   deleteLink: linkId => dispatch(deleteLink(linkId)),
   setPorkFile: porkfile => dispatch(setPorkFile(porkfile)),

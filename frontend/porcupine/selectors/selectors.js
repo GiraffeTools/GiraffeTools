@@ -2,6 +2,14 @@ import { createSelector } from "redux-orm";
 
 import orm from "../models";
 
+export const stickies = createSelector(
+  orm,
+  state => state.orm,
+  session => {
+    return session.Sticky.all().toRefArray();
+  }
+);
+
 export const nodes = createSelector(
   orm,
   state => state.orm,
@@ -50,38 +58,70 @@ export const copiedNodes = createSelector(
   }
 );
 
-export const selectedNode = createSelector(
+export const selection = createSelector(
   orm,
   state => state.orm,
   state => state.scene.selection,
   (orm, selection) => {
-    if (!selection || !selection.nodes || selection.nodes.length != 1) {
+    if (!selection) {
       return null;
     }
-    const node = orm.Node.withId(selection.nodes[0]);
-    if (!node) {
-      return null;
+    const { links, nodes, stickies } = selection;
+    // exctly one selected item:
+    if (
+      (nodes && nodes.length) +
+        (links && links.length) +
+        (stickies && stickies.length) ==
+      1
+    ) {
+      if (nodes && nodes.length == 1) {
+        const node = orm.Node.withId(nodes[0]);
+        return { type: "node", ...selectedNode(orm, node) };
+      } else if (links && links.length == 1) {
+        const link = orm.Link.withId(links[0]);
+        return { type: "link", ...selectedLink(orm, link) };
+      } else if (stickies && stickies.length == 1) {
+        const sticky = orm.Sticky.withId(stickies[0]);
+        return { type: "sticky", ...selectedSticky(orm, sticky) };
+      }
     }
-
-    const parameters =
-      node.parameters &&
-      node.parameters.toModelArray().map(parameterRef => {
-        const parameter = orm.Parameter.withId(parameterRef.id);
-
-        const inputLinks =
-          parameter.input && parameter.input.inputLinks
-            ? parameter.input.inputLinks.toRefArray()
-            : [];
-        const outputLinks =
-          parameter.output && parameter.output.outputLinks
-            ? parameter.output.outputLinks.toRefArray()
-            : [];
-
-        return { ...parameter.ref, outputLinks, inputLinks };
-      });
-    return { ...node.ref, parameters };
+    return null;
   }
 );
+
+export const selectedNode = (orm, node) => {
+  if (!node) {
+    return null;
+  }
+  const parameters =
+    node.parameters &&
+    node.parameters.toModelArray().map(parameterRef => {
+      const parameter = orm.Parameter.withId(parameterRef.id);
+
+      const inputLinks =
+        parameter.input && parameter.input.inputLinks
+          ? parameter.input.inputLinks.toRefArray()
+          : [];
+      const outputLinks =
+        parameter.output && parameter.output.outputLinks
+          ? parameter.output.outputLinks.toRefArray()
+          : [];
+
+      return { ...parameter.ref, outputLinks, inputLinks };
+    });
+  return { ...node.ref, parameters };
+};
+
+export const selectedLink = (orm, link) => {
+  return null;
+};
+
+export const selectedSticky = (orm, sticky) => {
+  if (!sticky) {
+    return null;
+  }
+  return { ...sticky.ref };
+};
 
 export const links = createSelector(
   orm,

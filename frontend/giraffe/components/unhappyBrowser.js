@@ -27,9 +27,7 @@ const minimumBrowsers = {
 
 const UnhappyBrowser = () => {
   const [cookies, setCookie] = useCookies(["browser"]);
-  //this is a bug in react-device-detect,  fullBrowserVersion should be browserVersion
-  const happy = isChrome && parseInt(fullBrowserVersion) > 42;
-
+  const happy = isChrome && parseInt(browserVersion) > 42;
   if (happy || cookies.browser === "closed") return null;
 
   return (

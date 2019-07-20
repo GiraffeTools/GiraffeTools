@@ -20,6 +20,7 @@ class GiraffeToolbar extends React.Component {
   constructor(props) {
     super(props);
     this.pasteNodes = this.pasteNodes.bind(this);
+    this.addPostIt = this.addPostIt.bind(this);
   }
 
   pasteNodes() {
@@ -45,6 +46,11 @@ class GiraffeToolbar extends React.Component {
       });
   }
 
+  addPostIt() {
+    const { addSticky } = this.props;
+    addSticky({ id: v4(), title: "name", content: "my memo" });
+  }
+
   render() {
     const {
       copyItems,
@@ -53,9 +59,11 @@ class GiraffeToolbar extends React.Component {
       deleteSelection,
       modifyZoom,
       selection,
-      zoomToFit
+      zoomToFit,
+      addSticky
     } = this.props;
-    var menu = [
+
+    const menu = [
       {
         text: "File",
         items: [
@@ -158,6 +166,20 @@ class GiraffeToolbar extends React.Component {
             //   </span>
             // ),
             callback: zoomToFit
+          }
+        ]
+      },
+      {
+        text: "Post-it",
+        items: [
+          {
+            text: (
+              <span>
+                <i className="fas fa-sticky-note" style={styles.icon} />
+                Add post-it
+              </span>
+            ),
+            callback: this.addPostIt
           }
         ]
       }

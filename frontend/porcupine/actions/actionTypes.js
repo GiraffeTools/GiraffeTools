@@ -19,6 +19,7 @@ export const REMOVE_LINK = "REMOVE_LINK";
 ///// STICKYS /////
 export const ADD_STICKY = "ADD_STICKY";
 export const REMOVE_STICKY = "REMOVE_STICKY";
+export const UPDATE_STICKY = "UPDATE_STICKY";
 
 ///// UI /////
 export const TOGGLE_SIDEBAR = "TOGGLE_SIDEBAR";

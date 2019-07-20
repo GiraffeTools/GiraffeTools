@@ -38,7 +38,7 @@ class Node extends React.Component {
   }
 
   drag() {
-    const { x, y, width, id, updateNode } = this.props;
+    const { x, y, id, updateNode } = this.props;
     let dx = 0,
       dy = 0;
     function dragged() {
