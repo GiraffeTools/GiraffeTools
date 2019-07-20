@@ -1,12 +1,12 @@
-import { connect } from "react-redux";
+import {connect} from 'react-redux';
 
-import Canvas from "../components/canvas/canvas";
+import Canvas from '../components/canvas/canvas';
 
 import {
   nodesWithParameters,
   linksWithPorts,
-  stickies
-} from "../selectors/selectors";
+  stickies,
+} from '../selectors/selectors';
 import {
   addNode,
   addLink,
@@ -19,19 +19,19 @@ import {
   deleteNode,
   deleteLink,
   updateLoadingPercent,
-  setPorkFile
-} from "../actions";
+  setPorkFile,
+} from '../actions';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   loadingPercent: state.ui.loadingPercent,
   project: state.project,
   selection: state.scene.selection,
   nodes: nodesWithParameters(state),
   links: linksWithPorts(state),
-  stickies: stickies(state)
+  stickies: stickies(state),
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   addGrammar: (grammar) => dispatch(addGrammar(grammar)),
   addLink: (link) => dispatch(addLink(link)),
   addNode: (node) => dispatch(addNode(node)),
@@ -43,14 +43,14 @@ const mapDispatchToProps = dispatch => ({
   updateLoadingPercent: (percent) => dispatch(updateLoadingPercent(percent)),
   updateNode: (nodeId, offset) => dispatch(updateNode(nodeId, offset)),
   addToolboxNodes: (toolbox) => dispatch(addToolboxNodes(toolbox)),
-  clearDatabase: () => dispatch(clearDatabase())
+  clearDatabase: () => dispatch(clearDatabase()),
 });
 
 const CanvasContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-  null,
-  { forwardRef: true }
+    mapStateToProps,
+    mapDispatchToProps,
+    null,
+    {forwardRef: true}
 )(Canvas);
 
 export default CanvasContainer;

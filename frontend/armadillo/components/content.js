@@ -1,42 +1,42 @@
-import React from "react";
-import Radium from "radium";
-import { load as loadYaml } from "yaml-js";
+import React from 'react';
+import Radium from 'radium';
+import {load as loadYaml} from 'yaml-js';
 
-import AugmentedRealityScene from "./augmentedRealityScene";
-import MarkerWindow from "./markerWindow";
-import { isGitHash } from "../utils";
-import styles from "../styles/content";
+import AugmentedRealityScene from './augmentedRealityScene';
+import MarkerWindow from './markerWindow';
+import {isGitHash} from '../utils';
+import styles from '../styles/content';
 
-import "aframe";
+import 'aframe';
 class Content extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       image_id: null,
-      aframe_loaded: false
+      aframe_loaded: false,
     };
   }
 
   async componentWillMount() {
-    const script = document.createElement("script");
-    script.src = "/static/js/aframe-ar.js";
+    const script = document.createElement('script');
+    script.src = '/static/js/aframe-ar.js';
     script.async = false;
     document.head.appendChild(script);
 
     const check_aframe = async () => {
       if (window.AFRAME !== undefined) {
-        this.setState({ aframe_loaded: true });
+        this.setState({aframe_loaded: true});
         clearInterval(this.interval);
       }
     };
     this.interval = setInterval(check_aframe, 1000);
 
-    const { username, repository, branchOrCommit } = this.props.match.params;
-    const { setUser, setRepository, setBranch, setCommit } = this.props;
+    const {username, repository, branchOrCommit} = this.props.match.params;
+    const {setUser, setRepository, setBranch, setCommit} = this.props;
     setUser(username);
     setRepository(repository);
-    let identifierString = branchOrCommit || "master";
-    let isCommit = isGitHash(branchOrCommit);
+    const identifierString = branchOrCommit || 'master';
+    const isCommit = isGitHash(branchOrCommit);
     setCommit(isCommit && identifierString);
     setBranch(!isCommit && identifierString);
 
@@ -45,19 +45,19 @@ class Content extends React.Component {
 
     const configuration = await fetch(configFile);
     if (!configuration.ok) {
-      console.log("GiraffeTools configuration file cannot be loaded");
+      console.log('GiraffeTools configuration file cannot be loaded');
       return;
     }
     const yamlData = loadYaml(await configuration.text());
     const armadilloFile = yamlData.tools.armadillo.neurovault[0];
     this.setState({
-      image_id: armadilloFile
+      image_id: armadilloFile,
     });
   }
 
   render() {
-    const { username, repository } = this.props.match.params;
-    const { image_id, aframe_loaded } = this.state;
+    const {username, repository} = this.props.match.params;
+    const {image_id, aframe_loaded} = this.state;
 
     return (
       <div>
@@ -68,10 +68,10 @@ class Content extends React.Component {
         />
         {image_id &&
           aframe_loaded && (
-            <div id="camdiv">
-              <AugmentedRealityScene image_id={image_id} />
-            </div>
-          )}
+          <div id="camdiv">
+            <AugmentedRealityScene image_id={image_id} />
+          </div>
+        )}
       </div>
     );
   }

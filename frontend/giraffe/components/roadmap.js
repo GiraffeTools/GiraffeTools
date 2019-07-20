@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
-import Radium from "radium";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
+import React, {Fragment} from 'react';
+import Radium from 'radium';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 
-import styles from "../styles/roadmap.js";
+import styles from '../styles/roadmap.js';
 
-const Event = event => (
+const Event = (event) => (
   <Col>
     <div>{event.year}</div>
     <svg width="60" height="60">
@@ -25,11 +25,11 @@ const StyledEvent = Radium(Event);
 
 const Roadmap = () => {
   const events = [
-    { year: 2015, description: "Started Porcupine development" },
-    { year: 2017, description: "Stand-alone Porcupine finished" },
-    { year: 2018, description: "Web version GiraffeTools started" },
-    { year: 2019, description: "GiraffeTools launched" },
-    { year: 2020, description: "we are on the moon" }
+    {year: 2015, description: 'Started Porcupine development'},
+    {year: 2017, description: 'Stand-alone Porcupine finished'},
+    {year: 2018, description: 'Web version GiraffeTools started'},
+    {year: 2019, description: 'GiraffeTools launched'},
+    {year: 2020, description: 'we are on the moon'},
   ];
 
   return (
@@ -46,7 +46,7 @@ const Roadmap = () => {
         />
       </svg>
       <div style={styles.roadmapElements}>
-        {events.map(event => (
+        {events.map((event) => (
           <StyledEvent key={event.year} {...event} />
         ))}
       </div>

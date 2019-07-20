@@ -1,17 +1,17 @@
-import { v4 } from "uuid";
-import React from "react";
-import { DropTarget } from "react-dnd";
-import { load as loadYaml } from "yaml-js";
-import to from "await-to-js";
+import {v4} from 'uuid';
+import React from 'react';
+import {DropTarget} from 'react-dnd';
+import {load as loadYaml} from 'yaml-js';
+import to from 'await-to-js';
 
-import ItemTypes from "../../draggables/itemTypes";
-import GraphView from "./graphView";
-import { camelToSnake } from "../../utils";
-import GiraffeLoader from "./giraffeLoader";
-import { loadPorkFile } from "../../utils/loadPorkFile";
-import defaultGenerators from "../../utils/codeGenerators";
-import scriptToGenerator from "../../utils/dynamicImport";
-import styles from "../../styles/canvas";
+import ItemTypes from '../../draggables/itemTypes';
+import GraphView from './graphView';
+import {camelToSnake} from '../../utils';
+import GiraffeLoader from './giraffeLoader';
+import {loadPorkFile} from '../../utils/loadPorkFile';
+import defaultGenerators from '../../utils/codeGenerators';
+import scriptToGenerator from '../../utils/dynamicImport';
+import styles from '../../styles/canvas';
 
 const boxTarget = {
   drop(props, monitor, component) {
@@ -33,30 +33,30 @@ const boxTarget = {
       case ItemTypes.NODE:
         x = Math.round(item.x + x);
         y = Math.round(item.y + y);
-        props.updateNode(item.id, { x, y });
+        props.updateNode(item.id, {x, y});
         break;
       case ItemTypes.PANE_ELEMENT:
         const contentPosition = monitor.getSourceClientOffset();
-        const { addNode, updateNode } = props;
+        const {addNode, updateNode} = props;
         const templateNode = item.category;
         const name = camelToSnake(templateNode.name);
         const className = templateNode.name;
         const code = templateNode.code;
         const parameters =
           templateNode.ports &&
-          templateNode.ports.map(parameter => ({
+          templateNode.ports.map((parameter) => ({
             ...parameter,
             id: v4(),
             node: templateNode.id,
-            value: parameter.value || parameter.default || "",
+            value: parameter.value || parameter.default || '',
             input: parameter.input ? v4() : null,
             output: parameter.output ? v4() : null,
             type: parameter.type,
             isVisible: parameter.visible,
-            isEditable: parameter.editable
+            isEditable: parameter.editable,
           }));
 
-        let transform = component.graphview.current.getViewTransform();
+        const transform = component.graphview.current.getViewTransform();
         const zoom = transform.k;
 
         const newNode = {
@@ -70,10 +70,10 @@ const boxTarget = {
               transform.x) /
             zoom,
           y: (contentPosition.y - transform.y) / zoom,
-          colour: templateNode.colour || "#BBB",
+          colour: templateNode.colour || '#BBB',
           parameters,
-          web_url: templateNode.web_url || "",
-          code: code || ""
+          web_url: templateNode.web_url || '',
+          code: code || '',
         };
 
         addNode(newNode);
@@ -85,8 +85,8 @@ const boxTarget = {
         break;
     }
 
-    return { name: "Canvas" };
-  }
+    return {name: 'Canvas'};
+  },
 };
 
 class Canvas extends React.PureComponent {
@@ -103,10 +103,10 @@ class Canvas extends React.PureComponent {
     // This also responds when a backspace is pressed while updating parameters.
     // #TODO, make this conditional on the window being active
     switch (event.key) {
-      case "Delete":
+      case 'Delete':
         // this.deleteSelection();
         break;
-      case "Backspace":
+      case 'Backspace':
         // this.deleteSelection();
         break;
       default:
@@ -115,26 +115,26 @@ class Canvas extends React.PureComponent {
   }
 
   deleteSelection() {
-    const { selection, deleteNode, deleteLink } = this.props;
+    const {selection, deleteNode, deleteLink} = this.props;
     selection &&
       selection.nodes &&
-      selection.nodes.forEach(node => {
+      selection.nodes.forEach((node) => {
         deleteNode(node);
       });
     selection &&
       selection.links &&
-      selection.links.forEach(link => {
+      selection.links.forEach((link) => {
         deleteLink(link);
       });
   }
 
   async componentDidMount() {
-    const { addGrammar } = this.props;
-    const generators = defaultGenerators().map(generator =>
-      addGrammar({ ...generator })
+    const {addGrammar} = this.props;
+    const generators = defaultGenerators().map((generator) =>
+      addGrammar({...generator})
     );
     Promise.all(generators);
-    document.addEventListener("keydown", this.handleKeyPress, false);
+    document.addEventListener('keydown', this.handleKeyPress, false);
   }
 
   // this is called via ref from content
@@ -145,11 +145,11 @@ class Canvas extends React.PureComponent {
       addToolboxNodes,
       addGrammar,
       clickItem,
-      updateLoadingPercent
+      updateLoadingPercent,
     } = this.props;
-    const { user, repository, branch, commit } = project;
+    const {user, repository, branch, commit} = project;
     if (!user || !repository || (!branch && !commit)) {
-      console.log("No username, repository, or branch provided");
+      console.log('No username, repository, or branch provided');
       return;
     }
 
@@ -159,11 +159,11 @@ class Canvas extends React.PureComponent {
 
     const configuration = await fetch(configFile);
     if (!configuration.ok) {
-      console.log("GiraffeTools configuration file cannot be loaded");
+      console.log('GiraffeTools configuration file cannot be loaded');
       return;
     }
 
-    const { loadFromJson, graphview } = this;
+    const {loadFromJson, graphview} = this;
     async function loadContent(porkfiles) {
       if (!porkfiles || !porkfiles.length) return;
 
@@ -172,7 +172,7 @@ class Canvas extends React.PureComponent {
       setPorkFile(file);
       const porkData = await fetch(`${baseName}/${file}`);
       if (!porkData.ok) {
-        console.log("Pork file cannot be loaded");
+        console.log('Pork file cannot be loaded');
       }
       const content = await porkData.json();
       try {
@@ -180,14 +180,14 @@ class Canvas extends React.PureComponent {
         clickItem(null);
         graphview.current.handleZoomToFit();
       } catch (error) {
-        console.log("Cannot load Porcupine Config file:");
+        console.log('Cannot load Porcupine Config file:');
         console.log(error);
         updateLoadingPercent(-1);
       }
     }
-    const loadCustomNodes = nodeFiles => {
+    const loadCustomNodes = (nodeFiles) => {
       if (!nodeFiles || !nodeFiles.length) return;
-      nodeFiles.forEach(async nodeFile => {
+      nodeFiles.forEach(async (nodeFile) => {
         // does file start with http(s)?
         const url = /^(f|ht)tps?:\/\//i.test(nodeFile)
           ? nodeFile
@@ -197,11 +197,11 @@ class Canvas extends React.PureComponent {
       });
     };
 
-    const loadGrammars = grammars => {
+    const loadGrammars = (grammars) => {
       if (!grammars || !grammars.length) return;
 
-      grammars.forEach(async grammar => {
-        const { script, language, format } = grammar;
+      grammars.forEach(async (grammar) => {
+        const {script, language, format} = grammar;
         // does file start with http(s)?
         const url = /^(f|ht)tps?:\/\//i.test(script)
           ? script
@@ -209,7 +209,7 @@ class Canvas extends React.PureComponent {
         addGrammar({
           language,
           format,
-          generator: await scriptToGenerator(url, grammar.language)
+          generator: await scriptToGenerator(url, grammar.language),
         });
       });
     };
@@ -217,16 +217,16 @@ class Canvas extends React.PureComponent {
     const yamlData = loadYaml(await configuration.text());
     if (!yamlData || !yamlData.tools || !yamlData.tools.porcupine) return;
 
-    const { file, files, nodes, grammars } = yamlData.tools.porcupine;
+    const {file, files, nodes, grammars} = yamlData.tools.porcupine;
     Promise.all([
       loadContent(file || files),
       loadCustomNodes(nodes),
-      loadGrammars(grammars)
+      loadGrammars(grammars),
     ]);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleKeyPress, false);
+    document.removeEventListener('keydown', this.handleKeyPress, false);
   }
 
   async loadFromJson(json) {
@@ -236,44 +236,44 @@ class Canvas extends React.PureComponent {
       addSticky,
       clearDatabase,
       updateNode,
-      updateLoadingPercent
+      updateLoadingPercent,
     } = this.props;
     updateLoadingPercent(10); // Loading started!
     clearDatabase();
 
     const [error, response] = await to(
-      loadPorkFile(json, updateLoadingPercent)
+        loadPorkFile(json, updateLoadingPercent)
     );
     if (error) {
       console.log(
-        "Error reading Porcupine Config file! Either data is missing or format is incorrect"
+          'Error reading Porcupine Config file! Either data is missing or format is incorrect'
       );
       return;
     }
     updateLoadingPercent(50); // Loading finished!
 
-    const { nodes, links, stickies } = response;
+    const {nodes, links, stickies} = response;
     try {
       let i = 0;
-      nodes.forEach(node => {
+      nodes.forEach((node) => {
         addNode(node);
         updateNode(node.id);
         updateLoadingPercent(50 + (30 * i++) / nodes.length);
       });
       updateLoadingPercent(80); // Nodes loaded!
       i = 0;
-      links.forEach(link => {
+      links.forEach((link) => {
         addLink(link);
         updateLoadingPercent(80 + (10 * i++) / links.length);
       });
-      stickies.forEach(sticky => {
+      stickies.forEach((sticky) => {
         addSticky(sticky);
         updateLoadingPercent(90 + (10 * i++) / links.length);
       });
     } catch (error) {
       updateLoadingPercent(-1);
       console.log(
-        "Error while adding Link or Node to Canvas, Check Porcupine Config file."
+          'Error while adding Link or Node to Canvas, Check Porcupine Config file.'
       );
       console.log(error);
       return;
@@ -287,26 +287,26 @@ class Canvas extends React.PureComponent {
       links,
       stickies,
       connectDropTarget,
-      loadingPercent
+      loadingPercent,
     } = this.props;
     return connectDropTarget(
-      <div style={styles.canvas}>
-        <GiraffeLoader percent={loadingPercent} />
-        <GraphView
-          ref={this.graphview}
-          nodes={nodes}
-          links={links}
-          stickies={stickies}
-          deleteSelection={this.deleteSelection}
-        />
-      </div>
+        <div style={styles.canvas}>
+          <GiraffeLoader percent={loadingPercent} />
+          <GraphView
+            ref={this.graphview}
+            nodes={nodes}
+            links={links}
+            stickies={stickies}
+            deleteSelection={this.deleteSelection}
+          />
+        </div>
     );
   }
 }
 export default DropTarget(
-  [ItemTypes.NODE, ItemTypes.PANE_ELEMENT],
-  boxTarget,
-  connect => ({
-    connectDropTarget: connect.dropTarget()
-  })
+    [ItemTypes.NODE, ItemTypes.PANE_ELEMENT],
+    boxTarget,
+    (connect) => ({
+      connectDropTarget: connect.dropTarget(),
+    })
 )(Canvas);

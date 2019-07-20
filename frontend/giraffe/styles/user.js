@@ -1,4 +1,4 @@
 const styles = {
-  userSection: {}
+  userSection: {},
 };
 export default styles;

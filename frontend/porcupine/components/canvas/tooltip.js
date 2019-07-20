@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import TooltipData from "./tooltipData";
+import TooltipData from './tooltipData';
 
-const Tooltip = ({ parameters }) => {
+const Tooltip = ({parameters}) => {
   const parametersWithValues =
-    parameters && parameters.filter(parameter => parameter.value !== "");
+    parameters && parameters.filter((parameter) => parameter.value !== '');
   const fieldHeight = 28;
 
   let parameterBlock;
   if (parametersWithValues.length == 0) {
     parameterBlock = (
       <text fill="white" y={fieldHeight / 2} x={8}>
-        {"No parameters set"}
+        {'No parameters set'}
       </text>
     );
   } else {

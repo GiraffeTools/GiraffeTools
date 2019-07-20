@@ -1,4 +1,4 @@
 const styles = {
-  main: {}
+  main: {},
 };
 export default styles;

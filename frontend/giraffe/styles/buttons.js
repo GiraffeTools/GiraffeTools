@@ -1,26 +1,26 @@
-import styleSheet from "../constants/styles";
+import styleSheet from '../constants/styles';
 
 const styles = {
   giraffeButton: {
-    fontFamily: "Nexa-Bold",
-    backgroundColor: styleSheet.primaryColor,
-    color: "white",
-    textAlign: "center",
-    borderColor: "none",
-    borderWidth: 0,
-    large: {
-      borderRadius: "2px"
+    'fontFamily': 'Nexa-Bold',
+    'backgroundColor': styleSheet.primaryColor,
+    'color': 'white',
+    'textAlign': 'center',
+    'borderColor': 'none',
+    'borderWidth': 0,
+    'large': {
+      borderRadius: '2px',
     },
-    small: {
-      fontSize: "1.7rem",
-      padding: "0.2rem 2rem",
-      borderRadius: "2px"
+    'small': {
+      fontSize: '1.7rem',
+      padding: '0.2rem 2rem',
+      borderRadius: '2px',
     },
-    ":hover": {
-      textDecoration: "none",
-      borderColor: "grey",
-      color: "black"
-    }
+    ':hover': {
+      textDecoration: 'none',
+      borderColor: 'grey',
+      color: 'black',
+    },
   },
 
   // .no-giraffe-button{
@@ -33,9 +33,9 @@ const styles = {
   // }
 
   githubButton: {
-    width: "15%",
-    marginRight: "0.5rem"
-  }
+    width: '15%',
+    marginRight: '0.5rem',
+  },
 };
 
 export default styles;

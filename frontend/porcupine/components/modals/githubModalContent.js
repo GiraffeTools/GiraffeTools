@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-require("../../scss/modals.scss");
+require('../../scss/modals.scss');
 
-const GithubModalContent = ({ repository, user, onChange }) => (
+const GithubModalContent = ({repository, user, onChange}) => (
   <div className="modal-body">
     <form>
       <div className="form-group">
@@ -13,7 +13,7 @@ const GithubModalContent = ({ repository, user, onChange }) => (
           name="github_user"
           disabled="True"
           value={user}
-          placeholder={"Please log in to save"}
+          placeholder={'Please log in to save'}
         />
       </div>
       <div className="form-group">
@@ -23,8 +23,8 @@ const GithubModalContent = ({ repository, user, onChange }) => (
           className="form-control"
           name="github_repo"
           onChange={onChange}
-          disabled={repository ? "True" : ""}
-          defaultValue={repository ? repository : ""}
+          disabled={repository ? 'True' : ''}
+          defaultValue={repository ? repository : ''}
           placeholder="New repository name"
         />
       </div>

@@ -1,28 +1,28 @@
-import React from "react";
-import Radium from "radium";
-import { Entity } from "aframe-react";
-import styles from "../styles/augmentedRealityScene";
+import React from 'react';
+import Radium from 'radium';
+import {Entity} from 'aframe-react';
+import styles from '../styles/augmentedRealityScene';
 // import ARjs from 'ar.js'
 
 class AugmentedRealityScene extends React.Component {
   async componentWillMount() {
-    AFRAME.registerComponent("model-overrider", {
+    AFRAME.registerComponent('model-overrider', {
       init: function() {
-        console.log("Add model overrider to add colours");
-        this.el.addEventListener("model-loaded", function(e) {
-          var model = e.detail.model;
+        console.log('Add model overrider to add colours');
+        this.el.addEventListener('model-loaded', function(e) {
+          const model = e.detail.model;
           model.traverse(function(o) {
             if (o instanceof THREE.Mesh) {
               o.material.vertexColors = THREE.VertexColors;
             }
           });
         });
-      }
+      },
     });
   }
 
   render() {
-    const { image_id } = this.props;
+    const {image_id} = this.props;
 
     return (
       <a-scene

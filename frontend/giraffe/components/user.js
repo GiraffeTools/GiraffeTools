@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 
-import ProfileBox from "./profileBox";
-import Projects from "./projects";
+import ProfileBox from './profileBox';
+import Projects from './projects';
 
-import styles from "../styles/user.js";
+import styles from '../styles/user.js';
 
-const User = ({ username }) => {
+const User = ({username}) => {
   // number of GiraffeTools projects
   const [activeProjects, setActiveProjects] = useState(0);
   return (

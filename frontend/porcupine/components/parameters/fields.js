@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import Field from "../../containers/field";
+import Field from '../../containers/field';
 
-const Fields = ({ parameters }) => (
+const Fields = ({parameters}) => (
   <form className="form-horizontal">
-    {parameters.map(parameter => (
+    {parameters.map((parameter) => (
       <Field {...parameter} key={parameter.id} />
     ))}
   </form>

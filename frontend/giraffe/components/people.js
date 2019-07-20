@@ -1,11 +1,11 @@
-import React from "react";
-import Radium from "radium";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
+import React from 'react';
+import Radium from 'radium';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
 
-import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
-import styles from "../styles/people.js";
-import componentStyles from "../styles/components.js";
+import SeparatorWithOpenCircle from './separatorWithOpenCircle';
+import styles from '../styles/people.js';
+import componentStyles from '../styles/components.js';
 
 const People = () => (
   <Container fluid={true} style={styles.people}>
@@ -28,7 +28,7 @@ const People = () => (
         <h3 style={[styles.peopleTitle]}>Dr. Tim van Mourik</h3>
         <SeparatorWithOpenCircle
           color="secondary"
-          thickness={"1px"}
+          thickness={'1px'}
           styleOverwrite={styles.componentStyles}
         />
         And I automatically create the code for your analysis pipeline. Get

@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import ToolbarItem from "./toolbarItem";
+import ToolbarItem from './toolbarItem';
 
-require("../../scss/toolbar.scss");
+require('../../scss/toolbar.scss');
 
-const Toolbar = props => {
-  const { menu, logo, brand, url } = props;
+const Toolbar = (props) => {
+  const {menu, logo, brand, url} = props;
 
   const items =
     menu &&
@@ -14,7 +14,7 @@ const Toolbar = props => {
         key={index}
         text={item.text}
         items={item.items}
-        callback={event => event.preventDefault()}
+        callback={(event) => event.preventDefault()}
       />
     ));
 

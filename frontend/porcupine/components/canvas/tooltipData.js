@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-const TooltipData = ({ name, type, value, height }) => {
+const TooltipData = ({name, type, value, height}) => {
   let inputElement;
-  if (type === "checkbox") {
-    inputElement = value ? "True" : "False";
+  if (type === 'checkbox') {
+    inputElement = value ? 'True' : 'False';
   } else {
     inputElement = value;
   }
@@ -12,7 +12,7 @@ const TooltipData = ({ name, type, value, height }) => {
   fieldText =
     fieldText.length < maxFieldWidth
       ? fieldText
-      : fieldText.substring(0, maxFieldWidth) + "...";
+      : fieldText.substring(0, maxFieldWidth) + '...';
 
   return (
     <text fill="white" y={height} x={8}>

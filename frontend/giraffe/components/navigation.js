@@ -1,8 +1,8 @@
-import React, { Fragment, useState } from "react";
-import Container from "react-bootstrap/Container";
+import React, {Fragment, useState} from 'react';
+import Container from 'react-bootstrap/Container';
 
-import NavMenu from "../containers/navMenu";
-import styles from "../styles/navigation.js";
+import NavMenu from '../containers/navMenu';
+import styles from '../styles/navigation.js';
 
 const Navigation = () => {
   const [open, toggleNavigation] = useState(false);
@@ -10,7 +10,7 @@ const Navigation = () => {
     <Container>
       <img
         style={styles.navTriangle}
-        src={"/static/img/nav_triangle.svg"}
+        src={'/static/img/nav_triangle.svg'}
         onClick={() => toggleNavigation(!open)}
         aria-controls="collapse-menu"
         aria-expanded={open}
@@ -19,7 +19,7 @@ const Navigation = () => {
       <Container
         style={{
           ...styles.navMenu,
-          ...styles.navMenu[open ? "open" : "closed"]
+          ...styles.navMenu[open ? 'open' : 'closed'],
         }}
       >
         <NavMenu />

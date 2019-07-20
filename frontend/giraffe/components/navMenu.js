@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
-import Radium from "radium";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
+import React, {Fragment} from 'react';
+import Radium from 'radium';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
-import styles from "../styles/navigation.js";
-const NavMenu = props => {
-  const { user } = props;
+import styles from '../styles/navigation.js';
+const NavMenu = (props) => {
+  const {user} = props;
 
   return (
     <Fragment>
@@ -83,14 +83,14 @@ const NavMenu = props => {
         </Nav.Item>
         {user &&
           user.access_token && (
-            <Nav.Item className="border-bottom">
-              <Nav.Link href="/_oauth/logout/">
-                <h3 style={[styles.navItem]} key={9}>
+          <Nav.Item className="border-bottom">
+            <Nav.Link href="/_oauth/logout/">
+              <h3 style={[styles.navItem]} key={9}>
                   Log out
-                </h3>
-              </Nav.Link>
-            </Nav.Item>
-          )}
+              </h3>
+            </Nav.Link>
+          </Nav.Item>
+        )}
         <Nav.Item>
           <Nav.Link href="/slack">
             <h3 style={[styles.navItem]} key={4}>

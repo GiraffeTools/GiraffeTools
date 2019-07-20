@@ -1,22 +1,23 @@
-import vm from "vm";
+import vm from 'vm';
 
 const scripts = {};
 // const modules = {}
 // const linker = () => { throw new Error('dynamic-imports modules do not allow nested import statements') }
 
-function dynamicProvide(name, code, { sandbox } = {}) {
-  let script = new vm.Script(
-    `(module => {${code};return module.exports})({exports:{}})`
+function dynamicProvide(name, code, {sandbox} = {}) {
+  const script = new vm.Script(
+      `(module => {${code};return module.exports})({exports:{}})`
   );
   scripts[name] = script.runInContext(vm.createContext(sandbox));
 }
 
 function dynamicRequire(name) {
   if (name in scripts) return scripts[name];
-  else
+  else {
     throw new Error(
-      `dynamic-imports unable to require(): "${name}" is not provided`
+        `dynamic-imports unable to require(): "${name}" is not provided`
     );
+  }
 }
 
 // function dynamicExport(name, code, { sandbox } = {}) {

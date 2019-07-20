@@ -1,26 +1,26 @@
-import React, { Fragment } from "react";
-import Radium from "radium";
+import React, {Fragment} from 'react';
+import Radium from 'radium';
 
-import styleSheet from "../constants/styles";
-import styles from "../styles/prettyLines";
+import styleSheet from '../constants/styles';
+import styles from '../styles/prettyLines';
 
-const PrettyLine = ({ color }) => {
-  let separatorColor = color || "black";
-  let separatorThickness = "2px";
+const PrettyLine = ({color}) => {
+  const separatorColor = color || 'black';
+  const separatorThickness = '2px';
 
   return (
     <div className="float-left" style={styles.lines}>
       <div
         style={{
           ...styles.circle,
-          borderColor: separatorColor
+          borderColor: separatorColor,
           // borderWidth: separatorThickness
         }}
       />
       <div
         style={{
           ...styles.line,
-          borderLeftColor: separatorColor
+          borderLeftColor: separatorColor,
           // borderWidth: separatorThickness
         }}
       />

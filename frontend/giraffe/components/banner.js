@@ -1,10 +1,10 @@
-import React from "react";
-import Radium from "radium";
-import Container from "react-bootstrap/Container";
+import React from 'react';
+import Radium from 'radium';
+import Container from 'react-bootstrap/Container';
 
-import styles from "../styles/banner.js";
+import styles from '../styles/banner.js';
 
-const Banner = ({ title }) => (
+const Banner = ({title}) => (
   <Container fluid={true} style={styles.banner}>
     <img
       src="/static/img/giraffetools_logo.png"

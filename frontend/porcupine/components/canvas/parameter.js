@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from 'react';
 
-import Port from "../../containers/port";
+import Port from '../../containers/port';
 
-const PortPair = ({ name, input, output, x, y, width, id }) => (
+const PortPair = ({name, input, output, x, y, width, id}) => (
   <Fragment>
     <text fill="white" textAnchor="middle" x={x + width / 2} y={y}>
       {name}

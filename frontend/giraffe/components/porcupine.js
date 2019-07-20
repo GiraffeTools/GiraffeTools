@@ -1,10 +1,10 @@
-import React from "react";
-import Radium from "radium";
+import React from 'react';
+import Radium from 'radium';
 
-import PrettyLines from "./prettyLines";
-import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
-import componentStyles from "../styles/components.js";
-import styles from "../styles/porcupine.js";
+import PrettyLines from './prettyLines';
+import SeparatorWithOpenCircle from './separatorWithOpenCircle';
+import componentStyles from '../styles/components.js';
+import styles from '../styles/porcupine.js';
 
 const Porcupine = () => (
   <div className="d-flex justify-content-begin">
@@ -21,16 +21,16 @@ const Porcupine = () => (
       <h3 style={[styles.porcupine]}>Porcupine</h3>
       <SeparatorWithOpenCircle
         color="secondary"
-        thickness={"1px"}
-        styleOverwrite={{ ...styles.componentStyles, width: "60%" }}
+        thickness={'1px'}
+        styleOverwrite={{...styles.componentStyles, width: '60%'}}
       />
       <div style={[styles.innerToolText]}>
         <b>POR</b>
-        {"cupine "}
+        {'cupine '}
         <b>C</b>
-        {"reates "}
+        {'reates '}
         <b>U</b>
-        {"r "}
+        {'r '}
         <b>P</b>
         ipel
         <b>INE</b>

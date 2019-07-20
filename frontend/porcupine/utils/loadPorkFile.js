@@ -1,11 +1,11 @@
-import { v4 } from "uuid";
-import { isUUID } from "../utils";
+import {v4} from 'uuid';
+import {isUUID} from '../utils';
 
 export async function loadPorkFile(json, setPercent) {
   switch (json.version) {
-    case "1":
+    case '1':
       return await loadingVersion1(json, setPercent);
-    case "2":
+    case '2':
       // leaving room for future implementations
       break;
     default:
@@ -14,7 +14,7 @@ export async function loadPorkFile(json, setPercent) {
 }
 
 async function loadingVersion1(json, setPercent) {
-  const { nodes, links, stickies } = json;
+  const {nodes, links, stickies} = json;
   const nodeData = [];
   const linkData = [];
   const stickyData = [];
@@ -22,25 +22,25 @@ async function loadingVersion1(json, setPercent) {
   // load nodes
   setPercent(20);
   nodes &&
-    nodes.forEach(node => {
+    nodes.forEach((node) => {
       const newNode = {
         id: node.id || v4(),
         name:
-          (node.title && node.title.name.replace(".", "_")) ||
-          (node.name && node.name.replace(".", "_")) ||
-          "",
+          (node.title && node.title.name.replace('.', '_')) ||
+          (node.name && node.name.replace('.', '_')) ||
+          '',
         class:
           (node.title && (node.title.class || node.title.name)) ||
           node.class ||
           node.name,
         x: node.position[0],
         y: node.position[1],
-        colour: node.colour || "#BBB",
-        web_url: (node.title && node.title.web_url) || node.web_url || "",
-        code: (node.title && node.title.code) || node.code
+        colour: node.colour || '#BBB',
+        web_url: (node.title && node.title.web_url) || node.web_url || '',
+        code: (node.title && node.title.code) || node.code,
       };
 
-      newNode.parameters = node.ports.map(parameter => ({
+      newNode.parameters = node.ports.map((parameter) => ({
         node: newNode.id,
         id: isUUID(parameter.id) ? parameter.id : v4(),
         code: parameter.code,
@@ -51,7 +51,7 @@ async function loadingVersion1(json, setPercent) {
         isVisible: parameter.visible || false,
         isEditable: parameter.editable || false,
         isIterable: parameter.iterator || false,
-        value: parameter.value || "" // TODO insert proper default value
+        value: parameter.value || '', // TODO insert proper default value
       }));
 
       nodeData.push(newNode);
@@ -59,27 +59,27 @@ async function loadingVersion1(json, setPercent) {
     });
   // load links
   links &&
-    links.forEach(link => {
+    links.forEach((link) => {
       const newLink = {
         id: link.id || v4(),
         portFrom: link.from,
-        portTo: link.to
+        portTo: link.to,
       };
       linkData.push(newLink);
       // setPercent(30 + (20 * linkData.length) / links.length);
     });
   stickies &&
-    stickies.forEach(sticky => {
-      const { id, position, title, content } = sticky;
+    stickies.forEach((sticky) => {
+      const {id, position, title, content} = sticky;
       const newSticky = {
         id: id || v4(),
         title,
         content,
         x: position && position[0],
-        y: position && position[1]
+        y: position && position[1],
       };
       stickyData.push(newSticky);
       // setPercent(30 + (20 * linkData.length) / links.length);
     });
-  return { nodes: nodeData, links: linkData, stickies: stickyData };
+  return {nodes: nodeData, links: linkData, stickies: stickyData};
 }

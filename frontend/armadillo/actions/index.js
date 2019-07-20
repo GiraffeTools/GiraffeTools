@@ -3,37 +3,37 @@ import {
   SET_REPOSITORY,
   SET_BRANCH,
   SET_COMMIT,
-  SET_ARMA_FILE
-} from "./actionTypes";
+  SET_ARMA_FILE,
+} from './actionTypes';
 
-///// SCENE /////
-export const setUser = user => ({
+// /// SCENE /////
+export const setUser = (user) => ({
   type: SET_USER,
   payload: {
-    user
-  }
+    user,
+  },
 });
-export const setRepository = repository => ({
+export const setRepository = (repository) => ({
   type: SET_REPOSITORY,
   payload: {
-    repository
-  }
+    repository,
+  },
 });
-export const setBranch = branch => ({
+export const setBranch = (branch) => ({
   type: SET_BRANCH,
   payload: {
-    branch
-  }
+    branch,
+  },
 });
-export const setCommit = commit => ({
+export const setCommit = (commit) => ({
   type: SET_COMMIT,
   payload: {
-    commit
-  }
+    commit,
+  },
 });
-export const setArmaFile = arma_file => ({
+export const setArmaFile = (arma_file) => ({
   type: SET_ARMA_FILE,
   payload: {
-    arma_file
-  }
+    arma_file,
+  },
 });

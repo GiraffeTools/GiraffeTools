@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Badge from "react-bootstrap/Badge";
-import Collapse from "react-bootstrap/Collapse";
+import React, {useState} from 'react';
+import Badge from 'react-bootstrap/Badge';
+import Collapse from 'react-bootstrap/Collapse';
 
-import DraggablePaneElement from "../../draggables/draggablePaneElement";
-import styles from "../../styles/paneGroup";
+import DraggablePaneElement from '../../draggables/draggablePaneElement';
+import styles from '../../styles/paneGroup';
 
-const NestedPaneGroup = ({ categories }) =>
+const NestedPaneGroup = ({categories}) =>
   categories.map((category, index) => (
     <PaneGroup
       key={`${category.name}-${index}`}
@@ -16,7 +16,7 @@ const NestedPaneGroup = ({ categories }) =>
     />
   ));
 
-const PaneGroup = ({ nodes, subcategories, colour, name }) => {
+const PaneGroup = ({nodes, subcategories, colour, name}) => {
   const [open, toggleToolbox] = useState(false);
 
   const nodeGroups = subcategories && (
@@ -25,8 +25,8 @@ const PaneGroup = ({ nodes, subcategories, colour, name }) => {
   const nodeElements =
     nodes &&
     nodes.map((node, index) => {
-      const { name } = node;
-      node.colour = colour || "#BBB";
+      const {name} = node;
+      node.colour = colour || '#BBB';
       return (
         <DraggablePaneElement
           key={`${name}-${index}`}
@@ -47,20 +47,20 @@ const PaneGroup = ({ nodes, subcategories, colour, name }) => {
         aria-expanded={open}
       >
         <Badge
-          style={{ ...styles.sidebarBadge, backgroundColor: colour || "#BBB" }}
+          style={{...styles.sidebarBadge, backgroundColor: colour || '#BBB'}}
         >
-          {" "}
+          {' '}
         </Badge>
         {name}
-        <span style={styles.sidebarDropdown}>{">"}</span>
+        <span style={styles.sidebarDropdown}>{'>'}</span>
       </div>
       <Collapse in={open} style={styles.panelCollapse}>
         <div id="collapse-menu">
           {nodeGroups}
           {nodes &&
             nodes.map((node, index) => {
-              const { name } = node;
-              node.colour = colour || "#BBB";
+              const {name} = node;
+              node.colour = colour || '#BBB';
               return (
                 <DraggablePaneElement
                   key={`${name}-${index}`}

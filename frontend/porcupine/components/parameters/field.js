@@ -1,7 +1,7 @@
-import React from "react";
-import Radium from "radium";
+import React from 'react';
+import Radium from 'radium';
 
-import styles from "../../styles/field";
+import styles from '../../styles/field';
 
 class Field extends React.Component {
   constructor(props) {
@@ -10,24 +10,24 @@ class Field extends React.Component {
   }
 
   changeParams(paramId, key, value) {
-    const newValues = { ...this.props.port, [key]: value };
+    const newValues = {...this.props.port, [key]: value};
     this.props.updateParameter(paramId, newValues);
   }
 
   change(e) {
-    const { type, id } = this.props;
+    const {type, id} = this.props;
     switch (type) {
-      case "boolean":
-        this.changeParams(id, "value", e.target.checked);
+      case 'boolean':
+        this.changeParams(id, 'value', e.target.checked);
         break;
-      case "number":
-        this.changeParams(id, "value", Number(e.target.value));
+      case 'number':
+        this.changeParams(id, 'value', Number(e.target.value));
         break;
-      case "string":
-        this.changeParams(id, "value", e.target.value);
+      case 'string':
+        this.changeParams(id, 'value', e.target.value);
         break;
       default:
-        this.changeParams(id, "value", e.target.value);
+        this.changeParams(id, 'value', e.target.value);
         break;
     }
   }
@@ -42,14 +42,14 @@ class Field extends React.Component {
       value,
       data,
       isEnabled,
-      removeParameter
+      removeParameter,
     } = this.props;
 
     if (!name) return null;
     let inputElement;
 
     switch (type) {
-      case "string":
+      case 'string':
         inputElement = (
           <input
             type="text"
@@ -61,7 +61,7 @@ class Field extends React.Component {
           />
         );
         break;
-      case "numeric":
+      case 'numeric':
         inputElement = (
           <input
             type="number"
@@ -74,7 +74,7 @@ class Field extends React.Component {
           />
         );
         break;
-      case "boolean":
+      case 'boolean':
         inputElement = (
           <input
             type="checkbox"
@@ -86,13 +86,13 @@ class Field extends React.Component {
           />
         );
         break;
-      case "select":
+      case 'select':
         const options = [];
-        data.options.forEach(i => {
+        data.options.forEach((i) => {
           options.push(
-            <option key={i} value={i}>
-              {i}
-            </option>
+              <option key={i} value={i}>
+                {i}
+              </option>
           );
         });
         inputElement = (
@@ -121,13 +121,13 @@ class Field extends React.Component {
         break;
     }
 
-    let displayStyle = "inherit";
-    if (inputElement.props.className == "paramsCheckbox") {
-      displayStyle = "flex";
+    let displayStyle = 'inherit';
+    if (inputElement.props.className == 'paramsCheckbox') {
+      displayStyle = 'flex';
     }
     return (
       <div style={[styles.field]}>
-        <div style={{ display: displayStyle }}>
+        <div style={{display: displayStyle}}>
           <label htmlFor={id} style={[styles.label]}>
             {name}
           </label>
@@ -136,22 +136,22 @@ class Field extends React.Component {
         <div key={id} style={[styles.actions]}>
           <div
             style={[styles.visibility]}
-            onClick={() => this.changeParams(id, "isVisible", !isVisible)}
+            onClick={() => this.changeParams(id, 'isVisible', !isVisible)}
           >
             <i
-              className={"fas " + (isVisible ? "fa-eye" : "fa-eye-slash")}
-              title={"Make " + (isVisible ? "invisible" : "visible")}
-            />{" "}
+              className={'fas ' + (isVisible ? 'fa-eye' : 'fa-eye-slash')}
+              title={'Make ' + (isVisible ? 'invisible' : 'visible')}
+            />{' '}
           </div>
           <div
             style={[styles.visibility]}
-            onClick={() => this.changeParams(id, "isIterable", !isIterable)}
+            onClick={() => this.changeParams(id, 'isIterable', !isIterable)}
           >
             <i
               style={[styles.icon, !isIterable && styles.icon.toggled]}
               className="fas fa-retweet"
-              title={"Make " + (isIterable ? "non-iterable" : "iterable")}
-            />{" "}
+              title={'Make ' + (isIterable ? 'non-iterable' : 'iterable')}
+            />{' '}
           </div>
           <button
             type="button"

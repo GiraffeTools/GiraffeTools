@@ -1,21 +1,21 @@
-import { v4 } from "uuid";
-import { load as loadYaml } from "yaml-js";
-import { isUUID } from "../utils";
-import { getCsrfToken } from "../../giraffe/utils/auth";
-import { API_HOST } from "../../giraffe/config";
-import to from "await-to-js";
+import {v4} from 'uuid';
+import {load as loadYaml} from 'yaml-js';
+import {isUUID} from '../utils';
+import {getCsrfToken} from '../../giraffe/utils/auth';
+import {API_HOST} from '../../giraffe/config';
+import to from 'await-to-js';
 
-import store from "../store";
+import store from '../store';
 import {
   nodesWithParameters,
   linksWithPortsAndNodes,
   languageNames,
-  stickies
-} from "../selectors/selectors";
+  stickies,
+} from '../selectors/selectors';
 
 export async function savePorkFile(content) {
   const state = store.getState();
-  const { grammars } = state.grammars;
+  const {grammars} = state.grammars;
 
   const nodes = nodesWithParameters(state);
   const links = linksWithPortsAndNodes(state);
@@ -23,34 +23,34 @@ export async function savePorkFile(content) {
   const languages = languageNames(state);
 
   const saveFiles = await Promise.all(
-    grammars
-      .filter(grammar => languages.includes(grammar.language))
-      .map(grammar => grammar.save(nodes, links))
+      grammars
+          .filter((grammar) => languages.includes(grammar.language))
+          .map((grammar) => grammar.save(nodes, links))
   );
   const fileContent = {};
-  saveFiles.forEach(files =>
-    Object.keys(files).forEach(name => (fileContent[name] = files[name]))
+  saveFiles.forEach((files) =>
+    Object.keys(files).forEach((name) => (fileContent[name] = files[name]))
   );
 
-  const { pork_file } = content;
+  const {pork_file} = content;
   const contents = {
     [pork_file]: JSON.stringify(porkFile(nodes, links, allStickies), null, 2),
-    ...fileContent
+    ...fileContent,
   };
   debugger;
   return contents;
 }
 
 export async function initPorkFile(content) {
-  const giraffe_file = "GIRAFFE.yml";
-  content.pork_file = "GIRAFFE/porcupipeline.pork";
+  const giraffe_file = 'GIRAFFE.yml';
+  content.pork_file = 'GIRAFFE/porcupipeline.pork';
 
   const saveContent = await savePorkFile(content);
   const contents = {
     [giraffe_file]: await (await fetch(
-      "/static/assets/giraffe/GIRAFFE.yml"
+        '/static/assets/giraffe/GIRAFFE.yml'
     )).text(),
-    ...saveContent
+    ...saveContent,
   };
 
   return contents;
@@ -58,14 +58,14 @@ export async function initPorkFile(content) {
 
 export async function initGiraffeProject() {
   // #TODO hard-coded, for now
-  const giraffe_file = "GIRAFFE.yml";
-  const pork_file = "GIRAFFE/porcupipeline.pork";
+  const giraffe_file = 'GIRAFFE.yml';
+  const pork_file = 'GIRAFFE/porcupipeline.pork';
 
   const contents = {
     [giraffe_file]: await (await fetch(
-      "/static/assets/giraffe/GIRAFFE.yml"
+        '/static/assets/giraffe/GIRAFFE.yml'
     )).text(),
-    [pork_file]: JSON.stringify(porkFile(), null, 2)
+    [pork_file]: JSON.stringify(porkFile(), null, 2),
   };
 
   return contents;
@@ -75,18 +75,18 @@ export async function pushToGithub(commit, contents) {
   const body = {
     user: commit.user,
     repository: commit.repository,
-    branch: commit.branch || "master",
+    branch: commit.branch || 'master',
     message: commit.commit_message,
-    contents
+    contents,
   };
 
   const [error, response] = await to(
-    fetch(`${API_HOST}/push_to_github`, {
-      method: "POST",
-      headers: { "X-CSRFToken": await getCsrfToken() },
-      body: JSON.stringify(body),
-      credentials: "include"
-    })
+      fetch(`${API_HOST}/push_to_github`, {
+        method: 'POST',
+        headers: {'X-CSRFToken': await getCsrfToken()},
+        body: JSON.stringify(body),
+        credentials: 'include',
+      })
   );
   return error || response;
 }
@@ -96,28 +96,28 @@ const porkFile = (nodes, links, allStickies) => {
     links: links && linksToSaveDict(links),
     nodes: nodes && nodesToSaveDict(nodes),
     stickies: stickies && stickiesToSaveDict(allStickies),
-    version: "v1"
+    version: 'v1',
   };
 };
 
-const stickiesToSaveDict = allStickies =>
-  allStickies.map(sticky => ({
+const stickiesToSaveDict = (allStickies) =>
+  allStickies.map((sticky) => ({
     id: sticky.id,
     title: sticky.title,
     content: sticky.content,
-    position: [sticky.x, sticky.y]
+    position: [sticky.x, sticky.y],
   }));
 
-const linksToSaveDict = links =>
-  links.map(link => ({
+const linksToSaveDict = (links) =>
+  links.map((link) => ({
     id: link.id,
     from: link.portFrom.id,
-    to: link.portTo.id
+    to: link.portTo.id,
   }));
 
-const nodesToSaveDict = nodes =>
-  nodes.map(node => {
-    const ports = node.parameters.map(parameter => ({
+const nodesToSaveDict = (nodes) =>
+  nodes.map((node) => {
+    const ports = node.parameters.map((parameter) => ({
       base: parameter.name,
       code: parameter.code,
       editable: parameter.isEnabled,
@@ -130,7 +130,7 @@ const nodesToSaveDict = nodes =>
       outputPort: parameter.output || false,
       value: parameter.value,
       visible: parameter.isVisible,
-      iterator: parameter.isIterable || false
+      iterator: parameter.isIterable || false,
     }));
     return {
       id: node.id,
@@ -140,6 +140,6 @@ const nodesToSaveDict = nodes =>
       position: [node.x, node.y],
       code: node.code,
       web_url: node.web_url,
-      colour: node.colour
+      colour: node.colour,
     };
   });

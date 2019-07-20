@@ -1,7 +1,7 @@
-import giraffeStylesheet from "../../giraffe/constants/styles";
+import giraffeStylesheet from '../../giraffe/constants/styles';
 
 const styleSheet = {
-  ...giraffeStylesheet
+  ...giraffeStylesheet,
 };
 
 export default styleSheet;

@@ -1,19 +1,19 @@
-import { connect } from "react-redux";
+import {connect} from 'react-redux';
 
-import UnhappyBrowser from "../components/unhappyBrowser";
-import { toggleBrowserAlert } from "../actions";
+import UnhappyBrowser from '../components/unhappyBrowser';
+import {toggleBrowserAlert} from '../actions';
 
-const mapStateToProps = state => ({
-  open: state.alerts.incompatibleBrowser
+const mapStateToProps = (state) => ({
+  open: state.alerts.incompatibleBrowser,
 });
 
-const mapDispatchToProps = dispatch => ({
-  toggleBrowserAlert: () => dispatch(toggleBrowserAlert())
+const mapDispatchToProps = (dispatch) => ({
+  toggleBrowserAlert: () => dispatch(toggleBrowserAlert()),
 });
 
 const UnhappyBrowserContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(UnhappyBrowser);
 
 export default UnhappyBrowserContainer;

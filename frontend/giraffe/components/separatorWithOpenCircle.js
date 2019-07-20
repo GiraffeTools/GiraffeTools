@@ -1,17 +1,17 @@
-import React from "react";
-import Radium from "radium";
+import React from 'react';
+import Radium from 'radium';
 
-import styleSheet from "../constants/styles";
-import styles from "../styles/separatorWithOpenCircle";
+import styleSheet from '../constants/styles';
+import styles from '../styles/separatorWithOpenCircle';
 
-const SeparatorWithOpenCircle = ({ color, thickness, styleOverwrite }) => {
-  let separatorColor = "black";
-  let separatorThickness = thickness || "1px";
+const SeparatorWithOpenCircle = ({color, thickness, styleOverwrite}) => {
+  let separatorColor = 'black';
+  const separatorThickness = thickness || '1px';
   switch (color) {
-    case "primary":
+    case 'primary':
       separatorColor = styleSheet.primaryColor;
       break;
-    case "secondary":
+    case 'secondary':
       separatorColor = styleSheet.secondaryColor;
       break;
     default:
@@ -26,22 +26,22 @@ const SeparatorWithOpenCircle = ({ color, thickness, styleOverwrite }) => {
         styleOverwrite,
         {
           backgroundColor: separatorColor,
-          height: separatorThickness
-        }
+          height: separatorThickness,
+        },
       ]}
     >
       <div
         style={[
           styles.circle,
           styles.left,
-          { borderColor: separatorColor, borderWidth: separatorThickness }
+          {borderColor: separatorColor, borderWidth: separatorThickness},
         ]}
       />
       <div
         style={[
           styles.circle,
           styles.right,
-          { borderColor: separatorColor, borderWidth: separatorThickness }
+          {borderColor: separatorColor, borderWidth: separatorThickness},
         ]}
       />
     </div>

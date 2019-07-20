@@ -1,8 +1,8 @@
-import React from "react";
-import * as d3 from "d3";
+import React from 'react';
+import * as d3 from 'd3';
 
-import Parameter from "./parameter";
-import Tooltip from "./tooltip";
+import Parameter from './parameter';
+import Tooltip from './tooltip';
 
 class Node extends React.Component {
   constructor(props) {
@@ -12,43 +12,43 @@ class Node extends React.Component {
     this.drag = this.drag.bind(this);
 
     this.state = {
-      hovered: false
+      hovered: false,
     };
   }
 
   componentDidMount() {
     d3.select(this.svgRef)
-      .on("click", this.click)
-      .on("mouseenter", () => this.hover(true))
-      .on("mouseleave", () => this.hover(false))
-      .call(d3.drag().on("start", () => this.drag()));
+        .on('click', this.click)
+        .on('mouseenter', () => this.hover(true))
+        .on('mouseleave', () => this.hover(false))
+        .call(d3.drag().on('start', () => this.drag()));
   }
 
   click() {
-    const { clickItem, id } = this.props;
-    clickItem(id, "node");
+    const {clickItem, id} = this.props;
+    clickItem(id, 'node');
     d3.event.stopPropagation();
   }
 
   hover(enter) {
     this.setState({
-      hovered: enter
+      hovered: enter,
     });
     d3.event.stopPropagation();
   }
 
   drag() {
-    const { x, y, id, updateNode } = this.props;
-    let dx = 0,
-      dy = 0;
+    const {x, y, id, updateNode} = this.props;
+    let dx = 0;
+    let dy = 0;
     function dragged() {
       dx += d3.event.dx;
       dy += d3.event.dy;
-      updateNode(id, { x: x + dx, y: y + dy });
+      updateNode(id, {x: x + dx, y: y + dy});
     }
 
     function ended() {}
-    d3.event.on("drag", dragged).on("end", ended);
+    d3.event.on('drag', dragged).on('end', ended);
   }
 
   render() {
@@ -60,30 +60,30 @@ class Node extends React.Component {
       width,
       colour,
       selectedNodes,
-      parameters
+      parameters,
     } = this.props;
-    const { hovered } = this.state;
+    const {hovered} = this.state;
 
     const parameterBlock = [];
     let dy = 54;
     parameters &&
       parameters
-        .filter(parameter => parameter.isVisible == true)
-        .forEach(parameter => {
-          parameterBlock.push(
-            <Parameter
-              {...parameter}
-              key={parameter.id}
-              width={width}
-              x={0}
-              y={dy}
-            />
-          );
-          dy += 24;
-        });
+          .filter((parameter) => parameter.isVisible == true)
+          .forEach((parameter) => {
+            parameterBlock.push(
+                <Parameter
+                  {...parameter}
+                  key={parameter.id}
+                  width={width}
+                  x={0}
+                  y={dy}
+                />
+            );
+            dy += 24;
+          });
 
     return (
-      <g ref={svg => (this.svgRef = svg)} transform={`translate(${x},${y})`}>
+      <g ref={(svg) => (this.svgRef = svg)} transform={`translate(${x},${y})`}>
         <rect
           fill={colour}
           rx={6}
@@ -92,8 +92,8 @@ class Node extends React.Component {
           height={dy}
           filter={
             selectedNodes && selectedNodes.includes(id)
-              ? "url(#selection-glow)"
-              : ""
+              ? 'url(#selection-glow)'
+              : ''
           }
         />
         <text
@@ -101,7 +101,7 @@ class Node extends React.Component {
           textAnchor="middle"
           x={width / 2}
           y={28}
-          fontSize={"1.4rem"}
+          fontSize={'1.4rem'}
         >
           {name}
         </text>

@@ -1,11 +1,11 @@
-import React from "react";
-import Toggle from "react-toggle";
-import "react-toggle/style.css";
-import "../../scss/toolboxModal.scss";
-import styles from "../../styles/toolboxModal.js";
+import React from 'react';
+import Toggle from 'react-toggle';
+import 'react-toggle/style.css';
+import '../../scss/toolboxModal.scss';
+import styles from '../../styles/toolboxModal.js';
 
-const ToolboxModal = ({ onClose, toolboxes, toggleToolbox, showToolboxes }) => {
-  const toolboxNames = toolboxes.map(toolbox => toolbox.name);
+const ToolboxModal = ({onClose, toolboxes, toggleToolbox, showToolboxes}) => {
+  const toolboxNames = toolboxes.map((toolbox) => toolbox.name);
   return (
     <div className="modal-content">
       <h5 className="modal-title">Toolboxes</h5>
@@ -25,7 +25,7 @@ const ToolboxModal = ({ onClose, toolboxes, toggleToolbox, showToolboxes }) => {
             </div>
           ))}
       </div>
-      <div className="modal-body" style={{ fontStyle: "italic" }}>
+      <div className="modal-body" style={{fontStyle: 'italic'}}>
         (Here, it will soon be possible to more easily customise different
         toolboxes)
       </div>

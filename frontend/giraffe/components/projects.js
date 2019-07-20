@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import InfiniteScroll from "react-infinite-scroller";
+import React, {useState} from 'react';
+import InfiniteScroll from 'react-infinite-scroller';
 
-import Project from "../containers/project";
-import { addTokenToQuery } from "../utils/auth";
+import Project from '../containers/project';
+import {addTokenToQuery} from '../utils/auth';
 
-import styles from "../styles/projects.js";
-import { GITHUB_BASE_API } from "../config";
+import styles from '../styles/projects.js';
+import {GITHUB_BASE_API} from '../config';
 
 async function loadRepositories(
-  username,
-  page,
-  setRepositories,
-  setHasMore,
-  setActiveProjects
+    username,
+    page,
+    setRepositories,
+    setHasMore,
+    setActiveProjects
 ) {
   const url = await addTokenToQuery(
-    new URL(`${GITHUB_BASE_API}/users/${username}/repos`)
+      new URL(`${GITHUB_BASE_API}/users/${username}/repos`)
   );
-  url.searchParams.append("page", page);
+  url.searchParams.append('page', page);
 
   const repos = await fetch(url.href);
   const repoList = await repos.json();
@@ -26,42 +26,42 @@ async function loadRepositories(
     return;
   }
 
-  const giraffeConfigFile = "GIRAFFE.yml";
+  const giraffeConfigFile = 'GIRAFFE.yml';
   async function isGiraffeProject(repoName) {
     const url = await addTokenToQuery(
-      new URL(
-        `${GITHUB_BASE_API}/repos/${repoName}/contents/${giraffeConfigFile}`
-      )
+        new URL(
+            `${GITHUB_BASE_API}/repos/${repoName}/contents/${giraffeConfigFile}`
+        )
     );
     const file = await fetch(url);
     return file.ok;
   }
-  const newList = repoList.map(async repo => {
+  const newList = repoList.map(async (repo) => {
     return {
       ...repo,
-      isGiraffeProject: await isGiraffeProject(repo.full_name)
+      isGiraffeProject: await isGiraffeProject(repo.full_name),
     };
   });
   const newRepos = await Promise.all(newList);
-  setRepositories(oldRepos => {
+  setRepositories((oldRepos) => {
     const repos = oldRepos.concat(newRepos);
-    setActiveProjects(repos.filter(repo => repo.isGiraffeProject).length);
+    setActiveProjects(repos.filter((repo) => repo.isGiraffeProject).length);
     return repos;
   });
 }
 
-const Projects = ({ username, setActiveProjects }) => {
+const Projects = ({username, setActiveProjects}) => {
   const [repositories, setRepositories] = useState([]);
   const [hasMore, setHasMore] = useState(true);
 
   const repositorySection = repositories.length ? (
     repositories
-      .sort(function(a, b) {
-        return a.name.localeCompare(b.name);
-      })
-      .map(repository => (
-        <Project key={repository.id} repository={repository} />
-      ))
+        .sort(function(a, b) {
+          return a.name.localeCompare(b.name);
+        })
+        .map((repository) => (
+          <Project key={repository.id} repository={repository} />
+        ))
   ) : (
     <div>This user does not have any GitHub projects.</div>
   );
@@ -79,13 +79,13 @@ const Projects = ({ username, setActiveProjects }) => {
       </div>
       <InfiniteScroll
         pageStart={0}
-        loadMore={page => {
+        loadMore={(page) => {
           loadRepositories(
-            username,
-            page,
-            setRepositories,
-            setHasMore,
-            setActiveProjects
+              username,
+              page,
+              setRepositories,
+              setHasMore,
+              setActiveProjects
           );
         }}
         hasMore={hasMore}

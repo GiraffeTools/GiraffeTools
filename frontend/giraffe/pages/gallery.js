@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
-import Radium from "radium";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
+import React, {Fragment} from 'react';
+import Radium from 'radium';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
 
-import Banner from "../components/banner";
-import GalleryCards from "../components/galleryCards";
-import Footer from "../components/footer";
-import styles from "../styles/gallery.js";
+import Banner from '../components/banner';
+import GalleryCards from '../components/galleryCards';
+import Footer from '../components/footer';
+import styles from '../styles/gallery.js';
 
 const Gallery = () => (
   <Fragment>

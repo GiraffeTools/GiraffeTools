@@ -1,22 +1,22 @@
-import styleSheet from "../constants/styles";
+import styleSheet from '../constants/styles';
 
 const styles = {
   header: {
-    cursor: "pointer"
+    cursor: 'pointer',
   },
   question: {
-    display: "inline",
-    listStyleType: "none"
+    display: 'inline',
+    listStyleType: 'none',
   },
   chevron: {
-    width: "2rem",
-    height: "1.7rem",
-    marginRight: "1rem",
-    marginTop: "-0.3rem"
+    width: '2rem',
+    height: '1.7rem',
+    marginRight: '1rem',
+    marginTop: '-0.3rem',
   },
   answer: {
-    paddingLeft: "3rem"
-  }
+    paddingLeft: '3rem',
+  },
 };
 
 export default styles;

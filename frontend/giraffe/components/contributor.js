@@ -1,12 +1,12 @@
-import React from "react";
-import Radium from "radium";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
+import React from 'react';
+import Radium from 'radium';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
 
-import { shuffle } from "../utils/utils";
-import styles from "../styles/contributor.js";
+import {shuffle} from '../utils/utils';
+import styles from '../styles/contributor.js';
 
-const Contributor = contributor => {
+const Contributor = (contributor) => {
   return (
     <Col sm={4} style={styles.contributor}>
       <Card style={styles.contributorCard}>

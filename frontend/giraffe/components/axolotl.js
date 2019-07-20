@@ -1,9 +1,9 @@
-import React from "react";
-import Radium from "radium";
+import React from 'react';
+import Radium from 'radium';
 
-import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
-import styles from "../styles/axolotl.js";
-import componentStyles from "../styles/components.js";
+import SeparatorWithOpenCircle from './separatorWithOpenCircle';
+import styles from '../styles/axolotl.js';
+import componentStyles from '../styles/components.js';
 
 const Axolotl = () => (
   <div className="d-flex justify-content-begin">
@@ -17,14 +17,14 @@ const Axolotl = () => (
       <h3 style={[styles.porcupine]}>Axolotl</h3>
       <SeparatorWithOpenCircle
         color="secondary"
-        thickness={"1px"}
-        styleOverwrite={{ ...styles.componentStyles, width: "60%" }}
+        thickness={'1px'}
+        styleOverwrite={{...styles.componentStyles, width: '60%'}}
       />
       <div style={[styles.innerToolText]}>
         <b>A</b>
-        {"xolotl e"}
+        {'xolotl e'}
         <b>X</b>
-        {"ecutes "}
+        {'ecutes '}
         <b>O</b> <b>LOT</b> <b>L</b>
         <p>
           Axolotl is the work-in-progress execution platform of GiraffeTools

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-test("null", () => {
+test('null', () => {
   const n = null;
   expect(n).toBeNull();
 });

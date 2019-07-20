@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { StyleRoot } from "radium";
-import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
-import { useCookies } from "react-cookie";
+import React, {useState} from 'react';
+import {StyleRoot} from 'radium';
+import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
+import {useCookies} from 'react-cookie';
 
-import alertStyles from "../styles/alerts";
-import styles from "../styles/smallScreenAlert";
+import alertStyles from '../styles/alerts';
+import styles from '../styles/smallScreenAlert';
 
 const SmallScreenAlert = () => {
-  const [cookies, setCookie] = useCookies(["smallScreen"]);
-  if (cookies.smallScreen === "closed") return null;
+  const [cookies, setCookie] = useCookies(['smallScreen']);
+  if (cookies.smallScreen === 'closed') return null;
 
   return (
     <StyleRoot>
@@ -25,7 +25,7 @@ const SmallScreenAlert = () => {
           <hr />
           <div className="d-flex justify-content-center">
             <Button
-              onClick={() => setCookie("smallScreen", "closed")}
+              onClick={() => setCookie('smallScreen', 'closed')}
               variant="outline-primary"
             >
               Close

@@ -1,19 +1,19 @@
-import { connect } from "react-redux";
+import {connect} from 'react-redux';
 
-import Modals from "../components/modals/modals";
-import { closeModal } from "../actions";
+import Modals from '../components/modals/modals';
+import {closeModal} from '../actions';
 
-const mapStateToProps = state => ({
-  modals: state.modals.modals
+const mapStateToProps = (state) => ({
+  modals: state.modals.modals,
 });
 
-const mapDispatchToProps = dispatch => ({
-  closeModal: (id) => dispatch(closeModal(id))
+const mapDispatchToProps = (dispatch) => ({
+  closeModal: (id) => dispatch(closeModal(id)),
 });
 
 const ModalsContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Modals);
 
 export default ModalsContainer;

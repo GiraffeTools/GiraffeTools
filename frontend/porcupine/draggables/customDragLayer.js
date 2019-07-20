@@ -1,28 +1,28 @@
-import React from "react";
-import { DragLayer, XYCoord } from "react-dnd";
-import ItemTypes from "./itemTypes";
-import PaneElementDragPreview from "./paneElementDragPreview";
+import React from 'react';
+import {DragLayer, XYCoord} from 'react-dnd';
+import ItemTypes from './itemTypes';
+import PaneElementDragPreview from './paneElementDragPreview';
 // import snapToGrid from './snapToGrid'
 
 const layerStyles = {
-  position: "fixed",
-  pointerEvents: "none",
+  position: 'fixed',
+  pointerEvents: 'none',
   zIndex: 100,
   left: 0,
   top: 0,
-  width: "100%",
-  height: "100%"
+  width: '100%',
+  height: '100%',
 };
 
 function getItemStyles(props) {
-  const { initialOffset, currentOffset } = props;
+  const {initialOffset, currentOffset} = props;
   if (!initialOffset || !currentOffset) {
     return {
-      display: "none"
+      display: 'none',
     };
   }
 
-  let { x, y } = currentOffset;
+  const {x, y} = currentOffset;
   // if (props.snapToGrid) {
   // 	x -= initialOffset.x
   // 	y -= initialOffset.y
@@ -34,12 +34,12 @@ function getItemStyles(props) {
   const transform = `translate(${x}px, ${y}px)`;
   return {
     transform,
-    WebkitTransform: transform
+    WebkitTransform: transform,
   };
 }
 
-const CustomDragLayer = props => {
-  const { item, itemType, isDragging } = props;
+const CustomDragLayer = (props) => {
+  const {item, itemType, isDragging} = props;
   function renderItem() {
     switch (itemType) {
       case ItemTypes.NODE:
@@ -60,10 +60,10 @@ const CustomDragLayer = props => {
   );
 };
 
-export default DragLayer(monitor => ({
+export default DragLayer((monitor) => ({
   item: monitor.getItem(),
   itemType: monitor.getItemType(),
   initialOffset: monitor.getInitialSourceClientOffset(),
   currentOffset: monitor.getSourceClientOffset(),
-  isDragging: monitor.isDragging()
+  isDragging: monitor.isDragging(),
 }))(CustomDragLayer);

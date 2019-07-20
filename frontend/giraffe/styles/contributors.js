@@ -1,33 +1,33 @@
-import styleSheet from "../constants/styles";
+import styleSheet from '../constants/styles';
 
 const styles = {
   contributors: {
-    paddingTop: "4rem",
-    paddingBottom: "4rem",
-    textAlign: "center",
+    paddingTop: '4rem',
+    paddingBottom: '4rem',
+    textAlign: 'center',
     backgroundColor: styleSheet.primaryLightSecondaryColor,
-    display: "flex"
+    display: 'flex',
   },
 
   contributorPanel: {
-    padding: "0rem 7%"
+    padding: '0rem 7%',
   },
   contributorArrow: {
-    cursor: "pointer"
+    cursor: 'pointer',
   },
 
   contributorList: {
-    marginTop: "4rem"
+    marginTop: '4rem',
   },
 
   gitcoinText: {
-    marginTop: "7rem"
+    marginTop: '7rem',
   },
 
   ethQrCode: {
-    width: "50%",
-    bottom: 0
-  }
+    width: '50%',
+    bottom: 0,
+  },
 };
 
 export default styles;

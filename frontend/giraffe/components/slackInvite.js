@@ -1,23 +1,23 @@
-import React from "react";
-import Radium from "radium";
-import Container from "react-bootstrap/Container";
-import to from "await-to-js";
+import React from 'react';
+import Radium from 'radium';
+import Container from 'react-bootstrap/Container';
+import to from 'await-to-js';
 
-import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
-import { getCsrfToken } from "../utils/auth";
-import { validateEmail } from "../utils/utils";
-import styles from "../styles/slackInvite.js";
-import componentStyles from "../styles/components.js";
-import { API_HOST } from "../config";
+import SeparatorWithOpenCircle from './separatorWithOpenCircle';
+import {getCsrfToken} from '../utils/auth';
+import {validateEmail} from '../utils/utils';
+import styles from '../styles/slackInvite.js';
+import componentStyles from '../styles/components.js';
+import {API_HOST} from '../config';
 
 class SlackInvite extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "",
+      value: '',
       submitted: false,
       emailValid: true,
-      succes: false
+      succes: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -25,25 +25,25 @@ class SlackInvite extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    this.setState({value: event.target.value});
   }
 
   async handleSubmit(event) {
     const email = this.state.value;
     if (!validateEmail(email)) {
-      this.setState({ emailValid: false });
+      this.setState({emailValid: false});
       return;
     } else {
-      this.setState({ emailValid: true });
+      this.setState({emailValid: true});
     }
-    this.setState({ submitted: true });
-    const body = JSON.stringify({ email });
+    this.setState({submitted: true});
+    const body = JSON.stringify({email});
 
     const inviteResponse = await fetch(`${API_HOST}/send_slack_invite`, {
-      method: "POST",
-      headers: { "X-CSRFToken": await getCsrfToken() },
+      method: 'POST',
+      headers: {'X-CSRFToken': await getCsrfToken()},
       body,
-      credentials: "include"
+      credentials: 'include',
     });
     const [error, answer] = await to(inviteResponse.json());
     if (error) {
@@ -54,7 +54,7 @@ class SlackInvite extends React.Component {
   }
 
   render() {
-    const { success, emailValid, submitted } = this.state;
+    const {success, emailValid, submitted} = this.state;
 
     return (
       <Container style={styles.slackInfo}>
@@ -64,7 +64,7 @@ class SlackInvite extends React.Component {
         </p>
         <SeparatorWithOpenCircle
           color="secondary"
-          thickness={"1px"}
+          thickness={'1px'}
           styleOverwrite={styles.componentStyles}
         />
         <div>
@@ -80,8 +80,8 @@ class SlackInvite extends React.Component {
           <div className="">
             <div
               className={
-                "alert alert-success alert-dismissible fade" +
-                (submitted && success ? " show" : "")
+                'alert alert-success alert-dismissible fade' +
+                (submitted && success ? ' show' : '')
               }
               role="alert"
             >
@@ -97,8 +97,8 @@ class SlackInvite extends React.Component {
             </div>
             <div
               className={
-                "alert alert-danger alert-dismissible fade" +
-                (!emailValid ? " show" : "")
+                'alert alert-danger alert-dismissible fade' +
+                (!emailValid ? ' show' : '')
               }
               role="alert"
             >
@@ -114,8 +114,8 @@ class SlackInvite extends React.Component {
             </div>
             <div
               className={
-                "alert alert-danger alert-dismissible fade" +
-                (submitted && !success ? " show" : "")
+                'alert alert-danger alert-dismissible fade' +
+                (submitted && !success ? ' show' : '')
               }
               role="alert"
             >

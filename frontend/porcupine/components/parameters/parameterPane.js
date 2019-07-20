@@ -1,23 +1,23 @@
-import React from "react";
-import Radium from "radium";
+import React from 'react';
+import Radium from 'radium';
 
-import NodePane from "../../containers/nodePane";
-import StickyPane from "../../containers/stickyPane";
-import styles from "../../styles/parameterPane";
+import NodePane from '../../containers/nodePane';
+import StickyPane from '../../containers/stickyPane';
+import styles from '../../styles/parameterPane';
 
-const ParameterPane = props => {
+const ParameterPane = (props) => {
   let content;
-  const { selection, clickItem } = props;
+  const {selection, clickItem} = props;
   if (selection) {
-    const { type } = selection;
+    const {type} = selection;
     switch (type) {
-      case "node":
+      case 'node':
         content = <NodePane selection={selection} clickItem={clickItem} />;
         break;
-      case "link":
+      case 'link':
         content = null;
         break;
-      case "sticky":
+      case 'sticky':
         content = <StickyPane selection={selection} clickItem={clickItem} />;
         break;
       default:
@@ -32,7 +32,7 @@ const ParameterPane = props => {
     <div
       style={{
         ...styles.parameters,
-        ...styles.parameters[selection ? "active" : "inactive"]
+        ...styles.parameters[selection ? 'active' : 'inactive'],
       }}
       className="customScrollbar"
     >

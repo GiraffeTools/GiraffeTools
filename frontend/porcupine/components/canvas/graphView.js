@@ -1,14 +1,14 @@
-import React from "react";
-import { StyleRoot } from "radium";
-import * as d3 from "d3";
+import React from 'react';
+import {StyleRoot} from 'radium';
+import * as d3 from 'd3';
 
-import CustomDragLayer from "../../draggables/customDragLayer";
-import ZoomMenu from "./menuSlider";
-import Links from "./links";
-import Nodes from "./nodes";
-import Stickies from "./stickies";
-import Toolbar from "../../containers/toolbar";
-import styles from "../../styles/graphView";
+import CustomDragLayer from '../../draggables/customDragLayer';
+import ZoomMenu from './menuSlider';
+import Links from './links';
+import Nodes from './nodes';
+import Stickies from './stickies';
+import Toolbar from '../../containers/toolbar';
+import styles from '../../styles/graphView';
 
 const defaults = {
   minZoom: 0.15,
@@ -16,7 +16,7 @@ const defaults = {
   gridSpacing: 36,
   gridDot: 2,
   gridSize: 40960,
-  zoomDuration: 750
+  zoomDuration: 750,
 };
 
 const Background = () => (
@@ -34,7 +34,7 @@ class GraphView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewTransform: d3.zoomIdentity
+      viewTransform: d3.zoomIdentity,
     };
     this.modifyZoom = this.modifyZoom.bind(this);
     this.renderDefs = this.renderDefs.bind();
@@ -42,19 +42,19 @@ class GraphView extends React.Component {
     this.handleZoomToFit = this.handleZoomToFit.bind(this);
 
     this.zoom = d3
-      .zoom()
-      .scaleExtent([defaults.minZoom, defaults.maxZoom])
-      .on("zoom", this.handleZoom);
+        .zoom()
+        .scaleExtent([defaults.minZoom, defaults.maxZoom])
+        .on('zoom', this.handleZoom);
   }
 
   componentDidMount() {
     d3.select(this.viewWrapper)
-      .on("touchstart", this.containZoom)
-      .on("touchmove", this.containZoom);
+        .on('touchstart', this.containZoom)
+        .on('touchmove', this.containZoom);
     // .on("click", this.handleSvgClicked)
     d3.select(this.viewWrapper)
-      .select("svg")
-      .call(this.zoom);
+        .select('svg')
+        .call(this.zoom);
   }
 
   // Keeps 'zoom' contained
@@ -63,7 +63,7 @@ class GraphView extends React.Component {
   // View 'zoom' handler
   handleZoom() {
     this.setState({
-      viewTransform: d3.event.transform
+      viewTransform: d3.event.transform,
     });
   }
 
@@ -85,19 +85,19 @@ class GraphView extends React.Component {
     const width = parent.clientWidth;
     const height = parent.clientHeight;
 
-    let translate = [this.state.viewTransform.x, this.state.viewTransform.y],
-      next = {
-        x: translate[0],
-        y: translate[1],
-        k: this.state.viewTransform.k
-      };
+    const translate = [this.state.viewTransform.x, this.state.viewTransform.y];
+    const next = {
+      x: translate[0],
+      y: translate[1],
+      k: this.state.viewTransform.k,
+    };
 
     if (viewBBox.width > 0 && viewBBox.height > 0) {
       // There are entities
-      let dx = viewBBox.width,
-        dy = viewBBox.height,
-        x = viewBBox.x + viewBBox.width / 2,
-        y = viewBBox.y + viewBBox.height / 2;
+      const dx = viewBBox.width;
+      const dy = viewBBox.height;
+      const x = viewBBox.x + viewBBox.width / 2;
+      const y = viewBBox.y + viewBBox.height / 2;
 
       next.k = 0.9 / Math.max(dx / width, dy / height);
 
@@ -124,14 +124,14 @@ class GraphView extends React.Component {
     const width = parent.clientWidth;
     const height = parent.clientHeight;
 
-    let center = [width / 2, height / 2],
-      extent = this.zoom.scaleExtent(),
-      translate = [this.state.viewTransform.x, this.state.viewTransform.y],
-      next = {
-        x: translate[0],
-        y: translate[1],
-        k: this.state.viewTransform.k
-      };
+    const center = [width / 2, height / 2];
+    const extent = this.zoom.scaleExtent();
+    const translate = [this.state.viewTransform.x, this.state.viewTransform.y];
+    const next = {
+      x: translate[0],
+      y: translate[1],
+      k: this.state.viewTransform.k,
+    };
 
     const target_zoom = next.k * (1 + modK);
     if (target_zoom < extent[0] || target_zoom > extent[1]) {
@@ -140,13 +140,13 @@ class GraphView extends React.Component {
 
     const translate0 = [
       (center[0] - next.x) / next.k,
-      (center[1] - next.y) / next.k
+      (center[1] - next.y) / next.k,
     ];
     next.k = target_zoom;
 
     const l = [
       translate0[0] * next.k + next.x,
-      translate0[1] * next.k + next.y
+      translate0[1] * next.k + next.y,
     ];
     next.x += center[0] - l[0] + modX;
     next.y += center[1] - l[1] + modY;
@@ -155,12 +155,12 @@ class GraphView extends React.Component {
 
   // Programmatically resets zoom
   setZoom(k = 1, x = 0, y = 0, dur = 0) {
-    var t = d3.zoomIdentity.translate(x, y).scale(k);
+    const t = d3.zoomIdentity.translate(x, y).scale(k);
     d3.select(this.viewWrapper)
-      .select("svg")
-      .transition()
-      .duration(dur)
-      .call(this.zoom.transform, t);
+        .select('svg')
+        .transition()
+        .duration(dur)
+        .call(this.zoom.transform, t);
   }
 
   renderDefs() {
@@ -238,26 +238,26 @@ class GraphView extends React.Component {
   }
 
   render() {
-    const { nodes, links, stickies, deleteSelection } = this.props;
+    const {nodes, links, stickies, deleteSelection} = this.props;
     const view = d3.select(this.view);
     const viewNode = view.node();
     if (viewNode) {
-      const { k, x, y } = this.state.viewTransform;
-      view.attr("transform", this.state.viewTransform);
+      const {k, x, y} = this.state.viewTransform;
+      view.attr('transform', this.state.viewTransform);
     }
 
     return (
       <StyleRoot>
-        <div style={[styles.viewWrapper]} ref={el => (this.viewWrapper = el)}>
+        <div style={[styles.viewWrapper]} ref={(el) => (this.viewWrapper = el)}>
           <Toolbar
             zoomToFit={this.handleZoomToFit}
             deleteSelection={deleteSelection}
           />
           <svg height="100%" width="100%">
             {this.renderDefs()}
-            <g className="view" ref={el => (this.view = el)}>
+            <g className="view" ref={(el) => (this.view = el)}>
               <Background />
-              <g className="entities" ref={el => (this.entities = el)}>
+              <g className="entities" ref={(el) => (this.entities = el)}>
                 <Stickies stickies={stickies} />
                 <Nodes nodes={nodes} />
                 <Links links={links} />

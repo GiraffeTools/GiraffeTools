@@ -1,11 +1,11 @@
-import React, { Fragment, useState } from "react";
-import Collapse from "react-bootstrap/Collapse";
+import React, {Fragment, useState} from 'react';
+import Collapse from 'react-bootstrap/Collapse';
 
-import styles from "../styles/question.js";
+import styles from '../styles/question.js';
 
-const Question = props => {
+const Question = (props) => {
   const [open, toggleOpen] = useState(false);
-  const { q, a } = props;
+  const {q, a} = props;
 
   return (
     <Fragment>

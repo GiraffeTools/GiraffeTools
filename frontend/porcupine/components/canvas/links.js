@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from 'react';
 
-import Link from "../../containers/link";
+import Link from '../../containers/link';
 
-const Links = ({ links }) => (
+const Links = ({links}) => (
   <Fragment>
-    {links && links.map(link => <Link {...link} key={link.id} />)}
+    {links && links.map((link) => <Link {...link} key={link.id} />)}
   </Fragment>
 );
 

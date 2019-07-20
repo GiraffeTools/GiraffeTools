@@ -1,11 +1,11 @@
-import React from "react";
-import Radium from "radium";
-import to from "await-to-js";
+import React from 'react';
+import Radium from 'radium';
+import to from 'await-to-js';
 
-import LoginButton from "../../../giraffe/components/loginButton";
-import GithubModalContent from "./githubModalContent";
-import { pushToGithub } from "../../utils/savePorkFile";
-import styles from "../../styles/githubModal";
+import LoginButton from '../../../giraffe/components/loginButton';
+import GithubModalContent from './githubModalContent';
+import {pushToGithub} from '../../utils/savePorkFile';
+import styles from '../../styles/githubModal';
 
 class GithubModal extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class GithubModal extends React.Component {
       commit_pending: false,
       commit_succes: false,
       commit_error: false,
-      github_repo: null
+      github_repo: null,
     };
     this.onClose = this.onClose.bind(this);
     this.onConfirm = this.onConfirm.bind(this);
@@ -23,55 +23,55 @@ class GithubModal extends React.Component {
   }
 
   onClose() {
-    const { onClose } = this.props;
+    const {onClose} = this.props;
     onClose();
   }
 
   async onConfirm() {
-    const { githubAction, project, auth } = this.props;
-    const { commit_message, github_repo } = this.state;
+    const {githubAction, project, auth} = this.props;
+    const {commit_message, github_repo} = this.state;
     this.setState({
       commit_pending: true,
       commit_succes: false,
-      commit_error: false
+      commit_error: false,
     });
 
-    const { user, repository, pork_file } = project;
+    const {user, repository, pork_file} = project;
     const commit = {
       ...project,
       commit_message,
       repository: repository || github_repo,
-      user: user || (auth && auth.github_handle)
+      user: user || (auth && auth.github_handle),
     };
     const content = {
-      pork_file
+      pork_file,
     };
     const [error, response] = await to(
-      pushToGithub(commit, await githubAction(content))
+        pushToGithub(commit, await githubAction(content))
     );
     if (!error && response.ok) {
       this.setState({
         commit_pending: false,
         commit_succes: response.ok,
-        commit_error: false
+        commit_error: false,
       });
     } else {
       this.setState({
         commit_pending: false,
         commit_succes: false,
-        commit_error: true
+        commit_error: true,
       });
     }
   }
 
   closeSucces() {
     this.setState({
-      commit_succes: false
+      commit_succes: false,
     });
   }
   closeError() {
     this.setState({
-      commit_error: false
+      commit_error: false,
     });
   }
 
@@ -81,13 +81,13 @@ class GithubModal extends React.Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
   render() {
-    const { project, auth, title } = this.props;
-    const { commit_succes, commit_error, commit_pending } = this.state;
+    const {project, auth, title} = this.props;
+    const {commit_succes, commit_error, commit_pending} = this.state;
     const loggedIn = auth && auth.access_token;
     const yourRepo =
       auth &&
@@ -117,12 +117,12 @@ class GithubModal extends React.Component {
             data-toggle="tooltip"
             data-placement="top"
             title={
-              (!loggedIn && "You're not logged in...") ||
+              (!loggedIn && 'You\'re not logged in...') ||
               // (!yourRepo && "This is not your repository...") ||
-              "Push to GitHub!"
+              'Push to GitHub!'
             }
           >
-            {commit_pending ? "Committing..." : "Confirm"}
+            {commit_pending ? 'Committing...' : 'Confirm'}
           </button>
           <button
             type="button"
@@ -135,8 +135,8 @@ class GithubModal extends React.Component {
         <div className="d-flex justify-content-center" style={[styles.alerts]}>
           <div
             className={
-              "alert alert-success alert-dismissible fade" +
-              (commit_succes ? " show" : "")
+              'alert alert-success alert-dismissible fade' +
+              (commit_succes ? ' show' : '')
             }
             onClick={() => this.closeSucces()}
             role="alert"
@@ -154,8 +154,8 @@ class GithubModal extends React.Component {
           </div>
           <div
             className={
-              "alert alert-danger alert-dismissible fade" +
-              (commit_error ? " show" : "")
+              'alert alert-danger alert-dismissible fade' +
+              (commit_error ? ' show' : '')
             }
             onClick={() => this.closeError()}
             role="alert"

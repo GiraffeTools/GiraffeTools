@@ -1,19 +1,19 @@
-import { connect } from "react-redux";
+import {connect} from 'react-redux';
 
-import GithubModal from "../components/modals/githubModal";
-import { closeModal } from "../actions";
+import GithubModal from '../components/modals/githubModal';
+import {closeModal} from '../actions';
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
-const mapDispatchToProps = dispatch => ({
-  closeModal: (id) => dispatch(closeModal(id))
+const mapDispatchToProps = (dispatch) => ({
+  closeModal: (id) => dispatch(closeModal(id)),
 });
 
 const GithubModalContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(GithubModal);
 
 export default GithubModalContainer;

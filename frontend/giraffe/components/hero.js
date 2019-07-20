@@ -1,11 +1,11 @@
-import React from "react";
-import { StyleRoot } from "radium";
-import Typing from "react-typing-animation";
-import Row from "react-bootstrap/Row";
+import React from 'react';
+import {StyleRoot} from 'radium';
+import Typing from 'react-typing-animation';
+import Row from 'react-bootstrap/Row';
 
-import Navigation from "../components/navigation";
-import LoginButton from "../containers/loginButton";
-import styles from "../styles/hero.js";
+import Navigation from '../components/navigation';
+import LoginButton from '../containers/loginButton';
+import styles from '../styles/hero.js';
 
 const Hero = () => (
   <StyleRoot>

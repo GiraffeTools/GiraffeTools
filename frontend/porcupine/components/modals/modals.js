@@ -1,9 +1,9 @@
-import React from "react";
-import Radium from "radium";
+import React from 'react';
+import Radium from 'radium';
 
-import GithubModal from "../../containers/githubModal";
-import ToolboxModal from "../../containers/toolboxModal";
-import styles from "../../styles/modals";
+import GithubModal from '../../containers/githubModal';
+import ToolboxModal from '../../containers/toolboxModal';
+import styles from '../../styles/modals';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -13,14 +13,14 @@ class Modal extends React.Component {
   }
 
   onClose() {
-    const { item, onClose } = this.props;
+    const {item, onClose} = this.props;
     if (item.onClose) {
       item.onClose();
     }
     onClose(item.id);
   }
   onConfirm() {
-    const { item, onClose } = this.props;
+    const {item, onClose} = this.props;
     if (item.onConfirm) {
       item.onConfirm();
     }
@@ -28,13 +28,13 @@ class Modal extends React.Component {
   }
 
   render() {
-    const { zIndex, item } = this.props;
-    const { type } = item;
+    const {zIndex, item} = this.props;
+    const {type} = item;
     switch (type) {
-      case "confirmation":
-        const { text } = this.props.item;
+      case 'confirmation':
+        const {text} = this.props.item;
         return (
-          <div className="modal-dialog" style={{ zIndex: (zIndex + 1) * 10 }}>
+          <div className="modal-dialog" style={{zIndex: (zIndex + 1) * 10}}>
             <div className="modal-content">
               <h5 className="modal-title" id="exampleModalLabel">
                 Confirmation modal
@@ -60,10 +60,10 @@ class Modal extends React.Component {
           </div>
         );
         break;
-      case "push_to_github":
-        const { onClose } = this;
+      case 'push_to_github':
+        const {onClose} = this;
         return (
-          <div className="modal-dialog" style={{ zIndex: (zIndex + 1) * 10 }}>
+          <div className="modal-dialog" style={{zIndex: (zIndex + 1) * 10}}>
             <GithubModal
               title={item.title}
               onClose={() => this.onClose(item.id)}
@@ -72,9 +72,9 @@ class Modal extends React.Component {
             />
           </div>
         );
-      case "toggle_toolboxes":
+      case 'toggle_toolboxes':
         return (
-          <div className="modal-dialog" style={{ zIndex: (zIndex + 1) * 10 }}>
+          <div className="modal-dialog" style={{zIndex: (zIndex + 1) * 10}}>
             <ToolboxModal onClose={() => this.onClose(item.id)} />
           </div>
         );
@@ -86,11 +86,11 @@ class Modal extends React.Component {
 
 class Modals extends React.Component {
   render() {
-    const { modals, closeModal } = this.props;
+    const {modals, closeModal} = this.props;
     const show = modals.length != 0;
     return (
       <div
-        className={"modal fade" + (show ? " show" : "")}
+        className={'modal fade' + (show ? ' show' : '')}
         style={[styles.modal, show && styles.modal.show]}
       >
         {modals.map((item, i) => (
@@ -98,7 +98,7 @@ class Modals extends React.Component {
             item={item}
             key={i}
             zIndex={i}
-            onClose={item => closeModal(item)}
+            onClose={(item) => closeModal(item)}
           />
         ))}
       </div>

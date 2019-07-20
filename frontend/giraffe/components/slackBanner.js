@@ -1,8 +1,8 @@
-import React from "react";
-import Radium from "radium";
-import Col from "react-bootstrap/Col";
+import React from 'react';
+import Radium from 'radium';
+import Col from 'react-bootstrap/Col';
 
-import styles from "../styles/slackBanner.js";
+import styles from '../styles/slackBanner.js';
 
 const SlackBanner = () => (
   <div style={[styles.slack]}>

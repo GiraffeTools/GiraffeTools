@@ -1,31 +1,31 @@
-import React, { Fragment } from "react";
-import { StyleRoot } from "radium";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import pluralize from "pluralize";
+import React, {Fragment} from 'react';
+import {StyleRoot} from 'radium';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import pluralize from 'pluralize';
 
-import styles from "../styles/commit";
+import styles from '../styles/commit';
 
-const Commit = ({ commit, full_name }) => {
+const Commit = ({commit, full_name}) => {
   const days_ago = Math.floor(
-    (Date.now() - new Date(commit.commit.author.date)) / 1000 / 3600 / 24
+      (Date.now() - new Date(commit.commit.author.date)) / 1000 / 3600 / 24
   );
   const maxLength = 28;
   const message =
     commit.commit.message.length < maxLength
       ? commit.commit.message
-      : commit.commit.message.substring(0, maxLength - 3) + "...";
+      : commit.commit.message.substring(0, maxLength - 3) + '...';
 
   return (
     <StyleRoot>
       <Row style={styles.commitBox}>
-        <Col sm={6} style={{ textAlign: "left" }}>
+        <Col sm={6} style={{textAlign: 'left'}}>
           <h5>{message}</h5>
           <b>@{commit.commit.author.login}</b>
-          {` committed ${days_ago} ` + pluralize("day", days_ago) + " ago"}
+          {` committed ${days_ago} ` + pluralize('day', days_ago) + ' ago'}
         </Col>
-        <Col sm={6} style={{ textAlign: "right" }}>
+        <Col sm={6} style={{textAlign: 'right'}}>
           <Button
             variant="light"
             target="_blank"

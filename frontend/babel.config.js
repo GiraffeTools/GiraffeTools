@@ -1,38 +1,38 @@
-module.exports = api => {
+module.exports = (api) => {
   api.cache(false);
 
-  const presets = ["@babel/react", "@babel/env"];
+  const presets = ['@babel/react', '@babel/env'];
 
   const plugins = [
     // Required for 'dynamic-imports'
-    "@babel/plugin-syntax-dynamic-import",
+    '@babel/plugin-syntax-dynamic-import',
     // imports meta-data from scripts, required for ?
-    "@babel/plugin-syntax-import-meta",
+    '@babel/plugin-syntax-import-meta',
 
     // Required for using the {...object} syntax
-    "@babel/plugin-proposal-object-rest-spread",
+    '@babel/plugin-proposal-object-rest-spread',
     // Required for multi-line strings
-    "@babel/plugin-proposal-json-strings",
+    '@babel/plugin-proposal-json-strings',
     // Separating numbers with _: 100_000 == 10^5, required for ?
-    "@babel/plugin-proposal-numeric-separator",
+    '@babel/plugin-proposal-numeric-separator',
     // Required for ?
-    "@babel/plugin-proposal-export-default-from",
-    "@babel/plugin-proposal-export-namespace-from",
-    "@babel/plugin-proposal-function-sent",
-    "@babel/plugin-proposal-throw-expressions",
+    '@babel/plugin-proposal-export-default-from',
+    '@babel/plugin-proposal-export-namespace-from',
+    '@babel/plugin-proposal-function-sent',
+    '@babel/plugin-proposal-throw-expressions',
     // Required for hot reloading
-    "react-hot-loader/babel",
+    'react-hot-loader/babel',
     // Required for async-await
-    "@babel/transform-runtime",
+    '@babel/transform-runtime',
     // Required for react-dnd:
-    ["@babel/plugin-proposal-class-properties", { loose: true }],
-    ["@babel/plugin-proposal-decorators", { legacy: true }],
+    ['@babel/plugin-proposal-class-properties', {loose: true}],
+    ['@babel/plugin-proposal-decorators', {legacy: true}],
     // required for react-spinners
-    "emotion"
+    'emotion',
   ];
 
   return {
     presets,
-    plugins
+    plugins,
   };
 };

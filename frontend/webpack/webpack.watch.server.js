@@ -1,8 +1,8 @@
-var webpack = require("webpack");
-var WebpackDevServer = require("webpack-dev-server");
-var config = require("./webpack.watch.config.js");
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const config = require('./webpack.watch.config.js');
 
-const host = "0.0.0.0";
+const host = '0.0.0.0';
 const port = 3000;
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
@@ -10,12 +10,12 @@ new WebpackDevServer(webpack(config), {
   hot: true,
   inline: true,
   disableHostCheck: true,
-  headers: { "Access-Control-Allow-Origin": "*" },
+  headers: {'Access-Control-Allow-Origin': '*'},
   watchOptions: {
     ignored: /node_modules/,
     aggregateTimeout: 300,
-    poll: 1000
-  }
+    poll: 1000,
+  },
 }).listen(port, host, (err, result) => {
   if (err) {
     console.log(err);

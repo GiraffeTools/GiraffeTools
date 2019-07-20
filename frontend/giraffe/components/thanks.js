@@ -1,8 +1,8 @@
-import React from "react";
-import Radium from "radium";
-import Container from "react-bootstrap/Container";
+import React from 'react';
+import Radium from 'radium';
+import Container from 'react-bootstrap/Container';
 
-import styles from "../styles/thanks.js";
+import styles from '../styles/thanks.js';
 
 const Thanks = () => (
   <Container fluid={true} style={styles.thanks}>

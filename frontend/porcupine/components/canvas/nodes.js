@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from 'react';
 
-import Node from "../../containers/node";
+import Node from '../../containers/node';
 
-const Nodes = ({ nodes }) => (
+const Nodes = ({nodes}) => (
   <Fragment>
-    {nodes && nodes.map(node => <Node {...node} key={node.id} />)}
+    {nodes && nodes.map((node) => <Node {...node} key={node.id} />)}
   </Fragment>
 );
 

@@ -1,18 +1,18 @@
-import React, { Fragment, useState } from "react";
-import Radium from "radium";
-import PaneGroup from "./paneGroup";
-import DraggablePaneElement from "../../draggables/draggablePaneElement";
-import Collapse from "react-bootstrap/Collapse";
+import React, {Fragment, useState} from 'react';
+import Radium from 'radium';
+import PaneGroup from './paneGroup';
+import DraggablePaneElement from '../../draggables/draggablePaneElement';
+import Collapse from 'react-bootstrap/Collapse';
 
-import styles from "../../styles/toolboxGroup";
+import styles from '../../styles/toolboxGroup';
 
-const ToolboxGroup = ({ toolbox }) => {
+const ToolboxGroup = ({toolbox}) => {
   const [open, toggleToolbox] = useState(true);
 
   const paneGroups =
     toolbox &&
     toolbox.categories &&
-    toolbox.categories.map(category => (
+    toolbox.categories.map((category) => (
       <PaneGroup
         key={category.name}
         name={category.name}
@@ -24,9 +24,9 @@ const ToolboxGroup = ({ toolbox }) => {
   const nodes =
     toolbox &&
     toolbox.nodes &&
-    toolbox.nodes.map(node => {
-      const { name } = node;
-      node.colour = toolbox.colour || "#BBB";
+    toolbox.nodes.map((node) => {
+      const {name} = node;
+      node.colour = toolbox.colour || '#BBB';
       return (
         <DraggablePaneElement key={name} category={node} id={name}>
           {name}
@@ -46,7 +46,7 @@ const ToolboxGroup = ({ toolbox }) => {
         <img
           style={{
             ...styles.expand,
-            ...styles.expand[open ? "open" : "closed"]
+            ...styles.expand[open ? 'open' : 'closed'],
           }}
           src="/static/img/arrow-right.svg"
         />

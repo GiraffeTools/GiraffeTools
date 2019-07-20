@@ -1,10 +1,10 @@
-import React from "react";
-import Radium from "radium";
-import Col from "react-bootstrap/Col";
+import React from 'react';
+import Radium from 'radium';
+import Col from 'react-bootstrap/Col';
 
-import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
-import styles from "../styles/armadillo.js";
-import componentStyles from "../styles/components.js";
+import SeparatorWithOpenCircle from './separatorWithOpenCircle';
+import styles from '../styles/armadillo.js';
+import componentStyles from '../styles/components.js';
 
 const Armadillo = () => (
   <div className="d-flex justify-content-end">
@@ -12,8 +12,8 @@ const Armadillo = () => (
       <h3 style={[styles.armadillo]}>Armadillo</h3>
       <SeparatorWithOpenCircle
         color="secondary"
-        thickness={"1px"}
-        styleOverwrite={{ ...styles.componentStyles, width: "60%" }}
+        thickness={'1px'}
+        styleOverwrite={{...styles.componentStyles, width: '60%'}}
       />
       <div style={[styles.innerToolText]}>
         <b>A</b>

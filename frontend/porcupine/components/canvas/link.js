@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import * as d3 from "d3";
+import React, {Fragment} from 'react';
+import * as d3 from 'd3';
 
 class Link extends React.Component {
   constructor(props) {
@@ -9,26 +9,26 @@ class Link extends React.Component {
     this.connect = this.connect.bind(this);
 
     this.state = {
-      hovered: false
+      hovered: false,
     };
   }
 
   componentDidMount() {
     d3.select(this.svgRef)
-      .on("click", this.click)
-      .on("mouseenter", () => this.hover(true))
-      .on("mouseleave", () => this.hover(false));
+        .on('click', this.click)
+        .on('mouseenter', () => this.hover(true))
+        .on('mouseleave', () => this.hover(false));
   }
 
   click() {
-    const { clickItem, id } = this.props;
-    clickItem(id, "link");
+    const {clickItem, id} = this.props;
+    clickItem(id, 'link');
     d3.event.stopPropagation();
   }
 
   hover(enter) {
     this.setState({
-      hovered: enter
+      hovered: enter,
     });
     d3.event.stopPropagation();
   }
@@ -41,14 +41,14 @@ class Link extends React.Component {
   connect(el) {}
 
   render() {
-    const { portFrom, portTo, selectedLinks, id } = this.props;
+    const {portFrom, portTo, selectedLinks, id} = this.props;
     if (!portFrom || !portTo) {
       return <g />;
     }
-    let startingPoint = { x: portFrom.x, y: portFrom.y + 5 };
-    let endPoint = { x: portTo.x, y: portTo.y + 5 };
+    const startingPoint = {x: portFrom.x, y: portFrom.y + 5};
+    const endPoint = {x: portTo.x, y: portTo.y + 5};
 
-    let d = "M";
+    let d = 'M';
     // starting point
     d += `${startingPoint.x} ${startingPoint.y}`;
     // control points
@@ -70,20 +70,20 @@ class Link extends React.Component {
           r={10}
           filter={
             selectedLinks && selectedLinks.includes(id)
-              ? "url(#selection-glow)"
-              : ""
+              ? 'url(#selection-glow)'
+              : ''
           }
-          cursor={"pointer"}
+          cursor={'pointer'}
         />
         // ...and this is for clicking
         <path
-          ref={svg => (this.svgRef = svg)}
+          ref={(svg) => (this.svgRef = svg)}
           d={d}
           stroke="transparent"
           strokeWidth="24"
           fill="none"
           r={10}
-          cursor={"pointer"}
+          cursor={'pointer'}
         />
       </Fragment>
     );

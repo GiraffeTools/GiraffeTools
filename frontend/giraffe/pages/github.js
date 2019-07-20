@@ -1,18 +1,18 @@
-import React, { Fragment } from "react";
-import { Route, Switch } from "react-router-dom";
+import React, {Fragment} from 'react';
+import {Route, Switch} from 'react-router-dom';
 
-import Repository from "./repository";
-import User from "../containers/user";
+import Repository from './repository';
+import User from '../containers/user';
 
-const GitHub = props => {
-  const { match } = props;
+const GitHub = (props) => {
+  const {match} = props;
   return (
     <Switch>
       <Route
-        path={match.url + "/:username/:repository/:branchOrCommit?"}
+        path={match.url + '/:username/:repository/:branchOrCommit?'}
         component={Repository}
       />
-      <Route path={match.url + "/:username"} component={User} />
+      <Route path={match.url + '/:username'} component={User} />
     </Switch>
   );
 };

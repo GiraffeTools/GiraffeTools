@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 
 class ToolbarItem extends Component {
   render() {
     if (this.props.item) {
-      var { text, items, callback } = this.props.item;
-    } else var { text, items, callback } = this.props;
-    //pass one object that contains all props ;)
+      var {text, items, callback} = this.props.item;
+    } else var {text, items, callback} = this.props;
+    // pass one object that contains all props ;)
 
     if (items) {
       const listItems = items.map((item, index) => (

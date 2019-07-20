@@ -1,34 +1,34 @@
-import React from "react";
-import Radium from "radium";
-import { v4 } from "uuid";
+import React from 'react';
+import Radium from 'radium';
+import {v4} from 'uuid';
 
-import styles from "../../styles/addParameter";
+import styles from '../../styles/addParameter';
 
 class AddParameter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
+      name: '',
       input: false,
-      output: false
+      output: false,
     };
     this.addParameter = this.addParameter.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   addParameter() {
-    const { addParameterToNode, updateNode, nodeId } = this.props;
-    const { name, input, output } = this.state;
+    const {addParameterToNode, updateNode, nodeId} = this.props;
+    const {name, input, output} = this.state;
     const parameter = {
       id: v4(),
       name,
-      data: "",
+      data: '',
       isVisible: true,
       isEditable: true,
-      isIterable: false
+      isIterable: false,
     };
-    if (input) parameter["input"] = v4();
-    if (output) parameter["output"] = v4();
+    if (input) parameter['input'] = v4();
+    if (output) parameter['output'] = v4();
     addParameterToNode(parameter, nodeId);
     updateNode(nodeId);
   }
@@ -37,19 +37,19 @@ class AddParameter extends React.Component {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    if (name === "input" || name === "output") {
+    if (name === 'input' || name === 'output') {
       this.setState({
-        [name]: target.checked
+        [name]: target.checked,
       });
     } else {
       this.setState({
-        [name]: value
+        [name]: value,
       });
     }
   }
 
   render() {
-    const { name, input, output } = this.state;
+    const {name, input, output} = this.state;
     return (
       <div>
         <div className="form-group" style={[styles.addPortForm]}>

@@ -14,36 +14,37 @@ export async function urlExists(url, callback) {
 
 export function groupByDate(commits) {
   return commits.reduce((result, commit) => {
-    let date = new Date(commit.commit.author.date).toDateString();
+    const date = new Date(commit.commit.author.date).toDateString();
     if (!result[date]) {
-      result[date] = [{ commit }];
+      result[date] = [{commit}];
     } else {
-      result[date].push({ commit });
+      result[date].push({commit});
     }
     return result;
   }, {});
 }
 
 export function validateEmail(email) {
-  var tester = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
+  const tester = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
   if (!email) return false;
 
   if (email.length > 254) return false;
 
-  var valid = tester.test(email);
+  const valid = tester.test(email);
   if (!valid) return false;
 
   // Further checking of some things regex can't handle
-  var parts = email.split("@");
+  const parts = email.split('@');
   if (parts[0].length > 64) return false;
 
-  var domainParts = parts[1].split(".");
+  const domainParts = parts[1].split('.');
   if (
     domainParts.some(function(part) {
       return part.length > 63;
     })
-  )
+  ) {
     return false;
+  }
 
   return true;
 }

@@ -1,13 +1,13 @@
-import React from "react";
-import Radium from "radium";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
+import React from 'react';
+import Radium from 'radium';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
 
-import styles from "../styles/galleryElement";
-import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
+import styles from '../styles/galleryElement';
+import SeparatorWithOpenCircle from './separatorWithOpenCircle';
 
-const GalleryElement = ({ example }) => (
+const GalleryElement = ({example}) => (
   <Col sm={4} style={styles.cardContainer}>
     <Card style={styles.card}>
       <Card.Img variant="top" src="/static/img/armadillo_card.jpg" />

@@ -1,15 +1,15 @@
-import React, { Fragment } from "react";
-import AddParameter from "../../containers/addParameter";
-import Fields from "./fields";
+import React, {Fragment} from 'react';
+import AddParameter from '../../containers/addParameter';
+import Fields from './fields';
 
-import styles from "../../styles/parameterPane";
-require("../../scss/scrollbar.scss");
+import styles from '../../styles/parameterPane';
+require('../../scss/scrollbar.scss');
 
-const StickyPane = props => {
-  const { selection, clickItem, deleteSticky, updateSticky } = props;
+const StickyPane = (props) => {
+  const {selection, clickItem, deleteSticky, updateSticky} = props;
   if (!selection) return null;
 
-  const { title, content, id } = selection;
+  const {title, content, id} = selection;
 
   return (
     <Fragment>
@@ -17,9 +17,9 @@ const StickyPane = props => {
         <h4 style={styles.name}>
           <input
             style={styles.nameInput}
-            onChange={event => updateSticky(id, { title: event.target.value })}
-            value={title || ""}
-            placeholder={"<name>"}
+            onChange={(event) => updateSticky(id, {title: event.target.value})}
+            value={title || ''}
+            placeholder={'<name>'}
           />
         </h4>
         <i
@@ -32,15 +32,15 @@ const StickyPane = props => {
       <div style={styles.fields}>
         <div style={styles.field}>
           <label htmlFor={id} style={styles.label}>
-            {"content"}
+            {'content'}
           </label>
           <input
             type="text"
             value={content}
             className="form-control"
             id={id}
-            onChange={event =>
-              updateSticky(id, { content: event.target.value })
+            onChange={(event) =>
+              updateSticky(id, {content: event.target.value})
             }
           />
         </div>

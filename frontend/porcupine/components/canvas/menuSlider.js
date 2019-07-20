@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "../../styles/menuSlider";
+import React from 'react';
+import styles from '../../styles/menuSlider';
 
 const steps = 100; // Slider steps
 
@@ -10,20 +10,20 @@ class MenuSlider extends React.PureComponent {
   }
 
   sliderToZoom(val) {
-    const { minZoom, maxZoom } = this.props;
+    const {minZoom, maxZoom} = this.props;
     return (val * (maxZoom - minZoom)) / steps + minZoom;
   }
 
   zoomToSlider(val) {
-    const { minZoom, maxZoom } = this.props;
+    const {minZoom, maxZoom} = this.props;
     return ((val - minZoom) * steps) / (maxZoom - minZoom);
   }
 
   zoom(event) {
-    const { minZoom, maxZoom, zoomLevel, modifyZoom } = this.props;
-    let sliderVal = event.target.value;
-    let zoomLevelNext = this.sliderToZoom(sliderVal);
-    let delta = zoomLevelNext - zoomLevel;
+    const {minZoom, maxZoom, zoomLevel, modifyZoom} = this.props;
+    const sliderVal = event.target.value;
+    const zoomLevelNext = this.sliderToZoom(sliderVal);
+    const delta = zoomLevelNext - zoomLevel;
 
     if (zoomLevelNext <= maxZoom && zoomLevelNext >= minZoom) {
       modifyZoom(delta);
@@ -31,7 +31,7 @@ class MenuSlider extends React.PureComponent {
   }
 
   render() {
-    const { minZoom, maxZoom, zoomLevel } = this.props;
+    const {minZoom, maxZoom, zoomLevel} = this.props;
     return (
       <div style={styles.zoomSliderWrapper}>
         <span>-</span>

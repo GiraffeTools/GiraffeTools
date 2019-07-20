@@ -1,63 +1,63 @@
-import React from "react";
-import Radium from "radium";
-import Col from "react-bootstrap/Col";
+import React from 'react';
+import Radium from 'radium';
+import Col from 'react-bootstrap/Col';
 
-import { addTokenToQuery } from "../utils/auth";
-import { shuffle } from "../utils/utils";
-import Contributor from "./contributor";
-import styles from "../styles/contributors.js";
+import {addTokenToQuery} from '../utils/auth';
+import {shuffle} from '../utils/utils';
+import Contributor from './contributor';
+import styles from '../styles/contributors.js';
 
 class Contributors extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       contributors: null,
-      selectedContributors: null
+      selectedContributors: null,
     };
     this.selectContributors = this.selectContributors.bind(this);
   }
 
   async componentDidMount() {
     const url = await addTokenToQuery(
-      new URL(
-        "https://api.github.com/repos/TimVanMourik/GiraffeTools/contributors"
-      )
+        new URL(
+            'https://api.github.com/repos/TimVanMourik/GiraffeTools/contributors'
+        )
     );
     const contributors = await (await fetch(url.href)).json();
     if (!contributors.length) return;
     this.setState({
       contributors: contributors,
       selectContributors: shuffle(
-        Array.apply(null, { length: contributors.length }).map(
-          Number.call,
-          Number
-        )
-      ).slice(0, 9)
+          Array.apply(null, {length: contributors.length}).map(
+              Number.call,
+              Number
+          )
+      ).slice(0, 9),
     });
   }
 
   selectContributors(direction) {
-    const { contributors, selectContributors } = this.state;
+    const {contributors, selectContributors} = this.state;
     // #TODO implement pagination
     switch (direction) {
-      case "next":
+      case 'next':
         break;
-      case "previous":
+      case 'previous':
         break;
     }
     // Just reshuffle them randomly for now
     this.setState({
       selectContributors: shuffle(
-        Array.apply(null, { length: contributors.length }).map(
-          Number.call,
-          Number
-        )
-      ).slice(0, 9)
+          Array.apply(null, {length: contributors.length}).map(
+              Number.call,
+              Number
+          )
+      ).slice(0, 9),
     });
   }
 
   render() {
-    const { contributors, selectContributors } = this.state;
+    const {contributors, selectContributors} = this.state;
 
     return (
       <div style={[styles.contributors]}>
@@ -68,20 +68,20 @@ class Contributors extends React.Component {
               <img
                 src="/static/img/arrow_left.svg"
                 style={[styles.contributorArrow]}
-                onClick={() => this.selectContributors("previous")}
+                onClick={() => this.selectContributors('previous')}
               />
               <div style={[styles.contributorList]}>
                 {contributors &&
                   contributors
-                    .filter((item, index) => selectContributors.includes(index))
-                    .map(contributor => (
-                      <Contributor key={contributor.id} {...contributor} />
-                    ))}
+                      .filter((item, index) => selectContributors.includes(index))
+                      .map((contributor) => (
+                        <Contributor key={contributor.id} {...contributor} />
+                      ))}
               </div>
               <img
                 style={[styles.contributorArrow]}
                 src="/static/img/arrow_right.svg"
-                onClick={() => this.selectContributors("next")}
+                onClick={() => this.selectContributors('next')}
               />
             </div>
           )}

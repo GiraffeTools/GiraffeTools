@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
-import Radium from "radium";
+import React, {Fragment} from 'react';
+import Radium from 'radium';
 
-import Banner from "../../giraffe/components/banner";
-import Footer from "../../giraffe/components/footer";
-import WorkInProgress from "../components/workInProgress";
+import Banner from '../../giraffe/components/banner';
+import Footer from '../../giraffe/components/footer';
+import WorkInProgress from '../components/workInProgress';
 
-import styles from "../styles/content";
+import styles from '../styles/content';
 
 class Content extends React.Component {
   constructor(props) {

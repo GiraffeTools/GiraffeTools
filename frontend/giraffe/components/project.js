@@ -1,18 +1,18 @@
-import React, { Fragment } from "react";
-import Radium from "radium";
-import { v4 } from "uuid";
+import React, {Fragment} from 'react';
+import Radium from 'radium';
+import {v4} from 'uuid';
 
-import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
-import { initGiraffeProject } from "../../porcupine/utils/savePorkFile";
-import styles from "../styles/project.js";
-import componentStyles from "../styles/components.js";
+import SeparatorWithOpenCircle from './separatorWithOpenCircle';
+import {initGiraffeProject} from '../../porcupine/utils/savePorkFile';
+import styles from '../styles/project.js';
+import componentStyles from '../styles/components.js';
 
-const Project = ({ repository, openModal }) => (
+const Project = ({repository, openModal}) => (
   <div
     className="d-flex"
     style={[
       styles.project,
-      !repository.isGiraffeProject && styles.project.noGiraffe
+      !repository.isGiraffeProject && styles.project.noGiraffe,
     ]}
   >
     <div className="col-6 text-left">
@@ -21,20 +21,20 @@ const Project = ({ repository, openModal }) => (
           {repository.name}
         </h5>
         <div style={[styles.publicPrivate]}>
-          {repository.private ? "Private" : "Public"}
+          {repository.private ? 'Private' : 'Public'}
         </div>
       </div>
       <SeparatorWithOpenCircle
         color="secondary"
-        thickness={"1px"}
+        thickness={'1px'}
         styleOverwrite={styles.componentStyles}
       />
       <div>
-        added{" "}
-        {new Intl.DateTimeFormat("en-GB", {
-          year: "numeric",
-          month: "long",
-          day: "2-digit"
+        added{' '}
+        {new Intl.DateTimeFormat('en-GB', {
+          year: 'numeric',
+          month: 'long',
+          day: '2-digit',
         }).format(new Date(repository.created_at))}
       </div>
     </div>
@@ -59,14 +59,14 @@ const Project = ({ repository, openModal }) => (
             openModal({
               id: v4(),
               title:
-                "Do you want to initialise this repository as a GiraffeTools project?",
-              type: "push_to_github",
+                'Do you want to initialise this repository as a GiraffeTools project?',
+              type: 'push_to_github',
               project: {
                 user: repository.owner.login,
-                repository: repository.name
+                repository: repository.name,
               },
               onClose: () => {},
-              onConfirm: () => initGiraffeProject()
+              onConfirm: () => initGiraffeProject(),
             })
           }
           style={[styles.add]}

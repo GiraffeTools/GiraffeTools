@@ -1,4 +1,4 @@
 export default {
-  PANE_ELEMENT: "paneElement",
-  NODE: "node"
+  PANE_ELEMENT: 'paneElement',
+  NODE: 'node',
 };

@@ -2,52 +2,52 @@ const styles = {
   qrcode: {},
   markerWindow: {
     zIndex: 1,
-    width: "30%",
-    transition: "transform 0.6s",
-    transform: " translateY(20%)",
+    width: '30%',
+    transition: 'transform 0.6s',
+    transform: ' translateY(20%)',
     closed: {
-      transform: " translateY(-80%)"
-    }
+      transform: ' translateY(-80%)',
+    },
   },
   header: {
-    backgroundColor: "#FFF",
-    borderRadius: "0.6rem"
+    backgroundColor: '#FFF',
+    borderRadius: '0.6rem',
   },
   headerContent: {
-    padding: "1rem 2rem",
-    backgroundColor: "rgba(90, 97, 105, 0.06)",
-    borderBottom: "none",
-    borderRadius: "0.6rem"
+    padding: '1rem 2rem',
+    backgroundColor: 'rgba(90, 97, 105, 0.06)',
+    borderBottom: 'none',
+    borderRadius: '0.6rem',
   },
   headline: {
-    color: "#ec636a",
-    textAlign: "center",
-    marginTop: "5px",
-    marginBottom: "5px",
-    marginRight: "5px",
-    marginLeft: "5px"
+    color: '#ec636a',
+    textAlign: 'center',
+    marginTop: '5px',
+    marginBottom: '5px',
+    marginRight: '5px',
+    marginLeft: '5px',
   },
   headlineAR: {
-    fontWeight: 700
+    fontWeight: 700,
   },
   footer: {
-    paddingBottom: "1rem"
+    paddingBottom: '1rem',
   },
   closeMarkerButton: {
-    fontSize: "30px"
+    fontSize: '30px',
   },
   markerButton: {
-    fontSize: "20px",
-    cursor: "pointer",
-    textAlign: "center",
+    fontSize: '20px',
+    cursor: 'pointer',
+    textAlign: 'center',
     zIndex: 1,
-    transform: "rotate(90deg)",
-    transition: "transform 0.6s",
+    transform: 'rotate(90deg)',
+    transition: 'transform 0.6s',
     closed: {
-      transform: "rotate(270deg)"
-    }
+      transform: 'rotate(270deg)',
+    },
   },
-  neurovaultLabel: {}
+  neurovaultLabel: {},
 };
 export default styles;
 

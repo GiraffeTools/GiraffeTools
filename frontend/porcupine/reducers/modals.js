@@ -1,23 +1,23 @@
-import { v4 } from "uuid";
+import {v4} from 'uuid';
 
-import { OPEN_MODAL, CLOSE_MODAL } from "../actions/actionTypes";
+import {OPEN_MODAL, CLOSE_MODAL} from '../actions/actionTypes';
 
 const INITIAL_STATE = {
-  modals: []
+  modals: [],
 };
 
 const modals = (state = INITIAL_STATE, action) => {
-  const { type, payload } = action;
+  const {type, payload} = action;
   switch (type) {
     case OPEN_MODAL:
       return {
         ...state,
-        modals: state.modals.concat({ ...payload.item, id: v4() })
+        modals: state.modals.concat({...payload.item, id: v4()}),
       };
     case CLOSE_MODAL:
       return {
         ...state,
-        modals: state.modals.filter(item => item.id !== payload.id)
+        modals: state.modals.filter((item) => item.id !== payload.id),
       };
     default:
       return state;

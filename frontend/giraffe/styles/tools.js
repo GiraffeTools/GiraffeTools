@@ -1,16 +1,16 @@
-import headingStyles from "./headings";
+import headingStyles from './headings';
 
 const styles = {
   tools: {
-    marginBottom: "0rem"
+    marginBottom: '0rem',
   },
   ourTools: {
-    margin: "4rem",
-    textAlign: "center"
+    margin: '4rem',
+    textAlign: 'center',
   },
   ourToolsHeading: {
-    ...headingStyles.h2
-  }
+    ...headingStyles.h2,
+  },
 };
 
 export default styles;

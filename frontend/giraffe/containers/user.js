@@ -1,16 +1,16 @@
-import { connect } from "react-redux";
+import {connect} from 'react-redux';
 
-import User from "../pages/user";
+import User from '../pages/user';
 
-const mapStateToProps = state => ({
-  access_token: state.auth.access_token
+const mapStateToProps = (state) => ({
+  access_token: state.auth.access_token,
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = (dispatch) => ({});
 
 const UserContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(User);
 
 export default UserContainer;

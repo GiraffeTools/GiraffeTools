@@ -1,7 +1,7 @@
-import React from "react";
-import Radium from "radium";
+import React from 'react';
+import Radium from 'radium';
 
-import styles from "../styles/workInProgress.js";
+import styles from '../styles/workInProgress.js';
 
 const WorkInProgress = () => (
   <div style={[styles.background]}>

@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from 'react';
 
-import Banner from "../components/banner";
-import Footer from "../components/footer";
-import TryOut from "../components/tryOut";
-import Questions from "../components/questions";
+import Banner from '../components/banner';
+import Footer from '../components/footer';
+import TryOut from '../components/tryOut';
+import Questions from '../components/questions';
 
 const Faq = () => (
   <Fragment>

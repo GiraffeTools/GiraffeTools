@@ -1,14 +1,14 @@
-import React from "react";
-import Radium from "radium";
-import Container from "react-bootstrap/Container";
+import React from 'react';
+import Radium from 'radium';
+import Container from 'react-bootstrap/Container';
 
-import styles from "../styles/whyGiraffe.js";
+import styles from '../styles/whyGiraffe.js';
 
-const Description = ({ description }) => {
+const Description = ({description}) => {
   const divStyle = {
     left: description.position[0],
     top: description.position[1],
-    textAlign: description.textAlign
+    textAlign: description.textAlign,
   };
   return (
     <h3 className="position-absolute" style={divStyle}>
@@ -21,40 +21,40 @@ const WhyGiraffe = () => {
   const descriptions = [
     {
       id: 1,
-      description: "it's really great",
-      position: ["69%", "11%"],
-      textAlign: "left"
+      description: 'it\'s really great',
+      position: ['69%', '11%'],
+      textAlign: 'left',
     },
     {
       id: 2,
-      description: "so much wow",
-      position: ["82%", "32%"],
-      textAlign: "left"
+      description: 'so much wow',
+      position: ['82%', '32%'],
+      textAlign: 'left',
     },
     {
       id: 3,
-      description: "it's really great",
-      position: ["9%", "28%"],
-      textAlign: "right"
+      description: 'it\'s really great',
+      position: ['9%', '28%'],
+      textAlign: 'right',
     },
     {
       id: 4,
-      description: "so much wow",
-      position: ["1%", "49%"],
-      textAlign: "right"
+      description: 'so much wow',
+      position: ['1%', '49%'],
+      textAlign: 'right',
     },
     {
       id: 5,
-      description: "it's really great",
-      position: ["10%", "84%"],
-      textAlign: "right"
+      description: 'it\'s really great',
+      position: ['10%', '84%'],
+      textAlign: 'right',
     },
     {
       id: 6,
-      description: "it's really great",
-      position: ["74%", "57%"],
-      textAlign: "left"
-    }
+      description: 'it\'s really great',
+      position: ['74%', '57%'],
+      textAlign: 'left',
+    },
   ];
 
   return (
@@ -73,7 +73,7 @@ const WhyGiraffe = () => {
             className="position-relative"
           />
           {descriptions &&
-            descriptions.map(description => (
+            descriptions.map((description) => (
               <Description key={description.id} description={description} />
             ))}
         </div>

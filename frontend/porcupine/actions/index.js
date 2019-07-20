@@ -29,214 +29,214 @@ import {
   ADD_GRAMMAR,
   ADD_STICKY,
   UPDATE_STICKY,
-  REMOVE_STICKY
-} from "./actionTypes";
-import { UPDATE_AUTH } from "../../giraffe/actions/actionTypes";
+  REMOVE_STICKY,
+} from './actionTypes';
+import {UPDATE_AUTH} from '../../giraffe/actions/actionTypes';
 
 export const clearDatabase = () => ({
-  type: CLEAR_DATABASE
+  type: CLEAR_DATABASE,
 });
 
-///// LOADING BAR /////
-export const updateLoadingPercent = percent => ({
+// /// LOADING BAR /////
+export const updateLoadingPercent = (percent) => ({
   type: UPDATE_LOADING_PERCENT,
   payload: {
-    percent
-  }
+    percent,
+  },
 });
 
-///// UI /////
+// /// UI /////
 export const toggleSidebar = () => ({
-  type: TOGGLE_SIDEBAR
+  type: TOGGLE_SIDEBAR,
 });
 export const toggleCodeEditor = () => ({
-  type: TOGGLE_CODEEDITOR
+  type: TOGGLE_CODEEDITOR,
 });
-export const setActiveTab = tab => ({
+export const setActiveTab = (tab) => ({
   type: SET_ACTIVE_TAB,
   payload: {
-    tab
-  }
+    tab,
+  },
 });
-export const setSearchText = text => ({
+export const setSearchText = (text) => ({
   type: SET_SEARCH_TEXT,
   payload: {
-    text
-  }
+    text,
+  },
 });
-export const toggleToolbox = toolbox => ({
+export const toggleToolbox = (toolbox) => ({
   type: TOGGLE_TOOLBOX,
   payload: {
-    toolbox
-  }
+    toolbox,
+  },
 });
 
-///// STICKY /////
-export const addSticky = props => ({
+// /// STICKY /////
+export const addSticky = (props) => ({
   type: ADD_STICKY,
-  payload: props
+  payload: props,
 });
 export const updateSticky = (id, newValues) => ({
   type: UPDATE_STICKY,
   payload: {
     id,
-    newValues
-  }
+    newValues,
+  },
 });
-export const deleteSticky = id => ({
+export const deleteSticky = (id) => ({
   type: REMOVE_STICKY,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
-///// NODES /////
-export const addNode = props => ({
+// /// NODES /////
+export const addNode = (props) => ({
   type: ADD_NODE,
-  payload: props
+  payload: props,
 });
-export const deleteNode = id => ({
+export const deleteNode = (id) => ({
   type: REMOVE_NODE,
   payload: {
-    id
-  }
+    id,
+  },
 });
 export const updateNode = (nodeId, newValues) => ({
   type: UPDATE_NODE,
   payload: {
     nodeId,
-    newValues
-  }
+    newValues,
+  },
 });
 export const addParameterToNode = (parameter, nodeId) => ({
   type: ADD_PARAMETER_TO_NODE,
   payload: {
     parameter,
-    nodeId
-  }
+    nodeId,
+  },
 });
-export const addToolboxNodes = toolboxes => ({
+export const addToolboxNodes = (toolboxes) => ({
   type: ADD_TOOLBOX_NODES,
   payload: {
-    toolboxes
-  }
+    toolboxes,
+  },
 });
 
-///// LINKS /////
-export const addLink = props => ({
+// /// LINKS /////
+export const addLink = (props) => ({
   type: ADD_LINK,
-  payload: props
+  payload: props,
 });
-export const startLink = portId => ({
+export const startLink = (portId) => ({
   type: START_LINK,
   payload: {
-    portId
-  }
+    portId,
+  },
 });
-export const deleteLink = id => ({
+export const deleteLink = (id) => ({
   type: REMOVE_LINK,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
-///// PORTS /////
+// /// PORTS /////
 export const updateParameter = (parameterId, newValues) => ({
   type: UPDATE_PARAMETER,
   payload: {
     parameterId,
-    newValues
-  }
+    newValues,
+  },
 });
-export const deleteParameter = id => ({
+export const deleteParameter = (id) => ({
   type: REMOVE_PARAMETER,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
-///// SCENE /////
+// /// SCENE /////
 export const hoverPort = (portId, type) => ({
   type: HOVER_PORT,
   payload: {
     portId,
-    type
-  }
+    type,
+  },
 });
 export const clickItem = (id, item) => ({
   type: CLICK_ITEM,
   payload: {
     id,
-    item
-  }
+    item,
+  },
 });
-export const copyItems = nodeIds => ({
+export const copyItems = (nodeIds) => ({
   type: COPY_NODES,
   payload: {
-    nodeIds
-  }
+    nodeIds,
+  },
 });
 // export const setMouseState = (props) => ({
 //   type: SET_MOUSE_STATE,
 //   payload: props,
 // });
 
-///// SCENE /////
-export const updateAuth = user => ({
+// /// SCENE /////
+export const updateAuth = (user) => ({
   type: UPDATE_AUTH,
   payload: {
-    user
-  }
+    user,
+  },
 });
-export const setUser = user => ({
+export const setUser = (user) => ({
   type: SET_USER,
   payload: {
-    user
-  }
+    user,
+  },
 });
-export const setRepository = repository => ({
+export const setRepository = (repository) => ({
   type: SET_REPOSITORY,
   payload: {
-    repository
-  }
+    repository,
+  },
 });
-export const setBranch = branch => ({
+export const setBranch = (branch) => ({
   type: SET_BRANCH,
   payload: {
-    branch
-  }
+    branch,
+  },
 });
-export const setCommit = commit => ({
+export const setCommit = (commit) => ({
   type: SET_COMMIT,
   payload: {
-    commit
-  }
+    commit,
+  },
 });
-export const setPorkFile = pork_file => ({
+export const setPorkFile = (pork_file) => ({
   type: SET_PORK_FILE,
   payload: {
-    pork_file
-  }
+    pork_file,
+  },
 });
 
-///// MODALS /////
-export const openModal = item => ({
+// /// MODALS /////
+export const openModal = (item) => ({
   type: OPEN_MODAL,
   payload: {
-    item
-  }
+    item,
+  },
 });
-export const closeModal = id => ({
+export const closeModal = (id) => ({
   type: CLOSE_MODAL,
   payload: {
-    id
-  }
+    id,
+  },
 });
 
-///// GRAMMARS /////
-export const addGrammar = grammar => ({
+// /// GRAMMARS /////
+export const addGrammar = (grammar) => ({
   type: ADD_GRAMMAR,
   payload: {
-    grammar
-  }
+    grammar,
+  },
 });

@@ -1,29 +1,29 @@
-import React from "react";
-import Container from "react-bootstrap/Container";
-import pluralize from "pluralize";
-import { useAsync } from "react-async";
+import React from 'react';
+import Container from 'react-bootstrap/Container';
+import pluralize from 'pluralize';
+import {useAsync} from 'react-async';
 
-import SeparatorWithOpenCircle from "./separatorWithOpenCircle";
-import styles from "../styles/profileBox.js";
-import { addTokenToQuery } from "../utils/auth";
-import { GITHUB_BASE_API } from "../config";
+import SeparatorWithOpenCircle from './separatorWithOpenCircle';
+import styles from '../styles/profileBox.js';
+import {addTokenToQuery} from '../utils/auth';
+import {GITHUB_BASE_API} from '../config';
 
-async function loadUser({ username }) {
+async function loadUser({username}) {
   const url = await addTokenToQuery(
-    new URL(`${GITHUB_BASE_API}/users/${username}`)
+      new URL(`${GITHUB_BASE_API}/users/${username}`)
   );
-  return fetch(url.href).then(response => response.json());
+  return fetch(url.href).then((response) => response.json());
 }
 
-const ProfileBox = ({ username, activeProjects }) => {
-  const { data, error, isLoading } = useAsync(loadUser, { username });
+const ProfileBox = ({username, activeProjects}) => {
+  const {data, error, isLoading} = useAsync(loadUser, {username});
   const user = isLoading
-    ? "Loading..."
+    ? 'Loading...'
     : error
-      ? "User not found"
+      ? 'User not found'
       : data.userName;
   const avatar_url =
-    isLoading || error ? "/static/img/giraffetools_logo.png" : data.avatar_url;
+    isLoading || error ? '/static/img/giraffetools_logo.png' : data.avatar_url;
   const loggedIn = isLoading || error ? false : data.loggedIn;
   return (
     <div className="col-4 text-center">
@@ -33,19 +33,19 @@ const ProfileBox = ({ username, activeProjects }) => {
           <h3 style={styles.username}>{user}</h3>
           <SeparatorWithOpenCircle
             color="#4A4A4A"
-            thickness={"1px"}
-            styleOverwrite={{ ...styles.componentStyles }}
+            thickness={'1px'}
+            styleOverwrite={{...styles.componentStyles}}
           />
           <Container style={styles.activeProjectCounter}>
             {activeProjects}
           </Container>
           <div style={styles.activeGiraffeText}>
-            active GiraffeTools {pluralize("project", activeProjects)}
+            active GiraffeTools {pluralize('project', activeProjects)}
           </div>
           <SeparatorWithOpenCircle
             color="#4A4A4A"
-            thickness={"1px"}
-            styleOverwrite={{ ...styles.componentStyles }}
+            thickness={'1px'}
+            styleOverwrite={{...styles.componentStyles}}
           />
           {loggedIn && (
             <button type="button" className="btn">

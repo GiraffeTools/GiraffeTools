@@ -1,9 +1,9 @@
-import React from "react";
-import Radium from "radium";
+import React from 'react';
+import Radium from 'radium';
 
-import styles from "../styles/spinner";
+import styles from '../styles/spinner';
 
-const Spinner = ({ isLoading }) => (
+const Spinner = ({isLoading}) => (
   <div style={[styles.spinner, isLoading && styles.spinner.loading]} />
 );
 

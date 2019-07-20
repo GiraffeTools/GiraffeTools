@@ -1,8 +1,8 @@
 export const drop = (item, offset) => {
-  const { addNode, addPortToNode } = this.props;
+  const {addNode, addPortToNode} = this.props;
 
   this.placeholder = false;
-  const rec = document.getElementById("main").getBoundingClientRect();
+  const rec = document.getElementById('main').getBoundingClientRect();
   // #TODO to be updated as part of #73:
   // const zoom = instance.getZoom();
   const zoom = 1;
@@ -11,12 +11,12 @@ export const drop = (item, offset) => {
   const name = node.name;
   const code = node.code;
   node.parameters ? node.parameters : {};
-  node.parameters = node.parameters.map(port => {
+  node.parameters = node.parameters.map((port) => {
     // #TODO link to a proper default value
     return {
       ...port,
       id: v4(),
-      value: port.value || port.default || ""
+      value: port.value || port.default || '',
     };
   });
 
@@ -29,8 +29,8 @@ export const drop = (item, offset) => {
     width: name.length * 12,
     colour: node.colour,
     parameters: node.parameters,
-    web_url: node.web_url || "",
-    code: code || ""
+    web_url: node.web_url || '',
+    code: code || '',
   };
 
   addNode(newNode);

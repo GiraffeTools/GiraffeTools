@@ -1,13 +1,13 @@
-import React from "react";
-import Radium from "radium";
+import React from 'react';
+import Radium from 'radium';
 
-import buttonStyles from "../styles/buttons";
-import styles from "../styles/loginButton";
+import buttonStyles from '../styles/buttons';
+import styles from '../styles/loginButton';
 
-const LoginButton = props => {
-  const { user } = props;
+const LoginButton = (props) => {
+  const {user} = props;
   const styleOverwrite = props.styles;
-  const logoColor = props.logoColor || "white";
+  const logoColor = props.logoColor || 'white';
   return (
     <a
       type="button btn-primary btn-lg "
@@ -26,10 +26,10 @@ const LoginButton = props => {
         style={[styles.githubButton]}
       />
       <span>
-        {" "}
+        {' '}
         {user && user.access_token
           ? user.github_handle
-          : "Login with GitHub"}{" "}
+          : 'Login with GitHub'}{' '}
       </span>
     </a>
   );

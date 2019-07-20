@@ -1,25 +1,25 @@
-import styleSheet from "../constants/styles";
+import styleSheet from '../constants/styles';
 
 const styles = {
   roadmap: {
-    textAlign: "center",
+    textAlign: 'center',
     backgroundColor: styleSheet.primaryLightSecondaryColor,
-    paddingBottom: "5rem"
+    paddingBottom: '5rem',
   },
 
   roadmapText: {
-    marginTop: "1rem"
+    marginTop: '1rem',
   },
 
   andMore: {
-    paddingTop: "4rem",
-    paddingBottom: "5rem"
+    paddingTop: '4rem',
+    paddingBottom: '5rem',
   },
 
   roadmapElements: {
-    marginTop: "-67px",
-    display: "flex"
-  }
+    marginTop: '-67px',
+    display: 'flex',
+  },
 };
 
 export default styles;

@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
+import React, {Fragment} from 'react';
 
-import Sticky from "../../containers/sticky";
+import Sticky from '../../containers/sticky';
 
-const Stikies = ({ stickies }) => (
+const Stikies = ({stickies}) => (
   <Fragment>
-    {stickies && stickies.map(sticky => <Sticky {...sticky} key={sticky.id} />)}
+    {stickies && stickies.map((sticky) => <Sticky {...sticky} key={sticky.id} />)}
   </Fragment>
 );
 

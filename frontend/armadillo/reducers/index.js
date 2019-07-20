@@ -1,16 +1,16 @@
-import { createReducer } from "redux-orm";
-import { persistCombineReducers } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import {createReducer} from 'redux-orm';
+import {persistCombineReducers} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-import ui from "./ui";
+import ui from './ui';
 
 const config = {
-  key: "armadillo",
-  storage
+  key: 'armadillo',
+  storage,
 };
 
 const armadilloApp = persistCombineReducers(config, {
-  ui
+  ui,
 });
 
 export default armadilloApp;

@@ -1,20 +1,20 @@
-import React from "react";
-import { render } from "react-dom";
-import { Provider } from "react-redux";
-import { BrowserRouter, Route } from "react-router-dom";
+import React from 'react';
+import {render} from 'react-dom';
+import {Provider} from 'react-redux';
+import {BrowserRouter, Route} from 'react-router-dom';
 
-import store from "./store";
-import App from "./app";
+import store from './store';
+import App from './app';
 
-require("./scss/porcupine.scss");
+require('./scss/porcupine.scss');
 
 render(
-  <Provider store={store}>
-    <BrowserRouter>
-      {/* <React.StrictMode> */}
-      <App />
-      {/* </React.StrictMode> */}
-    </BrowserRouter>
-  </Provider>,
-  document.getElementById("porcupine")
+    <Provider store={store}>
+      <BrowserRouter>
+        {/* <React.StrictMode> */}
+        <App />
+        {/* </React.StrictMode> */}
+      </BrowserRouter>
+    </Provider>,
+    document.getElementById('porcupine')
 );

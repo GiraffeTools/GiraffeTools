@@ -1,16 +1,16 @@
-import { connect } from "react-redux";
+import {connect} from 'react-redux';
 
-import LoginButton from "../components/loginButton";
+import LoginButton from '../components/loginButton';
 
-const mapStateToProps = state => ({
-  user: state.auth
+const mapStateToProps = (state) => ({
+  user: state.auth,
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = (dispatch) => ({});
 
 const LoginButtonContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(LoginButton);
 
 export default LoginButtonContainer;

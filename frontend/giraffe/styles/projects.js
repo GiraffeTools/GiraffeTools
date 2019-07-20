@@ -1,11 +1,11 @@
-import componentStyles from "./components";
-import headingStyles from "./headings";
+import componentStyles from './components';
+import headingStyles from './headings';
 
 const styles = {
   projects: {
     ...headingStyles.h4,
-    ...componentStyles.withLines
-  }
+    ...componentStyles.withLines,
+  },
 };
 
 export default styles;

@@ -1,35 +1,35 @@
-import React from "react";
-import Async from "react-async";
+import React from 'react';
+import Async from 'react-async';
 
-import styles from "../../styles/githubIcon";
-import { addTokenToQuery } from "../../../giraffe/utils/auth";
-import { capitaliseFirstLetter } from "../../utils";
+import styles from '../../styles/githubIcon';
+import {addTokenToQuery} from '../../../giraffe/utils/auth';
+import {capitaliseFirstLetter} from '../../utils';
 
-async function loadGithubData({ user, repo }) {
+async function loadGithubData({user, repo}) {
   const url = await addTokenToQuery(
-    new URL(`https://api.github.com/repos/${user}/${repo}`)
+      new URL(`https://api.github.com/repos/${user}/${repo}`)
   );
-  return fetch(url.href).then(response => response.json());
+  return fetch(url.href).then((response) => response.json());
 }
 
-const GithubIcon = ({ user, repo, type }) => {
+const GithubIcon = ({user, repo, type}) => {
   let link = null;
   let key = null;
   switch (type) {
-    case "star":
-      link = "stargazers";
-      key = "stargazers_count";
+    case 'star':
+      link = 'stargazers';
+      key = 'stargazers_count';
       break;
-    case "fork":
-      link = "network";
-      key = "forks_count";
+    case 'fork':
+      link = 'network';
+      key = 'forks_count';
       break;
   }
   return (
     <div className="large" style={styles.button}>
       <a
         href={`https://github.com/${user}/${repo}/${
-          type == "fork" ? "fork" : ""
+          type == 'fork' ? 'fork' : ''
         }`}
         target="_blank"
         // className="btn"
@@ -54,7 +54,7 @@ const GithubIcon = ({ user, repo, type }) => {
         <span>
           <Async promiseFn={loadGithubData} user={user} repo={repo}>
             <Async.Loading>-</Async.Loading>
-            <Async.Fulfilled>{repository => repository[key]}</Async.Fulfilled>
+            <Async.Fulfilled>{(repository) => repository[key]}</Async.Fulfilled>
             <Async.Rejected>"0"</Async.Rejected>
           </Async>
         </span>

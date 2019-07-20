@@ -1,4 +1,4 @@
-import { Model, fk, attr, oneToOne } from "redux-orm";
+import {Model, fk, attr, oneToOne} from 'redux-orm';
 
 import {
   ADD_NODE,
@@ -6,12 +6,12 @@ import {
   ADD_PARAMETER_TO_NODE,
   REMOVE_PARAMETER,
   UPDATE_PARAMETER,
-  CLEAR_DATABASE
-} from "../actions/actionTypes";
+  CLEAR_DATABASE,
+} from '../actions/actionTypes';
 
 class Parameter extends Model {
   static reducer(action, Parameter) {
-    const { type, payload } = action;
+    const {type, payload} = action;
     switch (type) {
       case CLEAR_DATABASE:
         Parameter.all().delete();
@@ -19,7 +19,7 @@ class Parameter extends Model {
       case ADD_NODE:
         const parameters = payload.parameters;
         parameters &&
-          parameters.forEach(parameter => {
+          parameters.forEach((parameter) => {
             Parameter.create({
               node: payload.id,
               id: parameter.id,
@@ -31,23 +31,23 @@ class Parameter extends Model {
               isIterable: parameter.isIterable,
               isEnabled: parameter.isEditable,
               code: parameter.code,
-              value: parameter.value || "" // #TODO insert proper default value
+              value: parameter.value || '', // #TODO insert proper default value
             });
           });
         break;
       case REMOVE_NODE:
-        Parameter.filter(parameter => parameter.node == payload.id)
-          .toModelArray()
-          .forEach(parameter => {
-            parameter.input && parameter.inputModel.delete();
-            parameter.output && parameter.outputModel.delete();
-            parameter.delete();
-          });
+        Parameter.filter((parameter) => parameter.node == payload.id)
+            .toModelArray()
+            .forEach((parameter) => {
+              parameter.input && parameter.inputModel.delete();
+              parameter.output && parameter.outputModel.delete();
+              parameter.delete();
+            });
         break;
       case ADD_PARAMETER_TO_NODE:
-        const { parameter, nodeId } = payload;
+        const {parameter, nodeId} = payload;
 
-        if (!Parameter.filter({ id: parameter.id }).exists()) {
+        if (!Parameter.filter({id: parameter.id}).exists()) {
           Parameter.create({
             node: nodeId,
             id: parameter.id,
@@ -58,7 +58,7 @@ class Parameter extends Model {
             isVisible: parameter.isVisible,
             isIterable: parameter.isIterable,
             isEnabled: parameter.isEditable,
-            value: parameter.value || "" // #TODO insert proper default value
+            value: parameter.value || '', // #TODO insert proper default value
           });
         }
         break;
@@ -72,30 +72,30 @@ class Parameter extends Model {
     return undefined;
   }
 }
-Parameter.modelName = "Parameter";
+Parameter.modelName = 'Parameter';
 Parameter.fields = {
   name: attr(),
-  data: attr(), //leaving room for data types here
+  data: attr(), // leaving room for data types here
   isVisible: attr(),
   isEnabled: attr(),
   isIterable: attr(),
   code: attr(),
   type: attr(),
   node: fk({
-    to: "Node",
-    as: "nodeModel",
-    relatedName: "parameters"
+    to: 'Node',
+    as: 'nodeModel',
+    relatedName: 'parameters',
   }),
   input: oneToOne({
-    to: "Port",
-    as: "inputModel",
-    relatedName: "inputParent"
+    to: 'Port',
+    as: 'inputModel',
+    relatedName: 'inputParent',
   }),
   output: oneToOne({
-    to: "Port",
-    as: "outputModel",
-    relatedName: "outputParent"
-  })
+    to: 'Port',
+    as: 'outputModel',
+    relatedName: 'outputParent',
+  }),
 };
 
 export default Parameter;

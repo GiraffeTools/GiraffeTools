@@ -1,10 +1,10 @@
-import React from "react";
-import Radium from "radium";
+import React from 'react';
+import Radium from 'radium';
 
-import GithubIcon from "../../porcupine/components/sidebar/githubIcon";
-import Spinner from "./spinner";
-import Error from "./error";
-import styles from "../styles/markerWindow";
+import GithubIcon from '../../porcupine/components/sidebar/githubIcon';
+import Spinner from './spinner';
+import Error from './error';
+import styles from '../styles/markerWindow';
 
 class MarkerWindow extends React.Component {
   constructor(props) {
@@ -12,33 +12,33 @@ class MarkerWindow extends React.Component {
     this.state = {
       modelIsLoading: true,
       loadingError: false,
-      showMenu: true
+      showMenu: true,
     };
     this.toggleMenu = this.toggleMenu.bind(this);
   }
 
   componentDidMount() {
     setTimeout(
-      () =>
-        this.setState({
-          modelIsLoading: false,
-          loadingError: true
-        }),
-      5000
+        () =>
+          this.setState({
+            modelIsLoading: false,
+            loadingError: true,
+          }),
+        5000
     );
     setTimeout(() => this.toggleMenu(), 3000);
   }
 
   toggleMenu() {
-    const { showMenu } = this.state;
+    const {showMenu} = this.state;
     this.setState({
-      showMenu: !showMenu
+      showMenu: !showMenu,
     });
   }
 
   render() {
-    const { modelIsLoading, loadingError, showMenu } = this.state;
-    const { image_id, user, repository } = this.props;
+    const {modelIsLoading, loadingError, showMenu} = this.state;
+    const {image_id, user, repository} = this.props;
 
     return (
       <div className="d-flex justify-content-center">
@@ -81,7 +81,7 @@ class MarkerWindow extends React.Component {
           <div
             style={[
               styles.markerButton,
-              !showMenu && styles.markerButton.closed
+              !showMenu && styles.markerButton.closed,
             ]}
           >
             <button
