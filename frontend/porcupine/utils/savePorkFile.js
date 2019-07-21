@@ -30,7 +30,7 @@ export async function savePorkFile(content) {
     Object.keys(files).forEach((name) => (fileContent[name] = files[name]))
   );
 
-  const {porkFilename} = content;
+  const porkFilename = content.porkFile;
   const contents = {
     [porkFilename]: JSON.stringify(
         porkFile(nodes, links, allStickies), null, 2
@@ -78,6 +78,7 @@ export async function pushToGithub(commit, contents) {
     message: commit.message,
     contents,
   };
+  debugger
   const [error, response] = await to(
       fetch(`${API_HOST}/push_to_github`, {
         method: 'POST',

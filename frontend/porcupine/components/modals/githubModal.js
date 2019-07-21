@@ -36,7 +36,9 @@ class GithubModal extends React.Component {
       commitError: false,
     });
 
-    const {user, repository, pork_file} = project;
+    const {user, repository, porkFile} = project;
+  debugger
+
     const commit = {
       ...project,
       message: commitMessage,
@@ -44,7 +46,7 @@ class GithubModal extends React.Component {
       user: user || (auth && auth.github_handle),
     };
     const content = {
-      pork_file,
+      porkFile,
     };
     const [error, response] = await to(
         pushToGithub(commit, await githubAction(content))
