@@ -1,5 +1,7 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9a612459dbc54089b8a66453ace3f024)](https://www.codacy.com/app/TimVanMourik/GiraffeTools?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=GiraffeTools/GiraffeTools&amp;utm_campaign=Badge_Grade)
 [![Build Status](https://travis-ci.org/TimVanMourik/GiraffeTools.svg?branch=master)](https://travis-ci.org/TimVanMourik/GiraffeTools)
 [![codecov](https://codecov.io/gh/TimVanMourik/GiraffeTools/branch/master/graph/badge.svg)](https://codecov.io/gh/TimVanMourik/GiraffeTools)
+
 
 Website: https://giraffe.tools
 # Giraffe Tools <img src="app/giraffe/static/img/giraffetools_logo.png" width="50">
