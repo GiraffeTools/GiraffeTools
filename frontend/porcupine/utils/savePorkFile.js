@@ -37,7 +37,6 @@ export async function savePorkFile(content) {
     ),
     ...fileContent,
   };
-  debugger;
   return contents;
 }
 
@@ -76,10 +75,9 @@ export async function pushToGithub(commit, contents) {
     user: commit.user,
     repository: commit.repository,
     branch: commit.branch || 'master',
-    message: commit.commitMessage,
+    message: commit.message,
     contents,
   };
-
   const [error, response] = await to(
       fetch(`${API_HOST}/push_to_github`, {
         method: 'POST',

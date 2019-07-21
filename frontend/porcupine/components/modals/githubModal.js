@@ -11,11 +11,11 @@ class GithubModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      commit_message: null,
-      commit_pending: false,
-      commit_succes: false,
-      commit_error: false,
-      github_repo: null,
+      commitMessage: null,
+      commitPending: false,
+      commitSucces: false,
+      commitError: false,
+      githubRepo: null,
     };
     this.onClose = this.onClose.bind(this);
     this.onConfirm = this.onConfirm.bind(this);
@@ -29,18 +29,18 @@ class GithubModal extends React.Component {
 
   async onConfirm() {
     const {githubAction, project, auth} = this.props;
-    const {commit_message, github_repo} = this.state;
+    const {commitMessage, githubRepo} = this.state;
     this.setState({
-      commit_pending: true,
-      commit_succes: false,
-      commit_error: false,
+      commitPending: true,
+      commitSucces: false,
+      commitError: false,
     });
 
     const {user, repository, pork_file} = project;
     const commit = {
       ...project,
-      commit_message,
-      repository: repository || github_repo,
+      message: commitMessage,
+      repository: repository || githubRepo,
       user: user || (auth && auth.github_handle),
     };
     const content = {
@@ -51,27 +51,27 @@ class GithubModal extends React.Component {
     );
     if (!error && response.ok) {
       this.setState({
-        commit_pending: false,
-        commit_succes: response.ok,
-        commit_error: false,
+        commitPending: false,
+        commitSucces: response.ok,
+        commitError: false,
       });
     } else {
       this.setState({
-        commit_pending: false,
-        commit_succes: false,
-        commit_error: true,
+        commitPending: false,
+        commitSucces: false,
+        commitError: true,
       });
     }
   }
 
   closeSucces() {
     this.setState({
-      commit_succes: false,
+      commitSucces: false,
     });
   }
   closeError() {
     this.setState({
-      commit_error: false,
+      commitError: false,
     });
   }
 
@@ -87,7 +87,7 @@ class GithubModal extends React.Component {
 
   render() {
     const {project, auth, title} = this.props;
-    const {commit_succes, commit_error, commit_pending} = this.state;
+    const {commitSucces, commitError, commitPending} = this.state;
     const loggedIn = auth && auth.access_token;
     const yourRepo =
       auth &&
@@ -112,7 +112,7 @@ class GithubModal extends React.Component {
             type="button"
             className="btn btn-secondary"
             onClick={() => this.onConfirm()}
-            disabled={!loggedIn}
+            // disabled={!loggedIn}
             // disabled={!loggedIn || !yourRepo}
             data-toggle="tooltip"
             data-placement="top"
@@ -122,7 +122,7 @@ class GithubModal extends React.Component {
               'Push to GitHub!'
             }
           >
-            {commit_pending ? 'Committing...' : 'Confirm'}
+            {commitPending ? 'Committing...' : 'Confirm'}
           </button>
           <button
             type="button"
@@ -136,11 +136,11 @@ class GithubModal extends React.Component {
           <div
             className={
               'alert alert-success alert-dismissible fade' +
-              (commit_succes ? ' show' : '')
+              (commitSucces ? ' show' : '')
             }
             onClick={() => this.closeSucces()}
             role="alert"
-            style={[styles.alert, commit_succes && styles.alert.show]}
+            style={[styles.alert, commitSucces && styles.alert.show]}
           >
             Commited!
             <button
@@ -155,11 +155,11 @@ class GithubModal extends React.Component {
           <div
             className={
               'alert alert-danger alert-dismissible fade' +
-              (commit_error ? ' show' : '')
+              (commitError ? ' show' : '')
             }
             onClick={() => this.closeError()}
             role="alert"
-            style={[styles.alert, commit_error && styles.alert.show]}
+            style={[styles.alert, commitError && styles.alert.show]}
           >
             Sorry, something went wrong there...
             <button

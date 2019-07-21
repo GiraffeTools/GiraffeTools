@@ -34,7 +34,7 @@ const GithubModalContent = ({repository, user, onChange}) => (
           placeholder="Summary required"
           type="text"
           className="form-control"
-          name="commit_message"
+          name="commitMessage"
           onChange={onChange}
         />
       </div>
