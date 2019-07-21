@@ -16,11 +16,11 @@ const SmallScreenAlert = () => {
       <div style={[alertStyles.alert, styles.smallScreen]}>
         <Alert dismissible={false} variant="primary" closeLabel="test">
           <Alert.Heading>
-            "You are viewing this page on a small screen"
+            {'You are viewing this page on a small screen'}
           </Alert.Heading>
           <p>
-            "Welcome! This website has not been optimised for small screens so
-            things might look a bit quirky!"
+            {'Welcome! This website has not been optimised for small ' +
+            'screens so things might look a bit quirky!'}
           </p>
           <hr />
           <div className="d-flex justify-content-center">

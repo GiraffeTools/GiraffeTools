@@ -13,9 +13,9 @@ const Gallery = () => (
     <Banner title="Gallery" />
     <div style={[styles.intro]}>
       <p>
-        "Here you find a collection of best practices We'd love to include more
-        examples, so if you feel like contributing to our bank, check our
-        instructions to contribute to our example gallery."
+        {'Here you find a collection of best practices We wouldd love to ' +
+        'include more examples, so if you feel like contributing to our ' +
+        'bank, check our instructions to contribute to our example gallery.'}
       </p>
       <Button
         variant="light"

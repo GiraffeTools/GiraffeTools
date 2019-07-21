@@ -34,9 +34,9 @@ async function recomputeCode(generator, nodes, links) {
 }
 
 const interval = 1000; // ms
-const generateCodeDebounced = AwesomeDebouncePromise(recomputeCode, interval, {
-  key: (language) => language,
-});
+const generateCodeDebounced = AwesomeDebouncePromise(recomputeCode,
+    interval, {key: (language) => language}
+);
 
 class Code extends React.Component {
   constructor(props) {
@@ -55,13 +55,13 @@ class Code extends React.Component {
   }
 
   // eslint-disable-next-line
-  static getDerivedStateFromProps(nextProps, prev_state) {
+  static getDerivedStateFromProps(nextProps, prevState) {
     if (
-      prev_state.current_props.nodes !== nextProps.nodes &&
-      prev_state.current_props.links !== nextProps.links
+      prevState.current_props.nodes !== nextProps.nodes &&
+      prevState.current_props.links !== nextProps.links
     ) {
       return {
-        ...prev_state,
+        ...prevState,
         computing: true,
         current_props: nextProps,
       };
@@ -69,11 +69,11 @@ class Code extends React.Component {
     return null;
   }
 
-  componentDidUpdate(prev_props, prev_state) {
+  componentDidUpdate(prevProps) {
     if (
       (this.props.nodes.length || this.props.links.length) &&
-      (prev_props.nodes !== this.props.nodes ||
-        prev_props.links !== this.props.links)
+      (prevProps.nodes !== this.props.nodes ||
+        prevProps.links !== this.props.links)
     ) {
       this.generateCode();
     }

@@ -1,11 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import styled, {keyframes} from 'styled-components';
+// import styled, {keyframes} from 'styled-components';
+import styled from 'styled-components';
 
 import styles from '../../styles/giraffeLoader';
 
 const GiraffeLoader = ({percent}) => {
   // set false for the moment, i.e. inactive
-  const [active, setActive] = useState(false);
+  // const [active, setActive] = useState(false);
+  const [active] = useState(false);
 
   const nSteps = 30;
   const scale = percent == -1 ? nSteps + 1 : ((nSteps + 1) * percent) / 100;
@@ -72,11 +74,13 @@ const GiraffeLoader = ({percent}) => {
             />
             <StyledPolygon
               className={`st0 ${scale > 5 ? 'fade-in' : ''}`}
-              points="1277.8,744.7 1233.8,435 1212.4,402 1111.3,388.8 1101.4,587.2"
+              points={'1277.8,744.7 1233.8,435 1212.4,402 1111.3,388.8 ' +
+              '1101.4,587.2'}
             />
             <StyledPolygon
               className={`st0 ${scale > 6 ? 'fade-in' : ''}`}
-              points="1330.1,576.7 1603.2,549.5 1668.2,657.2 1441.8,785.5 1403.1,690.5"
+              points={'1330.1,576.7 1603.2,549.5 1668.2,657.2 1441.8,785.5 ' +
+              '1403.1,690.5'}
             />
             <StyledPolygon
               className={`st0 ${scale > 7 ? 'fade-in' : ''}`}
@@ -96,7 +100,8 @@ const GiraffeLoader = ({percent}) => {
             />
             <StyledPolygon
               className={`st1 ${scale > 11 ? 'fade-in' : ''}`}
-              points="990.7,780.4 1059.8,687.3 1167.2,645.9 1277.8,744.7 1263,1246.1 1177,1191.7"
+              points={'990.7,780.4 1059.8,687.3 1167.2,645.9 1277.8,744.7 ' +
+              '1263,1246.1 1177,1191.7'}
             />
             <StyledPolygon
               className={`st1 ${scale > 12 ? 'fade-in' : ''}`}
@@ -104,11 +109,13 @@ const GiraffeLoader = ({percent}) => {
             />
             <StyledPolygon
               className={`st1 ${scale > 13 ? 'fade-in' : ''}`}
-              points="1441.8,785.5 1470.5,856.5 1552.5,991.5 1830,1072.5 1759.6,782.1 1668.2,657.2 1441.8,785.5"
+              points={'1441.8,785.5 1470.5,856.5 1552.5,991.5 1830,1072.5 ' +
+              '1759.6,782.1 1668.2,657.2 1441.8,785.5'}
             />
             <StyledPolygon
               className={`st1 ${scale > 14 ? 'fade-in' : ''}`}
-              points="1963.5,1276 2320.7,1319.6 2366.8,1242.6 2373.9,1190.5 2061.1,1097.2"
+              points={'1963.5,1276 2320.7,1319.6 2366.8,1242.6 2373.9,1190.5 ' +
+              '2061.1,1097.2'}
             />
             <StyledPolygon
               className={`st1 ${scale > 15 ? 'fade-in' : ''}`}
@@ -128,15 +135,18 @@ const GiraffeLoader = ({percent}) => {
             />
             <StyledPolygon
               className={`st2 ${scale > 19 ? 'fade-in' : ''}`}
-              points="1277.8,744.7 1366.1,742.9 1403.1,690.5 1470.5,856.5 1552.5,991.5 1269.5,1025.6"
+              points={'1277.8,744.7 1366.1,742.9 1403.1,690.5 1470.5,856.5 ' +
+              '1552.5,991.5 1269.5,1025.6'}
             />
             <StyledPolygon
               className={`st2 ${scale > 20 ? 'fade-in' : ''}`}
-              points="1676.5,668.5 1759.6,782.1 1987.4,910.1 1934.2,837.4 1799,720.9"
+              points={'1676.5,668.5 1759.6,782.1 1987.4,910.1 1934.2,837.4 ' +
+              '1799,720.9'}
             />
             <StyledPolygon
               className={`st2 ${scale > 21 ? 'fade-in' : ''}`}
-              points="1275,1025.6 1409.8,1223 1502.8,1253.4 1830,1072.5 1552.5,991.5"
+              points={'1275,1025.6 1409.8,1223 1502.8,1253.4 1830,1072.5 ' +
+              '1552.5,991.5'}
             />
             <StyledPolygon
               className={`st2 ${scale > 22 ? 'fade-in' : ''}`}
@@ -172,7 +182,8 @@ const GiraffeLoader = ({percent}) => {
             />
             <StyledPolygon
               className={`st3 ${scale > 30 ? 'fade-in' : ''}`}
-              points="1418.6,372.2 1396.1,299.3 1398.8,286.4 1455.8,237.8 1506.9,290.3 1510.8,301.1 1502.4,387.3"
+              points={'1418.6,372.2 1396.1,299.3 1398.8,286.4 1455.8,237.8 ' +
+              '1506.9,290.3 1510.8,301.1 1502.4,387.3'}
             />
 
             {/* Hides rough edges */}
@@ -186,7 +197,8 @@ const GiraffeLoader = ({percent}) => {
             />
             <polygon
               className="st4"
-              points="358.1,2426.7 362,2437.3 375.1,2437.8 374.3,2456.5 340.2,2436.2"
+              points={'358.1,2426.7 362,2437.3 375.1,2437.8 374.3,2456.5 ' +
+              '340.2,2436.2'}
             />
             <polygon
               className="st4"
@@ -198,7 +210,8 @@ const GiraffeLoader = ({percent}) => {
             />
             <polygon
               className="st4"
-              points="1002.4,2451.9 1014.5,2451.9 1016.2,2437.1 1030.7,2441.5 1040.8,2453.7 1013.9,2464.9"
+              points={'1002.4,2451.9 1014.5,2451.9 1016.2,2437.1 ' +
+              '1030.7,2441.5 1040.8,2453.7 1013.9,2464.9'}
             />
           </g>
         </svg>

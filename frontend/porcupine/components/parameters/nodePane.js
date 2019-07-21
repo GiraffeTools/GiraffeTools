@@ -9,12 +9,17 @@ const NodePane = (props) => {
   const {selection, clickItem, deleteNode, updateNode} = props;
   if (!selection) return null;
 
-  const {web_url, parameters, id, name} = selection;
+  const {parameters, id, name} = selection;
+  const url = selection.web_url;
   // class is a reserved keyword
   const classy = selection.class;
-  const documentation = web_url ? (
+  const documentation = url ? (
     <div style={styles.documentation}>
-      <a href={selection.web_url} target="_blank">
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <i style={styles.globe} className="fas fa-globe" />
         <span>View documentation</span>{' '}
       </a>

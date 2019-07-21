@@ -37,7 +37,6 @@ class GithubModal extends React.Component {
     });
 
     const {user, repository, porkFile} = project;
-  debugger
 
     const commit = {
       ...project,
@@ -48,6 +47,7 @@ class GithubModal extends React.Component {
     const content = {
       porkFile,
     };
+    debugger;
     const [error, response] = await to(
         pushToGithub(commit, await githubAction(content))
     );
@@ -91,12 +91,12 @@ class GithubModal extends React.Component {
     const {project, auth, title} = this.props;
     const {commitSucces, commitError, commitPending} = this.state;
     const loggedIn = auth && auth.access_token;
-    const yourRepo =
-      auth &&
-      auth.github_handle &&
-      project &&
-      project.user &&
-      String(auth.github_handle).toLowerCase() == project.user.toLowerCase();
+    // const yourRepo =
+    //   auth &&
+    //   auth.github_handle &&
+    //   project &&
+    //   project.user &&
+    //   String(auth.github_handle).toLowerCase() == project.user.toLowerCase();
 
     return (
       <div className="modal-content">

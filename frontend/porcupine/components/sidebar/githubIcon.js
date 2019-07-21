@@ -32,6 +32,7 @@ const GithubIcon = ({user, repo, type}) => {
           type == 'fork' ? 'fork' : ''
         }`}
         target="_blank"
+        rel="noopener noreferrer"
         // className="btn"
         aria-label={`${type} ${user}/${repo} on GitHub`}
         style={styles.githubButton}
@@ -47,6 +48,7 @@ const GithubIcon = ({user, repo, type}) => {
         href={`https://github.com/${user}/${repo}/${link}`}
         target="_blank"
         className="social-count"
+        rel="noopener noreferrer"
         style={styles.socialCount}
       >
         <b style={styles.b} />
@@ -55,7 +57,7 @@ const GithubIcon = ({user, repo, type}) => {
           <Async promiseFn={loadGithubData} user={user} repo={repo}>
             <Async.Loading>-</Async.Loading>
             <Async.Fulfilled>{(repository) => repository[key]}</Async.Fulfilled>
-            <Async.Rejected>"0"</Async.Rejected>
+            <Async.Rejected>{'0'}</Async.Rejected>
           </Async>
         </span>
       </a>
