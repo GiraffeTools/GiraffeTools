@@ -2,9 +2,10 @@ import store from '../store';
 import {API_HOST} from '../config';
 
 export async function addTokenToQuery(url) {
-  const {access_token} = store.getState().auth;
-  if (access_token) {
-    url.searchParams.append('access_token', access_token);
+  const {auth} = store.getState();
+  const accessToken = auth.access_token;
+  if (accessToken) {
+    url.searchParams.append('access_token', accessToken);
   } else {
     const response = await (await fetch('/api/get_user')).json();
     if (response.access_token) {

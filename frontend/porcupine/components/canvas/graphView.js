@@ -133,8 +133,8 @@ class GraphView extends React.Component {
       k: this.state.viewTransform.k,
     };
 
-    const target_zoom = next.k * (1 + modK);
-    if (target_zoom < extent[0] || target_zoom > extent[1]) {
+    const targetZoom = next.k * (1 + modK);
+    if (targetZoom < extent[0] || targetZoom > extent[1]) {
       return false;
     }
 
@@ -142,7 +142,7 @@ class GraphView extends React.Component {
       (center[0] - next.x) / next.k,
       (center[1] - next.y) / next.k,
     ];
-    next.k = target_zoom;
+    next.k = targetZoom;
 
     const l = [
       translate0[0] * next.k + next.x,
@@ -242,7 +242,7 @@ class GraphView extends React.Component {
     const view = d3.select(this.view);
     const viewNode = view.node();
     if (viewNode) {
-      const {k, x, y} = this.state.viewTransform;
+      // const {k, x, y} = this.state.viewTransform;
       view.attr('transform', this.state.viewTransform);
     }
 

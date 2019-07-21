@@ -1,6 +1,6 @@
 export function shuffle(o) {
   for (
-    var j, x, i = o.length;
+    let j, x, i = o.length;
     i;
     j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x
   );
@@ -25,6 +25,7 @@ export function groupByDate(commits) {
 }
 
 export function validateEmail(email) {
+  // eslint-disable-next-line
   const tester = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
   if (!email) return false;
 

@@ -3,7 +3,6 @@ import Radium from 'radium';
 
 import PrettyLines from './prettyLines';
 import SeparatorWithOpenCircle from './separatorWithOpenCircle';
-import componentStyles from '../styles/components.js';
 import styles from '../styles/porcupine.js';
 
 const Porcupine = () => (

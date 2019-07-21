@@ -1,10 +1,12 @@
 import React from 'react';
 import {Light as SyntaxHighlighter} from 'react-syntax-highlighter';
+// eslint-disable-next-line
 import atomDark from 'react-syntax-highlighter/dist/esm/styles/hljs/atom-one-dark';
 import AwesomeDebouncePromise from 'awesome-debounce-promise';
 
 import python from 'react-syntax-highlighter/dist/esm/languages/hljs/python';
 import matlab from 'react-syntax-highlighter/dist/esm/languages/hljs/python';
+// eslint-disable-next-line
 import dockerfile from 'react-syntax-highlighter/dist/esm/languages/hljs/dockerfile';
 SyntaxHighlighter.registerLanguage('python', python);
 SyntaxHighlighter.registerLanguage('dockerfile', dockerfile);
@@ -52,6 +54,7 @@ class Code extends React.Component {
     this.generateCode();
   }
 
+  // eslint-disable-next-line
   static getDerivedStateFromProps(nextProps, prev_state) {
     if (
       prev_state.current_props.nodes !== nextProps.nodes &&

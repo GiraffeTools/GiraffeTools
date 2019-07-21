@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 const ToolbarItem = (props) => {
   const {text, items, callback} = props;
-
+  let content;
   if (items) {
     const listItems = items.map((item, index) => (
       <a onClick={item.callback} key={index}>
@@ -10,16 +10,16 @@ const ToolbarItem = (props) => {
       </a>
     ));
 
-    var content = (
+    content = (
       <div className="dropdown">
         <a>{text}</a>
         <div className="dropdown-content">{listItems}</div>
       </div>
     );
   } else {
-    var content = <a onClick={callback}>{text}</a>;
+    content = <a onClick={callback}>{text}</a>;
   }
   return <li>{content}</li>;
-}
+};
 
 export default ToolbarItem;

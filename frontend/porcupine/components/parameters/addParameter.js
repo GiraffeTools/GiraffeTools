@@ -49,7 +49,6 @@ class AddParameter extends React.Component {
   }
 
   render() {
-    const {name, input, output} = this.state;
     return (
       <div>
         <div className="form-group" style={[styles.addPortForm]}>

@@ -10,12 +10,12 @@ const boxSource = {
     return props;
   },
   // endDrag(props, monitor) {
-  // 	const item = monitor.getItem();
-  // 	const dropResult = monitor.getDropResult();
-  //
-  // 	if (dropResult) {
-  // 		alert(`You dropped ${item.category.name} into ${dropResult.name}!`);
-  // 	}
+  //   const item = monitor.getItem();
+  //   const dropResult = monitor.getDropResult();
+
+  //   if (dropResult) {
+  //     alert(`You dropped ${item.category.name} into ${dropResult.name}!`);
+  //   }
   // },
 };
 
@@ -38,20 +38,19 @@ class PaneElementDragLayer extends React.PureComponent {
   componentDidMount() {
     const {connectDragPreview} = this.props;
     if (connectDragPreview) {
-      	// Use empty image as a drag preview so browsers don't draw it
-      	// and we can draw whatever we want on the custom drag layer instead.
+      // Use empty image as a drag preview so browsers don't draw it
+      // and we can draw whatever we want on the custom drag layer instead.
       connectDragPreview(getEmptyImage(), {
-        // 		IE fallback: specify that we'd rather screenshot the node
-        // 		when it already knows it's being dragged so we can hide it
-        //    with CSS.
+        // IE fallback: specify that we'd rather screenshot the node
+        // when it already knows it's being dragged so we can hide it
+        // with CSS.
         captureDraggingState: true,
       });
     }
   }
 
   render() {
-    const {title, connectDragSource} = this.props;
-    const {props} = this;
+    const {connectDragSource} = this.props;
     return (
       connectDragSource &&
       connectDragSource(

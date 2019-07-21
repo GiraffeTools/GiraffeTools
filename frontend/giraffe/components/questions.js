@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Question from '../components/question';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {API_HOST} from '../config';
 import Async from 'react-async';
 
 import styles from '../styles/questions.js';

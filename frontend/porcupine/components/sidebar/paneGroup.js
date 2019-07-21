@@ -22,7 +22,7 @@ const PaneGroup = ({nodes, subcategories, colour, name}) => {
   const nodeGroups = subcategories && (
     <NestedPaneGroup categories={subcategories} />
   );
-  
+
   const nodeElements = nodes &&
     nodes.map((node, index) => {
       const {name} = node;
@@ -36,7 +36,7 @@ const PaneGroup = ({nodes, subcategories, colour, name}) => {
           {name}
         </DraggablePaneElement>
       );
-    })
+    });
 
   return (
     <div style={styles.panel}>

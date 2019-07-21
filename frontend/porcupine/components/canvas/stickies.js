@@ -4,7 +4,12 @@ import Sticky from '../../containers/sticky';
 
 const Stikies = ({stickies}) => (
   <Fragment>
-    {stickies && stickies.map((sticky) => <Sticky {...sticky} key={sticky.id} />)}
+    {stickies && stickies.map((sticky) => (
+      <Sticky
+        {...sticky}
+        key={sticky.id}
+      />
+    ))}
   </Fragment>
 );
 

@@ -35,11 +35,13 @@ class AugmentedRealityScene extends React.Component {
           <a-asset-item
             id="rh-model"
             src={`/api/armadillo/neurovault/${imageId}/models/right`}
+            // eslint-disable-next-line
             crossOrigin="anonymous"
           />
           <a-asset-item
             id="lh-model"
             src={`/api/armadillo/neurovault/${imageId}/models/left`}
+            // eslint-disable-next-line
             crossOrigin="anonymous"
           />
         </a-assets>

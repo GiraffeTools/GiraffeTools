@@ -15,7 +15,7 @@ function getTextWidth(text, font) {
 }
 
 function wrap(text, textParameters, maxWidth, maxLines) {
-  const {x, y, fontSize, fontFamily, lineHeight, style} = textParameters;
+  const {x, y, fontSize, lineHeight} = textParameters;
   const words = text.split(' ');
   const lines = [];
   let line = 0;
@@ -113,14 +113,17 @@ class Sticky extends React.Component {
       <g ref={(svg) => (this.svgRef = svg)} transform={`translate(${x},${y})`}>
         <g transform="translate(0,100) scale(0.4,0.4)">
           <path
-            d="M 71.428571,29.321428 C 71.428571,35.035714 70,309.32143 70,309.32143 L 192.85714,480.75 l 320,10 5.71429,-452.857143 -447.142859,-8.571429 z"
+            d="M 71.428571,29.321428 C 71.428571,35.035714 \
+            70,309.32143 70,309.32143 L 192.85714,480.75 l \
+            320,10 5.71429,-452.857143 -447.142859,-8.571429 z"
             fill="url(#linearGradient4763)"
             fillOpacity={1}
             stroke="none"
             // filter={"url(#selection-glow)"}
           />
           <path
-            d="m 345.47217,485.90229 167.68532,5.05076 1.51523,-143.94674 -169.20055,138.89598 z"
+            d="m 345.47217,485.90229 167.68532,5.05076 \
+            1.51523,-143.94674 -169.20055,138.89598 z"
             fill="url(#linearGradient4767)"
             stroke="none"
           />
@@ -144,7 +147,8 @@ class Sticky extends React.Component {
             {textwrap}
           </text>
           <path
-            d="M 69.700526,308.62052 192.93914,480.85153 232.84016,361.14845 69.700526,308.62052 z"
+            d="M 69.700526,308.62052 192.93914,480.85153 \
+            232.84016,361.14845 69.700526,308.62052 z"
             fill="url(#linearGradient4765)"
             fillOpacity={1}
             stroke="none"

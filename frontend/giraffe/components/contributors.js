@@ -27,6 +27,7 @@ class Contributors extends React.Component {
     this.setState({
       contributors: contributors,
       selectContributors: shuffle(
+          // eslint-disable-next-line
           Array.apply(null, {length: contributors.length}).map(
               Number.call,
               Number
@@ -36,7 +37,7 @@ class Contributors extends React.Component {
   }
 
   selectContributors(direction) {
-    const {contributors, selectContributors} = this.state;
+    const {contributors} = this.state;
     // #TODO implement pagination
     switch (direction) {
       case 'next':
@@ -47,6 +48,7 @@ class Contributors extends React.Component {
     // Just reshuffle them randomly for now
     this.setState({
       selectContributors: shuffle(
+          // eslint-disable-next-line
           Array.apply(null, {length: contributors.length}).map(
               Number.call,
               Number
@@ -72,7 +74,8 @@ class Contributors extends React.Component {
               <div style={[styles.contributorList]}>
                 {contributors &&
                   contributors
-                      .filter((item, index) => selectContributors.includes(index))
+                      .filter((item, index) =>
+                        selectContributors.includes(index))
                       .map((contributor) => (
                         <Contributor key={contributor.id} {...contributor} />
                       ))}

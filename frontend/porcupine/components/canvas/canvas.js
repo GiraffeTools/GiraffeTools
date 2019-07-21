@@ -26,7 +26,7 @@ const boxTarget = {
     let y = delta.y;
 
     // if (props.snapToGrid) {
-    // 	;[left, top] = snapToGrid(left, top)
+    //   [left, top] = snapToGrid(left, top)
     // }
 
     switch (itemType) {
@@ -246,7 +246,8 @@ class Canvas extends React.PureComponent {
     );
     if (error) {
       console.log(
-          'Error reading Porcupine Config file! Either data is missing or format is incorrect'
+          'Error reading Porcupine Config file!' +
+          'Either data is missing or format is incorrect'
       );
       return;
     }
@@ -273,7 +274,8 @@ class Canvas extends React.PureComponent {
     } catch (error) {
       updateLoadingPercent(-1);
       console.log(
-          'Error while adding Link or Node to Canvas, Check Porcupine Config file.'
+          'Error while adding Link or Node to Canvas, ' +
+          'Check Porcupine Config file.'
       );
       console.log(error);
       return;

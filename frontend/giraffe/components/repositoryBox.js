@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import Radium from 'radium';
 import pluralize from 'pluralize';
 import repoFirstCommit from 'repo-first-commit';
@@ -6,7 +6,6 @@ import repoFirstCommit from 'repo-first-commit';
 import SeparatorWithOpenCircle from './separatorWithOpenCircle';
 import {addTokenToQuery} from '../utils/auth';
 import styles from '../styles/repositoryBox.js';
-import componentStyles from '../styles/components.js';
 
 class RepositoryBox extends React.Component {
   constructor(props) {
@@ -38,14 +37,18 @@ class RepositoryBox extends React.Component {
         repo: repository.name,
         sha: lastCommit.object.sha,
       });
-      const days_ago_url = await addTokenToQuery(
+      const daysAgoUrl = await addTokenToQuery(
           new URL(
-              `${apiBaseLink}/compare/${lastCommit.object.sha}...${firstCommit.sha}`
+              `${apiBaseLink}/compare/${
+                lastCommit.object.sha
+              }...${
+                firstCommit.sha
+              }`
           )
       );
-      const days_ago = await fetch(days_ago_url);
-      const days_ago_json = await days_ago.json();
-      this.setState({numberOfCommits: days_ago_json.behind_by + 1 || 0});
+      const daysAgo = await fetch(daysAgoUrl);
+      const daysAgoJson = await daysAgo.json();
+      this.setState({numberOfCommits: daysAgoJson.behind_by + 1 || 0});
     };
     const getBranches = async () => {
       const url = await addTokenToQuery(new URL(`${apiBaseLink}/branches`));
@@ -78,8 +81,8 @@ class RepositoryBox extends React.Component {
       numberOfReleases,
     } = this.state;
     const {repository} = this.props;
-    const created_at = repository.created_at || 0;
-    const this_user = repository.owner ? repository.owner.login : 'None';
+    const createdAt = repository.created_at || 0;
+    const thisUser = repository.owner ? repository.owner.login : 'None';
     return (
       <div className="col-4 text-center">
         <div className="sticky-top">
@@ -129,14 +132,14 @@ class RepositoryBox extends React.Component {
             <p>
               owned by{' '}
               <a href="./" style={[styles.giraffeLink]}>
-                <b>{this_user}</b>
+                <b>{thisUser}</b>
               </a>
               {' added on '}
               {new Intl.DateTimeFormat('en-GB', {
                 year: 'numeric',
                 month: 'long',
                 day: '2-digit',
-              }).format(new Date(created_at))}
+              }).format(new Date(createdAt))}
             </p>
             <a
               type="button btn-primary"

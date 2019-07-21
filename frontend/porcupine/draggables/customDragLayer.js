@@ -24,11 +24,11 @@ function getItemStyles(props) {
 
   const {x, y} = currentOffset;
   // if (props.snapToGrid) {
-  // 	x -= initialOffset.x
-  // 	y -= initialOffset.y
-  // 	;[x, y] = snapToGrid(x, y)
-  // 	x += initialOffset.x
-  // 	y += initialOffset.y
+  //   x -= initialOffset.x
+  //   y -= initialOffset.y
+  //   ;[x, y] = snapToGrid(x, y)
+  //   x += initialOffset.x
+  //   y += initialOffset.y
   // }
 
   const transform = `translate(${x}px, ${y}px)`;
@@ -43,7 +43,7 @@ const CustomDragLayer = (props) => {
   function renderItem() {
     switch (itemType) {
       // case ItemTypes.NODE:
-        // return <NodeDragPreview {...item} />;
+      // return <NodeDragPreview {...item} />;
       case ItemTypes.PANE_ELEMENT:
         return <PaneElementDragPreview {...item} />;
       default:

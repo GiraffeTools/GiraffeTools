@@ -5,7 +5,6 @@ import {v4} from 'uuid';
 import SeparatorWithOpenCircle from './separatorWithOpenCircle';
 import {initGiraffeProject} from '../../porcupine/utils/savePorkFile';
 import styles from '../styles/project.js';
-import componentStyles from '../styles/components.js';
 
 const Project = ({repository, openModal}) => (
   <div
@@ -59,7 +58,8 @@ const Project = ({repository, openModal}) => (
             openModal({
               id: v4(),
               title:
-                'Do you want to initialise this repository as a GiraffeTools project?',
+                'Do you want to initialise this' +
+                'repository as a GiraffeTools project?',
               type: 'push_to_github',
               project: {
                 user: repository.owner.login,

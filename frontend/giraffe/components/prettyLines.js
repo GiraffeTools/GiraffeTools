@@ -6,7 +6,7 @@ import styles from '../styles/prettyLines';
 
 const PrettyLine = ({color}) => {
   const separatorColor = color || 'black';
-  const separatorThickness = '2px';
+  // const separatorThickness = '2px';
 
   return (
     <div className="float-left" style={styles.lines}>

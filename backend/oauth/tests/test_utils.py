@@ -22,13 +22,6 @@ from django.conf import settings
 from django.test import TestCase
 from django.test.utils import override_settings
 
-from oauth.utils import (
-    BASE_URI, HEADERS, JSON_HEADER, TOKEN_URL, build_auth_dict, get_auth_url,
-    get_github_primary_email, get_github_user_data, get_github_user_token,
-    get_user, is_github_token_valid, org_name, repo_url, reset_token,
-    revoke_token, search,
-)
-
 
 @override_settings(BASE_URL="http://localhost:8000")
 @override_settings(GITHUB_CLIENT_ID="TEST")

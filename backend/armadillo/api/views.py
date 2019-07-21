@@ -10,8 +10,7 @@ from django.conf import settings
 from nibabel.gifti.parse_gifti_fast import GiftiImageParser
 from nibabel.freesurfer import io as fsio
 
-from .utils import create_qr_from_text, put_qr_on_marker, color_func, \
-    fv_scalar_to_collada
+from .utils import put_qr_on_marker, fv_scalar_to_collada
 
 
 def qr(request, image=""):

@@ -11,7 +11,11 @@ const Contributor = (contributor) => {
       <Card style={styles.contributorCard}>
         <img src={contributor.avatar_url} style={[styles.avatarImage]} />
         <div style={[styles.contributorTag]}>
-          <a href={contributor.html_url} style={[styles.link]} target="_blank">
+          <a href={contributor.html_url}
+            style={[styles.link]}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <b style={[styles.username]}>@{contributor.login}</b>
           </a>
         </div>

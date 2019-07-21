@@ -27,7 +27,9 @@ class Sidebar extends React.Component {
     ];
     const toolboxes = nodes.map(async (url) => await (await fetch(url)).json());
     Promise.all(
-        toolboxes.map(async (nodes) => addToolboxNodes((await nodes)['toolboxes']))
+        toolboxes.map(async (nodes) =>
+          addToolboxNodes((await nodes)['toolboxes'])
+        )
     );
   }
 
@@ -50,7 +52,6 @@ class Sidebar extends React.Component {
       this.searchBar.current.state.searchText &&
       this.searchBar.current.state.searchText.length;
     const currentNodes = searching ? matchedNodes : allNodes;
-    const toolboxes = allNodes.map((toolbox) => toolbox.name);
 
     return (
       <div style={[styles.sidebar, showSidebar && styles.sidebar.active]}>
@@ -132,6 +133,7 @@ class Sidebar extends React.Component {
                 project.repository
               }`}
               target="_blank"
+              rel="noopener noreferrer"
             >
               <img style={[styles.panelIcon]} src="/static/img/gh-icon.png" />
                 Check out on GitHub

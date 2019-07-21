@@ -66,7 +66,7 @@ class Port extends React.Component {
   render() {
     const {type} = this.props;
 
-    const {x, y, width} = this.props;
+    const {x, y} = this.props;
     const {linkUnderConstruction} = this.state;
 
     let d = 'M';
@@ -99,7 +99,6 @@ class Port extends React.Component {
             d={d}
             stroke="black"
             strokeWidth="2"
-            fill="none"
             fill="none"
             r={10}
           />

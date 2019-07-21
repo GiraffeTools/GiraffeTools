@@ -33,8 +33,6 @@ def put_qr_on_marker(text, marker_in):
 
     t_width = img.size[0]
     t_height = img.size[1]
-    assert t_height == t_width == DEF_SIZE_MARKER, "marker size does not match ({0}, {0})".format(  # Ignore LineLengthBear
-        DEF_SIZE_MARKER)
 
     new_im = Image.new("RGB", (t_width, t_height), "white")
 
