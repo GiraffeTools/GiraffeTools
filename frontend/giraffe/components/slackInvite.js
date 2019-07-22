@@ -56,7 +56,7 @@ class SlackInvite extends React.Component {
 
     return (
       <Container style={styles.slackInfo}>
-        <p style={[styles.join]}>
+        <p style={styles.join}>
           {'Would you like to join the GiraffeTools Slack? Fill in your' +
           ' email address here, and you will receive an invitation link' +
           ' in your inbox!'}
