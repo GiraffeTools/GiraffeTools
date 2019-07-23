@@ -29,7 +29,7 @@ const Roadmap = () => {
     {year: 2017, description: 'Stand-alone Porcupine finished'},
     {year: 2018, description: 'Web version GiraffeTools started'},
     {year: 2019, description: 'GiraffeTools launched'},
-    {year: 2020, description: 'we are on the moon'},
+    {year: 2020, description: 'We are on the moon!'},
   ];
 
   return (

@@ -21,37 +21,37 @@ const WhyGiraffe = () => {
   const descriptions = [
     {
       id: 1,
-      description: 'it\'s really great',
+      description: 'opens up your code',
       position: ['69%', '11%'],
       textAlign: 'left',
     },
     {
       id: 2,
-      description: 'so much wow',
+      description: 'Doge says: "so much wow:"',
       position: ['82%', '32%'],
       textAlign: 'left',
     },
     {
       id: 3,
-      description: 'it\'s really great',
+      description: 'native version control',
       position: ['9%', '28%'],
       textAlign: 'right',
     },
     {
       id: 4,
-      description: 'so much wow',
+      description: 'clear annotated pipelines',
       position: ['1%', '49%'],
       textAlign: 'right',
     },
     {
       id: 5,
-      description: 'it\'s really great',
+      description: 'show your workflow to your grandparents!',
       position: ['10%', '84%'],
       textAlign: 'right',
     },
     {
       id: 6,
-      description: 'it\'s really great',
+      description: 'collaborate on your data analysis',
       position: ['74%', '57%'],
       textAlign: 'left',
     },

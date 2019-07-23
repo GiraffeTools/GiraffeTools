@@ -19,8 +19,8 @@ const Armadillo = () => (
         ugmented <b>R</b>
         eality [madillo]
         <br />
-        This web app creates 3D Augmented Reality images from the Neurovault
-        database
+        The ARmadillo web app creates 3D Augmented Reality images from the
+        Neurovault database
         <br />
       </div>
       <a

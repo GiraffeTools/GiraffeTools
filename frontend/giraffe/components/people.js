@@ -23,15 +23,14 @@ const People = () => (
         className="col col-lg-4 text-left position-relative"
         style={[styles.toolText]}
       >
-        <h3 style={[styles.peopleTitle]}>Dr. Tim van Mourik</h3>
+        <h3 style={[styles.peopleTitle]}>Tim van Mourik</h3>
         <SeparatorWithOpenCircle
           color="secondary"
           thickness={'1px'}
           styleOverwrite={styles.componentStyles}
         />
-        {`And I automatically create the code for your analysis pipeline. Get
-        started immediately by checking out the example files! It's so super
-        duper easy.`}
+        {`Neuroscientist, data analyst, open science/source advocate, workflow
+          expert, visualisation nerd`}
         <br />
         <a
           href="https://github.com/TimVanMourik"

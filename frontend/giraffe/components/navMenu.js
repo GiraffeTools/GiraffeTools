@@ -16,20 +16,22 @@ const NavMenu = (props) => {
         />
       </Navbar.Brand>
       <ul style={[styles.navList]}>
-        <Nav.Item>
-          <Nav.Link href="/porcupine">
-            <h3 style={[styles.navItem]} key={0}>
-              Porcupine
-            </h3>
-          </Nav.Link>
-        </Nav.Item>
         <Nav.Item className="border-bottom">
-          <Nav.Link href="https://armadillobrain.app">
-            <h3 style={[styles.navItem]} key={1}>
-              ARmadillo
+          <Nav.Link href="/workflow">
+            <h3 style={[styles.navItem]} key={0}>
+              Workflow Editor
             </h3>
           </Nav.Link>
         </Nav.Item>
+        {/*
+        <Nav.Item className="border-bottom">
+          <Nav.Link href="/armadillo/TimVanMourik/SomeGiraffeExample">
+            <h3 style={[styles.navItem]} key={1}>
+              Augmented Reality
+            </h3>
+          </Nav.Link>
+        </Nav.Item>
+        */}
         <Nav.Item>
           <Nav.Link href="https://giraffetools.github.io/Documentation">
             <h3 style={[styles.navItem]} key={2}>

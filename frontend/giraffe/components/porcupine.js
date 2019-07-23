@@ -34,7 +34,7 @@ const Porcupine = () => (
         ipel
         <b>INE</b>
         <br />
-        With Porcupine, you can visually build your pipeline!
+        With the Porcupine workflow editor, you can visually build your pipeline!
       </div>
       <a
         className="btn btn-lg"
