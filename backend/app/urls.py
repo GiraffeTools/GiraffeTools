@@ -26,6 +26,7 @@ urlpatterns = [
 
     # porcupine calls
     url(r"^porcupine/?", porcupine.views.porcupine, name="porcupine"),
+    url(r"^workflow/?", porcupine.views.porcupine, name="porcupine"),
 
     # armadillo calls
     url(r"^armadillo/?", armadillo.views.armadillo, name="armadillo"),
