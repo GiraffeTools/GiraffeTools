@@ -12,6 +12,10 @@ const App = () => (
       path="/porcupine/:username?/:repository?/:branchOrCommit?"
       component={Content}
     />
+    <Route
+      path="/workflow/:username?/:repository?/:branchOrCommit?"
+      component={Content}
+    />
   </Fragment>
 );
 export default hot(App);
