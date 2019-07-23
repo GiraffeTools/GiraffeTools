@@ -3,12 +3,9 @@
 [![codecov](https://codecov.io/gh/TimVanMourik/GiraffeTools/branch/master/graph/badge.svg)](https://codecov.io/gh/TimVanMourik/GiraffeTools)
 
 
-Website: https://giraffe.tools
-# Giraffe Tools <img src="app/giraffe/static/img/giraffetools_logo.png" width="50">
-
-
-### GiraffeTools
-**Tools** for **G**raphical **I**nterface for **R**eproducible **A**nalysis o**F** work**F**low **E**xperiments
+https://giraffe.tools
+# GiraffeTools <img src="backend/giraffe/static/img/giraffetools_logo.png" width="50">
+ GiraffeTools: **Tools** for **G**raphical **I**nterface for **R**eproducible **A**nalysis o**F** work**F**low **E**xperiments
 
 GiraffeTools provides tools for interactive workflow development Currently the main tool is the [Porcupine](https://doi.org/10.1371/journal.pcbi.1006064) workflow editor. You can visually build a node graph that represents a workflow and read and write it from and to GitHub.
 
