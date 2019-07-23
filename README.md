@@ -2,16 +2,13 @@
 [![Build Status](https://travis-ci.org/GiraffeTools/GiraffeTools.svg?branch=master)](https://travis-ci.org/GiraffeTools/GiraffeTools)
 [![codecov](https://codecov.io/gh/TimVanMourik/GiraffeTools/branch/master/graph/badge.svg)](https://codecov.io/gh/TimVanMourik/GiraffeTools)
 
-
-https://giraffe.tools
+[https://giraffe.tools](https://giraffe.tools)
 # GiraffeTools <img src="backend/giraffe/static/img/giraffetools_logo.png" width="50">
  GiraffeTools: **Tools** for **G**raphical **I**nterface for **R**eproducible **A**nalysis o**F** work**F**low **E**xperiments
 
 GiraffeTools provides tools for interactive workflow development Currently the main tool is the [Porcupine](https://doi.org/10.1371/journal.pcbi.1006064) workflow editor. You can visually build a node graph that represents a workflow and read and write it from and to GitHub.
 
-
 *Note: this software was originally made for neuroimaging pipeline analysis, but is now expanding to different toolboxes*
-
 ## Intended usage
 Set up any GitHub repository as a GiraffeTools project by putting a **Giraffe.yml** file in the root of the project. GiraffeTools reads information straight from an analysis repository, just go to:
 https://giraffe.tools/github/ **[username]** / **[repository]** / **[branch]**
@@ -35,7 +32,7 @@ tools:
         script: GIRAFFE/test.js
         format: matlab
 ```
-Example: https://giraffe.tools/github/TimVanMourik/SomeGiraffeExample/master
+Example: [https://giraffe.tools/github/TimVanMourik/SomeGiraffeExample/master](https://giraffe.tools/github/TimVanMourik/SomeGiraffeExample/master)
 
 ## Development
 Download this repository *with submodules*, such that the code from linked repositories are included:
