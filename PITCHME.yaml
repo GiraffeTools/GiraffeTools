@@ -1,2 +1,7 @@
-theme : white
-theme-override : app/assets/css/PITCHME.css
+theme : template
+
+theme-background : [ "#FFFAEF" ]
+theme-headline   : [ "Nexa-Bold", "#F25226", "none" ]
+theme-text       : [ "PT Sans", "black", "none" ]
+
+theme-override : pitchme/PITCHME.css
