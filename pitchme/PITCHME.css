@@ -44,16 +44,18 @@
 */
 
 /* Font */
-/* .reveal h1, */
-/* .reveal h2 { */
-    /* text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.85); */
-    /* color: #000000; */
-/* } */
-/*
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  font-family: 'Nexa-Bold';
+  color: #000000;
+  /* text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.85); */
+}
 .reveal h1 {
-    font-size: 2em;
+  font-size: 2em;
 }
 
+/*
 .reveal a {
     color: #E80C0D;
     text-decoration: none;
