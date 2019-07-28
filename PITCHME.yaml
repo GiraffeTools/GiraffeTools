@@ -4,4 +4,4 @@ theme-background : [ "#FFFAEF" ]
 theme-headline   : [ "Nexa-Bold", "#F25226", "none" ]
 theme-text       : [ "PT Sans", "black", "none" ]
 
-theme-override : pitchme/PITCHME.css
+# theme-override : pitchme/PITCHME.css

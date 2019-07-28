@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  gitpitch:
+    environment:
+      - SWEEP=true
+    image: gitpitch/desktop:pro
+    volumes:
+      - .:/repo
+    ports:
+      - "9000:9000"

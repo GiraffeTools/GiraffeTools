@@ -1,18 +1,18 @@
 @font-face {
   font-family: 'Nexa-Bold';
-  src: url('https://github.com/GiraffeTools/GiraffeTools/blob/master/backend/giraffe/static/fonts/Nexa-Bold.otf?raw=true');
+  src: url('/backend/giraffe/static/fonts/Nexa-Bold.otf?raw=true');
   font-weight: bold;
 }
 
 @font-face {
   font-family: 'Nexa-Light';
-  src: url('https://github.com/GiraffeTools/GiraffeTools/blob/master/backend/giraffe/static/fonts/Nexa-Light.otf?raw=true');
+  src: url('/backend/giraffe/static/fonts/Nexa-Light.otf?raw=true');
   font-weight: bold;
 }
 
 @font-face {
   font-family: 'PT Sans', sans-serif;
-  src: url('https://github.com/GiraffeTools/GiraffeTools/blob/master/backend/giraffe/static/fonts/PT_Sans-Web-Regular.ttf?raw=true')  format('truetype');
+  src: url('/backend/giraffe/static/fonts/PT_Sans-Web-Regular.ttf?raw=true')  format('truetype');
 }
 
 /*
