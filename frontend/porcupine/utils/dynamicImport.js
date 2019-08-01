@@ -56,5 +56,9 @@ function dynamicRequire(name) {
 export default async function scriptToGenerator(url, language) {
   const generatorCode = await (await fetch(url)).text();
   dynamicProvide(language, generatorCode);
-  return await dynamicRequire(language);
+  const generatorFunctions = (await dynamicRequire(language))();
+  return generatorFunctions && {
+    generator: generatorFunctions.writeCode,
+    save: generatorFunctions.writeFiles,
+  };
 }

@@ -206,10 +206,11 @@ class Canvas extends React.PureComponent {
         const url = /^(f|ht)tps?:\/\//i.test(script)
           ? script
           : `${baseName}/${script}`;
+        const generatorFunctions = await scriptToGenerator(url, grammar.language);
         addGrammar({
+          ...generatorFunctions,
           language,
           format,
-          generator: await scriptToGenerator(url, grammar.language),
         });
       });
     };

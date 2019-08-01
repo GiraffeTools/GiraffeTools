@@ -53,10 +53,17 @@ class Sidebar extends React.Component {
       this.searchBar.current.state.searchText.length;
     const currentNodes = searching ? matchedNodes : allNodes;
 
+    let projectPageUrl = '/github/';
+    if (project && project.user) {
+      const {user, repository, branch, commit} = project;
+      projectPageUrl += user + '/';
+      projectPageUrl += repository ? (repository + '/') : '';
+      projectPageUrl += (branch || commit) ? (branch || commit) : '';
+    }
     return (
       <div style={[styles.sidebar, showSidebar && styles.sidebar.active]}>
         <div style={[styles.logoSidebar]}>
-          <a href={`/github/${project.user}/${project.repository}`}>
+          <a href={projectPageUrl}>
             <img
               style={[styles.logo]}
               src={'/static/img/giraffetools_logo_notext.png'}
