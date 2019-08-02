@@ -8,7 +8,6 @@ import ParameterPane from '../containers/parameterPane';
 import Sidebar from '../containers/sidebar';
 import Modals from '../containers/modals';
 import {isGitHash} from '../utils';
-import styles from '../styles/content';
 
 class Content extends React.Component {
   constructor(props) {
@@ -40,16 +39,11 @@ class Content extends React.Component {
 
   render() {
     // const { snapToGridAfterDrop, snapToGridWhileDragging } = this.state
-    const {showSidebar, toggleSidebar} = this.props;
     return (
       <StyleRoot>
         <Modals />
         <Sidebar />
-        <a style={[styles.sidebarButton, styles.close]} onClick={toggleSidebar}>
-          <label style={[showSidebar ? styles.close1 : styles.open1]} />
-          <label style={[showSidebar ? styles.close2 : styles.open2]} />
-        </a>
-        <div style={[styles.main]}>
+        <div>
           <Canvas ref={(canvas) => (this.canvas = canvas)} />
           <ParameterPane />
           <CodeEditor />

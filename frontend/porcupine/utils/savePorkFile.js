@@ -78,7 +78,6 @@ export async function pushToGithub(commit, contents) {
     message: commit.message,
     contents,
   };
-  debugger;
   const [error, response] = await to(
       fetch(`${API_HOST}/push_to_github`, {
         method: 'POST',

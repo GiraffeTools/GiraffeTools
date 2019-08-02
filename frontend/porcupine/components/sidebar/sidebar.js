@@ -1,5 +1,4 @@
-import React from 'react';
-import Radium from 'radium';
+import React, { Fragment, useRef, useState, useEffect } from 'react';
 
 import GithubIcon from './githubIcon';
 import ToolboxGroup from './toolboxGroup';
@@ -7,83 +6,87 @@ import SearchBar from './searchBar';
 import styles from '../../styles/sidebar';
 import {savePorkFile, initPorkFile} from '../../utils/savePorkFile';
 
+import '../../scss/sidebar.scss';
 import '../../scss/scrollbar.scss';
+import '../../scss/hamburger.scss';
 
-class Sidebar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.searchBar = React.createRef();
-    this.state = {
-      matchedNodes: null,
-      searchText: '',
-    };
+function mount(addToolboxNodes) {
+  const nodes = [
+    '/static/Libraries/nipype/nipype_nodes.json',
+    // "/static/Libraries/keras/keras_nodes.json"
+  ];
+  const toolboxes = nodes.map(async (url) => await (await fetch(url)).json());
+  Promise.all(
+      toolboxes.map(async (nodes) =>
+        addToolboxNodes((await nodes)['toolboxes'])
+      )
+  );
+  return;
+}
+
+const Sidebar = (props) => {
+  const {
+    allNodes,
+    project,
+    openModal,
+    showToolboxes,
+    addToolboxNodes
+  } = props;
+
+  useEffect(() => mount(addToolboxNodes), [])
+
+  const [showSidebar, toggleSidebar] = useState(false);
+  const searchBar = useRef(null);
+  const [matchedNodes, setMatches] = useState();
+
+  const searching =
+    searchBar.current &&
+    searchBar.current.state.searchText &&
+    searchBar.current.state.searchText.length;
+  const currentNodes = searching ? matchedNodes : allNodes;
+
+  let projectPageUrl = '/github/';
+  if (project && project.user) {
+    const {user, repository, branch, commit} = project;
+    projectPageUrl += user + '/';
+    projectPageUrl += repository ? (repository + '/') : '';
+    projectPageUrl += (branch || commit) ? (branch || commit) : '';
   }
-
-  async componentDidMount() {
-    const {addToolboxNodes} = this.props;
-    const nodes = [
-      '/static/Libraries/nipype/nipype_nodes.json',
-      // "/static/Libraries/keras/keras_nodes.json"
-    ];
-    const toolboxes = nodes.map(async (url) => await (await fetch(url)).json());
-    Promise.all(
-        toolboxes.map(async (nodes) =>
-          addToolboxNodes((await nodes)['toolboxes'])
-        )
-    );
-  }
-
-  componentWillUnmount() {
-    this.setState = () => {};
-  }
-
-  render() {
-    const {
-      allNodes,
-      showSidebar,
-      project,
-      openModal,
-      showToolboxes,
-    } = this.props;
-    const {matchedNodes} = this.state;
-
-    const searching =
-      this.searchBar.current &&
-      this.searchBar.current.state.searchText &&
-      this.searchBar.current.state.searchText.length;
-    const currentNodes = searching ? matchedNodes : allNodes;
-
-    let projectPageUrl = '/github/';
-    if (project && project.user) {
-      const {user, repository, branch, commit} = project;
-      projectPageUrl += user + '/';
-      projectPageUrl += repository ? (repository + '/') : '';
-      projectPageUrl += (branch || commit) ? (branch || commit) : '';
-    }
-    return (
-      <div style={[styles.sidebar, showSidebar && styles.sidebar.active]}>
-        <div style={[styles.logoSidebar]}>
+  return (
+    <Fragment>
+      <div 
+        id="burger" 
+        className={"sidebarButton " + (showSidebar ? "open" : "")} 
+        onClick={() => toggleSidebar(!showSidebar)}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div 
+        className={"sidebar " + (showSidebar ? "active" : "inactive")}
+      >
+        <div style={styles.logoSidebar}>
           <a href={projectPageUrl}>
             <img
-              style={[styles.logo]}
+              style={styles.logo}
               src={'/static/img/giraffetools_logo_notext.png'}
               className="img-responsive"
               alt="logo"
             />
           </a>
         </div>
-        <div style={[styles.search]}>
-          <h5 style={[styles.sidebarHeading]}>SEARCH</h5>
+        <div style={styles.search}>
+          <h5 style={styles.sidebarHeading}>SEARCH</h5>
           <SearchBar
-            ref={this.searchBar}
+            ref={searchBar}
             toolboxes={allNodes}
-            setSearchResults={(results) =>
-              this.setState({matchedNodes: results})
-            }
+            setSearchResults={(results) => setMatches(results)}
           />
         </div>
-        <div style={[styles.nodes]}>
-          <h5 style={[styles.sidebarHeading]}>
+        <div style={styles.nodes}>
+          <h5 style={styles.sidebarHeading}>
             TOOLBOXES
             <a
               onClick={() =>
@@ -95,13 +98,13 @@ class Sidebar extends React.Component {
                 })
               }
             >
-              <img style={[styles.gear]} src="/static/img/gear.svg" />
+              <img style={styles.gear} src="/static/img/gear.svg" />
             </a>
           </h5>
         </div>
-        <div style={[styles.nodeBox]} className="customScrollbar">
+        <div style={styles.nodeBox} className="customScrollbar">
           <div
-            style={[styles.panelGroup]}
+            style={styles.panelGroup}
             role="tablist"
             aria-multiselectable="true"
           >
@@ -114,11 +117,11 @@ class Sidebar extends React.Component {
               })}
           </div>
         </div>
-        <div style={[styles.actionsPanel]}>
-          <h5 style={[styles.sidebarHeading]}>ACTIONS</h5>
+        <div style={styles.actionsPanel}>
+          <h5 style={styles.sidebarHeading}>ACTIONS</h5>
           {project.user &&
             project.repository && (
-            <div style={[styles.buttons]}>
+            <div style={styles.buttons}>
               <GithubIcon
                 type="fork"
                 user={project.user}
@@ -134,7 +137,7 @@ class Sidebar extends React.Component {
           {project &&
             project.user && (
             <a
-              style={[styles.panelText]}
+              style={styles.panelText}
               className="btn btn-block"
               href={`https://github.com/${project.user}/${
                 project.repository
@@ -142,13 +145,13 @@ class Sidebar extends React.Component {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img style={[styles.panelIcon]} src="/static/img/gh-icon.png" />
+              <img style={styles.panelIcon} src="/static/img/gh-icon.png" />
                 Check out on GitHub
             </a>
           )}
           {
             <a
-              style={[styles.panelText]}
+              style={styles.panelText}
               className="btn btn-block text-left"
               onClick={() =>
                 openModal({
@@ -163,14 +166,14 @@ class Sidebar extends React.Component {
                 })
               }
             >
-              <i style={[styles.panelIcon]} className="fas fa-save" />
+              <i style={styles.panelIcon} className="fas fa-save" />
               Save to GitHub
             </a>
           }
         </div>
       </div>
-    );
-  }
+    </Fragment>
+  );
 }
 
-export default Radium(Sidebar);
+export default Sidebar;

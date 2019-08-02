@@ -13,7 +13,6 @@ const mapStateToProps = (state) => ({
   nodes: nodesWithParameters(state),
   links: linksWithPortsAndNodes(state),
   languages: languageNames(state),
-  showSidebar: state.ui.showSidebar,
   grammars: state.grammars.grammars,
 });
 

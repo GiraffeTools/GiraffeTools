@@ -1,0 +1,38 @@
+@import "../../giraffe/constants/styles.scss";
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  width: 20%;
+  background-color: $primary-light-color;
+  z-index: 20;
+  // boxShadow: "5px 0px 10px #F3F3F3",
+
+  @media(max-width: 1200px) {
+    width: 240px;
+    transition: transform 0.1s ease-in-out;
+    &.active {
+      transform: translateX(0);
+    }
+    &.inactive {
+      transform: translateX(-240px);
+    }
+  }
+}
+
+.sidebarButton {
+  position: absolute;
+  z-index: 30;
+  display: none;
+  top: 20px;
+  @media(max-width: 1200px) {
+    display: initial;
+  }
+  &.open {
+    top: 0px;
+  }
+}

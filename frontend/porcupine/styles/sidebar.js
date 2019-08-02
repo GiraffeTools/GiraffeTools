@@ -1,29 +1,6 @@
 import styleSheet from '../constants/styles';
 
 const styles = {
-  sidebar: {
-    'display': 'flex',
-    'flexDirection': 'column',
-    'position': 'fixed',
-    'top': '0px',
-    'left': '0px',
-    'bottom': '0px',
-    'width': '20%',
-    'backgroundColor': styleSheet.primaryLightColor,
-    'zIndex': 20,
-    // boxShadow: "5px 0px 10px #F3F3F3",
-    'transition': 'transform 0.1s ease-in-out',
-    '@media(max-width: 1200px)': {
-      width: '240px',
-      transform: 'translateX(-240px)',
-    },
-    'active': {
-      'transform': 'translateX(0)',
-      '@media(max-width: 1200px)': {
-        transform: 'translateX(0)',
-      },
-    },
-  },
   gear: {
     width: '1.5rem',
     marginLeft: '0.2rem',

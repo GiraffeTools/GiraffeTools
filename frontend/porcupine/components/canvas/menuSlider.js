@@ -3,50 +3,35 @@ import styles from '../../styles/menuSlider';
 
 const steps = 100; // Slider steps
 
-class MenuSlider extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.zoom = this.zoom.bind(this);
-  }
+const MenuSlider = (props) => {
+  const {minZoom, maxZoom, zoomLevel, modifyZoom} = props;
 
-  sliderToZoom(val) {
-    const {minZoom, maxZoom} = this.props;
-    return (val * (maxZoom - minZoom)) / steps + minZoom;
-  }
-
-  zoomToSlider(val) {
-    const {minZoom, maxZoom} = this.props;
-    return ((val - minZoom) * steps) / (maxZoom - minZoom);
-  }
-
-  zoom(event) {
-    const {minZoom, maxZoom, zoomLevel, modifyZoom} = this.props;
+  const sliderToZoom = (val) => (val * (maxZoom - minZoom)) / steps + minZoom;
+  const zoomToSlider= (val) => ((val - minZoom) * steps) / (maxZoom - minZoom);
+  const zoom = (event) => {
     const sliderVal = event.target.value;
-    const zoomLevelNext = this.sliderToZoom(sliderVal);
+    const zoomLevelNext = sliderToZoom(sliderVal);
     const delta = zoomLevelNext - zoomLevel;
 
     if (zoomLevelNext <= maxZoom && zoomLevelNext >= minZoom) {
       modifyZoom(delta);
     }
-  }
+  };
 
-  render() {
-    const {minZoom, maxZoom, zoomLevel} = this.props;
-    return (
-      <div style={styles.zoomSliderWrapper}>
-        <span>-</span>
-        <input
-          style={styles.zoomSlider}
-          type="range"
-          min={this.zoomToSlider(minZoom)}
-          max={this.zoomToSlider(maxZoom)}
-          value={this.zoomToSlider(zoomLevel)}
-          onChange={this.zoom}
-          step="1"
-        />
-        <span>+</span>
-      </div>
-    );
-  }
-}
+  return (
+    <div style={styles.zoomSliderWrapper}>
+      <span>-</span>
+      <input
+        style={styles.zoomSlider}
+        type="range"
+        min={zoomToSlider(minZoom)}
+        max={zoomToSlider(maxZoom)}
+        value={zoomToSlider(zoomLevel)}
+        onChange={zoom}
+        step="1"
+      />
+      <span>+</span>
+    </div>
+  );
+};
 export default MenuSlider;
