@@ -161,8 +161,8 @@ const Sidebar = (props) => {
                   onClose: () => {},
                   onConfirm:
                     project.user && project.repository
-                      ? (content) => savePorkFile(content)
-                      : (content) => initPorkFile(content),
+                      ? (configuration) => savePorkFile(configuration)
+                      : (configuration) => initPorkFile(configuration),
                 })
               }
             >

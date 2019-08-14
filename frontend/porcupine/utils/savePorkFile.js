@@ -11,7 +11,7 @@ import {
   stickies,
 } from '../selectors/selectors';
 
-export async function savePorkFile(content) {
+export async function savePorkFile(configuration) {
   const state = store.getState();
   const {grammars} = state.grammars;
 
@@ -30,31 +30,37 @@ export async function savePorkFile(content) {
     Object.keys(files).forEach((name) => (fileContent[name] = files[name]))
   );
 
-  let porkFilename;
-  if (content.porkFile) {
-    porkFilename = content.porkFile;
-  } else {
+  const {file, files} = configuration;
+  let porkFilename = file || files[0];
+  if (!porkFilename) {
     porkFilename = 'GIRAFFE/porcupipeline.pork';
+    const giraffeFilename = 'GIRAFFE.yml';
+    configuration.tools.porcupine.files = [porkFilename];
+    fileContent[giraffeFilename] = saveYml(configuration);
   }
+
   const contents = {
+    ...fileContent,
     [porkFilename]: JSON.stringify(
         porkFile(nodes, links, allStickies), null, 2
     ),
-    ...fileContent,
   };
   return contents;
 }
 
-export async function initPorkFile(content) {
-  const giraffeFilename = 'GIRAFFE.yml';
-  content.porkFilename = 'GIRAFFE/porcupipeline.pork';
+export async function initPorkFile(configuration) {
+  if (!configuration) return;
+  if (!configuration.tools) configuration.tools = {};
+  if (!configuration.tools.porcupine) configuration.tools.porcupine = {};
+  configuration.tools.porcupine.files = ['GIRAFFE/porcupipeline.pork'];
 
-  const saveContent = await savePorkFile(content);
+  const saveContent = await savePorkFile(configuration);
+  const giraffeFilename = 'GIRAFFE.yml';
   const contents = {
+    ...saveContent,
     [giraffeFilename]: await (await fetch(
         '/static/assets/giraffe/GIRAFFE.yml'
     )).text(),
-    ...saveContent,
   };
 
   return contents;
