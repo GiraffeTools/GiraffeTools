@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useState, useEffect } from 'react';
+import React, {Fragment, useRef, useState, useEffect} from 'react';
 
 import GithubIcon from './githubIcon';
 import ToolboxGroup from './toolboxGroup';
@@ -30,10 +30,10 @@ const Sidebar = (props) => {
     project,
     openModal,
     showToolboxes,
-    addToolboxNodes
+    addToolboxNodes,
   } = props;
 
-  useEffect(() => mount(addToolboxNodes), [])
+  useEffect(() => mount(addToolboxNodes), []);
 
   const [showSidebar, toggleSidebar] = useState(false);
   const searchBar = useRef(null);
@@ -54,9 +54,9 @@ const Sidebar = (props) => {
   }
   return (
     <Fragment>
-      <div 
-        id="burger" 
-        className={"sidebarButton " + (showSidebar ? "open" : "")} 
+      <div
+        id="burger"
+        className={'sidebarButton ' + (showSidebar ? 'open' : '')}
         onClick={() => toggleSidebar(!showSidebar)}
       >
         <span></span>
@@ -64,8 +64,8 @@ const Sidebar = (props) => {
         <span></span>
         <span></span>
       </div>
-      <div 
-        className={"sidebar " + (showSidebar ? "active" : "inactive")}
+      <div
+        className={'sidebar ' + (showSidebar ? 'active' : 'inactive')}
       >
         <div style={styles.logoSidebar}>
           <a href={projectPageUrl}>
@@ -174,6 +174,6 @@ const Sidebar = (props) => {
       </div>
     </Fragment>
   );
-}
+};
 
 export default Sidebar;

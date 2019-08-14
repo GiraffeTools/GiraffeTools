@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {StyleRoot} from 'radium';
 
 import Code from './code';
@@ -7,7 +7,6 @@ import styles from '../../styles/codeEditor';
 require('../../scss/code.scss');
 
 const CodeEditor = (props) => {
-
   const [open, toggle] = useState(false);
   const {
     setActiveTab,
@@ -80,6 +79,6 @@ const CodeEditor = (props) => {
       </div>
     </StyleRoot>
   );
-}
+};
 
 export default CodeEditor;

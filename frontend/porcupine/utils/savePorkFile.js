@@ -30,7 +30,12 @@ export async function savePorkFile(content) {
     Object.keys(files).forEach((name) => (fileContent[name] = files[name]))
   );
 
-  const porkFilename = content.porkFile;
+  let porkFilename;
+  if (content.porkFile) {
+    porkFilename = content.porkFile;
+  } else {
+    porkFilename = 'GIRAFFE/porcupipeline.pork';
+  }
   const contents = {
     [porkFilename]: JSON.stringify(
         porkFile(nodes, links, allStickies), null, 2
