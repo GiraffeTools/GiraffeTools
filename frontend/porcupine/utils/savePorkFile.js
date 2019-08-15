@@ -39,30 +39,15 @@ export async function savePorkFile() {
     files.push(porkFilename);
     configuration.files = [porkFilename];
     const giraffeFilename = 'GIRAFFE.yml';
-    fileContent[giraffeFilename] = saveYaml(configuration);
+    const ymlConfig = {tools: {porcupine: configuration}};
+    fileContent[giraffeFilename] = saveYaml(ymlConfig);
   }
-
   const contents = {
     ...fileContent,
     [files[0]]: JSON.stringify(
         porkFile(nodes, links, allStickies), null, 2
     ),
   };
-  return contents;
-}
-
-export async function initGiraffeProject() {
-  // #TODO hard-coded, for now
-  const giraffeFilename = 'GIRAFFE.yml';
-  const porkFilename = 'GIRAFFE/porcupipeline.pork';
-
-  const contents = {
-    [giraffeFilename]: await (await fetch(
-        '/static/assets/giraffe/GIRAFFE.yml'
-    )).text(),
-    [porkFilename]: JSON.stringify(porkFile(), null, 2),
-  };
-
   return contents;
 }
 
