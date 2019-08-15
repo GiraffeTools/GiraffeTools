@@ -1,7 +1,7 @@
-import {} from '../utils';
 import {getCsrfToken} from '../../giraffe/utils/auth';
 import {API_HOST} from '../../giraffe/config';
 import to from 'await-to-js';
+import {dump as saveYaml} from 'yaml-js';
 
 import store from '../store';
 import {
@@ -11,8 +11,9 @@ import {
   stickies,
 } from '../selectors/selectors';
 
-export async function savePorkFile(content) {
+export async function savePorkFile() {
   const state = store.getState();
+  const configuration = state.projectConfig;
   const {grammars} = state.grammars;
 
   const nodes = nodesWithParameters(state);
@@ -30,33 +31,23 @@ export async function savePorkFile(content) {
     Object.keys(files).forEach((name) => (fileContent[name] = files[name]))
   );
 
-  let porkFilename;
-  if (content.porkFile) {
-    porkFilename = content.porkFile;
-  } else {
-    porkFilename = 'GIRAFFE/porcupipeline.pork';
+  // #TODO grab this from local state
+  const {files} = configuration;
+  if (!files || !files.length) {
+    const porkFilename = 'GIRAFFE/porcupipeline.pork';
+    // #TODO set project file
+    files.push(porkFilename);
+    configuration.files = [porkFilename];
+    const giraffeFilename = 'GIRAFFE.yml';
+    fileContent[giraffeFilename] = saveYaml(configuration);
   }
+
   const contents = {
-    [porkFilename]: JSON.stringify(
+    ...fileContent,
+    [files[0]]: JSON.stringify(
         porkFile(nodes, links, allStickies), null, 2
     ),
-    ...fileContent,
   };
-  return contents;
-}
-
-export async function initPorkFile(content) {
-  const giraffeFilename = 'GIRAFFE.yml';
-  content.porkFilename = 'GIRAFFE/porcupipeline.pork';
-
-  const saveContent = await savePorkFile(content);
-  const contents = {
-    [giraffeFilename]: await (await fetch(
-        '/static/assets/giraffe/GIRAFFE.yml'
-    )).text(),
-    ...saveContent,
-  };
-
   return contents;
 }
 

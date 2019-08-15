@@ -19,7 +19,6 @@ import {
   deleteNode,
   deleteLink,
   updateLoadingPercent,
-  setPorkFile,
 } from '../actions';
 
 const mapStateToProps = (state) => ({
@@ -38,7 +37,6 @@ const mapDispatchToProps = (dispatch) => ({
   addSticky: (sticky) => dispatch(addSticky(sticky)),
   deleteNode: (nodeId) => dispatch(deleteNode(nodeId)),
   deleteLink: (linkId) => dispatch(deleteLink(linkId)),
-  setPorkFile: (porkfile) => dispatch(setPorkFile(porkfile)),
   clickItem: () => dispatch(clickItem()),
   updateLoadingPercent: (percent) => dispatch(updateLoadingPercent(percent)),
   updateNode: (nodeId, offset) => dispatch(updateNode(nodeId, offset)),

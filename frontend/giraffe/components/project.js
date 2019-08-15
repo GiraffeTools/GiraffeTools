@@ -3,7 +3,7 @@ import Radium from 'radium';
 import {v4} from 'uuid';
 
 import SeparatorWithOpenCircle from './separatorWithOpenCircle';
-import {initGiraffeProject} from '../../porcupine/utils/savePorkFile';
+import {savePorkFile} from '../../porcupine/utils/savePorkFile';
 import styles from '../styles/project.js';
 
 const Project = ({repository, openModal}) => (
@@ -66,7 +66,7 @@ const Project = ({repository, openModal}) => (
                 repository: repository.name,
               },
               onClose: () => {},
-              onConfirm: () => initGiraffeProject(),
+              onConfirm: () => savePorkFile(),
             })
           }
           style={[styles.add]}

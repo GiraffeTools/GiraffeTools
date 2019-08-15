@@ -29,12 +29,14 @@ export const SET_SEARCH_TEXT = 'SET_SEARCH_TEXT';
 export const TOGGLE_TOOLBOX = 'TOGGLE_TOOLBOX';
 export const ADD_TOOLBOX_NODES = 'ADD_TOOLBOX_NODES';
 
-// /// USER /////
+// /// PROJECT /////
 export const SET_USER = 'SET_USER';
 export const SET_REPOSITORY = 'SET_REPOSITORY';
 export const SET_BRANCH = 'SET_BRANCH';
 export const SET_COMMIT = 'SET_COMMIT';
-export const SET_PORK_FILE = 'SET_PORK_FILE';
+
+// /// PROJECT_CONFIG /////
+export const SET_CONFIG = 'SET_CONFIG';
 
 // /// SCENE /////
 export const ZOOM_IN = 'ZOOM_IN';

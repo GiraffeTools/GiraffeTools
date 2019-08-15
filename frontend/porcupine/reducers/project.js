@@ -4,7 +4,6 @@ import {
   SET_REPOSITORY,
   SET_BRANCH,
   SET_COMMIT,
-  SET_PORK_FILE,
 } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
@@ -12,7 +11,6 @@ const INITIAL_STATE = {
   repository: null,
   branch: null,
   commit: null,
-  porkFile: null,
 };
 
 const project = (state = INITIAL_STATE, action) => {
@@ -26,8 +24,6 @@ const project = (state = INITIAL_STATE, action) => {
       return {...state, branch: payload.branch};
     case SET_COMMIT:
       return {...state, commit: payload.commit};
-    case SET_PORK_FILE:
-      return {...state, porkFile: payload.porkFile};
     default:
       return state;
   }

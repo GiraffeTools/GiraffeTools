@@ -4,7 +4,7 @@ import GithubIcon from './githubIcon';
 import ToolboxGroup from './toolboxGroup';
 import SearchBar from './searchBar';
 import styles from '../../styles/sidebar';
-import {savePorkFile, initPorkFile} from '../../utils/savePorkFile';
+import {savePorkFile} from '../../utils/savePorkFile';
 
 import '../../scss/sidebar.scss';
 import '../../scss/scrollbar.scss';
@@ -159,10 +159,7 @@ const Sidebar = (props) => {
                   type: 'push_to_github',
                   project,
                   onClose: () => {},
-                  onConfirm:
-                    project.user && project.repository
-                      ? (content) => savePorkFile(content)
-                      : (content) => initPorkFile(content),
+                  onConfirm: () => savePorkFile(),
                 })
               }
             >

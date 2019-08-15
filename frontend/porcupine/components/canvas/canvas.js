@@ -1,17 +1,18 @@
 import {v4} from 'uuid';
 import React from 'react';
 import {DropTarget} from 'react-dnd';
-import {load as loadYaml} from 'yaml-js';
-import to from 'await-to-js';
 
 import ItemTypes from '../../draggables/itemTypes';
 import GraphView from './graphView';
 import {camelToSnake} from '../../utils';
 import GiraffeLoader from './giraffeLoader';
-import {loadPorkFile} from '../../utils/loadPorkFile';
 import defaultGenerators from '../../utils/codeGenerators';
-import scriptToGenerator from '../../utils/dynamicImport';
 import styles from '../../styles/canvas';
+import {
+  loadContent,
+  loadCustomNodes,
+  loadGrammars,
+} from '../../utils/loadPorkFile';
 
 const boxTarget = {
   drop(props, monitor, component) {
@@ -82,7 +83,6 @@ const boxTarget = {
         break;
       default:
         return null;
-        break;
     }
 
     return {name: 'Canvas'};
@@ -95,7 +95,6 @@ class Canvas extends React.PureComponent {
     this.graphview = React.createRef();
     this.load = this.load.bind(this);
     this.deleteSelection = this.deleteSelection.bind(this);
-    this.loadFromJson = this.loadFromJson.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
@@ -138,153 +137,20 @@ class Canvas extends React.PureComponent {
   }
 
   // this is called via ref from content
-  async load() {
-    const {
-      setPorkFile,
-      project,
-      addToolboxNodes,
-      addGrammar,
-      clickItem,
-      updateLoadingPercent,
-    } = this.props;
-    const {user, repository, branch, commit} = project;
-    if (!user || !repository || (!branch && !commit)) {
-      console.log('No username, repository, or branch provided');
-      return;
-    }
+  async load(configuration, repoContentUrl) {
+    const {graphview} = this;
 
-    const baseName = `https://raw.githubusercontent.com/${user}/${repository}/${branch ||
-      commit}`;
-    const configFile = `${baseName}/GIRAFFE.yml`;
-
-    const configuration = await fetch(configFile);
-    if (!configuration.ok) {
-      console.log('GiraffeTools configuration file cannot be loaded');
-      return;
-    }
-
-    const {loadFromJson, graphview} = this;
-    async function loadContent(porkfiles) {
-      if (!porkfiles || !porkfiles.length) return;
-
-      // currently, take first
-      const file = porkfiles[0];
-      setPorkFile(file);
-      const porkData = await fetch(`${baseName}/${file}`);
-      if (!porkData.ok) {
-        console.log('Pork file cannot be loaded');
-      }
-      const content = await porkData.json();
-      try {
-        await loadFromJson(content);
-        clickItem(null);
-        graphview.current.handleZoomToFit();
-      } catch (error) {
-        console.log('Cannot load Porcupine Config file:');
-        console.log(error);
-        updateLoadingPercent(-1);
-      }
-    }
-    const loadCustomNodes = (nodeFiles) => {
-      if (!nodeFiles || !nodeFiles.length) return;
-      nodeFiles.forEach(async (nodeFile) => {
-        // does file start with http(s)?
-        const url = /^(f|ht)tps?:\/\//i.test(nodeFile)
-          ? nodeFile
-          : `${baseName}/${nodeFile}`;
-        const nodes = await (await fetch(url)).json();
-        addToolboxNodes(nodes.toolboxes);
-      });
-    };
-
-    const loadGrammars = (grammars) => {
-      if (!grammars || !grammars.length) return;
-
-      grammars.forEach(async (grammar) => {
-        const {script, language, format} = grammar;
-        // does file start with http(s)?
-        const url = /^(f|ht)tps?:\/\//i.test(script)
-          ? script
-          : `${baseName}/${script}`;
-        const generatorFunctions = await scriptToGenerator(
-            url,
-            grammar.language
-        );
-        addGrammar({
-          ...generatorFunctions,
-          language,
-          format,
-        });
-      });
-    };
-
-    const yamlData = loadYaml(await configuration.text());
-    if (!yamlData || !yamlData.tools || !yamlData.tools.porcupine) return;
-
-    const {file, files, nodes, grammars} = yamlData.tools.porcupine;
-    Promise.all([
-      loadContent(file || files),
-      loadCustomNodes(nodes),
-      loadGrammars(grammars),
+    const {file, files, nodes, grammars} = configuration;
+    await Promise.all([
+      loadContent(file || files, repoContentUrl),
+      loadCustomNodes(nodes, repoContentUrl),
+      loadGrammars(grammars, repoContentUrl),
     ]);
+    graphview.current.handleZoomToFit();
   }
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeyPress, false);
-  }
-
-  async loadFromJson(json) {
-    const {
-      addNode,
-      addLink,
-      addSticky,
-      clearDatabase,
-      updateNode,
-      updateLoadingPercent,
-    } = this.props;
-    updateLoadingPercent(10); // Loading started!
-    clearDatabase();
-
-    const [error, response] = await to(
-        loadPorkFile(json, updateLoadingPercent)
-    );
-    if (error) {
-      console.log(
-          'Error reading Porcupine Config file!' +
-          'Either data is missing or format is incorrect'
-      );
-      return;
-    }
-    updateLoadingPercent(50); // Loading finished!
-
-    const {nodes, links, stickies} = response;
-    try {
-      let i = 0;
-      nodes.forEach((node) => {
-        addNode(node);
-        updateNode(node.id);
-        updateLoadingPercent(50 + (30 * i++) / nodes.length);
-      });
-      updateLoadingPercent(80); // Nodes loaded!
-      i = 0;
-      links.forEach((link) => {
-        addLink(link);
-        updateLoadingPercent(80 + (10 * i++) / links.length);
-      });
-      stickies.forEach((sticky) => {
-        addSticky(sticky);
-        updateLoadingPercent(90 + (10 * i++) / links.length);
-      });
-    } catch (error) {
-      updateLoadingPercent(-1);
-      console.log(
-          'Error while adding Link or Node to Canvas, ' +
-          'Check Porcupine Config file.'
-      );
-      console.log(error);
-      return;
-    }
-    updateLoadingPercent(-1);
   }
 
   render() {

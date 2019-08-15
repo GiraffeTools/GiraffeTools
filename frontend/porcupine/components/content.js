@@ -8,6 +8,7 @@ import ParameterPane from '../containers/parameterPane';
 import Sidebar from '../containers/sidebar';
 import Modals from '../containers/modals';
 import {isGitHash} from '../utils';
+import {loadGiraffeConfig} from '../utils/loadPorkFile';
 
 class Content extends React.Component {
   constructor(props) {
@@ -16,14 +17,15 @@ class Content extends React.Component {
   }
 
   async componentDidMount() {
-    const {username, repository, branchOrCommit} = this.props.match.params;
     const {
       setUser,
       setRepository,
       setBranch,
       setCommit,
+      setConfig,
       updateAuth,
     } = this.props;
+    const {username, repository, branchOrCommit} = this.props.match.params;
     setUser(username);
     setRepository(repository);
     const string = branchOrCommit || 'master';
@@ -33,8 +35,24 @@ class Content extends React.Component {
 
     const response = await fetch('/api/get_user');
     updateAuth(await response.json());
-    // #TODO write a comment about what this line does:
-    this.canvas.decoratedRef.current.load();
+
+    if (!username || !repository) {
+      console.log('No username or repository provided');
+      return;
+    }
+    // #This loads the canvas content only after the UI has first rendered
+    const repoContentUrl = `https://raw.githubusercontent.com/${username}/${
+      repository}/${branchOrCommit || 'master'}`;
+    const configuration = await loadGiraffeConfig(repoContentUrl);
+    if (!configuration ||
+      !configuration.tools ||
+      !configuration.tools.porcupine) {
+      setConfig({});
+      return;
+    }
+    const porcupineConfig = configuration.tools.porcupine;
+    setConfig(porcupineConfig);
+    this.canvas.decoratedRef.current.load(porcupineConfig, repoContentUrl);
   }
 
   render() {

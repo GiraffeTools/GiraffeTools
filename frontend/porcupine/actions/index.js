@@ -20,7 +20,7 @@ import {
   SET_REPOSITORY,
   SET_BRANCH,
   SET_COMMIT,
-  SET_PORK_FILE,
+  SET_CONFIG,
   OPEN_MODAL,
   CLOSE_MODAL,
   TOGGLE_TOOLBOX,
@@ -207,10 +207,10 @@ export const setCommit = (commit) => ({
     commit,
   },
 });
-export const setPorkFile = (porkFile) => ({
-  type: SET_PORK_FILE,
+export const setConfig = (configuration) => ({
+  type: SET_CONFIG,
   payload: {
-    porkFile,
+    configuration,
   },
 });
 
