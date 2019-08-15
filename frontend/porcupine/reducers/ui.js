@@ -1,5 +1,4 @@
 import {
-  TOGGLE_SIDEBAR,
   SET_ACTIVE_TAB,
   UPDATE_LOADING_PERCENT,
   SET_SEARCH_TEXT,
@@ -8,7 +7,6 @@ import {
 } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
-  showSidebar: false,
   showToolboxes: [],
   searchText: '',
   toolboxes: [],
@@ -19,8 +17,6 @@ const INITIAL_STATE = {
 const ui = (state = INITIAL_STATE, action) => {
   const {type, payload} = action;
   switch (type) {
-    case TOGGLE_SIDEBAR:
-      return {...state, showSidebar: !state.showSidebar};
     case TOGGLE_TOOLBOX:
       const {toolbox} = payload;
       if (!state.showToolboxes) {

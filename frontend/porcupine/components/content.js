@@ -22,6 +22,7 @@ class Content extends React.Component {
       setRepository,
       setBranch,
       setCommit,
+      setConfig,
       updateAuth,
     } = this.props;
     const {username, repository, branchOrCommit} = this.props.match.params;
@@ -40,10 +41,18 @@ class Content extends React.Component {
       return;
     }
     // #This loads the canvas content only after the UI has first rendered
-    const repoContentUrl = `https://raw.githubusercontent.com/${username}/${repository}/${branchOrCommit || 'master'}`;
+    const repoContentUrl = `https://raw.githubusercontent.com/${username}/${
+      repository}/${branchOrCommit || 'master'}`;
     const configuration = await loadGiraffeConfig(repoContentUrl);
-    if (!configuration || !configuration.tools || !configuration.tools.porcupine) return;
-    this.canvas.decoratedRef.current.load(configuration.tools.porcupine, repoContentUrl);
+    if (!configuration ||
+      !configuration.tools ||
+      !configuration.tools.porcupine) {
+      setConfig({});
+      return;
+    }
+    const porcupineConfig = configuration.tools.porcupine;
+    setConfig(porcupineConfig);
+    this.canvas.decoratedRef.current.load(porcupineConfig, repoContentUrl);
   }
 
   render() {

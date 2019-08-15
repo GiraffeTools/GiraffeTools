@@ -9,6 +9,7 @@ import modals from './modals';
 import ui from './ui';
 import grammars from './grammars';
 import project from './project';
+import projectConfig from './projectConfig';
 import scene from './scene';
 
 const config = {
@@ -24,6 +25,7 @@ const porcupineApp = persistCombineReducers(config, {
   grammars,
   modals,
   project,
+  projectConfig,
   auth,
 });
 

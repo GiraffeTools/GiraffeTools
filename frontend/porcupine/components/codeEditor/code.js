@@ -24,7 +24,6 @@ async function recomputeCode(generator, nodes, links) {
       return unknownCode;
     }
     if (typeof code !== 'string') {
-      debugger;
       console.error('The created code is not a string');
       return unknownCode;
     }

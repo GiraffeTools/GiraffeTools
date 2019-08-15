@@ -6,7 +6,6 @@ import LoginButton from '../../../giraffe/components/loginButton';
 import GithubModalContent from './githubModalContent';
 import {pushToGithub} from '../../utils/savePorkFile';
 import styles from '../../styles/githubModal';
-import {loadGiraffeConfig} from '../../utils/loadPorkFile';
 
 class GithubModal extends React.Component {
   constructor(props) {
@@ -37,7 +36,7 @@ class GithubModal extends React.Component {
       commitError: false,
     });
 
-    const {user, repository, porkFile} = project;
+    const {user, repository} = project;
 
     const commit = {
       ...project,
@@ -45,21 +44,9 @@ class GithubModal extends React.Component {
       repository: repository || githubRepo,
       user: user || (auth && auth.github_handle),
     };
-    if (!porkFile) {
-      const {branch, commit} = project;
-      const configuration = await loadGiraffeConfig(user, repository, branch || commit);
-      if (!configuration) throw 'GIRAFFE.yml cannot  be found. Aborting save';
-      debugger;
-      configuration.tools.porcupine.files = 'GIRAFFE/porcupipeline.pork';
-    }
 
-    const content = {
-      porkFile,
-    };
-
-    debugger;
     const [error, response] = await to(
-        pushToGithub(commit, await githubAction(content))
+        pushToGithub(commit, await githubAction(project))
     );
     if (!error && response.ok) {
       this.setState({

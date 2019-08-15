@@ -8,7 +8,11 @@ import {camelToSnake} from '../../utils';
 import GiraffeLoader from './giraffeLoader';
 import defaultGenerators from '../../utils/codeGenerators';
 import styles from '../../styles/canvas';
-import {loadContent, loadCustomNodes, loadGrammars} from '../../utils/loadPorkFile';
+import {
+  loadContent,
+  loadCustomNodes,
+  loadGrammars,
+} from '../../utils/loadPorkFile';
 
 const boxTarget = {
   drop(props, monitor, component) {

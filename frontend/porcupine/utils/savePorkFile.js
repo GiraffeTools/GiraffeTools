@@ -1,7 +1,7 @@
-import {} from '../utils';
 import {getCsrfToken} from '../../giraffe/utils/auth';
 import {API_HOST} from '../../giraffe/config';
 import to from 'await-to-js';
+import {dump as saveYaml} from 'yaml-js';
 
 import store from '../store';
 import {
@@ -11,8 +11,9 @@ import {
   stickies,
 } from '../selectors/selectors';
 
-export async function savePorkFile(configuration) {
+export async function savePorkFile() {
   const state = store.getState();
+  const configuration = state.projectConfig;
   const {grammars} = state.grammars;
 
   const nodes = nodesWithParameters(state);
@@ -30,39 +31,23 @@ export async function savePorkFile(configuration) {
     Object.keys(files).forEach((name) => (fileContent[name] = files[name]))
   );
 
-  const {file, files} = configuration;
-  let porkFilename = file || files[0];
-  if (!porkFilename) {
-    porkFilename = 'GIRAFFE/porcupipeline.pork';
+  // #TODO grab this from local state
+  const {files} = configuration;
+  if (!files || !files.length) {
+    const porkFilename = 'GIRAFFE/porcupipeline.pork';
+    // #TODO set project file
+    files.push(porkFilename);
+    configuration.files = [porkFilename];
     const giraffeFilename = 'GIRAFFE.yml';
-    configuration.tools.porcupine.files = [porkFilename];
-    fileContent[giraffeFilename] = saveYml(configuration);
+    fileContent[giraffeFilename] = saveYaml(configuration);
   }
 
   const contents = {
     ...fileContent,
-    [porkFilename]: JSON.stringify(
+    [files[0]]: JSON.stringify(
         porkFile(nodes, links, allStickies), null, 2
     ),
   };
-  return contents;
-}
-
-export async function initPorkFile(configuration) {
-  if (!configuration) return;
-  if (!configuration.tools) configuration.tools = {};
-  if (!configuration.tools.porcupine) configuration.tools.porcupine = {};
-  configuration.tools.porcupine.files = ['GIRAFFE/porcupipeline.pork'];
-
-  const saveContent = await savePorkFile(configuration);
-  const giraffeFilename = 'GIRAFFE.yml';
-  const contents = {
-    ...saveContent,
-    [giraffeFilename]: await (await fetch(
-        '/static/assets/giraffe/GIRAFFE.yml'
-    )).text(),
-  };
-
   return contents;
 }
 

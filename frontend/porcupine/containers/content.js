@@ -6,6 +6,7 @@ import {
   setRepository,
   setBranch,
   setCommit,
+  setConfig,
   updateAuth,
 } from '../actions';
 
@@ -19,6 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
   setRepository: (repository) => dispatch(setRepository(repository)),
   setBranch: (branch) => dispatch(setBranch(branch)),
   setCommit: (commit) => dispatch(setCommit(commit)),
+  setConfig: (configuration) => dispatch(setConfig(configuration)),
   updateAuth: (user) => dispatch(updateAuth(user)),
 });
 
