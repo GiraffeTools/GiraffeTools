@@ -21,7 +21,7 @@ const GithubModalContent = ({repository, user, onChange}) => (
         <input
           type="text"
           className="form-control"
-          name="github_repo"
+          name="githubRepo"
           onChange={onChange}
           disabled={repository ? 'True' : ''}
           defaultValue={repository ? repository : ''}
