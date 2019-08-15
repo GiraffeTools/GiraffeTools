@@ -5,7 +5,7 @@ import styles from '../styles/augmentedRealityScene';
 // import ARjs from 'ar.js'
 
 class AugmentedRealityScene extends React.Component {
-  async componentWillMount() {
+  async UNSAFE_componentWillMount() {
     AFRAME.registerComponent('model-overrider', {
       init: function() {
         console.log('Add model overrider to add colours');

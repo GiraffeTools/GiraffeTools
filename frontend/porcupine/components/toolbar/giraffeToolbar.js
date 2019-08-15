@@ -58,6 +58,7 @@ class GiraffeToolbar extends React.Component {
       deleteSelection,
       selection,
       zoomToFit,
+      printCanvas,
     } = this.props;
 
     const menu = [
@@ -74,6 +75,26 @@ class GiraffeToolbar extends React.Component {
             ),
             callback: clearDatabase,
           },
+          {
+            text: (
+              <span>
+                {' '}
+                <i className="far fa-save" style={styles.icon} />
+                Save to SVG
+              </span>
+            ),
+            callback: () => printCanvas('SVG'),
+          },
+          // {
+          //   text: (
+          //     <span>
+          //       {' '}
+          //       <i className="far fa-save" style={styles.icon} />
+          //       Save to PDF
+          //     </span>
+          //   ),
+          //   callback: () => printCanvas("PDF"),
+          // },
           // {
           //   text: (
           //     <span>

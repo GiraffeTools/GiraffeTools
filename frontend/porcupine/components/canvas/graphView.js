@@ -1,6 +1,8 @@
 import React from 'react';
 import {StyleRoot} from 'radium';
 import * as d3 from 'd3';
+import {save} from 'save-file';
+import pretty from 'pretty';
 
 import CustomDragLayer from '../../draggables/customDragLayer';
 import ZoomMenu from './menuSlider';
@@ -33,6 +35,9 @@ const Background = () => (
 class GraphView extends React.Component {
   constructor(props) {
     super(props);
+    this.viewWrapper = React.createRef();
+    this.canvas = React.createRef();
+
     this.state = {
       viewTransform: d3.zoomIdentity,
     };
@@ -40,6 +45,7 @@ class GraphView extends React.Component {
     this.renderDefs = this.renderDefs.bind();
     this.handleZoom = this.handleZoom.bind(this);
     this.handleZoomToFit = this.handleZoomToFit.bind(this);
+    this.printCanvas = this.printCanvas.bind(this);
 
     this.zoom = d3
         .zoom()
@@ -237,6 +243,31 @@ class GraphView extends React.Component {
     );
   }
 
+  async printCanvas(format) {
+    switch (format) {
+      case 'SVG':
+        const svgString = pretty(this.canvas.outerHTML).split('\n');
+        const svgXmlString = `<?xml 
+        version="1.0" 
+        encoding="iso-8859-1"?>
+        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+        "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+        `;
+
+        const svgFirstLine = `<svg 
+        height="100%"
+        width="100%"
+        xmlns="http://www.w3.org/2000/svg" 
+        xmlns:xlink="http://www.w3.org/1999/xlink">`;
+        svgString[0] = svgFirstLine;
+        save(pretty(svgXmlString + svgString.join('\n')), 'canvas.svg');
+        break;
+      default:
+        console.log('Please specify a file format');
+        break;
+    }
+  }
+
   render() {
     const {nodes, links, stickies, deleteSelection} = this.props;
     const view = d3.select(this.view);
@@ -248,12 +279,20 @@ class GraphView extends React.Component {
 
     return (
       <StyleRoot>
-        <div style={[styles.viewWrapper]} ref={(el) => (this.viewWrapper = el)}>
+        <div
+          style={[styles.viewWrapper]}
+          ref={(el) => (this.viewWrapper = el)}
+        >
           <Toolbar
             zoomToFit={this.handleZoomToFit}
             deleteSelection={deleteSelection}
+            printCanvas={this.printCanvas}
           />
-          <svg height="100%" width="100%">
+          <svg
+            ref={(el) => (this.canvas = el)}
+            height="100%"
+            width="100%"
+          >
             {this.renderDefs()}
             <g className="view" ref={(el) => (this.view = el)}>
               <Background />

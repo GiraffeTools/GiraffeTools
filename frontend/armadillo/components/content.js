@@ -16,7 +16,7 @@ class Content extends React.Component {
     };
   }
 
-  async componentWillMount() {
+  async UNSAFE_componentWillMount() {
     const script = document.createElement('script');
     script.src = '/static/js/aframe-ar.js';
     script.async = false;
