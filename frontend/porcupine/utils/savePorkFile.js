@@ -45,7 +45,7 @@ export async function savePorkFile() {
   const contents = {
     ...fileContent,
     [files[0]]: JSON.stringify(
-        porkFile(nodes, links, allStickies), null, 2
+        porkFile(nodes, links, allStickies, state.ui), null, 2
     ),
   };
   return contents;
@@ -70,11 +70,15 @@ export async function pushToGithub(commit, contents) {
   return error || response;
 }
 
-const porkFile = (nodes, links, allStickies) => {
+const porkFile = (nodes, links, allStickies, ui) => {
+  const {showToolboxes} = ui;
   return {
     links: links && linksToSaveDict(links),
     nodes: nodes && nodesToSaveDict(nodes),
     stickies: stickies && stickiesToSaveDict(allStickies),
+    ui: {
+      showToolboxes
+    },
     version: 'v1',
   };
 };

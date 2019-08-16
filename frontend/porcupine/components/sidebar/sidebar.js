@@ -45,10 +45,10 @@ const Sidebar = (props) => {
     searchBar.current.state.searchText.length;
   const currentNodes = searching ? matchedNodes : allNodes;
 
-  let projectPageUrl = '/github/';
+  let projectPageUrl = '/';
   if (project && project.user) {
     const {user, repository, branch, commit} = project;
-    projectPageUrl += user + '/';
+    projectPageUrl += `github/${user}/`;
     projectPageUrl += repository ? (repository + '/') : '';
     projectPageUrl += (branch || commit) ? (branch || commit) : '';
   }

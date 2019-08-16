@@ -83,18 +83,18 @@ class GiraffeToolbar extends React.Component {
                 Save to SVG
               </span>
             ),
-            callback: () => printCanvas('SVG'),
+            callback: () => printCanvas("SVG"),
           },
-          // {
-          //   text: (
-          //     <span>
-          //       {' '}
-          //       <i className="far fa-save" style={styles.icon} />
-          //       Save to PDF
-          //     </span>
-          //   ),
-          //   callback: () => printCanvas("PDF"),
-          // },
+          {
+            text: (
+              <span>
+                {' '}
+                <i className="far fa-save" style={styles.icon} />
+                Save to PNG
+              </span>
+            ),
+            callback: () => printCanvas("PNG"),
+          },
           // {
           //   text: (
           //     <span>

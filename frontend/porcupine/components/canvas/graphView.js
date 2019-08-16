@@ -3,6 +3,7 @@ import {StyleRoot} from 'radium';
 import * as d3 from 'd3';
 import {save} from 'save-file';
 import pretty from 'pretty';
+import {saveSvgAsPng} from 'save-svg-as-png';
 
 import CustomDragLayer from '../../draggables/customDragLayer';
 import ZoomMenu from './menuSlider';
@@ -244,26 +245,35 @@ class GraphView extends React.Component {
   }
 
   async printCanvas(format) {
+    const svgElement = this.canvas;
+
+    const svgElementToFile = (element) => {
+      const svgString = pretty(element.outerHTML).split('\n');
+      const svgXmlString = `<?xml 
+      version="1.0" 
+      encoding="iso-8859-1"?>
+      <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+      "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+      `;
+  
+      const svgFirstLine = `<svg 
+      height="100%"
+      width="100%"
+      xmlns="http://www.w3.org/2000/svg" 
+      xmlns:xlink="http://www.w3.org/1999/xlink">`;
+      svgString[0] = svgFirstLine;
+      return svgXmlString + svgString.join('\n');
+    }
+
     switch (format) {
       case 'SVG':
-        const svgString = pretty(this.canvas.outerHTML).split('\n');
-        const svgXmlString = `<?xml 
-        version="1.0" 
-        encoding="iso-8859-1"?>
-        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
-        "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-        `;
-
-        const svgFirstLine = `<svg 
-        height="100%"
-        width="100%"
-        xmlns="http://www.w3.org/2000/svg" 
-        xmlns:xlink="http://www.w3.org/1999/xlink">`;
-        svgString[0] = svgFirstLine;
-        save(pretty(svgXmlString + svgString.join('\n')), 'canvas.svg');
+        save(pretty(svgElementToFile(svgElement)), 'canvas.svg');
+        break;
+      case 'PNG':
+        saveSvgAsPng(svgElement, 'canvas.png');
         break;
       default:
-        console.log('Please specify a file format');
+        save(pretty(svgElementToFile(svgElement)), 'canvas.svg');
         break;
     }
   }

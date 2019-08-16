@@ -1,6 +1,7 @@
 import {v4} from 'uuid';
 import React from 'react';
 import {DropTarget} from 'react-dnd';
+import keydown from 'react-keydown';
 
 import ItemTypes from '../../draggables/itemTypes';
 import GraphView from './graphView';
@@ -93,20 +94,19 @@ class Canvas extends React.PureComponent {
   constructor(props) {
     super(props);
     this.graphview = React.createRef();
+    this.test = React.createRef();
     this.load = this.load.bind(this);
     this.deleteSelection = this.deleteSelection.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
+  @keydown(['delete', 'backspace'])
   handleKeyPress(event) {
-    // This also responds when a backspace is pressed while updating parameters.
-    // #TODO, make this conditional on the window being active
     switch (event.key) {
       case 'Delete':
-        // this.deleteSelection();
+        this.deleteSelection();
         break;
       case 'Backspace':
-        // this.deleteSelection();
+        this.deleteSelection();
         break;
       default:
         break;
@@ -133,7 +133,6 @@ class Canvas extends React.PureComponent {
       addGrammar({...generator})
     );
     Promise.all(generators);
-    document.addEventListener('keydown', this.handleKeyPress, false);
   }
 
   // this is called via ref from content
@@ -149,10 +148,6 @@ class Canvas extends React.PureComponent {
     graphview.current.handleZoomToFit();
   }
 
-  componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleKeyPress, false);
-  }
-
   render() {
     const {
       nodes,
@@ -162,16 +157,16 @@ class Canvas extends React.PureComponent {
       loadingPercent,
     } = this.props;
     return connectDropTarget(
-        <div style={styles.canvas}>
-          <GiraffeLoader percent={loadingPercent} />
-          <GraphView
-            ref={this.graphview}
-            nodes={nodes}
-            links={links}
-            stickies={stickies}
-            deleteSelection={this.deleteSelection}
-          />
-        </div>
+      <div style={styles.canvas}>
+        <GiraffeLoader percent={loadingPercent} />
+        <GraphView
+          ref={this.graphview}
+          nodes={nodes}
+          links={links}
+          stickies={stickies}
+          deleteSelection={this.deleteSelection}
+        />
+      </div>
     );
   }
 }

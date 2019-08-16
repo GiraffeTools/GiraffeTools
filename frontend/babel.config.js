@@ -15,9 +15,10 @@ module.exports = (api) => {
     '@babel/plugin-proposal-json-strings',
     // Separating numbers with _: 100_000 == 10^5, required for ?
     '@babel/plugin-proposal-numeric-separator',
-    // Required for ?
+    // Required exporting js modules
     '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-proposal-export-namespace-from',
+    // Required for ?
     '@babel/plugin-proposal-function-sent',
     '@babel/plugin-proposal-throw-expressions',
     // Required for hot reloading
@@ -25,9 +26,10 @@ module.exports = (api) => {
     // Required for async-await
     '@babel/transform-runtime',
     // Required for react-dnd:
-    ['@babel/plugin-proposal-class-properties', {loose: true}],
     ['@babel/plugin-proposal-decorators', {legacy: true}],
-    // required for react-spinners
+    // Decorators before class-properties!
+    ['@babel/plugin-proposal-class-properties', {loose: true}],
+    // Required for react-spinners
     'emotion',
   ];
 

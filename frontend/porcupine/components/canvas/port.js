@@ -91,7 +91,7 @@ class Port extends React.Component {
           r={4}
           fill={type === 'input' ? '#3498db' : '#e74c3c'}
           cursor="pointer"
-          strokeWidth="12"
+          strokeWidth="20"
           stroke="transparent"
         />
         {linkUnderConstruction && (
