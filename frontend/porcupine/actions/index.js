@@ -24,6 +24,7 @@ import {
   OPEN_MODAL,
   CLOSE_MODAL,
   TOGGLE_TOOLBOX,
+  SET_VISIBLE_TOOLBOXES,
   ADD_TOOLBOX_NODES,
   ADD_GRAMMAR,
   ADD_STICKY,
@@ -61,6 +62,13 @@ export const setSearchText = (text) => ({
   type: SET_SEARCH_TEXT,
   payload: {
     text,
+  },
+});
+
+export const setVisibleToolboxes = (toolboxes) => ({
+  type: SET_VISIBLE_TOOLBOXES,
+  payload: {
+    toolboxes,
   },
 });
 export const toggleToolbox = (toolbox) => ({

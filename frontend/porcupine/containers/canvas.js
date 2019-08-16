@@ -18,6 +18,7 @@ import {
   clickItem,
   deleteNode,
   deleteLink,
+  deleteSticky,
   updateLoadingPercent,
 } from '../actions';
 
@@ -37,6 +38,7 @@ const mapDispatchToProps = (dispatch) => ({
   addSticky: (sticky) => dispatch(addSticky(sticky)),
   deleteNode: (nodeId) => dispatch(deleteNode(nodeId)),
   deleteLink: (linkId) => dispatch(deleteLink(linkId)),
+  deleteSticky: (stickyId) => dispatch(deleteSticky(stickyId)),
   clickItem: () => dispatch(clickItem()),
   updateLoadingPercent: (percent) => dispatch(updateLoadingPercent(percent)),
   updateNode: (nodeId, offset) => dispatch(updateNode(nodeId, offset)),

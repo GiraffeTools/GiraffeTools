@@ -114,7 +114,7 @@ class Canvas extends React.PureComponent {
   }
 
   deleteSelection() {
-    const {selection, deleteNode, deleteLink} = this.props;
+    const {selection, deleteNode, deleteLink, deleteSticky} = this.props;
     selection &&
       selection.nodes &&
       selection.nodes.forEach((node) => {
@@ -124,6 +124,11 @@ class Canvas extends React.PureComponent {
       selection.links &&
       selection.links.forEach((link) => {
         deleteLink(link);
+      });
+    selection &&
+      selection.stickies &&
+      selection.stickies.forEach((sticky) => {
+        deleteSticky(sticky);
       });
   }
 

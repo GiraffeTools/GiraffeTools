@@ -13,6 +13,7 @@ import {
   addToolboxNodes,
   addGrammar,
   clickItem,
+  setVisibleToolboxes,
 } from '../actions';
 import scriptToGenerator from './dynamicImport';
 
@@ -43,7 +44,7 @@ async function loadFromJson(json) {
   }
   store.dispatch(updateLoadingPercent(50)); // Loading finished!
 
-  const {nodes, links, stickies} = response;
+  const {nodes, links, stickies, ui} = response;
   try {
     let i = 0;
     nodes.forEach((node) => {
@@ -61,6 +62,10 @@ async function loadFromJson(json) {
       store.dispatch(addSticky(sticky));
       store.dispatch(updateLoadingPercent(90 + (10 * i++) / links.length));
     });
+    if(ui) {
+      const {showToolboxes} = ui;
+      store.dispatch(setVisibleToolboxes(showToolboxes));
+    }
   } catch (error) {
     store.dispatch(updateLoadingPercent(-1));
     console.log(
@@ -142,7 +147,7 @@ export async function loadPorkFile(json, setPercent) {
 }
 
 async function loadingVersion1(json, setPercent) {
-  const {nodes, links, stickies} = json;
+  const {nodes, links, stickies, ui} = json;
   const nodeData = [];
   const linkData = [];
   const stickyData = [];
@@ -209,5 +214,5 @@ async function loadingVersion1(json, setPercent) {
       stickyData.push(newSticky);
       // setPercent(30 + (20 * linkData.length) / links.length);
     });
-  return {nodes: nodeData, links: linkData, stickies: stickyData};
+  return {nodes: nodeData, links: linkData, stickies: stickyData, ui};
 }

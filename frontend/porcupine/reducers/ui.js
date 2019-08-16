@@ -3,6 +3,7 @@ import {
   UPDATE_LOADING_PERCENT,
   SET_SEARCH_TEXT,
   TOGGLE_TOOLBOX,
+  SET_VISIBLE_TOOLBOXES,
   ADD_TOOLBOX_NODES,
 } from '../actions/actionTypes';
 
@@ -17,6 +18,9 @@ const INITIAL_STATE = {
 const ui = (state = INITIAL_STATE, action) => {
   const {type, payload} = action;
   switch (type) {
+    case SET_VISIBLE_TOOLBOXES:
+      const {toolboxes} = payload;
+      return {...state, showToolboxes: toolboxes}
     case TOGGLE_TOOLBOX:
       const {toolbox} = payload;
       if (!state.showToolboxes) {
