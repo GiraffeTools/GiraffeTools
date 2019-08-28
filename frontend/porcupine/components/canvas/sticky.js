@@ -47,7 +47,8 @@ function wrap(text, textParameters, maxWidth, maxLines) {
 }
 
 const Sticky = (props) => {
-  const {title, content, x, y, id, clickItem, updateSticky} = props;
+  const {title, content, x, y, scale, id} = props;
+  const {clickItem, updateSticky} = props;
 
   const [dragging, setDragging] = useState(false);
   const [hovered, setHover] = useState(false);
@@ -66,10 +67,12 @@ const Sticky = (props) => {
   const textwrap = wrap(content, textParameters, 100, maxLines);
 
   const drag = (event) => {
+    event.stopPropagation();
     setDraggingPosition({
-      x: draggingPosition.x +  event.movementX,
-      y: draggingPosition.y +  event.movementY,
+      x: draggingPosition.x + event.movementX / (scale || 1),
+      y: draggingPosition.y + event.movementY / (scale || 1),
     })
+
   }
 
   const startDrag = () => {
@@ -87,7 +90,7 @@ const Sticky = (props) => {
       transform={`translate(${xPos},${yPos})`}
       onClick={() => clickItem(id, 'sticky')}
       onMouseEnter={() => setHover(true)} 
-      onMouseLeave={() => setHover(false)}
+      onMouseLeave={() => {setHover(false); endDrag()}}
       onMouseDown={() => startDrag()}
       onMouseUp={() => endDrag()}
       onMouseMove={(event) => dragging && drag(event)}

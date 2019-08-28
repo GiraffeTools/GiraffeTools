@@ -10,6 +10,7 @@ const Node = (props) => {
     name,
     x,
     y,
+    scale,
     width,
     colour,
     selectedNodes,
@@ -24,8 +25,8 @@ const Node = (props) => {
   const [yDragging, setDraggingY] = useState(y);
 
   const drag = (event) => {
-    setDraggingX(xDragging +  event.movementX);
-    setDraggingY(yDragging +  event.movementY);
+    setDraggingX(xDragging +  event.movementX / (scale || 1));
+    setDraggingY(yDragging +  event.movementY / (scale || 1));
     updateNode(id, {x: xDragging, y: yDragging})
 
   }
@@ -63,7 +64,7 @@ const Node = (props) => {
       transform={`translate(${x},${y})`}
       onClick={() => clickItem(id, 'node')}
       onMouseEnter={() => setHover(true)} 
-      onMouseLeave={() => setHover(false)}
+      onMouseLeave={() => {setHover(false); endDrag()}}
       onMouseDown={() => startDrag()}
       onMouseUp={() => endDrag()}
       onMouseMove={(event) => dragging && drag(event)}

@@ -3,7 +3,9 @@ import {connect} from 'react-redux';
 import Sticky from '../components/canvas/sticky';
 import {clickItem, updateSticky} from '../actions';
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  scale: state.scene.scale
+});
 
 const mapDispatchToProps = (dispatch) => ({
   clickItem: (nodeId, type) => dispatch(clickItem(nodeId, type)),

@@ -30,6 +30,7 @@ import {
   ADD_STICKY,
   UPDATE_STICKY,
   REMOVE_STICKY,
+  SET_SCALE,
 } from './actionTypes';
 import {UPDATE_AUTH} from '../../giraffe/actions/actionTypes';
 
@@ -221,6 +222,15 @@ export const setConfig = (configuration) => ({
     configuration,
   },
 });
+
+export const setScale = (scale) => ({
+  type: SET_SCALE,
+  payload: {
+    scale
+  }
+})
+
+
 
 // /// MODALS /////
 export const openModal = (item) => ({

@@ -160,6 +160,7 @@ class Canvas extends React.PureComponent {
       stickies,
       connectDropTarget,
       loadingPercent,
+      setScale
     } = this.props;
     return connectDropTarget(
       <div style={styles.canvas}>
@@ -170,6 +171,7 @@ class Canvas extends React.PureComponent {
           links={links}
           stickies={stickies}
           deleteSelection={this.deleteSelection}
+          setScale={setScale}
         />
       </div>
     );

@@ -5,6 +5,7 @@ import {clickItem, updateNode} from '../actions';
 
 const mapStateToProps = (state) => ({
   selectedNodes: state.scene.selection && state.scene.selection.nodes,
+  scale: state.scene.scale
 });
 
 const mapDispatchToProps = (dispatch) => ({

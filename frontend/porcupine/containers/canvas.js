@@ -19,6 +19,7 @@ import {
   deleteNode,
   deleteLink,
   deleteSticky,
+  setScale,
   updateLoadingPercent,
 } from '../actions';
 
@@ -44,6 +45,7 @@ const mapDispatchToProps = (dispatch) => ({
   updateNode: (nodeId, offset) => dispatch(updateNode(nodeId, offset)),
   addToolboxNodes: (toolbox) => dispatch(addToolboxNodes(toolbox)),
   clearDatabase: () => dispatch(clearDatabase()),
+  setScale: (scale) => dispatch(setScale(scale)),
 });
 
 const CanvasContainer = connect(

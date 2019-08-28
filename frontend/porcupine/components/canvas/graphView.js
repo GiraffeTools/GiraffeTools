@@ -80,6 +80,12 @@ class GraphView extends React.Component {
 
   changeValue(nextValue) {
     this.setState({value: nextValue})
+    const {setScale} = this.props;
+    const {value} = this.state;
+
+    const {a: prevScale} = value;
+    const {a: scale} = nextValue;
+    if(prevScale !== scale) setScale(scale);
   }
 
   renderDefs() {
@@ -193,6 +199,7 @@ class GraphView extends React.Component {
   render() {
     const {nodes, links, stickies, deleteSelection} = this.props;
     const {value, tool} = this.state;
+
     const boundingbox = this.entities.getBBox && this.entities.getBBox();
     const {x, y, width: w, height: h} = boundingbox || {};
     return (

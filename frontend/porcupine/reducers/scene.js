@@ -1,6 +1,5 @@
 import {
-  ZOOM_IN,
-  ZOOM_OUT,
+  SET_SCALE,
   ADD_NODE,
   HOVER_PORT,
   CLICK_ITEM,
@@ -19,15 +18,15 @@ const INITIAL_STATE = {
   hoveredPort: null,
   selection: EMPTY_SELECTION,
   copyNodes: null,
+  scale: 1,
 };
 
 export default function scene(state = INITIAL_STATE, action) {
   const {type, payload} = action;
   switch (type) {
-    case ZOOM_IN:
-      return state;
-    case ZOOM_OUT:
-      return state;
+    case SET_SCALE:
+      const {scale} = payload;
+      return {...state, scale};
     case ADD_NODE:
       return {
         ...state,

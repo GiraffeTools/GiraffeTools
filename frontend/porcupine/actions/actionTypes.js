@@ -40,8 +40,7 @@ export const SET_COMMIT = 'SET_COMMIT';
 export const SET_CONFIG = 'SET_CONFIG';
 
 // /// SCENE /////
-export const ZOOM_IN = 'ZOOM_IN';
-export const ZOOM_OUT = 'ZOOM_OUT';
+export const SET_SCALE = 'SET_SCALE';
 export const HOVER_PORT = 'HOVER_PORT';
 export const CLICK_ITEM = 'CLICK_ITEM';
 export const COPY_NODES = 'COPY_NODES';
