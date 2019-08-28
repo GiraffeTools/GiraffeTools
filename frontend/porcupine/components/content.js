@@ -52,7 +52,10 @@ class Content extends React.Component {
     }
     const porcupineConfig = configuration.tools.porcupine;
     setConfig(porcupineConfig);
-    this.canvas.decoratedRef.current.load(porcupineConfig, repoContentUrl);
+    this.canvas &&
+      this.canvas.decoratedRef &&
+      this.canvas.decoratedRef.current &&
+      this.canvas.decoratedRef.current.load(porcupineConfig, repoContentUrl);
   }
 
   render() {

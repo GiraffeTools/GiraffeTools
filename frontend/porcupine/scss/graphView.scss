@@ -1,0 +1,18 @@
+@import "../../giraffe/constants/styles.scss";
+
+.viewWrapper {
+  width: 80%;
+  left: 20%;
+  height: 100%;
+  position: fixed;
+  margin: 0;
+  display: flex;
+  box-shadow: none;
+  transition: opacity 0.167s;
+  padding-top: 30px;
+  background-color: $primary-light-color;
+  @media(max-width: 1200px) {
+    width: 100%;
+    left: 0%;
+  }
+}

@@ -58,7 +58,7 @@ const boxTarget = {
             isEditable: parameter.editable,
           }));
 
-        const transform = component.graphview.current.getViewTransform();
+        const transform = component.graphview.getViewTransform();
         const zoom = transform.k;
 
         const newNode = {
@@ -90,11 +90,11 @@ const boxTarget = {
   },
 };
 
+// Has to be a class because of keydown decorator
 class Canvas extends React.PureComponent {
   constructor(props) {
     super(props);
     this.graphview = React.createRef();
-    this.test = React.createRef();
     this.load = this.load.bind(this);
     this.deleteSelection = this.deleteSelection.bind(this);
   }
@@ -150,7 +150,7 @@ class Canvas extends React.PureComponent {
       loadCustomNodes(nodes, repoContentUrl),
       loadGrammars(grammars, repoContentUrl),
     ]);
-    graphview.current.handleZoomToFit();
+    graphview.updateViewerBox();
   }
 
   render() {
@@ -165,7 +165,7 @@ class Canvas extends React.PureComponent {
       <div style={styles.canvas}>
         <GiraffeLoader percent={loadingPercent} />
         <GraphView
-          ref={this.graphview}
+          ref={(el) => this.graphview = el}
           nodes={nodes}
           links={links}
           stickies={stickies}

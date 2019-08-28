@@ -1,111 +1,79 @@
-import React, {Fragment} from 'react';
-import * as d3 from 'd3';
+import React, {useState} from 'react';
 import {v4} from 'uuid';
 
-class Port extends React.Component {
-  constructor(props) {
-    super(props);
-    this.hover = this.hover.bind(this);
-    this.leave = this.leave.bind(this);
-    this.state = {
-      linkUnderConstruction: null,
-    };
-  }
+const Port = (props) => {
 
-  componentDidMount() {
-    d3.select(this.port)
-        .on('mouseenter', this.hover)
-        .on('mousleave', this.leave)
-        .call(d3.drag().on('start', () => this.drag(this.props.type)));
-  }
+  const [linkUnderConstruction, setLinkUnderConstruction] = useState(null);
+  const {hoverPort, addLink, hoveredPort, id, type, startLink, x, y} = props;
 
-  hover() {
-    const {hoverPort, id, type} = this.props;
-    hoverPort(id, type);
-  }
+  const [dragging, setDragging] = useState(false);
+  const [draggingPosition, setDraggingPosition] = useState({x, y});
 
-  leave() {
-    const {hoverPort} = this.props;
-    hoverPort(null);
-  }
-
-  drag(type) {
-    const {startLink, x, y, id} = this.props;
-    this.setState({
-      linkUnderConstruction: {x, y},
-    });
+  const drag = (event) => {
     startLink(id);
-
-    let dx = 0;
-    let dy = 0;
-    function dragged(t) {
-      dx += d3.event.dx;
-      dy += d3.event.dy;
-      t.setState({
-        linkUnderConstruction: {x: x + dx, y: y + dy},
-      });
-    }
-
-    function endDrag(t) {
-      const {addLink, hoveredPort, id, type} = t.props;
-      if (hoveredPort && hoveredPort.type !== type) {
-        addLink({
-          id: v4(),
-          portFrom: type === 'output' ? id : hoveredPort.id,
-          portTo: type === 'input' ? id : hoveredPort.id,
-        });
-      }
-      t.setState({
-        linkUnderConstruction: null,
-      });
-    }
-
-    d3.event.on('drag', () => dragged(this)).on('end', () => endDrag(this));
+    setDraggingPosition({
+      x: draggingPosition.x +  event.movementX,
+      y: draggingPosition.y +  event.movementY,
+    });
+    setLinkUnderConstruction(draggingPosition);
   }
 
-  render() {
-    const {type} = this.props;
-
-    const {x, y} = this.props;
-    const {linkUnderConstruction} = this.state;
-
-    let d = 'M';
-    if (linkUnderConstruction) {
-      // starting point
-      d += `${x} ${y}`;
-      // control points
-      d += ` C`;
-      d += ` ${(x * 1) / 4 + (linkUnderConstruction.x * 3) / 4} ${y}`;
-      d += ` ${(x * 3) / 4 +
-        (linkUnderConstruction.x * 1) / 4} ${linkUnderConstruction.y + 5}`;
-      // end point
-      d += ` ${linkUnderConstruction.x} ${linkUnderConstruction.y + 5}`;
+  const startDrag = () => {
+    setDragging(true);
+    setDraggingPosition({x, y});
+  }
+  const endDrag = () => {
+    setDragging(false);
+    if (hoveredPort && hoveredPort.type !== type) {
+      addLink({
+        id: v4(),
+        portFrom: type === 'output' ? id : hoveredPort.id,
+        portTo: type === 'input' ? id : hoveredPort.id,
+      });
     }
+    setLinkUnderConstruction(null);
+  }
 
-    return (
-      <Fragment>
-        <circle
-          ref={(e) => (this.port = e)}
-          cx={x}
-          cy={y}
-          r={4}
-          fill={type === 'input' ? '#3498db' : '#e74c3c'}
-          cursor="pointer"
-          strokeWidth="20"
-          stroke="transparent"
+  let d = 'M';
+  if (linkUnderConstruction) {
+    // starting point
+    d += `${x} ${y}`;
+    // control points
+    d += ` C`;
+    d += ` ${(x * 1) / 4 + (linkUnderConstruction.x * 3) / 4} ${y}`;
+    d += ` ${(x * 3) / 4 +
+      (linkUnderConstruction.x * 1) / 4} ${linkUnderConstruction.y + 5}`;
+    // end point
+    d += ` ${linkUnderConstruction.x} ${linkUnderConstruction.y + 5}`;
+  }
+
+  return (
+    <g
+      onMouseEnter={() => hoverPort(id, type)} 
+      onMouseLeave={() => hoverPort(null)}
+      onMouseDown={() => startDrag()}
+      onMouseUp={() => endDrag()}
+      onMouseMove={(event) => dragging && drag(event)}
+    >
+      <circle
+        cx={x}
+        cy={y}
+        r={4}
+        fill={type === 'input' ? '#3498db' : '#e74c3c'}
+        cursor="pointer"
+        strokeWidth="20"
+        stroke="transparent"
+      />
+      {linkUnderConstruction && (
+        <path
+          d={d}
+          stroke="black"
+          strokeWidth="2"
+          fill="none"
+          r={10}
         />
-        {linkUnderConstruction && (
-          <path
-            d={d}
-            stroke="black"
-            strokeWidth="2"
-            fill="none"
-            r={10}
-          />
-        )}
-      </Fragment>
-    );
-  }
+      )}
+    </g>
+  );
 }
-
 export default Port;

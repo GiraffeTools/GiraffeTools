@@ -1,17 +1,20 @@
 import React from 'react';
-import {StyleRoot} from 'radium';
-import * as d3 from 'd3';
 import {save} from 'save-file';
 import pretty from 'pretty';
 import {saveSvgAsPng} from 'save-svg-as-png';
+import {INITIAL_VALUE, TOOL_NONE, ReactSVGPanZoom} from 'react-svg-pan-zoom';
+import {POSITION_RIGHT, ALIGN_CENTER, ALIGN_RIGHT} from 'react-svg-pan-zoom';
+import {AutoSizer} from 'react-virtualized';
 
 import CustomDragLayer from '../../draggables/customDragLayer';
-import ZoomMenu from './menuSlider';
 import Links from './links';
 import Nodes from './nodes';
 import Stickies from './stickies';
 import Toolbar from '../../containers/toolbar';
-import styles from '../../styles/graphView';
+import styleSheet from '../../constants/styles';
+
+import '../../scss/graphView.scss';
+
 
 const defaults = {
   minZoom: 0.15,
@@ -36,138 +39,47 @@ const Background = () => (
 class GraphView extends React.Component {
   constructor(props) {
     super(props);
-    this.viewWrapper = React.createRef();
-    this.canvas = React.createRef();
+    this.viewer = React.createRef(null);
+    this.entities = React.createRef(null);
 
     this.state = {
-      viewTransform: d3.zoomIdentity,
+      value: INITIAL_VALUE,
+      tool: TOOL_NONE
     };
-    this.modifyZoom = this.modifyZoom.bind(this);
-    this.renderDefs = this.renderDefs.bind();
-    this.handleZoom = this.handleZoom.bind(this);
-    this.handleZoomToFit = this.handleZoomToFit.bind(this);
-    this.printCanvas = this.printCanvas.bind(this);
 
-    this.zoom = d3
-        .zoom()
-        .scaleExtent([defaults.minZoom, defaults.maxZoom])
-        .on('zoom', this.handleZoom);
+    this.printCanvas = this.printCanvas.bind(this);
+    this.updateViewerBox = this.updateViewerBox.bind(this);
+    
+  }
+
+  updateViewerBox() {
+    // const {entities} = this;
+    // if(!entities) return 
+    // const boundingbox = entities.getBBox();
+
+    // const {value} = this.state;
+    // console.log({value});
+    // // debugger
+    // this.changeValue({
+    //   ...value, 
+    //   SVGHeight: boundingbox.height,
+    //   SVGWidth: boundingbox.width,
+    //   SVGX: boundingbox.x,
+    //   SVGY: boundingbox.y,
+      
+    // })
+
   }
 
   componentDidMount() {
-    d3.select(this.viewWrapper)
-        .on('touchstart', this.containZoom)
-        .on('touchmove', this.containZoom);
-    // .on("click", this.handleSvgClicked)
-    d3.select(this.viewWrapper)
-        .select('svg')
-        .call(this.zoom);
+  }  
+  
+  changeTool(nextTool) {
+    this.setState({tool: nextTool})
   }
 
-  // Keeps 'zoom' contained
-  containZoom() {}
-
-  // View 'zoom' handler
-  handleZoom() {
-    this.setState({
-      viewTransform: d3.event.transform,
-    });
-  }
-
-  getViewTransform() {
-    return this.state.viewTransform;
-  }
-
-  // Zooms to contents of this.refs.entities
-  handleZoomToFit() {
-    const parent = d3.select(this.viewWrapper).node();
-    const entities = d3.select(this.entities).node();
-
-    if (entities.childElementCount == 0) {
-      return;
-    }
-
-    const viewBBox = entities.getBBox();
-
-    const width = parent.clientWidth;
-    const height = parent.clientHeight;
-
-    const translate = [this.state.viewTransform.x, this.state.viewTransform.y];
-    const next = {
-      x: translate[0],
-      y: translate[1],
-      k: this.state.viewTransform.k,
-    };
-
-    if (viewBBox.width > 0 && viewBBox.height > 0) {
-      // There are entities
-      const dx = viewBBox.width;
-      const dy = viewBBox.height;
-      const x = viewBBox.x + viewBBox.width / 2;
-      const y = viewBBox.y + viewBBox.height / 2;
-
-      next.k = 0.9 / Math.max(dx / width, dy / height);
-
-      if (next.k < this.props.minZoom) {
-        next.k = this.props.minZoom;
-      } else if (next.k > this.props.maxZoom) {
-        next.k = this.props.maxZoom;
-      }
-
-      next.x = width / 2 - next.k * x;
-      next.y = height / 2 - next.k * y;
-    } else {
-      next.k = (this.props.minZoom + this.props.maxZoom) / 2;
-      next.x = 0;
-      next.y = 0;
-    }
-
-    this.setZoom(next.k, next.x, next.y, defaults.zoomDuration);
-  }
-
-  // Updates current viewTransform with some delta
-  modifyZoom(modK = 0, modX = 0, modY = 0, dur = 0) {
-    const parent = d3.select(this.viewWrapper).node();
-    const width = parent.clientWidth;
-    const height = parent.clientHeight;
-
-    const center = [width / 2, height / 2];
-    const extent = this.zoom.scaleExtent();
-    const translate = [this.state.viewTransform.x, this.state.viewTransform.y];
-    const next = {
-      x: translate[0],
-      y: translate[1],
-      k: this.state.viewTransform.k,
-    };
-
-    const targetZoom = next.k * (1 + modK);
-    if (targetZoom < extent[0] || targetZoom > extent[1]) {
-      return false;
-    }
-
-    const translate0 = [
-      (center[0] - next.x) / next.k,
-      (center[1] - next.y) / next.k,
-    ];
-    next.k = targetZoom;
-
-    const l = [
-      translate0[0] * next.k + next.x,
-      translate0[1] * next.k + next.y,
-    ];
-    next.x += center[0] - l[0] + modX;
-    next.y += center[1] - l[1] + modY;
-    this.setZoom(next.k, next.x, next.y, dur);
-  }
-
-  // Programmatically resets zoom
-  setZoom(k = 1, x = 0, y = 0, dur = 0) {
-    const t = d3.zoomIdentity.translate(x, y).scale(k);
-    d3.select(this.viewWrapper)
-        .select('svg')
-        .transition()
-        .duration(dur)
-        .call(this.zoom.transform, t);
+  changeValue(nextValue) {
+    this.setState({value: nextValue})
   }
 
   renderDefs() {
@@ -249,17 +161,17 @@ class GraphView extends React.Component {
 
     const svgElementToFile = (element) => {
       const svgString = pretty(element.outerHTML).split('\n');
-      const svgXmlString = `<?xml 
-      version="1.0" 
+      const svgXmlString = `<?xml
+      version="1.0"
       encoding="iso-8859-1"?>
-      <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+      <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
       `;
-  
-      const svgFirstLine = `<svg 
+
+      const svgFirstLine = `<svg
       height="100%"
       width="100%"
-      xmlns="http://www.w3.org/2000/svg" 
+      xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink">`;
       svgString[0] = svgFirstLine;
       return svgXmlString + svgString.join('\n');
@@ -280,49 +192,55 @@ class GraphView extends React.Component {
 
   render() {
     const {nodes, links, stickies, deleteSelection} = this.props;
-    const view = d3.select(this.view);
-    const viewNode = view.node();
-    if (viewNode) {
-      // const {k, x, y} = this.state.viewTransform;
-      view.attr('transform', this.state.viewTransform);
-    }
-
+    const {value, tool} = this.state;
+    const boundingbox = this.entities.getBBox && this.entities.getBBox();
+    const {x, y, width: w, height: h} = boundingbox || {};
     return (
-      <StyleRoot>
-        <div
-          style={[styles.viewWrapper]}
-          ref={(el) => (this.viewWrapper = el)}
-        >
-          <Toolbar
-            zoomToFit={this.handleZoomToFit}
-            deleteSelection={deleteSelection}
-            printCanvas={this.printCanvas}
-          />
-          <svg
-            ref={(el) => (this.canvas = el)}
-            height="100%"
-            width="100%"
-          >
-            {this.renderDefs()}
-            <g className="view" ref={(el) => (this.view = el)}>
-              <Background />
-              <g className="entities" ref={(el) => (this.entities = el)}>
-                <Stickies stickies={stickies} />
-                <Nodes nodes={nodes} />
-                <Links links={links} />
-                <CustomDragLayer />
-              </g>
-            </g>
-          </svg>
-          <ZoomMenu
-            minZoom={defaults.minZoom}
-            maxZoom={defaults.maxZoom}
-            zoomLevel={this.state.viewTransform.k}
-            zoomToFit={this.handleZoomToFit}
-            modifyZoom={this.modifyZoom}
-          />
-        </div>
-      </StyleRoot>
+      <div className="viewWrapper">
+        <Toolbar
+          zoomToFit={this.handleZoomToFit}
+          deleteSelection={deleteSelection}
+          printCanvas={this.printCanvas}
+        />
+       <AutoSizer>
+          {(({width, height}) => width === 0 || height === 0 ? null : (
+            <ReactSVGPanZoom
+              ref={(viewer) => this.viewer = viewer}
+              tool={tool} onChangeTool={tool => this.changeTool(tool)}
+              value={value} onChangeValue={value => this.changeValue(value)}
+              width={width} 
+              height={height}
+              SVGBackground={styleSheet.primaryLightSecondaryColor}
+              background={"#fff"}
+              miniatureProps={{position: POSITION_RIGHT}}
+              toolbarProps={{position: POSITION_RIGHT, SVGAlignY: ALIGN_CENTER, SVGAlignX: ALIGN_CENTER}}
+              // background={styleSheet.primaryLightSecondaryColor}
+            >
+              <svg
+                withViewBox={`${x || 0} ${y || 0} ${w || width} ${h || height}`}
+              >
+                {this.renderDefs()}
+                <g 
+                  className="view" 
+                  ref={(el) => (this.view = el)}
+                >
+                  <Background />
+                  <g 
+                    className="entities" 
+                    ref={(el) => (this.entities = el)}
+                  >
+                    <Stickies stickies={stickies} />
+                    <Nodes nodes={nodes} />
+                    <Links links={links} />
+                    <CustomDragLayer />
+                  </g>
+                </g>
+              </svg>
+
+            </ReactSVGPanZoom>
+          ))}
+        </AutoSizer>
+      </div>
     );
   }
 }
