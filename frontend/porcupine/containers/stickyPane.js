@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import ParameterPane from '../components/parameters/stickyPane';
+import StickyPane from '../components/parameters/stickyPane';
 import {updateSticky, deleteSticky} from '../actions';
 
 const mapStateToProps = (state) => ({});
@@ -10,9 +10,9 @@ const mapDispatchToProps = (dispatch) => ({
   updateSticky: (id, name) => dispatch(updateSticky(id, name)),
 });
 
-const ParameterPaneContainer = connect(
+const StickyPaneContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(ParameterPane);
+)(StickyPane);
 
-export default ParameterPaneContainer;
+export default StickyPaneContainer;

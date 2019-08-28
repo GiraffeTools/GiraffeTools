@@ -32,16 +32,18 @@ const StickyPane = (props) => {
           <label htmlFor={id} style={styles.label}>
             {'content'}
           </label>
-          <input
+          <textarea
             type="text"
             value={content}
             className="form-control"
             id={id}
+            rows="10"
             onChange={(event) =>
               updateSticky(id, {content: event.target.value})
             }
           />
         </div>
+        <hr />
         <button
           style={styles.delete}
           className="btn btn-block"

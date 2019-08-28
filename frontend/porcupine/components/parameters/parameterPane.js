@@ -2,6 +2,7 @@ import React from 'react';
 import Radium from 'radium';
 
 import NodePane from '../../containers/nodePane';
+import LinkPane from '../../containers/linkPane';
 import StickyPane from '../../containers/stickyPane';
 import styles from '../../styles/parameterPane';
 
@@ -15,7 +16,7 @@ const ParameterPane = (props) => {
         content = <NodePane selection={selection} clickItem={clickItem} />;
         break;
       case 'link':
-        content = null;
+        content = <LinkPane selection={selection} clickItem={clickItem} />;
         break;
       case 'sticky':
         content = <StickyPane selection={selection} clickItem={clickItem} />;

@@ -82,14 +82,11 @@ export const selectedNode = (orm, node) => {
 };
 
 export const selectedLink = (orm, link) => {
-  return null;
+  return link ? {...link.ref} : null;
 };
 
 export const selectedSticky = (orm, sticky) => {
-  if (!sticky) {
-    return null;
-  }
-  return {...sticky.ref};
+  return sticky ? {...sticky.ref} : null;
 };
 
 export const selection = createSelector(
