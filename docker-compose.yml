@@ -56,15 +56,6 @@ services:
     ports:
       - "6379:6379"
 
-  coala:
-    image: nemaniarjun/coala-docker-updated
-    # image: coala/base
-    command: coala
-    working_dir: /code
-    volumes:
-      - .:/code
-      - ./coala:/cache
-
 volumes:
   postgres:
   webpack_bundles:

@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  coala:
+    image: coala/base
+    command: coala
+    working_dir: /code
+    volumes:
+      - .:/code
+      - ./coala:/cache
