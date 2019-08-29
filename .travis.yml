@@ -41,7 +41,7 @@ before_script:
   - bash ./bin/post_compile
 script:
   - bash ./test/run-tests.bash
-  - docker-compose run --rm coala
+  - docker-compose run -f docker-compose-lint.yml --rm coala
 addons:
   postgresql: "10"
   apt:
