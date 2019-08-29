@@ -7,6 +7,7 @@ import {
   REMOVE_LINK,
   REMOVE_NODE,
   REMOVE_STICKY,
+  SET_DRAGGING,
 } from '../actions/actionTypes';
 
 const EMPTY_SELECTION = {
@@ -19,11 +20,15 @@ const INITIAL_STATE = {
   selection: EMPTY_SELECTION,
   copyNodes: null,
   scale: 1,
+  dragging: false
 };
 
 export default function scene(state = INITIAL_STATE, action) {
   const {type, payload} = action;
   switch (type) {
+    case SET_DRAGGING:
+      const {dragging} = payload;
+      return {...state, dragging}
     case SET_SCALE:
       const {scale} = payload;
       return {...state, scale};

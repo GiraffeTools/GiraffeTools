@@ -3,7 +3,7 @@ import {save} from 'save-file';
 import pretty from 'pretty';
 import {saveSvgAsPng} from 'save-svg-as-png';
 import {INITIAL_VALUE, TOOL_NONE, ReactSVGPanZoom} from 'react-svg-pan-zoom';
-import {POSITION_RIGHT, ALIGN_CENTER, ALIGN_RIGHT} from 'react-svg-pan-zoom';
+import {POSITION_RIGHT, ALIGN_CENTER} from 'react-svg-pan-zoom';
 import {AutoSizer} from 'react-virtualized';
 
 import CustomDragLayer from '../../draggables/customDragLayer';

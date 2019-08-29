@@ -31,6 +31,7 @@ import {
   UPDATE_STICKY,
   REMOVE_STICKY,
   SET_SCALE,
+  SET_DRAGGING,
 } from './actionTypes';
 import {UPDATE_AUTH} from '../../giraffe/actions/actionTypes';
 
@@ -228,8 +229,14 @@ export const setScale = (scale) => ({
   payload: {
     scale
   }
-})
+});
 
+export const setDragging = (dragging) => ({
+  type: SET_DRAGGING,
+  payload: {
+    dragging
+  }
+});
 
 
 // /// MODALS /////

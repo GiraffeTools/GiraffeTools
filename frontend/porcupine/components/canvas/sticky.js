@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 
 import {truncateString} from '../../utils';
 
+import "../../scss/unselectable.scss";
+
 function getTextWidth(text, font) {
   // re-use canvas object for better performance
   const canvas =
@@ -112,6 +114,7 @@ const Sticky = (props) => {
           stroke="none"
         />
         <text
+          className="noselect"
           fill="#777"
           fontFamily="Nexa-Bold"
           // textAnchor="middle"
@@ -122,6 +125,7 @@ const Sticky = (props) => {
           {truncateString(title, 10)}
         </text>
         <text
+          className="noselect"
           fill="#777"
           textAnchor="middle"
           fontSize={'1.8rem'}

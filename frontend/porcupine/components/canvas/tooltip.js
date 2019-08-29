@@ -2,6 +2,8 @@ import React from 'react';
 
 import TooltipData from './tooltipData';
 
+import "../../scss/unselectable.scss";
+
 const Tooltip = ({parameters}) => {
   const parametersWithValues =
     parameters && parameters.filter((parameter) => parameter.value !== '');
@@ -10,7 +12,7 @@ const Tooltip = ({parameters}) => {
   let parameterBlock;
   if (parametersWithValues.length == 0) {
     parameterBlock = (
-      <text fill="white" y={fieldHeight / 2} x={8}>
+      <text fill="white" y={fieldHeight / 2} x={8} className="noselect">
         {'No parameters set'}
       </text>
     );

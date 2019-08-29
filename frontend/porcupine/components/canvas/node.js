@@ -3,6 +3,8 @@ import React, {useState} from 'react';
 import Parameter from './parameter';
 import Tooltip from './tooltip';
 
+import "../../scss/unselectable.scss";
+
 const Node = (props) => {
   
   const {
@@ -28,7 +30,6 @@ const Node = (props) => {
     setDraggingX(xDragging +  event.movementX / (scale || 1));
     setDraggingY(yDragging +  event.movementY / (scale || 1));
     updateNode(id, {x: xDragging, y: yDragging})
-
   }
 
   const startDrag = () => {
@@ -82,6 +83,7 @@ const Node = (props) => {
         }
       />
       <text
+        className="noselect"
         fill="white"
         textAnchor="middle"
         x={width / 2}

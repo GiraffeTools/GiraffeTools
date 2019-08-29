@@ -44,6 +44,7 @@ export const SET_SCALE = 'SET_SCALE';
 export const HOVER_PORT = 'HOVER_PORT';
 export const CLICK_ITEM = 'CLICK_ITEM';
 export const COPY_NODES = 'COPY_NODES';
+export const SET_DRAGGING = 'SET_DRAGGING';
 
 // /// MODALS /////
 export const OPEN_MODAL = 'OPEN_MODAL';
