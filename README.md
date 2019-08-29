@@ -16,7 +16,7 @@ to find a dashboard of the project. A **Giraffe.yml** looks like this:
 ```
 # list of tools
 tools:
-  porcupine:
+  workflow:
     # A file in your repository to which the UI state is saved
     # Currently only a single file is supported
     files:

@@ -46,13 +46,20 @@ class Content extends React.Component {
     const configuration = await loadGiraffeConfig(repoContentUrl);
     if (!configuration ||
       !configuration.tools ||
-      !configuration.tools.porcupine) {
+      (!configuration.tools.porcupine && !configuration.tools.workflow)
+    ) {
       setConfig({});
       return;
     }
-    const porcupineConfig = configuration.tools.porcupine;
+
+    const {porcupine, workflow} = configuration.tools;
+    const porcupineConfig = porcupine || workflow;
+    
     setConfig(porcupineConfig);
-    this.canvas.decoratedRef.current.load(porcupineConfig, repoContentUrl);
+    this.canvas &&
+      this.canvas.decoratedRef &&
+      this.canvas.decoratedRef.current &&
+      this.canvas.decoratedRef.current.load(porcupineConfig, repoContentUrl);
   }
 
   render() {
