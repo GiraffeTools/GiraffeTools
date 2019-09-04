@@ -62,7 +62,7 @@ async function loadFromJson(json) {
       store.dispatch(addSticky(sticky));
       store.dispatch(updateLoadingPercent(90 + (10 * i++) / links.length));
     });
-    if(ui) {
+    if (ui) {
       const {showToolboxes} = ui;
       store.dispatch(setVisibleToolboxes(showToolboxes));
     }
@@ -115,9 +115,9 @@ export async function loadGrammars(grammars, repoContentUrl) {
 
   grammars.forEach(async (grammar) => {
     const {script, language, format} = grammar;
-    if(!script || !language) {
-      console.log("Cannot load this grammar: incorrect format");
-      return
+    if (!script || !language) {
+      console.log('Cannot load this grammar: incorrect format');
+      return;
     }
     // does file start with http(s)?
     const url = /^(f|ht)tps?:\/\//i.test(script)

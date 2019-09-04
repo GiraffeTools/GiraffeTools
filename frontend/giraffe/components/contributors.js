@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import Radium from 'radium';
+import React, {useEffect, useState} from 'react';
 
 import {addTokenToQuery} from '../utils/auth';
 import {shuffle} from '../utils/utils';
@@ -14,16 +13,16 @@ async function loadContributors(setContributors) {
       )
   );
   const contributors = (await (await fetch(url.href)).json())
-    .filter(contributor => !contributor.login.includes("[bot]"));
-  
+      .filter((contributor) => !contributor.login.includes('[bot]'));
+
   setContributors(shuffle(contributors));
 }
 
 function mount(setContributors) {
-  loadContributors(setContributors)
+  loadContributors(setContributors);
 }
 
-const modulo = (n, m) => ((n % m) + m) % m
+const modulo = (n, m) => ((n % m) + m) % m;
 
 const NUMBER_OF_CONTRIBUTORS_SHOWN = 9;
 const Contributors = () => {
@@ -33,13 +32,13 @@ const Contributors = () => {
   const [selection, setSelection] = useState(0);
 
   const indices = Array.from(
-    new Array(NUMBER_OF_CONTRIBUTORS_SHOWN), (x,i) => modulo(i + selection, contributors.length)
+      new Array(NUMBER_OF_CONTRIBUTORS_SHOWN), (x, i) => modulo(i + selection, contributors.length)
   );
   const visibleContributors = contributors && contributors
-  .filter((item, index) => indices.includes(index))
-  .map((contributor) => (
-    <Contributor key={contributor.id} {...contributor} />
-  ));
+      .filter((item, index) => indices.includes(index))
+      .map((contributor) => (
+        <Contributor key={contributor.id} {...contributor} />
+      ));
 
   return (
     <div style={styles.contributors}>
@@ -73,5 +72,5 @@ const Contributors = () => {
       </div>
     </div>
   );
-}
+};
 export default Contributors;

@@ -54,7 +54,7 @@ class Content extends React.Component {
 
     const {porcupine, workflow} = configuration.tools;
     const porcupineConfig = porcupine || workflow;
-    
+
     setConfig(porcupineConfig);
     this.canvas &&
       this.canvas.decoratedRef &&

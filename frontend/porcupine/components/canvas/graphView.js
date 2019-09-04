@@ -255,7 +255,7 @@ class GraphView extends React.Component {
       <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
       `;
-  
+
       const svgFirstLine = `<svg 
       height="100%"
       width="100%"
@@ -263,7 +263,7 @@ class GraphView extends React.Component {
       xmlns:xlink="http://www.w3.org/1999/xlink">`;
       svgString[0] = svgFirstLine;
       return svgXmlString + svgString.join('\n');
-    }
+    };
 
     switch (format) {
       case 'SVG':

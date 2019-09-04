@@ -77,7 +77,7 @@ const porkFile = (nodes, links, allStickies, ui) => {
     nodes: nodes && nodesToSaveDict(nodes),
     stickies: stickies && stickiesToSaveDict(allStickies),
     ui: {
-      showToolboxes
+      showToolboxes,
     },
     version: 'v1',
   };

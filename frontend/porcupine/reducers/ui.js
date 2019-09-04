@@ -20,7 +20,7 @@ const ui = (state = INITIAL_STATE, action) => {
   switch (type) {
     case SET_VISIBLE_TOOLBOXES:
       const {toolboxes} = payload;
-      return {...state, showToolboxes: toolboxes}
+      return {...state, showToolboxes: toolboxes};
     case TOGGLE_TOOLBOX:
       const {toolbox} = payload;
       if (!state.showToolboxes) {

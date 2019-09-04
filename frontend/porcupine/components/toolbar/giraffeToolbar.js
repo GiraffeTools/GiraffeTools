@@ -83,7 +83,7 @@ class GiraffeToolbar extends React.Component {
                 Save to SVG
               </span>
             ),
-            callback: () => printCanvas("SVG"),
+            callback: () => printCanvas('SVG'),
           },
           {
             text: (
@@ -93,7 +93,7 @@ class GiraffeToolbar extends React.Component {
                 Save to PNG
               </span>
             ),
-            callback: () => printCanvas("PNG"),
+            callback: () => printCanvas('PNG'),
           },
           // {
           //   text: (
