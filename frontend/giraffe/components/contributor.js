@@ -1,5 +1,4 @@
 import React from 'react';
-import Radium from 'radium';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
@@ -9,14 +8,14 @@ const Contributor = (contributor) => {
   return (
     <Col sm={4} style={styles.contributor}>
       <Card style={styles.contributorCard}>
-        <img src={contributor.avatar_url} style={[styles.avatarImage]} />
-        <div style={[styles.contributorTag]}>
+        <img src={contributor.avatar_url} style={styles.avatarImage} />
+        <div style={styles.contributorTag}>
           <a href={contributor.html_url}
-            style={[styles.link]}
+            style={styles.link}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <b style={[styles.username]}>@{contributor.login}</b>
+            <b style={styles.username}>@{contributor.login}</b>
           </a>
         </div>
       </Card>
@@ -24,4 +23,4 @@ const Contributor = (contributor) => {
   );
 };
 
-export default Radium(Contributor);
+export default Contributor;

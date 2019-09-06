@@ -1,5 +1,4 @@
 import React from 'react';
-import Radium from 'radium';
 import Toolbar from './toolbar';
 import {v4} from 'uuid';
 
@@ -211,5 +210,4 @@ class GiraffeToolbar extends React.Component {
     );
   }
 }
-
-export default Radium(GiraffeToolbar);
+export default GiraffeToolbar;

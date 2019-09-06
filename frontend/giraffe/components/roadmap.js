@@ -18,10 +18,9 @@ const Event = (event) => (
         fill="#F25226"
       />
     </svg>
-    <h3 style={[styles.roadmapText]}>{event.description}</h3>
+    <h3 style={styles.roadmapText}>{event.description}</h3>
   </Col>
 );
-const StyledEvent = Radium(Event);
 
 const Roadmap = () => {
   const events = [
@@ -47,7 +46,7 @@ const Roadmap = () => {
       </svg>
       <div style={styles.roadmapElements}>
         {events.map((event) => (
-          <StyledEvent key={event.year} {...event} />
+          <Event key={event.year} {...event} />
         ))}
       </div>
     </Container>

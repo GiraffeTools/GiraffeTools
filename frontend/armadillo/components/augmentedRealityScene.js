@@ -5,6 +5,7 @@ import styles from '../styles/augmentedRealityScene';
 // import ARjs from 'ar.js'
 
 class AugmentedRealityScene extends React.Component {
+  // eslint-disable-next-line
   async UNSAFE_componentWillMount() {
     AFRAME.registerComponent('model-overrider', {
       init: function() {

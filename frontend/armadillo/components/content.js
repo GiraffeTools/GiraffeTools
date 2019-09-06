@@ -16,6 +16,7 @@ class Content extends React.Component {
     };
   }
 
+  // eslint-disable-next-line
   async UNSAFE_componentWillMount() {
     const script = document.createElement('script');
     script.src = '/static/js/aframe-ar.js';
