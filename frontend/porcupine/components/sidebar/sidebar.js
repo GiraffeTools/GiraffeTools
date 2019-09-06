@@ -41,8 +41,8 @@ const Sidebar = (props) => {
 
   const searching =
     searchBar.current &&
-    searchBar.current.state.searchText &&
-    searchBar.current.state.searchText.length;
+    searchBar.current.value &&
+    searchBar.current.value.length;
   const currentNodes = searching ? matchedNodes : allNodes;
 
   let projectPageUrl = '/';
@@ -172,5 +172,4 @@ const Sidebar = (props) => {
     </Fragment>
   );
 };
-
 export default Sidebar;

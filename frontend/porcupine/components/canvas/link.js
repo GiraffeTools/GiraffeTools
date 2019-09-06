@@ -61,7 +61,7 @@ class Link extends React.Component {
     d += ` ${endPoint.x} ${endPoint.y}`;
     return (
       <Fragment>
-        // This is for rendering...
+        {/* This is for rendering... */}
         <path
           d={d}
           stroke="black"
@@ -75,7 +75,7 @@ class Link extends React.Component {
           }
           cursor={'pointer'}
         />
-        // ...and this is for clicking
+        {/* ...and this is for clicking */}
         <path
           ref={(svg) => (this.svgRef = svg)}
           d={d}

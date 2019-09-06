@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {StyleRoot} from 'radium';
 
 import withDragDropContext from './withDragDropContext';
@@ -10,37 +10,30 @@ import Modals from '../containers/modals';
 import {isGitHash} from '../utils';
 import {loadGiraffeConfig} from '../utils/loadPorkFile';
 
-class Content extends React.Component {
-  constructor(props) {
-    super(props);
-    this.canvas = React.createRef();
+
+function mount(props, canvas) {
+  const {
+    setUser,
+    setRepository,
+    setBranch,
+    setCommit,
+    setConfig,
+    updateAuth,
+  } = props;
+  const {username, repository, branchOrCommit} = props.match.params;
+  setUser(username);
+  setRepository(repository);
+  const string = branchOrCommit || 'master';
+  const isCommit = isGitHash(branchOrCommit);
+  setCommit(isCommit && string);
+  setBranch(!isCommit && string);
+
+  if (!username || !repository) {
+    console.log('No username or repository provided');
+    return;
   }
 
-  async componentDidMount() {
-    const {
-      setUser,
-      setRepository,
-      setBranch,
-      setCommit,
-      setConfig,
-      updateAuth,
-    } = this.props;
-    const {username, repository, branchOrCommit} = this.props.match.params;
-    setUser(username);
-    setRepository(repository);
-    const string = branchOrCommit || 'master';
-    const isCommit = isGitHash(branchOrCommit);
-    setCommit(isCommit && string);
-    setBranch(!isCommit && string);
-
-    const response = await fetch('/api/get_user');
-    updateAuth(await response.json());
-
-    if (!username || !repository) {
-      console.log('No username or repository provided');
-      return;
-    }
-    // #This loads the canvas content only after the UI has first rendered
+  async function loadConfig() {
     const repoContentUrl = `https://raw.githubusercontent.com/${username}/${
       repository}/${branchOrCommit || 'master'}`;
     const configuration = await loadGiraffeConfig(repoContentUrl);
@@ -54,28 +47,40 @@ class Content extends React.Component {
 
     const {porcupine, workflow} = configuration.tools;
     const porcupineConfig = porcupine || workflow;
+    // This loads the canvas content only after the UI has first rendered
 
     setConfig(porcupineConfig);
-    this.canvas &&
-      this.canvas.decoratedRef &&
-      this.canvas.decoratedRef.current &&
-      this.canvas.decoratedRef.current.load(porcupineConfig, repoContentUrl);
+    canvas &&
+      canvas.current &&
+      canvas.current.decoratedRef.current.load(porcupineConfig, repoContentUrl);
   }
 
-  render() {
-    // const { snapToGridAfterDrop, snapToGridWhileDragging } = this.state
-    return (
-      <StyleRoot>
-        <Modals />
-        <Sidebar />
-        <div>
-          <Canvas ref={(canvas) => (this.canvas = canvas)} />
-          <ParameterPane />
-          <CodeEditor />
-        </div>
-      </StyleRoot>
-    );
+  async function auth() {
+    updateAuth(await (await fetch('/api/get_user')).json());
   }
+
+  Promise.all([
+    auth(),
+    loadConfig(),
+  ]);
 }
+
+
+const Content = (props) => {
+  const canvas = useRef(null);
+  useEffect(() => mount(props, canvas), [props.match, canvas]);
+
+  return (
+    <StyleRoot>
+      <Modals />
+      <Sidebar />
+      <div>
+        <Canvas ref={canvas} />
+        <ParameterPane />
+        <CodeEditor />
+      </div>
+    </StyleRoot>
+  );
+};
 
 export default withDragDropContext(Content);

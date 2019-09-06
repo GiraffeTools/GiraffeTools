@@ -1,10 +1,9 @@
-import React, {Fragment} from 'react';
-import Radium from 'radium';
-import AwesomeDebouncePromise from 'awesome-debounce-promise';
+import React, {forwardRef, useState, useEffect} from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import styles from '../../styles/searchBar';
 import docStyles from '../../constants/styles';
+import {useDebounce} from '../../utils/hooks';
 
 function searchAPI(text, toolboxes) {
   const getMatches = (category) => {
@@ -40,55 +39,46 @@ function searchAPI(text, toolboxes) {
   return found;
 }
 
-// const searchAPI = text => fetch("/search?text=" + encodeURIComponent(text));
-const searchAPIDebounced = AwesomeDebouncePromise(searchAPI, 500, {
-  key: () => 'search',
+const DEBOUNCE_INTERVAL = 500;
+const SearchBar = forwardRef((props, ref) => {
+  const [searchText, setSearchTerm] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
+  const {setSearchResults, toolboxes} = props;
+
+  const debouncedSearchTerm = useDebounce(searchText, DEBOUNCE_INTERVAL);
+
+  useEffect(
+      () => {
+        async function debounce() {
+          if (debouncedSearchTerm) {
+            setIsSearching(true);
+            const results = await searchAPI(debouncedSearchTerm, toolboxes);
+            setIsSearching(false);
+            setSearchResults(results);
+          } else {
+            setSearchResults({});
+          }
+        }
+        debounce();
+      },
+      [debouncedSearchTerm]
+  );
+
+  return (
+    <form>
+      <input
+        ref={ref}
+        value={searchText}
+        onChange={(event) => setSearchTerm(event.target.value.toLowerCase())}
+        style={styles.searchInput}
+      />
+      <ClipLoader
+        size={20}
+        color={docStyles.secondaryColor}
+        loading={isSearching}
+      />
+    </form>
+  );
 });
-
-class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchText: '',
-      searching: false,
-      matchedNodes: null,
-    };
-    this.handleTextChange = this.handleTextChange.bind(this);
-  }
-
-  async handleTextChange(event) {
-    const {setSearchResults, toolboxes} = this.props;
-    const searchText = event.target.value.toLowerCase();
-    this.setState({searchText, searching: true});
-    const matchedNodes = await searchAPIDebounced(searchText, toolboxes);
-    this.setState({searching: false});
-    setSearchResults(matchedNodes);
-  }
-
-  componentWillUnmount() {
-    this.setState = () => {};
-  }
-
-  render() {
-    const {searchText, searching} = this.state;
-
-    return (
-      <Fragment>
-        <form>
-          <input
-            value={searchText}
-            onChange={this.handleTextChange}
-            style={[styles.searchInput]}
-          />
-          <ClipLoader
-            size={20}
-            color={docStyles.secondaryColor}
-            loading={searching}
-          />
-        </form>
-      </Fragment>
-    );
-  }
-}
-
-export default Radium(SearchBar);
+SearchBar.displayName = 'SearchBar';
+export default SearchBar;
