@@ -1,4 +1,5 @@
 import {
+  CLEAR_DATABASE,
   ZOOM_IN,
   ZOOM_OUT,
   ADD_NODE,
@@ -24,6 +25,8 @@ const INITIAL_STATE = {
 export default function scene(state = INITIAL_STATE, action) {
   const {type, payload} = action;
   switch (type) {
+    case CLEAR_DATABASE:
+      return {...state, selection: EMPTY_SELECTION};
     case ZOOM_IN:
       return state;
     case ZOOM_OUT:
@@ -43,10 +46,7 @@ export default function scene(state = INITIAL_STATE, action) {
     case REMOVE_LINK:
     case REMOVE_NODE:
     case REMOVE_STICKY:
-      return {
-        ...state,
-        selection: EMPTY_SELECTION,
-      };
+      return {...state, selection: EMPTY_SELECTION};
     case CLICK_ITEM:
       const selection = {
         stickies:

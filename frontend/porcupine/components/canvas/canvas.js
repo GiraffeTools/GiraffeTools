@@ -162,16 +162,18 @@ class Canvas extends React.PureComponent {
       loadingPercent,
     } = this.props;
     return connectDropTarget(
-      <div style={styles.canvas}>
-        <GiraffeLoader percent={loadingPercent} />
-        <GraphView
-          ref={this.graphview}
-          nodes={nodes}
-          links={links}
-          stickies={stickies}
-          deleteSelection={this.deleteSelection}
-        />
-      </div>
+        <div 
+          style={styles.canvas}
+        >
+          <GiraffeLoader percent={loadingPercent} />
+          <GraphView
+            ref={this.graphview}
+            nodes={nodes}
+            links={links}
+            stickies={stickies}
+            deleteSelection={this.deleteSelection}
+          />
+        </div>
     );
   }
 }

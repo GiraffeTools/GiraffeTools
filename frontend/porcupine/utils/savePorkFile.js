@@ -24,12 +24,9 @@ export async function savePorkFile() {
   const saveFiles = await Promise.all(
       grammars
           .filter((grammar) => languages.includes(grammar.language))
-          .map((grammar) => grammar.save(nodes, links))
+          .map(async (grammar) => await grammar.save(nodes, links))
   );
-  const fileContent = {};
-  saveFiles.forEach((files) =>
-    Object.keys(files).forEach((name) => (fileContent[name] = files[name]))
-  );
+  const fileContent = saveFiles.reduce((acc, val) => ({...acc, ...val}), {})
 
   // #TODO grab this from local state
   const {files} = configuration;
