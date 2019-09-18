@@ -162,7 +162,7 @@ class Canvas extends React.PureComponent {
       loadingPercent,
     } = this.props;
     return connectDropTarget(
-        <div 
+        <div
           style={styles.canvas}
         >
           <GiraffeLoader percent={loadingPercent} />

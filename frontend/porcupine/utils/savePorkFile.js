@@ -26,7 +26,7 @@ export async function savePorkFile() {
           .filter((grammar) => languages.includes(grammar.language))
           .map(async (grammar) => await grammar.save(nodes, links))
   );
-  const fileContent = saveFiles.reduce((acc, val) => ({...acc, ...val}), {})
+  const fileContent = saveFiles.reduce((acc, val) => ({...acc, ...val}), {});
 
   // #TODO grab this from local state
   const {files} = configuration;

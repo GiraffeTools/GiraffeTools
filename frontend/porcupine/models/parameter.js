@@ -66,7 +66,13 @@ class Parameter extends Model {
         Parameter.withId(payload.id).delete();
         break;
       case UPDATE_PARAMETER:
-        Parameter.withId(payload.parameterId).update(payload.newValues);
+        const p = Parameter.withId(payload.parameterId);
+        if (payload.newValues &&
+           payload.newValues.isVisible === false &&
+           (p.inputModel.inputLinks.count() + 
+            p.outputModel.outputLinks.count()) !== 0) return;
+
+        p.update(payload.newValues);
         break;
     }
     return undefined;
@@ -96,6 +102,7 @@ Parameter.fields = {
     as: 'outputModel',
     relatedName: 'outputParent',
   }),
+  value: attr(),
 };
 
 export default Parameter;
