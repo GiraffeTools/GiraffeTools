@@ -1,5 +1,71 @@
+@import "../../giraffe/constants/styles.scss";
+
 .tab-pane{
   pre {
     overflow: visible!important;
+  }
+}
+
+.codeWindow {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  height: 60%;
+  width: 55%;
+  margin-left: 2rem;
+  margin-bottom: 0rem;
+  left: 20%;
+
+  .closed {
+    transform: translateY(95%);
+    transition: transform 0.1s;
+  }
+  .withSidebar {
+    @media(max-width: 1200px) {
+      left: 20%;
+    }
+  }
+  @media(max-width: 1200px) {
+    left: 0%;
+  }
+}
+
+.codeNav {
+  position: absolute;
+  top: 0;
+  transform: translateY(-100%);
+}
+
+.codeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(-100%);
+
+  background: #d9a005;
+  display: inline-block;
+  text-align: center;
+  height: 2rem;
+  width: 4rem;
+  border-top-left-radius: 8rem;
+  border-top-right-radius: 8rem;
+  cursor: pointer;
+  font-size: 2rem;
+  color: black;
+}
+
+.navTabContent {
+  overflow-y: scroll;
+  height: -webkit-fill-available;
+  background-color: rgb(40, 44, 52);
+}
+
+.codeNavItem {
+  background-color: $primary-light-color;
+  margin: 0 5px 0 0;
+  border-bottom: 0px;
+  cursor: pointer;
+  &.bla {
+    background-color: $tertiary-color;
   }
 }

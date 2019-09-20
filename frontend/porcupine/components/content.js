@@ -74,10 +74,10 @@ const Content = (props) => {
     <StyleRoot>
       <Modals />
       <Sidebar />
+      <CodeEditor />
       <div>
         <Canvas ref={canvas} />
         <ParameterPane />
-        <CodeEditor />
       </div>
     </StyleRoot>
   );
