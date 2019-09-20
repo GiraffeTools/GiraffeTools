@@ -15,10 +15,10 @@
   margin-left: 2rem;
   margin-bottom: 0rem;
   left: 20%;
+  transition: transform 0.1s;
 
-  .closed {
+  &.closed {
     transform: translateY(95%);
-    transition: transform 0.1s;
   }
   .withSidebar {
     @media(max-width: 1200px) {

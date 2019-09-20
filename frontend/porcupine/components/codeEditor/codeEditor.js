@@ -18,7 +18,7 @@ const CodeEditor = (props) => {
 
   return (
     <div
-      className={'codeWindow ' + (open ? 'withSidebar' : 'closed')}
+      className={'codeWindow withSidebar ' + (open ? '' : 'closed')}
     >
       <div
         // #TODO replace this with react-icons/fa
