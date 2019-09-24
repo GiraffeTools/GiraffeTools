@@ -69,7 +69,7 @@ class Parameter extends Model {
         const p = Parameter.withId(payload.parameterId);
         if (payload.newValues &&
            payload.newValues.isVisible === false &&
-           (p.inputModel.inputLinks.count() + 
+           (p.inputModel.inputLinks.count() +
             p.outputModel.outputLinks.count()) !== 0) return;
 
         p.update(payload.newValues);

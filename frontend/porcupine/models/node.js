@@ -33,7 +33,7 @@ class Node extends Model {
     switch (type) {
       case CLEAR_DATABASE:
         Node.all().delete();
-        graph.nodes().forEach(node => graph.removeNode(node));
+        graph.nodes().forEach((node) => graph.removeNode(node));
         break;
       case ADD_NODE:
         // parameters are saved in the Port reducer

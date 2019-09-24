@@ -29,7 +29,8 @@ const CodeEditor = (props) => {
         <div className="nav nav-tabs" id="nav-tab" role="tablist">
           {languages.map((language) => (
             <a
-              className={"codeNavItem nav-item nav-link " + (language === currentTab ? "bla" : "")}
+              className={'codeNavItem nav-item nav-link ' +
+                (language === currentTab ? 'bla' : '')}
               key={`nav-${language}-tab`}
               id={`nav-${language}-tab`}
               data-toggle="tab"

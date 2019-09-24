@@ -18,8 +18,8 @@ class Link extends Model {
     switch (type) {
       case CLEAR_DATABASE:
         Link.all().delete();
-        graph.edges().forEach(edge => graph.removeEdge(edge.v, edge.w));
-        
+        graph.edges().forEach((edge) => graph.removeEdge(edge.v, edge.w));
+
         break;
       case ADD_LINK:
         if ( // if this conection exists already, return
@@ -38,19 +38,19 @@ class Link extends Model {
         const value = link.portFromModel.outputParent.value;
         link.portToModel.inputParent.update({isEnabled: false, value});
         graph.setEdge(
-          link.portFromModel.node, 
-          link.portToModel.node,
-          "", 
-          link.id
+            link.portFromModel.node,
+            link.portToModel.node,
+            '',
+            link.id
         );
         break;
       case REMOVE_LINK:
         const connectedPort = Link.withId(payload.id).portToModel;
         const linkToRemove = Link.withId(payload.id);
         graph.removeEdge(
-          linkToRemove.portFromModel.node, 
-          linkToRemove.portToModel.node, 
-          linkToRemove.id
+            linkToRemove.portFromModel.node,
+            linkToRemove.portToModel.node,
+            linkToRemove.id
         );
         linkToRemove.delete();
         if (!connectedPort.inputLinks.count()) {
@@ -63,11 +63,11 @@ class Link extends Model {
             .forEach((link) => {
             // #TODO check if this is safe because REMOVE_NODE deletes nodeModel
               if (link.portFromModel.outputParent.nodeModel.id == payload.id) {
-                const connectedPort = link.portToModel
+                const connectedPort = link.portToModel;
                 graph.removeEdge(
-                  link.portFromModel.node, 
-                  link.portToModel.node, 
-                  link.id
+                    link.portFromModel.node,
+                    link.portToModel.node,
+                    link.id
                 );
                 link.delete();
                 if (!connectedPort.inputLinks.count()) {
@@ -82,9 +82,9 @@ class Link extends Model {
               if (link.portToModel.inputParent.nodeModel.id == payload.id) {
                 const connectedPort = link.portToModel;
                 graph.removeEdge(
-                  link.portFromModel.node, 
-                  link.portToModel.node, 
-                  link.id
+                    link.portFromModel.node,
+                    link.portToModel.node,
+                    link.id
                 );
                 link.delete();
                 if (!connectedPort.inputLinks.count()) {
@@ -99,9 +99,9 @@ class Link extends Model {
             .forEach((link) => {
               if (link.portFromModel.outputParent.id == payload.id) {
                 graph.removeEdge(
-                  link.portFromModel.node, 
-                  link.portToModel.node, 
-                  link.id
+                    link.portFromModel.node,
+                    link.portToModel.node,
+                    link.id
                 );
                 link.delete();
               }
@@ -111,9 +111,9 @@ class Link extends Model {
             .forEach((link) => {
               if (link.portToModel.inputParent.id == payload.id) {
                 graph.removeEdge(
-                  link.portFromModel.node, 
-                  link.portToModel.node, 
-                  link.id
+                    link.portFromModel.node,
+                    link.portToModel.node,
+                    link.id
                 );
                 link.delete();
               }

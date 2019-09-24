@@ -34,36 +34,37 @@ export const nodesWithParameters = createSelector(
     orm,
     (state) => state.orm,
     (session) => {
-      // #TODO: this graph is quite some antipattern to functional programming...
+      // #TODO: this graph is quite some antipattern to functional
+      // programming...
       const nodes = session.Node.all().toModelArray();
 
       const graph = Graph.getInstance();
       let sorted;
       try {
         const order = GraphAlgorithms.topsort(graph);
-        sorted = nodes.sort((a, b) => order.findIndex((id) => id === a.id) - order.findIndex((id) => id === b.id))
-      }
-      catch(error){
+        sorted = nodes.sort((a, b) => order.findIndex((id) => id === a.id)
+          - order.findIndex((id) => id === b.id));
+      } catch (error) {
         // #TODO not sure how to check this:
         // if (error instanceof CycleException) {
         sorted = nodes;
-        console.warn("You probably have a circularity in your graph...");
+        console.warn('You probably have a circularity in your graph...');
       }
       return sorted.map((node) => {
         const parameters = node.parameters && node.parameters.toRefArray();
-        return {...node.ref, parameters };
+        return {...node.ref, parameters};
       });
-      }
+    }
 
-      // #TODO The following would be much more efficient, but doesn't work well with 
-      // functional programming:
-      //
-      // return topsorted
-      //   .map((nodeId) => {
-      //     const node = session.Node.withId(nodeId);
-      //     const parameters = node.parameters && node.parameters.toRefArray();
-      //     return {...node.ref, parameters };
-      //   });
+    // #TODO The following would be much more efficient, but doesn't work well
+    // with functional programming:
+    //
+    // return topsorted
+    //   .map((nodeId) => {
+    //     const node = session.Node.withId(nodeId);
+    //     const parameters = node.parameters && node.parameters.toRefArray();
+    //     return {...node.ref, parameters };
+    //   });
 );
 
 export const copiedNodes = createSelector(
