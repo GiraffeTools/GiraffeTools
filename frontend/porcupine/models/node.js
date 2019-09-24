@@ -1,5 +1,7 @@
 import {Model, attr} from 'redux-orm';
 
+import Graph from '../utils/graph';
+
 import {
   ADD_NODE,
   REMOVE_NODE,
@@ -7,28 +9,31 @@ import {
   CLEAR_DATABASE,
 } from '../actions/actionTypes';
 
+const nameToWidth = (name, parameters) => {
+  const nodeFontSize = 13;
+  const parameterFontSize = 10;
+  const nodeWidth = name.length * nodeFontSize;
+  const parameterWidth =
+    parameters &&
+    Math.max.apply(
+        null,
+        parameters
+            .filter((parameter) => parameter.isVisible)
+            .map((parameter) => parameter.name.length)
+    ) * parameterFontSize;
+  return Math.max(nodeWidth, parameterWidth);
+};
+
+
 class Node extends Model {
   static reducer(action, Node) {
     const {type, payload} = action;
-
-    const nameToWidth = (name, parameters) => {
-      const nodeFontSize = 13;
-      const parameterFontSize = 10;
-      const nodeWidth = name.length * nodeFontSize;
-      const parameterWidth =
-        parameters &&
-        Math.max.apply(
-            null,
-            parameters
-                .filter((parameter) => parameter.isVisible)
-                .map((parameter) => parameter.name.length)
-        ) * parameterFontSize;
-      return Math.max(nodeWidth, parameterWidth);
-    };
+    const graph = Graph.getInstance();
 
     switch (type) {
       case CLEAR_DATABASE:
         Node.all().delete();
+        graph.nodes().forEach(node => graph.removeNode(node));
         break;
       case ADD_NODE:
         // parameters are saved in the Port reducer
@@ -49,6 +54,7 @@ class Node extends Model {
         }
         const width = nameToWidth(name, payload.parameters);
         Node.create({...payload, name, width});
+        graph.setNode(payload.id);
         break;
       case REMOVE_NODE:
         const nodeToRemove = Node.withId(payload.id);
@@ -63,6 +69,7 @@ class Node extends Model {
           if (!language.nodes.toModelArray().length) language.delete();
         });
         nodeToRemove.delete();
+        graph.setNode(payload.id);
         break;
       case UPDATE_NODE:
         const node = Node.withId(payload.nodeId);

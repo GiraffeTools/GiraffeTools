@@ -1,5 +1,7 @@
 import {createSelector} from 'redux-orm';
+import {alg as GraphAlgorithms} from 'graphlib';
 
+import Graph from '../utils/graph';
 import orm from '../models';
 
 export const stickies = createSelector(
@@ -32,16 +34,36 @@ export const nodesWithParameters = createSelector(
     orm,
     (state) => state.orm,
     (session) => {
-      return session.Node.all()
-          .toModelArray()
-          .map((node) => {
-            const parameters = session.Node.withId(node.id).parameters;
-            return {
-              ...node.ref,
-              parameters: parameters && parameters.toRefArray(),
-            };
-          });
-    }
+      // #TODO: this graph is quite some antipattern to functional programming...
+      const nodes = session.Node.all().toModelArray();
+
+      const graph = Graph.getInstance();
+      let sorted;
+      try {
+        const order = GraphAlgorithms.topsort(graph);
+        sorted = nodes.sort((a, b) => order.findIndex((id) => id === a.id) - order.findIndex((id) => id === b.id))
+      }
+      catch(error){
+        // #TODO not sure how to check this:
+        // if (error instanceof CycleException) {
+        sorted = nodes;
+        console.warn("You probably have a circularity in your graph...");
+      }
+      return sorted.map((node) => {
+        const parameters = node.parameters && node.parameters.toRefArray();
+        return {...node.ref, parameters };
+      });
+      }
+
+      // #TODO The following would be much more efficient, but doesn't work well with 
+      // functional programming:
+      //
+      // return topsorted
+      //   .map((nodeId) => {
+      //     const node = session.Node.withId(nodeId);
+      //     const parameters = node.parameters && node.parameters.toRefArray();
+      //     return {...node.ref, parameters };
+      //   });
 );
 
 export const copiedNodes = createSelector(

@@ -34,6 +34,7 @@
     "d3": "^5.11.0",
     "dynamic-imports": "^0.4.0",
     "es6-spread": "^0.2.2",
+    "graphlib": "^2.1.7",
     "immutability-helper": "^3.0.1",
     "pluralize": "^7.0.0",
     "pretty": "^2.0.0",

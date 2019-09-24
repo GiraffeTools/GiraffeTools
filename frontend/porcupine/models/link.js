@@ -1,5 +1,7 @@
 import {Model, attr, fk} from 'redux-orm';
 
+import Graph from '../utils/graph';
+
 import {
   ADD_LINK,
   REMOVE_LINK,
@@ -12,9 +14,11 @@ import {
 class Link extends Model {
   static reducer(action, Link) {
     const {type, payload} = action;
+    const graph = Graph.getInstance();
     switch (type) {
       case CLEAR_DATABASE:
         Link.all().delete();
+        graph.edges().forEach(edge => graph.removeEdge(edge));
         break;
       case ADD_LINK:
         if ( // if this conection exists already, return
@@ -32,6 +36,11 @@ class Link extends Model {
         const link = Link.withId(payload.id);
         const value = link.portFromModel.outputParent.value;
         link.portToModel.inputParent.update({isEnabled: false, value});
+        graph.setEdge(
+          link.portFromModel.node, 
+          link.portToModel.node, 
+          payload.id
+        );
         break;
       case REMOVE_LINK:
         const connectedPort = Link.withId(payload.id).portToModel;
@@ -39,6 +48,7 @@ class Link extends Model {
         if (!connectedPort.inputLinks.count()) {
           connectedPort.inputParent.update({isEnabled: true});
         }
+        graph.removeEdge(payload.id);
         break;
       case REMOVE_NODE:
         Link.all()
@@ -46,7 +56,12 @@ class Link extends Model {
             .forEach((link) => {
             // #TODO check if this is safe because REMOVE_NODE deletes nodeModel
               if (link.portFromModel.outputParent.nodeModel.id == payload.id) {
+                const connectedPort = link.portToModel
                 link.delete();
+                graph.removeEdge(link.id);
+                if (!connectedPort.inputLinks.count()) {
+                  connectedPort.inputParent.update({isEnabled: true});
+                }
               }
             });
         Link.all()
@@ -54,7 +69,12 @@ class Link extends Model {
             .forEach((link) => {
             // #TODO check if this is safe because REMOVE_NODE deletes nodeModel
               if (link.portToModel.inputParent.nodeModel.id == payload.id) {
+                const connectedPort = link.portToModel
                 link.delete();
+                graph.removeEdge(link.id);
+                if (!connectedPort.inputLinks.count()) {
+                  connectedPort.inputParent.update({isEnabled: true});
+                }
               }
             });
         break;
@@ -64,6 +84,7 @@ class Link extends Model {
             .forEach((link) => {
               if (link.portFromModel.outputParent.id == payload.id) {
                 link.delete();
+                graph.removeEdge(link.id);
               }
             });
         Link.all()
@@ -71,6 +92,7 @@ class Link extends Model {
             .forEach((link) => {
               if (link.portToModel.inputParent.id == payload.id) {
                 link.delete();
+                graph.removeEdge(link.id);
               }
             });
         break;

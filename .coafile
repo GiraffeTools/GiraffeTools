@@ -1,6 +1,7 @@
 [all]
 ignore = node_modules/**, **.min.js, **.min.css
 
+
 [all.python]
 # Patches may conflict with autopep8 so putting them in own section so they
 # will be executed sequentially; also we need the LineLengthBear to double
@@ -16,12 +17,14 @@ language = Python
 preferred_quotation = "
 default_actions = **: ApplyPatchAction
 
+
 [all.python.autopep8]
 bears = PEP8Bear, PycodestyleBear
 pycodestyle_ignore = E501, E402
 
 # default_actions = PEP8Bear: ApplyPatchAction
 default_actions = **: ApplyPatchAction
+
 
 [all.python.flakes]
 # Do not set default_action to ApplyPatchAction as it may lead to some
@@ -35,9 +38,11 @@ bears = PyUnusedCodeBear
 language = Python
 remove_all_unused_imports = true
 
+
 [all.python.linelength]  # Sometimes autopep8 makes too long lines, need to check after!
 bears = LineLengthBear
 ignore_length_regex = ^.*https?://
+
 
 [all.python.Pylint]
 enabled = False
@@ -55,3 +60,6 @@ bears = ShellCheckBear
 files = **.bash
 shell = bash
 shellcheck_ignore = SC2046, SC2154
+
+
+[all.javascript]
