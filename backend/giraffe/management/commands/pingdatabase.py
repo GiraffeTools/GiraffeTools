@@ -27,7 +27,7 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING(
                     "Can't detect the postgres server. "
                     "Trying again in a second"))
-                    
+
                 time.sleep(1)
 
         # crash:

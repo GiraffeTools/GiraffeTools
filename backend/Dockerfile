@@ -6,7 +6,7 @@ RUN mkdir /code /code/requirements
 WORKDIR /code
 
 # GeoIP2 Data Files
-RUN mkdir -- -p /usr/share/GeoIP/ && \
+RUN mkdir -p -- /usr/share/GeoIP/ && \
     wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz && \
     wget http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz && \
     gunzip GeoLite2-City.mmdb.gz && \
