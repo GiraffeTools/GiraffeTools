@@ -3,14 +3,14 @@ import {persistCombineReducers} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import orm from '../models';
+import ui from './ui';
+import scene from './scene';
 import auth from '../../giraffe/reducers/auth';
 import alerts from '../../giraffe/reducers/alerts';
 import modals from './modals';
-import ui from './ui';
 import grammars from './grammars';
 import project from './project';
 import projectConfig from './projectConfig';
-import scene from './scene';
 
 const config = {
   key: 'porcupine',

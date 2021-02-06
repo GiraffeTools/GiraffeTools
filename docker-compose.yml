@@ -16,7 +16,6 @@ services:
     ports:
       #TODO only works without quotes here, not sure why
       - 5432   # database port
-
   web:
     env_file:
       - ./backend/.env.sample

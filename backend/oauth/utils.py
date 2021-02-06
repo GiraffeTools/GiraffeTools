@@ -39,15 +39,14 @@ JSON_HEADER = {
     "User-Agent": settings.GITHUB_APP_NAME,
     "Origin": settings.BASE_URL
 }
-TOKEN_URL = "{api_url}/applications/{client_id}/tokens/{oauth_token}"
+TOKEN_URL = "{api_url}/applications/{client_id}/token"
 
 
-def build_auth_dict(oauth_token):
+def build_auth_dict():
     return {
         "api_url": settings.GITHUB_API_BASE_URL,
         "client_id": settings.GITHUB_CLIENT_ID,
-        "client_secret": settings.GITHUB_CLIENT_SECRET,
-        "oauth_token": oauth_token
+        "client_secret": settings.GITHUB_CLIENT_SECRET
     }
 
 
@@ -88,10 +87,10 @@ def is_github_token_valid(oauth_token=None, last_validated=None):
         if (timezone.now() - last_validated) < expire_time:
             return True
 
-    _params = build_auth_dict(oauth_token)
+    _params = build_auth_dict()
     _auth = (_params["client_id"], _params["client_secret"])
     url = TOKEN_URL.format(**_params)
-    response = requests.get(url, auth=_auth, headers=HEADERS)
+    response = requests.post(url, auth=_auth, headers=HEADERS, data = {'access_token': oauth_token})
 
     if response.status_code == 200:
         return True
@@ -100,20 +99,20 @@ def is_github_token_valid(oauth_token=None, last_validated=None):
 
 def revoke_token(oauth_token):
     '""Revoke the specified token.""'
-    _params = build_auth_dict(oauth_token)
+    _params = build_auth_dict()
     _auth = (_params["client_id"], _params["client_secret"])
     url = TOKEN_URL.format(**_params)
-    response = requests.delete(url, auth=_auth, headers=HEADERS)
+    response = requests.delete(url, auth=_auth, headers=HEADERS, data = {'access_token': oauth_token})
     if response.status_code == 204:
         return True
     return False
 
 
 def reset_token(oauth_token):
-    _params = build_auth_dict(oauth_token)
+    _params = build_auth_dict()
     _auth = (_params["client_id"], _params["client_secret"])
     url = TOKEN_URL.format(**_params)
-    response = requests.post(url, auth=_auth, headers=HEADERS)
+    response = requests.post(url, auth=_auth, headers=HEADERS, data = {'access_token': oauth_token})
     if response.status_code == 200:
         return response.json().get("token")
     return ""
