@@ -12,7 +12,7 @@ django-webpack-loader==0.6.0
 djangorestframework==3.11.2
 django-redis==4.10.0
 django-settings-export==1.2.1
-Django==2.2.20
+Django==2.2.24
 # geoip2==2.9.0
 gunicorn==19.9.0
 kubernetes==9.0.0
