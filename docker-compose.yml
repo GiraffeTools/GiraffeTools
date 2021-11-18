@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   database:
@@ -15,7 +15,7 @@ services:
       # - ./demo.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       #TODO only works without quotes here, not sure why
-      - 5432   # database port
+      - 5432 # database port
   web:
     env_file:
       - ./backend/.env.sample
@@ -28,11 +28,10 @@ services:
     command: ./bin/docker-command.bash
     ports:
       - "8000:8000"
-      - "35729:35729"   # django live reload server
+      - "35729:35729" # django live reload server
     depends_on:
       - database
       - frontend
-      - redis
 
   frontend:
     env_file:
@@ -47,15 +46,6 @@ services:
       - "3000:3000"
     command: ./bin/docker-command.bash
 
-  redis:
-    # restart: unless-stopped
-    image: redis:4.0-alpine
-    volumes:
-      - redis:/data
-    ports:
-      - "6379:6379"
-
 volumes:
   postgres:
   webpack_bundles:
-  redis:

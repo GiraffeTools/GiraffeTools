@@ -218,7 +218,7 @@ SOCIAL_AUTH_PIPELINE = (
 SLACK_API_TOKEN = env.str("SLACK_API_TOKEN", default="")
 
 # localisation, potential replacement for Google Analytics
-GEOIP_PATH = env.str("GEOIP_PATH", default="/usr/share/GeoIP/")
+# GEOIP_PATH = env.str("GEOIP_PATH", default="/usr/share/GeoIP/")
 # GEOIP_CITY = GEOIP_PATH + "GeoLite2-City.mmdb"
 # GEOIP_COUNTRY = GEOIP_PATH + "GeoLite2-Country.mmdb"
 

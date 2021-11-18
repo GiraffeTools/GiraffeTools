@@ -1,9 +1,9 @@
 import logging
 
-from django.contrib.gis.geoip2 import GeoIP2
+# from django.contrib.gis.geoip2 import GeoIP2
 from django.utils import timezone
 
-from geoip2.errors import AddressNotFoundError
+# from geoip2.errors import AddressNotFoundError
 
 from giraffe.models import UserAction, Project
 
@@ -53,15 +53,15 @@ def get_location_from_ip(ip_address):
     if not ip_address:
         return city
 
-    try:
-        geo = GeoIP2()
-        try:
-            city = geo.city(ip_address)
-        except AddressNotFoundError:
-            pass
-    except Exception as e:
-        logger.warning(
-            f"Encountered ({e}) while attempting to retrieve a user\'s geolocation")  # Ignore LineLengthBear
+    # try:
+    #     geo = GeoIP2()
+    #     try:
+    #         city = geo.city(ip_address)
+    #     except AddressNotFoundError:
+    #         pass
+    # except Exception as e:
+    #     logger.warning(
+    #         f"Encountered ({e}) while attempting to retrieve a user\'s geolocation")  # Ignore LineLengthBear
     return city
 
 
