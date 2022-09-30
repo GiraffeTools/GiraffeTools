@@ -31,7 +31,7 @@
     "await-to-js": "^2.1.1",
     "babel-plugin-emotion": "^10.0.17",
     "bootstrap": "^4.3.1",
-    "d3": "^5.11.0",
+    "d3": "^7.6.1",
     "dynamic-imports": "^0.4.0",
     "es6-spread": "^0.2.2",
     "graphlib": "^2.1.7",
