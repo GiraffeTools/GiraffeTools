@@ -105,7 +105,7 @@
     "webpack": "^4.39.3",
     "webpack-bundle-tracker": "^0.4.2-beta",
     "webpack-cli": "<=3.1.2",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-server": "^3.11.3"
   },
   "scripts": {
     "lint": "eslint . --fix",
