@@ -32,6 +32,6 @@ requests==2.22.0
 requests_oauthlib==1.2.0
 slackclient==1.2.1
 social-auth-app-django==3.1.0
-tornado==6.0.2
+tornado==6.3.2
 traitlets==4.3.2
 whitenoise==4.1.2
