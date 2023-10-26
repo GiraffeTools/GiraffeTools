@@ -2,8 +2,8 @@
   "name": "GiraffeTools",
   "version": "1.0.0",
   "engines": {
-    "node": "12.6.0",
-    "npm": "6.9.0"
+    "node": "18.17.1",
+    "npm": "9.6.7"
   },
   "description": "Graphical Interface for Reproducible Analysis For workFlow Experiments",
   "dependencies": {
