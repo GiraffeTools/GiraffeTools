@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="169px" height="170px" viewBox="0 0 169 170" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Play button</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landing-Page-" transform="translate(-1236.000000, -4284.000000)">
+            <g id="Timeline-VIDEO-SECTION" transform="translate(0.000000, 3985.000000)">
+                <g id="Video" transform="translate(888.000000, 97.000000)">
+                    <g id="Play-button" transform="translate(351.000000, 205.000000)">
+                        <ellipse id="Oval" stroke="#F25226" stroke-width="6" fill="#FFFFFF" cx="81.4660194" cy="82.3446786" rx="81.3980583" ry="81.3884387"></ellipse>
+                        <polygon id="Triangle" fill="#F25226" fill-rule="nonzero" transform="translate(84.262136, 82.034036) rotate(90.000000) translate(-84.262136, -82.034036) " points="84.2621359 58.7358185 107.563107 105.332253 60.961165 105.332253"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

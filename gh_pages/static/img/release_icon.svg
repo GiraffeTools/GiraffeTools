@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="29px" height="29px" viewBox="0 0 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>release_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Project" transform="translate(-237.000000, -1042.000000)">
+            <g id="Profile" transform="translate(185.000000, 558.000000)">
+                <g id="Group-4" transform="translate(50.000000, 260.000000)">
+                    <g id="release_icon" transform="translate(2.000000, 224.000000)">
+                        <g id="Outline_Icons" stroke="#F25226" stroke-linejoin="round" stroke-width="1.20000005">
+                            <g id="Group">
+                                <path d="M28.3958333,14.4480417 C28.3958333,22.1511667 22.1572083,28.3970417 14.4613333,28.3970417 C6.76545833,28.3958333 0.604166667,21.9010417 0.604166667,14.1979167 C0.604166667,6.69658333 6.48875,0.915916667 13.901875,0.617458333 C14.1024583,0.609 14.3030417,0.604166667 14.5060417,0.604166667 C22.2019167,0.604166667 28.3958333,6.74491667 28.3958333,14.4480417 Z" id="Shape"></path>
+                                <path d="M13.901875,0.617458333 C6.651875,8.471625 6.651875,18.7182917 13.901875,28.3849583" id="Shape"></path>
+                                <path d="M15.1102083,0.617458333 C22.3602083,8.471625 22.3602083,18.7146667 15.1102083,28.3813333" id="Shape"></path>
+                                <path d="M2.88308333,6.64583333 L26.0045417,6.64583333" id="Shape"></path>
+                                <path d="M0.607791667,13.8958333 L28.3958333,13.8958333" id="Shape"></path>
+                                <path d="M2.39854167,21.1458333 L26.6860417,21.1458333" id="Shape"></path>
+                            </g>
+                        </g>
+                        <g id="invisible_shape">
+                            <rect id="Rectangle-path" x="0" y="0" width="29" height="29"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

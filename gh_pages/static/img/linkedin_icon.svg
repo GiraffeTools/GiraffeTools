@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>linkedin_icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landing-Page-" transform="translate(-1064.000000, -7810.000000)">
+            <g id="People" transform="translate(-3.000000, 6843.000000)">
+                <g id="TIM" transform="translate(291.000000, 457.000000)">
+                    <g id="linkedin_icon" transform="translate(776.000000, 510.000000)">
+                        <g id="Outline_Icons" transform="translate(1.500000, 1.500000)" stroke="#F25226" stroke-linejoin="round" stroke-width="3">
+                            <g id="Group">
+                                <circle id="Oval" stroke-linecap="round" cx="34.5" cy="34.5" r="34.5"></circle>
+                                <path d="M43.5,36 C42.672,36 42,36.669 42,37.5 L42,48 L33,48 C33,48 33.093,28.566 33,27 L42,27 L42,29.505 C42,29.505 43.371,27.246 47.121,27.246 C51.771,27.246 54,30.606 54,37.134 L54,48 L45,48 L45,37.5 C45,36.669 44.325,36 43.5,36 Z" id="Shape"></path>
+                                <rect id="Rectangle-path" x="21" y="27" width="6" height="21"></rect>
+                                <circle id="Oval" cx="24" cy="18" r="3"></circle>
+                            </g>
+                        </g>
+                        <g id="Frames-24px">
+                            <rect id="Rectangle-path" x="0" y="0" width="72" height="72"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
